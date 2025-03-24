@@ -1,0 +1,7 @@
+*
+!*/
+
+!.gitignore
+!README.md
+!**/*.typ
+!**/bin/*.pdf
