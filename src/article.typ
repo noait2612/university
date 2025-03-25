@@ -1,6 +1,58 @@
 // Import theorems package
 #import "@preview/ctheorems:1.1.3": *
 
+#let gim_table = (
+	"1": "א",
+	"2": "ב",
+	"3": "ג",
+	"4": "ד",
+	"5": "ה",
+	"6": "ו",
+	"7": "ז",
+	"8": "ח",
+	"9": "ט",
+	"10": "י",
+	"20": "כ",
+	"30": "ל",
+	"40": "מ",
+	"50": "נ",
+	"60": "ס",
+	"70": "ע",
+)
+
+#let locale_number_to_gim(num) = {
+	let a = ()
+	while num > 0 {
+		let cmax = 0
+		for c in gim_table.keys() {
+			if num >= int(c) {
+				cmax = int(c)
+			}
+		}
+
+		num -= cmax
+		a.push(gim_table.at(str(cmax)))
+	}
+
+	if a.len() >= 2 and a.at(-2) == "י" and a.at(-1) == "ה" {
+		a.at(-2) = "ט"
+		a.at(-1) = "ו"
+	}
+
+	if a.len() >= 2 and a.at(-2) == "י" and a.at(-1) == "ו" {
+		a.at(-2) = "ט"
+		a.at(-1) = "ז"
+	}
+
+	if a.len() == 1 {
+			a.push("'")
+	} else {
+		a.insert(-1, "\"")
+	}
+
+	return a.join()
+}
+
 #let article(
 	title: none,
 	author: none,
@@ -45,7 +97,7 @@
 	show heading: set block(below: 1.2em)
 
 	// These will set the numbering to imitate latex as well
-	set heading(numbering: "1.1")
+	//set heading(numbering: "1.1")
 	show heading.where(level: 3): it => [
 		#block(it.body)
 	]
@@ -95,7 +147,7 @@
 	}
 
 	context if text.lang == "he" [
-		== סעיף #context subquestion_counter.display()
+		== סעיף #context subquestion_counter.display(locale_number_to_gim)
 	] else [
 		== Subquestion #context subquestion_counter.display()
 	]
@@ -129,3 +181,26 @@
 #let proposition = thmbox("proposition", {context theorem_titles.at("proposition").at(text.lang)}, inset: 0cm)
 #let proof = thmproof("proof", {context theorem_titles.at("proof").at(text.lang)}, inset: 0cm)
 #let solution = thmproof("solution", {context theorem_titles.at("solution").at(text.lang)}, inset: 0cm)
+
+// headings
+//#show heading: it => {
+//	let c = if it.level == 1 {
+//		rgb(246, 196, 187)
+//	} else if it.level == 2 {
+//		rgb(205, 234, 229)
+//	} else if it.level == 3 {
+//		rgb(217, 233, 210)
+//	} else {
+//		rgb(252, 241, 188)
+//	}
+//
+//	block([
+//		//#counter(heading).display(it.numbering)
+//		#underline(
+//			stroke: c + 3pt,
+//			offset: -1pt,
+//			evade: false,
+//			background: true
+//		)[#it.body]
+//	])
+//}
