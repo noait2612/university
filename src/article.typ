@@ -1,6 +1,6 @@
 // Import theorems package
 #import "@preview/ctheorems:1.1.3": *
-	
+
 #let article(
 	title: none,
 	author: none,
@@ -12,19 +12,19 @@
 	if date == none {
 		let today = datetime.today()
 		let dict = (
-		"1": "ינואר",
-		"2": "פברואר",
-		"3": "מרץ",
-		"4": "אפריל",
-		"5": "מאי",
-		"6": "יוני",
-		"7": "יולי",
-		"8": "אוגוסט",
-		"9": "ספטמבר",
-		"10": "אוקטובר",
-		"11": "נובמבר",
-		"12": "דצמבר"
-		)			
+			"1": "ינואר",
+			"2": "פברואר",
+			"3": "מרץ",
+			"4": "אפריל",
+			"5": "מאי",
+			"6": "יוני",
+			"7": "יולי",
+			"8": "אוגוסט",
+			"9": "ספטמבר",
+			"10": "אוקטובר",
+			"11": "נובמבר",
+			"12": "דצמבר"
+		)
 		date = str(today.day()) + " ב" +  dict.at(str(today.month())) + " " + str(today.year())
 	}
 
@@ -66,9 +66,13 @@
 	doc
 }
 
-// Reimplementation of question macros
+// Counters for questions
 #let question_counter = counter("question_counter")
+#let subquestion_counter = counter("subquestion_counter")
+
+// Reimplementation of question macros
 #let question(number: -1) = {
+	subquestion_counter.update(0)
 	if number == -1 {
 		question_counter.step()
 	} else {
@@ -83,7 +87,6 @@
 }
 
 // Reimplementation of subquestion macros
-#let subquestion_counter = counter("subquestion_counter")
 #let subquestion(number: -1) = {
 	if number == -1 {
 		subquestion_counter.step()
