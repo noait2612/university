@@ -82,9 +82,47 @@
 	]
 }
 
+// Reimplementation of subquestion macros
+#let subquestion_counter = counter("subquestion_counter")
+#let subquestion(number: -1) = {
+	if number == -1 {
+		subquestion_counter.step()
+	} else {
+		subquestion_counter.update(1)
+	}
+
+	context if text.lang == "he" [
+		== סעיף #context subquestion_counter.display()
+	] else [
+		== Subquestion #context subquestion_counter.display()
+	]
+}
+
 // Configuring theorem environments, this is necessary in contrast to latex
-#let theorem = thmbox("theorem", "Theorem", inset: 0cm)
-#let proof = thmproof("proof", "Proof", inset: 0cm)
-// TODO: Fix
-#let theorem = thmbox("theorem", "משפט", inset: 0cm)
-#let proof = thmproof("proof", "הוכחה", inset: 0cm)
+#let theorem_titles = (
+	"theorem": (
+		"he": "משפט",
+		"en": "Theorem"
+	),
+	"proof": (
+		"he": "הוכחה",
+		"en": "Proof"
+	),
+	"solution": (
+		"he": "פתרון",
+		"en": "Solution"
+	),
+	"lemma": (
+		"he": "למה",
+		"en": "Lemma"
+	),
+	"proposition": (
+		"he": "טענה",
+		"en": "Proposition"
+	),
+)
+#let theorem = thmbox("theorem", {context theorem_titles.at("theorem").at(text.lang)}, inset: 0cm)
+#let lemma = thmbox("lemma", {context theorem_titles.at("lemma").at(text.lang)}, inset: 0cm)
+#let proposition = thmbox("proposition", {context theorem_titles.at("proposition").at(text.lang)}, inset: 0cm)
+#let proof = thmproof("proof", {context theorem_titles.at("proof").at(text.lang)}, inset: 0cm)
+#let solution = thmproof("solution", {context theorem_titles.at("solution").at(text.lang)}, inset: 0cm)
