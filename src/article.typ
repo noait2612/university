@@ -91,7 +91,11 @@
 	set par(leading: 0.8em)
 
 	// Set page numbering
-	set page(numbering: "1")
+	set page(numbering: "1",
+	paper: "a4",
+	margin:  (
+  x: 1.5cm,
+))
 
 	// Spacing after titles
 	show heading: set block(below: 1.2em)
