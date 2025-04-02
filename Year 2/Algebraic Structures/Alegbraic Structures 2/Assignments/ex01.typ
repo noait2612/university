@@ -132,11 +132,11 @@ $phi$ ו־$psi$ מזדהות איבר איבר ולכן $phi=psi$ וקיבלנו
 #solution[
 נחשב את ההופכי של $pi(1+2x+3x^2)$ ונשים לב שמתקיים $deg(1+2x+3x^2)<deg(x^3-5)$ ולכן נוכל לעבוד כמו בתרגול:
 $ underbrace(x^3-5, f) = underbrace([x/3-2/9], q_1) dot.op underbrace([1+2x+3x^2], g)+ underbrace([x/9-43/9], r_1) $
-$ underbrace(x^3-5, f) = underbrace([43/9-x/9], -r_1) dot.op underbrace([-9x^2-387x-1661], q_2) + underbrace([79502], q_2) $
+$ underbrace(x^3-5, f) = underbrace([43/9-x/9], -r_1) dot.op underbrace([-9(x^2+43x+43^2)], q_2) + underbrace([79502], q_2) $
 ולכן ההופכי של $pi(1+2x+3x^2)$ הוא:
-$ pi((x/3-2/9) dot.op (-9x^2-387x-1661))/(-79502) = 1/(-79502)pi(-3x^3-129x^2+(1661x)/3+2x^2+258x+2 dot.op 1661/3) \ = 1/(-79502)pi(-129x^2+(1661x)/3+2x^2+258x+2 dot.op 1661/3 + 5) $
-נסמן $overline(phi): EE arrow.r RR$ ההומורפיזם ששולח את $x+(f)$ ל־$root(3,5)$ נקבל $overline(phi)(pi(1+2x+3x^2)) approx 13.19$ \
-וכן $overline(phi)(1/(79502)pi(-387x^2-1661x+5)) approx $
+$ pi((x/3-2/9) dot.op (-9(x^2+43x+43^2)))/(-79502) = 1/(-79502)pi(-3x^3-127x^2-5461x+3698) \ = 1/(-79502)pi(-127x^2-5461x + 3698 - 15) $
+נסמן $overline(phi): EE arrow.r RR$ ההומורפיזם ששולח את $x+(f)$ ל־$root(3,5)$. מתקיימים: $ overline(phi)(pi(1+2x+3x^2)) approx 13.19, wide&      overline(phi)(1/(-79502)pi(-127x^2-5461x + 3698 - 15)) approx 0.758 $
+ואלו בקירוב ממשיים הופכיים, ולכן מתקיים $(1+2root(3,5)+3root(3,5)^2)^(-1)=1/(-79502)(-127root(3,5)^2-5461root(3,5) + 3698 - 15)$
 ]
 
 #question()
