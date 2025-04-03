@@ -1,13 +1,14 @@
 #import "../../../../src/article.typ": *
 #show: article.with(
 	title: [ פתרון מטלה 01 --- מבנים אלגבריים 2, 80446 ],
-	author: [  ],
+	author: [ ],
 	signature: [#align(center)[#image("../../../../src/duck.png", width: 30%, fit: "contain")]]
 )
 
 #let char = math.op("char")
 #let im = math.op("Im")
 #let ker = math.op("Ker")
+#let deg = math.op("deg")
 
 #question()
 תהיי $L slash K$ הרחבת שדות כך ש־$[L:K]=7$. נראה שלכל איבר $alpha in L without K$ מתקיים $K[alpha] = L$.
@@ -52,7 +53,7 @@
 $ phi(sum a_i_1,...i_m t_1^i_1 dots.h.c t_m^i_m ) = sum  a_i_1,...i_m s_1^i_1 dots.h.c s_m^i_m $
 ואכן מתקיים $phi(t_i) = s_i$ לכל $i$ ו־$phi$ הומומורפיזם של חוגים, נשאר להראות שהוא $K$־הומומורפיזם: נשים לב שלכל $alpha in K$ מתקיים $phi(alpha) = phi (alpha t_1^0 dots.h.c t_m^0) = alpha s_1^0 dots.h.c s_m^0$ ולכן $phi$ הוא $K$־הומומורפיזם.\ 
 נשאר להראות יחידות: יהי $psi$ $K$־הומומורפיזם כנ"ל. מתקיים: 
-$ psi( sum a_i_1,...i_m t_1^i_1 dots.h.c t_m^i_m ) = sum a_i_1,...i_m Pi_(j=0)^m psi(t_j)^i_j = sum a_i_1,...i_m Pi_(j=0)^(m) s_j^i_j \ = sum a_i_1,...i_m Pi_(j=0)^m phi(t_j)^i_j = phi(sum a_i_1,...i_m t_1^i_1 dots.h.c t_m^i_m ) $
+$ psi( sum a_i_1,...i_m t_1^i_1 dots.h.c t_m^i_m ) = sum a_i_1,...i_m product_(j=0)^m psi(t_j)^i_j = sum a_i_1,...i_m product_(j=0)^(m) s_j^i_j \ = sum a_i_1,...i_m product_(j=0)^m phi(t_j)^i_j = phi(sum a_i_1,...i_m t_1^i_1 dots.h.c t_m^i_m ) $
 $phi$ ו־$psi$ מזדהות איבר איבר ולכן $phi=psi$ וקיבלנו כי קיים $K$־הומומורפיזם כנ"ל ושהוא יחיד.
 ]
 
