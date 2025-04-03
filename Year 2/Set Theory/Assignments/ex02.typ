@@ -15,15 +15,15 @@
 נוכיח שמתקיים $abs(X times X')=abs(Y times Y')$.
 #proof[
 מכך שמתקיים $abs(X)=abs(Y)$ נובע שקיימת פונקציה חד־חד ערכית ועל $f: X arrow.r Y$ ומכך שמתקיים $abs(X')=abs(Y')$ קיימת פונקציה חד־חד ערכית ועל $g: X' arrow.r Y'$.\
-נגדיר $f: X times X' arrow.r Y times Y'$ על־ידי $h(x,x') = (f(x) , g(x'))$.  נראה כי היא חד־חד ערכית ועל: \
-חד־חד ערכית: נשים לב שמתקיים $ h(x_1, x'_1) = h(x_2, x'_2) <==> (f(x_1), g(x'_1)) = (f(x_2), g(x'_2)) <==> f(x_1) = f(x_2) and g(x'_1) = g(x'_2) <==>_((1)) x_1=x_2 and x'_1 = x'_2 $
+נגדיר $f: X times X' arrow.r Y times Y'$ על־ידי $h(x,x') = angle.l f(x) , g(x') angle.r$.  נראה כי היא חד־חד ערכית ועל: \
+חד־חד ערכית: נשים לב שמתקיים $ h(x_1, x'_1) = h(x_2, x'_2) <==> angle.l f(x_1), g(x'_1) angle.r = angle.l f(x_2), g(x'_2) angle.r <==> f(x_1) = f(x_2) and g(x'_1) = g(x'_2) <==>_((1)) x_1=x_2 and x'_1 = x'_2 $
 כאשר $(1)$ נובע מהיות $f$ ו־$g$ חד־חד ערכיות. \
-על: יהי $(y, y') in Y times Y'$. מהיות $f$ על, נובע כי קיים $x_y in X$ כך שמתקיים $f(x)=y$ ומכך ש־$g$ על נובע שקיים $x'_y' in X'$ כך שמתקיים $g(x')=y'$. ולכן $h(x_y, x'_y') = (y, y')$ וקיבלנו ש־$h$ על. \
+על: יהי $angle.l y, y' angle.r in Y times Y'$. מהיות $f$ על, נובע כי קיים $x_y in X$ כך שמתקיים $f(x)=y$ ומכך ש־$g$ על נובע שקיים $x'_y' in X'$ כך שמתקיים $g(x')=y'$. ולכן $h(x_y, x'_y') = angle.l y, y' angle.r$ וקיבלנו ש־$h$ על. \
 מצאנו פונקציה חד־חד ערכית ועל ולכן מהגדרת שיוויון עוצמות נובע $abs(X times X')=abs(Y times Y')$.
 ]
 
 #subquestion()
-נניח שמתקיים $X inter X' = Y inter Y' = emptyset$. נוכיח שמתקיים $abs(X union X')=abs(Y union Y')$.
+נניח שמתקיים $X inter X' = Y inter Y' = emptyset$ ונוכיח שמתקיים $abs(X union X')=abs(Y union Y')$.
 #proof[
 מכך שמתקיים $abs(X)=abs(Y)$ נובע שקיימת פונקציה חד־חד ערכית ועל $f: X arrow.r Y$ ומכך שמתקיים $abs(X')=abs(Y')$ קיימת פונקציה חד־חד ערכית ועל $g: X' arrow.r Y'$.\
 נגדיר כמו בתרגול: $ f xor g(x) = cases( f(x) wide& x in X, g(x) wide& x in X') $
@@ -37,12 +37,27 @@
 מצאנו פונקציה חד־חד ערכית ועל ולכן מהגדרת שיוויון עוצמות נובע $abs(X union X')=abs(Y union Y')$.
 ]
 
+#pagebreak()
+
 #subquestion()
 נוכיח שמתקיים $abs(X^(X'))=abs(Y^(Y'))$.
 #proof[
 מכך שמתקיים $abs(X)=abs(Y)$ נובע כי קיימת פונקציה חד־חד ערכית ועל $f: X arrow.r Y$ ומכך שמתקיים $abs(X')=abs(Y')$ נובע שקיימת פונקציה חד־חד ערכית ועל $g: X' arrow.r Y'$. \
-נגדיר $phi:X^(X') arrow.r Y^(Y')$ על־ידי $phi(h)=f compose h compose g^(-1)$ ונרצה להראות כי $phi$ היא חד־חד ערכית ועל.
-TBD
+נגדיר $phi: X^(X') arrow.r Y^(Y')$ על־ידי $phi(h)(y') = (f compose h compose g^(-1))(y')$ ו־$phi$ מוגדרת היטב כהרכבה של פונקציות. \ 
+נראה כי $phi$ היא חד־חד ערכית ועל: \ 
+חד־חד ערכית: נניח כי קיימים $h, h' in X^(X')$ כך שמתקיים $phi(h')=phi(h)$, נשים לב כי מתקיים:
+$ phi(h') = phi(h) <==> forall y' in Y', quad phi(h')(y')=phi(h)(y') <==> f(h'(g^(-1)(y'))) = f(h(g^(-1)(y'))) <==>_((1)) h(g^(-1)(y'))=h'(g^(-1)(y')) $
+כאשר $(1)$ נובע מהיות $f$ הפיכה. \
+כמו כן, מכיוון ש־$g$ הפיכה מתקיים שלכל $x' in X'$ קיים ויחיד $y' in Y'$ כך שמתקיים $g^(-1)(y')=x'$, ולכן נקבל
+$ h(g^(-1)(y'))=h'(g^(-1)(y')) <==> forall x' in X, quad h'(x')=h(x') ==> h'=h $
+וקיבלנו $phi$ היא חד־חד ערכית. \
+נראה כי $phi$ היא על, ולכן עלינו להוכיח שלכל $l: Y' arrow.r Y$, קיימת $h : X' arrow.r X$ כך שמתקיים $phi(h) = l$. מתקיים: 
+$ forall y' in Y', quad phi(h)(y') = l(y') <==>_("def") f(h(g^(-1)(y'))) = l(y') <==>_((1)) h(g^(-1)(y')) = (f^(-1) compose l)(y') $
+כאשר $(1)$ נובע מהיות $f$ הפיכה. \
+אבל מהיות $g$ הפיכה נובע שלכל לכל $y' in Y'$ קיים ויחיד $x' in X'$ כך שמתקיים $g(x)=y$ ולכן:
+$ forall x' in X', quad h(g^(-1)(g(x))) = (f^(-1)(l(g(x)))) ==> h(x) = (f^(-1)(l(g(x)))) $
+מצאנו בנייה ל־$h$ ולכן לכל $l$ קיים מקור ובהתאם $phi$ על.\
+מצאנו פונקציה חד־חד ערכית ועל בין $X^(X')$ לבין $Y^(Y')$ ולכן מהגדרת שיוויון עוצמות מתקיים $abs(X^(X'))=abs(Y^(Y'))$.
 ]
 
 #question()
@@ -74,11 +89,20 @@ $==>$ נניח $X inter X'=emptyset$ ונראה כי $f$ חד־חד ערכית. 
 נניח כי $f$ לא חד־חד ערכית, ולכן קיימים $(x_1, i_1), (x_2, i_2) in X union.plus X'$ כך ש־$(x_1, i_1) != (x_2, i_2)$ אבל $f((x_1, i_1))=f((x_2, i_2))$, אבל אז מהגדרת $f$ נובע $x_1 = x_2$, אבל $X inter X' = emptyset$ ולכן נקבל $i_1 = i_2 = 0$ או $i_1 = i_2 = 1$ ולכן $f$ חד־חד ערכית.
 ]
 
+#pagebreak()
 #subquestion()
 נגדיר $i: X arrow.r X union.plus X'$ על־ידי $i(x) = (x,0)$ ונגדיר $i': X' arrow.r X union.plus X'$ על־ידי $i'(x) = (x,1)$. \
-נוכיח שאם יש קבוצה $Y$ ופונקציות $f: X arrow.r Y$ ו־$g: X' arrow.r Y$ אז יש פונקציה יחידה $f xor g: X union.plus X' arrow.r Y$ המקיימת $(f xor g) compose i = f$ וגם $(f xor g) compose i' = g$
-#proof[
-TBD
+נוכיח שאם יש קבוצה $Y$ ופונקציות $f: X arrow.r Y$ ו־$g: X' arrow.r Y$ אז יש פונקציה יחידה $f xor g: X union.plus X' arrow.r Y$ המקיימת $(f xor g) compose i = f$ וגם $(f xor g) compose i' = g$.
+#proof[ \
+נניח כי קיימת קבוצה $Y$ ופונקציות $f: X arrow.r Y$ ו־$g: X' arrow.r Y$ לעיל ונראה כי קיימת פונקציה יחידה המקיימת את הנדרש. \
+נגדיר: $ f xor g = { angle.l angle.l  x, j angle.r, y angle.r bar (j=0 and y=f(x) and x in X) or (j=1 and y=g(x) and x in X') } $
+נשים לב שמתקיים מהגדרת $i$ ו־$f xor g$:
+$ forall x in X, quad ((f xor g) compose i)(x) = (f xor g)(angle.l x, 0 angle.r) = f(x) ==> (f xor g) compose i = f $
+באותו אופן נובע מהגדרת $i'$ ו־$f xor g$:
+$ forall x' in X', quad ((f xor g) compose i')(x') = (f xor g)(angle.l x', 1 angle.r) = g(x) ==> (f xor g) compose i' = g $
+ולכן הראינו קיום, נשאר להראות יחידות: נניח כי $h = f xor g$ ו־$h'$ המקיימות את הנדרש ונראה שהן זהות. מתקיים מהגדרה:
+$ forall a in X union.plus X', quad h'(a) = cases(f(x) quad a = angle.l x","0 angle.r, g(x) quad a = angle.l x","1 angle.r) = h(a) $
+ולכן $h=h'$ ו־$h$ מוגדרת ביחידות.
 ]
 
 #question()
