@@ -97,6 +97,10 @@
   x: 1.5cm,
 ))
 
+	show math.equation.where(block: true): eq => {
+	  block(width: 100%, inset: 0pt, align(center, eq))
+	}
+
 	// Spacing after titles
 	show heading: set block(below: 1.2em)
 
@@ -185,6 +189,8 @@
 #let proposition = thmbox("proposition", {context theorem_titles.at("proposition").at(text.lang)}, inset: 0cm)
 #let proof = thmproof("proof", {context theorem_titles.at("proof").at(text.lang)}, inset: 0cm)
 #let solution = thmproof("solution", {context theorem_titles.at("solution").at(text.lang)}, inset: 0cm)
+
+#let todo = text(red)[*TODOOOOOOOOOOOOOOOOOO*]
 
 // headings
 //#show heading: it => {
