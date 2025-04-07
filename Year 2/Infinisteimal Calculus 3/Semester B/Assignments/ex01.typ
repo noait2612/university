@@ -208,7 +208,7 @@ $ angle.l alpha x+y,z angle.r = sum_(n=1)^infinity (alpha x_n + y_n)z_n = alpha 
 יהיו $x,y,z in X$ ונוכיח כי אם $d(x,y) > d(y,z)$ אזי $d(x,z)=d(x,y)$.
 #proof[
 מכך שמתקיים $d(x,y) > d(y,z)$ ומכך ש־$(X,d)$ מרחב אולטרה־מטרי נובע כי $d(x,z) <= d(x,y)$.\
-נשים לב שבאותו אופן נובע גם $d(x,y)<= max {d(x,z), d(y,z)} =_((1)) d(x,z)$ כאשר $(1)$ נובע מהנתון $d(x,y) > d(y,z)$.\
+נשים לב שבאותו אופן נובע גם $d(x,y)<= max {d(x,z), d(y,z)} = d(x,z)$.\
 בסך־הכל קיבלנו $d(x,z)=d(x,y)$.
 ]
 
@@ -238,7 +238,7 @@ $ abs(y-x)<=max { abs(y-z), abs(z-x)} < max{s,r} = r $
 #subquestion()
 יהי $p in NN$ מספר ראשוני. נחשב את הגבול של הסדרה $X_n = display(sum_(i=0)^n p^i)$ ב־$(QQ, d_p)$ כאשר $d_p$ היא המטריקה ה־$p$־אדית.
 #solution[
-ראשית נשים לב כי $X_n = display(sum_(i=0)^n p^i)$ זהו סכום גיאומטרי ולכן $X_n = display(sum_(i=0)^n p^i) = (p^(n+1)-1)/(p-1) in QQ$ ולכן ננחש שמתקיים $display(lim_(x arrow.r infinity) x_n = 1/(1-p))$ (זה יהיה טור גיאומטרי אינסופי). \
+ראשית נשים לב כי $X_n = display(sum_(i=0)^n p^i)$ זהו סכום גיאומטרי ולכן $X_n = display(sum_(i=0)^n p^i) = (p^(n+1)-1)/(p-1) in QQ$ ולכן ננחש שמתקיים $display(lim_(n arrow.r infinity) x_n = 1/(1-p))$ (זה יהיה טור גיאומטרי אינסופי). \
 נסמן $L=1/(1-p)=-1/(p-1) in QQ$ ומתקיים: $ x_n - L = (p^(n+1)-1)/(p-1) + 1/(p-1) = p^(n+1)/(p-1) $
 ועם המטריקה ה־$p$־אדית מתקיים:
 $ abs(x_n - L)_p = abs(p^(n+1)/(p-1))_p = abs(p^(n+1))_p dot.op abs(1/(p-1))_p =_((1)) p^(-(n+1)) ==> d_p (x_n, L) = p^(-(n+1)) stretch(arrow.r)_(n arrow.r infinity) 0 $
