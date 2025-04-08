@@ -1,18 +1,18 @@
 #import "../../../../src/article.typ": *
 #show: article.with(
 	title: [ פתרון מטלה 02 --- חשבון אינפיניטסימלי 3, 80415 ],
-	author: [  ],
+	author: [ ],
 	signature: [#align(center)[#image("../../../../src/duck.png", width: 30%, fit: "contain")]]
 )
 
-#show regex("\p{Hebrew}.+"): it => text(dir: rtl, font: "", lang: "he")[#it]
+#show regex("\p{Hebrew}.+"): it => text(dir: rtl, font: "Libertinus Serif", lang: "he")[#it] // Dark Magic: https://github.com/typst/typst/issues/3695
 #set math.cases(gap: 1em)
 
 #question()
 יהי $(X, norm(dot.op))$ מרחב נורמי.
 
 #subquestion()
-נוכיח כי לכל $x in X$ ו־$r>0$ מתקיים $(hat(B)_ r(x))^circle.stroked.small = B_r(x)$
+נוכיח כי לכל $x in X$ ו־$r>0$ מתקיים $(hat(B)_ r(x))^circle.stroked.small = B_r(x)$.
 #proof[
 ראשית ראינו בהרצאה שבמרחב נורמי מתקיים $overline(B_r (x)) = hat(B)_r (x)$. נוכיח באמצעות הכלה דו כיוונית. \
 $B_r (x) subset.eq (hat(B)_r (x))^circle.stroked.small$: מהגדרה, $B_r (x)$ הוא קבוצה פתוחה המוכלת ב־$hat(B)_r (x)$ ולכן הוא מוכל ב־$(hat(B)_r (x))^circle.stroked.small$. \
@@ -22,10 +22,10 @@ $(hat(B)_r (x))^circle.stroked.small subset.eq B_r (x)$: לכל נקודה $x' i
 ]
 
 #subquestion()
-נוכיח כי לכל $x in X$ ו־$r>0$ מתקיים $partial B_r (x) = S_r (x)$
+נוכיח כי לכל $x in X$ ו־$r>0$ מתקיים $partial B_r (x) = S_r (x)$.
 #proof[
-ראינו כי $overline(B_r (x)) = hat(B)_r (x)$ ובשילוב עם סעיף א' נקבל:
-$ partial B_r (x) = hat(B)_r (x) without B_r (x) = { x in X bar d(x, x')<=r, d(x, x') lt.not r} = { x in X bar d(x, x')=r} = S_r (x) $
+ראינו כי $overline(B_r (x)) = hat(B)_r (x)$ (כי המרחב נורמי) ובשילוב עם סעיף א' נקבל:
+$ partial B_r (x) = hat(B)_r (x) without B_r (x) = { x in X bar d(x, x')<=r and d(x, x') lt.not r} = { x in X bar d(x, x')=r} = S_r (x) $
 ]
 
 #question()
@@ -33,22 +33,64 @@ $ partial B_r (x) = hat(B)_r (x) without B_r (x) = { x in X bar d(x, x')<=r, d(x
 נמצא את הפנים, הסגור והשפה של הקבוצה $A = {(x,y,z) in RR^3 bar x+y+z<=1} subset.eq (RR^3, norm(dot.op)_2)$.
 #proof[
 נראה כי $A$ סגורה ואז $overline(A) =A$:
-בהינתן סדרת הנקודות $(x_n, y_n, z_n) in A$ כך שמתקיים $(x_n, y_n, z_n) stretch(arrow.r)_(n arrow.r infinity) (x,y,z)$, לכל $n$ מתקיים $ x_n + y_n + z_n <=1 stretch(arrow.r)_(n arrow.r infinity) x+y+z<=1 $ משמע $(x,y,z) in A$ ולכן $A$ סגורה ונקבל $overline(A)=A$. \
+בהינתן סדרת הנקודות $(x_n, y_n, z_n) in A$ כך שמתקיים $(x_n, y_n, z_n) stretch(arrow.r)_(n arrow.r infinity) (x,y,z)$, לכל $n$ מתקיים $ x_n + y_n + z_n <=1 stretch(arrow.r)_(n arrow.r infinity) x+y+z<=1 $ משמע $(x,y,z) in A$ ולכן $A$ סגורה ונקבל $overline(A)=A$ (ראינו במטלה הקודמת). \
 נעבור למצוא את הפנים של $A$ ונטען כי $(A)^circle.stroked.small = {(x,y,z) in RR^3 bar x+y+z<1}$: \
 נגדיר $s = 1 - (x+y+z) > 0$ ונבחר $epsilon = s/2 > 0$. כעת, לכל $(x', y',z') in B_epsilon ((x,y,z))$ מתקיים:
 $ x' + y' + z' < x + y + z + norm((x,y,z)-(x',y'z'))_2 < x+y+z+epsilon = x + y +z + s/2 = 1-s/2 < 1  $
 ולכן $x' + y' + z' < 1$ ולכן $(A)^circle.stroked.small = {(x,y,z) in RR^3 bar x+y+z<1}$. \
-נמצא כעת את $partial A$:  $ partial A = overline(A) without (A)^circle.stroked.small = {(x,y,z) in RR^3 bar x+y+z<=1} without {(x,y,z) in RR^3 bar x+y+z<1} \ = {(x,y,z) in RR^3 bar x+y+z = 1} $.
+נקבל בהגדרה אם כך כי $partial A = overline(A) without (A)^circle.stroked.small = {(x,y,z) in RR^3 bar x+y+z = 1}$.
 ]
 
 #subquestion()
-נמצא את הפנים, הסגור והשפה של הקבוצה $B = {f in C([0,1]) bar f "מונוטונית יורדת ממש"} subset.eq(C[0,1], norm(dot)_infinity)$
-#proof[]
+נמצא את הפנים, הסגור והשפה של הקבוצה $B = {f in C([0,1]) bar f "מונוטונית יורדת ממש"} subset.eq(C[0,1], norm(dot)_infinity)$.
+#proof[
+נתחיל מ־$overline(B)$: נגיד כי $f in overline(B)$ אם קיימת סדרת פונקציות מונוטוניות יורדות ממש $f_n in B$ כך ש־$f_n stretch(arrow.r)_(n arrow.r infinity) f$ במידה שווה (ולכן $f$ רציפה). \
+$f_n$ מונוטונית יורדת ממש, משמע אם $x > y$ אזי $f_n (x) > f_n (y)$
+ניזכר כי אי־שיוויון חזק הופך בלקיחת גבול לאי־שיוויון חלש ולכן $ x < y ==> f(x) >= f(y) $ ולכן $f$ פונקציה מונוטונית יורדת (אך לא בהכרח ממש) ונקבל $overline(B) = {f in C([0,1]) bar f "מונוטונית יורדת"} $. \
+נעבור ל־$B^circle.stroked.small$: יהיו $f in B$ ונרצה למצוא $r > 0$ כש־$B_r (f) subset.eq B$. מהגדרת נורמת הסופרימום:
+$ B_r (f) = {g in C([0,1]) mid(bar) sup_(x in [0,1]) { abs(f(x)-g(x)) } < r} subset.eq {g in C([0,1]) bar f-r < g < f + r} $
+בתרגול ראינו שזו בעצם נורמת מקסימום (בגלל הרציפות). \
+יהי $r > 0$. $f$ רציפה ולכן קיימת $delta > 0$ כך שמתקיים $abs(f(x) - f(0)) < r$.
+לכן נוכל להגדיר את $g in C([0,1])$ על־ידי:
+$ g(x) = cases(f(delta) wide x<delta, f(x) wide x>=delta) $
+$g$ רציפה מהיות $f$ רציפה אבל היא בבירור לא מונוטונית יורדת ממש (היא קבועה לכל $x < delta$). \
+נחלק את הבדיקה שלנו לשני קטעים: $[0, delta]$ ו־$[delta, 1]$, נקבל שמתקיים:
+$ sup_(x in [0,delta]) { abs(f(x)-g(x)) < infinity} = sup_(x in [0,delta]) { abs(f(x)-f(delta)) < infinity} =_((1)) abs(f(0)-f(delta)) < r  $
+כאשר $(1)$ נובע מהיות $f$ מונוטונית יורדת ממש. באותו אופן:
+$ sup_(x in [delta,1]) { abs(f(x)-g(x)) < infinity} = sup_(x in [delta,1]) { abs(f(x)-f(x)) < infinity} = 0 < r  $
+ולכן $g$ נמצאת בכדור סביב $f$ ברדיוס $r$ אבל היא איננה מונוטונית יורדת ממש, ומהיות $f$ פונקציה שרירותית נקבל כי $B^circle.stroked.small = emptyset$. \
+נקבל מהגדרה אם כך כי $partial B = overline(B) without B^circle.stroked.small = {f in C([0,1]) bar f "מונוטונית יורדת"}$.
+]
 
 #subquestion()
 נמצא את הפנים, הסגור והשפה של הקבוצה $C = {x in ell^infinity bar L in (-1,1] "וגם" L = display(lim_(n arrow.r infinity) x_n)"קיים הגבול" } subset.eq (ell^infinity, norm(dot.op)_infinity)$
 #proof[
-ראשית נבין מה היא $C$ – קבוצת כל הפונקציות החסומות ומתכנסות שגבולן בקטע $(-1, 1]$ כאשר הגדרנו במרחב $ell^infinity$  את נורמת הסופרמום על־ידי $norm(x)_infinity = sup_(n in N) abs(x_n)$.
+ניזכר שהגדרנו במרחב $ell^infinity$  את נורמת הסופרמום על־ידי $display(norm(x)_infinity = sup_(n in NN) abs(x_n)) < infinity$, משמע $(ell^infinity, norm(dot.op))_infinity$ הוא מרחב הסדרות החסומות תחת הנורמה לעיל. \
+לכן $C$ היא קבוצת כל הסדרות המתכנסות ב־$ell^infinity$ לגבול $L in (-1, 1]$. \
+נתחיל הפעם מ־$C^circle.stroked.small$: תהיי $(a_n)_(n=1)^infinity in C$ ונרצה למצוא $r > 0$ כך ש־$B_r (a_n) subset.eq C$. \
+יהי $r>0$, $(a_n)$ מתכנסת אל $L in (-1, 1]$ ולכן קיים $N in NN$ כך שלכל $n > N$ מתקיים $abs(a_n-L) <r $.\
+נבחר $delta in (r/2, r)$ כך שיתקיים $L + delta in.not (-1, 1]$. נגדיר סדרה חדשה:
+$ b_n = cases(a_n wide n <= N, L+delta wide n>N) $
+ואז נקבל $norm(a_n-b_n)_infinity < r $
+אבל $b_n in.not C$ שכן $b_n stretch(arrow.r)_(n arrow.r infinity) L + delta in.not (-1, 1]$. \ 
+בחרנו סדרה שרירותית ב־$C$ וראינו שסביבה שלה קיימת סדרה שאינה ב־$C$ ולכן $C^circle.stroked.small = emptyset$. \
+נעבור למציאת $overline(C)$: יהיו $x in ell^infinity, x^((k)) in C$ כך שמתקיים $x^((k)) stretch(arrow.r)_(k arrow.r infinity) x$ ב־$norm(dot.op)_infinity$, משמע $norm(x^((k))-x)_infinity stretch(arrow.r)_(k arrow.r infinity) 0$. \
+לכן לכל $epsilon > 0$ קיים $k$ כך שמתקיים 
+$ norm(x^((k))-x)_infinity < epsilon ==> forall n in NN, abs(x_n^((k))-x_n) < epsilon $
+היות ו־$x^((k)) in C$ נובע כי $display(lim_(n arrow.r infinity) x_n^k = L_k in (-1,1])$. נשאר להראות כי הגבול של $x_n$ קיים ומהו. \
+יהי $epsilon > 0$  ואנחנו יודעים כי 
+$ norm(x^((k))-x)_infinity < epsilon/3 ==> forall n in NN, abs(x_n^((k))-x_n) < epsilon/3 $
+היות והגבול $x_n^(k) arrow.r L_k$ קיים, יש $N in NN$ כך שלכל $n > N$ מתקיים
+$ abs(x_n^(k) - L_k ) < epsilon/3 $
+ועבור $n > N$ מתקיים
+$ abs(x_n-L_k)<=abs(x_n - x_n^((k))) + abs(x_n^((k))-L_k) < epsilon/3 + epsilon/3 = (2epsilon)/3 $
+וכאשר $k arrow.r infinity$ ומכך ש־$L_k arrow.r L$ (מהתכנסות במידה שווה) נקבל
+$ abs(x_n - L)<= abs(x_n - L_k) + abs(L_k - L) < (2epsilon)/3 + epsilon/3 = epsilon $
+ולכן $lim x_n = lim L_k$ ומכך ש־$L_k in (-1, 1]$ נקבל כי $lim L_k in [-1, 1]$ שכן $(-1, 1]$ לא סגורה, ולכן גבול של סדרה לא חייב להישאר בקטע הנתון ואנחנו יודעים כי $overline((-1, 1]) = [-1, 1]$. \
+הערה: מספיק שנסתכל בתור דוגמה על $L_k = -1 + 1/k in (-1, 1]$ אבל $L_k arrow.r -1$ (בפרט מצאנו עד כה הכלה בכיוון $overline(C) subset.eq $ והדוגמה הזאת מביאה הכלה בכיוון $subset.eq overline(C)$). \
+ נקבל בסך־הכל $overline(C) = {x in ell^infinity bar L in [-1,1] "וגם" L = display(lim_(n arrow.r infinity) x_n)"קיים הגבול" } $. \
+ נקבל מהגדרה אם כך כי
+ $partial C = overline(C) without C^circle.stroked.small = {x in ell^infinity bar L in [-1,1] "וגם" L = display(lim_(n arrow.r infinity) x_n)"קיים הגבול" } $.
 ]
 
 #question()
@@ -56,15 +98,50 @@ $ x' + y' + z' < x + y + z + norm((x,y,z)-(x',y'z'))_2 < x+y+z+epsilon = x + y +
 
 #subquestion()
 נתאר את כדור היחידה הסגור $ZZ_(p) colon.eq hat(B)_1(0) subset.eq (QQ, d_p)$.
-#proof[]
+#proof[
+ראשית ניזכר כי $d_p (x,y) = abs(x-y)_p$. \
+נגדיר: 
+$ hat(B)_1 (0) = {x in QQ mid(bar) abs(x)_p <= 1, quad x = a/b in ZZ space s.t. space b!=0 and gcd(a,b)=1} $
+ובתרגול ראינו שמתקיים עבור $display(x = a/b in QQ)$:
+$ abs(x)_p = p^(-v_p (x)) = p^(v_p (b)- v_p (a)) $
+ולכן $abs(x)_p <=1$ אם ורק אם $v_p (x) >= 0$ וזה קורה אם ורק אם ל־$x$ אין אף חזקה שלילית של $p$ משמע מתי המכנה לא מתחלק ב־$p$.
+\
+לכן כל ה־$x in QQ$ כך שמתקיים $v_p (x) >= 0$ נתונים על־ידי: 
+$ ZZ_p = { x in QQ bar abs(x)_p <=1 } $
+כאשר כל $x in ZZ_p$ הוא בעצם:
+$ x = a_0 + a_1 p + a_2 p^2 + ... a_(p-1) p^(p-1) $
+וזה מתחבר בצורה מאוד נחמדה לחוגים!
+]
 
 #subquestion()
-נוכיח כי $overline(ZZ) = ZZ_(p)$ ונקבע מהו $ZZ^circle.stroked.small$.
-#proof[]
+נוכיח כי $overline(ZZ) = ZZ_p$ ונקבע מהו $ZZ^circle.stroked.small$.
+#proof[
+נראה באמצעות הכלה דו־כיוונית. \
+$ZZ_p subset.eq overline(ZZ)$: יהי $x in ZZ_p$.
+מהגדרה:
+$ x = a_0 + a_1p + a_2p^2 + ... (a_i in {0, 1, ..., p-1}) $
+נגדיר את הסדרה:
+$ x_n = a_0 + a_1p + a_2p^2 + ... + a_n p^n $
+ונשים לב שמתקיים עבור $n$ גדול מספיק:
+$ abs(x-x_n)_p = abs(a_(n+1)p^(n+1) + a_(n+2)p^(n+2) + ...)_p <= p^(-(n+1)) stretch(arrow.r)_(n arrow.r infinity) 0 $
+ולכן $x_n stretch(arrow.r)_(n arrow.r infinity) x$ במטריקה ה־$p$־אדית. \
+אבל $x_n$ היא סדרה ב־$ZZ$ שמתכנסת ולכן $x in overline(ZZ)$. \
+$overline(ZZ) subset.eq ZZ_p$: יהי $x in overline(A)$ ולכן קיימת סדרה $x_n in ZZ$ כך שמתקיים $x_n stretch(arrow.r)_(n arrow.r infinity) x$.\
+מסעיף א' אנחנו יודעים כי לכל $n$ מתקיים $abs(x_n)_p <=1$ משמע $x in ZZ_p$. \
+
+נטען כעת כי $ZZ^circle.stroked.small = emptyset$: נניח בשלילה שלא, ולכן קיים $x in ZZ^circle.stroked.small$ ולכן מהגדרה קיים $r>0$ כך ש־$B_r (x) in ZZ$.\
+אבל כל כדור פתוח כזה בהכרח יכיל $q in QQ$, משמע הוא לא מוכל לחלוטין ב־$ZZ$ וזו סתירה ולכן $ZZ^circle.stroked.small = emptyset$.
+]
+
+#pagebreak()
 
 #subquestion()
-נוכיח כי $ZZ_(p)$ אינה קומפקטית סדרתית.
-#proof[]
+נוכיח כי $ZZ_p$ אינה קומפקטית סדרתית.
+#proof[
+נניח בשלילה כי $ZZ_p$ קומפקטית סדרתית ולכן $ZZ_p$ סגור וחסום. \
+במטלה הקודמת ראינו כי $display(sum_(i=1)^infinity p^i = 1/(1-p))$. \
+נשים לב כי כאשר $p > 2$, נקבל כי $1/(1-p) in.not ZZ_p$ (זה שבר!) מההנחה $ZZ_p$ סגורה, אבל מצאנו גבול שלא נמצא ב־$ZZ_p$ וזו סתירה. 
+]
 
 #question()
 יהיו $(X,d_X), (Y, d_Y)$ מרחבים מטריים ובתרגיל הקודם ראינו כי המכפלה $X times Y$ היא מרחב מטרי ביחס למטריקה: 
