@@ -13,16 +13,15 @@
 #question()
 יהי $K subset.eq CC$ שדה שאינו מוכל ב־$RR$. נראה שלא בהכרח שמתקיים $[K : K inter RR] = 2$.
 #proof[
-נבחן את $K = QQ(i, root(4,2))$ ובבירור $K subset.eq.not RR$, אבל $root(4,2) in K ==> sqrt(2) = (root(4,2))^2 in RR$, ולכן $K inter RR = Q(sqrt(2))$.
-נשאר לחשב את $[K : K inter RR] = [K : QQ(sqrt(2))]$. \
-היות ו־$i in QQ$ נובע שנצטרך להוסיף ל־$[ K: QQ(sqrt(2))]$ 2.
-נראה כי $root(4,2) in.not QQ(sqrt(2))$ ונמצא את הפולינום המינימלי של $root(4,2)$ מעל $QQ(sqrt(2))$: \
-נראה כי $root(4,2) in.not QQ(sqrt(2))$: נניח שכן, ולכן $root(4,2) = {a+b sqrt(2) bar a, b in QQ}$, אז מתקיים
-$ root(4,2) = a+b sqrt(2) <==> sqrt(2) = (a+b sqrt(2))^2 = a^2 + 2a b sqrt(2) + 2b^2 $
-ולכן $ a^2+2b^2 = 0 <==> a=0 and b=0 \ 2a b = 1 <==> a b = 1/2 $ 
-וקיבלנו כמובן סתירה ולכן $root(4,2) in.not QQ(sqrt(2))$. \
-אנחנו כבר יודעים כי הפולינום המינימלי ב־$QQ(sqrt(2))$ הוא $x^2-sqrt(2)$ והוא כמובן מדרגה 2.\
- מכפליות הדרגה קיבלנו בסה"כ ש־$[K : QQ(sqrt(2))] = 4$ ולכן תחת תנאי השאלה לא בהכרח שמתקיים $[K : K inter RR] = 2$.
+נבחן את $K = QQ(i, sqrt(2)i) = QQ(i, sqrt(2))$ ובבירור $K subset.eq.not RR$ וכן $K inter RR = QQ$.
+נשאר לחשב את $[K : K inter RR] = [K : QQ]$. \
+נסתכל על מגדל ההרחבות
+$ [K : QQ] = [QQ(i, sqrt(2)) : QQ ] dot.op [QQ(sqrt(2)) : QQ] $
+כאשר אנחנו כבר יודעים $ [QQ(sqrt(2)) : QQ] = 2 $
+וגם $ [QQ(i, sqrt(2) : QQ(sqrt(2)))] = 2 $
+שכן הפולינום $x^2+1 = 0$ אי־פריק (אין $a+b sqrt(2) in QQ(sqrt(2))$ כך שהריבוע שלו הוא $-1$). \
+ולכן מכפליות הדרגה נקבל
+$ [K : QQ] = [QQ(i, sqrt(2)) : QQ ] dot.op [QQ(sqrt(2)) : QQ] = 4 != 2 $
 ]
 
 #question()
@@ -46,23 +45,69 @@ $ alpha = sqrt(3) + sqrt(7)i <==> alpha - sqrt(3) = sqrt(7)i <==> (alpha - sqrt(
 
 #pagebreak()
 #subquestion()
-יהי $d in NN$ מספר טבעי שאינו חזקה שלילית של מספר רציונלי ויהיו $0!=s, t in QQ$.\
-נסמן ב־$alpha = root(3, d) in CC$ את אחד השורשים השלישיים של $d$. \
-עבור $beta = s alpha + t alpha^2$ נביע את הפולינום המינימלי של $display(f_(beta slash QQ))$ של $beta$ מעל $QQ$ באמצעות $d,s,t$.
-#solution[]
+יהי $d in NN$ מספר טבעי שאינו חזקה שלישית של מספר רציונלי ויהיו $0!=s, t in QQ$.\
+נסמן ב־$alpha = root(3, d) in CC$ את אחד השורשים השלישיים של $d$. עבור $beta = s alpha + t alpha^2$ נביע את הפולינום המינימלי של $display(f_(beta slash QQ))$ של $beta$ מעל $QQ$ באמצעות $d,s,t$.
+#solution[
+$ beta = s alpha + t alpha^2 <==> beta^3 &= (s alpha + t alpha^2)^3 \
+&= s^3 alpha^3 +3s^2 alpha^4t +3t^2s alpha^5 + t^3alpha^6 \ 
+&= alpha^3 (s^3+alpha^3 t^3) + 3 t s alpha^3 (s alpha + t alpha^2) \ 
+&= d(s^3 + d t^3) + 3 t s d (s alpha + t alpha^2) $
+ולכן
+$ (s alpha + t alpha^2)^3 - (d(s^3 + d t^3) + 3 t s d (s alpha + t alpha^2)) = 0 $
+משמע הפולינום $p(x) = x^3 - 3 x t s d (s alpha + t alpha^2) - d(s^3 + d t^3)$ מאפס את $beta$, וזהו פולינום מתוקן ולכן אם נשאר להראות שהוא אי־פריק: נשים לב כי $beta = s alpha + t alpha^2 in QQ(alpha)$ ומכך ש־$QQ(alpha)$ היא הרחבה מדרגה 3 (כי הפולינום המינימלי הוא $x^3-d$) אזי הדרגה של הפולינום המינימלי של $beta$ מעל $QQ$ היא לכל היותר $3$. נטען שהיא בידיוק $3$: \
+נניח שהדרגה של $beta$ היא 1, ולכן $beta in QQ$ ואז $beta = s alpha + t alpha^2 in QQ$ משמע $t alpha^2 + s alpha - beta =0$ הוא פיתרון למשוואה ריבועית וזו סתירה להיות $x^3-d$, הפולינום המינימלי ב־$QQ(alpha)$. \
+אם הדרגה של $beta$ היא 2, ומכך ש־$beta in QQ(alpha)$ נקבל את שרשרת ההכלות
+$ QQ subset.eq QQ(beta) subset.eq QQ(alpha) $
+ומכפליות הדרגה נקבל
+$ [QQ(alpha) : QQ] =[QQ(alpha) : QQ(beta)] dot.op [QQ(beta) : QQ] ==> [QQ(alpha) : QQ(beta)] = 3/2 $
+וזו כמובן סתירה (דרגה היא מספר טבעי), ולכן $[QQ(beta): QQ] = 3$. \
+מצאנו פולינום מתוקן, שמתאפס בהצבה של $beta$ והוא מהדרגה של הפולינום המינימלי ולכן $ p(x) = x^3 - 3 x t s d (s alpha + t alpha^2) - d(s^3 + d t^3) $ הוא הפולינום המינימלי של $display(f_(beta slash QQ))$ של $beta$ מעל $QQ$ באמצעות $d,s,t$.
+]
 
 #question()
 #subquestion()
 יהי $f in QQ[x]$ ונסמן $f(x) = a_n x^n + ... + a_1 x + a_0$. \
 נראה שאם $display(r/s in QQ)$ שורש של $f$ אז $s divides a_n$ וגם $r divides a_0$.
-#proof[]
+#proof[
+בלי הגבלת הכלליות נניח כי $display(r/s in QQ)$ הוא שבר מצומצם ונניח כי $display(r/s in QQ)$ הוא שורש של $f$, משמע $display(f(r/s)=0)$ ולכן:
+$ f(r/s) = a_n (r/s)^n + a_(n-1) (r/s)^(n-1) + ... + a_1 (r/s) + a_0 = 0 \
+<==> a_n r^n + a_(n-1) r^(n-1) s + ... + a_1 r s^(n-1) + a_0 s^n = 0 \
+<==> r(a_n r^(n-1) + a_(n-1) s r^(n-1) + ... + a_1 s^(n-1)) = -a_0 s^n $
+משמע $r$ מחלק את $a_0 s^n$ אבל $gcd(r,s) = 1$ ולכן גם $gcd(r, s^n) = 1$
+ולכן $r$ מחלק את $a_0$. \
+באותו אופן, מתקיים: 
+$ f(r/s) = a_n (r/s)^n + a_(n-1) (r/s)^(n-1) + ... + a_1 (r/s) + a_0 = 0 \ 
+<==> a_n r^n + a_(n-1) r^(n-1) s + ... + a_1 r s^(n-1) + a_0 s^n = 0 \
+<==> s(a_(n-1)r^(n-1) + a_(n-2) s r^(n-2) ... + a_0 s^(n-1)) = -a_n r^n $
+משמע $s$ מחלק את $a_n r^n$ אבל $gcd(r,s) = 1$ ולכן גם $gcd(s, r^n) = 1$
+ולכן $s$ מחלק את $a_n$. \
+]
 
 #subquestion()
 נסביר כיצד להשתמש בסעיף הקודם ובשאלה 4 מהתרגיל הקודם כדי לבדוק ש־$f in QQ[x]$ נתון מדרגה 2 או 3 הוא אי־פריק.\
 נבצע בדיקה זו לפולינומים הבאים:
-1. $f(x) = x^3-d x+2$
+1. $f(x) = x^3-4x+2$
 2. $f(x) = x^3-4x^2+3x+3$
-#solution[]
+#solution[
+לפי האלגוריתם בסעיף הקודם נוכל לקבוע האם קיימים לפולינום (מתוקן) מדרגה 2 או 3 שורשים ואם כן מה הם. אם לא נמצא לו שורשים, בשאלה 4 במטלה הקודמת הראינו שאם לפולינום מדרגה זו אין שורשים ($forall alpha in QQ, space f(alpha)!=0$) אז הוא ראשוני ולכן אי־פריק (כי תחום ראשי).\
+ניישם את התהליך עבור הפולינומים הנתונים:
+1. $f(x) = x^3-4x+2$ \
+	במקרה זה, $a_n = 1$ ו־$a_0 = 2$ ולכן $r in {plus.minus 1, plus.minus 2}$ ו־$s = 1$.
+	נציב ונראה כי אף אחד מהם לא שורש של הפולינום:
+	1. $r = s = 1$ ואז $ f(r/s) = f(1) = 1^3-4 dot.op 1 + 2 = -1 != 0 $
+	2. $r = -1 "," space s=1$ ואז $ f(r/s) = f(-1) = (-1)^3-4 dot.op (-1) + 2 = 5!=0 $
+	3. $r = 2 "," space s=1$ ואז $ f(r/s)= f(2) = 2^3-4 dot.op 2 +2 = 2!=0 $
+	4. $r = -2 "," space s=1$ ואז $ f(r/s) = f(-2) = (-2)^3 -4 dot.op (-2) +2 = 2!=0 $ 
+	מצאנו שאין ל־$f$ שורשים ולכן $f$ אי־פריק לפי האלגוריתם.
+2. $f(x) = x^3-4x^2+3x+3$
+	במקרה זה, $a_n = 1$ ו־$a_0 = 3$ ולכן $r in {plus.minus 1, plus.minus 3}$ ו־$s = 1$.
+	נציב ונראה כי אף אחד מהם לא שורש של הפולינום:
+	1. $r = s = 1$ ואז $ f(r/s) = f(1) = 1^3-4 dot.op 1^2  + 3 dot.op 1+ 3 = 3 != 0 $
+	2. $r = -1 "," space s=1$ ואז $ f(r/s) = f(-1) = (-1)^3-4 dot.op (-1)^2  + 3 dot.op (-1)+ 3 = -5 != 0 $
+	3. $r = 3 "," space s=1$ ואז $ f(r/s) = f(1) = 3^3-4 dot.op 3^2  + 3 dot.op 3+ 3 = 3 != 0 $
+	4. $r = -3 "," space s=1$ ואז $ f(r/s) = f(1) = (-3)^3-4 dot.op (-3)^2  + 3 dot.op (-3)+ 3 = -69 != 0 $ 
+	מצאנו שאין ל־$f$ שורשים ולכן $f$ אי־פריק לפי האלגוריתם.
+]
 
 #question()
 תהיי $E slash F$ הרחבת שדות ויהי $f in F[x]$ אי־פריק כך ש־$L = F[x] slash (f)$ הוא שדה. \
@@ -71,24 +116,62 @@ $ alpha = sqrt(3) + sqrt(7)i <==> alpha - sqrt(3) = sqrt(7)i <==> (alpha - sqrt(
 
 #subquestion()
 נוכיח ש־$phi(alpha) in E$ הוא שורש של $f in F[x] subset.eq E[x]$.
-#proof[]
+#proof[
+נגיד ש־$phi(alpha) in E$ הוא שורש של $f in F[x] subset.eq E[x]$ אם מתקיים $f(phi(alpha))=0$. \
+נגדיר $pi: F[x] arrow.r L$ הומומורפיזם ההטלה $pi(a) = a + (f)$, ונשים לב שמתקיים:
+$ f(phi(alpha)) = sum_(i=0)^n a_i phi(alpha)^i = phi(sum_(i=0)^n a_i alpha^i) = phi compose pi (sum_(i=0)^n a_i x^i) = phi(pi(f)) = phi(0) = 0 $
+]
 
 #subquestion()
 נוכיח שאם $psi : L arrow.r E$ הוא $F$־הומומורפיזם נוסף כך ש־$psi(alpha) = phi(alpha)$ אזי $psi = phi$.
-#proof[]
+#proof[
+במטלה הקודמת ראינו שקיים $F$־הומומורפיזם יחיד כך ש־$sigma : F[x] arrow.r F[alpha]$ המוגדר על־ידי $sigma(x) = alpha$. \
+נבחן תחילה את $phi compose pi$ כאשר $pi$ כמו בסעיף הקודם $pi: F[x] arrow.r L$ הומומורפיזם ההטלה $pi(a) = a + (f)$. \
+יהי $beta in F[x]$, מתקיים:
+$ (phi compose pi)(beta) = phi(beta + (f)) = phi(beta(alpha)) = beta(phi(alpha)) $
+נשים לב כי ההרכבה $phi compose pi$ היא אכן $F$־הומומורפיזם, שכן הרכבה של הומומורפיזמים היא הומומורפיזם ועבור $c in F subset.eq F[x]$ מתקיים\  $(phi compose pi)(c) = phi(c+(f))=c$ ולכן $phi compose pi$ הוא $F$־הומומורפיזם מ־$F[x]$ ל־$F[alpha]$. \
+מההנחה כי $psi(alpha) = phi(alpha)$ נובע גם כי $psi(pi(alpha)) = phi(pi(alpha))$ אבל $psi(pi(alpha))$ משמע גם $psi compose pi$ הוא $F$־הומומורפיזם מ־$F[x]$ ל־$F[alpha]$ ולכן מהיחידות שמצאנו במטלה הקודמת נקבל כי $psi = phi$.
+]
 
 #question()
 בשאלה זו נבנה הרחבת שדות $E slash QQ$ כך ש־$[E: QQ]=3$ אבל אין $d in QQ$ כך ש־$E tilde.eq.rev QQ(root(3,d))$.
 
 #subquestion()
 יהי $d in QQ$ שאינו חזקה שלישית של מספר רציונלי. נוכיח שקיים הומומורפיזם $phi: QQ(root(3,d)) arrow.r CC$ כך ש־$im(phi) subset.eq.not RR$.
-#proof[]
+#proof[
+אנחנו יודעים שמעל $CC$ הפולינום $x^3-d$ מתפרק לשלושה שורשים שונים, כאשר $root(3,d) in RR$ הוא השורש היחידי שממשי והשאר הם מעל המרוכבים, מדה־מואבר אנחנו יודעים שמתקיים $ root(3,d) = {abs(root(3,d^k)) dot.op e^((2pi i + 2pi k)/3) bar k in {0,1,2} } $
+אז נגדיר את $phi: QQ(root(3,d)) arrow.r CC $ על־ידי:
+$ phi(1) = 1, space phi(root(3,d)) = e^((2pi i + 2pi k)/3), space phi(root(3,d^2)) = e^((2pi i + 4pi)/3) $
+אנחנו יודעים שהדרגה של ההרחבה היא $3$ וכן שהבסיס שלה הוא ${1, root(3,d), root(3,d^2)}$ ומכיוון ש־$phi$ הומומורפיזם של שדות מוגדר לפי איברי הבסיס ולכן משמר את תכונות ההומומורפיזם ובבירור $im(phi) subset.eq.not RR$ שכן התמונה מכילה מספרים מרוכבים.
+]
 
 #subquestion()
 יהי $f in QQ[x]$ אי־פריק מדרגה $3$ כך ששלושת השורשים של $f$ הם ממשיים ואי־רציונליים. \
 נראה ש־$L = QQ[x] slash (f)$ שדה כך ש־$[L:QQ]=3$ ושאם $phi : L arrow.r CC$ הומומורפיזם אזי $im(phi) subset.eq RR$.
-#proof[]
+#proof[
+$QQ[x]$ הוא תחום ראשי ובתחום ראשי איבר הוא אי־פריק אממ האידיאל שהוא יוצר הוא אידיאל מקסימלי ולכן $(f)$ אידיאל מקסימלי ומטענה מהתרגול נובע כי $L = QQ[x] slash (f)$ הוא שדה. \ 
+נראה כי דרגת ההרחבה היא אכן $3$: כל $x in L$ הוא מהצורה
+$ r_0 + r_1 alpha + r_2 alpha^2, space r_i in QQ, alpha = x+(f)  $
+ולכן הבסיס של ההרחבה הוא ${1, alpha, alpha^2}$ משמע $[L: QQ] = deg(f) = 3$. \
+יהי $phi : L arrow.r CC$ הומומורפיזם ונראה כי $im(phi) subset.eq RR$: \ מכיוון שכל השורשים של $f$ הם אי־רציונליים והומומורפיזמים בין שדות משמרים את החיבור וכפל בשדה ובפרט משמרים שורשים, משמע אם $alpha$ הוא אחד משורשי $phi$ אזי $phi(f(alpha)) = f(phi(alpha)) = 0$ משמע $phi(alpha)$ הוא שורש של $f$ ב־$CC$ אבל כל השורשים הם ב־$RR without QQ$. \
+כעת, נפעיל את ההומומורפיזם על האיבר הכללי של $L$ ונקבל
+$ phi(x) = r_0 + r_1 phi(alpha) + r_2 phi(alpha^2) $
+זהו כמובן סכום של איברים ב־$RR without QQ$ ולכן $im(phi) subset.eq RR$.
+]
 
 #subquestion()
 נוכיח ש־$f(x) = x^3-4x+2$ פולינום המקיים את התנאים של הסעיף הקודם ונסיק ש־$E = QQ[x] slash (f)$ הרחבה מדרגה 3 של $QQ$ שאינה איזומורפית לשדה מהצורה $QQ(root(3,d))$.
-#proof[]
+#proof[
+בשאלה 3 ראינו שהפולינום $f(x) = x^3-4x+2$ הוא אי־פריק וכמובן מדרגה $3$, נראה כי השורשים ממשיים: \
+נשים לב ש־$f'(x) = 3x^2-4$ היא פרבולה שמתאפסת כאשר $x = plus.minus sqrt(4/3)$ ולכן אלו נקודות הקיצון של $f$. \
+$f$ פולינום שמוגדר על כל $RR$ ולכן נחלק את הישר לשלושה חלקים בהתאם לאיפוס הנגזרת ונבחן מה קורה לנגזרת:
+1. בקטע $( minus infinity, minus 2/sqrt(3))$ נבחר $x=-2$ ומתקיים $f'(2)=8 > 0$ ולכן $f$ עולה (ולכן גם $f(x) stretch(arrow.r)_(x arrow.r -infinity) -infinity$)
+
+2. בקטע $(minus 2/sqrt(3), 2/sqrt(3))$ נבחר $x=0$ ומתקיים $f'(0)=-4 < 0$ ולכן $f$ יורדת
+
+3. בקטע $(2/sqrt(3), infinity)$ נבחר $x=2$ ומתקיים $f'(2)=8 > 0$ ולכן $f$ עולה (ולכן גם $f(x) stretch(arrow.r)_(x arrow.r infinity) infinity$)
+ואם נציב את הנקודות קיצון $f(sqrt(4/3)) = 2/sqrt(3) dot.op 4/3 - 4 dot.op 2/sqrt(3) + 2 = -16/sqrt(27)+2 < 0, f(-sqrt(4/3)) = 16/sqrt(27)+2 > 0$ וכמובן שהם ב־$RR without QQ$. \
+ממשפט ערך הביניים נקבל שקיימים $x_1 < -16/sqrt(27)+2 < x_2 < 16/sqrt(27)+2 < x_3$ כך ש־$f(x_1)=f(x_2)=f(x_3)=0$ ולכן כל התנאים של סעיף ב' מתקיימים.\
+נסיק ש־$E = QQ[x] slash (f)$ אינה איזומורפית לשדה מהצורה $QQ(root(3,d))$: מסעיף ב' נובע כי לכל $phi : QQ[x] slash (f) arrow.r CC$ מתקיים ש־$im(phi) subset.eq RR$. \
+לו היה מתקיים $QQ[x] slash (f)tilde.eq.rev QQ(root(3,d))$ עבור $d in QQ$ היה נובע מסעיף א' כי $im(phi) subset.eq.not RR$ אבל $im(phi) subset.eq RR$ ולכן זו סתירה.
+]
