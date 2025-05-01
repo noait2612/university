@@ -226,47 +226,82 @@
     "en": "Goal",
   ),
 )
-#let theorem = thmbox("theorem", { context theorem_titles.at("theorem").at(text.lang) }, inset: 0cm, base_level: 1)
-#let lemma = thmbox("lemma", { context theorem_titles.at("lemma").at(text.lang) }, inset: 0cm, base_level: 1)
+#let inset = (x: 0em, y: -0.3em)
+#let theorem = thmbox(
+  "theorem",
+  { context theorem_titles.at("theorem").at(text.lang) },
+  inset: inset,
+  base_level: 1,
+)
+#let lemma = thmbox(
+  "lemma",
+  { context theorem_titles.at("lemma").at(text.lang) },
+  inset: inset,
+  base_level: 1,
+)
 #let proposition = thmbox(
   "proposition",
   { context theorem_titles.at("proposition").at(text.lang) },
-  inset: 0cm,
+  inset: inset,
   base_level: 1,
 )
 #let definition = thmbox(
   "definition",
   { context theorem_titles.at("definition").at(text.lang) },
-  inset: 0cm,
+  inset: inset,
   base_level: 1,
 )
 #let corollary = thmbox(
   "corollary",
   { context theorem_titles.at("corollary").at(text.lang) },
-  inset: 0cm,
+  inset: inset,
   base_level: 1,
 )
-#let remark = thmbox("remark", { context theorem_titles.at("remark").at(text.lang) }, inset: 0cm).with(numbering: none)
-#let fact = thmbox("fact", { context theorem_titles.at("fact").at(text.lang) }, inset: 0cm, base_level: 1)
-#let exercise = thmbox("exercise", { context theorem_titles.at("exercise").at(text.lang) }, inset: 0cm, base_level: 1)
-#let example = thmbox("example", { context theorem_titles.at("example").at(text.lang) }, inset: 0cm, base_level: 1)
+#let remark = thmbox("remark", { context theorem_titles.at("remark").at(text.lang) }, inset: inset).with(
+  numbering: none,
+)
+#let fact = thmbox(
+  "fact",
+  { context theorem_titles.at("fact").at(text.lang) },
+  inset: inset,
+  base_level: 1,
+)
+#let exercise = thmbox(
+  "exercise",
+  { context theorem_titles.at("exercise").at(text.lang) },
+  inset: inset,
+  base_level: 1,
+)
+#let example = thmbox(
+  "example",
+  { context theorem_titles.at("example").at(text.lang) },
+  inset: inset,
+  base_level: 1,
+)
 #let counterexample = thmbox(
   "counterexample",
   { context theorem_titles.at("counterexample").at(text.lang) },
-  inset: 0cm,
+  inset: inset,
   base_level: 1,
 )
-#let notation = thmbox("notation", { context theorem_titles.at("notation").at(text.lang) }, inset: 0cm).with(
-  numbering: none,
-)
+#let notation = thmbox(
+  "notation",
+  { context theorem_titles.at("notation").at(text.lang) },
+  inset: inset,
+).with(numbering: none)
 #let convention = thmbox(
   "convention",
   { context theorem_titles.at("convention").at(text.lang) },
-  inset: 0cm,
+  inset: inset,
 ).with(numbering: none)
-#let goal = thmbox("goal", { context theorem_titles.at("goal").at(text.lang) }, inset: 0cm).with(numbering: none)
-#let proof = thmproof("proof", { context theorem_titles.at("proof").at(text.lang) }, inset: 0cm)
-#let solution = thmproof("solution", { context theorem_titles.at("solution").at(text.lang) }, inset: 0cm, base_level: 1)
+#let goal = thmbox("goal", { context theorem_titles.at("goal").at(text.lang) }, inset: inset).with(numbering: none)
+#let proof = thmproof("proof", { context theorem_titles.at("proof").at(text.lang) }, inset: inset)
+#let solution = thmproof(
+  "solution",
+  { context theorem_titles.at("solution").at(text.lang) },
+  inset: inset,
+  base_level: 1,
+)
 
 #let todo = text(red)[*TODOOOOOOOOOOOOOOOOOO*]
 
