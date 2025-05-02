@@ -12,11 +12,12 @@
 
 #let char = math.op("char")
 #let im = math.op("Im")
-#let ker = math.op("Ker")
+#let ker = math.op("ker")
 #let deg = math.op("deg")
 #let cont = math.op("cont")
 #let frac = math.op("Frac")
 
+#set heading(numbering: "1.1")
 #outline(depth: 2)
 
 = *הרצאה 1 – 24/03*
@@ -52,8 +53,18 @@
 
 == יוצרים של הרחבות
 
+= *תרגול 1 – 26/03*
+== משהו
+
 = *הרצאה 3 – 31/03*
 == הרחבות אלגבריות
+
+= *תרגיל 1*
+== טריקים
+== מסקנות
+
+= *תרגול 2 – 02/04*
+== משהו
 
 = *הרצאה 4 – 07/04*
 == שימושים בסיסיים של תורת השדות – בניות עם סרגל ומחוגה
@@ -77,9 +88,9 @@
 ]
 #proof[
   מההערה לעיל מתקיים $f dot.op g = cont(f) dot.op cont(g) underbrace(f_0 dot g_0, "פרימיטיביים")$ ולכן מספיק להוכיח כי $f_0 dot.op g_0$ הוא פרימיטיבי: \
-  נניח שלא ולכן קיים $p in NN$ ראשוני כך שמתקיים $p divides cont(f_0 dot.op g_0)$, אבל $f_0 = sum_(i=0)^n a_i t^i, g_0 =sum_(j=0)^m b_j t^j$ הם פולינומים פרימטיביים (ולכן לא כל $a_i, b_j$ מתחלקים ב־$p$) ולכן נוכל לבחור $m,n$ מינימליים כך ש־$p divides.not a_n$ ו־$p divides.not b_m$.\ נסתכל על המקדם של $ c = sum_(k=0)^(m+n) a_k b_(m+n-k)$ של $t^(m+n)$ ב־$f_0 dot.op g_0$, נכתוב אותו מפרושות:
+  נניח שלא ולכן קיים $p in NN$ ראשוני כך שמתקיים $p divides cont(f_0 dot.op g_0)$, אבל $f_0 = sum_(i=0)^n a_i t^i, g_0 =sum_(j=0)^m b_j t^j$ הם פולינומים פרימטיביים (ולכן לא כל $a_i, b_j$ מתחלקים ב־$p$) ולכן נוכל לבחור $m,n$ מינימליים כך ש־$p divides.not a_n$ ו־$p divides.not b_m$.\ נסתכל על המקדם של $c = sum_(k=0)^(m+n) a_k b_(m+n-k)$ של $t^(m+n)$ ב־$f_0 dot.op g_0$, נכתוב אותו מפרושות:
   $
-    underbrace(a_0 b_(m+n) + ... + a_(n-1) b_(m+1),"לכל k<n" p divides a_k "מתחלקים ב־p כי " ) + a_n b_m + underbrace(a_(n+1) b_(m-1) + ... + a_(m+n) + b_0, "לכל k>n" p divides b_k "מתחלקים ב־p כי " )
+    underbrace(a_0 b_(m+n) + ... + a_(n-1) b_(m+1), "לכל k<n" p divides a_k "מתחלקים ב־p כי ") + a_n b_m + underbrace(a_(n+1) b_(m-1) + ... + a_(m+n) + b_0, "לכל k>n" p divides b_k "מתחלקים ב־p כי ")
   $
   אבל $a_n b_m$ זר לחלוקה ב־$p$ ולכן $p divides.not c$ וזאת סתירה.
 ]
@@ -97,20 +108,27 @@
 #proof[
   + ניקח את הפירוק $f = g dot.op h$ עבור $g, h in QQ[t]$ וניקח $0<m,n in ZZ$ כך ש־$m dot.op g, n dot.op h in ZZ[t]$ ואז נקבל פירוק $m dot.op n dot.op f = m dot.op g dot.op n dot.op h$.
     נסמן $ell = cont(f), alpha = cont(m dot.op g), beta = cont(n dot.op h)$. מלמת גאוס הראשונה נקבל עם כפליות התכולה
-    $ cont(m dot.op n dot.op f) = m dot.op n dot.op ell = alpha dot.op beta = cont(m dot.op g dot.op n dot.op h ) $
-    אם כך, ניקח $m dot.op n dot.op f = m dot.op g dot.op n dot.op h$ ונחלק ב־$ m dot.op n dot.op ell = alpha beta$ ונקבל $1/ell dot.op f = (m dot.op n dot.op f)/(m dot.op n dot.op ell) = underbrace(m/alpha dot.op g dot.op n/beta dot.op h, in ZZ[t])$ משמע $f = ell m/alpha dot.op g dot.op n/beta dot.op h$.
+    $ cont(m dot.op n dot.op f) = m dot.op n dot.op ell = alpha dot.op beta = cont(m dot.op g dot.op n dot.op h) $
+    אם כך, ניקח $m dot.op n dot.op f = m dot.op g dot.op n dot.op h$ ונחלק ב־$m dot.op n dot.op ell = alpha beta$ ונקבל $1 / ell dot.op f = (m dot.op n dot.op f) / (m dot.op n dot.op ell) = underbrace(m / alpha dot.op g dot.op n / beta dot.op h, in ZZ[t])$ משמע $f = ell m / alpha dot.op g dot.op n / beta dot.op h$.
   + נניח ש־$f$ גם מתוקן, ולכן בפרט הוא פרימיטיבי, ולכן קיים פירוק $f = g dot.op h in QQ[t]$ עם $g, h$ מתוקנים.\
     לפי $(1)$ נובע שקיים $c, c^(-1) in ZZ$ כך ש־$c dot.op g dot.op c^(-1) dot.op h in ZZ[t]$ כך ש־$f = c dot.op g dot.op c^(-1) dot.op h$.\
     נסמן $g = sum_(i=1)^n a_i t^i, h = sum_(j=1)^m b_j t^j$. היות ו־$f$ מתוקן נובע כי $a_n b_m = 1$ ולכן בהכרח $a_n = b_m = 1$, ו־$c dot.op g, c^(-1) dot.op h$ עדיין פולינומים מתוקנים ולכן $c = plus.minus 1$ ולכן $g,h in ZZ[t]$.
   + (הוכח בהרצאה 6)\
-    $<==$ נניח כי $f$ אי־פריק ב־$ZZ[t]$ ולכן $f = cont(f) dot.op f/cont(f)$ פירוק טריוויאלי ונשים לב $deg (f/cont(f)) > 0$ ולכן $cont(f)$ הפיך ולכן $f$ פרימיטיבי.\
-    נניח ש־$f$ פריק ב־$QQ[t]$ ולכן יש $f = g dot.op h$ כך ש־$deg(g), deg(h) > 0$ ולכן מ־$(1)$ לעיל נקבל $f = c dot.op g dot.op c^(-1) dot.op h $ עם דרגות גדולות מ־0 ב־$ZZ[t]$ משמע הוא פריק בו, וזאת סתירה.\
+    $<==$ נניח כי $f$ אי־פריק ב־$ZZ[t]$ ולכן $f = cont(f) dot.op f / cont(f)$ פירוק טריוויאלי ונשים לב $deg (f / cont(f)) > 0$ ולכן $cont(f)$ הפיך ולכן $f$ פרימיטיבי.\
+    נניח ש־$f$ פריק ב־$QQ[t]$ ולכן יש $f = g dot.op h$ כך ש־$deg(g), deg(h) > 0$ ולכן מ־$(1)$ לעיל נקבל $f = c dot.op g dot.op c^(-1) dot.op h$ עם דרגות גדולות מ־0 ב־$ZZ[t]$ משמע הוא פריק בו, וזאת סתירה.\
     $==>$ בכיוון השני, נניח ש־$f$ פריק ב־$ZZ[t]$ ולכן $f = g dot.op h$ עם $g ,h$ לא הפיכים. יש 2 מקרים אפשריים:
     + אם $deg(f), deg(g) > 0$ ואז נובע כי $f$ פריק ב־$QQ[t]$ על־ידי פירוק זה וזאת סתירה
     + בלי הגבלת הכלליות $deg(h) = 0, deg(g) > 0$ ולכן $1 < h in ZZ_plus$ אבל אז $f$ לא פרימיטיבי וזאת שוב סתירה
 ]
 #corollary[$ZZ[t]$ הוא חוג פריקות יחידה והראשוניים שלו הם פולינומים פרימטיביים אי־פריקים והראשוניים של $ZZ$.]
 #remark[באותה צורה מוכיחים שאם $R$ תחום פריקות יחידה אזי גם $R[t_1, ..., t_n]$ הוא גם תחום פריקות יחידה (באינדוקציה על $n$).]
+
+= *תרגול 3 – 09/04*
+= משהו
+
+= *תרגיל 2*
+== טריקים
+== מסקנות
 
 = *הרצאה 6 – 21/04*
 == קריטריונים לאי־פריקות ב־$QQ[t]$
@@ -119,9 +137,9 @@
 #notation[
   $R$ תחום שלמות, בהינתן אידיאל ראשוני $I subset.eq R$ נסמן את התחום $R slash I = overline(R)$ ועבור $a in R$ נסמן $overline(a)$ בתמונה של $overline(R)$. \
   כמו כן, הההומומורפיזם $R arrow.r overline(R)$ מתרחב להומומורפיזם $R[t] arrow.r overline(R)[t]$ כאשר $f = sum_(i=0)^n a_i t^i mapsto sum_(i=0)^n overline(a_i) t^i = overline(f)$.]
-#lemma[נניח כי $f in ZZ[t]$ פולינום מתוקן, $p in NN$ ראשוני כך ש־$ overline(f) in FF_p [t](t)$
+#lemma[נניח כי $f in ZZ[t]$ פולינום מתוקן, $p in NN$ ראשוני כך ש־$overline(f) in FF_p [t](t)$
   (מודלו $p$ זה הומומורפיזם של חוגים) אי־פריק. \
-  אזי $f$ פריק ב־$QQ[t]$]
+  אזי $f$ אי־פריק ב־$QQ[t]$.]
 #proof[
   נניח בשלילה כי $f$ מתפרק ב־$QQ[t]$ ולכן קיים פירוק מתוקן $f = g h in QQ[t]$ ($deg g, deg h > 0$).\
   לפי $(2)$ בלמת גאוס השנייה נובע כי $f = g dot.op h in ZZ[t]$ ואז $overline(f) = overline(g) dot.op overline(h) in FF_p [t]$ עם $deg(overline(g)), deg(overline(h)) > 0$ כי הפולינומים מתוקנים וזאת סתירה.
@@ -131,7 +149,7 @@
   נגדיר $phi: ZZ[t] arrow.r FF_p [t]$ על־ידי $f(t) mapsto accent(f, ~)(t)$, כאשר $accent(f, ~)(t)$ זה הפולינום המתקבל על־ידי הפחת כל מקדם ב־$f(t)$ למודלו $p$.\
   בדיקה קלה מראה כי זה אכן הומומורפיזם ונשים לב כי $ker(phi) = {f(t) in ZZ[t] bar phi(f) = 0 in FF_p [t]}$ אלו כל הפולינומים שבמודלו $p$ הם מתאפסים משמע מתחלקים ב־$p$ ולכן $ker(phi) = p ZZ[t]$. ממשפט האיזומורפיזם הראשון לחוגים נקבל $ ZZ[t] slash ker(phi) tilde.rev.equiv im(phi) = FF_p [t] ==> ZZ[t] slash p ZZ[t] tilde.rev.equiv FF_p [t] $
 ]
-#theorem("קריטריון אייזנשטיין")[
+#theorem("קריטריון אייזנשטיין (Eisenstein's criterion)")[
   נניח ש־$ZZ[t] in.rev f = sum_(i=0)^n a_i t^i$ ו־$p in NN$ ראשוני כך שמתקיימים הבאים
   + $p divides.not a_n$
   + $p divides a_i$ לכל $0<=i<n$
@@ -139,10 +157,10 @@
   אז $f$ אי־פריק.
 ]
 #proof[
-  נניח בשלילה שלא כך, ולכן מהלמות של גאוס נובע שמתקיים $f = g dot.op h = sum_(j=1)^m b_j t^j sum_(k=1)^l c_k ^ t^k$.\
+  נניח בשלילה שלא כך, ולכן מהלמות של גאוס נובע שמתקיים $f = g dot.op h = sum_(j=1)^m b_j t^j sum_(k=1)^l c_k^t^k$.\
   היות ו־$a_0 = b_0 c_0$ ו־$p divides a_0$ נובע כי $p divides b_0$ או $p divides c_0$. בלי הגבת הכללית, נניח כי $p divides b_0$ ו־$p divides.not c_0$ (שכן $p divides a_0$ אבל $p divides.not a_0$ ולכן לא ניתן שגם $p divides b_0$ וגם $p divides c_0$).\
   ניקח את ה־$i<=m$ הקטן ביותר כך ש־$p divides b_i$ שקיים מהיות $b_m c_l = a_n$ ולכן $p divides.not b_m$.\
-  כעת, בביטוי $a_i = b_i c_0 + underbrace(b_(i-1) c_1  + ... + b_0 c_i, "מתחלקים ב־p")$ אבל אז $p divides.not a_i$ וזאת סתירה.\
+  כעת, בביטוי $a_i = b_i c_0 + underbrace(b_(i-1) c_1 + ... + b_0 c_i, "מתחלקים ב־p")$ אבל אז $p divides.not a_i$ וזאת סתירה.\
   אז $f$ לא מתפרק לגורמים מדרגה גדולה מ־0 ואז $f$ אי־פריק ב־$ZZ[t]$ ומהלמה של גאוס נובע כי הוא גם אי־פריק ב־$QQ[t]$.
 ]
 #example[יהי $x^n - m$ וקיים $p in NN$ כך ש־$p divides m$ ו־$p^2 divides.not m$ אז $x^n - m$ אי־פריק (ולא רק חסר שורשים).]
@@ -152,9 +170,9 @@
   לכל $n in ZZ$ מתאים פולינומים ציקלוטומי יחיד $Phi_n$ שהוא פולינום מתוקן בעל מקדמים שלמים והוא הפולינום המינימלי של כל השורשים הפרמיטיביים מסדר $n$. משמע $Phi_n (X) = product_omega (X - omega)$ כאשר $omega$ עובר על כל השורשים הפרימיטיביים מסדר $n$.]
 #example[
   $ Phi_1 (x) = x-1, Phi_2 (x) = x+1, Phi_3 (x) = x^2 +x +1, Phi_4 (x) = x^2+1, Phi_5 (x) = x^4+x^3+x^2+x+1 $
-  עבור $p in NN$ ראשוני, אז כל הפולינום הציקלוטומי מסדר $p^n$ הוא $(x^p^n-1)/(x^p^(n-1)-1) in QQ[x]$.
+  עבור $p in NN$ ראשוני, אז כל הפולינום הציקלוטומי מסדר $p^n$ הוא $(x^p^n-1) / (x^p^(n-1)-1) in QQ[x]$.
 ]
-#lemma[לכל $p in NN$, הפולינום הציקלוטומי $Phi_p (t) = (t^p-1)/(t-1)$ אי־פריק מעל $QQ$.]
+#lemma[לכל $p in NN$, הפולינום הציקלוטומי $Phi_p (t) = (t^p-1) / (t-1)$ אי־פריק מעל $QQ$.]
 #proof[
   זה טריק, נשנה משתנה ל־$x=t-1$ ואז $t=x+1$ ואז נקבל
   $
@@ -163,7 +181,19 @@
   אז $f(x)$ אי־פריק לפי קריטריון אייזנשטיין שכן $p$ מקדם חופשי מתוקן ו־$p divides binom(p, i)$ לכל $0<i<p$.\
   אם $Phi_p (t)$ לא אי־פריק, אז קיימים $Phi_p (t) = g(t) dot.op h(t) = g(x+1) dot.op h(x+1)$ וזאת סתירה.
 ]
-#remark[באותה צורה מוכיחים $Phi_(p^n) (t) = (t^p^n-1)/(t^p^(n-1)-1)$ אי־פריק.]
+#remark[באותה צורה מוכיחים $Phi_(p^n) (t) = (t^p^n-1) / (t^p^(n-1)-1)$ אי־פריק.]
+#exercise("תרגיל 10.104 בספר")[הסיקו מקריטריון אייזנשטיין ששורש כלשהו של מספר ראשוני אינו שייך ל־$QQ$. \
+  כלומר, הראו ש־$root(n, p) in.not QQ$ לכל $p$ ראשוני ו־$NN in.rev n>=2$.]
+#proof[
+  #todo.
+]
+#exercise("תרגיל 10.108 בספר")[יהי $p in NN$ ראשוני ויהי $f in ZZ[x]$ פולינום מתוקן. נסמן ב־$overline(f) in FF_p [x]$ את הפולינום המתקבל על־ידי פעולת מודלו $p$ על כל מקדם בנפרד.
+  + הוכיחו כי אם $f$ פריק, אז גם $overline(f)$ פריק.
+  + הוכיחו כי ההפך הוא לא נכון – אם $overline(f)$ פריק, לאו דווקא $f$ פריק.
+]
+#proof[
+  #todo.
+]
 
 == סגור אלגברי
 פרק 5 ברשומות של מיכאל, מוטיבציה: משוואות מסדר 5 לא ניתן לפתור.
@@ -179,7 +209,7 @@
 #proof[
   $(2) <==> (3)$ שכן תמיד יש פירוק לפולינומים אי־פריקים.\
   $(1) <== (2)$: אם יש פירוק מלא, נובע מהגדרה שיש לי שורש.\
-  $(2) ==> (1)$: נובע שלכל $f = g(t-a)$ יש פירוק כאשר $deg g < deg f $ ומסיימים את הטיעון עם אינדוקציה על $deg(f)$.\
+  $(2) ==> (1)$: נובע שלכל $f = g(t-a)$ יש פירוק כאשר $deg g < deg f$ ומסיימים את הטיעון עם אינדוקציה על $deg(f)$.\
   $(1) <== (4)$: אם קיימת הרחבה אלגברית לא טריוויאלית $L slash K$ ניקבל $alpha in L without K$ ואז הפולינום $f_(alpha slash K)$ אי־פריק מדרגה $1 < [K(alpha) : K]$.
   $(4) ==> (1)$: אם $f$ אי־פריק ו־$deg(f) > 1$ נגדיר $L = K[t] slash (f)$ ו־$[L : K] = deg(f) > 1$.
 ]
@@ -219,7 +249,7 @@
 #example[
   + $overline(QQ)$ הוא הסגור האלגברי של $QQ$ ולכן גם סגור אלגברית מעל $QQ$
   + $CC = overline(RR) = overline(CC)$
-  + $overline(QQ) = overline(QQ(root(3,2) + root(3,5)))$
+  + $overline(QQ) = overline(QQ(root(3, 2) + root(3, 5)))$
 ]
 
 = *הרצאה 7 – 22/04*
@@ -264,6 +294,18 @@
 ]
 #remark[ההוכחה לעיל התחילה בהרצאה של ה־22/04 הסתיימה ב־28/04.]
 
+= *תרגול 4 – 23/04*
+== שדות פיצול
+#definition("מקרה פרטי של שדה פיצול")[יהי $f in QQ[x]$. *שדה הפיצול של $f$* הוא תת־השדה המינימלי של $CC$ שמכיל את שורשי $f$.]
+#example[השורשים של $f(x) = x^2-2 in QQ[x]$ הם $root(3, 2), omega root(3, 2), omega^2 root(3, 2)$ כאשר $omega = 1 / 2 + sqrt(3 / 4)i$. \
+  אז שדה הפיצול של $f$ הוא
+  $L = QQ(root(3, 2), omega root(3, 2), omega^2 root(3, 2))$]
+#exercise[
+  מה הם כל השדות $K$ כך שמתקיים $QQ subset.eq K subset.eq L$?
+]
+#solution[
+  מתקיים $[L : QQ] = [L : QQ(root(3, 2))] dot.op [QQ(root(3, 2)) : QQ]$
+]
 = *הרצאה 8 – 28/04*
 == קיום ויחידות סגור אלגברי – המשך
 #lemma("bootstrap ללמת ההרמה")[בנוסף להנחות של למת ההרמה, נניח כי גם מתקיים $alpha in L$ ו־$beta in E$ הוא השורש של הפולינום המינימלי $f_alpha in K[t]$ ב־$E$. אזי ניתן לבחור את ה־$K$ שיכון $phi : L arrow.r.hook E$ כך שמתקיים $phi(alpha) = beta$.]
@@ -276,3 +318,14 @@
 == אוטומורפיזמים של $overline(K) slash K$ – המשך
 
 == הרחבות נורמליות ושדות פיצול
+
+= *תרגיל 3*
+== טריקים
++ הבינום של ניוטון ככלי לחלוקת פולינומים (אפשר גם סכום סדרה הנדסית)
++ היה גם בהרצאה, אבל בשביל קריטריון אייזנשטיין כדאי להשתמש בטריק $x mapsto x+1$
++ לפשט ביטויים בתוך שורש, לדוגמה $ sqrt(11+6sqrt(2)) = sqrt(9 + 6 sqrt(2) + 2) = sqrt(9 + 6 sqrt(2) + sqrt(2)^2) = sqrt((3+sqrt(2))^2) = 3 + sqrt(2) $
++ פולינום יכול להיות אי־פריק אבל לא לקיים את קריטריון אייזנשטיין (ככל הנראה המקרים בהם $a_n = 1$)
+== מסקנות
++ עבור $p_1, ..., p_n$ ראשוניים שונים זה מזה מתקיים $[QQ(sqrt(p_1), ..., sqrt(p_n)) : QQ] = 2^n$ ובסיס ל־$QQ(sqrt(p_1), ..., sqrt(p_n))$ הוא
+$ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
+$$

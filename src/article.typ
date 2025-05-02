@@ -107,7 +107,7 @@
   show heading: set block(below: 1.2em)
 
   // These will set the numbering to imitate latex as well
-  set heading(numbering: "1.1")
+  // set heading(numbering: "1.1") // this line should be uncommented only on notes file!
   show heading.where(level: 3): it => [
     #block(it.body)
   ]
@@ -124,6 +124,35 @@
   align(center, text(12pt, date))
   align(center, signature)
   pagebreak()
+
+  // Numbering equations
+  show math.equation: it => {
+    if it.fields().keys().contains("label") {
+      math.equation(block: true, numbering: "(1)", number-align: left, it)
+      // Don't forget to change your numbering style in `numbering`
+      // to the one you actually want to use.
+      //
+      // Note that you don't need to #set the numbering now.
+    } else {
+      it
+    }
+  }
+  show ref: it => {
+    let el = it.element
+    if el != none and el.func() == math.equation {
+      link(
+        el.location(),
+        numbering(
+          // don't forget to change the numbering according to the one
+          // you are actually using (e.g. section numbering)
+          "(1)",
+          counter(math.equation).at(el.location()).at(0) + 1,
+        ),
+      )
+    } else {
+      it
+    }
+  }
 
   doc
 }
