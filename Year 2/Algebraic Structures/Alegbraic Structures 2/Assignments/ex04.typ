@@ -195,7 +195,7 @@ $ (a+b dot.op root(3, 5) + c dot.op root(3, 5^2))=x+y dot.op root(3, 5) + z dot.
     = a^2 + root(3, 5^2) b^2 + 5 root(3, 5) c^2 + underbrace(- a b root(3, 5), (star)) + underbrace(- a c root(3, 5^2), (star star)) + underbrace(- 5 b c, (star star star))
   $
   כאשר $(star), (star star), (star star star)$ נובעים מהזהות $omega^2 + omega = -1$ וקיבלנו ש־$S in QQ(root(3, 5))$ (שכן $root(3, 5^2)$ הוא בבסיס של הרחבה זאת כפי שראינו בשאלה הקודמת).\
-  נסמן $alpha = (a + b root(3, 5) + c root(3, 5^2)$
+  נסמן $alpha = a + b root(3, 5) + c root(3, 5^2)$
   ונראה כעת $S dot.op alpha in QQ$ על־ידי חישוב
   $
     S dot.op alpha =
@@ -207,10 +207,12 @@ $ (a+b dot.op root(3, 5) + c dot.op root(3, 5^2))=x+y dot.op root(3, 5) + z dot.
   ולכן קיבלנו $S dot.op alpha in QQ$.\
   נבחר אם כך $S / (S dot.op alpha)$ ונקבל
   $
-    S / (S dot.op alpha) dot.op alpha = 1 <==> S / (S dot.op alpha) = alpha^(-1) = (a + b root(3, 5) + c root(3, 5^2))^(-1)
+    S / (S dot.op alpha) dot.op (a + b root(3, 5) + c root(3, 5^2)) = 1 <==> S / (S dot.op alpha) = a + b root(3, 5) + c root(3, 5^2)^(-1) = (a + b root(3, 5) + c root(3, 5^2))^(-1)
   $
   ולכן
-  $ x=(a^3-5a b c) / (a^3+5b^3+25c^3), y = (5b^3-5a b c) / (a^3+5b^3+25c^3), z= (25c^3-5a b c) / (a^3+5b^3+25c^3) $
+  $
+    x=(a^2-5b c) / (a^3+5b^3+25c^3-15a b c), y = (5c^2-a b) / (a^3+5b^3+25c^3-15a b c), z= (b^2-a c) / (a^3+5b^3+25c^3-15a b c)
+  $
 ]
 
 #question()
