@@ -18,6 +18,7 @@
 #let Frac = math.op("Frac")
 #let Aut = math.op("Aut")
 #let Id = math.op("Id")
+#let Fr = math.op("Fr")
 
 #set heading(numbering: "1.1")
 #outline(depth: 2)
@@ -150,7 +151,7 @@
 #exercise[$FF_p [t] = ZZ[t] slash p ZZ[t]$]
 #proof[
   נגדיר $phi: ZZ[t] arrow.r FF_p [t]$ על־ידי $f(t) mapsto accent(f, ~)(t)$, כאשר $accent(f, ~)(t)$ זה הפולינום המתקבל על־ידי הפחת כל מקדם ב־$f(t)$ למודלו $p$.\
-  בדיקה קלה מראה כי זה אכן הומומורפיזם ונשים לב כי $ker(phi) = {f(t) in ZZ[t] bar phi(f) = 0 in FF_p [t]}$ אלו כל הפולינומים שבמודלו $p$ הם מתאפסים משמע מתחלקים ב־$p$ ולכן $ker(phi) = p ZZ[t]$. ממשפט האיזומורפיזם הראשון לחוגים נקבל $ ZZ[t] slash ker(phi) tilde.rev.equiv im(phi) = FF_p [t] ==> ZZ[t] slash p ZZ[t] tilde.rev.equiv FF_p [t] $
+  בדיקה קלה מראה כי זה אכן הומומורפיזם ונשים לב כי $ker(phi) = {f(t) in ZZ[t] bar phi(f) = 0 in FF_p [t]}$ אלו כל הפולינומים שבמודלו $p$ הם מתאפסים משמע מתחלקים ב־$p$ ולכן $ker(phi) = p ZZ[t]$. ממשפט האיזומורפיזם הראשון לחוגים נקבל $ ZZ[t] slash ker(phi) tilde.equiv im(phi) = FF_p [t] ==> ZZ[t] slash p ZZ[t] tilde.equiv FF_p [t] $
 ]
 #theorem("קריטריון אייזנשטיין (Eisenstein's criterion)")[
   נניח ש־$ZZ[t] in.rev f = sum_(i=0)^n a_i t^i$ ו־$p in NN$ ראשוני כך שמתקיימים הבאים
@@ -468,7 +469,7 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
   ניקח $overline(K)$ ו־${f in P "כל השורשים של"} = S subset.eq overline(K)$ ואז $K(S) = L subset.eq overline(K)$ שדה פיצול.\
   אם $L'$ שדה פיצול אחר, קיים הומומורפיזם $phi.alt : L arrow.r.hook L'$ מלמת ההרמה ($L$ נוצר על־ידי $S$ ו־$L'$ מפצל כל $f in P$) ולבסוף $K(phi.alt(S)) = L'$ כאשר $phi.alt(S)$ הם השורשים ולכן $L arrow.r.tilde L'$.
 ]
-#remark[סגור אלגברי רהוא שדה פיצול של כל הפולינומים.]
+#remark[סגור אלגברי הוא שדה פיצול של כל הפולינומים.]
 #theorem[
   + הרחבה אלגברית $L slash K$ היינה נורמלית אם ורק אם $L$ הוא שדה פיצול של $P subset.eq K[t]$ שאינם $0$
   + ההרחבה אלגברית $L slash K$ היינה נורמלית וסופית אם ורק אם $L$ הוא שדה פיצול של $f in K[t]$ פולינום בודד (ואולי אף פריק)
@@ -514,9 +515,9 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
 ]
 #exercise[
   (בהרצאה מיכאל נתן את זה כדוגמה ופירט קצת, ברשומות שלו זה מופיע כתרגיל אז נוכיח במסודר)\
-  + נראה שמתקיים $mu_infinity(QQ(sqrt(-3))) = mu_6$
-  + נראה שמתקיים $mu_infinity(QQ(sqrt(-3))) = mu_4$ אם $d=-1$
-  + נראה שמתקיים $mu_infinity(QQ(sqrt(d))) = mu_2$ לכל $d in.not {-1, -3}$
+  + נראה שמתקיים $mu_infinity (QQ(sqrt(-3))) = mu_6$
+  + נראה שמתקיים $mu_infinity (QQ(sqrt(-3))) = mu_4$ אם $d=-1$
+  + נראה שמתקיים $mu_infinity (QQ(sqrt(d))) = mu_2$ לכל $d in.not {-1, -3}$
   + נראה ש־$x mapsto e^((2pi i x)$ משרה איזומורפיזם $QQ slash ZZ arrow.r.tilde mu_infinity (CC)$
 ]
 #proof[
@@ -615,8 +616,67 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
 == שדות סופיים
 פרק 6.2 ברשומות של מיכאל.\
 אנחנו אוהבים שדות סופיים כי בשדה סופי כל האיברים הם שורשי יחידה.
-#theorem[לכל ראשוני $p in NN$ ו־$q = p^n$ עבור $n>=1$, קיים שדה $FF_q$ go $q$ איברים והוא יחיד עד־כדי איזומורפיזם (שאינו יחיד).\
+#lemma("אנדומורפיזם פרובניוס")[
+  נניח ש־$K$ שדה עם $char(K) = p > 0$.\ נגדיר $Fr(x) = x^p$ וזהו אנדומורפיזם (הומומורפיזם $Fr: K arrow.r K$) הנקרא *אנדומורפיזם פרובניוס*.\
+  עבור שדות סופיים עם $char(K) = p$ ראשוני, זה $Fr$ הוא אוטומורפיזם.\
+  את התמונה של $Fr^n$ נסמן ב־$K^p^n$.
+]
+#proof[
+  + $ Fr(a b) = (a b)^p = a^p b^p = Fr(a) Fr(b) $
+  + מנוסחת הבינום של ניוטון
+    $ Fr(a+b) = (a+b)^p = sum_(i=0)^p binom(p, i) a^i b^(p-i) = a^p + b^p = Fr(a) + Fr(b) $
+  + בגלל שאנחנו בתחום שלמות ואין מחלקי אפס, זה גם חד־חד ערכי שכן $Fr(a) = a^p = 0 <==> a=0$
+]
+#remark[את הלמה לעיל לא ראינו בהרצאה אבל מיכאל הזכיר אותה, 3.1.12 ברשומות של מיכאל.]
+#theorem[לכל ראשוני $p in NN$ ו־$q = p^n$ עבור $n>=1$, קיים שדה $FF_q$ עם $q$ איברים והוא יחיד עד־כדי איזומורפיזם (שאינו יחיד).\
   בפרט, כל שדה סופי הוא איזומורפי ל־$FF_q$ כאשר $q$ חזקה של ראשוני.]
 #proof[
-  ניקח $FF_p$ ונגדיר הרחבה $K$ כשדה פיצול של $t^(q-1)-1$
+  ניקח $FF_p$ ונגדיר הרחבה $K$ כשדה פיצול של $t^(q-1)-1$ שכן השורשים שלו הם בידיוק $FF_q without {0} = mu_q$.\
+  נראה שבתוך $K$ יש $q$ איברים – ניקח את כל ה־$x$־ים כך ש־$x^q = 0$ וזה בעצם $Fr^q(x) = x$.\
+  נטען שכל האיברים שלקחנו הוא מהווים שדה: $Fr^q (x) = x$ וגם $Fr^q (y) =y$ ולכן $Fr^q (x+y)=x+y$ ובאותו אופן נקבל גם כפל.\
+  לכן נקבל ${x bar x^q=x} =FF_q subset K$ ובדיעבד $K = FF_q$.\
+  הערה: כל הפתרונות שונים שכן $(x^q-x)'=1$ והפולינום שלנו פריד (פולינום הוא פריד אם ורק אם $gcd(f, f')=1$).\
+  מכאן, $FF_q$ יחיד עד־כדי איזומורפיזם כי הוא שדה פיצול של $t^q-t$ מעל $FF_q$.\
+  לבסוף אם $FF$ שדה סופי אזי $F$ מכיל את $FF_p$ כאשר $char F = p$ (ראינו בהרצאה $1$) ולכן $F approx FF_p^n$ כמרחב וקטורי מעל $FF_p$ ולכן $abs(F) = p^n$ ולכן $F approx FF_(p^n) = FF_q$.
 ]
+#exercise[
+  + $FF_9 = FF_3 (i)$
+  + $FF_4 = FF_2 (alpha)$ כאשר $alpha alpha^2 + alpha + 1 = 0$ (זה שוב האוטומורפיזם $alpha mapsto alpha+1$).
+]
+#proof[#todo]
+#corollary[אם $FF_q$ שדה סופי אז לכל $n>=1$ יש בידיוק הרחבה אחת $K slash FF_q$ מדרגה $n$ והיא יחידה עד־כדי איזומורפיזם ובנוסף הרחבה זו היא פרימיטיבית (קיים $alpha$ כך ־ש$FF_q [alpha] = FF_(q^n)$ כאשר $alpha$ פריד).]
+#proof[מהמשפט לעיל קיימת ויחידה ההרחבה $FF_(q^n) slash FF_q$, וההרחבה נוצרת על־ידי $alpha$ שהוא יוצר של $FF_(q^n)^times$.\
+  מתקיים גם $f_(alpha slash FF_q) divides t^q^n - t = f$, אבל $f$ הוא פריד כי $f'=-1$ ולכן $f_(alpha slash FF_q)$ הוא פריד ו־$deg(f_(alpha slash FF_q)) = n$.
+]
+#corollary[נניח $FF_q, FF_r$ שדות סופיים. הבאים שקולים:
+  + קיים שיכון $FF_q arrow.r.hook FF_r$
+  + $r = q^d$ עבור $d in NN$
+  + $r=p^n$ ו־$q=p^m$ עבור $m divides n$
+]
+#proof[
+  $2 <==> 3$ ברור.\
+  $1 ==> 2$ אם $phi.alt: FF_q arrow.r.hook FF_r$ קיים, אז $FF_r arrow.r.tilde (FF_q)^d$ כמרחב וקטור כאשר $d= [FF_r : FF_q]$ ולכן $r=q^d$.\
+  $2 ==> 1$ נניח כי $r=q^d$ משמע שתי ההרחבות הן הרחבות שדה השדה ראשוני $FF_p$. אבל $q-1 divides r-1=q^d-1$ ולכן $x^(q-1) -1 divides x^(r-1)-1$ ואז שדה הפיצול $FF_r$ של $x^r-x$ מכיל את שדה הפיצול $FF_q$ של $x^q-x$ ומהיחידות סיימנו.
+]
+#theorem[נניח ש־$FF_(q^d) slash FF_q$ הרחבת שדות סופית מדרגה $d$ אז $Aut_(FF_q) (FF_(q^d))$ היא ציקלית עם $d$ איברים ויוצר $Fr_q$. \ (זאת אומרת $q=p^n, Fr_q (x)=x^q=(Fr_q)^n=Fr_q$)]
+#remark[${1, Fr_q, ..., Fr_(q^(d-1))} = ZZ slash d ZZ tilde.eq Aut_(FF_q) (FF_(q^d))$]
+#proof[
+  $FF_(q^d) = FF_q (alpha)$ עבור $alpha$ פריד מדרגה $d$ ($deg(f_(alpha slash FF_q))=d$) ולכן $d = abs(C_alpha)$ ו־$abs(hom_FF_q ( FF_q (alpha), FF_q (alpha))) = 1$, שכן $sigma$ נקבעת ביחידות על־ידי $sigma(alpha) in C_alpha$.\
+  נותר להוכיח שהיא ציקלית ולתאר אותה: כל $Fr_q^i$ עבור $0<=i<=d-1$ הוא הזהות על $FF_q$ ואינו הזהות על $FF_(q^d)$ שכן ${ x bar Fr_q^i (x) = x} = { x bar x^q^i=x}$ ויש בידיוק $q^i<q^d$ איברים כאלו.\
+  משמע ${ x bar Fr_q^i (x) = x} arrow.r Aut_FF_q (FF_(q^d))= {1, Fr_q, ..., Fr_(q^(d-1))}$ כאשר $1$ הוא זהות ו־$Fr_q$ הוא יוצר.
+]
+#proof("טיפה שונה מהרשומות של מיכאל")[
+  מהמסקנה שראינו לעיל, ההרחבה היא פרימיטיבית ולכן $G = Aut_(FF_q) (FF_(q^d))$ וממסקנה שראינו נובע כי היא מדרגה של לכל היותר $d$ (#todo לקשר למסקנה).\
+  כל $a in FF_q$ מקיים $Fr_q (a) = a^q = a$ ולכן $Fr$ הוא איבר של $G$.\
+  מאותה סיבה, $Fr_q)^d = 1 in G$ וגם $(Fr_q)^i != 1$ לכל $i<d$ שכן $(Fr_q)^i$ מקבע לכל היותר $q^i$ איברים. \
+  לכן $Fr_q$ יוצרת את תת־חבורה ציקלית $H$ מסדר $d$ ומכיוון ש־$abs(G)<=d$ נובע כי $H=G$.
+]
+#remark[$overline(FF_p) = union.big_(n>=1) FF_(p^n)$ הוא יחיד עד־כדי $Aut_(FF_p) (overline(FF_p))$ כי אנחנו צריכים לבחור איך לשכן את התתי־שדות.\
+  נראה ונוכיח בהמשך שבעצם מתקיים $Aut_(FF_p) (overline(FF_p)) = Fr_q^(hat(ZZ))$.]
+
+= *תרגול 5 – 07/05*
+== משהו
+
+= *תרגיל 4*
+== טריקים
+== מסקנות
