@@ -160,6 +160,7 @@
 // Counters for questions
 #let question_counter = counter("question_counter")
 #let subquestion_counter = counter("subquestion_counter")
+#let sub_subquestion_counter = counter("sub_subquestion_counter")
 
 // Reimplementation of question macros
 #let question(number: -1) = {
@@ -189,6 +190,21 @@
     == סעיף #context subquestion_counter.display(locale_number_to_gim)
   ] else [
     == Subquestion #context subquestion_counter.display()
+  ]
+}
+
+// Reimplementation of sub_subquestion macros
+#let sub_subquestion(number: -1) = {
+  if number == -1 {
+    sub_subquestion_counter.step()
+  } else {
+    sub_subquestion_counter.update(1)
+  }
+
+  context if text.lang == "he" [
+    === תת־סעיף #context sub_subquestion_counter.display(locale_number_to_gim)
+  ] else [
+    === Sub-Subquestion #context sub_subquestion_counter.display()
   ]
 }
 
