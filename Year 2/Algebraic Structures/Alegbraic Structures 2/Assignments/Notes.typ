@@ -44,9 +44,9 @@
   יהי $f$ פולינום, ניזכר כי $f = sum_(i=1)^n a_i x^i$.נגיד כי $f$ הוא *מתוקן* אם המקדם המוביל שלו הוא 1.
 ]
 #definition("אי־פריק")[ $R$ תחום שלמות ו־$0!=r in R$. $r$ נקרא *אי־פריק (irreducible)* אם איננו הפיך ואין לו פריק אמיתי. משמע, אם מתוך $r = a b$ נובע ש־$a in R^times$ או $b in R^times$ (משמע $a~r$ או $b~r$).]
-#definition($"־הומומורפיזם"K$)[#todo]
+#definition($"־הומומורפיזם"K$)[#text(red)[*להשלים*]]
 #corollary[$K$־הומומורפיזם של שדות הוא תמיד שיכון.]
-#proof[#todo]
+#proof[#text(red)[*להשלים*]]
 
 == בניות
 
@@ -162,7 +162,7 @@
 ]
 #proof[
   נניח בשלילה שלא כך, ולכן מהלמות של גאוס נובע שמתקיים $f = g dot.op h = sum_(j=1)^m b_j t^j sum_(k=1)^l c_k^t^k$.\
-  היות ו־$a_0 = b_0 c_0$ ו־$p divides a_0$ נובע כי $p divides b_0$ או $p divides c_0$. בלי הגבת הכללית, נניח כי $p divides b_0$ ו־$p divides.not c_0$ (שכן $p divides a_0$ אבל $p divides.not a_0$ ולכן לא ניתן שגם $p divides b_0$ וגם $p divides c_0$).\
+  היות ו־$a_0 = b_0 c_0$ ו־$p divides a_0$ נובע כי $p divides b_0$ או $p divides c_0$. בלי הגבלת הכלליות, נניח כי $p divides b_0$ ו־$p divides.not c_0$ (שכן $p divides a_0$ אבל $p divides.not a_0$ ולכן לא ניתן שגם $p divides b_0$ וגם $p divides c_0$).\
   ניקח את ה־$i<=m$ הקטן ביותר כך ש־$p divides b_i$ שקיים מהיות $b_m c_l = a_n$ ולכן $p divides.not b_m$.\
   כעת, בביטוי $a_i = b_i c_0 + underbrace(b_(i-1) c_1 + ... + b_0 c_i, "מתחלקים ב־p")$ אבל אז $p divides.not a_i$ וזאת סתירה.\
   אז $f$ לא מתפרק לגורמים מדרגה גדולה מ־0 ואז $f$ אי־פריק ב־$ZZ[t]$ ומהלמה של גאוס נובע כי הוא גם אי־פריק ב־$QQ[t]$.
@@ -192,14 +192,14 @@
 #exercise("תרגיל 10.104 בספר")[הסיקו מקריטריון אייזנשטיין ששורש כלשהו של מספר ראשוני אינו שייך ל־$QQ$. \
   כלומר, הראו ש־$root(n, p) in.not QQ$ לכל $p$ ראשוני ו־$NN in.rev n>=2$.]
 #proof[
-  #todo.
+  #text(red)[*להשלים*].
 ]
 #exercise("תרגיל 10.108 בספר")[יהי $p in NN$ ראשוני ויהי $f in ZZ[x]$ פולינום מתוקן. נסמן ב־$overline(f) in FF_p [x]$ את הפולינום המתקבל על־ידי פעולת מודלו $p$ על כל מקדם בנפרד.
   + הוכיחו כי אם $f$ פריק, אז גם $overline(f)$ פריק.
   + הוכיחו כי ההפך הוא לא נכון – אם $overline(f)$ פריק, לאו דווקא $f$ פריק.
 ]
 #proof[
-  #todo.
+  #text(red)[*להשלים*].
 ]
 
 == סגור אלגברי
@@ -358,11 +358,11 @@
 
 #definition("דרגה ספרבילית, דרגה אי־ספרבילית")[יהי $alpha in L$ אלגברי מעל $K$ עם דרגה $d$.\
   *הדרגה הספרבילית* של $alpha$ מעל $K$ שתסומן $deg_s (alpha) = deg_(K, s) (alpha)$ היא העוצמה של מחלקות הצמידות של $alpha in overline(K)$ (בסימוני ההרצאות של מיכאל $deg_s (alpha) = deg_(K, s) (alpha) = abs(C_alpha)$).\
-  *הדרגה האי־ספרבילית* של $alpha$ מעל $K$ שתסומן $deg_i (alpha) = deg_(K, i) (alpha)$ היא הריבוי של $alpha$ ב־$f_alpha$: #todo
+  *הדרגה האי־ספרבילית* של $alpha$ מעל $K$ שתסומן $deg_i (alpha) = deg_(K, i) (alpha)$ היא הריבוי של $alpha$ ב־$f_alpha$: #text(red)[*להשלים*]
 ]
-#remark[#todo]
-#example[#todo]
-#example[#todo]
+#remark[#text(red)[*להשלים*]]
+#example[#text(red)[*להשלים*]]
+#example[#text(red)[*להשלים*]]
 
 = *הרצאה 9 – 29/04*
 == אוטומורפיזמים של $overline(K) slash K$ – המשך
@@ -394,7 +394,7 @@ $ f = c(x-alpha_1) dot.op (t-alpha_2) dot.op ... dot.op (t-alpha_n) in L[t] $
 ]
 #exercise[$f$ ו־$f'$ הוא אותו פולינום הן ב־$K[t]$ והן ב־$overline(K)[t]$.]
 #proof[
-  #todo?
+  #text(red)[*להשלים*]?
 ]
 
 #theorem[נניח כי $f in K[t]$ פולינום אי־פריק ומתוקן ו־$alpha in overline(K)$ שורש של $f$. אזי
@@ -427,7 +427,7 @@ $ f = c(x-alpha_1) dot.op (t-alpha_2) dot.op ... dot.op (t-alpha_n) in L[t] $
 ]
 #proof[
   $1 => 2$: בעצם, $overline(L)$ זה גם סגור אלגברי של $K$ (מיחידות עד־כדי איזומורפיזם), ואז כל $sigma in Aut(overline(L) slash K)$ נותן שיכון אחר $sigma(L) subset.eq overline(L)$ ולכן $sigma(L) = L$. \
-  $2 => 3$: ניקח $alpha' in overline(L)$ שהוא שורש אחר של $f_(alpha slash K)$ ולכן לפי משפט שראינו על חבורות $Aut(overline(L) slash K)$ (להשלים #todo),
+  $2 => 3$: ניקח $alpha' in overline(L)$ שהוא שורש אחר של $f_(alpha slash K)$ ולכן לפי משפט שראינו על חבורות $Aut(overline(L) slash K)$ (להשלים #text(red)[*להשלים*]),
   קיים $sigma in Aut(overline(L) slash K)$ כך ש־$sigma(alpha)=alpha'$ וזה בידיוק אומר ש־$f_(alpha slash K)$ מתפצל לחלוטין ב־$L$.\
   $3 => 1$: ניקח $K$־שיכון $sigma: L arrow.r overline(K)$ ולכן לכל $alpha in L$ מתקיים $f_(alpha slash K) = f_(sigma(alpha) slash K)$ וכל שורשיו $C_(sigma(alpha)) = C_alpha subset.eq L$ לפי ההנחה, ולכן $sigma(L) = union_(alpha in L) C_(f_(alpha slash K))$ לא תלוי בשיכון.
 ]
@@ -448,15 +448,15 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
 = *הרצאה 10 – 05/05*
 == הרחבות נורמליות – המשך
 #corollary[אם $alpha in L$ ו־$L slash K$ נורמלית, אזי $f_(alpha slash K)$ מתפצל לחלוטין ($C_alpha subset L$) ו־$Aut(L slash K)$ פועלת טרנזטיבית על $C_alpha$.]
-#proof[#todo]
+#proof[#text(red)[*להשלים*]]
 #example[עבור $QQ(root(3, 2)) slash QQ$, חבורת האוטומורפיזמים היא רק הזהות.]
 #example("טרנזטיביות/אי־טרנזטיביות של הרחבות נורמליות")[בדומה לכך שנורמליות היא לא תכונה טרנזטיביות בין חבורות, גם מחלקת ההרחבות הנורמליות היא לא שלמה, בכמה דרכים: נניח כי $L slash F slash K$ מגדל הרחבות.
   + נניח $L slash F$ ו־$F slash K$ הרחבות נורמליות, נטען כי $L slash K$ לא הרחבה נורמלית: $QQ(root(4, 2)) slash QQ(sqrt(2)) slash QQ$
-  + נניח $L slash K$ נורמלי ונטען שלא בהכרח $F slash K$ נורמלית – #todo
-  + נניח כי $L slash K$ נורמלית ונטען כי $L slash F$ *כ* נורמלית #todo
+  + נניח $L slash K$ נורמלי ונטען שלא בהכרח $F slash K$ נורמלית – #text(red)[*להשלים*]
+  + נניח כי $L slash K$ נורמלית ונטען כי $L slash F$ *כ* נורמלית #text(red)[*להשלים*]
 ]
 #exercise[$L slash K$ הרחבה ריבועית גורר כי $L slash K$ נורמלית (אנלוגי לחבורה מאינדקס $2$ היא נורמלית).]
-#proof[#todo]
+#proof[#text(red)[*להשלים*]]
 
 == שדות פיצול
 פרק מספר 5.6 ברשומות של מיכאל.
@@ -490,21 +490,21 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
   לבסוף, אם $L^(n o r) supset.eq F supset.eq L supset.eq K$ כאשר $F slash K$ נורמלית, נובע כי כל $f_(alpha slash K) in P$ מתפצל לחלוטין ב־$F$ ולכן $F = L^(n o r)$.
 ]
 #example[$QQ(root(3, 2), omega) = L^(n o r) slash L = QQ(root(3, 2)) slash K = QQ$.\
-  #todo ציור?]
+  #text(red)[*להשלים*] ציור?]
 #example[$L = QQ(root(4, 2))$ ואז $L^(n o r) = QQ(root(4, 2), i)$ ואז
-  #todo ציור?]
+  #text(red)[*להשלים*] ציור?]
 #lemma[יהי $K$ שדה, $f in K[t]$ פולינום מדרגה $d > 0$ (פולינום לא קבוע) ו־$L$ שדה פיצול של $f$. נסמן $C_f = {f" כל שורשי"}$ אזי
   + $[L : K] <= d!$
   + כל $sigma in Aut_K (L) = Aut(L slash K)$ משרה תממורה על $C_f$ והומומורפיזם הצמצום מ־$Aut_K (L) arrow.r op("Perm") C_f = Aut(C_f) = S_n$ הוא שיכון.
 ]
 #proof[
-  #todo
+  #text(red)[*להשלים*]
 ]
 
 == שורשי יחידה
 פרק 6.1 ברשומות של מיכאל.\
-#definition($n" שורש יחידה מסדר"$)[יהי $n in NN$. *שורש יחידה מסדר $n$* בתוך $overline(K)$ הוא $zeta in overline(K)$ שמקיים $zeta^n = 1$.]
-#definition($n"חבורת שורשי היחידה מסדר ",mu_n"חבורת"$)[עבור $K$ שדה ו־$1<=n in NN$ נגדיר $ mu_n (K) = { zeta in K bar zeta^n = 1} $
+#definition($n" שורש יחידה מסדר"$)[יהי $n in NN$. *שורש יחידה מסדר $n$* בתוך $overline(K)$ הוא $xi in overline(K)$ שמקיים $xi^n = 1$.]
+#definition($n"חבורת שורשי היחידה מסדר ",mu_n"חבורת"$)[עבור $K$ שדה ו־$1<=n in NN$ נגדיר $ mu_n (K) = { xi in K bar xi^n = 1} $
   $ mu_infinity (K) = union.big_n mu_n (K) $
   נשים לב ש־$mu_n (K)$ היא תת־חבורה של $K^times$ מסדר המחלק את $n$ (זוהי כמובן חבורה אבלית עם כפל).
 ]
@@ -523,7 +523,7 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
 #proof[
   + נשים לב שמתקיים
     $
-      mu_6 = {zeta bar zeta^6 = 1} = {e^((2pi i k) / 6) bar 0<=k<=5}=_(omega = e^(2 pi i) / 3) {1, omega, omega^2, -1, -omega, -omega^2}
+      mu_6 = {xi bar xi^6 = 1} = {e^((2pi i k) / 6) bar 0<=k<=5}=_(omega = e^(2 pi i) / 3) {1, omega, omega^2, -1, -omega, -omega^2}
     $
     נשים לב שמתקיים $QQ(omega) = QQ(sqrt(-3))$ שכן $omega^2+omega+1=0$, משמע כל השורשים שראינו ב־$mu_6$ נמצאים ב־$QQ(sqrt(-3))$.
   + מתקיים $i = e^(pi i) / 2$ ולכן $i^4 = 1$, ובגלל ש־$mu_4 = {1, -1, i, -i}$ נובע ישירות ש־$mu_4 subset QQ(i)$ ולכן $mu_4 subset.eq mu_infinity (QQ(i))$. \
@@ -545,7 +545,7 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
     בסה"כ מצאנו כי $mu_infinity (QQ(i)) = mu_4$.
   + בהמשך לבדיקה מהסעיף הקודם, אנחנו כבר יודעים להגיד שלא ייתכן תחת ההנחה ש־$d in.not {-1, -3}$ ש־$ mu_infinity (QQ(sqrt(d))) = mu_6 or mu_infinity (QQ(sqrt(d))) = mu_3 or mu_infinity (QQ(sqrt(d))) = mu_4 $
     ובגלל ש־$[QQ(sqrt(d)) : QQ] <=2$, נישאר רק עם $mu_infinity (QQ(sqrt(d))) = mu_2$ או $mu_infinity (QQ(sqrt(d))) = mu_1$.\
-    אבל בבירור לא ייתכן ש־$mu_infinity (QQ(sqrt(d))) = mu_1$ שכן $zeta = -1 in QQ subset QQ(sqrt(d))$ ולכן בסך־הכל נקבל $mu_infinity (QQ(sqrt(d))) = mu_2$.
+    אבל בבירור לא ייתכן ש־$mu_infinity (QQ(sqrt(d))) = mu_1$ שכן $xi = -1 in QQ subset QQ(sqrt(d))$ ולכן בסך־הכל נקבל $mu_infinity (QQ(sqrt(d))) = mu_2$.
   + נגדיר $phi: QQ slash ZZ arrow.r mu_infinity(CC)$ על־ידי $phi(x+ZZ)=e^(2pi i x)$.\
     ראשית זה מוגדר היטב, כי אם $x eq.triple y mod ZZ$ אז $ x-y in ZZ => e^(2pi i x) = e^(2pi i y) dot.op e^(2pi i (x-y)) = e^(2pi i y) dot.op 1 = e^(2pi i y) $
     זה גם אכן הומומורפיזם
@@ -554,7 +554,7 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
     $
     הוא גם חד־חד ערכי כי הגרעין הוא טריוויאלי, שכן מתקיים
     $ phi(x+ZZ) = 1 <==> e^(2pi i x) = 1 <==> x in ZZ => x+ZZ = 0 + ZZ $
-    והוא גם אכן על, כי כל $zeta in mu_infinity (CC)$ הוא שורש יחידה, ולכן הוא מהצורה $zeta = e^(2pi i k / n)$ עבור $n$ כלשהו, ולכן מספיק שנבחר $k in ZZ$ כך שמתקיים $phi(k / n + ZZ) = zeta$.
+    והוא גם אכן על, כי כל $xi in mu_infinity (CC)$ הוא שורש יחידה, ולכן הוא מהצורה $xi = e^(2pi i k / n)$ עבור $n$ כלשהו, ולכן מספיק שנבחר $k in ZZ$ כך שמתקיים $phi(k / n + ZZ) = xi$.
 ]
 נתזכר כמה הגדרות ממבנים 1 בשביל הסדר, כי הנושאים הללו עלו בהרצאה ולא התעמקנו בהם:
 #definition("איבר פיתול")[תהיי $G$ חבורה. איבר $g in G$ נקרא *איבר פיתול (torison)* אם הסדר של $g$ סופי.]
@@ -591,10 +591,10 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
 ]
 = *הרצאה 11 – 06/05*
 == שורשי יחידה – המשך
-#definition($n"שורש יחידה פרימיטיבי מסדר "$)[יהי $2<=n in NN$. *שורש יחידה פרימיטיבי מסדר $n$* הוא שורש יחידה שלכל $1<=m<n$ מתקיים $zeta^m != 1$.]
-#example[עבור $K = QQ$ ו־$2<=n$ ראשוני, המספר $zeta = e^((2pi i) / p) in CC$ הוא שורש יחידה פרימיטיבי מסדר $p$ ואז $L = QQ(zeta)$ שדה הרחבה מעל $QQ$. \
-  ראינו גם שהפולינום המינימלי של $zeta$ מעל $QQ$ הוא
-  $ m_zeta = x^(p-1) + x^(p-2) + ... + x +1 $
+#definition($n"שורש יחידה פרימיטיבי מסדר "$)[יהי $2<=n in NN$. *שורש יחידה פרימיטיבי מסדר $n$* הוא שורש יחידה שלכל $1<=m<n$ מתקיים $xi^m != 1$.]
+#example[עבור $K = QQ$ ו־$2<=n$ ראשוני, המספר $xi = e^((2pi i) / p) in CC$ הוא שורש יחידה פרימיטיבי מסדר $p$ ואז $L = QQ(xi)$ שדה הרחבה מעל $QQ$. \
+  ראינו גם שהפולינום המינימלי של $xi$ מעל $QQ$ הוא
+  $ m_xi = x^(p-1) + x^(p-2) + ... + x +1 $
 ]
 #corollary[אם $K$ שדה סגור אלגברית ו־$n>=1$ אז שורש פרימיטיבי של יחידה מסדר $n$ קיים ב־$K$ אם ורק אם $n$ הוא הפיך ב־$K$ משמע אם ורק אם $n in K^times$.]
 #exercise[
@@ -603,15 +603,15 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
   + אם $char(K) = p > 0$ אז $mu_infinity (K) tilde.eq.rev QQ slash ZZ[1 / p]$
 ]
 #proof[
-  + $K$ סגור אלגברית ולכן מכיל את כל שורשי היחידה $zeta_n$ לכל $n$.
+  + $K$ סגור אלגברית ולכן מכיל את כל שורשי היחידה $xi_n$ לכל $n$.
     \כל $a / n in QQ slash ZZ$ הוא מסדר סופי ולכן $QQ slash ZZ$ היא חבורת פיתול עם "עותק" לכל $ZZ slash n ZZ$ לכל $n>=1$, וזה בידיוק $mu_infinity (K)$: אם נסתכל על האיזומורפיזם שהגדרנו בתרגיל הקודם, ונחדד אותו להיות $phi : QQ slash ZZ arrow.r mu_infinity (K)$ הנתון על־ידי $phi(a / n + ZZ) = e^((2pi i a) / n) in mu_n (K)$, זה מגדיר באמת איזומורפיזם כמו שראינו.
-  + יהי $zeta in K$ שורש יחידה מסדר $p^n$, משמע $zeta^p^n = 1$ ולכן $zeta$ הוא שורש של $x^p^n-1$, אבל $(x^p^n-1)' = 0$ כי $char(K) = p$ ולכן $gcd(x^p^n-1, (x^p^n-1)') = 1$ ולכן זהו פולינום פריד.\
-  מנגד, כל השורשי יחידה במציין $p$ חייבים להיות מסדר זר ל־$p$, ולכן
-  $ mu_infinity (K) = union.big_(n>=1,\ gcd(n, p)=1) mu_n (K) $
-  אבל זה בידיוק אומר ש־$mu_infinity(K) tilde.eq.rev QQ slash ZZ [1 / p]$, שכן כל $x in QQ slash ZZ$ הוא מהצורה $x = a / n + ZZ$, ואם $p divides n$ אז $zeta_n in.not K$, ולכן נשאר רק עם $n$־ים שעבורם $gcd(n, p)=1$, משמע
-  $ mu_infinity (K) tilde.eq.rev union.plus.big_(n>=1,\ gcd(n, p)=1) ZZ slash n ZZ tilde.eq.rev QQ slash ZZ[1 / p] $
+  + יהי $xi in K$ שורש יחידה מסדר $p^n$, משמע $xi^p^n = 1$ ולכן $xi$ הוא שורש של $x^p^n-1$, אבל $(x^p^n-1)' = 0$ כי $char(K) = p$ ולכן $gcd(x^p^n-1, (x^p^n-1)') = 1$ ולכן זהו פולינום פריד.\
+    מנגד, כל השורשי יחידה במציין $p$ חייבים להיות מסדר זר ל־$p$, ולכן
+    $ mu_infinity (K) = union.big_(n>=1,\ gcd(n, p)=1) mu_n (K) $
+    אבל זה בידיוק אומר ש־$mu_infinity(K) tilde.eq.rev QQ slash ZZ [1 / p]$, שכן כל $x in QQ slash ZZ$ הוא מהצורה $x = a / n + ZZ$, ואם $p divides n$ אז $xi_n in.not K$, ולכן נשאר רק עם $n$־ים שעבורם $gcd(n, p)=1$, משמע
+    $ mu_infinity (K) tilde.eq.rev union.plus.big_(n>=1,\ gcd(n, p)=1) ZZ slash n ZZ tilde.eq.rev QQ slash ZZ[1 / p] $
 ]
-#remark[מיכאל אמר שהאיזומורפיזמים הללו הם לא יחידים ולא קנונים, כי הם "לא טבעיים" – הם תלויים בבחירה של $K$ ו־$zeta_n in K$ ומצריך לקבע שורשי יחידה פרימיטיביים בצורה ספציפית לכל $n$.]
+#remark[מיכאל אמר שהאיזומורפיזמים הללו הם לא יחידים ולא קנונים, כי הם "לא טבעיים" – הם תלויים בבחירה של $K$ ו־$xi_n in K$ ומצריך לקבע שורשי יחידה פרימיטיביים בצורה ספציפית לכל $n$.]
 
 == שדות סופיים
 פרק 6.2 ברשומות של מיכאל.\
@@ -641,9 +641,21 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
 ]
 #exercise[
   + $FF_9 = FF_3 (i)$
-  + $FF_4 = FF_2 (alpha)$ כאשר $alpha alpha^2 + alpha + 1 = 0$ (זה שוב האוטומורפיזם $alpha mapsto alpha+1$).
+  + $FF_4 = FF_2 (alpha)$ כאשר $alpha^2 + alpha + 1 = 0$ (זה שוב האוטומורפיזם $alpha mapsto alpha+1$).
 ]
-#proof[#todo]
+#proof[
+  + ראשית מהמשפט לעיל נובע כי $FF_9$ הוא ההרחבת שדות היחידה (עד־כדי איזומורפיזם) של $FF_3$ מדרגה $2$ ($[FF_9 : FF_3] = 2$).\
+    נבחן את הפולינום $x^2+1$, נשים לב שהוא לא מתאפס לאף $a in FF_3$ והוא אי־פריק מעל $FF_3$.\
+    נשים לב שכל איבר ב־$FF_3 (i)$ הוא מהצורה $a + b i in FF_3$ וגם $i^2 = 2$, ויש לנו $9$ צירופים אפשריים מקומבינטוריקה.\
+    מהמשפט לעיל נקבל כי $FF_9 = FF_3 (i)$.
+  + נבחר את הפולינום $x^2+x+1$ ואנחנו כבר יודעים שהוא אי־פריק מעל $FF_2 [x]$ כי אין לו פיתרונות ב־$FF_2$ (ולכן הוא גם ראשוני) ונבחר $alpha$ המקיימת $alpha^2+alpha+1=0$.\
+    עכשיו, $FF_2 [alpha] = FF_2 [x] slash (x^2+x+1)$ ונשים לב שהוא מכיל $4$ איברים ${0, 1, alpha, alpha+1}$ כצירופים לינאריים של $1$ ו־$alpha$ ונטען שהאיברים ${1, alpha, alpha+1}$ מהווים חבורה כפלית מסדר $3$:\
+    מההנחה על $alpha$ שבחרנו נובע $alpha^2 = alpha+1$ ולכן
+    $ alpha^3 = alpha^2 + alpha = (alpha+1) + alpha = 2 alpha + 1 = 1 (mod 2) $
+    אז זה סגור לחיבור, כפל ויחידה וקיבלנו שזה אכן שדה.\
+    מצאנו שדה עם $4$ איברים ומהטענה לעיל מתקיים $FF_2 [x] slash (x^2+x+1) = FF_4$.
+
+]
 #corollary[אם $FF_q$ שדה סופי אז לכל $n>=1$ יש בידיוק הרחבה אחת $K slash FF_q$ מדרגה $n$ והיא יחידה עד־כדי איזומורפיזם ובנוסף הרחבה זו היא פרימיטיבית (קיים $alpha$ כך ־ש$FF_q [alpha] = FF_(q^n)$ כאשר $alpha$ פריד).]
 #proof[מהמשפט לעיל קיימת ויחידה ההרחבה $FF_(q^n) slash FF_q$, וההרחבה נוצרת על־ידי $alpha$ שהוא יוצר של $FF_(q^n)^times$.\
   מתקיים גם $f_(alpha slash FF_q) divides t^q^n - t = f$, אבל $f$ הוא פריד כי $f'=-1$ ולכן $f_(alpha slash FF_q)$ הוא פריד ו־$deg(f_(alpha slash FF_q)) = n$.
@@ -666,7 +678,7 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
   משמע ${ x bar Fr_q^i (x) = x} arrow.r Aut_FF_q (FF_(q^d))= {1, Fr_q, ..., Fr_(q^(d-1))}$ כאשר $1$ הוא זהות ו־$Fr_q$ הוא יוצר.
 ]
 #proof("טיפה שונה מהרשומות של מיכאל")[
-  מהמסקנה שראינו לעיל, ההרחבה היא פרימיטיבית ולכן $G = Aut_(FF_q) (FF_(q^d))$ וממסקנה שראינו נובע כי היא מדרגה של לכל היותר $d$ (#todo לקשר למסקנה).\
+  מהמסקנה שראינו לעיל, ההרחבה היא פרימיטיבית ולכן $G = Aut_(FF_q) (FF_(q^d))$ וממסקנה שראינו נובע כי היא מדרגה של לכל היותר $d$ (#text(red)[*לקשר למסקנה*]).\
   כל $a in FF_q$ מקיים $Fr_q (a) = a^q = a$ ולכן $Fr$ הוא איבר של $G$.\
   מאותה סיבה, $Fr_q)^d = 1 in G$ וגם $(Fr_q)^i != 1$ לכל $i<d$ שכן $(Fr_q)^i$ מקבע לכל היותר $q^i$ איברים. \
   לכן $Fr_q$ יוצרת את תת־חבורה ציקלית $H$ מסדר $d$ ומכיוון ש־$abs(G)<=d$ נובע כי $H=G$.
@@ -680,3 +692,43 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
 = *תרגיל 4*
 == טריקים
 == מסקנות
+
+= *הרצאה 12 – 12/05*
+== הרחבות ציקלוטומיות
+פרק 6.3 ברשומות של מיכאל.\
+המטרה שלנו היא לחשב את הדרגה של $[QQ(xi_n) : QQ] = phi(n)$ כאשר $phi(n)$ היא פונקציית אויילר, נרצה לפרק את $t^n-1 (= phi.alt_n (t))$, לדבר על מכפלות ציקליות ולחשב את $Aut_QQ (QQ(xi_n))$.
+#definition("הרחבה ציקלוטומית")[
+  הרחבה $L slash K$ נקראת *הרחבה ציקלוטומית* אם $L = K(xi)$ (נוצר על־ידי $xi$ שורש יחידה).\
+  יהי $n$ הסדר של $xi$ ($xi^n = 1$, דהיינו $xi$ שורש פרימיטיבי), אז כל הצמודים של $xi$ מעל $K$ הם גם־כן שורשי יחידה פרימיטיביים מסדר $n$ (שכן, $xi^n = 1$ וגם $exists.not 0<m<n space (m in NN) space s.t. space xi^m=1$).\
+  ממסקנה שראינו (#text(red)[*לקשר*]), כל $K$־אוטומורפיזם $sigma in Aut_K (L)$ נקבע ביחידות על־ידי $sigma(xi)=xi'$, ולכן יש הומומורפיזם צמצום $sigma bar_mu_n$ כחבורה (למה? כי $mu_in subset L^times = angle.l xi angle.r$), ולכן $Aut_K (L) arrow.r.hook Aut(mu_n)$.
+]
+#exercise("6.3.2 ברשומות של מיכאל")[
+  + $a in ZZ slash n ZZ$ הוא הפיך אם ורק אם $gcd(a, n)=1$
+  + תהיי $(H, +)$ חבורה ציקלית מסדר $n$ עם יוצר $g$. להראות כי $a g$ הוא יוצר של $H$ אם ורק אם $(a,n)=1$
+  + להראות שיש הומומורפיזם קאנוני $(Z slash n ZZ)^times arrow.r.tilde Aut (H)$ כך ש־$a mapsto sigma_a$ הנתון על־ידי $sigma_a (h) = a h$ עבור $h in H$
+]
+#proof[
+  + בכיוון הראשון נניח ש־$gcd(a, n)=1$, מזהות בז'ו נובע שקיימים $x,y$ כך שמתקיים $a x + n y = 1$ ולכן $a x eq.triple 1 mod n$, ולכן $x$ הוא ההופכי הכפלין של $a$ ב־$ZZ slash n ZZ$ ולכן $a$ הפיך.\
+    בכיוון השני, נניח ש־$a$ הפיך ולכן קיים $b$ כך ש־$a b eq.triple 1 mod n$, ולכן קיים $k$ כך שמתקיים $a b = 1 + k n$ משמע $a b - k n =1$. אבל צד שמאל הוא צירוף לינארי של $a, n$ ולכן עבור $d = gcd(a, n)$ נובע כי $d$ מחלק גם כל צירוף לינארי של $a,n$ ובפרט $d divides a b - k n$,אבל אז $d divides 1$ ולכן $d=1$.
+  + בכיוון הראשון נניח ש־$gcd(a, n)=1$ ונסתכל על תת־החבורה הנוצרת על־ידי $a g$ שכל איבריה הם מהצורה $k(a g)$ עבור $k in ZZ$.\
+    הסדר של $a g$ הוא ה־$m in NN$ המינימלי כך ש־$m(a g) = 0$, אבל $g$ הוא יוצר של $H$ ולכן $g$ הוא $0$ אם ורק אם $m a$ הוא כפולה של $n$ ולכן אנחנו מחפשים $m a eq.triple 0 mod n$, וזה נתון על־ידי $m = n / gcd(a, n) = n / 1 = n$ ולכן הסדר של $a g$ הוא $n$ ו־$a g$ הוא יוצר של $H$.\
+    בכיוון השני, נניח ש־$a g$ הוא יוצר של $H$, ולכן $o(a g)=n$, אבל זה גם ה־$m in NN$ המינימלי כך ש־$m(a g) = 0$ והוא כפולה של $n$, אבל ה־$m$ המינימלי שמקיים את זה נתון על־ידי $m = n / gcd(a, n)$, ולכן $n / gcd(a, n) = n <==> gcd(a, n)=1$.
+    + #text(red)[*להשלים?*]
+]
+#lemma[
+  יהי $L = K(xi)$ הרחבה ציקלוטומית מסדר ו־$n$ הסדר של $xi$ (כאשר $L slash K$ הרחבה נורמלית). אזי
+  + $xi^a$ הוא שורש פרימיטיבי מסדר $n$ אם ורק אם $gcd(n, a)=1$
+  + הומומורפיזם הצמצום מקיים $Aut_K (L) arrow.r.hook Aut(mu_n) arrow.r.tilde (ZZ slash n ZZ)^times$ (הוא שיכון) ו־$sigma mapsto a$ אם ורק אם $sigma(eta) = eta^a$ עבור $eta in mu_n$
+]
+#text(red)[*להשלים כמה טענות לא ברורות בהקשר להוכחה לעיל :(*]
+#remark("תזכורת – משפט השאריות הסיני")[
+  עבור $m, n in NN$ מתקיים $ ZZ_(m n) tilde.equiv ZZ_m times ZZ n <==> gcd(m, n)=1 $
+  באינדוקציה אפשר להוכיח שהטענה נכונה לכל $n_1,..., n_r$ זרים בזוגות.\
+  עוד מסקנה שנובעת ממשפט השאריות הסיני עם תוספת קטנה זה שעבור $n = product_(i=1)^r n_i$ זרים בזוגות מתקיים
+  $ (ZZ_(n))^times tilde.equiv (ZZ_n_i)^times times ... times (ZZ_n_r)^times $
+  זה נובע ממשפט השאריות הסיני ויחד עם ההוכחה שעבור $R,S$ חוגים מתקיים $(R times S)^times tilde.equiv R^times times S^times$ (פשוט לפתוח מהגדרות וישר יש איזומורפיזם).]
+#lemma[
+  יהי $1<n in NN$.
+  + אם $p in NN$ ראשוני כך ש־$p!=2$ אז $(ZZ slash p^n ZZ)^times$ היא ציקלית מסדר $p^n(p-1)$
+  + החבורה $(ZZ slash 2^n ZZ)^times tilde.equiv ZZ slash 2^(n-2) ZZ times ZZ slash 2ZZ$
+]
