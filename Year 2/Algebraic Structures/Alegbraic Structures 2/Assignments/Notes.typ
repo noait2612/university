@@ -546,7 +546,7 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
   + בהמשך לבדיקה מהסעיף הקודם, אנחנו כבר יודעים להגיד שלא ייתכן תחת ההנחה ש־$d in.not {-1, -3}$ ש־$ mu_infinity (QQ(sqrt(d))) = mu_6 or mu_infinity (QQ(sqrt(d))) = mu_3 or mu_infinity (QQ(sqrt(d))) = mu_4 $
     ובגלל ש־$[QQ(sqrt(d)) : QQ] <=2$, נישאר רק עם $mu_infinity (QQ(sqrt(d))) = mu_2$ או $mu_infinity (QQ(sqrt(d))) = mu_1$.\
     אבל בבירור לא ייתכן ש־$mu_infinity (QQ(sqrt(d))) = mu_1$ שכן $xi = -1 in QQ subset QQ(sqrt(d))$ ולכן בסך־הכל נקבל $mu_infinity (QQ(sqrt(d))) = mu_2$.
-  + נגדיר $phi: QQ slash ZZ arrow.r mu_infinity(CC)$ על־ידי $phi(x+ZZ)=e^(2pi i x)$.\
+  + נגדיר $phi: QQ slash ZZ arrow.r mu_infinity (CC)$ על־ידי $phi(x+ZZ)=e^(2pi i x)$.\
     ראשית זה מוגדר היטב, כי אם $x eq.triple y mod ZZ$ אז $ x-y in ZZ => e^(2pi i x) = e^(2pi i y) dot.op e^(2pi i (x-y)) = e^(2pi i y) dot.op 1 = e^(2pi i y) $
     זה גם אכן הומומורפיזם
     $
@@ -732,3 +732,56 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
   + אם $p in NN$ ראשוני כך ש־$p!=2$ אז $(ZZ slash p^n ZZ)^times$ היא ציקלית מסדר $p^n(p-1)$
   + החבורה $(ZZ slash 2^n ZZ)^times tilde.equiv ZZ slash 2^(n-2) ZZ times ZZ slash 2ZZ$
 ]
+#proof[
+  בתור התחלה להוכחה, ניקח את שני המקרים בחשבון. נסתכל על הומומורפיזם הצמצום עם מודלו $p$ ואז $lambda : G_(p^n) arrow.r G_P = FF^times_p$
+]
+#text(red)[*יש פה הרבה מה להשלים...*]
+
+= *הרצאה 13 – 13/05*
+== הרחבות ציקלוטומיות – המשך
+#text(red)[*תשלימי*]
+
+== הרחבות רדיקליות
+פרק 6.4 ברשומות של מיכאל.\
+#definition("הרחבה רדיקלית")[הרחבת שדות $L slash K$ נקראת *הרחבה רדיקלית* אם $L = K(a^(1 / n))$.\
+  לפעמים נראה אותה בתור $K(alpha) slash K$ עבור $alpha$ המקיים $alpha^n-a = 0$.]
+#remark("פתולוגיה")[כבר ראינו שתי בעיות שיכולות לקרות בהרחבות מהסוג הזה:
+  + הפולינום $f(t)=t^n-a$ נגזרתו היא $f'(t) = n t^(n-1)$ ולכן הפולינום הוא פריד אם ורק אם $n in K^times$ ו־$a!=0$ או $n=1$ ו־$a=0$
+  + ההרחבה $QQ(root(3, 2)) slash QQ$ לא מעניינת, שכן אין לה אוטומורפיזמים (זה כי $mu_3 in.not QQ$)
+  בלי שתי החריגות הללו, התורה שנתעסק בה היא מאוד יפה.
+]
+#lemma[נניח ש־$K$ הוא שדה, $n in K^times$ (אם $char(K) = 0$ או $gcd(n, char(K)) = 1$) כך ש־$mu_n subset K$ ו־$a in K$. אז הבאים שקולים
+  + נגדיר $L = K(alpha)$ כאשר $alpha=a^(1 / n)$ (ההרחבה הנוצרת על־ידי שורש בודד) אז $L$ הוא שדה פיצול של $t^n-a$ (מההכלה $mu_n subset K$ נובע שאם הוספתי שורש $1$, פיצלתי הכל) ו־$mu_n alpha = {alpha, xi_n alpha, ..., xi_n^(n-1) alpha}$ קבוצת כל השורשים ב־$K$
+  + כל $sigma in Aut_K (L)$ משמר את $mu_n alpha$, זאת־אומרת פועל על קבוצה זו על־ידי כפל באיבר $xi_sigma in mu_n$ ונקבע לחלוטין על־ידי $xi_sigma$. בפרט, יש לנו שיכון טבעי $Aut_K (L) arrow.r mu_n$
+  + $abs(Aut_K (L)) = [L:K]$ ובפרט $Aut_K (L) = mu_n$ אם ורק אם $t^n-a$ הוא אי־פריק
+]
+#proof[
+  + מכך ש־$n in K^times$, $mu_n$ מכילה $n$ איברים. \
+    כל $xi alpha in mu_n alpha$ הוא השורש ה־$n$־י של $a$.\
+    לפולינום $t^n-a$ יש לכל היותר $n$ שורשים, ולכן שורשי הפולינום הם בידיוק $mu_n alpha$.\
+    כעת, $mu_n in K$ ולכן $mu_n alpha in L = K(alpha)$ דהיינו הפולינום מתפצל לחלוטין ב־$L$ (כל השורשים שם) ולכן $L$ הוא שדה פיצול של הפולינום הזה (בפרט, הוא נוצר על־ידי שורש אחד)
+  + אוטומורפיזם $sigma$ לוקח את $alpha$ לצמוד שלו, שגם הוא שורש של $t^n-a$ ולכן $sigma(alpha) = xi_sigma alpha$ עבור $xi_sigma in mu_n$.\
+    יתרה מכך, לכל שורש אחר $xi alpha in mu_n alpha$ מתקיים
+    $ sigma(xi alpha) = sigma(xi) sigma(alpha) = xi xi_sigma alpha = xi_sigma dot.op (xi sigma) $
+    משמע $sigma$ מכפילה כל שורש ב־$xi sigma$ ונקבל העתקה $lambda : Aut_K (L) arrow.r mu_n$ שלא תלויה בבחירה של השורש $a^(1 / n)$.\
+    יתרה מכך, $sigma$ פועלת לפי $xi_sigma$ ו־$tau$ פועלת לפי $xi_tau$ אז $sigma tau$ פועלת לפי $xi_sigma xi_tau$ כי $ (sigma tau)(alpha) = sigma(tau(alpha)) = sigma(xi_tau alpha) = xi_sigma xi_tau alpha $
+    ולכן $lambda$ זה הומומורפיזם. \
+    לבסוף, כל $sigma in Aut_K (L)$ נקבעת ביחידות לפי $sigma(alpha)$ שכן $alpha$ יוצר את $L$ מעל $K$ ולכן $sigma$ נקבעת לפי $xi_sigma$ ולכן $lambda$ חד־חד ערכית וקיבלנו שיכון
+  + יהי $f(t)$ גורם אי־פריק של $t^n-a$ כך ש־$alpha$ שורש שלו.\
+  אז $[L : K] = deg(f)$ הוא מספר השורשים של הפולינום הפריד $f$, ולכן ל־$alpha$ יש בידיוק $[L:K]$ הצמדות ב־$L$ והעוצמה לפי למה שראינו (לקשר) היא בידיוק $abs(Aut_K (L))$
+]
+#remark[את הלמה וההוכחה לעיל התחלנו לראות בהרצאה של ה־13/05 וסיימנו ב־19/05.]
+
+
+= *תרגול 6 – 14/05*
+== משהו
+
+= *תרגיל 5*
+== טריקים
+== מסקנות
+
+= *הרצאה 14 – 19/05*
+== הרחבות רדיקליות – המשך
+#exercise("6.4.5 ברשומות")[#todo]
+#proof[#todo]
+
