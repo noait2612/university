@@ -84,7 +84,6 @@ $QQ subset.eq KK subset.eq QQ(xi_8)$ ו־$[K : QQ] = 2$.
 #sub_subquestion()
 אם $p$ ראשוני אז $Phi_(p n) (t) = Phi_n (t^p)$ אם $p divides n$ ואחרת $Phi_(p n) (t) = (Phi_n (t^p)) / (Phi_n (t))$.
 #proof[
-  #todo
   יהי $p$ ראשוני ו־$n in NN$, באינדוקציה על $n$ נראה שמתקיים
   $ Phi_(p n) (t) = mycases(Phi_n (t^p), p divides n, (Phi_n (t^p)) / (Phi_n (t)), p divides.not n) $
   וראינו שעבור $p$ ראשוני מתקיים
@@ -95,25 +94,44 @@ $QQ subset.eq KK subset.eq QQ(xi_8)$ ו־$[K : QQ] = 2$.
   $ Phi_n (t) = (t^p-1) / (product_(d divides n, d!=n) Phi_d) $
   ואכן, עבור $n=1$ מתקיים
   $ Phi_p (t) = (t^p-1) / (product_(d divides 1, d!=1) Phi_d) = (t^p-1) / (Phi_1 (t)) = (Phi_1 (t^p)) / (Phi_1 (t)) $
+
+  #colbreak()
+
   נניח שהטענה נכונה עבור $n in NN$ כך ש־$p divides.not n$ ומתקיים
   $ Phi_(p n) (t) = (Phi_n (t^p)) / (Phi_n (t)) $
-  ונראה שהטענה נכונה גם עבור $m > n$ כך ש־$p divides.not m$
-  אז לפי הגדרה, מתקיים
-  $ t^(p n') -1 = product_(d divides p n') Phi_d (t) $
-  נסתכל על המחלקים של $p n'$:
-  + אם $p divides d$ אז $d=p k$ ולכן $k divides n'$
-  + אם $p divides.not d$ אז $d divides n'$
-  ולכן נקבל
+  ונחשב
   $
-    t^(p n') -1 = product_(d divides p n') Phi_d (t) = product_(d divides p n', p divides d) Phi_d (t) dot.op product_(d divides p n', p divides.not d) Phi_d (t)
+    Phi_(p n) (t) = (t^(p n)-1) / (product_(d divides p n \
+    d!= p n) Phi_d (t)) = (t^(p n)-1) / (Phi_n (t) dot.op product_(d divides n \
+    d !=n ) Phi_(p d) (t) dot.op product_(d divides n \
+    d!=n) Phi_d (t)) =_("הנחת האינדוקציה") 1 / (Phi_n (t)) dot.op (t^(p n)-1) / (product_(p divides n \ p!=n)(Phi_d (t^p)) / (Phi_d (t))) dot.op 1 / (product_(d divides n\ d!= n) Phi_d (t)) \
+    = ((t^p)^n-1) / (product_(p divides n \ p!=n)Phi_d (t^p)) dot.op 1 / (Phi_n (t)) = (Phi_n (t^p)) / (Phi_n (t)) / (product_(p divides n \ p!=n)Phi_d (t^p)) dot.op 1 / (Phi_n (t)) = (Phi_n (t^p)) / (Phi_n (t))
   $
-  אבל גם מתקיים
-  $ t^(p n')-1 = (t^n')^p - 1 = product_(d divides n') Phi_d (t^p) $
-  (ראינו את זה כבר במטלה קודמת / בהרצאה, זה הטריק של $t mapsto t^p$).\
-  אז יש לנו בסך־הכל
+  ניתן היה להפעיל את הנחת האינדוקציה כי אם $p divides.not n$ אז $p divides.not d$.\
+  נראה כעת עבור המקרה בו $p divides n$ ולכן $n = p^ell k$ עבור $p divides.not k$ ונצטרך לעשות אינדוקציה על $ell$.\
+  עבור בסיס האינדוקציה (יש פה אינדוקציה בתוך אינדוקציה), נניח ש־$ell=1$ ולכן $n = p k$, נחלק לשני מקרים
+  + $k = 1$ ולכן $n = p$ ובמקרה זה מתקיים מצד אחד
+    $ Phi_(p p) (t) = Phi_(p^2) (t) = t^p^2-1 $
+    ומצד שני
+    $ Phi_(p p) (t) = Phi_(p^2) (t) = product_(d divides p^2) Phi_d (t) = Phi_1 (t) Phi_p (t) Phi_(p^2) (t) $
+    ולכן
+    $ Phi_(p^2) (t) = (t^p^2-1) / (Phi_1 (t) Phi_p (t)) = (t^p^2-1) / ((t-1)((t^p-1) / (t-1))) = (t^p^2-1) / (t^p-1) $
+    אבל
+    $ Phi_p (t^p) = (t^p^p-1) / (t^p-1) = (t^p^2-1) / (t^p-1) $
+    וזה סוגר את המקרה הזה.
+  + לכל $d divides k$ נסמן $n' = p d$ מתקיים $Phi_(p n') (t) = Phi_n' (t^p)$ ואז
   $
-    product_(d divides p n', p divides d) Phi_d (t) dot.op product_(d divides p n', p divides.not d) Phi_d (t) = product_(d divides n') Phi_d (t^p)
+    Phi_(p^2k) (t) = (t^(p^2k)-1) / (product_(d divides p^2k\ d != p^2k) Phi_d (t)) = (t^(p^2k)-1) / (product_(d divides k) Phi_d (t) product_(d divides k\
+    p divides.not d) Phi_p^d (t) product_(d divides k\
+    d != k) Phi_(p^2d) (t))=_(p divides.not d) ((t^p)^(p k)-1) / (product_(d divides k) Phi_d (t) product_(d divides k)((Phi_d (t^p)) / (Phi_d (t))) product_(d divides k \ d!=k) Phi_(p^2d) (t))
+    \ =_("הנחת האינדוקציה" p divides k) ((t^p)^(p k)-1) / (product_(d divides k) Phi_d (t^p) product_(d divides k \ d!=k) Phi_(p d) (t^p)) = ((t^p)^(p k)-1) / (product_(d divides p k \ d != p k) Phi_d (t^p)) = Phi_(p k) (t^p)
   $
+  נניח עכשיו שהטענה נכונה לכל $1<=ell' < ell$ ונראה שהטענה נכונה עבור $ell$, אז נסמן $n' = p^(ell')d$ שמתקיים $Phi_(p n') (t) = Phi_(n') (t^p)$ ואז
+  $
+    Phi_( p n) (t) = (t^(p n)-1) / (product_(d divides p n \ d != p n) Phi_d (t)) = (t^(p n)-1) / (product_(d divides p^ell k \ d != p^ell k) Phi_d (t))=((t^p)^n-1) / (product_(d divides k) Phi_d (t) product_(d divides k) Phi_(p d) (t)) product_(d divides k \ 1<=ell'<ell) Phi_(p p^(ell')d) (t^p)) \
+    =_("הנחת האינדוקציה") ((t^p)^n-1) / (product_(d divides k) Phi_d (t) product_(d divides k) Phi_(p d) (t) product_(d divides k \ 1<=ell'<ell) Phi_(p^(ell')d) (t^p)) =_((star)) ((t^p)^n-1) / (product_(d divides n \ p divides.not d) Phi_d (t^p) product_(d divides p^ell k=n \ p divides d\ d!= p^ell k) Phi_d (t^p)) = ((t^p)^n-1) / (product_(d divides n \ d!=n) Phi_d (t^p)) = Phi_n (t^p)
+  $
+  היה ניתן להשתמש בהנחת האינדוקציה כי $p^(ell')k = n'$ ו־$(star)$ נובע מכך ש־$p divides.not d$ ולכן $Phi_(p d) (t) = (Phi_d (t^p)) / (Phi_d (t))$.
 ]
 
 #subquestion()
@@ -154,9 +172,16 @@ $QQ subset.eq KK subset.eq QQ(xi_8)$ ו־$[K : QQ] = 2$.
 
 #question()
 בהרצאה ראינו ש־$FF_(p^d) slash FF_p$ היא הרחבה ציקלוטומית על־ידי שורש יחידה $xi$ מסדר $p^d -1$ ושבמצב כזה קיים שיכון $ Aut(FF_(p^d) slash FF_p) arrow.r.hook Aut(mu_(p^d-1)) arrow.r.tilde (ZZ slash (p^d-1)ZZ)^times $
-נתאר את השיכון $Aut_(FF_p)(FF_(p^d)) = Fr_p^(ZZ slash d ZZ) arrow.r.hook (ZZ slash (p^d-1)ZZ)^times$ ונקבע את תמונת איבר הפרובניוס $Fr_p$
+נתאר את השיכון $Aut_(FF_p)(FF_(p^d)) = Fr_p^(ZZ slash d ZZ) arrow.r.hook (ZZ slash (p^d-1)ZZ)^times$ ונקבע את תמונת איבר הפרובניוס $Fr_p$.
 #proof[
-  #todo
+  אנחנו יודעים ש־$FF_(p^d)^times$ היא חבורה ציקלית ולכן נסמן $FF_(p^d)^times = angle.l xi angle.r$ עבור $xi in FF_(p^d)$ וכל $0!=alpha in FF_(p^d)^times$ הוא מהצורה $xi^k$ עם $k in ZZ slash (p^d-1)ZZ$ וכבר ראינו בהרצאה ובתרגיל הקודם ש־$mu_(p^d-1) = FF_(p^d)^times tilde.eq (ZZ slash (p^d-1)ZZ)$ באמצעות $exp$.\
+  מכיוון שהשדה סופי, אנחנו יודעים שהפרובניוס הוא אוטומורפיזם (למה? אנחנו יודעים שפרובניוס הוא הומומורפיזם, והוא חד־חד ערכי כי אם $Fr_p (x) = Fr_p (y)$ אז $x^p=y^p$ ובגלל שאין מחלקי אפס כי זה תחום שלמות קיבלנו חד־חד ערכיות. וכל העתקה חד־חד ערכית מקבוצה אל עצמה היא על ולכן אוטומורפיזם) ולכן
+  $ Aut_(FF_p) (FF_(p^d)) = {Fr_p^k : x mapsto x^p^k bar k in [d-1]} $
+  היא חבורה ציקלית מסדר $d$ (כי $x^p^d=x$ לכל $x$ ואין חזקה נמוכה יותר שעושה את זה).\
+  ניקח את $xi$ ממקודם, ומתקיים $Fr_p^k(xi) = xi^p^k$ ולכן לכל $k in [d-1]$ נקבל $ Fr_p^k : xi^m mapsto (xi^m)^p^k = xi^(m dot.op p^k) $ שזו בעצם מכפלה ב־$p^k mod (p^d-1)$ וזה בעצם אוטומורפיזם כפלי של החבורה הציקלית $mu_(p^d-1)$.\
+  בגלל שאוטומורפיזם מכבד את מבנה החבורה נקבל $Fr_p^k in Aut_FF_p (FF_(p^d))$
+  $ Fr_p^k mapsto [p^k] in (ZZ slash (p^d-1)ZZ)^times $
+
 ]
 
 #question()
@@ -174,37 +199,20 @@ $QQ subset.eq KK subset.eq QQ(xi_8)$ ו־$[K : QQ] = 2$.
 #subquestion()
 נראה שאם $alpha in FF_(q^d)$ יוצר את $FF_(q^d)^times$ אז המסלול שלו ב־$Aut(FF_(p^d) slash FF_q)$ מכיל $d$ איברים שונים.
 #proof[
-  #todo
+  יהי $alpha in FF_(q^d)$ יוצר של $FF_(q^d)^times$. אז המסלול שלו ב־$Aut(FF_(q^d) slash FF_q)$ זה קבוצת הצמודים שלו, $C_alpha$, אז
+  $ abs(o(alpha)) = abs(C_alpha) = abs(deg(f)_(alpha slash FF_q)) = [FF_q (alpha) : FF_q] $
+  אבל $alpha$ הוא יוצר של $FF_(q^d)^times$ ולכן $ [FF_q (alpha) : FF_q] = [ FF_(q^d) : FF_q] = d $
 ]
 
 #subquestion()
 נוכיח שיש בידיוק $(phi(q^d-1)) / d$ פולינומים פרימיטביים מתוקנים מדרגה $d$ ב־$FF_q [x]$.
 #proof[
-  #todo
-]
+  ראינו ש־$FF_(q^d)^times$ היא חבורה ציקלית מסדר $q^d-1$ ולכן מספר היוצרים שלה הוא $phi(q^d-1)$, נסמן $A = { alpha in FF_(q^d)^times bar angle.l alpha angle.r = FF_(q^d)^times}$, קבוצת היוצרים.\
+  כל פולינום אי־פריק $f in FF_q [x]$ מדרגה $d$ יש לו $d$ שורשים ב־$FF_(q^d) [x]$ אשר צמודים תחת הפרובניוס
+  $ {alpha, alpha^q, alpha^q^d, ..., alpha^q^(d-1)} $
+  עם המיפוי $sigma : x mapsto x^q$ (פורבניוס אוטומורפיזם ב־$FF_q$).\
+  יהי $alpha in A$ הפולינום המינימלי המתוקן מעל $FF_q [x]$ עם $alpha$ בתור שורש הוא $f_alpha (x)$, אבל גם כל הצמדת פרבוניוס $alpha$ לעיל היא גם שורש של הפולינום המינימלי הזה, וזה אומר שכל המסלול של ההצמדה לעיל הם שורשים של $f_alpha (x)$, משמע יש $d$ שורשים: כל מסלול ההצמדה.\
+  ברור שלכל פרימיטיבי אין את אותו המסלול כי יש לכל אחד מהם מסלול שונה תחת הצמדת הפרובניוס ולכן כל פולינום פרימטיבי מגיע ממסלול אחד בגודל $d$.\
+  אז ראינו שכל הפרימטיביים הם בידיוק $phi(q^d-1)$ (זה גם בעצם $abs(A)$), כל מחלקת צמידות כזאת מתחלקת למסלולים שונים מגודל $d$ ולכן מספר המסלולים האלו, שכפי שראינו עכשיו זה מספר הפולינומים הפרימטיביים זה בידיוק $phi(q^d-1) / d$.
 
-#question()
-
-#subquestion()
-נוכיח שמתקיים
-$
-  sum_(d divides n) mu(n / d) g(d) = sum_(d divides n) mu(n / d)sum_(k divides d) f(k) = sum_(k divides n) f(k) sum_(m divides (n slash k)) mu(n / (k m))
-$
-#proof[
-  #todo
-]
-
-
-#subquestion()
-נעזר בסעיף הקודם ונראה שמתקיים
-$ sum_(d divides n) mu(n / d) g(d) = sum_(k divides n) f(k) sum_(m divides (n slash k)) mu(m) $
-#proof[
-  #todo
-]
-
-#subquestion()
-נוכיח שלכל $n>1$ מתקיים $sum_(d divides n) mu(d) = 0$ ונסיק שמתקיים
-$ sum_(k divides n) f(k) sum_(m divides (n slash k)) mu(m) = f(n) $
-#proof[
-  #todo
 ]
