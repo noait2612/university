@@ -66,19 +66,40 @@
 #subquestion()
 נראה כי אם $norm(x_k) arrow.r norm(x)$ וגם $angle.l x,x_k angle.r arrow.r angle.l x,x angle.r$ אז $x_k arrow.r x$.
 #proof[
-
+  מתקיים
+  $
+    norm(x-x_k) &=_("הגדרה") angle.l x-x_k, x - x_k angle.r \
+    &=_("אדיטיביות") angle.l x-x_k, x angle.r + angle.l x-x_k, -x_k angle.r \
+    &=_("הרמיטיות") overline(angle.l x"," x-x_k angle.r) + overline(angle.l -x_k"," x-x_k angle.r) \
+    &=_("אדיטיביות") overline(angle.l x","x angle.r) + overline(angle.l x "," -x_k angle.r) - overline(angle.l x_k "," x angle.r)-overline(angle.l x_k "," -x_k angle.r) \
+    &= norm(x)^2 - angle.l x_k, x angle.r - overline(angle.l x_k"," x angle.r) + norm(x_k)^2 \
+    &=_(k arrow.r infinity ) norm(x)^2 - angle.l x, x angle.r - overline(angle.l x"," x angle.r) + norm(x)^2 \
+    &= 0
+  $
+  ולכן $x_k arrow.r x$.
 ]
 
 #subquestion()
 תהיי $(e_k)_(k=1)^infinity$ מערכת אורתונורמלית. נראה כי הסדרה $y_k = angle.l e_k, x angle.r e_k$ מתכנסת.
 #proof[
-
+  מאי־שיוויון בסל נקבל
+  $ norm(x) >= sum_(k=1)^infinity abs(angle.l e_k","x angle.r)^2 $
+  טור ממשי מתכנס בהחלט אם (תנאי הכרחי אך לא מספיק) מתקיים $abs(angle.l e_k "," x angle.r)^2 arrow.r 0$ ולכן $angle.l e_k, x angle.r arrow.r 0$.\
+  אז מתקיים $norm(y_k) = norm(angle.l e_k "," x angle.r dot.op e_k) = abs(angle.l e_k "," x angle.r) dot.op underbrace(norm(e_k), =1) arrow.r 0$.\
+  אבל אז גם $angle.l y_k, 0 angle.r = 0$ לכל $k in NN$ מהומגניות המכפלה הפנימית ומסעיף א' נקבל $y_k arrow.r 0$.
 ]
 
 #question()
 נוכיח שהבסיס הסטנדרטי הוא מערכת אורתונורמלית שלמה ב־$ell^2$, כלומר קבוצת הסדרות $e_k$ ששוות ל־$1$ במקום ה־$k$ ו־$0$ אם אחרת.
 #proof[
-
+  לכל $n in NN$ מהגדרת הבסיס הסטנדרטי מתקיים
+  $ norm(e_m) = sqrt(sum_(k=1)^infinity abs(e_n)_k^2)=sqrt(abs(1)^2)=1 $
+  ולכל $n!=m$ מתקיים
+  $ angle.l e_n, e_m angle.r = sum_(k=1)^infinity (e_n)_k overline((e_m)_k)=0 $
+  שכן $e_n = (0, ..., 0, underbracket(1, n"המקום ה־"), 0, ..., 0), e_m = (0, ..., 0, underbracket(1, m"המקום ה־"), 0, ..., 0)$ ולכן זה אכן בסיס אורתונורמלי.\
+  נשאר להראות שלמות; יהי $x = (x_1, x_2, ...) in ell^2$ נשים לב שזה שקול לביטוי $x = sum_(i=1)^infinity x_n e_n$, נראה שהטור מתכנס
+  $ norm(x)^2 = sum_(n=1)^infinity norm(x_n e_n)^2 = sum_(n=1)^infinity abs(x_n)^2 $
+  אבל $x in ell^2$ ולכן הסדרה מתכנסת ולכן הסדרה $sum_(n=1)^infinity (x_n e_n) arrow.r x$ בנורמת $ell^2$, בפרט זה אומר ש־$overline(span { e^k bar k in NN}) = ell^2$, וראינו שמערכת אורתונורמלית שלמה היא מערכת אורתונורמלית שהסגור של הספאן שלה הוא כל המרחב וזה מסיים.
 ]
 
 #question()
@@ -96,8 +117,14 @@ $ 2(norm(x)^2+norm(y)^2) = norm(x+y)^2+norm(x-y)^2 $
 ]
 
 #subquestion()
-נוסחאות הפולריזציה
+נוסחאות הפולריזציה.
 
 #sub_subquestion()
 נניח ש־$H$ מרחב מכפלה פנימית ממשי. נראה שלכל $x,y in H$ מתקיים
 $ angle.l x, y angle.r = (norm(x+y)^2-norm(x-y)^2) / 4 $
+#proof[
+  מכיוון ש־$H$ מרחב מכפלה פנימית ממשי נובע $angle.l x,y angle.r = angle.l y,x angle.r$ ולכן מתקיים
+  $
+    norm(x+y)^2 - norm(x-y)^2 = norm(x)^2 + norm(y)^2 + 2 angle.l x,y angle.r - (norm(x)^2 + norm(y)^2 - 2 angle.l x, y angle.r) = 4 angle.l x,y angle.r => angle.l x,y angle.r = (norm(x+y)^2-norm(x-y)^2) / 4
+  $
+]
