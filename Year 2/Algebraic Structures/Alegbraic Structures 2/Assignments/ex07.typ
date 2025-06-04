@@ -18,6 +18,28 @@
 #let Aut = math.op("Aut")
 
 #question()
+נסמן $F = QQ(s)$ (שדה הפונקציות הרציונליות במשתנה $s$ מעל $QQ$). יהי $K$ שדה הפיצול של $x^n-s in F[x]$ ונוכיח שמתקיים $ Aut(K slash F) tilde.eq (ZZ slash n ZZ)^times times.l_theta (ZZ slash n ZZ) $ כאשר
+$theta : (ZZ slash n ZZ)^times arrow.r Aut(ZZ slash n ZZ)$ היא האיזומורפיזם המוגדר על־ידי $(theta(k))(n) = k n$.
+#proof[
+  אנחנו יודעים שהשורשים של הפולינום $x^n-s$ הם $alpha, xi_n alpha, xi_n^2 alpha, ..., xi_n^(n-1)alpha$ כאשר $alpha = root(n, s)$ כלשהו ו־$xi_n$ שורש יחידה פרימיטיבי מסדר $n$.\
+  על־כן, שדה הפיצול מהגדרה הוא $K = F(alpha, xi_n)$.\
+  היות ו־$alpha$ הוא שורש של הפולינום $x^n-s$ שהוא אי־פריק מעל $K$ אז הדרגה של $F(alpha)$ היא מסדר $n$ ושורש יחידה פרימטיבי הוא אלגברי מעל $QQ$.\ נשאר להראות שהוא אי־פריק גם מעל $FF$: נניח בשלילה שהוא לא פריק ולכו הוא מכפלה של שתי פונקציות רציונליות עם סכום מעלות $n$ (כל אחת מהן עם דרגה קטנה מ־$n$), אבל בשדה הפיצול הוא מכפלה של גורמים לינאריים, ולכן המקדם של האיבר החופשי בהכרח צריך להיות שייך ל־$QQ(s)$ משמע הוא מהצורה של $s^k$ כלשהו אבל אז מחילוק פולינומים $f(s) / g(s) = s^k$ כאשר $f,g$ הפונקציות של הפירוק של הפולינום אבל אז $f(s)=g(s) s^k$ וב־$f(s)$ אין חזקות של $s$ רציונליות וזו סתירה, אז $x^n-s$ הוא אי־פריק מעל $F$.\
+  נסמן $alpha = s^(1 / n)$ ואז הצמודים של $alpha$ הם מהצורה ${alpha, omega_n alpha, ... omega_n^(n-1) alpha}$ ואלו לאו דווקא כל שורשי היחידה הפרימיטיביים מסדר $n$ מעל $K$ אבל הם כן מוכלים בזה.\
+  כעת נגדיר
+  $ Phi : Aut(K slash F) arrow.r (ZZ slash n ZZ)^times times.l_theta (ZZ slash n ZZ) $
+  על־ידי
+  $Phi(sigma) = (k,a)$ כאשר $sigma(xi_n) = xi_n^k, sigma(alpha)xi_n^a alpha$ מהגדרת האוטומורפיזם.\
+  + זה הומומורפיזם: ניקח $sigma_1, sigma_2 in Aut(K slash F)$
+    $
+      sigma_1 sigma_2 (xi_n) = sigma_1 (xi_n^k_2) = xi_n^(k_1k_2), sigma_1 sigma_2 (alpha) = sigma_1 (xi_n^a_2 alpha) = xi_n^(k_1 a_2) xi_n^a_1 = xi_n^(a_1 + k_1 a_2)alpha
+    $
+    נשים לב שהכל מוגדר לעיל כי מהגדרת המכפלה החצי־ישרה $Phi(sigma_1 sigma_2) = (k_1 k_2, a_1 + k_1 a_2)$.
+  + ראינו כבר בתרגול שזה שיכון
+  + זה על: אנחנו רוצים לכל $(k,a) in (ZZ slash n ZZ)^times times.l_theta (ZZ slash n ZZ)$ שיהיה $sigma in Aut(K slash F)$ שמקיים את התנאים $sigma(xi_n)=xi_n^k, sigma(alpha)=xi_n^a alpha$.\
+    אז נגדיר $sigma(xi_n) = xi_n^k$ כי $xi_n^k$ הוא עדיין שורש יחידה פרימטיבי ולכן $xi_n mapsto xi_n^k$ מגדיר אוטומורפיזם $QQ(xi_n) slash QQ$ ולכן $F subset QQ(xi_n, alpha)$ ונגדיר $sigma(alpha)= xi_n^a alpha$ ואז
+    $ sigma(alpha)^n = (xi_n%a alpha)^n = xi_n^(a n) alpha n = xi_n^(a n) s =_(xi_n^n = 1) s in K $
+    ולכן זה על.
+]
 
 #question()
 תהיי $L slash QQ$ הרחבה אלגברית נוצרת סופית. נוכיח שב־$L$ יש מספר סופי של שורשי יחידה.
@@ -82,20 +104,13 @@
 #subquestion()
 נמצא שיכון של $Aut(K slash QQ)$ אל תוך החבורה המתוארת בשאלה $1$ ונכתוב את התמונה.
 #proof[
+  קודם כל $(ZZ slash 8ZZ)^times = {1,3,5,7}$ ולכן השיכון הוא ${1,3,5,7} times.l_theta (ZZ slash 8ZZ)$.\
   ניקח את האוטומורפיזם שמצאנו בסעיף הקודם, ואז
   $ sigma(e^((pi i) / 4))=(1+sigma(i)) / sigma(sqrt(2)) = (1+ epsilon i) / ((-1)^k sqrt(2))=e^((pi i) / 4(4k+epsilon)) $
   ואז עם מה שמצאנו בשאלה $1$ מתקיים $phi.alt(sigma) = (c,k)$ ונקבל $c in {4k-1, 4k+1}$ ואז
   $
     im(f) = {(c,k) bar k in ZZ_8m c in {4k-1, 4k+1}} = { (c,k) mid(bar) k in ZZ_8, c in mycases({1","7}, 2 divides k, {3"," 5}, 2 divides.not k)}
   $
-  #todo
-]
-
-#subquestion()
-נקבע האם החבורה משאלה $1$ היא אבלית והאם היא חבורה דיהדרלית.
-#proof[
-  #todo
-  היא לא חברה אבלית, שכן $(1,2) dot.op (3,3) = (3,5) != (3,1) = (3,3) dot.op (1,2)$
 ]
 
 #question()
@@ -133,10 +148,18 @@
 נוכיח שלכל $alpha, beta in overline(FF_p)$ שונים ההרחבות $K(s^(1 / p)+ alpha t^(1 / p))$ ו־$K(s^(1 / p)+beta t^(1 / p))$ שונות זו מזה ובעלות דרגה $p$. נסיק שיש אינסוף שדות ביניים בין $K$ לבין $K^(1 / p)$.
 #proof[
   ניקח $x = s^(1 / p) + alpha t^(1 / p) in K^(1 / p)$ ולכן $x^p = s+alpha^p t in K$ ולכן $X^p-(s+alpha^p t) = 0$ הוא פולינום אי־פריק מעל $K$ כי הוא אי־פריד (כי הנגזרת היא $0$ במציין $p$) ו־$x$ הוא שורש ו־$s+alpha^p t in.not K^p$: כי אם הוא היה, אז היה מתקיים
-  $ s+alpha^p t = (f(s,t) / g(s,t))^p <==> f^p(s,t) / g^p(s,t) = s+alpha^p t <==> f^p(s,t) = g^p(s,t)(s+alpha^p t) $
+  $
+    s+alpha^p t = (f(s,t) / g(s,t))^p <==> (f^p (s,t)) / (g^p (s,t)) = s+alpha^p t <==> f^p (s,t) = g^p (s,t)(s+alpha^p t)
+  $
   אבל בצד ימין הדרגה של $s,t$ היא $1$ ובשמאל הדרגה של $s,t$ היא מדרגה שמחלקת את $p$ וגם אם $g$ קבועה עדיין מטעמי דרגות אין לנו דרגת $p$, ולכן $s+alpha^t p in.not K^p$ ולכן הפולינום הוא אי־פריק ואז
   $ [K(x) : K ] = p $
   וזה סוגר את החלק הראשון, עבור החלק השני נניח בשלילה ש־$K(s^(1 / p)+ alpha t^(1 / p)) = K(s^(1 / p)+ beta t^(1 / p))$ עבור $alpha!=beta$ אז נגדיר
   $ x=s^(1 / p) + alpha t^(1 / p), space y = s^(1 / p) + beta t^(1 / p) $
-  ולכן $ x-y= (alpha-beta)t^(1 / p) $
+  ולכן $ x-y= (alpha-beta)t^(1 / p) <==> (x-y) / (alpha-beta) = t^(1 / p) in K(x-y) $
+  שמוגדר היטב כי $alpha!=beta$, ולכן $t^(1 / p) in K(y)$ ולכן $t in K(y)^p$ משמע $t in K$, אבל אז
+  $ K(s^(1 / p), t^(1 / p)) subset.eq K(y) $
+  ובגלל יחס דרגות והכלה נקבל עם מה שמצאנו בשלב הקודם והסעיף הקודם
+  $ [K(s^(1 / p), t^(1 / p)) : K ] = p^2 <= p = [K(y) : K] $
+  אבל זו סתירה.\
+  עבור ההסקה, $overline(FF_p)$ אינסופי (כי הוא מכיל כל הרכבה אלגברית של $FF_p$), יש לנו אינסוף ערכים יונקיים עבור $alpha$ ולכן יש אינסוף שדות $K(s^(1 / p) + alpha t^(1 / p))$ שכל אחד מהם מדרגה $p$ ששונים מכל $alpha$ אחרת ולכן יש אינסוף שדות ביניים.
 ]
