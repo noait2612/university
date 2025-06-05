@@ -1,6 +1,6 @@
 #import "../../../src/article.typ": *
 #show: article.with(
-  title: [ פתרון מטלה 06 --- אנליזה פונקציונלית, 80417 ],
+  title: [ פתרון מטלה 07 --- אנליזה פונקציונלית, 80417 ],
   signature: [#align(center)[#image("../../../src/duck.png", width: 30%, fit: "contain")]],
 )
 
