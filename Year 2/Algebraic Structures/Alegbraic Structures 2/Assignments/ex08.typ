@@ -93,8 +93,8 @@
 #proof[
   תהיי $sigma in Gal(L slash QQ)$, מהגדרה אנחנו יודעים שמתקיים
   $
-    sigma(plus.minus sqrt(beta_1)) mapsto plus.minus sqrt(beta_1) \
-    sigma(plus.minus sqrt(beta_2)) mapsto plus.minus sqrt(beta_2)
+    sigma(sqrt(beta_1)) mapsto plus.minus sqrt(beta_1) \
+    sigma(sqrt(beta_2)) mapsto plus.minus sqrt(beta_2)
   $
   בעצם יש לנו 8 אפשרויות שונות: זהות, שינוי סימן של אחד מהשורשים או שינוי סימן של שני השורשים (וכמובן יש גם שורש חיובי וגם שורש שלילי).\
   אז עלינו לחפש תתי־חבורות של $S_4$ (4 שורשים) מסדר $8$.\
@@ -109,5 +109,5 @@
     tau : sqrt(beta_1) mapsto sqrt(beta_1), sqrt(beta_2) mapsto -sqrt(beta_2)
   $
   ונסתכל על ההרכבות $sigma tau, tau sigma$, מתקיים
-  $ sigma compose tau(sqrt(beta_1)) = -sqrt(beta_1) != sqrt(beta_1) = tau compose sigma(beta_1) $
+  $ sigma compose tau(sqrt(beta_1)) = -sqrt(beta_1) != sqrt(beta_1) = tau compose sigma(sqrt(beta_1)) $
 ]
