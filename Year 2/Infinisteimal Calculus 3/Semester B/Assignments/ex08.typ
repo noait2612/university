@@ -251,7 +251,11 @@ $ cases(F_1 (x,y,z)=sin(x y) + x^2z-y^3=1, F_2 (x,y,z) space e^(y z) + x y^2 + z
   שניהם שווים לאפס, אז$ (d y) / (d x) + 2 + (d z) / (d x) = (d y) / (d x) + 3 (d z) / (d x) => (d z) / (d x) = 1 $
   ואז
   $ (d y) / (d x) + 2 + (d z) / (d x) =>_((d z) / (d x)=1) (d y) / (d x) = -3 $
-  #todo
+  נשאר לחשב את $(d z) / (d y)(1,0,1)$, נגזור את $F_2 (x(y), y, z(y))$ לפי $y$ ונקבל
+  $
+    d / (d y)[e^(y z)+x y^2+z^3]=0 =>_("כלל השרשרת") e^(y z)(z + y dot.op (d z) / (d y))+(d x) / (d y)y^2+2 x y + 3z^2 dot.op (d z) / (d y)
+    \ =>bar_((1,0,1)) 1(1+0)+0+0+3dot.op 1^2 dot.op (d z) / (d y) = 0 => (d z) / (d y) = -1 / 3
+  $
 ]
 
 #question()
@@ -287,17 +291,22 @@ $ cal(L)(lambda, x) = f(x) - sum_(i=1)^n (lambda_i g_i (x)) $
 נוכיח כי $cal(L)$ גזירה פעמיים ברציפות ונחשב את ההסיאן שלה.
 
 #proof[
-  נצטרך לחלק לבלוקים בחישוב שלנו בהתאם לנגזרות, באופן כללי מהגדרה זה יהיה מהצורה
+  מההנחה שלנו, $H f$ (מטריצת ההסיאן של $f$ קיימת) וגם לכל $i in [n]$ קיימת $H g_i$.\
+  נשים לב שההסיאן שמתקבל הוא מצורה של מטריצות בלוקים
   $
-    H cal(L)_((lambda, x)) = mat((partial^2 cal(L)) / (partial lambda_i^2), (partial^2 cal(L)) / (partial lambda_i lambda x_i); (partial^2 cal(L)) / (partial x_i partial lambda_i), (partial^2 cal(L)) / (partial^2 x_i))
+    H cal(L)_((lambda, x)) = mat((partial^2 cal(L)) / (partial lambda_i^2), (partial^2 cal(L)) / (partial lambda_i lambda x_i); (partial^2 cal(L)) / (partial x_i partial lambda_i), (partial^2 cal(L)) / (partial^2 x_i)) = mat(0_(n times n), - gradient g(x)^T; -gradient g(x), H f(x) - sum_(i=1)^n lambda_i H g_i (x)) =_("סימון") mat(0, G^T; G, C)
   $
-  ובהתאם למה שמצאנו בסעיף הקודם
-  $ (partial^2 cal(L)) / (partial lambda_i lambda x_i) $
+  כאשר הטרנספוס נועד להעברה למימדים הנכונים עבור מטריצת ההסיאן (מוקטור עמודה לשורה במקומות הנכונים).
 ]
+
+#pagebreak()
 
 #sub_subquestion()
 נראה כי ההסיאן $H cal(L)_((lambda, x))$ בהכרח אינו חיובי או שלילי בהחלט לכל $(lambda, x) in RR^n times B$.
 
 #proof[
-
+  מטרצה $M$ היא חיובית לחלוטין אם לכל $v!=0$ וקטור מתקיים $v^T M v>0$ ושלילית לחלוטין אם $v^T M v < 0$.\
+  מספיק שנסתכל על $n=1$ וניקח את ניקח $(0, x) in RR times B$ ונקבל
+  $ (0, x) mat(0, G^T; G, C) vec(0, x)=C x^2 $
+  שיכולה להיות אי־שלילית אם $H f (x) - sum_(i=1)^n lambda_i H g_i (x) < 0$ וחיובית אם זה גם חיובי.
 ]
