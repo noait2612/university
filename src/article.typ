@@ -165,6 +165,7 @@
 // Reimplementation of question macros
 #let question(number: -1) = {
   subquestion_counter.update(0)
+  sub_subquestion_counter.update(0)
   if number == -1 {
     question_counter.step()
   } else {
