@@ -1,6 +1,6 @@
 #import "../../../../src/article.typ": *
 #show: article.with(
-  title: [ פתרון מטלה 07 --- מבנים אלגבריים 2, 80446 ],
+  title: [ פתרון מטלה 08 --- מבנים אלגבריים 2, 80446 ],
   signature: [#align(center)[#image("../../../../src/duck.png", width: 30%, fit: "contain")]],
 )
 
@@ -19,10 +19,75 @@
 #let Gal = math.op("Gal")
 
 #question()
+יהי $K$ שדה עם rank-$p$ של $1$ (כלומר, $[K:K^p]=p^1$).
+
+#subquestion()
+נוכיח שלכל $n in NN$, ל-$K$ יש בידיוק הרחבה אחת $L slash K$ שהיא בלתי־ספרבילית לחלוטין (אי־פרידה בטהורה) מדרגה $p^n$ וש־$L = K(a^(1 / p^n))$ עבור כל $a in K slash K^p$.
+
+#proof[
+
+]
+
+#subquestion()
+נוכיח שלכל הרחבה סופית $L slash K$ יש שדה ביניים $L slash L_i slash K$ כך ש־$L_i slash K$ היא בלתי־ספרבילית לחלוטין (אי־פרידה בטהורה) ו־$L slash L_i$ ספרבילית.
+
+#proof[
+
+]
 
 #question()
 #subquestion()
 נמצא תת־חבורה $H$ מאינדקס $2$ של $Gal(QQ(xi_7) slash QQ) tilde.eq ZZ slash 6 ZZ$ ונמצא במפורש אוטומורפיזם $sigma$ שיוצר אותה.
+
+#proof[
+  ראשית, מתקיים
+  $ 2ZZ slash 6ZZ = {0+6ZZ, 2+6ZZ, 4+6ZZ} $
+  שנית, $ [QQ(xi_7) : QQ] = phi_"אויילר" (7) = 6 $
+  וממה שראינו מתקיים
+  $
+    Gal(QQ(xi_7) slash QQ) tilde.eq (ZZ slash 7 ZZ)^times = {1,2,34,5,6} => Gal(QQ(xi_7) slash QQ) tilde.eq ZZ slash 6ZZ
+  $
+  אנחנו צריכים $sigma$ אוטומורפיזם בגלואה משמר את $QQ$ ועושה תמורה על שורשי היחידה הפרימיטיביים
+  $ {xi_7^1, xi_7^2, xi_7^3, xi_7^4, xi_7^5, xi_7^6} $
+  אבל $xi_7$ יוצר את כולם ולכן $sigma$ נקבע ביחידות לפי לאן הוא שולח את $xi_7$ והוא כמובן נשלח לשורש יחידה אחר $xi_7^k$ עבור $k in [6]$ ועליו לכבד כפליות
+  $ sigma(xi_7^m) = (sigma(xi_7))^m = xi_7^(k m) $
+  אז $m mapsto k m mod 7 in Aut((ZZ slash 7ZZ)^times)$, וכפי שראינו זה בעצם $Aut(ZZ_6)$.
+  עכשיו נגדיר $sigma : xi_7 mapsto xi_7^3$ ו־$3$ כי זה יוצר של $(ZZ slash 7ZZ)^times$ $ 3^1=_(mod 7)3, 3^2=9=_(mod 7)2, 3^3=27=_(mod 7)6, 3^4=81=_(mod 7)4, 3^5=243=_(mod 7)5, 3^6=729=_(mod 7)1 $
+  ואז זה יוצר את כל החבורת גלואה. נשים לב שקיבלנו
+  $ Gal(QQ(xi_7) slash QQ) = angle.l sigma angle.r tilde.eq ZZ_6 $
+  אנחנו יודעים שתת־חבורה מאינדקס $2$ היא חבורה מסדר $3$, אז
+  $ H = angle.l sigma^2 angle.r = {id, sigma^2, sigma^4} $
+  ו־$H$ מכילה את האוטומורפיזמים
+  $ xi_7 mapsto xi_7^(3^0)=xi_7, space xi_7^(3^2) mapsto xi_7^2, space xi_7^(3^4) mapsto xi_7^4 $
+
+]
+
+#subquestion()
+נחשב את $z=sum_(h in H) h(xi_7)$ ונראה ש־$h(z)=z$ לכל $h in H$.
+
+#proof[
+  ראשית, מתקיים מסעיף א'
+  $ z = xi_7 + xi_7^2 + xi_7^4 $
+  ניקח $h in H$, אז מתקיים
+  $ h(z) = h(xi_7) + h(xi_7^2) + h(xi_7^4) $
+  אבל ראינו שמתקיים בסעיף א' $h=sigma_a in H$ הנתונה על־ידי $h(xi_7^k) = xi_7^(a k) mod 7$ עבור $a in {1,2,4}$.\
+  עבור $a=1$ ראינו, נשאר להראות עבור $a=2, a=4$:
+  $
+    sigma_2 (z) = xi_7^2 + xi_7^4 + xi_7 = z \
+    sigma_3 (z) = xi_7^4 + xi_7 + xi_7^2 = z
+  $
+  ולכן לכל $h in H$ מתקיים $h(z)=z$.
+]
+
+#subquestion()
+נסיק שמתקיים $z in QQ(xi_7)^H$ וש־$[QQ(z) : QQ]<=2$.
+
+#proof[
+
+]
+
+#subquestion()
+נמצא $d in ZZ$ כך שמתקיים $QQ(z)=QQ(sqrt(d))$.
 
 #proof[
 
@@ -47,7 +112,9 @@
 נסיק שאם $Gal(L slash K)$ אבלית אז כל שורש של $f$ יוצר את $L$ מעל $K$.
 
 #proof[
-  נניח כי $Gal(L slash K)$ אבלית
+  נניח כי $Gal(L slash K)$ אבלית ולכן כל $H<=Gal(L slash K)$ היא נורמלית ב־$Gal(L slash K)$.\
+  נסתכל על $L slash E slash K$, החבורה $Gal(L slash E) <= Gal(L slash K)$ ולכן $Gal(L slash E)$ נורמלית ב־$Gal(L slash K)$.\
+  לכן מתקיים ש־$E = L^(Gal(L slash K))$ היא הרחבה נורמלית מעל $K$ ולכן מסעיף א' נקבל שכל שורש של $f$ יוצר את $L$ מעל $K$.
 ]
 
 #question()
@@ -103,11 +170,25 @@
   נוכל לסווג אותן לחבורות אבליות ולא אבליות:\
   עבור החבורות האבליות, משפט המיון לחבורות אבליות נוצרות סופית נותן אותן בשלמותן: $C_8, C_4 times C_2, C_2 times C_2 times C_2$.\
   עבור החבורות הלא אבליות, אנחנו יודעים שהן $Q_8, D_4$ כאשר $Q_8$ היא חבורת הקווטרניונים.\
-  ראשית, $Gal(L slash QQ)$ היא לא חבורה אבלית: מספיק שנסתכל על
+  ברור ש־$C_8 subset.not S_4$ כי אין ב־$S_4$ איבר מסדר $8$, וגם עבור $C_4 times C_2 subset.not S_4$ כי התתי־חבורות האבליות היחידות של $S_4$ היא חבורת קליין ו־$ZZ_4$, ומאותה סיבה גם $C_2 times C_2 times C_2 subset.not S_4$.\
+  כמובן שגם $Q_8 subset.not S_4$ מטעמי מבנה, ולכן נשאר לבחון רק את $D_4$:
+  $ D_4 = angle.l r, s bar r^4 = s^2 = e, s r s = r^(-1) angle.r $
+  אכן כמובן $D_4$ מסדר 8, ואנחנו יודעים שאפשר להסתכל על $D_4$ כסימטריות של המלבן, ואנחנו יודעים ש־$D_4$ פועלת על ארבעת קודקודי הריבוע בצורה נאמנה: נמספר את הקודקודים $A,B,C,D$ ונסתכל על הפעולה של $D_4$ עליהם כאשר $r$ סיבוב ב־$90$ מעלות ו־$s$ שיקוף:
   $
-    sigma : sqrt(beta_1) mapsto - sqrt(beta_1), sqrt(beta_2) mapsto sqrt(beta_2) \
-    tau : sqrt(beta_1) mapsto sqrt(beta_1), sqrt(beta_2) mapsto -sqrt(beta_2)
+    A mapsto_r B, space B mapsto_r C, space C mapsto_r D, space D mapsto_r A \
+    A mapsto_(r^2) C, space B mapsto_(r^2) D, space C mapsto_(r^2) A, space D mapsto_(r^2) B \
+    A mapsto_(r^2) D, space B mapsto_(r^3) A, space C mapsto_(r^3) B, space D mapsto_(r^3) C \
+    A mapsto_(s) B, space B mapsto_(s) A, space C mapsto_(s) D, space D mapsto_(s) C \
+    A mapsto_(s r) C, space B mapsto_(s r) D, space C mapsto_(s r) A, space D mapsto_(s r) B \
+    A mapsto_(s r^2) D, space B mapsto_(s r^2) C, space C mapsto_(s r^2) B, space D mapsto_(s r^2) A \
+    A mapsto_(s r^3) B, space B mapsto_(s r^3) A, space C mapsto_(s r^3) D, space D mapsto_(s r^3) C \
   $
-  ונסתכל על ההרכבות $sigma tau, tau sigma$, מתקיים
-  $ sigma compose tau(sqrt(beta_1)) = -sqrt(beta_1) != sqrt(beta_1) = tau compose sigma(sqrt(beta_1)) $
+  ולכן הפעולה היא נאמנה, ונשים לב שיצאה לנו פה תמורה ($A=1, B=2, C=3, D=4$) ולכן ניתן לשכן את $D_4$ לתת־חבורה של $S_4$ וכמובן מאותו סדר ($8$), ולכן קיבלנו שמתקיים $Gal(L slash QQ) tilde.eq D_4$.\
+  ניקח $sigma in Gal(L slash QQ)$, מתקיימים אחד מהבאים
+  $
+    sigma(sqrt(beta_1)) mapsto -sqrt(beta_1), space sigma(sqrt(beta_2)) mapsto sqrt(beta_2) \
+    sigma(sqrt(beta_1)) mapsto sqrt(beta_1), space sigma(sqrt(beta_2)) mapsto -sqrt(beta_2) \
+    sigma(sqrt(beta_1)) mapsto sqrt(beta_2), space sigma(sqrt(beta_2)) mapsto sqrt(beta_1)
+  $
+  כאשר השניים הראשונים מקבילים ל־$r$ והאחרון זה $s$.
 ]
