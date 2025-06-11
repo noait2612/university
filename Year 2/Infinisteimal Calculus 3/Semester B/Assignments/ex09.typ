@@ -40,17 +40,39 @@
 $ ( f compose gamma)'' (0) = v^t H f_a v + D f_a (gamma''(0)) $
 
 #proof[
-  #todo
+  יהי $epsilon > 0$ ותהיי $gamma$ המסילה הנתונה, ניזכר במה שראינו במטלה 5:
+  + $D(angle.l f, g angle.r) = angle.l D f_x, g(x) angle.r + angle.l f(x), D g_x angle.r$
+  + $D f_x (v) = angle.l gradient f_x, v angle.r$
+  ולכן מתקיים מכלל השרשרת
+  $
+    (f compose gamma)'(t)= D f_(gamma(t)) compose gamma'(t) bar_(t=0) =_"נתון" D f_a compose v = angle.l gradient f(x), v angle.r
+  $
+  נסמן $gradient f(a)=h(a), v=g(a)$ ואז עם כל מה שראינו
+  $
+    (f compose gamma)''(0)=D angle.l gradient f(a), v angle.r = D angle.l h, g angle.r = angle.l D h_a, g(a) angle.r + angle.r h(a), D g_a angle.r =_(D g_a = (gamma'(0))=gamma''(0) \
+    D h_a = D(gradient f(a)) = H f_a (v)) angle.l H f_a (v), v angle.r + angle.l gradient f(a), gamma''(0) angle.r
+  $
+  וגם
+  $ angle.l H f_a (v), v angle.r + angle.l gradient f(a), gamma''(0) angle.r = v^t H f_a v + D f_a (gamma''(0)) $
 ]
 
 #subquestion()
-תהיי $g: B arrow.r RR^n$ גזירה פעמיים ברציפות עבור $n+1<=k$. נגדיר $A = g^(-1)({0})$ ונסמן ב־$cal(L) : RR^n times B arrow.r RR$ את הלגראנז'יאן של $f$ ביחס ל־$g$.\
+תהיי $g: B arrow.r RR^n$ גזירה פעמיים ברציפות עבור $n+1<=k$. נגדיר $A = g^(-1)({0})$ ונסמן ב־$cal(L) : RR^n times B arrow.r RR$, הלגראנז'יאן של $f$ ביחס ל־$g$.\
 תהיי $(lambda, a) in RR^n times A$ נקודה קריטית של $cal(L)$ כך ש־$D g_a$ מדרגה $n$.\
 נוכיח כי לכל $epsilon > 0$ ומסילה גזירה פעמיים ברציפות $gamma : (-epsilon, epsilon) arrow.r A$ כך ש־$gamma(0)=a$ ו־$gamma'(0)=v$ מתקיים
 $ (f compose gamma)''(0) = v^t H cal(L)_a^lambda v space (cal(L)^lambda (x) = cal(L)(lambda,x)) $
 
 #proof[
-  #todo
+  מהסעיף הקודם $(star) = (f compose gamma)'' (0) = v^t H f_a v + D f_a (gamma''(0))$.\
+  מהגדרת הלגראנז'יאן $cal(L)(lambda, x) = f(x) - sum_(i=1)^n lambda_i g_i (x)$ ובנקודה הקריטית $(lambda, a)$ מתקיים $D cal(L)^lambda_a = 0$, משמע
+  $ D f_a = sum_(i=1)^n lambda_i D g_i_a <==> gradient f(a) = - sum_(i=1)^n lambda_i D g_i_a (gamma''(0)) $
+  היות ו־$gamma(t) in A, A = g^(-1)({0})$, לכל $i in [n]$ מתקיים $g_i (gamma(t)) = 0$ ומכך ש־$g in C^2$ אז היא גזירה ברציפות פעמיים אל הפונקציה הקבועה $0$ ומסעיף א'
+  $ (g_i compose gamma)''(t) = v^t H g_i_a v + D g_i_a (gamma''(0))=0 => D g_i_a (gamma''(0)) = -v^t H g_i_a v $
+  ומ־$(star)$ נקבל
+  $
+    v^t H f_a v + sum_(i=1)^n lambda_i D g_i_a (gamma''(0)) = v^t H f_a v - sum_(i=1)^n lambda_i v^t H g_i_a v = v^t underbrace((H f_a - sum_(i=1)^n lambda_i H g_i_a), cal(L)^lambda_a) v = v^t H cal(L)^lambda_a v
+  $
+  ולכן $(f compose gamma)''(0) = v^t H cal(L)^lambda_a v$.
 ]
 
 #question()
@@ -65,13 +87,43 @@ $ (f compose gamma)''(0) = v^t H cal(L)_a^lambda v space (cal(L)^lambda (x) = ca
   $ gradient cal(L)_((lambda, x,y,z)) = (-x^2-y^2+z, 12-2x lambda-z, 2y-2y lambda, -x+lambda ) $
   נחפש מתי הביטוי מתאפס אבל קודם כל נשים לב שמתקיים
   $ -x+lambda = 0 => x = lambda $
-  ואז
-  $ 12-2x lambda-z = 0 <==> 12-2x^2-z = 0 <==> z = 12-2x^2 $
-  ואז
-  $ -x^2-y^2+z = 0 <==> -x^2-y^2+12-2x^2 = 0 <==> y^2 = -3x^2+12 $
+  וזה גורר
+  $
+    (1) space 2y-2y lambda = 0 <==> 2y = 2y lambda <==> y = y x \
+    (2) space 12-2x lambda-z = 0 <==> 12-2x^2-z = 0 <==> z = 12-2x^2 \
+    (3) space -x^2-y^2+z = 0 <==> -x^2-y^2+12-2x^2 = 0 <==> y^2 = -3x^2+12
+  $
+  מ־$(1)$ נובע $y=0$ או ש־$x=1$:
+  + אם $x=1$ אז מ־$(2)$ נובע $z=12-2=10$ ומ־$(3)$ נובע $y^2=-3+12=9 => y = plus.minus 3$ וכמובן $lambda=1$
+  + אם $y=0$ אז מ־$(3)$ נובע $3x^2=12 => x=plus.minus 2$ ולכן מ־$(2)$ נקבל $z=12-2(plus.minus 2)^2 = 12-8=4$ וכמובן $lambda = plus.minus 2$
+  אז הנקודות החשודות שלנו הן (במבנה של $(lambda, x, y, z)$)
+  $ (1,1,plus.minus 3,10), space (plus.minus 2, plus.minus 2,0,4) $
   ראינו ששהסיאן המוגבל מוגדר באמצעות הנגזרת השנייה של להגראנז'יאן
-  $ H cal(L)_((lambda,a)) = mat(0, - D g_a; -D g^t_a, H cal(L)^lambda_a) $
-  #todo
+  $
+    H cal(L)_((lambda,x,y,z)) = mat(0, - D g_a; -D g^t_a, H cal(L)^lambda_a) = mat(
+      0, (partial g) / (partial x), (partial g) / (partial y), (partial g) / (partial z);
+      (partial g) / (partial x), (partial^2 cal(L)) / (partial x^2), (partial^2 cal(L)) / (partial x partial y), (partial^2 cal(L)) / (partial x partial z);
+      (partial g) / (partial y), (partial^2 cal(L)) / (partial y partial x), (partial^2 cal(L)) / (partial y^2), (partial^2 cal(L)) / (partial y partial z);
+      (partial g) / (partial z), (partial^2 cal(L)) / (partial z partial x), (partial^2 cal(L)) / (partial z partial y), (partial^2 cal(L)) / (partial z^2)
+    )= mat(0, 2x, 2y, -1; 2x, -2lambda, 0, -1; 2y, 0, 2-2lambda, 0; -1, -1, 0, 0)
+  $
+  נבחן כל נקודה בנפרד ונעבוד כמו בתרגול, $n=1, H=3$ ונצטרך לבדוק את המינורים השלישי והרביעי:
+  $
+    hat(H)= H cal(L)_((2, 2,0,4)) = mat(0, 4, 0, -1; 4, -4, 0, -1; 0, 0, -2, 0; -1, -1, 0, 0) => det hat(H)=-24, hat(H_3) = mat(0, 4, 0; 4, -4, 0; 0, 0, -2) => det(hat(H_3))=0 dot.op 8 dot.op (-4) dot.op (-8) = 32
+  $
+  אז $det(hat(H)) < 0, det(hat(H_3))>0$ נקבל מהאיפיון מהתרגול ש־$(2,0,4)$ נקודת מקסימום מקומי.\
+  $
+    hat(H)= H cal(L)_((-2, -2,0,4)) = mat(0, -4, 0, -1; -4, 4, 0, -1; 0, 0, 6, 0; -1, -1, 0, 0) => det hat(H)=-72, hat(H_3) = mat(0, -4, 0; -4, 4, 0; 0, 0, 6) => det(hat(H_3))=-96
+  $
+  אז $det(hat(H)) < 0, det(hat(H_3))<0$ נקבל מהאיפיון מהתרגול ש־$(-2,0,4)$ נקודת מינימום מקומי.\
+  $
+    hat(H)= H cal(L)_((1, 1,3,10)) = mat(0, 2, 6, -1; 2, -2, 0, -1; 6, 0, 0, 0; -1, -1, 0, 0) => det hat(H)=36, hat(H_3) = mat(0, 2, 6; 2, -2, 0; 6, 0, 0) => det(hat(H_3))=72
+  $
+  אז $det(hat(H)) > 0, det(hat(H_3))>0$ נקבל מהאיפיון מהתרגול ש־$(1,3,10)$ נקודת אוכף.\
+  $
+    hat(H)= H cal(L)_((1, 1,-3,10)) = mat(0, 2, -6, -1; 2, -2, 0, -1; -6, 0, 0, 0; -1, -1, 0, 0) => det hat(H)=72, hat(H_3) = mat(0, 2, -6; 2, -2, 0; -6, 0, 0) => det(hat(H_3))=72
+  $
+  אז $det(hat(H)) > 0, det(hat(H_3))>0$ נקבל מהאיפיון מהתרגול ש־$(1,-3,10)$ נקודת אוכף.
 ]
 
 #question()
@@ -87,7 +139,7 @@ $ integral_A (c f)(x)d x = c integral_A f(x) d x $
   אם $c=0$ אז הטענה טריוויאלית כי פונקציית ה־$0$ אינטגרבילית, ולכן נחלק לשני מקרים $c>0, c<0$.\
   אם $c > 0$, אנחנו יודעים שלכל קבוצה חסומה $B$ גם $c dot.op B$ חסומה ומתקיים
   $ sup(c dot.op B) = c dot.op sup(B), space inf(c dot.op B) = c dot.op inf(B) $
-  ובפרט $c dot.op B$ ולכן
+  ולכן
   $ overline(S_(c f))(P) = c dot.op overline(S_(f))(P), space underline(S_(c f))(P) = c dot.op underline(S_f)(P) $
   השיוונות הללו נכונים לכל חלוקה $P$, אז נסמן $(star)$
   $
