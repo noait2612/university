@@ -20,6 +20,10 @@
 #let Id = math.op("Id")
 #let Fr = math.op("Fr")
 #let Gal = math.op("Gal")
+#let scr(it) = text(
+  features: ("ss01",),
+  box($cal(it)$),
+)
 
 #set heading(numbering: "1.1")
 #outline(depth: 2)
@@ -896,7 +900,7 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
 
 = *הרצאה 21 – 16/06*
 == סכומי גאוס
-#remark[ההרצאה עברה בזום בצורה לא להיט, זה בעיקר תרגום של הרשומות של מיכאל עם קצת הוספות.]
+#remark[יש קצת מלחמה ולכן ההרצאות מכאן והלאה עוברות בזום ולא בצורה להיט. אז רוב התוכן מפה והלאה הוא תרגום של הרשומות של מיכאל והוספות מהספר/גוגל.]
 פרק 8.3 ברשומות של מיכאל.\
 
 יהי $p$ ראשוני ונבחן את $L=QQ(xi_p)$, ראינו שמתקיים $G = Gal(L slash QQ) tilde.eq (ZZ slash p ZZ)^times tilde.eq ZZ slash (p-1)ZZ colon.eq G^(a d)$.\
@@ -1008,7 +1012,7 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
 ]
 == הרחבות ציקליות ופתירות ברדיקלים
 פרק 8.4 ברשומות של מיכאל.\
-נרצה לחקור הרחבות שניתן לבטא בעזרת $root(n, a)$ (ושורשים של ארטיין־שרייר במציין $p$).
+נרצה לחקור הרחבות שניתן לבטא בעזרת $root(n, a)$ (ושורשים של ארטין־שרייר במציין $p$).
 #definition[במציין $0$ נגדיר $root(infinity, K)$ כשדה הקטן ביותר המכיל את $K$ וסגור לשורש $root(n, dot.op)$ כלשהו.]
 #remark[נראה כי $root(infinity, QQ) subset.neq QQ$.]
 #definition("הרחבה ציקלית")[הרחבת שדות $L slash K$ נקראת *ציקלית* אם זו הרחבת גלואה סופית ־$G=Gal(L slash K)$ היא ציקלית.]
@@ -1022,11 +1026,59 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
   מלינארית (כי הפולינום המינימלי מתפרק לגורמים לינאריים שונים) אנחנו יודעים ש־$sigma$ לכסין מעל $K$, ולכן קיים בסיס $alpha_1, dots.h.c alpha_n$ כך ש־$sigma(alpha_i)=xi_i alpha_i$ עבור $xi_i in mu_n$.\
   בטח שכל $xi_i$ מייצרים את $mu_n$: הם יוצרים תת־חבורה $mu_m$ כך ש־$sigma^m=1$ ולכן $m=n$.\
   ולכן אם $alpha = alpha_1 dot.op dots.h.c dot.op alpha_i$ אז $sigma(alpha)=underbrace((xi_1 dot.op dots.h.c dot.op xi_n), "יוצר " xi in mu_n)alpha$.\
-  מכאן נקבל $sigma^j alpha = xi^j alpha !=alpha$ עבור $0<j<n$ ולכן ל־$alpha$ יש $n$ צמודים שונים ולכן $L = K(alpha)$ מדרגה $n$ ובנוסף $sigma(alpha^n)=xi^n alpha^n=alpha^n$ ולכן $alpha^n in L^(Gal(L slash K))=_("ארטין") K$
+  מכאן נקבל $sigma^j alpha = xi^j alpha !=alpha$ עבור $0<j<n$ ולכן ל־$alpha$ יש $n$ צמודים שונים ולכן $L = K(alpha)$ מדרגה $n$ ובנוסף $sigma(alpha^n)=xi^n alpha^n=alpha^n$ ולכן $alpha^n in L^(Gal(L slash K))=_("ארטין") K$.
 ]
 
 = *הרצאה 22 – 17/06*
 == הרחבות ציקליות ופתירות ברדיקלים – המשך
+#remark[
+  אם $p = char(K)$ אז ההרחבות המעניינות מדרגה $p$ הן ארטין־שרייר שזה בעצם $L = K(alpha)$ כאשר $alpha^p-alpha=a$, $alpha = scr(p)$ (זה שורש ארטין־שרייר, שורש מסדר $p$ שהוא פריד וברגע שמצאנו אחד מצאנו את כולם) ונוכיח שאלו כל ההרחבות הציקליות מדרגה $p$.\
+  ב־$L = K(a^(1 / n))$, זה $mu_n$ כפול שורש בודד $a^(1 / n) = mu_n dot.op alpha$ וחבורת גלואה היא $mu_n$.\
+  ב־$L = K(alpha)$ זה $alpha+Fr_p$ עבור $alpha = scr(a)$ וחבורת הגלואה היא $FF_p$.
+]
+#theorem[אם $char(K)=p$ ו־$[L:K]=p$ אז $L slash K$ ציקלית (גלואה) אם ורק אם $L = K(alpha)$ כאשר $alpha^p-alpha-a=0$ לכל $a in K$, זאת אומרת $L = K(scr(a))$ (זאת־אומרת אם $L slash K$ היא הרחבת ארטין־שרייר).]
+#proof[
+  $==>$ אם $L = K(alpha)$ אז $Aut(L slash K)=(FF_p, +)$ גלואה כי יש שם $p$ אוטומורפיזמים (ראינו כשדיברנו על הרחבות ארטין־שרייר).
+  $<==$ נניח כי $L slash K$ ציקלית וניקח $0!=sigma in Aut(L slash K) = ZZ slash p ZZ$ שהוא כמובן יוצר.\
+  נתבונן איך $sigma$ פועל $sigma:L arrow.r L$, מכך שהוא יוצר מתקיים $sigma^p = Id$ ולכן הפולינום האופייני של $sigma$ מחלק את $t^p-1$ $f_sigma divides underbrace(t^p-1, =(t-1)^p)$.\
+  לכן $sigma - Id$ נילפוטנטי ולא $0$ וקיים $beta in L$ כך ש־$sigma(beta)!=beta$.\
+  נסמן $b=sigma(beta)-beta!=0$ אבל $sigma(b)-b=0$ ולכן $b in L^sigma = L^(angle.l sigma angle.r)=L^G = K$, כלומר $b in K$ ($beta in.not K$ כי $sigma(beta)!=beta$).\
+  ניקח $alpha = beta / b$ ואז $sigma(alpha)-alpha=(sigma(beta)-beta) / b=1$.\
+  לסיכום, הפעולה של $G$ על ${alpha mapsto^sigma alpha, 1 mapsto^sigma alpha+2 dots.h.c}$, כלומר זו קבוצת הצמודים של $alpha$ (הם הצמודים על המסלול $sigma(alpha)=alpha+1$ כמו ארטין־שרייר).\
+  ואז הפולינום המינימלי
+  $ f_alpha = (t-alpha) dot.op (t-alpha-1) dot.op dots.h.c dot.op (t-alpha-p+1) $
+  נסמן $a=alpha^p-p$ ונטען ש־$f_alpha=t^p-t-a$: נראה לשכל $i in FF_p$ מתקיים $f(alpha+i)=(alpha+i)^p-(alpha+i)-a=0$.\
+  מתקיים
+  $ (alpha+i)^p = alpha^p + i^p =_(i^p =i (i in FF_p"כי ")) alpha^p +i $
+  ולכן נקבל
+  $ f(alpha+i)=(alpha+i)^p-(alpha+i)=alpha^p+i-alpha-i-a=alpha-alpha-a=_(a=alpha^p-alpha) 0 $
+  ולכן לכל $i in FF_p$, $(alpha+i)$ שורש של $t^p-t-a$.\
+  השורשים של $t^p-t-a$ זה כל $alpha_i$ כך ש־$alpha_i^p-alpha=a$, זו בידיוק הקבוצה ${alpha, alpha+1, dots.h.c, alpha+i-1}$ ולכן יש $p$ שורשים שונים \
+  ואז $f_alpha = t^p-t-a$.\
+  נסיק $a in K$: $ sigma(a)=sigma(alpha^p-alpha)=(sigma(alpha))^p-sigma(alpha)=(alpha+1)^p-(alpha+1)=alpha^p-alpha=a in K $
+  ובזאת סיימנו כי זו הרחבת ארטין־שרייר.
+]
+#remark[מספיק להגיד בהוכחה לעיל גלואה ולא ציקלית כי מהתאמת גלואה בכל־מקרה חבורת גלואה היא מסדר $p$ ראשוני וזה יהיה ציקלית כך או כך.]
+#remark[יש משפט שמתאר הרחבות ציקליות מסדר $p^n$ אבל הוא הרבה יותר כבד.]
+
+כעת, נרצה לחקור הרחבות פתירות (גלואה פתירות) והרחבות פתירות ברדיקלים ובעצם נוכיח שזה אותו הדבר.
+
+#definition("מגדל רדיקלי")[הרחבה סופית $L slash K$ נקראת *מגדל רדיקלי* אם היא מתפצלת למגדל $L=K_n slash K_(n-1) slash dots.h.c slash K_0=K$\
+  כך ש־$K_(i+1) = K_i (alpha)$ עבור $alpha$ שורש יחידה ($omega_n=alpha$) של $a^(1 / n)$ עבור $n in K^times$ או $alpha=scr(P)(a)$ שורש ארטין־שרייר.
+]
+
+#definition("סגור רדיקלי")[$root(infinity, K) = union.big_(L_i slash K "מגדל רדיקלי")L_i$]
+#exercise[
+  $root(infinity, K)$ הוא השדה הקטן ביותר שמכיל את $K$ וסגור להוצאת שורש והוצאת שורש ארטין־שרייר ($root(n, dot.op)$).
+]
+#definition("הרחבה רדיקלית")[הרחבה אלגברית $L slash K$ נקראת *רדיקלית* אם $L subset.eq root(infinity, K)$.\
+  כמובן, אם $L slash K$ סופית אז $L slash K$ רדיקלית אם רק אם $L subset.eq F$ כך ש־$F slash K$ מגדל רדיקלי (כי איחוד של כל המגדלים זה הסגור הרדיקלי)]
+#remark[יכול להיות ש־$L slash K$ לא מגדל בעצמה; למשל אם $L slash K$ הרחבה ריבועית ולא גלואה ו־$mu_3 subset.eq K$ ו־$char(K)!=3$.
+]
+#exercise[
+  אם $K subset.eq L subset.eq F$ מגדל ריבועי אז $L slash K$ מגדל ריבועי (גלואה וחבורת $p$).\
+  רמז: צריך לקחת סגור גלואה שזה עדיין מגדל ריבועי ובסגור גלואה להשתמש (בתרגום משדות לחבורות) בטענה שאם יש לי $H <= G$ חבורת $P$ אז קיימת שרשרת $H_1 subset H_2 subset dots.h.c subset G$ מאינדקס $p$).
+]
 
 = *תרגול 11 – 18/06*
 == משהו
