@@ -80,7 +80,23 @@ $ (f*g)(x) = integral_(-pi)^pi f(x-u)g(u)d u $
 נסיק שאם $f$ אינטגרבילית רימן בקטע $[-pi, pi]$, קיים $C > 0$ כך שלכל $n$ מקדמי פוריה של $f$ מקיימים $abs(a_n), abs(b_n)<=C / n$ ויש $x_0 in [-pi, pi]$ כך שמתקיים $K_m * f(x_0) arrow.r A$ אז גם $D_n * f(x_0)$ כאשר $K_m$ גרעין פייר ו־$D_n$ גרעין דירכלה.
 
 #proof[
-  #todo
+  $f$ אינטגרבילית רימן ולכן עבור $x<=pi$ נוכל להגדיר $F(x) = integral_0^x f(t) d t$, $F$ רציפה מהמשפט היסודי ולכן חסומה (על כל $[-pi, pi]$) ולכן קיים $0<M in RR$ חסם.\
+  כעת, נוכל להשתמש באינטגרציה בחלקים
+  $
+    integral_(-pi)^pi f(x) sin(n x) d x = integral_(-pi)^pi F'(x) sin(n x) d x => -F(x)cos(n x)|_(-pi)^pi + 1 / n integral_(-pi)^pi F(x)cos(n x)d x
+  $
+  נשים לב שמתקיים עבור $n$ זוגי $cos(n pi) = cos(-n pi) = 1$ ועבור $n$ אי־זוגי $cos(n pi)=cos(-n pi) = -1$ ובין כה וכה $cos(-n pi)=cos(n pi)$ ולכן
+  $
+    -F(x)cos(n x)|_(-pi)^pi = cos(n pi)(F(pi)-F(-pi)) = cos(n pi)(integral_0^pi f(t)d t - integral_0^(-pi)f(t)d t)=cos(n pi)integral_(-pi)^pi f(t) d t
+  $
+  וזה כמובן ערך מספרי קבוע שתלוי ב־$n$ עבור הסימן שחסום על־ידי $A=2pi norm(f)_infinity$. אז מתקיים
+  $
+    abs(integral_(-pi)^pi f(x) sin(n x) d x)<=A+ abs(1 / n integral_(-pi)^pi F(x) cos(n x) d x)<= A + 1 / n integral_(-pi)^pi abs(F(x))d x <=_("רציפה" F) A + (2pi M) / n
+  $
+  נחלק ב־$pi, n$
+  $ 1 / pi abs(integral_(-pi)^pi f(x) sin(n x) d x) <= 2norm(f)_infinity + (2M) / n $
+  ולכן קיים $C$ כזה המקיים את הנדרש.
+  אם יש $x_0$ כזה, מהגדרת $K_m$ ו־$D_n$ עם סעיף א' נקבל את החלק השני.
 ]
 
 #question()
