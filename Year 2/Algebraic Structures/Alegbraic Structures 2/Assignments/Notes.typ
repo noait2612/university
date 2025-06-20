@@ -892,8 +892,26 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
 == בניות של מצולעים משוכללים
 
 = *תרגול 10 – 11/06*
-== משהו
+== הדיסקרמיננטה
+לאורך התרגול, $F$ שדה, $char(F)!=2,f in F[x]$ ו־$L$ שדה פיצול של $f$.\
+ב־$L$ מתקיים $f(x)=alpha product_(i=1)^n (x-alpha_i)$ כאשר $alpha$ הוא המקדם המוביל ו־$alpha_i$ שורשים.\
+נניח לבנתיים ש־$f$ אי־פריק ומתוקן, נסמן $G = Gal(L slash F)$ וראינו ש־$G$ משתכנת ב־$S_n$ על השורשים.\
+נסמן $sigma in G$ את $sigma(alpha_i)=alpha_(sigma(i))$ ונגדיר $L in.rev R = product_(1<=i<j<=n) (alpha_i - alpha_j)$.
+#lemma[$sigma(R)= plus.minus R$ לכל $sigma in G$ ו־$sigma(R)=R$ אם ורק אם $sigma in A_n$.]
+#proof[מתקיים $ sigma(R)=product_(1<=i<j<=n) (alpha_sigma(i) - alpha_sigma(j)) $ שכן $sigma$ הוא אוטומורפיזם ולכן מכבד כפל.\
+  יש כאן את אותם הגורמים כמו ב־$R$ בפרט אולי לסימן ולכן $sigma(R)=plus.minus R$, כאשר הסימן הוא $(-1)^ell$ כאשר $ ell=abs({(i,j) bar i<j and sigma(i) > sigma(j)}) $ וידוע ש־$op("sgn")(sigma) = (-1)^ell$.]
 
+#definition("הדיסקרמיננטה")[נסמן ב־$D_f = R^2$ את *הדיסקרמיננטה של $f$* ונשים לב ש־$sigma(D_f)=D_f$ לכל $sigma in G$ ולכן $D_f in L^G=F$.\
+  במילים אחרות, $D_f$ אינווריאנטי תחת כל אוטומורפיז
+  $ sigma(D_f)=sigma(R^2) = sigma(R)^2 = (plus.minus R)^2=R^2 = D_f =>_(forall sigma) D_f in L^G =_"מהתאמת גלואה" F $
+]
+#corollary[
+  $G subset.eq A_n$ אם ורק אם $D_f$ היא ריבוע ב־$F$ (כלומר, יש לה שורש ב־$F$).
+]
+#proof[
+  $<==$ אם $G subset.eq A_n$ אז $sigma(R)=R$ לכל $sigma in G$ ולכן $R in L^G=F$ ולכן $R in F$ הוא שורש ריבועי של $D_f$.\
+  $==>$ אם ל־$D_f$ יש שורש ב־$F$ אז $R in F = L^G$ אז $sigma(R)=R$
+]
 = *תרגיל 9*
 == טריקים
 == מסקנות
@@ -1077,7 +1095,7 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
 ]
 #exercise[
   אם $K subset.eq L subset.eq F$ מגדל ריבועי אז $L slash K$ מגדל ריבועי (גלואה וחבורת $p$).\
-  רמז: צריך לקחת סגור גלואה שזה עדיין מגדל ריבועי ובסגור גלואה להשתמש (בתרגום משדות לחבורות) בטענה שאם יש לי $H <= G$ חבורת $P$ אז קיימת שרשרת $H_1 subset H_2 subset dots.h.c subset G$ מאינדקס $p$).
+  רמז: צריך לקחת סגור גלואה שזה עדיין מגדל ריבועי ובסגור גלואה להשתמש (בתרגום משדות לחבורות) בטענה שאם יש לי $H <= G$ חבורת $p$ אז קיימת שרשרת $H_1 subset H_2 subset dots.h.c subset G$ מאינדקס $p$.
 ]
 
 = *תרגול 11 – 18/06*
