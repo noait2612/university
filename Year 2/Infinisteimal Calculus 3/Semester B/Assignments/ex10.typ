@@ -38,7 +38,14 @@ $ sum_(i=1)^infinity V(B_i) >= V(B) $
 נוכיח כי קיימת חלוקה של $B$ לתיבות ${B_i}_(i=1)^m$ עבורן היחס בין הצלע הארוכה ביותר לצלע הקצרה ביותר הוא לכל היותר $2$.
 
 #proof[
-  #todo
+  נתון $B = [a_1, b_1] times dots.h.c [a_n, b_n]$ ונגדיר $B_i = [a_(i-1), b_(i-1)] times [a_i,b_i]$ ו־${B_i}$ כיסוי סופי של $B$ על־ידי תיבות.\
+  לפי טענה שראינו בכיתה, קיימת ${B_i'}$ כיסוי של $B$ על־ידי תיבות שנחתכות רק בשפה (שפה של תיבה היא ממידה אפס) ולכן נגדיר $C_i = B inter B_i$ ונקבל ש־${C_i}$ חלוקה סופית של $B$ כך שמתקיים $C_i^circle.stroked.small inter C_j^circle.stroked.small = emptyset$ וכל חיתוך כזה הוא תיבה מהצורה $C_i = [b_1^i-a_1^i] dot.op dots.h.c dot.op [b_n^i - a_n^i]$ ואז
+  $ l_i = min {b_j^j-a_j^j bar 1<=j<=n}, L_i = max {b_j^j-a_j^j bar 1<=j<=n} $
+  עבור $C_1$, אם $L_1 / l_1 >=2$ סיימנו. אחרת נפרק את הצלע ה־$L_i$ בצורה הבאה, אם $m=(b_j^j-a_j^j) / 2$ אז
+  $ L_i = [b_j^j-a_j^j] = [b_j^j-m] times [m-a_j^j] $
+  ואם עכשיו $L_i / l_i >=2$ סיימנו, ואם לא נחזור על התהליך.\
+  נבחין שבסוף כן התהליך ייעצר: יש לנו כמות סופית של איברים לעשות עליהם את התהליך הזה ובשלב מסויים נחתוך קטן מספיק את הצלע.
+
 ]
 
 #question()
@@ -50,8 +57,22 @@ $ Gamma_f colon.eq {(x, f(x)) in RR^k times RR bar x in K} $
 #proof[
   $K$ קומפקטית ולכן $f$ רציפה במידה שווה, ולכן לכל $epsilon > 0$ יש $delta > 0$ כך שלכל $x,y in K$ מתקיים
   $ norm(x-y)<delta => abs(f(x)-f(y))<epsilon $
-  ניקח תיבה $B subset.eq RR^(k-1)$ כך ש־$K subset.eq B$
-  #todo
+  ניקח תיבה $B subset.eq RR^(k-1)$ כך ש־$K subset.eq B$ וניקח חלוקה $P = {J_1, dots.h.c J_n}$ חלוקה של $B$ כך שלכל $J in P$ מתקיים
+  $ sup_(x, y in J) norm(x-y)<delta $
+  ואז יתקיים
+  $
+    Gamma_f = {(x, f(x)) in RR^k times RR bar x in K} subset.eq union.big_(J_i inter K != emptyset) J_i times [min_(J_i inter K) f, max_(J_i inter K) f]
+  $
+  ואז גם יתקיים
+  $
+    V(J_i times [min_(J_i inter K) f, max_(J_i inter K) f]) = V'(J_i) dot.op abs(min_(J_i inter K) f - max_(J_i inter K) f)<V' epsilon
+  $
+  כאשר $V'$ הוא הנפח ה־$k-1$ מימדי.\
+  משאלה $1$ נקבל שמתקיים
+  $
+    V(union.big_(J_i inter K != emptyset) J_i times [min_(J_i inter K) f, max_(J_i inter K) f])<= sum_(i=1)^n V'(J_i) epsilon = V'(B) epsilon
+  $
+  וזה נכון לכל $epsilon$ ולכן כאשר $epsilon arrow.r 0$ נקבל כי $Gamma_f$ ממידה אפס (כי הנפח קטן מנפח של קבוצה ממידה אפס).
 
 ]
 
@@ -60,14 +81,20 @@ $ Gamma_f colon.eq {(x, f(x)) in RR^k times RR bar x in K} $
 נראה כי $A$ ממידה אפס.
 
 #proof[
-  #todo
+  ראשית, כל תנאי משפט הפונקציה הסתומה מתקיימים ולכן קיימת סביבה פתוחה $U_a$ ונוכל להשתמש במשפט הפונקציה הסתומה על סביבה זאת ולקבל
+  $ U_a = { g(x,y)=0}=_(h in C^1){h(x)=y bar x in RR^(K-1), y in RR} $
+  כלומר לכל $a in A$ קיימת סביבה פתוחה $U_a$ כך שניתן לתאר את $g$ על־ידי גרף של פונקציה רציפה ואז מסעיף א' נקבל מידה אפס.\
+  היות וזה נכון לכל $a in A$, נטען שזה נכון גם לאיחודם: מסעיף ב' ומהעובדה שהמקור של קבוצה סגורה הוא קבוצה סגורה על פונקציה רציפה נובע שאנחנו מדברים על קבוצות קומפקטיות, ומהאיחוד מסעיף ב' נקבל איחוד בן־מנייה של קבוצות ממידה אפס הוא ממידה אפס.
 ]
 
 #subquestion()
 נסיק כל כל תת־מרחב $V subset.eq RR^k$ ממימד $n<k$ הוא ממידה אפס.
 
 #proof[
-  #todo
+  יהי $V subset.eq RR^k$ תת־מרחב ממימד $n<k$, ניזכר שניתן לכתוב במקרה זה
+  $ V tilde.eq RR^n tilde.eq RR^m times RR^(n-m) $
+  מספיק אם כך שניקח העתקה לינארית $T:RR^m arrow.r RR^(n-m)$ ואז
+  $V = {(x, T(x)) bar x in RR^m}$ ומסעיפים קודמים מכך שגרף של פונקציה הוא ממידה אפס נקבל ישירות ש־$V$ ממידה אפס.
 ]
 
 #question()
