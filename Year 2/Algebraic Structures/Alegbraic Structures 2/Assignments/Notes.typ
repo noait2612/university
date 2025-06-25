@@ -20,6 +20,7 @@
 #let Id = math.op("Id")
 #let Fr = math.op("Fr")
 #let Gal = math.op("Gal")
+#let Res = math.op("Res")
 #let scr(it) = text(
   features: ("ss01",),
   box($cal(it)$),
@@ -910,8 +911,79 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
 ]
 #proof[
   $<==$ אם $G subset.eq A_n$ אז $sigma(R)=R$ לכל $sigma in G$ ולכן $R in L^G=F$ ולכן $R in F$ הוא שורש ריבועי של $D_f$.\
-  $==>$ אם ל־$D_f$ יש שורש ב־$F$ אז $R in F = L^G$ אז $sigma(R)=R$
+  $==>$ אם ל־$D_f$ יש שורש ב־$F$ אז $R in F = L^G$ אז $sigma(R)=R$ לכל $sigma in G$ ולכן $sigma in A_n$ לכל $sigma in G$.
 ]
+#remark[זו תחת ההנחה ש־$f$ פולינום מתוקן ו־$char F !=2$. אם הוא לא היה מתוקן, היה אפשר לחלק בגורם המוביל ולקבל את אותה ההרחבה.]
+#example[
+  $ f = (x-alpha_1)(x-alpha_2) $
+  ולכן $ R = alpha_1-alpha_2, space R^2=(alpha_1-alpha_2)^2=alpha_1^2+alpha_2^2-2alpha_1alpha_2 $
+  אז נוכל לכתוב
+  $ f = x^2-(alpha_1+alpha_2)x-2alpha_1alpha_2 colon.eq x^2+b x+c $
+  כאשר
+  $ c = -2alpha_1alpha_2, b = -(alpha_1+alpha_2) $
+  ולכן
+  $ D_f = R^2 = (b^2-2c)-2c = b^2-4c $
+  אז אם $D_f$ כן ריבוע ב־$F$ אז $G subset.eq A_2$ אבל $A_2 = {e}$ ולכן $f$ מתפצל כבר ב־$F$ וקיבלנו קריטריון חדש לפריקות או אי־פריקות לפולינום מתוקן מדרגה $2$.
+]
+#corollary[$F(sqrt(D_f)) subset.eq L$ אז $Gal(L slash F(sqrt(D_f))) = G inter A_n$.]
+#proof[ישירות מ התאמת גלואה.]
+כל זה היה תתחת ההנחה ש־$f$ מתוקן והוכחנו תכונות של $D_f$ אבל אין לנו ביטוי יפה עבורו, אז המטרה שלנו זה להביע את $D_f$ כפולינום במקדמי $f$.
+#definition("הרזולטנטה")[יהיו $f,g in F[x]$ הנתונים על־ידי $f=a_0x^n+a_1x^(n-1)+dots.h.c+ a_n, space g=b_0x^n+b_1x^(n-1)+dots.h.c+ b_n$.\
+  *הרזולטנטה* של $f,g$ היא המטריצה הריבועית מסדר $m+n times m+n$ (דרגות $f,g$ בהתאמה) הנתונה על־ידי
+  $
+    Res(f, g) = det
+    mat(
+      delim: "[", a_0, a_1, dots.h.c, a_n, 0, dots.h.c, 0;
+      0, a_0, a_1, dots.h.c, a_n, dots.h.c, 0;
+      dots.v, dots.down, dots.down, dots.down, dots.down, dots.down, dots.v;
+      0, dots.h.c, 0, a_0, a_1, dots.h.c, a_n;
+      b_0, b_1, dots.h.c, dots.h.c, b_m, dots.h.c, 0;
+      dots.v, dots.down, dots.down, dots.down, dots.down, dots.down, dots.v;
+      0, dots.h.c, b_0, b_1, dots.h.c, dots.h.c, b_m
+    )
+  $]
+#lemma[$Res(f, g)=0$ אם ורק אם ל־$f,g$ יש גורם משותף מדרגה חיובית.]
+#proof[
+  נסמן $f=a_0x^n + dots.h.c + a_n, space g = b_0x^m + dots.h.c + b_m$, אז
+  $
+    Res(f, g)=det
+    mat(
+      delim: "[", a_0, a_1, dots.h.c, a_n, 0, dots.h.c, 0;
+      0, a_0, a_1, dots.h.c, a_n, dots.h.c, 0;
+      dots.v, dots.down, dots.down, dots.down, dots.down, dots.down, dots.v;
+      0, dots.h.c, 0, a_0, a_1, dots.h.c, a_n;
+      b_0, b_1, dots.h.c, dots.h.c, b_m, dots.h.c, 0;
+      dots.v, dots.down, dots.down, dots.down, dots.down, dots.down, dots.v;
+      0, dots.h.c, b_0, b_1, dots.h.c, dots.h.c, b_m
+    )
+  $
+  כמקודם זו מטריצה $m+n times m+n$, כאשר $(a_0, a_1, dots.h.c, a_n, 0 dots.h.c, 0)$ הוא וקטור המקדמים של $x^(n-1)f$.\
+  וקטור המקדמים של $x^i f=0 dot.op x^(m+n) + dots.h.c +a_0x^(n+i)+ dots.h.c + a_n x^i + 0$ לכל $0<i<=m$ הוא $(0_((m+n)), dots.h.c, 0_((n+i+1)), a_0, dots.h.c, a_n, 0, dots.h.c, 0)$ כאשר בסוגריים זה האינדקס ובאותו אופן גם עבור $g$ בהצבה של $b$ במקום $a$ ו־$m+i+1$ במקום$n+i+1$.\
+  $Res(f, g)=0$ אם ורק אם יש תלות לינארית בין השורות וזה קורה אם ורק אם יש תלות בין הפולינומים $ x^(m-1) dot.op f, x^(m-2) dot.op f, dots.h.c, f, x^(n-1) dot.op g, x^(n-2) dot.op g, dots.h.c, g $
+  כלומר
+  $
+    0 = sum_(i=0)^(m-1) c_i x^i f + sum_(i=0)^(n-1) d_i x^i g=(sum_(i=0)^(m-1) c_i x^i)f+(sum_(i=0)^(n-1) d_i x^i)g => (sum_(i=0)^(m-1) c_i x^i)f=(-sum_(i=0)^(n-1) d_i x^i)g
+  $
+  זו כפולה משותפת של $f,g$ מדרגה קטנה ממש מ־$m+n$ והיא שונה מ־$0$ אם ורק אם התלות לא טריוויאלית.\
+  יש כפולה כזאת אם ורק אם ל־$f,g$יש גורם משותף מדרגה חיובית: אחרת, הם זרים, וכפולה משותפת חייבת להיות מכפלה של כל הגורמים האי־פריקים של שניהם ובפרט מדרגה של לפחות $m+n$.
+]
+#example[
+  $Res(x+8, x^2+1)=0, space Res(x+1, 2x+2)=det mat(delim: "[", 1, 1; 2, 2)=0$
+]
+#theorem[אם $f = a_0 product_(i=1)^n (x-alpha_i)$ ו־$g=b_0 product_(i=1)^m (x-beta_i)$ בשדה פיצול כלשהו, אז
+  $
+    Res(f, g)=a_0^m b_0^n product_(i,j)(alpha_i-beta_j)= (-1)^(m n) b_0^n product_(i=1)^m f(beta_i)=a_0^m product_(i=1)^n g(alpha_i)
+  $]
+#proof[טכני מאוד.]
+#remark("תזכורת – נגזרת פורמלית וכלל לופיטל לנגזרת פורמלית")[\
+  עבור $f =a_0x^n + a_1x^(n-1) + dots.h.c + a_n$ מתקיים
+  $f'= n a_0x^n(n-1)+(n-1)a_1x^(n-2) + dots.h.c + a_(n-1)$ כלל לופיטל לנגזרת פורמלית אומר שמתקיים $f'(alpha_i)=product_(j!=i) (alpha_i-alpha_j)$.
+]
+#definition[יהי $f = a_0x^n + dots.h.c + a_n$ ונסמן $n'=deg(f')$, אז הדיסקרמיננטה של $f$ היא $ (-1)^((n(n-1)) / 2) dot.op a_0^(n-n'-2) dot.op Res(f, f') colon.eq D_f $]
+#lemma[
+  $D_f = a_0^(2n-2) dot.op product_(1<=i<j<=n) (alpha_i-alpha_j).$ ובפרט, גם ביחס להגדרה לעיל ו־$D_f$ הוא ריבוע ב־$F$ אם ורק אם $Gal(L slash F) subset.eq A_n$.
+]
+#proof[בתרגיל בית $10$.]
 = *תרגיל 9*
 == טריקים
 == מסקנות
