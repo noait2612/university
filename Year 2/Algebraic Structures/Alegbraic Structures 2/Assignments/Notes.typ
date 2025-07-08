@@ -273,16 +273,157 @@
 == חישוב בשדה $E=F[x] slash (f)$
 #text(red)[*להשלים*]
 
-= *הרצאה 3 – 31/03*
-== הרחבות אלגבריות
-#text(red)[*להשלים*]
-
 = *תרגיל 1*
 == טריקים
 #text(red)[*להשלים*]
 
 == מסקנות
 #text(red)[*להשלים*]
+
+= *הרצאה 3 – 31/03*
+== הרחבות אלגבריות
+פרק 3.2 ברשומות של מיכאל.
+
+#definition(
+  "איבר אלגברי, איבר טרנסצנדנטי",
+)[בהינתן הרחבה $L slash K$ ו־$alpha in L$, נגיד ש־$alpha$ *אלגברי* מעל $K$ אם קיים $f(t) in K[t]$ כך שמתקיים $f(alpha)=0$, אחרת נגיד ש־$alpha$ נקרא *טרנסצנדנטי* מעל $K$.\
+  אם $char(L)=0$ אז $alpha in L$ אלגברי או טרנסצנדנטי אם הוא אלגברי או טרנסצנדנטי מעל $QQ$.]
+
+#example[
+  אלגבריים ב־$CC$: $1/778, root(3, 5), root(5, 3)+root(3, 5)$ ובהמשך נוכיח שגם $i$.\
+  טרנסצנדנטי ב־$CC$: $e, pi$ (עובדה מעניינת: לא ידוע אפילו אם $e+pi$ הוא טרנסצנדנטי או אלגברי, כי- זה מספר אי־רציונלי).\
+  נשים לב ש־$e$ אלגברי מעל $CC$ ו־$RR$ ואפילו מעל $QQ(e), QQ(e^5+e)$ (ברור שלהיות איבר אלגברי או טרנסצנדנטי תלוי בשדה שאני עליו).\
+  הרעיון הכללי הוא שאם יש ל־$alpha$ קירובים רציונליים "טובים מדי" אז $alpha$ טרנסצנדנטי – כמו לדוגמה מספר ליוביל.
+]
+
+#definition(
+  $overline(QQ)$,
+)[$overline(QQ)$ ב־$CC$ קבוצת כל האיברים האלגבריים מעל $QQ$ ונראה היום שהוא שדה ואף בן־מנייה (הבן־מנייה הגיוני: יש מספר בן־מנייה של פולינום מעל $QQ$ ולכן יכולים להיות רק מספר בן־מנייה של שורשים ולכן יש מספר בן־מנייה של מספרים אלגבריים מעל $QQ$).]
+
+#definition(
+  "פולינום מינימלי",
+)[תהיי $L slash K$ הרחבה ו־$alpha in L$, והוכחנו ש־$K[alpha] = K[t] slash I$ כאשר $I = {f in K[t] bar f(alpha)=0}$ ב־$L$.\
+  $I$ הוא אידיאל ראשי (נוצר על־ידי איבר אחד) כך ש־$K[t]$ חוג ראשי ו־$I$ ראשוני, כי $K[alpha] subset.eq L$ תחום שלמות (אם $0=h(alpha)g(alpha)$ ב־$L$ אז $g(alpha)=0$ או $h(alpha)=0$ אז אם $h g in I$ אז $h in I$ או $g in I$ וראינו ש־$I$ אידיאל ראשוני אם ורק אם $R slash I$ תחום שלמות).\
+  מכאן, או $I = (f_alpha (t))$ כאשר $f_alpha$ הוא אי־פריק או $I=0$ (בכלל זה אידיאל מקסימלי).\
+  אם $I=0$ אז $alpha$ טרנסצנדנטי ואם $f_alpha$ הוא אי־פריק אז $alpha$ אלגברי.\
+  אם קיימים פולינומים שונים מאפס שמתאפסים ב־$alpha$ אז יש פולינום מתוקן מינימלי כזה, קוראים ליוצר זה *הפולינומים המינימלי של $alpha$ מעל $K$* ונסמנו $f_alpha$ או $f_(alpha slash K)$ כדי להדגיש מעל איזה שדה אנחנו מדברים (כאשר האחרון זו הצורה המועדפת), ברשומות מדי פעם זה מופיע גם בתור $f_(alpha, K)$.
+]
+
+#proposition("תנאים לפולינום מינימלי")[
+  על־מנת להגיד ש־$f_(alpha slash K)$ הוא פולינום מינימלי, צריך להתקיים:
+  + $f_(alpha slash K) (alpha) = 0$
+  + $f$ פולינום מתוקן
+  + $f$ אי־פריק
+]
+
+#example[$t^2-2 = f_(sqrt(2) slash QQ)$ עם $deg(f) = 2$, $t-sqrt(2) = f_(sqrt(2) slash QQ(sqrt(2)))$ עם $deg(f) = 1$ (שדה יותר גדול => פולינום יותר קטן).]
+
+#lemma[
+  אם $F slash L slash K$ מגדל הרחבות ו־$alpha in F$ איבר אלגברי מעל $K$ הוא הוא גם אלגברי מעל $L$ והפולינום המינימלי של $alpha$ מעל $L$ מחלק את הפולינום המינימלי של $alpha$ מעל $K$, ובסימונים $f_(alpha slash L) divides f_(alpha slash K)$.
+]
+
+#proof[$f_(alpha slash K) in L[t]$ וגם $f_(alpha slash K) (alpha) = 0$ ולכן הוא מתחלק ב־$f_(alpha slash L)$.]
+
+#notation[$f_(alpha slash K) dot.op K[t] = m_(alpha slash K)$ האידיאל של כל הפולינומים מעל $K$ שמתאפסים ב־$alpha$ (או $0 = m_(alpha slash K)$ אם $alpha$ הוא טרנסצנדנטי).]
+
+#lemma[תהיי $L slash K$ הרחבה ו־$alpha in L$
+  + אם $alpha$ אלגברי עם פולינום מינימלי $f_alpha = f_(alpha slash K)$ ו־$d = deg f_alpha$ אזי $K(alpha) = K[alpha] = K[t] slash (f_alpha)$ ו־$1, alpha, dots.h.c, alpha^(d-1)$ מהווים בסיס של $K(alpha) slash K$ ובפרט מתקיים $d = [K(alpha) : K]$
+  + אם $alpha$ טרנסצנדנטי אז $K(t) tilde.eq_(t mapsto alpha) K(alpha)$ ו־$[K(alpha) : K] = infinity$
+]
+
+#proof[
+  + כבר הוכחנו ש־$K[alpha] = K[t] slash (f_alpha)$ והיות ו־$f_alpha$ הוא אי־פריק אז $m_alpha$ הוא מקסימלי ולכן $K[alpha]$ שדה ו־$K(alpha)=K[alpha]$.\
+    עכשיו נחשב את המימד של $K(alpha) = K[t] slash (f_alpha)$ ונראה שמתקיים $dim_K K[t] slash (f) = deg(f)$ לכל $f!=0$:\
+    לכל $h in K[t]$ פולינום קיימים ויחידים $q_h, r_h$ כך ש־$h = q_h dot.op f_alpha + r_h$ וגם $deg(r_h)<d = deg(f)$ כאשר $r_h$ היא החלוקה עם שארית.\
+    זה נותן לנו העתקה $r : K[t] arrow.r K[t]_(<d)$, נראה שזו העתקה לינארית:\
+    לכל $g,h in K[t]$ מתקיים $r_(g+h) = r(r_g + r_h)$ ולכן $r_(g+h) = r_g + r_h$, אותו הדבר לכפל בסקלר וקיבלנו העתקה לינארית ועל.\
+    מתקיים שהגרעין הוא $f_alpha dot.op K[t] = m_alpha$ ולכן (כמרחבים וקטורים) $K[alpha] tilde.eq K[t] slash m_alpha tilde.eq K[t]_(<d)$ והבסיס כאן הוא $1, t, dots.h.c, t^(d-1)$ ואז $1, alpha, dots.h.c, alpha^(d-1)$ הוא בסיס.
+  + מתקיים $K[t] tilde.eq K[alpha]$ (כי $K[t] tilde.eq K[t] slash m_alpha tilde.eq K[alpha]$) ולכן $K[t] = Frac(K[t]) tilde.eq Frac(K[alpha]) = K(alpha) subset L$ ו־$K[alpha] subset K(alpha)$ והמימד שלנו הוא $infinity$.
+]
+
+#remark[$K[t] arrow.r K[t]_(<d)$ הוא *לא* הומומורפיזם של חוגים כי $K[t]_(<d)$ הוא לא חוג, הוא אפילו לא סגור לכפל.]
+
+#definition(
+  "הרחבה פרימיטיבית",
+)[$L slash K$ נקראת *הרחבה פרימטיבית* אם היא נוצרת על־ידי איבר אחד, כלומר קיים $alpha in L$ כך שמתקיים $L = K(alpha)$.]
+
+#lemma[אם $K$ שדה ו־$f in K[t]$ אי־פריק אז קיימת הרחבה פרימיטיבית $L slash K$ כך של־$f$ יש שורש ב־$L$.]
+
+#proof[$L' = K[t] slash (f(t))$ זה שדה, ולכן יש $phi : K arrow.r L'$ שהוא שיכון כך ש־$L' slash phi(K)$ הוא הרחבה פרמיטיבית הנוצר על־ידי שורשי $f$, מלמה שלא ראינו בהרצאות (3.1.17 ברשומות של מיכאל), יש הרחבה $L slash K$ שאיזומורפית ל־$L' slash phi(K)$ ולכן $L slash K$ היא הרחבה פרימיטיבית הנוצרת על־ידי שורש של $f$ ואז $f_alpha divides f => f_alpha = f$.]
+
+#definition(
+  "דרגה של איבר",
+)[עבור $alpha slash K$ אלגברי, *הדרגה של $alpha slash K$* היא $deg_K (alpha) = deg(f_(alpha slash K))$ (מהלמה שראינו זה אומר $K[alpha]:K$).]
+
+#definition(
+  "הרחבה אלגברית",
+)[תהיי $L slash K$ הרחבות שדות. נגיד שההרחבה היא *אלגברית* אם כל $alpha in L$ הוא אלגברי מעל $K$.]
+
+#lemma[
+  תהיי $L slash K$ הרחבות שדות, אז
+  + אם $[L:K]=d$ אז לכל $alpha in L$ אלגברי, $deg_K (alpha) divides d$ (ומתקיים במקרה זה ש־$L slash K$ אלגברי)
+  + אם $L = K(alpha_1, dots.h.c, alpha_n)$ אזי $[L:K] = <= product_(i=1)^n deg_K (alpha_i)$ כאשר $alpha_1, dots.h.c, alpha_n$ אלגבריים
+]
+
+#proof[
+  + בין $1, alpha, dots.h.c, alpha^d$ (יש כאן $d+1$ איברים) יש תלות לינארית וזה נותן פולינום מדרגה קטנה/שווה ל־$d$ שמתאפס ב־$alpha$.\
+    בדרך אחרת אפשר לראות את זה $deg_K (alpha) = [K(alpha) : K] divides [L:K]$ מכפליות הדרגה
+  + מתקיים
+    $
+      [L:K] = [K(alpha_1) : K] dot.op [K(alpha_1, alpha_2) : K(alpha_1)] dot.op dots.h.c dot.op [L:K(alpha_1, dots.h.c, alpha_n)]
+    $
+    אז כל אחד מהם נוצר על־ידי איבר בודד ולכן פרימיטיבי, אז
+    $
+      [L:K] = product_(i=1)^n [K(alpha_1, dots.h.c alpha_i) : K(alpha_1, dots.h.c, alpha_(i-1))] = product_(i=1)^n deg_(K(alpha_1, dots.h.c, alpha_(i-1))) (alpha_i) <= product_(i=1)^n deg_K (alpha_i)
+    $
+]
+
+#corollary[אם $L slash K$ הרחבה ו־$alpha, beta in L$ אלגבריים מעל $K$, אזי גם $alpha+beta, alpha-beta, alpha dot.op beta, alpha/beta$ (אם האחרון מוגדר) אלגבריים מעל $K$ מדרגה שקטנה שווה ל־$deg_K (alpha) dot.op deg_K (beta)$, ובפרט קבוצת כל המספרים האלגבריים ב־$L$ מעל $K$ היא שדה.]
+
+#proof[ניקח $K(alpha,beta) subset.eq L$ ולכן לפי הלמה לעיל $deg_K (alpha) dot.op deg_K (beta) >= [K(alpha, beta) : K]$ ולכן כל $gamma in K(alpha, beta)$ אלגברי ואפילו יש חסם על הדרגה שלו, $deg_K (gamma) <=deg_K (alpha) dot.op deg_K (beta)$.]
+
+#exercise[
+  $deg_QQ (root(3, 3) + sqrt(2))=6$.
+]
+
+#proof[זה נובע מכך ש־$root(3, 3), sqrt(2)$ הם שניהם אלגבריים בהרחבה (השורשים של הפולינומים $x^3-3, x^2-2$) ולכן מהמסקנה $deg_QQ (root(3, 3) + sqrt(2))<=6$.\
+  השיוויון נובע מכך שהם בלתי־תלויים לינארית (או אלגברית?) כי הם פתרונות של שורשים ממעלות שונות ולכן כל קשר ביניהם הוא רק הקשר הטריוויאלי (עם הנחה בשלילה וקצת עבודה נוכל לקבל שיש איבר אלגברי אחר שמאפס את הפולינומים הללו ואז זו סתירה להיות הפולינומים שמצאנו כפולינומים המינימליים).]
+
+#notation[$overline(QQ) = {x in CC bar CC"אלגברי ב־ " x }$]
+
+#remark[הוכחנו שזה שדה לפי הגדרה ולכן $overline(QQ) slash QQ$ היא *הרחבה אלגברית* אך כמובן לא נוצרת סופית.]
+
+#corollary[עבור הרחבת שדות $L slash K$, הבאים שקולים
+  + $L slash K$ סופית
+  + $L slash K$ אלגברית נוצרת סופית
+  + $L$ נוצרת על־ידי איברים אלגבריים $alpha_1, dots.h.c, alpha_n$
+]
+
+#proof[
+  $1=>2$: נניח ש־$L slash K$ סופית אז היא אלגברית (מהלמה על הדרגות שראינו לעיל) ונוצרת סופית (אפילו כמרחב וקטורי).\
+  $2=>3$: מיידי מהגדרה.\
+  $3=>1$: נניח ש־$L = K(alpha_1, dots.h.c, alpha_n)$ כאשר $alpha_1, dots.h.c, alpha_n$ אלגבריים. אזי מהלמה שראינו $[L:K]<= product_(i=1)^n deg_K (alpha_i) < infinity$ ולכן סופית.
+]
+
+#corollary(
+  "תנאי לטרנזטיביות הרחבות אלגבריות",
+)[יהיה $F slash L slash K$ מגדל הרחבות. אזי $F slash K$ אלגברי אם ורק אם $F slash L$ ו־$L slash K$ אלגבריים]
+
+#proof[
+  $<==$ נניח ש־$F slash K$ אלגברית אז ברור ש־$L slash K, F slash L$ הרחבות אלגבריות ישירות מהגדרה.\
+  $==>$ נניח ש־$F slash L$ ו־$L slash K$ אלגבריות ונוכיח כי כל $alpha in F$ אלגברי מעל $K$: $alpha$ אלגברי מעל $L$ ולכן קיים $f=f_(alpha slash L) !=0$ כך שמתקיים $f(alpha)=0=alpha^d+beta_1 alpha^(d-1) + dots.h.c + beta_d = 0$ עם $beta_1, dots.h.c, beta_d in L$.\
+  היות ו־$beta_1, dots.h.c, beta_d$ אלגבריים מעל $K$, השדה $E=K(beta_1, dots.h.c, beta_d)$ הוא סופי מעל $K$ עם הלמה לעיל.\
+  היות ו־$alpha$ הוא אלגברי מעל $E$, ההרחבה $E'=E(alpha) slash E = K(alpha, beta_1, dots.h.c, beta_d) slash K(beta_1, dots.h.c, beta_d)$ היא הרחבה סופית גם־כן.\
+  נשים לב שקיבלנו מגדל הרחבות סופיות ($E'$ סופית כי פרימטיבית מהיות $alpha$ אלגברי)
+  $ K(alpha, beta_1, dots.h.c, beta_d) slash K(beta_1, dots.h.c, beta_d) slash K $
+  אז מהלמה שראינו על כפליות הדרגה
+  $ deg_K (d) <= [K(alpha, beta_1, dots.h.c, beta_d) : K] < infinity $
+]
+
+#definition(
+  $"מחלקה יציבה" cal(C)$,
+)[נסמן ב־$cal(C)$ את המחלקה של הרחבות שדות. $cal(C)$ נקראת *יציבה* (ברשומות לפעמים שלמה) אם לכל מגדל $F slash L slash K$ של הרחבות, $F slash K in cal(C)$ אם ורק אם $F slash L, L slash K in cal(C)$.\
+  נשים לב שהוכחנו שמחלקות של הרחבות סופיות ואלגבריות היינן שלמות.]
 
 = *תרגול 2 – 02/04*
 == משהו
