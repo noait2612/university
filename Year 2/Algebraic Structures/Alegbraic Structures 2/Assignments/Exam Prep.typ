@@ -148,10 +148,59 @@ $ Aut(L slash K) = { sigma in Aut(L) bar forall x in K space sigma(x)=x} $
   בדומה לכך שנורמליות של חבורות זו לא תכונה טרנזטיבית, גם נורמליות של הרחבות איננה טרנזטיבית (יש מקרים תחת תנאים מסויימים שכן, כמו לדוגמה שאם $L slash K$ הרחבה נורמלית סופית ו־$M$ שדה ביניים אז גם $L slash M$ הרחבה נורמלית)]
 
 = איך נעה מפרקת
-באלימות ובמכות, אבל לפעמים יש גם שיטות הגיוניות.
++ *ל'זנדר*
+  #definition("סמל לז'נדר")[
+    יהי $p$ מספר ראשוני ($p!=2$) ו־$a in ZZ$, אז
+    $
+      (a / p) = mycases(
+        0, a eq.triple 0 space (mod p),
+        1, a eq.triple.not 0 space (mod p) and a eq.triple x^2 space (mod p) space (p"והוא שארית ריבועית מודלו " p"זר ל־" a ),
+        -1, a eq.triple.not 0 space (mod p) and a eq.triple.not x^2 space (mod p) space (p"ואינו שארית ריבועית מודלו " p"זר ל־" a )
+      )
+    $
+  ]
+  #lemma[
+    נניח ש־$p$ ראשוני אי־זוגי.
+    + כדי לבדוק אם לפולינום ריבועי $a x^2 + b x +c$ מעל שדה $FF_p$ יש פירוק, מספיק לבדוק אם סמל לז'נדר $((b^2-4a c)/p)$ הוא $1$ או $-1$.\
+      אם הוא $1$, זה אומר שיש ב־$FF_p$ שורש ל־$b^2-4 a c$ ואפשר להשתמש בנוסחת השורשים (שנותנת גם פירוק לפולינום מהצורה $a dot.op (x-r) dot.op (x-s)$ כאשר $a$ המקדם המוביל ו־$r,s$ השורשים).
+    + כדי לבדוק עבור פולינום מהצורה $x^2-c$, מספיק לבדוק את סמל לז'נדר $(c/p)$ (שאומר לנו האם יש פיתרון למשוואה $x^2=c space (mod p)$)
+  ]
+  #theorem("משפט ההדדיות הריבועית")[אם $p,q$ ראשוניים אי־זוגיים, מתקיים
+    + $ (p/q) (q/p) = (-1)^((p-1)/2 (q-1)/2) $
+    + $ (-1/p) = (-1)^((p-1)/2) $
+    + $ (2/p) = (-1)^((p^2-1)/8) $
+  ]
+  היתרון של השיטה – אם גילינו שיש ערך שעבורו סימן ל'זנדר הוא $-1$ אז לא צריך לעבוד יותר וזה לא מתפרק.\
+  משפט ההדדיות עוזר מאוד לדברים סימטריים.
++ *קריטריון אייזנשטיין*
+  נניח ש־$ZZ[t] in.rev f = sum_(i=0)^n a_i t^i$ ו־$p in NN$ ראשוני כך שמתקיימים הבאים
+  + $p divides.not a_n$
+  + $p divides a_i$ לכל $0<=i<n$
+  + $p^2 divides.not a_0$
+  אז $f$ אי־פריק.
+  #remark[טריק לאי־פריקות זה לנסות לפעמים עם $x=t-1$]
++ *תנאים לקיום שורש – Rational root theorem* \
+  $f in QQ[x]$ עם מקדמים שלמים ונסמן $f(x)=a_n x^n + dots.h.c + a_1 x + a_0$. אם $r/s in QQ$ שורש של $f$ אז $s divides a_n, r divides a_0$
++ *הלמה של גאוס* \
+  עבור פולינום $f(t)=sum_(i=0)^n a_i t^i in ZZ[t]$, $cont(f)=gcd(a_0, dots.h.c, a_n)$ ופולינום הוא פרימיטיבי אם ורק אם $cont(f)=1$.\
+  מלמת גאוס הראשונה $cont(f g) = cont(f) dot.op cont(g)$ ו־$f g$ פרימיטיבי אם ורק אם $f,g$ פרימטיביים.\
+  מלמת גאוס השנייה, $f$ פולינום אי־פריק ב־$ZZ[t]$ אם ורק אם $f$ פרימיטיבי ואי־פריק ב־$QQ[t]$
++ *עם הדיסקרמיננטה* \
+  פולינום $f$ מדרגה $2$ הוא אי־פריק אם הדיסקרמיננטה של הפולינום כבר ריבוע בשדה.
+
 
 = דוגמאות
-== הרחבות פרידות והרחבות אי־פרידות
+== דברים עם כמויות
+#example("כמה אוטומורפיזמים יש")[
+  אם $0<p$ ראשוני, אז עבור $n in NN$ מתקיים
+  $Aut(FF_(p^n)) tilde.equiv ZZ slash n ZZ$
+]
+== איך מוצאים שדה פיצול של פולינום מעל $FF_p$
+#example[בדרך־כלל זה שאלות מהסגנון $t^8-1 in FF_7 [t]$ ורוצים שדה פיצול מעל $FF_7$.\
+  אנחנו רוצים להרחיב את $FF_7$ כדי ששורש יחידה פרימיטיבי מסדר $8$ יהיה בו, אז חייב להתקיים ש־$8$ מחלק את הסדר של החבורה הכפלית שהיא מסדר $7^n-1$, אז נמצא את ה־$n$ המינימלי כך ש־$8 divides 7^n-1$
+  $ 7^1-1 eq.triple_(mod 8) 6, space 7^2-1=48 eq.triple_(mod 8) 0 $
+  ולכן שדה הפיצול הוא $FF_49$.
+]
 == הרחבות לא נורמליות ונורמליות
 #example[
   נבנה הרחבות נורמליות $F slash K, L slash F$ כך שההרחבה $L slash K$ לא נורמלית.
@@ -160,6 +209,11 @@ $ Aut(L slash K) = { sigma in Aut(L) bar forall x in K space sigma(x)=x} $
   נטען כעת שההרחבה $L slash F = QQ(root(4, 2)) slash QQ(sqrt(2))$ היא נורמלית.\
   נסתכל על הפולינום $x^2-sqrt(2)$ הוא אי־פריק מעל $QQ(sqrt(2))$ ושורשיו הם $plus.minus root(4, 2) in QQ(root(4, 2))$ וזו בידיוק ההגדרה לנורמליות (כי הוא מתפצל לחלוטין עכשיו ב־$L$), ולכן $L slash F$ הרחבה נורמלית.
 ]
+
+== מלא חבורות גלואה
+#example[כל שדה פיצול שיש לו $4$ שורשים שהם רק מחליפים סימן ביניהם אז החבורת גלואה היא תת־חבורה מסדר $8$ של $S_4$ ויכולה להיות רק $D_4$ כי היא פועלת טרנזטיבית על השורשים.\
+  זה בעצם המסקנה מתרגיל $8$ שאלה $2$ עבור $L$ שדה הפיצול של הפולינום $x^4-7x^2+7 in QQ[x]$ וראינו שהשורשים שלו הם $plus.minus sqrt((7 plus.minus sqrt(21))/2)$.]
+#example[]
 
 = משפטים להוכחה במבחן
 == תנאים שקולים להרחבה נוצרת סופית
@@ -193,7 +247,7 @@ $ Aut(L slash K) = { sigma in Aut(L) bar forall x in K space sigma(x)=x} $
     אם $K$ אינסופית, אז $kappa^n = kappa$ משיקולי עוצמות וזה נכון גם במקרה שבו אנחנו עושים איחוד בן־מנייה של $kappa$, ולכן $abs(K[t]) = kappa$.\
     אם $K$ סופית אזי $abs(K[t]) = א_0$ (ראינו גם בתורת הקבוצות).\
     נגדיר העתקה $L arrow.r K[t]$ על־ידי $alpha mapsto f_(alpha slash K)$ (כל $alpha in L$ ממופה לפולינום המינימלי שלו).\
-    נשים לב שהעתקה זאת ממפה לסיבים סופיםם (שכן המקור של כל פולינום $f in K[t]$ מכיל את כל השורשים שלו ב־$L$), ולכן
+    נשים לב שהעתקה זאת ממפה לסיבים סופים (שכן המקור של כל פולינום $f in K[t]$ מכיל את כל השורשים שלו ב־$L$), ולכן
     $ abs(L) <= א_0 dot.op max{kappa, א_0} = max{kappa, א_0} $
   ]
   כעת, ניזכר בהגדרה ממבנים $1$:
@@ -239,7 +293,23 @@ $ Aut(L slash K) = { sigma in Aut(L) bar forall x in K space sigma(x)=x} $
 #pagebreak()
 
 == על פרובניוס ושדות סופיים מחזקות $p$
-#todo
+#theorem[לכל ראשוני $p$ ולכל $n in NN$ קיים שדה $FF_(p^n)$ עם $p^n$ איברים ו־$Aut_(FF_p) (FF_(p^n))$ היא חבורה ציקלית מסדר $n$ והיוצר שלה הוא העתקת הפרובניוס.]
+
+#proof[
+  נסמן $q=p^n$ ונתחיל מלהוכיח את קיום השדה $FF_q$: נתבונן ב-$FF_p$ ונגדיר הרחבה $K$ כשדה פיצול של הפולינום $f(t)=t^q-t$ ונראה שיש ב־$K$ בידיוק $q$ איברים: נסמן ב־$A$ את קבוצת השורשים של $f$ ב־$K$ ומתקיים $f'=-1$ ולכן $gcd(f, f')=1$ והפולינום $f$ ספרבילי. על־כן, $abs(A)=q$ ו־$A$ שדה כי אם נסמן $Fr^q x = x, Fr^q y = y$ אז
+  $
+    Fr_q (x+y) = Fr_q (x) + Fr_q = x+y space (mod q) \
+    Fr_q(x y) = Fr_q x Fr_q y = x y space (mod q)
+  $
+  וזה מראה ש־$A$ שדה, ולכן $FF_q colon.eq A = K$ הוא שדה וכמובן יחיד עד־כדי איזומורפיזם כשדה פיצול של הפולינום.\
+  נסתכל על ההרחבות שדות $FF_(p^n) slash FF_p$, הרחבת שדות סופית מדרגה $n$. \
+  נראה בתור התחלה $abs(Aut_(FF_p) (FF_(q)))<=n$, נטען שזו הרחבה פרימיטיבית: $FF_(q)^times$ היא ציקלית ויוצר כלשהו שלה יוצר גם את ההרחבה (מהציקליות), כלומר, $FF_(q) = FF_p (alpha)$.\
+  אז $deg_(FF_p) (alpha)=n$ ולכן יש לו לכל היותר $n$ צמודים מעל $FF_p$.\
+  כל $sigma in Aut_(FF_(q)) (FF_p)$ חייב לקחת את $alpha$ לאחד הצמודים שלנו, $sigma(alpha)=alpha_i$ והוא נקבע ביחידות על־ידי $sigma(alpha)$ כי $alpha$ יוצר, ולכן קיימים לכל היותר $n$ $FF_p$ אוטומורפיזמים שונים.\
+  מצד שני, נשים לב ש־$Fr_p|_(FF_p) = Id$ ולכן $Fr_p in Aut_(FF_p) (FF_(q))$.\
+  לכל $0<=i<n$ מתקיים $(Fr_p)^i = Fr_(p^i)$ ול־$Fr_(p^i)$ יש בידיוק $p^i$ נקודות שבת, ו־$i<n$ אז יש $beta in FF_(q)$ כך ש־$Fr_(p^i) (beta) != beta$ ולכן $Fr_(p^i) != Id_(FF_(p^s))$ ולכן הסדר של $Fr_p$ הוא לכל הפחות $n$.\
+  לכן יש בידיוק $n$ אוטומורפיזמים, וראינו ש־$Fr_p$ יוצר את חבורת ה־$FF_p$ אוטומורפיזמים, כנדרש.
+]
 #pagebreak()
 
 == כל הרחבה ספרבילית סופית היא פרימיטיבית
@@ -268,7 +338,7 @@ $ Aut(L slash K) = { sigma in Aut(L) bar forall x in K space sigma(x)=x} $
     מתקיים $beta = ((alpha+beta c_ell)-(alpha + beta c_j))/(c_ell - c_j) = (gamma_ell - gamma_j)/(c_ell - c_j) in F_j = F_ell$ ולכן $alpha = gamma_ell - c_ell beta in F_ell$ ואז $alpha, beta in F_j$, כלומר $ L = K(alpha,beta) subset F_j = K(alpha+c_j beta) = K(gamma_j) $
     וזה בידיוק אומר ש־$L slash K$ פרימיטיבית.
   ]
-  אם כך, מספיק להוכיח שיש כמות סופית של שדות בינייםL נסתכל על סגור גלואה $L^(n o r) = L^(gal) slash K$ (הסגור הנורמלי הוא סגור גלואה כי $L slash K$ פרידה) ומספיק להוכיח של־$L^(gal) slash K$ יש כמות סופית של שדות ביניים (כי $L subset L^(gal)$).\
+  אם כך, מספיק להוכיח שיש כמות סופית של שדות ביניים: נסתכל על סגור גלואה $L^(n o r) = L^(gal) slash K$ (הסגור הנורמלי הוא סגור גלואה כי $L slash K$ פרידה) ומספיק להוכיח של־$L^(gal) slash K$ יש כמות סופית של שדות ביניים (כי $L subset L^(gal)$).\
   מהתאמת גלואה לכל $K subset F subset L^(gal)$ מתקיים $F=L^(Gal(L slash F))$ ולכן $F$ נקבע ביחידות על־ידי $Gal(L slash F)<=Gal(L slash K)$ ויש כמות סופית כזאת כי $Gal(L slash K)$ היא חבורה סופית.
 ]
 #pagebreak()
@@ -282,12 +352,31 @@ $ Aut(L slash K) = { sigma in Aut(L) bar forall x in K space sigma(x)=x} $
   נשאר להראות $[L:F]<=abs(H)$: נניח שלא, אז $[L:F]>abs(H)$.\
   $L slash F$ אלגברית (כי $H$ סופית ומתנאים שקולים) ופרידה, ולכן יש תת־הרחבה סופית $F subset E subset L$ כך שמתקיים $infinity > [E:F] > abs(H)$ ולכן לפי משפט האיבר הפרימיטיבי $E=F(alpha)$.\
   אבל $deg(f_(alpha slash F))<=abs(H)$ בסתירה להנחה.\
-  אז $[L:F]<=abs(H)$ וגם $H <=Aut(L slash F)$ אבל תמיד מתקיים $[L:F]<=abs(Aut(L slash F))$ ולכן יש שיוויון, אבל שיוויון מתקיים אם ורק אם $L slash F$ היא הרחבת גלואהה והכל שיוויונות ולכן $[L:F] = abs(H), H = Gal(L slash F)$.;
+  אז $[L:F]<=abs(H)$ וגם $H <=Aut(L slash F)$ אבל תמיד מתקיים $[L:F]<=abs(Aut(L slash F))$ ולכן יש שיוויון, אבל שיוויון מתקיים אם ורק אם $L slash F$ היא הרחבת גלואה והכל שיוויונות ולכן $[L:F] = abs(H), H = Gal(L slash F)$.
 ]
 #pagebreak()
 
 == התאמת גלואה
-#todo
+תהיי $L slash K$ הרחבת גלואה סופית ונסמן $G = Gal(L slash K)$.\
+אזי ההעתקות $scr(G)(F) = Gal(L slash F), scr(F)(H) =L^H$ הפוכות אחת לשנייה ומשרות התאמה חד־חד ערכית ועל בין שדות ביניים $L slash F slash K$ לתתי־חבורות $1<=H<=G$.
+
+#proof[
+  נוכיח כי לכל שדה ביניים $L slash F slash K$ מתקיים $F=L^(Gal(L slash F))$.\
+  ברור כי $F subset.eq L^(Gal(L slash F))$ כי $Gal(L slash F)$ אלו האוטומורפיזמים שמקבעים את $F$.\
+  ניקח $alpha in L slash F$ ולכן $alpha$ פריד מעל $F$ כי $L slash K$ פרידה (כי גלואה) ולכן $L slash F$ פרידה ו־$deg_s (alpha) > 1$ ולכן יש לו צמוד $alpha'$ מעל $F$ ולכן קיים \
+  $sigma in Aut_F (overline(F))$ כך שיתקיים $sigma(alpha)=alpha'$.\
+  מתקיים $sigma|_K = Id_K$ וגם $sigma(L)=L$ מהיות $L slash K$ נורמלית ולכן $sigma|_L in Gal(L slash F)$ כי הוא הזהות על $F$, אבל $sigma(alpha)!=alpha$ ולכן $alpha in L^(Gal(L slash F))$ ולכן קיבלנו שיוויון ומתקיים $F=L^(Gal(L slash F))$.\
+  אז מתקיים
+  $ scr(F)(scr(G)(F)) = scr(F)(Gal(L slash F)) = L^(Gal(L slash F)) = F => scr(F) compose scr(G) = Id $
+  בכיוון השני, נזכר במשפט ארטין:
+  #theorem(
+    "משפט ארטין",
+  )[$L$ שדה ו־$H<=Aut(L)$ חבורת אוטומורפיזמים סופית כלשהי ונסמן $F=L^H$. אז $L slash F$ הרחבת גלואה ו־$H=Gal(L slash F)$.]
+  אז ניקח $H<=G$ תת־חבורה ולכן ממשפט ארטין (יחד עם הסופיות!) נקבל $ H = Gal(L slash L^H) = scr(G)(scr(F)(H)) => scr(G) compose scr(F) = Id $
+  אז הוכחנו את ההתאמה ונשאר להראות ש־$scr(G), scr(F)$ הופכות שיכונים:\
+  נניח כי $H'<=H<=G$ תתי־חבורות של $G$ אז $scr(F)(H)=L^H$ אלו כל האיברים ב־$L$ שנשארים במקום על־ידי פעולת $H$, אבל $H' subset.eq H$ ולכן נובע כי אם איבר נשאר במקום על־ידי $H$ הוא ישאר במקום גם על־ידי $H'$ ולכן $scr(F)(H) subset.eq L^(H')= scr(F)(H')$.\
+  ניקח שדות ביניים $L slash F slash F' slash K$ אז $scr(G)(F)=Gal(L slash F)$ אלו אוטומורפיזמים המשמרים את $F$ אבל $F' subset.eq F$ ולכן הם גם משמרים הכרח את $F'$, כלומר $scr(F) = Gal(L slash K) subset.eq Gal(L slash F') = scr(G)(F')$, כנדרש.
+]
 #pagebreak()
 
 
@@ -323,7 +412,7 @@ $ Aut(L slash K) = { sigma in Aut(L) bar forall x in K space sigma(x)=x} $
     אם $f=g dot.op h$ פירוק ב־$QQ[t]$ אזי קיים $0 != c in QQ^times$ כך ש־$c dot.op g, c^(-1) dot h in ZZ[t]$ ולכן $f = (c dot.op g) dot.op (c^(-1) dot.op h)$ פירוק ב־$ZZ[t]$.
   ]
   #proof[
-    ניקח את הפירוק $f = g dot.op h$ עבור $g, h in QQ[t]$ וניקח $0<m,n in ZZ$ כך ש־$m dot.op g, n dot.op h in ZZ[t]$ ואז נקבל פירוק $m dot.op n dot.op f = m dot.op g dot.op n dot.op h$.
+    ניקח את הפירוק $f = g dot.op h$ עבור $g, h in QQ[t]$ וניקח $0<m,n in ZZ$ כך ש־$m dot.op g, n dot.op h in ZZ[t]$ ואז נקבל פירוק $ m dot.op n dot.op f = m dot.op g dot.op n dot.op h $
     נסמן $ell = cont(f), alpha = cont(m dot.op g), beta = cont(n dot.op h)$. מלמת גאוס הראשונה נקבל עם כפליות התכולה
     $ cont(m dot.op n dot.op f) = m dot.op n dot.op ell = alpha dot.op beta = cont(m dot.op g dot.op n dot.op h) $
     אם כך, ניקח $m dot.op n dot.op f = m dot.op g dot.op n dot.op h$ ונחלק ב־$m dot.op n dot.op ell = alpha beta$ ונקבל $1 / ell dot.op f = (m dot.op n dot.op f) / (m dot.op n dot.op ell) = underbrace(m / alpha dot.op g dot.op n / beta dot.op h, in ZZ[t])$ משמע $f = ell m / alpha dot.op g dot.op n / beta dot.op h$.
@@ -335,9 +424,7 @@ $ Aut(L slash K) = { sigma in Aut(L) bar forall x in K space sigma(x)=x} $
 #pagebreak()
 
 == טענה 8.4.2 ברשומות של מיכאל
-#theorem(
-  "8.4.2",
-)[יהי $n in K^times, mu_n subset K$ ו־$L slash K$ הרחבה ציקלית, אז קיים $alpha in L$ כך שמתקיים $L = K(alpha)$ ו־$alpha^n in K$.]
+#theorem[יהי $n in K^times, mu_n subset K$ ו־$L slash K$ הרחבה ציקלית, אז קיים $alpha in L$ כך שמתקיים $L = K(alpha)$ ו־$alpha^n in K$.]
 #proof[
   ניזכר בהגדרה
   #definition(
@@ -376,7 +463,7 @@ $ Aut(L slash K) = { sigma in Aut(L) bar forall x in K space sigma(x)=x} $
 
 == טענה על הרחבות ציקלוטומיות תחת תנאי יפה
 #theorem[
-  אם $n in K^times$ אז קיים שורש פרימיטיבי $xi_n in overline(K)$ מסדר $n$, ההרחבה $K(xi_n) slash K$ היא גלואה וישנו שיכון $Gal(K(xi_n) slash K) arrow.r.hook (ZZ slash n ZZ)^times$.
+  אם $n in K^times$ אז קיים שורש פרימיטיבי $xi_n in overline(K)$ מסדר $n$, ההרחבה $K(xi_n) slash K$ היא גלואה וישנו שיכון $ Gal(K(xi_n) slash K) arrow.r.hook (ZZ slash n ZZ)^times $
 ]
 
 #proof[
@@ -384,5 +471,5 @@ $ Aut(L slash K) = { sigma in Aut(L) bar forall x in K space sigma(x)=x} $
   ראינו שאם ל־$overline(K)$ יש $n$ שורשי יחידה שונים זה מזה, אז $mu_n tilde.equiv (ZZ slash n ZZ)$, זו חבורה ציקלית ולכן יש לנו שורש יחידה פרימיטיבי $xi_n$ שיוצר אותה.\
   $K(xi_n) slash K$ הוא שדה הפיצול של הפולינום שלנו ולכן ההרחבה נורמלית וספרבילית ולכן זו הרחבת גלואה.\
   כל $sigma in G(L slash K)$ נקבע ביחידות על־ידי $sigma(xi)$ ולכן אנחנו מקבלים שיכון $Gal(L slash K) arrow.r.hook Aut(mu_n)$ על־ידי $sigma mapsto sigma|_(mu_n)$.\
-  נגדיר $lambda : (ZZ slash n ZZ) arrow.r Aut(mu_n)$ על־ידי $a mapsto sigma_a$ כאשר $sigma_a (xi)=xi^a$ לכל $a in (ZZ slash n ZZ)^times$ והעתקה הזאת מגדירה את השיכון $Gal(L slash K) arrow.r.hook (ZZ slash n ZZ)^times$.
+  נגדיר $lambda : (ZZ slash n ZZ) arrow.r Aut(mu_n)$ על־ידי $a mapsto sigma_a$ כאשר $sigma_a (xi)=xi^a$ לכל $a in (ZZ slash n ZZ)^times$ והעתקה הזאת מגדירה את השיכון $ Gal(L slash K) arrow.r.hook (ZZ slash n ZZ)^times $
 ]
