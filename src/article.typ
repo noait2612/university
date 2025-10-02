@@ -63,7 +63,7 @@
 ) = {
   if date == none {
     let today = datetime.today()
-    let dict = (
+    let heMapping = (
       "1": "ינואר",
       "2": "פברואר",
       "3": "מרץ",
@@ -77,7 +77,25 @@
       "11": "נובמבר",
       "12": "דצמבר",
     )
-    date = str(today.day()) + " ב" + dict.at(str(today.month())) + " " + str(today.year())
+    let enMapping = (
+      "1": "January",
+      "2": "February",
+      "3": "March",
+      "4": "April",
+      "5": "May",
+      "6": "June",
+      "7": "July",
+      "8": "August",
+      "9": "September",
+      "10": "October",
+      "11": "November",
+      "12": "December",
+    )
+    if language == "he" {
+      date = str(today.day()) + " ב" + heMapping.at(str(today.month())) + " " + str(today.year())
+    } else {
+      date = enMapping.at(str(today.month())) + " " + str(today.day()) + ", " + str(today.year())
+    }
   }
 
   // Set the text design to imitate my latex setup
