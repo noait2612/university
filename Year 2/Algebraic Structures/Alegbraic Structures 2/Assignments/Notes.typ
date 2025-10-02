@@ -14,7 +14,11 @@
 #let char = math.op("char")
 #let im = math.op("Im")
 #let ker = math.op("ker")
+#let Perm = math.op("Perm")
 #let deg = math.op("deg")
+#let Span = math.op("Span")
+#let Hom = math.op("Hom")
+#let End = math.op("End")
 #let cont = math.op("cont")
 #let Frac = math.op("Frac")
 #let Aut = math.op("Aut")
@@ -30,48 +34,244 @@
 
 = *הרצאה 1 – 24/03*
 == מבוא להרחבת שדות
+
 #convention[
-  אנחנו עובדים רק בחוג קומוטטיבי עם יחידה (0 הוא חוג עם יחידה) והומומורפיזם של חוגים לוקח 1 ל־1 (מכבד את מבנה החוג). כמו כן, אנחנו עובדים תמיד בתחום שלמות (תחום ללא מחלקי 0).
+  אנחנו עובדים רק בחוג קומוטטיבי עם יחידה (0 הוא חוג עם יחידה) והומומורפיזם של חוגים לוקח 1 ל־1 (מכבד את מבנה החוג).\
+  כמו כן, אנחנו עובדים תמיד בתחום שלמות (תחום ללא מחלקי 0).
 ]
+
 #example("הומומורפיזם של חוגים")[
   $phi: ZZ arrow.r 0$ הוא הומומורפיזם של חוגים.
 ]
+
 #counterexample("לא הומומורפיזם של חוגים")[
   $phi: 0 arrow.r ZZ$ הוא לא הומומורפיזם של חוגים.
 ]
+
 #example("שדות")[
   $FF_p = ZZ slash p ZZ,QQ(sqrt(2)), QQ, RR,CC$ עבור $p in NN$ ראשוני בלבד.
 ]
+
 #counterexample("לא שדות")[
-  $0, FF[X], M_(n times n) (FF)$
+  $0, FF[X], M_(n times n) (FF)$.
 ]
+
 #definition("פולינום מתוקן")[
   יהי $f$ פולינום, ניזכר כי $f = sum_(i=1)^n a_i x^i$.נגיד כי $f$ הוא *מתוקן* אם המקדם המוביל שלו הוא 1.
 ]
+
 #definition(
   "אי־פריק",
-)[ $R$ תחום שלמות ו־$0!=r in R$. $r$ נקרא *אי־פריק (irreducible)* אם איננו הפיך ואין לו פריק אמיתי. משמע, אם מתוך $r = a b$ נובע ש־$a in R^times$ או $b in R^times$ (משמע $a~r$ או $b~r$).]
-#definition($"־הומומורפיזם"K$)[#text(red)[*להשלים*]]
+)[
+  $R$ תחום שלמות ו־$0!=r in R$. $r$ נקרא *אי־פריק (irreducible)* אם איננו הפיך ואין לו פריק אמיתי.\
+  משמע, אם מתוך $r = a b$ נובע ש־$a in R^times$ או $b in R^times$ (משמע $a~r$ או $b~r$, במבנים1 קראנו לזה יחס *חברות*).]
+
 #corollary[$K$־הומומורפיזם של שדות הוא תמיד שיכון.]
-#proof[#text(red)[*להשלים*]]
+
+#proof[אפשר לראות זאת מכלים של לינארית ישירות, או מהעובדה שהומומורפיזם של שדות הוא בפרט הומומורפיזם של חוגים, ולכן הגרעין שלו הוא אידיאל,
+  אבל האידיאלים היחידים בשדה הם אידיאל האפס (הטריוויאלי) או כל השדה.]
 
 == בניות
-#text(red)[*להשלים*]
+
+#definition("שדה מנות")[$R$ תחום שלמות, נגדיר *שדה מנות*
+  $ Frac(R) = {s/r} bar s,r in R, r!=0 } slash tilde $
+  כאשר $tilde$ הוא יחס שקילות המקיים $s_1/r_1 tilde s_2/r_2 <==> s_1r_2 = s_2r_1$.
+]
+
+#lemma[לכל שיכון $R arrow.r.hook K$ כאשר $K$ שדה, קיים ויחיד פיקטור $R subset Frac(R) arrow.r.hook K$.]
+
+#definition(
+  "שדה פונקציות רציונליות",
+)[אם $K$ שדה ו־$S$ קבוצת משתנים (בדרך־כלל סופית אך אפשר גם אינסופית), נגדיר $ K(S) colon.eq Frac(K[S]) $ זה *שדה פונקציות רציונליות מעל $K$ במשתנים של $S$*.]
+
+#remark[$Frac(K(S)) = {P / Q bar P, Q in K[S], Q!=0}$, כאשר $Frac$ זהו השדה הקטן ביותר שמכיל את $K[S]$.]
+
+#exercise[מתקיים $K(y)(x)=K(x)(y)$.]
+
+#proof[$K[x,y]=K[y,x]$ ולכן $Frac(K[x,y])=K(x,y)=K(y,x) = K(x)(y) = K(y)(x)$.]
+
+#proposition(
+  "תזכורת: תנאים שקולים לבניית שדות ממנה",
+)[
+  + אם $R$ חוג ו־$M$ אידיאל מקסימלי אז $K = R slash M$ הוא שדה
+  + אם $K$ שדה ו־$f(t)$ פולינום אי־פריק מעליו אזי $K[t] slash (f(t))$ הוא שדה
+]
+
+#remark[מהלמה של צורן נובע כי בכל חוג יש אידיאל מקסימלי.]
+
+#example[
+  + $CC = RR[t] slash (t^2+1)$ (במילים אחרות, הוספנו $t$ וחייבנו $t^2+1=0 => t=i$)
+  + $QQ(sqrt(2)) = QQ(t) slash (t^2-2)$
+  + $QQ(root(3, 3)) = QQ(t) slash (t^3-3)$
+]
+
+#exercise[
+  + $FF_3 (t) slash (t^2+1) = FF_9 = FF_3 [sqrt(-1)]$
+  + $FF_2 (t) slash (t^2+t+1) = FF_4 (FF_4 != ZZ slash 4ZZ )$
+]
+
+#proof[
+  + נשים לב שב־$FF_3$, אם נסתכל על הפולינום $t^2+1$ אז מתקיים $t^2+1 = 0 <==> t^2=-1$ אבל $-1 eq.triple 2 (mod 3)$ ולכן $t^2=2$, ולפולינום $t^2+1$ אין שורשים ב־$FF_3$ (פשוט להציב $t in {1,2,3}$).\
+    כעת, $FF_3(t) slash (t^2+1)$ מכיל את האיברים מהצורה $a+b t$ עבור $a,b in FF_3$, קומבינטורית יש לנו $3 times 3 = 9$ אפשרויות לסכומים שונים, ואנחנו כבר יודעים מלינארית שזה גם הגודל של השדה $FF_9$ ועל־כן הם שקולים.\
+    המקרה של $F_3 (t) slash (t^2+1) = FF_3[sqrt(-1)]$ ברור מכך ש־$t^2=-1$.
+  + על אותו רעיון כמו המקרה הקודם.
+]
+
 == שדות ראשוניים
-#text(red)[*להשלים*]
+
+#definition(
+  "שדה ראשוני",
+)[נגיד ששדה הוא *שדה ראשוני* אם הוא מהרשימה $QQ, FF_2, FF_3, dots.h.c, FF_p$ כאשר $p$ ראשוני בלבד.]
+
+#lemma[לכל שדה $K$ קיים ויחיד תת־שדה ראשוני $K_0 subset.eq K$ ובפרט שדות ראשוניים הם מנימליים ביחס להכלה.]
+
+#proof[
+  נשים לב כי לכל חוג $R$ קיים ויחיד הומומורפיזם $ZZ arrow.r R$ (כי $1_ZZ mapsto 1_R$ מהגדרת הומומורפיזם של חוגים).\
+  בפרט, יש הומומורפיזם יחיד $phi : ZZ arrow.r K$ ו־$ZZ arrow.r ZZ slash ker(phi) subset R$, שכן $ZZ$ תחום אוקלידי וולכן תחום ראשי ואז $ker(phi)=(n)$ ונחלק למקרים:
+  + $n=0$ אזי $ZZ arrow.r.hook R$ ולכן גם $Frac(ZZ) = QQ arrow.r.hook R$
+  + אם $n!=0$ אז $n=p$ ראשוני כי $ZZ slash p ZZ subset R$ תחום וזה אומר ש־$FF_p = ZZ slash p arrow.r.hook K$
+  כמובן, אף $FF_p$ או $QQ$ לא מכיל שדה אחר מהרשימה ואי־אפשר לשכן אחד בשני.
+]
+
+#definition("המציין")[*המציין* של שדה $K$ הוא
+  + $char(K)=0$ אם $QQ subset.eq K$
+  + $char(K)=p$ אם $FF_p subset.eq K$
+]
+
+#definition(
+  "הגדרה אלטרנטיבית למציין",
+)[$char(K)$ הוא המספר החיובי $p$ הקטן ביותר כך ש־$0=p in K$ ו־$char(K)=0$ אם לא קיים כזה.]
+
+#remark[מהלמה שראינו $ker(ZZ arrow.r K) = (char(K))$.]
+
+#remark("אזהרה")[בשדה ממציין $p$ הדבר *הכי* חשוב לעשות זה *לא* לחלק ב־$p$.]
+
+#lemma[אם $phi : K arrow.r R$ הומומורפיזם של חוגים, $K$ שדה ו־$R!=0$ אזי $phi$ חד־חד ערכית.]
+
+#proof[
+  $I = ker(phi) subset.eq K$ אידיאל. \
+  אם $I = 0$ אז $phi$ חד־חד ערכית וסיימנו, או שמתקיים $I = R$ ואז $0=1$ ולכן $R=0$ וזו סתירה.
+]
+
+#definition("אנדומורפיזם, אוטומורפיזם")[הומומורפיזם $phi : K arrow.r K$ נקרא *אנדומורפיזם* ומסומן *$End(K)$*.\
+  אם $phi$ הפיך אז $phi$ נקרא *אוטומורפיזם* ומסומן ב־ *$Aut(K)$* (שזו כמובן חבורה)]
+
+#example[
+  נניח ש־$char(K) = p != 0$, אזי $Fr(x)=x^p$ מגדיר אנדומורפיזם שנקרא לו *פרובניוס* מ־$K$ לעצמו (עוד נתעסק בו בהמשך).
+]
+
+#proof[
+  אכן $1 mapsto 1, 0 mapsto 0$ ו־$(x y)^p=x^p y^p$ ובחיבור נשתמש בנוסחת הבינום $(x+y)^p = sum_(i=0)^p binom(p, i) x^i y^(p-i)$ ונשים לב ש־$binom(p, i)$ מתחלק ב־$p$ כמספר שלם כאשר $i in.not {0,p}$ ואז $(x+y)^p = x^p+y^p$ בכל שדה שבנו $p=0$.
+]
+
+#example[
+  ב־$FF_3$ מתקיים $(x+y)^3 = x^3+3x^2y+3x y^2 + y^3$
+]
+
+#exercise[
+  אם $FF$ שדה סופי עם $char(FF)=p$ אז $Fr_FF in Aut(FF)$.
+]
+#proof[
+  היות ו־$FF_r$ הוא חד־חד־ערכי (העתקה מתוך שדה), והשדה הוא סופי אז בהכרח הוא על, ולכן אוטומורפיזם.
+]
+
+#example[
+  $FF_p (t) arrow.r^Fr FF_p (t)$ לא הפיכה כי אין $t=p$.
+]
 
 = *הרצאה 2 – 25/03*
 == הרחבת שדות
-#text(red)[*להשלים*]
+פרק 3 ברשומות של מיכאל.
+
+#definition(
+  "הרחבת שדות",
+)[אם $L$ שדה ו־$K subset.eq L$ הוא תת־שדה (קבוצה סגורה לפעולות) אז אומרים ש־$L slash K$ היא *הרחבת שדות*.]
+
+#remark[
+  בדרך־כלל, נרצה להתחיל מ־$K$ ולבנות הרחבות אבל כמעט תמיד אנחנו בונים שיכון שדות $K arrow.r.hook L$ במקום, אבל בפועל מהשיכון \
+  $phi: K arrow.r L$ אפשר לבנות הרחבה על־ידי החלפה של $phi(K)$ ב־$K$.
+]
+
+#definition(
+  "K־הומומורפיזם בין שדות",
+)[אם $L slash K, F slash K$ שתי הרחבות של $K$ אזי *$K$־הומומורפיזם* מ־$F$ ל־$L$ זה הומומורפיזם $phi: F arrow.r L$ כך שמתקיים $phi|_K = Id$.]
+
+#notation[$L slash K$ הרחבת שדות, נסמן את חבורת כל $K$־אוטומורפיזמים של $L$ ב־$Aut_K (L)$ או ב־$Aut(L slash K)$]
+
+#example[
+  + $Aut_RR (CC) = ZZ slash 2ZZ$ (כי שורשים של פולינום הולכים בינם לבין עצמם)
+  + $Aut_QQ (CC)$ הוא ענק ולא נחמד
+  + $Aut_CC (CC) = 1$
+  + $Aut_QQ (QQ(sqrt(2))) = ZZ slash 2ZZ$ עם ההצמדה $a+b sqrt(2) mapsto a-b sqrt(2)$ והזהות
+]
 
 == יוצרים של הרחבות
-#text(red)[*להשלים*]
+
+#definition("K[S], K(S)")[נניח ש־$L slash K$ הרחבת שדות ($K subset.eq L$) ו־$S subset.eq L$ תת־קבוצה, אז
+  + $K[S]$ *תת־חוג* של $L$ שמכיל את $K$ ו־$S$ והוא הקטן ביותר
+  + $K(S)$ *תת־השדה* הקטן ביותר המכיל את $K$ ואת $S$
+]
+
+#remark[הם קיימים ושווים לחיתוך של כל תתי־חוגים / שדות המכילים את שניהם (כמו ש־$Span$ של מרחב וקטורי קיים).]
+
+#lemma[בהינתן הרחבת שדות $L slash K$, יהיו $S subset.eq L$ ו־$phi : K[x_s]_(s in S) arrow.r L$ הומומורפיזם שהוא הזהות על $K$ ו$x_s mapsto s in S subset.eq L$, אז מתקיים
+  + $K[S] = { f(s) bar f in K[x_s]_(s in S)}$
+  + $K(S) = Frac(K[S]) = {f(S)/g(S) bar f(x),g(x) in K[x_s]_(s in S), g(S)!=0}$
+]
+
+#proof[#text(red)[*להשלים, למה 3.1.23 אצל מיכאל.*]]
+
+#remark[בדרך־כלל אין הומומורפיזם $K(X_s)_(s in S) arrow.r L$ כי עלולים לקבל "$infinity$" (לחלק ב־$0$).]
+
+#definition(
+  "הרחבה נוצרת סופית",
+)[הרחבה $L slash K$ נקראת *נוצרת סופית* אם קיים $L supset.eq S = {alpha_1, dots.h.c, alpha_n}$ סופית כך שמתקיים $K[S] = L$.]
+
+#example[
+  $CC = RR + i RR$ ו־$CC = RR[i]=RR(i)$ ואפילו $CC slash RR$ מרחב וקטורי נוצר סופית.\
+  $CC (t) slash CC$ נוצר סופית כשדה אבל לא נוצר סופית כחוג (דורש הוכחה) ואפילו $CC[t] slash CC$ לא נוצר סופית כפולינומים.
+]
+
+#definition(
+  "דרגת הרחבה",
+)[אם $L slash K$ הרחבת שדות, אז *הדרגה של ההרחבה* שנסמנה *$[L: K]$* שווה למימד של $L$ כמרחב וקטורי מעל $K$ ולכן $dim_K L = [L:K]$.]
+
+#example[
+  + $[QQ(sqrt(3)) : QQ] = 2$ (כמו ש־$[CC : RR] = 2$)
+  + נראה בהמשך שמתקיים $[QQ(root(3, 2) : QQ)] = 3$
+  + $[K(t) : K] = infinity$
+]
+
+#definition("הרחבת שדות סופית")[הרחבה $L slash K$ נקראת *הרחבה סופית* אם $[L:K]<infinity$.]
+
+#convention[$infinity dot.op n = infinity, infinity dot.op infinity = infinity$]
+
+#lemma("כפליות הדרגה")[
+  אם $F slash L slash K$ הוא מגדל של הרחבות שדות אזי מתקיים
+  $ [F:K] = [F : L] dot.op [L:K] $
+  ובפרט, $F slash K$ הרחבה סופית אם ורק אם $L slash K, F slash K$ הרחבות סופיות.
+]
+
+#proof[
+  אם $F slash L, L slash K$ לא הרחבות סופיות בבירור גם $F slash K$ לא הרחבה סופית.\
+  אם $F slash K$ סופי, אז הבסיס של $F slash K$ הוא גם בסיס מעל $L$ ולכן $F slash L$ סופי ו־$L$ תת־מרחב וקטורי ב־$F$ ולכן גם הוא נוצר סופית מעל $K$.\
+  נשאר להראות שאם $F slash L, L slash K$ הרחבות סופיות אז השיוויון ממתקיים. נראה זאת באמצעות בניית בסיס:\
+  נניח שמתקיים $[L:K]=n, [F:L]=m$ ונבחר בסיסים $alpha_1, dots.h.c, alpha_n$ בסיס של $L slash K$ ו־$beta_1, dots.h.c, beta_m$ בסיס של $F slash L$, נוכיח ש־$gamma_(i j) = alpha_i beta_j$ מהווה בסיס של $F slash K$, עלינו להראות שפורש ובלתי־תלוי לינארית:\
+  כל $c in F$ ניתן לייצוג על־ידי $c=sum_(j=1)^m b_j beta_j$ עם $b_j in L$, אז $b_j = sum_(i=1)^n a_(i j) alpha_i$ עם $a_(i j) in K$, אז
+  $ c = sum_(j=1)^m (sum_(i=1)^n a_(i j) alpha_i) beta_j = sum_(i,j) a_(i j) gamma_(i j) $
+  ולכן $gamma_(i j)$ פורש את $F slash K$.\
+  אם נניח ש־$a_(i j) in K$ כך שמתקיים $sum_(i, j) a_(i j) gamma_(i j) = 0$, אז
+  $ 0 = sum_(i, j) a_(i j) alpha_i beta_j = sum_(j=1)^m (sum_(i=1)^n a_(i j) alpha_i) beta_j $
+  אבל $beta_j$ בלתי־תלויים לינארית מעל $L$ אז $sum_i a_(i j) alpha_i in L$ הם כולם אפסים, אבל $alpha_i$ בלתי־תלויים לינארית מעל $K$, אז $a_(i j)$ הוא הביטוי שנעלם ולכן $gamma_(i j)$ הם בלתי־תלויים לינארית מעל $K$ ולכן זה מהווה בסיס מעל $F$.
+]
 
 = *תרגול 1 – 26/03*
-== #text(red)[*להשלים*]
 
-= *הרצאה 3 – 31/03*
-== הרחבות אלגבריות
+== חוג הפולינומים – תזכורת
+
+== בניית שדות בעזרת מנות של חוגי פולינומים
+
+== חישוב בשדה $E=F[x] slash (f)$
 #text(red)[*להשלים*]
 
 = *תרגיל 1*
@@ -80,6 +280,151 @@
 
 == מסקנות
 #text(red)[*להשלים*]
+
+= *הרצאה 3 – 31/03*
+== הרחבות אלגבריות
+פרק 3.2 ברשומות של מיכאל.
+
+#definition(
+  "איבר אלגברי, איבר טרנסצנדנטי",
+)[בהינתן הרחבה $L slash K$ ו־$alpha in L$, נגיד ש־$alpha$ *אלגברי* מעל $K$ אם קיים $f(t) in K[t]$ כך שמתקיים $f(alpha)=0$, אחרת נגיד ש־$alpha$ נקרא *טרנסצנדנטי* מעל $K$.\
+  אם $char(L)=0$ אז $alpha in L$ אלגברי או טרנסצנדנטי אם הוא אלגברי או טרנסצנדנטי מעל $QQ$.]
+
+#example[
+  אלגבריים ב־$CC$: $1/778, root(3, 5), root(5, 3)+root(3, 5)$ ובהמשך נוכיח שגם $i$.\
+  טרנסצנדנטי ב־$CC$: $e, pi$ (עובדה מעניינת: לא ידוע אפילו אם $e+pi$ הוא טרנסצנדנטי או אלגברי, כי- זה מספר אי־רציונלי).\
+  נשים לב ש־$e$ אלגברי מעל $CC$ ו־$RR$ ואפילו מעל $QQ(e), QQ(e^5+e)$ (ברור שלהיות איבר אלגברי או טרנסצנדנטי תלוי בשדה שאני עליו).\
+  הרעיון הכללי הוא שאם יש ל־$alpha$ קירובים רציונליים "טובים מדי" אז $alpha$ טרנסצנדנטי – כמו לדוגמה מספר ליוביל.
+]
+
+#definition(
+  $overline(QQ)$,
+)[$overline(QQ)$ ב־$CC$ קבוצת כל האיברים האלגבריים מעל $QQ$ ונראה היום שהוא שדה ואף בן־מנייה (הבן־מנייה הגיוני: יש מספר בן־מנייה של פולינום מעל $QQ$ ולכן יכולים להיות רק מספר בן־מנייה של שורשים ולכן יש מספר בן־מנייה של מספרים אלגבריים מעל $QQ$).]
+
+#definition(
+  "פולינום מינימלי",
+)[תהיי $L slash K$ הרחבה ו־$alpha in L$, והוכחנו ש־$K[alpha] = K[t] slash I$ כאשר $I = {f in K[t] bar f(alpha)=0}$ ב־$L$.\
+  $I$ הוא אידיאל ראשי (נוצר על־ידי איבר אחד) כך ש־$K[t]$ חוג ראשי ו־$I$ ראשוני, כי $K[alpha] subset.eq L$ תחום שלמות (אם $0=h(alpha)g(alpha)$ ב־$L$ אז $g(alpha)=0$ או $h(alpha)=0$ אז אם $h g in I$ אז $h in I$ או $g in I$ וראינו ש־$I$ אידיאל ראשוני אם ורק אם $R slash I$ תחום שלמות).\
+  מכאן, או $I = (f_alpha (t))$ כאשר $f_alpha$ הוא אי־פריק או $I=0$ (בכלל זה אידיאל מקסימלי).\
+  אם $I=0$ אז $alpha$ טרנסצנדנטי ואם $f_alpha$ הוא אי־פריק אז $alpha$ אלגברי.\
+  אם קיימים פולינומים שונים מאפס שמתאפסים ב־$alpha$ אז יש פולינום מתוקן מינימלי כזה, קוראים ליוצר זה *הפולינומים המינימלי של $alpha$ מעל $K$* ונסמנו $f_alpha$ או $f_(alpha slash K)$ כדי להדגיש מעל איזה שדה אנחנו מדברים (כאשר האחרון זו הצורה המועדפת), ברשומות מדי פעם זה מופיע גם בתור $f_(alpha, K)$.
+]
+
+#proposition("תנאים לפולינום מינימלי")[
+  על־מנת להגיד ש־$f_(alpha slash K)$ הוא פולינום מינימלי, צריך להתקיים:
+  + $f_(alpha slash K) (alpha) = 0$
+  + $f$ פולינום מתוקן
+  + $f$ אי־פריק
+]
+
+#example[$t^2-2 = f_(sqrt(2) slash QQ)$ עם $deg(f) = 2$, $t-sqrt(2) = f_(sqrt(2) slash QQ(sqrt(2)))$ עם $deg(f) = 1$ (שדה יותר גדול => פולינום יותר קטן).]
+
+#lemma[
+  אם $F slash L slash K$ מגדל הרחבות ו־$alpha in F$ איבר אלגברי מעל $K$ הוא הוא גם אלגברי מעל $L$ והפולינום המינימלי של $alpha$ מעל $L$ מחלק את הפולינום המינימלי של $alpha$ מעל $K$, ובסימונים $f_(alpha slash L) divides f_(alpha slash K)$.
+]
+
+#proof[$f_(alpha slash K) in L[t]$ וגם $f_(alpha slash K) (alpha) = 0$ ולכן הוא מתחלק ב־$f_(alpha slash L)$.]
+
+#notation[$f_(alpha slash K) dot.op K[t] = m_(alpha slash K)$ האידיאל של כל הפולינומים מעל $K$ שמתאפסים ב־$alpha$ (או $0 = m_(alpha slash K)$ אם $alpha$ הוא טרנסצנדנטי).]
+
+#lemma[תהיי $L slash K$ הרחבה ו־$alpha in L$
+  + אם $alpha$ אלגברי עם פולינום מינימלי $f_alpha = f_(alpha slash K)$ ו־$d = deg f_alpha$ אזי $K(alpha) = K[alpha] = K[t] slash (f_alpha)$ ו־$1, alpha, dots.h.c, alpha^(d-1)$ מהווים בסיס של $K(alpha) slash K$ ובפרט מתקיים $d = [K(alpha) : K]$
+  + אם $alpha$ טרנסצנדנטי אז $K(t) tilde.eq_(t mapsto alpha) K(alpha)$ ו־$[K(alpha) : K] = infinity$
+]
+
+#proof[
+  + כבר הוכחנו ש־$K[alpha] = K[t] slash (f_alpha)$ והיות ו־$f_alpha$ הוא אי־פריק אז $m_alpha$ הוא מקסימלי ולכן $K[alpha]$ שדה ו־$K(alpha)=K[alpha]$.\
+    עכשיו נחשב את המימד של $K(alpha) = K[t] slash (f_alpha)$ ונראה שמתקיים $dim_K K[t] slash (f) = deg(f)$ לכל $f!=0$:\
+    לכל $h in K[t]$ פולינום קיימים ויחידים $q_h, r_h$ כך ש־$h = q_h dot.op f_alpha + r_h$ וגם $deg(r_h)<d = deg(f)$ כאשר $r_h$ היא החלוקה עם שארית.\
+    זה נותן לנו העתקה $r : K[t] arrow.r K[t]_(<d)$, נראה שזו העתקה לינארית:\
+    לכל $g,h in K[t]$ מתקיים $r_(g+h) = r(r_g + r_h)$ ולכן $r_(g+h) = r_g + r_h$, אותו הדבר לכפל בסקלר וקיבלנו העתקה לינארית ועל.\
+    מתקיים שהגרעין הוא $f_alpha dot.op K[t] = m_alpha$ ולכן (כמרחבים וקטורים) $K[alpha] tilde.eq K[t] slash m_alpha tilde.eq K[t]_(<d)$ והבסיס כאן הוא $1, t, dots.h.c, t^(d-1)$ ואז $1, alpha, dots.h.c, alpha^(d-1)$ הוא בסיס.
+  + מתקיים $K[t] tilde.eq K[alpha]$ (כי $K[t] tilde.eq K[t] slash m_alpha tilde.eq K[alpha]$) ולכן $K[t] = Frac(K[t]) tilde.eq Frac(K[alpha]) = K(alpha) subset L$ ו־$K[alpha] subset K(alpha)$ והמימד שלנו הוא $infinity$.
+]
+
+#remark[$K[t] arrow.r K[t]_(<d)$ הוא *לא* הומומורפיזם של חוגים כי $K[t]_(<d)$ הוא לא חוג, הוא אפילו לא סגור לכפל.]
+
+#definition(
+  "הרחבה פרימיטיבית",
+)[$L slash K$ נקראת *הרחבה פרימטיבית* אם היא נוצרת על־ידי איבר אחד, כלומר קיים $alpha in L$ כך שמתקיים $L = K(alpha)$.]
+
+#lemma[אם $K$ שדה ו־$f in K[t]$ אי־פריק אז קיימת הרחבה פרימיטיבית $L slash K$ כך של־$f$ יש שורש ב־$L$.]
+
+#proof[$L' = K[t] slash (f(t))$ זה שדה, ולכן יש $phi : K arrow.r L'$ שהוא שיכון כך ש־$L' slash phi(K)$ הוא הרחבה פרמיטיבית הנוצר על־ידי שורשי $f$, מלמה שלא ראינו בהרצאות (3.1.17 ברשומות של מיכאל), יש הרחבה $L slash K$ שאיזומורפית ל־$L' slash phi(K)$ ולכן $L slash K$ היא הרחבה פרימיטיבית הנוצרת על־ידי שורש של $f$ ואז $f_alpha divides f => f_alpha = f$.]
+
+#definition(
+  "דרגה של איבר",
+)[עבור $alpha slash K$ אלגברי, *הדרגה של $alpha slash K$* היא $deg_K (alpha) = deg(f_(alpha slash K))$ (מהלמה שראינו זה אומר $K[alpha]:K$).]
+
+#definition(
+  "הרחבה אלגברית",
+)[תהיי $L slash K$ הרחבות שדות. נגיד שההרחבה היא *אלגברית* אם כל $alpha in L$ הוא אלגברי מעל $K$.]
+
+#lemma[
+  תהיי $L slash K$ הרחבות שדות, אז
+  + אם $[L:K]=d$ אז לכל $alpha in L$ אלגברי, $deg_K (alpha) divides d$ (ומתקיים במקרה זה ש־$L slash K$ אלגברי)
+  + אם $L = K(alpha_1, dots.h.c, alpha_n)$ אזי $[L:K] = <= product_(i=1)^n deg_K (alpha_i)$ כאשר $alpha_1, dots.h.c, alpha_n$ אלגבריים
+]
+
+#proof[
+  + בין $1, alpha, dots.h.c, alpha^d$ (יש כאן $d+1$ איברים) יש תלות לינארית וזה נותן פולינום מדרגה קטנה/שווה ל־$d$ שמתאפס ב־$alpha$.\
+    בדרך אחרת אפשר לראות את זה $deg_K (alpha) = [K(alpha) : K] divides [L:K]$ מכפליות הדרגה
+  + מתקיים
+    $
+      [L:K] = [K(alpha_1) : K] dot.op [K(alpha_1, alpha_2) : K(alpha_1)] dot.op dots.h.c dot.op [L:K(alpha_1, dots.h.c, alpha_n)]
+    $
+    אז כל אחד מהם נוצר על־ידי איבר בודד ולכן פרימיטיבי, אז
+    $
+      [L:K] = product_(i=1)^n [K(alpha_1, dots.h.c alpha_i) : K(alpha_1, dots.h.c, alpha_(i-1))] = product_(i=1)^n deg_(K(alpha_1, dots.h.c, alpha_(i-1))) (alpha_i) <= product_(i=1)^n deg_K (alpha_i)
+    $
+]
+
+#corollary[אם $L slash K$ הרחבה ו־$alpha, beta in L$ אלגבריים מעל $K$, אזי גם $alpha+beta, alpha-beta, alpha dot.op beta, alpha/beta$ (אם האחרון מוגדר) אלגבריים מעל $K$ מדרגה שקטנה שווה ל־$deg_K (alpha) dot.op deg_K (beta)$, ובפרט קבוצת כל המספרים האלגבריים ב־$L$ מעל $K$ היא שדה.]
+
+#proof[ניקח $K(alpha,beta) subset.eq L$ ולכן לפי הלמה לעיל $deg_K (alpha) dot.op deg_K (beta) >= [K(alpha, beta) : K]$ ולכן כל $gamma in K(alpha, beta)$ אלגברי ואפילו יש חסם על הדרגה שלו, $deg_K (gamma) <=deg_K (alpha) dot.op deg_K (beta)$.]
+
+#exercise[
+  $deg_QQ (root(3, 3) + sqrt(2))=6$.
+]
+
+#proof[זה נובע מכך ש־$root(3, 3), sqrt(2)$ הם שניהם אלגבריים בהרחבה (השורשים של הפולינומים $x^3-3, x^2-2$) ולכן מהמסקנה $deg_QQ (root(3, 3) + sqrt(2))<=6$.\
+  השיוויון נובע מכך שהם בלתי־תלויים לינארית (או אלגברית?) כי הם פתרונות של שורשים ממעלות שונות ולכן כל קשר ביניהם הוא רק הקשר הטריוויאלי (עם הנחה בשלילה וקצת עבודה נוכל לקבל שיש איבר אלגברי אחר שמאפס את הפולינומים הללו ואז זו סתירה להיות הפולינומים שמצאנו כפולינומים המינימליים).]
+
+#notation[$overline(QQ) = {x in CC bar CC"אלגברי ב־ " x }$]
+
+#remark[הוכחנו שזה שדה לפי הגדרה ולכן $overline(QQ) slash QQ$ היא *הרחבה אלגברית* אך כמובן לא נוצרת סופית.]
+
+#corollary[עבור הרחבת שדות $L slash K$, הבאים שקולים
+  + $L slash K$ סופית
+  + $L slash K$ אלגברית נוצרת סופית
+  + $L$ נוצרת על־ידי איברים אלגבריים $alpha_1, dots.h.c, alpha_n$
+]
+
+#proof[
+  $1=>2$: נניח ש־$L slash K$ סופית אז היא אלגברית (מהלמה על הדרגות שראינו לעיל) ונוצרת סופית (אפילו כמרחב וקטורי).\
+  $2=>3$: מיידי מהגדרה.\
+  $3=>1$: נניח ש־$L = K(alpha_1, dots.h.c, alpha_n)$ כאשר $alpha_1, dots.h.c, alpha_n$ אלגבריים. אזי מהלמה שראינו $[L:K]<= product_(i=1)^n deg_K (alpha_i) < infinity$ ולכן סופית.
+]
+
+#corollary(
+  "תנאי לטרנזטיביות הרחבות אלגבריות",
+)[יהיה $F slash L slash K$ מגדל הרחבות. אזי $F slash K$ אלגברי אם ורק אם $F slash L$ ו־$L slash K$ אלגבריים]
+
+#proof[
+  $<==$ נניח ש־$F slash K$ אלגברית אז ברור ש־$L slash K, F slash L$ הרחבות אלגבריות ישירות מהגדרה.\
+  $==>$ נניח ש־$F slash L$ ו־$L slash K$ אלגבריות ונוכיח כי כל $alpha in F$ אלגברי מעל $K$: $alpha$ אלגברי מעל $L$ ולכן קיים $f=f_(alpha slash L) !=0$ כך שמתקיים $f(alpha)=0=alpha^d+beta_1 alpha^(d-1) + dots.h.c + beta_d = 0$ עם $beta_1, dots.h.c, beta_d in L$.\
+  היות ו־$beta_1, dots.h.c, beta_d$ אלגבריים מעל $K$, השדה $E=K(beta_1, dots.h.c, beta_d)$ הוא סופי מעל $K$ עם הלמה לעיל.\
+  היות ו־$alpha$ הוא אלגברי מעל $E$, ההרחבה $E'=E(alpha) slash E = K(alpha, beta_1, dots.h.c, beta_d) slash K(beta_1, dots.h.c, beta_d)$ היא הרחבה סופית גם־כן.\
+  נשים לב שקיבלנו מגדל הרחבות סופיות ($E'$ סופית כי פרימטיבית מהיות $alpha$ אלגברי)
+  $ K(alpha, beta_1, dots.h.c, beta_d) slash K(beta_1, dots.h.c, beta_d) slash K $
+  אז מהלמה שראינו על כפליות הדרגה
+  $ deg_K (d) <= [K(alpha, beta_1, dots.h.c, beta_d) : K] < infinity $
+]
+
+#definition(
+  $"מחלקה יציבה" cal(C)$,
+)[נסמן ב־$cal(C)$ את המחלקה של הרחבות שדות. $cal(C)$ נקראת *יציבה* (ברשומות לפעמים שלמה) אם לכל מגדל $F slash L slash K$ של הרחבות, $F slash K in cal(C)$ אם ורק אם $F slash L, L slash K in cal(C)$.\
+  נשים לב שהוכחנו שמחלקות של הרחבות סופיות ואלגבריות היינן שלמות.]
 
 = *תרגול 2 – 02/04*
 == משהו
@@ -90,15 +435,15 @@
 אני לא אוהבת לצייר, אז אני אוותר.
 
 = *הרצאה 5 – 08/04*
-== שימושים בסיסיים של תורת השדות – בניות עם סרגל ומחוגה – המשך
-#text(red)[*להשלים הקדמה*]
 
 == למות גאוס
 #remark[אנחנו נעבוד עם $ZZ[t]$ אבל ברשומות (פרק 1) מופיע שאפשר לחקור באותה צורה את $R[t]$ כאשר $R$ תחום פריקות יחידה (למשל, תחום ראשי).]
+
 #definition("תכולה")[
   עבור פולינום $f(t) in ZZ[t]$ (תזכורת: $f(t) = sum_(i=0)^n a_i t^i$) נגדיר *תכולה* של $f$ להיות
   $ cont(f) = gcd(a_0, a_1, ..., a_n) $
 ]
+
 #definition("פולינום פרימיטיבי")[
   פולינום $f(t) in ZZ[t]$ יקרא *פרימיטיבי* אם $cont(f) = 1$.
 ]
@@ -212,7 +557,7 @@
 #exercise("תרגיל 10.104 בספר")[הסיקו מקריטריון אייזנשטיין ששורש כלשהו של מספר ראשוני אינו שייך ל־$QQ$. \
   כלומר, הראו ש־$root(n, p) in.not QQ$ לכל $p$ ראשוני ו־$NN in.rev n>=2$.]
 #proof[
-  #text(red)[*להשלים*].
+  אם נסתכל על הפולינום $x^p-a$ עבור $a$ ראשוני, אנחנו נעמוד בכל הדרישות של קריטריון אייזנשטיין אם $p=a$ ולכן נקבל ש־$x^p-a$ פולינום אי־פריק מעל $QQ$ ולכן $root(n, p) in not QQ$.
 ]
 #exercise(
   "תרגיל 10.108 בספר",
@@ -264,8 +609,6 @@
   \
   נסמן את הממשיים כ־$a_i$ ואת המרוכבים כ־$alpha_j$ (תוך מחיקת הצמודים), ונקבל,
   $ f(x) = product_(i = 1)^k (x - a_i) dot.op product_(j = 1)^m (x - alpha_j)(x - overline(alpha_i)) $
-  #colbreak()
-
   כלומר $f$ הוא מכפלה של גורמים לינאריים ממשיים ושל
   $ (x - alpha_i)(x - overline(alpha_i)) = x^2 - 2 (alpha_i + overline(alpha_i)) + overline(alpha_i) alpha_i $
   אבל כפל של מספר בצמוד שלו הוא ממשי, וכן חיבור מספר מרוכב לצמוד שלו (עוד שתי זהויות חשובות), ולכן זהו גורם ריבועי ממשי.
@@ -392,20 +735,35 @@
 
 #definition("דרגה ספרבילית, דרגה אי־ספרבילית")[יהי $alpha in L$ אלגברי מעל $K$ עם דרגה $d$.\
   *הדרגה הספרבילית* של $alpha$ מעל $K$ שתסומן $deg_s (alpha) = deg_(K, s) (alpha)$ היא העוצמה של מחלקות הצמידות של $alpha in overline(K)$ (בסימוני ההרצאות של מיכאל $deg_s (alpha) = deg_(K, s) (alpha) = abs(C_alpha)$).\
-  *הדרגה האי־ספרבילית* של $alpha$ מעל $K$ שתסומן $deg_i (alpha) = deg_(K, i) (alpha)$ היא הריבוי של $alpha$ ב־$f_alpha$: #text(red)[*להשלים*]
+  *הדרגה האי־ספרבילית* של $alpha$ מעל $K$ שתסומן $deg_i (alpha) = deg_(K, i) (alpha)$ היא הריבוי של $alpha$ ב־$f_alpha$: לוקחים פירוק $ f_alpha = (t-alpha)^(d_1) dot.op dots.h.c dot.op (t-alpha)^(d_n) $ ואז $deg_i (alpha)=d_1 = dots.h.c = d_n$
 ]
-#remark[#text(red)[*להשלים*]]
-#example[#text(red)[*להשלים*]]
-#example[#text(red)[*להשלים*]]
+
+#remark[לכל $alpha, alpha' in cal(C)$ קיים $sigma in Aut(overline(K) slash K)$ כך ש־$sigma(alpha)=alpha'$ ואז
+  $ (t-alpha)^(d_alpha)-(t-alpha')^(d_alpha') dots.h.c = f_alpha = sigma(f_alpha) = (t-alpha')^(d_alpha') dots.h.c $
+  עבור $d_alpha = deg_i (alpha), d_alpha=d_(alpha')$ ולכן $f_(alpha slash K) = g^(deg_i (alpha))$ עבור $g$ פולינום בלי שורשים כפולים.]
+
+#example[
+  $L=K(sqrt(d))$ הרחבה ריבועית ($sqrt(d) in.not K$) וניקח $alpha=a+b sqrt(d), overline(alpha)=a-b sqrt(d)$.\
+  אם $b=0$ אז $alpha = alpha' in K$ המקרה הטריוויאלי ולכן נניח $b!=0, alpha in.not K$ ו־$alpha!=alpha'$ ולכן $sigma(sqrt(d))=-sqrt(d), sigma(alpha = overline(alpha))$.\
+  מציין $2$ הוא האוייב שלנו: אם $char(K)!=2$ אז $deg_s (alpha) = 2$ וסיימנו. אם $char(K)=2$ אז $deg_i (alpha) = 2$ ונקבל $alpha=overline(alpha), plus = minus$ ונקבל $sqrt(d)=-sqrt(d)$ ואין אוטומורפיזמים לא טריוויאלים.
+]
+
+#definition(
+  "פולינום פריד",
+)[פולינום $f(t) in K[t]$ נקרא *פריד (ספרבילי*) אם הוא מתפצל לגורמים שונים מעל $overline(K)$ (ריבוי של כל השורשים הוא $1$, אין שורשים כפולים; נשים לב שהפולינום לא דווקא אי־פריק!)]
+
+#example[נניח $char(K)=p, alpha in overline(K)$ אז $(t-alpha)^p^n = t^p^n - alpha^p^n$ ובפרט לכל פולינום $t^p^n-a$ יש שורש $1$ בריבוי $p^n$ וזה $alpha=a^(1/p^n)$.]
 
 = *הרצאה 9 – 29/04*
 == אוטומורפיזמים של $overline(K) slash K$ – המשך
 יהיו $K$ שדה, $f in K[t]$ פולינום ממעלה $n$ ו־$L slash K$ הרחבת שדות שבה $f$ מתפצל, כלומר
 $ f = c(x-alpha_1) dot.op (t-alpha_2) dot.op ... dot.op (t-alpha_n) in L[t] $
+
 #definition(
   "שורש פשוט",
 )[נאמר ש־$alpha = alpha_i in L$ הוא *שורש פשוט (simple root)* של $f$ אם הוא מופיע בידיוק פעם אחת בפיצול.\
   כלומר, $(t-alpha) divides f$ אבל $(t-alpha)^2 divides.not f$.]
+
 #definition(
   "שורש מרובה",
 )[נאמר ש־$alpha = alpha_i in L$ הוא *שורש מרובה (multiple root)* של $f$ אם הוא מופיע בפיצול לכל הפחות פעמיים.
@@ -432,9 +790,9 @@ $ f = c(x-alpha_1) dot.op (t-alpha_2) dot.op ... dot.op (t-alpha_n) in L[t] $
   במקרה הראשון, $g^2 divides f$ ולכן נקבל כי $f$ אי־פריד וזו סתירה.\
   במקרה השני, $g$ מחלק פולינום ממעלה נמוכה יותר ולכן $g'=0$ (כי אחרת נקבל ש־$g$ הוא פולינום פריק מטעמי דרגות וזו סתירה), אבל אז כל המונומים (שלא אפסים) של $g = sum_(i=0)^d c_i t^i$ הם מהצורה $c_(p j) t^(p j)$ כאשר $p = char(K) > 0$, אבל אז $g = (sum_(j=0)^(d / p) c_(p j)^(1 / p) t^j)^p$ הוא אי־פריד וזו סתירה.
 ]
-#exercise[$f$ ו־$f'$ הוא אותו פולינום הן ב־$K[t]$ והן ב־$overline(K)[t]$.]
+#exercise[$gcd(f, f')$ הוא אותו פולינום הן ב־$K[t]$ והן ב־$overline(K)[t]$.]
 #proof[
-  #text(red)[*להשלים*]?
+  זה נובע מכך שה־$gcd$ נקבע בין־היתר על־ידי השורשים, ואם $r$ שורש של $f$ ב־$K$ אז הוא גם שורש של $f'$ ב־$overline(K)$ והתהליך שראינו למציאת $gcd$ מתבסס על חלוקת פולינומים ורק מצריכים שהמקדמים יהיו בשדה, אבל גם $gcd$ הוא יחיד עד כפל בקבוע שאיננו $0$.
 ]
 
 #theorem[נניח כי $f in K[t]$ פולינום אי־פריק ומתוקן ו־$alpha in overline(K)$ שורש של $f$. אזי
@@ -445,9 +803,8 @@ $ f = c(x-alpha_1) dot.op (t-alpha_2) dot.op ... dot.op (t-alpha_n) in L[t] $
 ]
 #proof[
   נסמן $d = deg(f)$ ונניח כי $d>1$ שכן אחרת הכל טריוויאלי.\
-  ראינו ש־$f$ אי־פריד אם ורק אם $gcd(f, f')$
-  $f$ פריד אם ורק אם $gcd(f, f')=1$. אם זה קורה ו־$f'!=0$ אז $0 < deg gcd(f, f') <= deg f' < deg f$ ולכן ל־$f$ יש גורם לא טריוויאלי וזו סתירה (כי $f$ אי־פריד) ולכן $gcd(f, f')!=1$ אם ורק אם $f'=0$.\
-  מכאן, אם $char(K) = 0$ אז $f'!=0$ ולכן $deg f' = deg f -1$ ולכן $f$ פריד.\
+  ראינו ש־$f$ אי־פריד אם ורק אם $gcd(f, f')=1$. אם זה קורה אם זה קורה ו־$f'!=0$ אז $0 < deg(gcd(f, f')) <= deg(f') < deg(f)$ ולכן ל־$f$ יש גורם לא טריוויאלי וזו סתירה (כי $f$ אי־פריד) ולכן $gcd(f, f')!=1$ אם ורק אם $f'=0$.\
+  מכאן, אם $char(K) = 0$ אז $f'!=0$ ולכן $deg(f') = deg(f) -1$ ולכן $f$ פריד.\
   אם $char(K) =p$, אז $f$ פריד וסיימנ או ש־$f'=0$.\
   נניח כי $f = sum_(i=0)^d a_i t^i$ אז אם $0 = f' = sum_(i=1)^d i a_i t^i$, אז לכל $i > 0$ בהכרח מתקיים $i a_i = 0 in K$ ולכן רק המקדמים $a_(p j)!=0$.\
   במילים אחרות מתקיים
@@ -489,15 +846,15 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
 
 = *הרצאה 10 – 05/05*
 == הרחבות נורמליות – המשך
-#corollary[אם $alpha in L$ ו־$L slash K$ נורמלית, אזי $f_(alpha slash K)$ מתפצל לחלוטין ($C_alpha subset L$) ו־$Aut(L slash K)$ פועלת טרנזטיבית על $C_alpha$.]
-#proof[#text(red)[*להשלים*]]
+#corollary[אם $alpha in L$ ו־$L slash K$ נורמלית, אזי $f_(alpha slash K)$ מתפצל לחלוטין ($cal(C)_alpha subset L$) ו־$Aut(L slash K)$ פועלת טרנזטיבית על $cal(C)_alpha$.]
+#proof[זה נובע ישירות מהמשפט שראינו: קיים $sigma in Aut(overline(L) slash K)$ כך שמתקיים $sigma(alpha')=alpha$ ואז $sigma|_L in Aut(L slash K)$ ו־$Aut(L slash K)$ פועלת טרנזטיבית על $cal(C)_alpha$.]
 #example[עבור $QQ(root(3, 2)) slash QQ$, חבורת האוטומורפיזמים היא רק הזהות.]
 #example(
   "טרנזטיביות/אי־טרנזטיביות של הרחבות נורמליות",
 )[בדומה לכך שנורמליות היא לא תכונה טרנזטיביות בין חבורות, גם מחלקת ההרחבות הנורמליות היא לא שלמה, בכמה דרכים: נניח כי $L slash F slash K$ מגדל הרחבות.
   + נניח $L slash F$ ו־$F slash K$ הרחבות נורמליות, נטען כי $L slash K$ לא הרחבה נורמלית: $QQ(root(4, 2)) slash QQ(sqrt(2)) slash QQ$
-  + נניח $L slash K$ נורמלי ונטען שלא בהכרח $F slash K$ נורמלית – #text(red)[*להשלים*]
-  + נניח כי $L slash K$ נורמלית ונטען כי $L slash F$ *כ* נורמלית #text(red)[*להשלים*]
+  + נניח $L slash K$ נורמלי ונטען שלא בהכרח $F slash K$ נורמלית – אז $overline(K) slash K$ נורמלית אבל תת־הרחבה לא בהכרח.
+  + נניח כי $L slash K$ נורמלית ונטען כי $L slash F$ כי כל $f_(alpha slash K) (alpha) in L$ מתפצל לחלוטין ב־$L$ אבל $f_(alpha slash F) divides f_(alpha slash K)$ ולכן הוא מתפצל לחלוטין ב־$L$.
 ]
 #exercise[$L slash K$ הרחבה ריבועית גורר כי $L slash K$ נורמלית (אנלוגי לחבורה מאינדקס $2$ היא נורמלית).]
 #proof[#text(red)[*להשלים*]]
@@ -536,15 +893,27 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
   לבסוף, אם $L^(n o r) supset.eq F supset.eq L supset.eq K$ כאשר $F slash K$ נורמלית, נובע כי כל $f_(alpha slash K) in P$ מתפצל לחלוטין ב־$F$ ולכן $F = L^(n o r)$.
 ]
 #example[$QQ(root(3, 2), omega) = L^(n o r) slash L = QQ(root(3, 2)) slash K = QQ$.\
-  #text(red)[*להשלים*] ציור?]
-#example[$L = QQ(root(4, 2))$ ואז $L^(n o r) = QQ(root(4, 2), i)$ ואז
-  #text(red)[*להשלים*] ציור?]
+  #text(red)[*להשלים ציור*]]
+#example[$L = QQ(root(4, 2))$ ואז $L^(n o r) = QQ(root(4, 2), i)$
+  #text(red)[*להשלים ציור*]?]
 #lemma[יהי $K$ שדה, $f in K[t]$ פולינום מדרגה $d > 0$ (פולינום לא קבוע) ו־$L$ שדה פיצול של $f$. נסמן $C_f = {f" כל שורשי"}$ אזי
   + $[L : K] <= d!$
-  + כל $sigma in Aut_K (L) = Aut(L slash K)$ משרה תממורה על $C_f$ והומומורפיזם הצמצום מ־$Aut_K (L) arrow.r op("Perm") C_f = Aut(C_f) = S_n$ הוא שיכון.
+  + כל $sigma in Aut_K (L) = Aut(L slash K)$ משרה תממורה על $C_f$ והומומורפיזם הצמצום מ־$Aut_K (L) arrow.r Perm(C_f) = Aut(C_f) = S_n$ הוא שיכון.
 ]
 #proof[
-  #text(red)[*להשלים*]
+  + נגדיר $K_i = K(alpha_1, dots.h.c, alpha_i), K = K_0$ ו־$L=K_n$ ונקבל מגדל הרחבות $L slash K_(n-1) slash dots.h.c slash K$ ולכן $ [L:K] = product_(i=0)^(n-1) [K_(+1) : K_i] $
+    אבל כל $alpha_(i+1)$ היא שורש של הפולינום
+    $ f_i (t) = f(t)/((t-alpha_1) dot.op dots.h.c dot.op (t-alpha_i)) in K_i [t] $
+    ולכן
+    $ [K_i : K_(i-1)] = deg_(K_i) (alpha_(i+1))<= deg(f_i) = d-i $
+    ולכן
+    $ [L:K] <= d (d-1) dots.h.c (d-n+1) <= d! $
+  + כל $sigma$ לוקח את $C_f$ לעצמה (כי $sigma(f)=f$) ולכן יש הומומורפיזם צמצום $Aut_K (L) arrow.r Perm(C_f) = S_n$ על־ידי $sigma mapsto sigma|_(C_f)$.\
+    נראה ש־$sigma$ נקבעת ביחידות על־ידי הצמצום: זה כי כל $x in L$ הוא מהצורה $f(alpha_1, dots.h.c, alpha_n)/g(alpha_1, dots.h.c, alpha_n)$ כאשר $f,g in K[t_1, dots.h.c, t_n]$ ואז
+    $
+      sigma(x) = sigma(f(alpha_1, dots.h.c, alpha_n))/sigma(g(alpha_1, dots.h.c, alpha_n))= f(sigma(alpha_1), dots.h.c, sigma(alpha_n))/g(sigma(alpha_1), dots.h.c, sigma(alpha_n))
+    $
+    ולכן הוא נקבע על־ידי $sigma(alpha_1), dots.h.c, sigma(alpha_n)$.
 ]
 
 == שורשי יחידה
@@ -730,7 +1099,7 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
   משמע ${ x bar Fr_q^i (x) = x} arrow.r Aut_FF_q (FF_(q^d))= {1, Fr_q, ..., Fr_(q^(d-1))}$ כאשר $1$ הוא זהות ו־$Fr_q$ הוא יוצר.
 ]
 #proof("טיפה שונה מהרשומות של מיכאל")[
-  מהמסקנה שראינו לעיל, ההרחבה היא פרימיטיבית ולכן $G = Aut_(FF_q) (FF_(q^d))$ וממסקנה שראינו נובע כי היא מדרגה של לכל היותר $d$ (#text(red)[*לקשר למסקנה*]).\
+  מהמסקנה שראינו לעיל, ההרחבה היא פרימיטיבית ולכן $G = Aut_(FF_q) (FF_(q^d))$ וממסקנה שראינו נובע כי היא מדרגה של לכל היותר $d$ (אני לא זוכרת שראינו את המסקנה הזאת,זו מסקנה $3.2.11$ בסיכומים של מיכאל, היא פשוט אומרת שאם יש לנו הרחבה פרימיטיבית מעל שדה $K$ ועוד הרחבת שדות מעל $K$, אז כל $K$־הומומורפיזם בין שתי ההרחבות לוקח את $alpha$ לשורש של $f_(alpha slash K)$).\
   כל $a in FF_q$ מקיים $Fr_q (a) = a^q = a$ ולכן $Fr$ הוא איבר של $G$.\
   מאותה סיבה, $Fr_q)^d = 1 in G$ וגם $(Fr_q)^i != 1$ לכל $i<d$ שכן $(Fr_q)^i$ מקבע לכל היותר $q^i$ איברים. \
   לכן $Fr_q$ יוצרת את תת־חבורה ציקלית $H$ מסדר $d$ ומכיוון ש־$abs(G)<=d$ נובע כי $H=G$.
@@ -755,7 +1124,7 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
 #definition("הרחבה ציקלוטומית")[
   הרחבה $L slash K$ נקראת *הרחבה ציקלוטומית* אם $L = K(xi)$ (נוצר על־ידי $xi$ שורש יחידה).\
   יהי $n$ הסדר של $xi$ ($xi^n = 1$, דהיינו $xi$ שורש פרימיטיבי), אז כל הצמודים של $xi$ מעל $K$ הם גם־כן שורשי יחידה פרימיטיביים מסדר $n$ (שכן, $xi^n = 1$ וגם $exists.not 0<m<n space (m in NN) space s.t. space xi^m=1$).\
-  ממסקנה שראינו (#text(red)[*לקשר*]), כל $K$־אוטומורפיזם $sigma in Aut_K (L)$ נקבע ביחידות על־ידי $sigma(xi)=xi'$, ולכן יש הומומורפיזם צמצום $sigma bar_mu_n$ כחבורה (למה? כי $mu_in subset L^times = angle.l xi angle.r$), ולכן $Aut_K (L) arrow.r.hook Aut(mu_n)$.
+  ממסקנה שראינו (שוב המסקנה שלא באמת ראינו, $3.2.11$), כל $K$־אוטומורפיזם $sigma in Aut_K (L)$ נקבע ביחידות על־ידי $sigma(xi)=xi'$, ולכן יש הומומורפיזם צמצום $sigma bar_mu_n$ כחבורה (למה? כי $mu_in subset L^times = angle.l xi angle.r$), ולכן $Aut_K (L) arrow.r.hook Aut(mu_n)$.
 ]
 #exercise("6.3.2 ברשומות של מיכאל")[
   + $a in ZZ slash n ZZ$ הוא הפיך אם ורק אם $gcd(a, n)=1$
@@ -768,7 +1137,7 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
   + בכיוון הראשון נניח ש־$gcd(a, n)=1$ ונסתכל על תת־החבורה הנוצרת על־ידי $a g$ שכל איבריה הם מהצורה $k(a g)$ עבור $k in ZZ$.\
     הסדר של $a g$ הוא ה־$m in NN$ המינימלי כך ש־$m(a g) = 0$, אבל $g$ הוא יוצר של $H$ ולכן $g$ הוא $0$ אם ורק אם $m a$ הוא כפולה של $n$ ולכן אנחנו מחפשים $m a eq.triple 0 mod n$, וזה נתון על־ידי $m = n / gcd(a, n) = n / 1 = n$ ולכן הסדר של $a g$ הוא $n$ ו־$a g$ הוא יוצר של $H$.\
     בכיוון השני, נניח ש־$a g$ הוא יוצר של $H$, ולכן $o(a g)=n$, אבל זה גם ה־$m in NN$ המינימלי כך ש־$m(a g) = 0$ והוא כפולה של $n$, אבל ה־$m$ המינימלי שמקיים את זה נתון על־ידי $m = n / gcd(a, n)$, ולכן $n / gcd(a, n) = n <==> gcd(a, n)=1$.
-    + #text(red)[*להשלים?*]
+  + #text(red)[*להשלים?*]
 ]
 #lemma[
   יהי $L = K(xi)$ הרחבה ציקלוטומית מסדר ו־$n$ הסדר של $xi$ (כאשר $L slash K$ הרחבה נורמלית). אזי
@@ -808,7 +1177,7 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
 #lemma[נניח ש־$K$ הוא שדה, $n in K^times$ (אם $char(K) = 0$ או $gcd(n, char(K)) = 1$) כך ש־$mu_n subset K$ ו־$a in K$. אז הבאים שקולים
   + נגדיר $L = K(alpha)$ כאשר $alpha=a^(1 / n)$ (ההרחבה הנוצרת על־ידי שורש בודד) אז $L$ הוא שדה פיצול של $t^n-a$ (מההכלה $mu_n subset K$ נובע שאם הוספתי שורש $1$, פיצלתי הכל) ו־$mu_n alpha = {alpha, xi_n alpha, ..., xi_n^(n-1) alpha}$ קבוצת כל השורשים ב־$K$
   + כל $sigma in Aut_K (L)$ משמר את $mu_n alpha$, זאת־אומרת פועל על קבוצה זו על־ידי כפל באיבר $xi_sigma in mu_n$ ונקבע לחלוטין על־ידי $xi_sigma$. בפרט, יש לנו שיכון טבעי $Aut_K (L) arrow.r mu_n$
-  + $abs(Aut_K (L)) = [L:K]$ ובפרט $Aut_K (L) = mu_n$ אם ורק אם $t^n-a$ הוא אי־פריק
+  + $abs(Aut_K (L)) = [L:K]$ ובפרט $Aut_K (L) = mu_n$ אם ורק אם $t^n-a$ הוא אי־פריק (זה קורה אם ורק אם $C_(alpha slash K = mu_(n alpha) )$)
 ]
 #proof[
   + מכך ש־$n in K^times$, $mu_n$ מכילה $n$ איברים. \
@@ -826,9 +1195,10 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
     אז $[L : K] = deg(f)$ הוא מספר השורשים של הפולינום הפריד $f$, ולכן ל־$alpha$ יש בידיוק $[L:K]$ הצמדות ב־$L$ והעוצמה לפי למה שראינו (לקשר) היא בידיוק $abs(Aut_K (L))$
 ]
 #remark[את הלמה וההוכחה לעיל התחלנו לראות בהרצאה של ה־13/05 וסיימנו ב־19/05.]
+#remark[במקרה כללי כאשר $n in K^times$ לא בהכרח ש־$mu_n subset.eq K$.]
 
 = *תרגול 6 – 14/05*
-== משהו
+== שדות קומפוזיטום
 #text(red)[*תשלימי*]
 
 = *תרגיל 5*
@@ -839,16 +1209,117 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
 #text(red)[*תשלימי*]
 
 = *הרצאה 14 – 19/05*
-== הרחבות רדיקליות – המשך
-#exercise("6.4.5 ברשומות")[#todo]
-#proof[#todo]
-
+== הרחבות רדיקליות – הרחבות ארטין־שרייר
+פרק 6.4 ברשומות של מיכאל.
+#definition("הרחבות ארטין־שרייר")[
+  נניח ש־$char(K)=p>0$ אז $mu_p = {1}$ ופולינומים $t^p-a$ לא ספרביליים לחלוטין (יש שורש $1$, אין אוטומורפיזמים, הרחבות אי־פרידות), אז במקרה זה יש לנו תחליף: פולינום מהצורה $t^p-t-a in K[t]$ נקרא *ארטין־שרייר* ועבור כל שורש $alpha$ של פולינום זה, ההרחבה $L = K(alpha) slash K$ נקראת *הרחבת ארטין־שרייר*.
+]
+#exercise[$f(t)=t^p-t-a$ הוא אדטיבי, משמע $f(alpha+beta)-f(alpha)+f(beta)$ (זה לא אמור לקרות לפולינומים מדרגה יותר מ־$1$ במציין $0$).
+]
+#solution[
+  נשים לב שמתקיים בגלל שאנחנו במציין $p$
+  $ (alpha+beta)^p = alpha^p + beta^p $
+  אז (נתעלם ממהקבוע $a$ כי הוא בכל־מקרה יעלם כשנחסר בין אגפים)
+  $ f(alpha+beta) = alpha^p+beta^p-alpha-beta= (alpha^p-alpha)+(beta^p-beta)-f(alpha)+f(beta) $
+]
+#lemma[
+  יהי $K$ שדה ממצויין $0<p, a in K$ ו־$alpha in overline(K)$ המקיים $alpha^p-alpha=a$ (במילים אחרות, $alpha$ הוא שורש של פולינום ארטין־שרייר).\
+  אזי $alpha+FF_p = {alpha, alpha+1, dots.h.c, alpha+p-1}$ (זו חבורה אדטיבית ולא כפלית), היא קבוצת השורשים של הפולינום $f(t)=t^p-t-a$ ו־$L=K(alpha) slash K$ שדה פיצול של $f(t)$.\
+  $alpha in K$ לא מעניין כי הוא מתפצל לחלוטין, ולכן אם $alpha in.not K$ אזי $p=[L:K]$ ויש איזומורפיזם של חבורות $Aut_K (L) tilde.eq FF_p (=ZZ slash p)$ המקיים $sigma mapsto sigma(alpha)-alpha$
+]
+#proof[
+  עבור כל $i in FF_p$, מהתרגיל, $(alpha+i)^p-(alpha+i)-a = underbrace(alpha^p-alpha-a, =0)+underbrace(i^p-i, =0) = 0$ כאשר $i^p-i=0$ נובע מכך שהפרובניוס קבוע כל $FF_p$ וכן כי כל $alpha+FF_p$ היא קבוצת שורשים של $f(t)$ ו־$a+FF_p subset.eq K(alpha)=L$ ולכן זה שדה פיצול של $f(t)$.\
+  נניח $alpha in.not K$ אז ניקח $f_(alpha slash K)$ שדרגתו גדולה מ־$1$ ולכן יש לו עוד שורש $alpha'$, ולכן יש $sigma in Aut_K (L)$ כך שמתקיים $sigma(alpha)=alpha'$ ולכן $sigma(alpha)=alpha+i (i in FF_p^times)$ ו־$sigma^m=alpha+m i$ ואז $FF_p subset ZZ i$ ולכן כל $alpha+i$ צמוד של $alpha slash K$, כלומר $C_alpha = alpha+FF_p$.\
+  נקבל אם כך ש־$p=[L:K]=deg f_(alpha slash K)$ והאוטומורפיזמים $sigma mapsto^lambda i \ sigma' mapsto i'$ כך שמתקיים $sigma(alpha)=alpha+i$ אז
+  $
+    sigma(sigma'(alpha)) = sigma(alpha+i) = sigma(alpha)+sigma(i) = alpha + (i + i') => lambda(sigma sigma') = lambda(sigma)+lambda(sigma')
+  $
+]
 == הרחבות פרידות (ספרביליות)
 פרק 7.1 ברשומות של מיכאל.
+#definition(
+  "דרגה פרידה, דרגה אי־פרידה",
+)[עבור הרחבה סופית $L slash K$ נגדיר *דרגה פרידה (ספרבילית)* של $L slash K$ על־ידי $ [L:K]_s = abs(Hom_K (L, K)) $ זה בעצם מספר ה־$K$־שיכונים.
+  נגדיר *דרגה אי־פרידה* כ־$[L:K]_i = [L:K]/[L:K]_s$ (בתור התחלה זה ב־$QQ$ אבל בהמשך נראה שזה שלם).]
+#lemma[
+  נניח ש־$L = K(alpha) slash K$ הרחבה פרמיטיבית, אזי $[L:K]_s = deg_(K, s) (alpha)$ ו־$[L:K]_i = deg_(K, i) (alpha)$.\
+  בפרט, $1 = [L:K]_i$ אם $char(K)=0$ ו־$p^n=[L:K]_i$ אם $char(K)=p$.
+]
+#proof[
+  $[L:K]_S = abs(Hom_K (K(alpha), overline(K)))=abs(C_alpha)$ שכן לכל צמוד יש $K$־שיכון יחיד שלוקח את $alpha mapsto alpha'$ ו־$deg_(K,s) (alpha) = abs(C_alpha)$.\
+  השיוויון השני נובע מכך שמתקיים $[L:K]=deg_K (alpha)$ ולכן $[L:K]_i = [L:K]/[L:K]_s = (deg_K (alpha))/(deg_(K,s) (alpha)) = deg_(K, i) (alpha)$, ישירות מהגדרה, כאשר
+  $ deg_(K,i) (alpha) = 1 <==> char(K)= 0, deg_(K, i) (alpha) = p^n <==> char(K)=p $
+]
+#lemma("כפליות הדרגות הפרידות והאי־פרידות במגדל הרחבות")[
+  לכל מגדל הרחבות סופיות $L slash F slash K$ מתקיים
+  + $[L:K]_s = [L:F]_s dot.op [F:K]_s$
+  + $[L:K]_i = [L:F]_i dot.op [F:K]_i$
+]
+#proof[
+  נשים לב שמספיק להוכיח את הראשון כי מכפליות הדרגה אוטומטית נקבל את השני.\
+  היות ו־$abs(Hom_K (L, overline(K)))=[L:K]_s$, לכל $sigma : L arrow.r.hook overline(K)$ נגדיר צמצום $sigma|_F : F arrow.r.hook overline(K)$ וזה נותן לנו העתקה $ lambda : Hom_K (L, overline(K)) arrow.r Hom_K (F, overline(K)) $
+  ניקח $tau in Hom_K (F, overline(K))$ ונחשב את גודל הסיב $lambda^(-1) (tau)$ כקבוצות: נזהה את $F$ עם $sigma(F)$ ואז $overline(K)=overline(K)$ (כי זה סגור אלגברי גם של כל הרחבה) ואז הסיב נהיה איזומורפי ל־$Hom_F (L, overline(K))$.\
+  מכאן, בכל סיב של $lambda$ יש בידיוק $[L:F]_s = abs(Hom_F (L, overline(K)))$ איברים ולכן
+  $ [L:K]_s = abs(Hom_K (L, overline(K))) = underbrace(abs(Hom_F (L, overline(K))), =[L:F]_s) dot.op [L:F]_s $
+]
+#corollary[
+  לכל הרחבה סופית $L slash K$, $[L:K]_i = 1$ אם $char(K) = 0$ ו־$[L:K]_i in p^NN$ אם $char(K)=p>0$.
+]
+#proof[
+  זה נובע ישירות מכך שכל הרחבה סופית היא מגדל של הרחבות פרימטיביות:
+  כי אם $L = K (alpha_1, dots.h.c, alpha_n)$ אז
+  $ K = K_0 subset K_1 = K_0 (alpha_1) subset dots.h.c $
+  ואז מהלמה לעיל
+  $ [L:K]_i = [L : K_(n-1)] dot.op [K_(n-1) : K_(n-2)]_i dot.op dots.h.c dot.op [K_1 : K_0]_i $
+  כל אחד מהם או $1$ או $p^n$ ולכן גם המכפלה שלהם.
+]
+#definition(
+  "הרחבה פרידה",
+)[הרחבה אלגברית $L slash K$ נקראת *הרחבה פרידה (ספרבילית)* אם לכל $alpha in L$ היינו פריד מעל $L$.\
+  נובע ישירות מהגדרה ש־$L slash K$ היא הרחבה פרידה אם ורק אם כל תת־הרחבה סופית היא הרחבה פרידה.]
+
+#theorem[
+  עבור הרחבה סופית $L slash K$ הבאים שקולים:
+  + $L slash K$ הרחבה פרידה
+  + $L = K(alpha_1, dots.h.c alpha_n)$ כך ש־$alpha_1, dots.h.c, alpha_n$ פרידים מעל $K$
+  + $[L:K]_s = [L:K]$
+  + $[L:K]_i = 1$
+]
+#proof[
+  ראשית, בבירור $1 => 2 => 3 => 4$ ישירות מהגדרה וגם $3<==>4$ מהגדרת הדרגה.\
+  $2 => 4$: נגדיר $K_j = K(alpha_1, dots.h.c alpha_j)$ כך ש־$K=K_0$ ו־$L=K_n$ ואנחנו יודעים שהפולינום המינימלי $f_(alpha_j slash K_(j-1))$ מחלק את הפולינום המיינמלי $f_(alpha_j slash K)$ שפריד לפי הגדרה ולכן גם הראשון פריד (כי מי שמחלק פריד הוא פריד בעצמו) ולכן $[K_j : K_(j-1)] = 1 = deg_(K_(j-1), i) (alpha_j)=1$ מהלמה שראינו על דרגות ולכן $[L:K]_i = product_(j=1)^n [K_j : K_(j-1)]=1$.\
+  $4 => 1$: נניח בשלילה ש־$L slash K$ לא הרחבה פרידה ולכן יש $beta in L$ כך שמתקיים $1<deg_(K, i) (beta)$ ולכן יש מגדל $L slash K(beta) slash K$ כך שמתקיים
+  $ [L:K]_i = underbrace([L:K(beta)]_i, =1) dot.op underbrace([K(beta):K]_i, >1) > 1 $
+  וזאת סתירה.
+]
+
+#corollary[בהינתן הרחבה אלגברית $L slash K$, קבוצת כל האיברים הספרביליים מעל $K$ שך $L$ היא בעצם תת־שדה $K subset.eq L_S subset.eq L$ שנקרא הסגור הספרבילי של $K$ ב־$L$ (בעצם, התת־הרחבה הספרבילית המקסימלית).]
+
+#proof[
+  ניקח $alpha, beta in L$ ספרביליים מעל $K$. אז $K(alpha, beta) slash K$ הרחבה ספרבילית ולכן כל $gamma in K(alpha,beta)$ הוא ספרבילי מעל $K$ וזה מוכיח את כל תכונות השדה.
+]
+
+#definition(
+  "הסגור הספרבילי",
+)[$K^S subset.eq overline(K)$ זה שדה כל האיברים הספרביליים האלגבריים מעל $K$ ווהוא נקרא *הסגור הספרבילי של $K$*.\
+  הוא גם נורמלי: למשל, שדה פיצול של כל הפולינומים הספרביליים.]
+
+#corollary(
+  "טרנזטיביות ההרחבות הספרביליות",
+)[אם $L slash F slash K$ מגדל הרחבות אלגבריות אזי $L slash K$ הרחבה ספרבילית אם ורק אם $L slash F$ ו־$F slash K$ הרחבות ספרביליות.\
+  במילים אחרות, הרחבות ספרביליות זו מחלקה שלמה.]
+
+#proof[
+  $<==$ אם $L slash K$ היא ספרבילית אז כל $alpha$ הוא ספרבילי מעל $K$ ולכן גם מעל $F$ והכיוון הזה נובע ישירות מהגדרה.\
+  $==>$ נניח ש־$F slash K, L slash F$ הרחבות ספרביליות, ניקח $alpha in L$ ונרצה להראות ש־$alpha$ ספרבילי מעל $K$.\
+  נתון כי $alpha$ ספרבילי מעל $F$ ולכן הפולינום המינימלי $f_(alpha slash F)$ הוא ספרבילי $f_(alpha slash F) = t^n + sum_(i=0)^(n-1) beta_i t^i$ כאשר $beta_i in F$.\
+  אז $F' = K(beta_1, dots.h.c, beta_n) supset.eq K$ והיא ספרבילית, אז $L'=F'(alpha)$ ולכן $L' slash F'$ היא הרחבה ספרבילית (כי היוצר $alpha$ מקיים פולינום ספרבילי $f_(alpha slash F)$ מעל $F'$ ולכן $L' slash F' slash K$ זה מגדל הרחבות ספרביליות סופיות, ולכן $ [L' : K ] = [L' : F']_i dot.op [F : K]_i = 1 dot.op 1 = 1 $
+  ולכן ההרחבה ספרבילית ו־$alpha$ ספרבילי מעל $K$.
+]
+
+#remark[את המסקנה לעיל התחלנו להוכיח בהרצאה 14 וסיימנו בהרצאה 15.]
 
 = *הרצאה 15 – 20/05*
-== הרחבות פרידות (ספרביליות) – המשך
-
 == שדות פרפקטים (Perfect Fields)
 #definition(
   "שדה פרפקט",
@@ -871,9 +1342,12 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
 )[לכל שדה $K$ במציין $0 < p$ נגדיר *פרפקטיזציה* $K^(1 / p^infinity) = union.big_(n in NN) K^(1 / p^n)$.]
 #definition("p-רנק")[לכל שדה $K$ במציין $0<p$ נגדיר *$[p]$־רנק* על־ידי $[K:K^p]=p^n$0 (אולי $infinity$)]
 #exercise[
-  + להראות ש־$K^(1 / p^infinity)$ הוא השדה פרפקט המינימלי המכיל את $K$
-  + להראות שמתקיים $[K : K^p] = [K^(1 / p) : K] = [K^p^l : K^p^(l+1)]$ לכל $l in ZZ$ (רמז: פרובניוס)
-  + להראות שאם $K slash K^p$ סופי אז $[K:K^p]_s = 1$ ולכן $p$־רנק הוא מספר טבעי
+  + להראות ש־$K^(1 / p^infinity)$ הוא השדה פרפקט המינימלי המכיל את $K$.
+  + להראות שמתקיים $[K : K^p] = [K^(1 / p) : K] = [K^p^l : K^p^(l+1)]$ לכל $l in ZZ$ (רמז: פרובניוס).
+  + להראות שאם $K slash K^p$ סופי אז $[K:K^p]_s = 1$ ולכן $p$־רנק הוא מספר טבעי.
+]
+
+#remark[$p$-רנק מודד כמה שדה רחוק מלהיות פרפקטי: נסמן $p$־רנק $=r_p (K)$ ואז $[K:K^p] = 1 = p^0 ("פרפקטי" K ) <==> r_p (K) = 0$.\
 ]
 
 = *תרגול 7 – 22/05*
@@ -890,7 +1364,12 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
 
 = *הרצאה 16 – 26/05*
 == הרחבות אי־פרידות בטהרה (purely inseparable)
+פרק 7.2 בסיכום של מיכאל.\
+כל הפרק הוא תחת ההנחה ְ־$char(K)=p>0$.
 
+#definition(
+  "הרחבה אי־פריקה בטהרה",
+)[הרחבה אלגברית $L slash K$ נקראית אי־פרידה בטהרה אם לכל $alpha in L$ מתקיים $deg_(K, s) (alpha) = 1$ (זאת־אומרת, של־$alpha$ יש צמוד יחיד, כמו למשל כל החזקות עד $p$).]
 == תורת גלואה
 
 == התאמת גלואה
@@ -986,6 +1465,7 @@ $ cal(B) = { sqrt(product_(i in S) p_i) bar S subset.eq {1, ..., n}} $
   $
 ]
 #proof[בתרגיל בית $9$.]
+
 = *תרגיל 8*
 == טריקים
 == מסקנות
