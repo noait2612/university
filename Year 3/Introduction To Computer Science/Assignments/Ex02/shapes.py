@@ -10,19 +10,20 @@
 import math
 
 
-#Calculating area shape from user input.
+# Calculating area shape from user input.
 def shape_area():
     print("Choose shape (1=circle, 2=rectangle, 3=triangle): ")
     user_input = input()
-    if user_input == 1:
-        radius = input()
-        return math.pi * math.pow(radius,2)
-    elif user_input == 2:
-        first_edge = input()
-        second_edge = input()
-        return first_edge * second_edge
-    elif user_input == 3:
-        edge = input()
-        return (math.sqrt(3)* math.pow(edge,2))/4
-    else:
-        return None
+    match user_input:
+        case "1":
+            radius = input()
+            return math.pi * math.pow(radius, 2)
+        case "2":
+            first_edge = input()
+            second_edge = input()
+            return first_edge * second_edge
+        case "3":
+            edge = input()
+            return (math.sqrt(3) * math.pow(edge, 2)) / 4
+        case _:
+            return None
