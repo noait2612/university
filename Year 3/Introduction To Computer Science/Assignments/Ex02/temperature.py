@@ -18,10 +18,8 @@ def is_vormir_safe(threshold_temperature, first_day_temperature, second_day_temp
     if is_first_day_over_threshold_temperature and (
             is_second_day_over_threshold_temperature or is_third_day_over_threshold_temperature):
         return True
-    elif is_second_day_over_threshold_temperature and is_third_day_over_threshold_temperature:
-        return True
-    else:
-        return False
+
+    return is_second_day_over_threshold_temperature and is_third_day_over_threshold_temperature
 
 
 def is_over_threshold_temperature(threshold_temperature, temperature):
