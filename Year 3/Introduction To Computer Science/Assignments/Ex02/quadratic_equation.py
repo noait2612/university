@@ -10,21 +10,19 @@
 import math
 
 
-#Gets the maximal and minimal number from three numbers without using max, min or sort.
+# Gets the solutions of quadratic equation by first calculating the discriminant and then by quadratic formula
 def quadratic_equation(leading_coefficient, second_coefficient, constant_coefficient):
-    discriminant = second_coefficient**2-4*leading_coefficient*constant_coefficient
+    discriminant = second_coefficient ** 2 - 4 * leading_coefficient * constant_coefficient
     """this is the case that the quadratic equation has zero results in RR"""
     if discriminant < 0:
         return None, None
     elif discriminant == 0:
         """this is the case that the quadratic equation has one solution in RR"""
-        return (-second_coefficient + math.sqrt(second_coefficient**2-4*leading_coefficient*constant_coefficient))/(2*leading_coefficient), None
+        return (-second_coefficient) / (2 * leading_coefficient), None
     else:
         """this is the case that the quadratic equation has two solutions in RR"""
-        return (-second_coefficient + math.sqrt(
-            second_coefficient ** 2 - 4 * leading_coefficient * constant_coefficient)) / (2 * leading_coefficient), (-second_coefficient - math.sqrt(
-            second_coefficient ** 2 - 4 * leading_coefficient * constant_coefficient)) / (2 * leading_coefficient)
-
+        return ((-second_coefficient + math.sqrt(discriminant)) / (2 * leading_coefficient),
+                (-second_coefficient - math.sqrt(discriminant)) / (2 * leading_coefficient))
 
 
 def quadratic_equation_user_input():
@@ -32,6 +30,7 @@ def quadratic_equation_user_input():
     user_input = input().split(' ')
     if len(user_input) != 3:
         return None
+
     if user_input[0] == "0":
         print("The parameter 'a' may not equal 0")
     else:
