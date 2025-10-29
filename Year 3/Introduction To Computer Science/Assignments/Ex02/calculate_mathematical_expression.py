@@ -28,11 +28,9 @@ def calculate_mathematical_expression(first_number, second_number, operation):
 
 """Gets an expression from the format 'number operation number', split by format
  and return using calculate_mathematical_expression the operation result"""
-
-
 def calculate_from_string(expression):
     split_expression = expression.split(' ')
     if len(split_expression) != 3:
         return None
 
-    return calculate_mathematical_expression(split_expression[0], split_expression[1], split_expression[2])
+    return calculate_mathematical_expression(float(split_expression[0]), float(split_expression[2]), split_expression[1])
