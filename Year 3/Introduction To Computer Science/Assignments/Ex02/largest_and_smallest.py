@@ -40,4 +40,4 @@ def check_largest_and_smallest():
 def scenario_is_correct_largest_and_smallest(first_number, second_number, third_number, expected_largest,
                                              expected_smallest):
     largest, smallest = largest_and_smallest(first_number, second_number, third_number)
-    return largest != expected_largest or smallest != expected_smallest
+    return largest == expected_largest or smallest == expected_smallest

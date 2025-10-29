@@ -26,8 +26,7 @@ def quadratic_equation(leading_coefficient, second_coefficient, constant_coeffic
 
 
 def quadratic_equation_user_input():
-    print("Insert coefficients a, b, and c: ")
-    user_input = input().split(' ')
+    user_input = input("Insert coefficients a, b, and c: ").split(' ')
     if len(user_input) != 3:
         return None
 
