@@ -17,12 +17,29 @@
 
 
 #question()
-דברים עם ציורים וזה
 #subquestion()
-#todo
+נתון $z = 1- i sqrt(3)$, נמיר לקורדינאטות פולאריות ונצייר.
 
+#solution[
+  נחשב $r = sqrt(1^2+(-sqrt(3))^2) = sqrt(1+3) = sqrt(4) = 2$.\
+  בשביל הארגומנט, נשים לב ש־$re(z)>0$ ו־$im(z)<0$ כלומר אנחנו נמצאים ברביע הרביעי ולכן
+  $ alpha = arctan(abs((-sqrt(3))/1))= pi/3 $
+  וכדי שנהיה ברביע הנכון בשביל הארגומנט עלינו לשקף כלומר $Arg(z) = -pi/3$.\
+  אז בכתיב פולארי, מתקיים
+  $ z = 2(cos(-pi/3)+ i sin(-pi/3)) = 2e^((-i pi)/3) $
+  #figure(
+    image("../../../src/images/complex analysis ex01 question 1a.jpg", width: 30%, fit: "contain"),
+  )
+]
 #subquestion()
-#todo
+נתון $z=3e^((i pi)/2)$, נעביר לקורדינאטות פולאריות ונצייר.
+
+#solution[
+  נתון $r = 3$ ולכן $z = 3(cos(pi/2)+i sin(pi/2)) = 3i$ כלומר ממש קיבלנו נקודה.
+  #figure(
+    image("../../../src/images/complex analysis ex01 question 1b.jpg", width: 30%, fit: "contain"),
+  )
+]
 
 #subquestion()
 נסמן $CC in.rev z = x + i y, w = a + i b$ ותהיינה $M_z, M_w$ המטריצות שמייצגות את המספר המרוכב $z,w$ בהתאמה.\
@@ -119,7 +136,7 @@ $sum_(n=1)^N cos(n theta)$.
 $sum_(n=1)^N sin(n theta)$.
 
 #solution[
-  נשתמש בסעיף א' עם אותן הגבלות על $theta$
+  נשתמש בסעיף א' עם אותן הגבלות על $theta$ רק שאם $theta = 2pi k$ עבור $k in ZZ$ אז $sum_(n=1)^N sin(n theta) = 0$
   $
     sum_(n=1)^N sin(n theta) = sum_(n=1)^N im(e^(i n theta)) = im(sum_(n=1)^N e^(i n theta)) =_"משפט דה־מואבר" im(sum_(n=1)^N (e^(i theta))^n)=_"תור הנדסי סופי" im((e^(i theta)-e^(i(N+1)theta))/(1-e^(i theta))) \
     ==>_"סעיף א' רק מדומה במקום ממשי" im((i cos(theta/2)- sin(theta/2)-i cos((N+1/2)theta)+sin((N+1/2)theta))/(2 sin (theta/2))) \
@@ -158,11 +175,154 @@ $sum_(n=1)^N sin(n theta)$.
 יהי $K subset CC$ ונראה ש־$K$ קומפקטי אם ורק אם לכל סדרה $(z_n)_(n=1)^infinity subset.eq K$ יש תת־סדרה $(z_n_k)_(k=1)^infinity$ מתכנסת ל־$z in K$.
 
 #proof[\
-  _תזכורת_: בהרצאה הגדרנו שקבוצה היא קומפקטית אם היא סגורה וחסומה וש־$CC$ הוא אכן מרחב מטרי.\
+  _תזכורת:_ ראשית, ראינו ש־$CC$ הוא מרחב מטרי. שנית, באינפי3 ראינו שבמרחבים מטריים, קומפקטיות וקומפקטיות סדרתית הן טענות שקולות. \
+  כלומר, להגיד שלקבוצה במרחב מטרי לכל סדרה יש תת־סדרה מתכנסת (קומפקטיות סדרתית) שקול ללהגיד שיש לכל כיסוי פתוח של הקבוצה יש תת־כיסוי סופי (קומפקטיות).\
   $<==$ נניח כי $K$ קומפקטי ונראה שלסדרה $(z_n)_(n=1)^infinity subset.eq K$ יש תת־סדרה מתכנסת.\
+  תהיי $(z_n)_(n=1)^infinity subset.eq K$, כך שלכל $n in NN$ מתקיים $z_n = x_n + i y_n$.\
+  מהיות$K$ קומפקטי (סגור וחסום), נובע שקיים $M>0$ כך שלכל $z in K$ מתקיים $abs(z)<=M$ ובפרט לכל $n in NN$ מתקיים $abs(z_n)<=M$.\
+  נבחין ש־$(z_n)_(n=1)^infinity$ חסומה ב־$CC$ אם ורק אם $(re(z_n))_(n=1)^infinity=(x_n)_(n=1)^infinity, (im(z_n))_(n=1)^infinity=(y_n)_(n=1)^infinity$ חסומות ב־$RR$.\
+  החסימות על $CC$ במקרה זה תקפה גם לחסימות על $RR$ ולכן ממשפט בולציאנו-ויירשטראס יש ל־$(x_n)_(n=1)^infinity$ תת־סדרה מתכנסת, $(x_n_k)_(k=1)^infinity$ המתכנסת ל־$x in RR$.\
+  באותו אופן, ל־$(y_n_k)_(k=1)^infinity$ יש גם תת־סדרה מתכנסת, $(y_n_k_l)_(l=1)^infinity$ המתכנסת ל־$y in RR$.\
+  נסתכל על $(z_n_k_l)_(l=1)^infinity$ זו כמובן תת־סדרה של $(z_n)_(n=1)^infinity$ כך שסדרת הממשיים וסדרת המדומים מתכנסות ל־$x,y$ בהתאמה ולכן מהסעיף הקודם
+  $ lim_(l arrow.r infinity) z_n_k_l = lim_(l arrow.r infinity) (x_n_k_l + i y_n_k_l) = x + i y = z in CC $
+  מצאנו סדרה מתכנסת ב־$K$ ומהיות $K$ קומפקטי אז הוא סגור וחסום ולכן $z in K$ (מהניסוח השקול כאוסף הנקודות הגבוליות).\
   נניח בשלילה כי $K$ אינו קומפקטי־סדרתית, כלומר יש $(z_n)_(n=1)^infinity subset.eq z$ כך שאין לה תת־סדרה מתכנסת.
+  #colbreak()
   $==>$ נניח שלכל סדרה $(z_n)_(n=1)^infinity subset.eq K$ יש תת־סדרה מתכנסת $(z_n_k)_(k=1)^infinity$ ל־$z in K$ ונרצה להראות ש־$K$ סגור וחסום.\
   סגור: נובע מהניסוח השקול קבוצה סגורה כאוסף כל הנקודות הגבוליות במרחב ומכך שלכל סדרה יש תת־סדרה מתכנסת ל־$z in K$, כלומר $K$ אוסף כל הנקודות הגבוליות.\
-  חסום: נניח ש־$K$ לא חסומה ויהי $z_0 in K$
+  חסום: נניח ש־$K$ לא חסום ולכן לכל $NN in.rev n>=1$ יש $z_n in K$ כך שמתקיים $abs(z_n)>n$ נגדיר ככה את הסדרה $(z_n)_(n=1)^infinity$.\
+  מההנחה יש לסדרה זו תת־סדרה מתכנסת כך שמתקיים $lim_(k arrow.r infinity) z_n = z in K$ ולכן בפרט שנובע שהסדרה חסומה.\
+  אבל זו סתירה שכן לכל אינדקס $n_k$ מתקיים $abs(z_n_k) > n_k$ ו־$n_k arrow.r infinity$, כלומר $lim_(k arrow.r infinity) abs(z_n_k) = infinity$, בסתירה.\
+  לכן הנחת השלילה לא נכונה ו־$K$ חסום.
+]
 
+#question()
+תהיי $(z_n)_(n=1)^infinity subset.eq CC$.\
+
+#subquestion()
+נוכיח $rho(z_n, infinity) arrow.r 0$ אם ורק אם $abs(z_n) arrow.r infinity$.
+
+#proof[\
+  _תזכורת:_
+  $
+    rho(z, infinity) = lim_(w arrow.r infinity) rho(z, w) = lim_(w arrow.r infinity) (2abs(1-z/w))/(sqrt(1+abs(z)^2)sqrt(1/abs(w)^2+1)) = 2/sqrt(1+abs(z)^2)
+  $
+  $<==$ נניח כי $rho(z_n, infinity) arrow.r 0$ ונרצה להראות $abs(z_n) arrow.r infinity$.\
+  מתקיים
+  $
+    lim_(n arrow.r infinity) rho(z_n, infinity) = 0 <==>_"הגדרה" lim_(n arrow.r infinity) 2/sqrt(1+abs(z_n)^2) = 0 <==>_"אריתמטיקה של גבולות" lim_(n arrow.r infinity) sqrt(1+abs(z_n)^2) = infinity \
+    <==>_"אי־שליליות" lim_(n arrow.r infinity) 1+abs(z_n)^2 = infinity <==>_"קבוע" lim_(n arrow.r infinity) abs(z_n)^2 = infinity <==>_"אי־שליליות" lim_(n arrow.r infinity) abs(z_n) = infinity
+  $
+  $==>$ נניח כי $abs(z_n) arrow.r infinity$ ונרצה להראות $rho(z_n, infinity) arrow.r 0$.\
+  מתקיים
+  $ lim_(n arrow.r infinity) rho(z_n, infinity) = 2/sqrt(1+abs(z)^2) $
+  היות $abs(z_n) arrow.r infinity$ אזי המכנה שואף ל־$infinity$ ומאריתמטיקה של גבולות $lim_(n arrow.r infinity) rho(z_n, infinity) = 0$.
+]
+
+#subquestion()
+נוכיח $rho(z_n, z) arrow.r 0$ אם ורק אם $abs(z_n-z) arrow.r 0$.
+
+#proof[
+  _תזכורת:_
+  $ rho(z, w) = (2abs(z-w))/(sqrt(1+abs(z)^2)sqrt(1+abs(w)^2)) $
+  $<==$ נניח כי $rho(z_n, z) arrow.r 0$ ונראה כי $abs(z_n - z) arrow.r 0$.\
+  מתקיים
+  $
+    lim_(n arrow.r infinity) rho(z_n, z) = 0 <==> lim_(n arrow.r infinity) (2abs(z_n-z))/(sqrt(1+abs(z_n)^2)sqrt(1+abs(z)^2)) = 0
+  $
+  ראשית, $sqrt(1+abs(z)^2) = C in RR$ קבוע כלשהו. \
+  שנית, נובע מהגדרת הגבול שהמונה שואף ל־$0$ או שהמכנה שואף ל־$infinity$.\
+  אם המונה שואף ל־$0$ אזי $lim_(n arrow.r infinity) 2 abs(z_n-z) = 0 <==> lim_(n arrow.r infinity) abs(z_n-z) = 0$ וסיימנו.\
+  לא ייתכן שהמכנה שואף ל־$infinity$: ההגדרה $rho(z_n, z) arrow.r 0$ אומרת שהמרחק בין $z_n$ לבין $z in CC$ שהיא נקודה סופית שואף ל־$0$ על הספירה של רימן.\
+  אם יתקיים $lim_(n arrow.r infinity) abs(z_n) = infinity$, יהיה חייב להתקיים $rho(infinity, z)=2/sqrt(1+abs(z)^2) in RR$ וזאת סתירה.\
+  $<==$ נניח כי $abs(z_n-z) arrow.r 0$ ונראה כי $rho(z_n, z) arrow.r 0$.\
+  מהתזכורת, מספיק שנבחן את המכנה (כי המונה שואף ל־$0$ מההנחה), מתקיים
+  $
+    lim_(n arrow.r infinity) sqrt(1+abs(z_n)^2)sqrt((1+abs(z)^2)) =_"ההנחה" sqrt(1+abs(z)^2)sqrt(1+abs(z)^2) = 1+abs(z)^2 ==> RR in.rev 1+abs(z)^2 != 0
+  $
+  נסמן $C = 1 + abs(z)^2$ ונקבל $lim_(n arrow.r infinity) rho(z_n, z) = lim_(n arrow.r infinity) (2abs(z_n-z))/underbrace((sqrt(1+abs(z_n)^2)sqrt(1+abs(z)^2)), = 1+abs(z)^2 eq.colon C) = 0/C = 0$.
+]
+
+#question()
+תהיי $P=(x_0, y_0, z_0)$ כך שמתקיים $phi.alt^(-1) (z) = P$, כלומר
+$
+  phi.alt^(-1) (z) = phi.alt^(-1) (x+ i y) = ((2x)/(1+x^2+y^2),(2y)/(1+x^2+y^2),1-2/(1+x^2+y^2))= (x_0, y_0, z_0) \
+  phi.alt (z) = ((2re(z))/(1 + abs(z)^2),(2im(z))/(1 + abs(z)^2), (abs(z)^2-1)/(abs(z)^2+1)) \
+$
+
+#subquestion()
+נראה כי $P_1 = (x_0, -y_0, z_0)$ הוא התמונה של $overline(z)$, כלומר $phi.alt(overline(z)) = P_1$.
+
+#solution[
+  ניזכר
+  $
+    abs(z) = sqrt(z dot.op overline(z)) ==> abs(overline(z)) = sqrt(overline(z) dot.op overline(overline(z))) = sqrt(overline(z) dot.op z) = abs(z)
+  $
+  מתקיים $overline(z)=x- i y$ ולכן
+  $
+    phi.alt(overline(z)) = phi.alt(x-i y) = ((2x)/(1+abs(z)^2), (-2y)/(1+abs(z)^2), (abs(z)^2-1)/(abs(z)^2+1)) = P_1
+  $
+]
+
+#subquestion()
+נראה כי $P_2 = (x_0, y_0, -z_0)$ הוא התמונה של $1/overline(z)$, כלומר $phi.alt(1/overline(z)) = P_2$.
+
+#solution[
+  נסמן $z = x + i y$ ולכן $overline(z) = x-i y$ ונגדיר $w = 1/overline(z) = 1/(x-i y)$, נרצה לייצג את $w$ בצורה $w = a + i b$ עבור $a, b in RR$, אז
+  $ w = 1/(x-i y) = 1/(x-i y) dot.op (x+ i y)/(x + i y) = (x+ i y)/(x^2+y^2) = (x+ i y)/abs(z)^2 $
+  ובאותו אופן מהסעיף הקודם $abs(overline(z)) = abs(z)$ ולכן $abs(w)^2 = 1/abs(z)^2$ ומתקיים
+  $
+    phi.alt(1/overline(z)) = phi.alt(w) = phi.alt((x+ i y)/abs(z)^2) = ((2 dot.op x/abs(z)^2)/(1 + 1/abs(z)^2),(2 dot.op y/abs(z)^2)/(1 + 1/abs(z)^2), (1/abs(z^2)-1)/(1/abs(z)^2+1)) \
+    = ((2x)/(1+abs(z)^2), (2y)/(1+abs(z)^2), (1-abs(z)^2)/(1+abs(z)^2)) = (x_0, y_0, -z_0) = P_2
+  $
+]
+
+#subquestion()
+נראה כי $P_3 = (x_0, -y_0, -z_0)$ הוא התמונה של $1/z$, כלומר $phi.alt(1/z) = P_3$.\
+
+#solution[
+  שוב נסמן $z = x+ i y$ ולכן $w = 1/z = 1/(x + i y)$ ונרצה לייצג את $w$ בצורה $w = a + i b$ עבור $a, b in RR$, אז
+  $ w = 1/(x + i y) = 1/(x + i y) dot.op (x - i y)/(x - i y) = (x - i y )/(x^2+y^2) = (x - i y)/abs(z)^2 $
+  מתקיים
+  $
+    phi.alt(1/z) = phi.alt(w) = phi.alt((x-i y)/abs(z)^2) = ((2 dot.op x/abs(z)^2)/(1 + 1/abs(z)^2),(2 dot.op (-y)/abs(z)^2)/(1 + 1/abs(z)^2), (1/abs(z^2)-1)/(1/abs(z)^2+1)) \
+    = ((2x)/(1+abs(z)^2), (-2y)/(1+abs(z)^2), (1-abs(z)^2)/(1+abs(z)^2)) = (x_0, -y_0, -z_0) = P_3
+  $
+]
+
+#subquestion()
+נראה כי הפעולות בסעיפים הקודמים משמרים את $rho$.
+
+#proof[
+  במילים אחרות, אנחנו רוצים להראות שהפונקציות $z mapsto overline(z), z mapsto 1/overline(z), z mapsto 1/z$ הן כולן איזומטריות.\
+  כפעולות על $CC$ – שיקוף על־פני ציר $x z$, שיקוף על־פני ציר $x y$ וסיבוב ב־$pi$ מסביב לציר ה־$x$, בהתאמה לסעיף.\
+  נכתוב $z = x_0 + i y_0, w = x_1 + i y_1$.\
+  עבור סעיף א' עלינו להראות $rho(overline(z), overline(w)) = rho(z, w)$, כלומר
+  $
+    (2abs(z-w))/(sqrt(1+abs(z)^2)sqrt(1+abs(w)^2))= (2abs(overline(z)-overline(w)))/(sqrt(1+abs(overline(z))^2)sqrt(1+abs(overline(w))^2))
+  $
+  אכן כבר ראינו $(star) space abs(z)=abs(overline(z))$ לכל $z in CC$ וכן
+  $
+    overline(z)-overline(w) = x_0 - i y_0 - (x_1 - i y_1) = (x_0-x_1) - i(y_0-y_1) = overline(z-w) ==> abs(overline(z)-overline(w)) = abs(z-w)
+  $
+  כלומר אכן יש למעלה שיוויון.\
+  עבור סעיף ב' עלינו להראות $rho(overline(1/abs(z)), overline(1/abs(w)))$, כלומר
+  $
+    (2abs(z-w))/(sqrt(1+abs(z)^2)sqrt(1+abs(w)^2)) = (2abs(1/overline(z)-1/overline(w)))/(sqrt(1+abs(1/overline(z))^2)sqrt(1+abs(1/overline(w))^2))
+  $
+  מתקיים
+  $
+    abs(1/overline(z) - 1/overline(w)) = abs((overline(w)-overline(z))/overline(z w))=_(abs(overline(w)-overline(z))=abs(overline(w-z))) = abs(w-z)/(abs(overline(z))abs(overline(w))) =_((star)) abs(w-z)/(abs(z)abs(w)) \
+    sqrt(1+abs(1/overline(z))^2) =_((star)) sqrt(1+1/abs(z)^2) = sqrt((abs(z)^2+1)/abs(z)^2) = sqrt(1+abs(z)^2)/abs(z)
+  $
+  ולכן
+  $
+    rho(1/overline(z), 1/overline(w)) = (2 dot.op abs(z-w)/cancel((abs(z)abs(w))))/(sqrt(1+abs(z)^2)/cancel(abs(z))(1+abs(w)^2)/cancel(abs(w))) = (2 abs(z-w))/(sqrt(1+abs(z)^2)sqrt(1+abs(w)^2))
+  $
+  ושוב קיבלנו לעיל שיוויון.\
+  עבור סעיף ג', נבחין שזה נובע משני המקרים הקודמים כהרכבה של איזומטריות שכן $1/z = overline(1/overline(z))$ וכידוע הרכבה של איזומטריות היא איזומטרייה, ולכן גם מתקיים
+  $
+    (2abs(z-w))/(sqrt(1+abs(z)^2)sqrt(1+abs(w)^2)) = (2abs(1/z-1/w))/(sqrt(1+abs(1/z)^2)sqrt(1+abs(1/w)^2))
+  $
+  כלומר, כל הסעיפים הקודמים הם איזומטריות על ספירת רימן.
 ]
