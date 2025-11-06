@@ -8,21 +8,22 @@
 # NOTES: ...
 #################################################################
 
-#Sum input of numbers until empty string, returns all the numbers and the sum result
+# Sum input of numbers until empty string, returns all the numbers and the sum result
 def input_list():
     user_input_summation = 0
     numbers = []
     user_input = input()
-    while is_empty_string(user_input):
+    while not is_empty_string(user_input):
         user_input_as_number = float(user_input)
         user_input_summation += user_input_as_number
         numbers.append(user_input_as_number)
         user_input = input()
 
-    return numbers.append(user_input_summation)
+    numbers.append(user_input_summation)
+    return numbers
 
 
-#Check the inner product of two vectors.
+# Check the inner product of two vectors.
 def inner_product(vec_1, vec_2):
     if len(vec_1) != len(vec_2):
         return None
@@ -31,24 +32,26 @@ def inner_product(vec_1, vec_2):
         return 0
 
     inner_product_result = 0
-    #Inner product is calculated using sum of all multiplications of matching indices on vectors.
+    # Inner product is calculated using sum of all multiplications of matching indices on vectors.
     for index in range(len(vec_1)):
         inner_product_result = inner_product_result + (float(vec_1[index]) * float(vec_2[index]))
 
     return inner_product_result
 
 
-#Gets as sequence and check if the sequence is: monotonically increasing, increasing, monotonically decreasing, decreasing
+# Gets as sequence and check if the sequence is: monotonically increasing, increasing, monotonically decreasing, decreasing
 def sequence_monotonicity(sequence):
     if is_empty_list(sequence) or len(sequence) == 1:
         return [True, True, True, True]
 
-    return [sequence_monotonicity(sequence, lambda x, y: x <= y), sequence_monotonicity(sequence, lambda x, y: x < y),
-            sequence_monotonicity(sequence, lambda x, y: x >= y), sequence_monotonicity(sequence, lambda x, y: x > y)]
+    return [sequence_monotonicity_by_lambda(sequence, lambda x, y: x <= y),
+            sequence_monotonicity_by_lambda(sequence, lambda x, y: x < y),
+            sequence_monotonicity_by_lambda(sequence, lambda x, y: x >= y),
+            sequence_monotonicity_by_lambda(sequence, lambda x, y: x > y)]
 
 
 # Checks if the sequence satisfy the given operator by the lambda_function, stops if not.
-def sequence_monotonicity(sequence, lambda_function):
+def sequence_monotonicity_by_lambda(sequence, lambda_function):
     current = sequence[0]
     for next_item in sequence[1:]:
         if not lambda_function(current, next_item):
@@ -58,7 +61,8 @@ def sequence_monotonicity(sequence, lambda_function):
 
     return True
 
-#Gets a list, operator and number and returns the sublist the satisfy the math operator with given number.
+
+# Gets a list, operator and number and returns the sublist the satisfy the math operator with given number.
 def filter_list(num_list, operator, number):
     if is_empty_list(num_list):
         return num_list
@@ -81,11 +85,8 @@ def filter_list(num_list, operator, number):
     return valid_numbers
 
 
-#Runs in cycle style of a list and returns a sublist in a loop until we get to the start point again.
-def cycle_sublist( lst, start, step ):
-    if step > len(lst):
-        return []
-
+# Runs in cycle style of a list and returns a sublist in a loop until we get to the start point again.
+def cycle_sublist(lst, start, step):
     sublist = []
     last_index = 0
     for index in range(start, len(lst), step):
@@ -93,11 +94,11 @@ def cycle_sublist( lst, start, step ):
         if index + step > len(lst):
             last_index = index
 
-    #The distance between the end of the list to our last index before out of bound
-    delta = len(lst)-last_index
+    # The distance between the end of the list to our last index before out of bound
+    delta = len(lst) - last_index
 
-    #We need to check if we are over the start index, but otherwise keep appending by out step.
-    index = step-delta
+    # We need to check if we are over the start index, but otherwise keep appending by out step.
+    index = step - delta
     while index < start:
         sublist.append(lst[index])
         index = index + step
@@ -116,6 +117,8 @@ So the maximum index will be r + 2 = N - 1 ==> r = N-3 is the MAXIMUM INDEX.
 So the total number of options will be N-3+1 = N-2 (we add one since we start index in 0).
 In the same way we get the total possibilities for the columns and in the same way it will me M-2.
 So our result matrix will be from the size (N-2) times (M-2) and it is indeed helps us to build the correct logic."""
+
+
 def convolve(mat):
     if is_empty_list(mat):
         return None
@@ -123,27 +126,24 @@ def convolve(mat):
     rows_count = len(mat)
     columns_count = len(mat[0])
 
-    #Our matrix is 3 times 3.
-    if rows_count == 3 == columns_count:
-        return sum_matrix(mat)
-
-    #For any other size, we know our final matrix size so we create empty matrix from these dimensions.
-    convolve_result = create_empty_matrix(rows_count-2, columns_count-2)
+    # For any other size, we know our final matrix size so we create empty matrix from these dimensions.
+    convolve_result = create_empty_matrix(rows_count - 2, columns_count - 2)
 
     # We can at most move till N-2 and M-2 as we explained above and take the matching inner matrix and stay in bound.
-    for row_index in range(0, rows_count-2, 1):
-        for column_index in range(0, columns_count-2, 1):
-            inner_matrix = create_empty_matrix(3,3)
+    for row_index in range(0, rows_count - 2, 1):
+        for column_index in range(0, columns_count - 2, 1):
+            inner_matrix = create_empty_matrix(3, 3)
             for inner_row_index in range(3):
                 for inner_column_index in range(3):
-                    inner_matrix[inner_row_index][inner_column_index] = mat[row_index+inner_row_index][column_index+inner_column_index]
+                    inner_matrix[inner_row_index][inner_column_index] = mat[row_index + inner_row_index][
+                        column_index + inner_column_index]
 
             convolve_result[row_index][column_index] = sum_matrix(inner_matrix)
 
     return convolve_result
 
 
-#Sum all the coordinates of a matrix.
+# Sum all the coordinates of a matrix.
 def sum_matrix(mat):
     matrix_coordinates_sum = 0
     for row in mat:
@@ -191,5 +191,4 @@ def is_empty_list(list_to_check):
 
 
 def is_empty_string(string_to_check):
-    return string_to_check == "\"\"" or string_to_check == "\""
-
+    return string_to_check == '' or string_to_check == ""
