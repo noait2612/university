@@ -71,26 +71,53 @@ $z mapsto e^z$.
 $f(x+ i y)=(x^2+y^2) + i(-x^2+y^2)$.
 
 #proof[
+  יהיו $z=x+i y$ ו־$z_0 = x_0 + i y_0$.\
+  נצטרך לבחון גם את קו האופק וגם את קו הרוחב.
+  בקו האופקי, ניקח $z=x+i y_0$ אז $z arrow.r z_0$ אומר ש־$x arrow.r x_0$ כלומר $z-z_0 = x-x_0$ ואז
+  $
+    f(z)-f(z_0) & = x^2+y_0^2+i(-x^2+y_0^2)-x_0^2-y_0^2-i(-x_0^2+y_0^2) \
+                & = x^2-x_0^2-i x^2+ i x_0^2 \
+                & = (x-x_0)(x+x_0)-i((x-x_0)(x+x_0)) \
+                & = (x-x_0)(x+x_0)(1-i) =
+  $
+  כלומר
+  $
+    f'(z_0)_"אופקית" lim_(x arrow.r x_0) lim_(x arrow.r x_0) ((x-x_0)(x+x_0)(1-i))/(x-x_0) \
+    = lim_(x arrow.r x_0) (x+x_0)(1-i) = 2x_0 - 2i x_0 = 2x_0 (1-i)
+  $
+  באותו אופן אם נלך בקו האנכי אז $z-z_0 = i(y-y_0)$ ואז
   נחשב נגזרת חלקית לפי $x$:
   $
-    (partial f)/(partial x) (x_0 + i y_0) = lim_(x arrow.r x_0) (f(x + i y_0)- f(x_0 + i y_0))/(x-x_0) = lim_(x arrow.r x_0) (x^2+y_0^2+i(-x^2+y_0^2)-x_0^2-y_0^2-i(-x_0^2+y_0^2))/(x-x_0)
-    \ = lim_(x arrow.r x_0) (x^2-x_0^2-i x^2+ i x_0^2)/(x-x_0) = lim_(x arrow.r x_0) ((x-x_0)(x+x_0)-i((x-x_0)(x+x_0)))/(x-x_0) = lim_(x arrow.r x_0) ((x-x_0)(x+x_0)(1-i))/(x-x_0) \
-    = lim_(x arrow.r x_0) (x+x_0)(1-i) = 2x_0 - 2i x_0
+    f'(z_0)_"אנכית" = lim_(y arrow.r y_0) (f(x_0 + i y)- f(x_0 + i y_0))/(i(y-y_0)) = lim_(y arrow.r y_0) (x_0^2+y^2+i(-x_0^2+y^2)-x_0^2-y_0^2-i(-x_0^2+y_0^2))/(i(y-y_0)) \
+    = lim_(y arrow.r y_0) ((y+y_0)(y-y_0)(1+i))/(i(y-y_0)) =_((star)) lim_(y arrow.r y_0) (y+y_0)(1-i) = 2y_0 - 2i y_0 = 2y_0 (1-i)
   $
-  נחשב נגזרת חלקית לפי $y$:
-  $
-    (partial f)/(partial y) (x_0 + i y_0) = lim_(y arrow.r y_0) (f(x_0 + i y)- f(x_0 + i y_0))/(y-y_0) = lim_(y arrow.r y_0) (x_0^2+y^2+i(-x_0^2+y^2)-x_0^2-y_0^2-i(-x_0^2+y_0^2))/(y-y_0) \
-    = lim_(y arrow.r y_0) ((y+y_0)(y-y_0)(1+i))/(y-y_0) = lim_(y arrow.r y_0) (y+y_0)(1+i) = 2y_0 + 2i y_0
-  $
-  בהשוואת חלק ממשי ומדומה צריך להתקיים $ cases(2x_0 = 2y_0 ==> x_0 = y_0, - 2 i x_0 = 2 i y_0 ==> -x_0 = y_0) $
+  כאשר $(star)$ נובע מכך שמתקיים $ (1+i)/i = (1 + i)/i dot.op (-i)/(-i) = (-i +1)/((-i) dot.op i) = (-i + 1)/1 = 1-i $
+  כלומר צריך להתקיים בשביל שיהיה גבול
+  $ 2x_0 (1-i) = 2y_0 (1-i) <==> x_0 = y_0 $
+  כלומר $f$ גזירה על הישר $y=x$ בלבד ולכן כמובן היא בהכרח לא אנליטית כי אין סביבה פתוחה סביב כל נקודה שבה הפונקציה היא $CC$־דיפרנציאבילית.\
+  מספיק להסתכל על $z_0 = 1+i$, כל דיסק פתוח סביב $z_0$ יכיל נקודות שאינן על הישר $x=y$ וסיימנו.
 ]
 
+#pagebreak()
 
 #subquestion()
 $f(x+ i y)=x^3+3i y$.
 
 #proof[
-  #todo
+  נפעל באופן דומה לסעיף הקודם, נכתוב $z = x+i y, z_0 = x_0 + y_0$.\
+  עבור המקרה האופקי ניקח $z=x+i y_0$ אז $z arrow.r z_0$ אומר ש־$x arrow.r x_0$ כלומר $z-z_0 = x-x_0$ ואז
+  $
+    f'(z_0)_"אופקית" = lim_(x arrow.r x_0) (f(x + i y_0)- f(x_0 + i y_0))/(y-y_0) = lim_(x arrow.r x_0) (x^3 + 3i y_0^3 - x_0^3 - 3i y_0^3)/(x-x_0) = lim_(x arrow.r x_0) (x^3-x_0^3)/(x-x_0) \
+    = lim_(x arrow.r x_0) ((x-x_0)(x^2+x x_0 + x_0^2))/(x-x_0) = lim_(x arrow.r x_0) x^2 + x x_0 + x_0^2 = 3x_0^2
+  $
+  באותו אופן אם נלך בקו האנכי אז $z-z_0 = i(y-y_0)$ ואז
+  $
+    f'(z_0)_"אנכית" = lim_(y arrow.r y_0) (f(x_0 + i y)- f(x_0 + i y_0))/(i(y-y_0)) = lim_(y arrow.r y_0) ((3i)(y-y_0))/(i(y-y_0)) = 3
+  $
+  אז בשביל קיום הגבול נצטרך $3x_0^2 = 3 <==> x_0^2 = 1 <==> x_0 plus.minus 1$
+  אז הפונקציה גזירה רק במקומות בהם החלק הממשי הוא $plus.minus 1$, כלומר
+  $ {z in CC bar re(z)=1} union {z in CC bar re(z)=-1} $
+  בפרט זה אומר שהפונקציה איננה אנליטית.
 ]
 
 #question()
@@ -161,14 +188,41 @@ _תזכורת_: בהינתן $G$ תחום, נסמן ב־$Hol(G)$ את קבוצת
 נוכיח שאם לכל $z in G$ מתקיים $f'(z)=0$ אז $f$ קבועה.
 
 #proof[
-  #todo
+  $G$ תחום ולכן קבוצה פתוחה וקשירה ולכן קשירה מסילתית.\
+  ניקח $z_0, z_1$ ומהקשירות יש מסילה $gamma : [a,b] arrow.r G$ כך ש־$gamma(a)=z_0, gamma(b)=z_1$ ונסתכל על ההרכבה $h(t) colon.eq f(gamma(t))$ כך ש־$t in [a,b]$.\
+  נשים לב שמתקיים
+  $
+    h'(t) = lim_(h arrow.r 0) (f(gamma(t+h))-f(gamma(t)))/h = lim_(h arrow.r 0) (f(gamma(t+h))-f(gamma(t)))/(gamma(t+h)-gamma(t)) dot.op (gamma(t+h)-gamma(t))/h
+  $
+  מתקיים $gamma(t+h)-gamma(t) arrow.r_(h arrow.r 0) 0$ ו־$gamma$ היא מסילה ולכן גזירה והגורם השני שואף לנגזרתה.\
+  אז
+  $ h'(t) = f'(gamma(t)) dot.op gamma'(t) $
+  אבל מהנתון, $f'(z)=0$ לכל $z in G$ ובפרט נקבל $h'(t)=0$ לכל $t in [a,b]$ אבל זה בידיוק גורר ש־$h$ היא קבועה, זו פונקציה ממשית ולכן אפשר לראות זאת מהמשפט היסודי של החשבון האינפיניסטמלי
+  $ h(t_2)-h(t_1) = integral_(t_1)^(t_2) h'(t) d t = integral_(t_1)^(t_2) 0 d t = 0 $
+  אזי $h$ היא קבועה על $[a,b]$, כלומר
+  $ f(z_0) = h(gamma(a)) = h(gamma(b)) = f(z_1) $
 ]
 
 #subquestion()
-נוכיח כי $f(overline(z))$ היא לא פונקציה אנליטית.
+נוכיח כי $f(overline(z))$ היא לא פונקציה אנליטית אם $f eq.triple.not C$ עבור $C$ קבוע.
 
 #proof[
-  #todo]
+  נגדיר $g(z) = f(overline(z))$ ונקבע $z_0$ כך ש־$w_0 colon.eq overline(z_0)$.\
+  נניח כי $g$ היא אנליטית, בפרט היא $CC$־דיפרנציאבילית ב־$z_0$, אז
+  $
+    g'(z_0) = lim_(h arrow.r 0) (g(z_0+h)-g(z_0))/h = lim_(h arrow.r 0) (f(overline(z_0+h))-f(z_0))/h = lim_(h arrow.r 0) (f(w_0 + overline(h))-f(w_0))/h
+  $
+  $f$ היא אנליטית ולכן כאשר $h arrow.r 0$
+  $ f(w_0 +overline(h))-f(w_0) = f'(w_0) overline(h) + o(abs(overline(h))) $
+  כלומר
+  $ ( f(w_0 + overline(h))- f(w_0))/h = f'(w_0) overline(h)/h + o(abs(overline(h)))/h $
+  כלומר אם הגבול של $g'(z_0)$ קיים אז גם הגבול $f'(w_0) overline(h)/h$ כאשר $h arrow.r 0$ קיים ושווה לו.\
+  אם $h$ ממשי אז $overline(h)/h=1$ ואז הביטוי שואף ל־$f'(w_0)$
+  אם $h$ הוא מדומה אזי $h = i t$ עם $t$ ממשי כך ש־$t arrow.r 0$ נקבל $overline(h)/h = -1$ כלומר הביטוי שואף ל־$-f'(w_0)$.\
+  אבל אם הגבול קיים, אז הנגזרות הכיווניות הללו חייבות להסכים על הערך, אז $ f'(w_0) = -f'(w_0) ==> f'(w_0) = 0 $
+  אבל מהסעיף הקודם נובע כי $f$ קבועה. אז אם $f$ קבועה, באמת $g$ אנליטית.\
+  אם $f$ איננה קבועה, קיבלנו סתירה מההנחה ש־$g$ היא $CC$־דיפרנציאבילית ולכן היא איננה $CC$־דיפרנציאבילית.
+]
 
 
 #question()
@@ -328,14 +382,49 @@ $sum_(n=1)^infinity z^n/n!$.
 $sum_(n=1)^infinity z^n$.
 
 #solution[
-  נשים לב ש־$a_n = 1$ אז נסתכל על מקרים שונים עבור $z$.\
-  אם $abs(z)<1$ אז זה טור גיאומטרי ומתכנס בהחלט, אם $abs(z)>1$ אז הטור מתבדר (כי אפילו $lim_(n arrow.r infinity) z_n !=0$ וזה תנאי הכרחי) אם $abs(z)=1$ זה אומר ש־$z$ על מעגל היחידה
-  #todo
+  ראשית זה טור סביב $z_0 = 0$ ולכל $n in NN$ מתקיים $a_n = 1$, כלומר $sum_(n=1)^infinity a_n (z-z_0) = sum_(n=1)^infinity z_n$.\
+  מנוסחת הדמארד מתקיים
+  $ 1/R = lim_(n arrow.r infinity) sup root(n, abs(a_n)) = lim_(n arrow.r infinity) sup 1 = 1 $
+  ולכן רדיוס ההתכנסות הוא $1$.\
+  נבחן מקרים שונים של $z$:
+  + אם $abs(z)<1$ אז זה טור גיאומטרי ומתכנס בהחלט
+  + אם $abs(z)=1$ או $abs(z)>1$ אז הטור מתבדר (כי אפילו $lim_(n arrow.r infinity) z_n !=0$ וזה תנאי הכרחי)
+  אז תחום ההתכנסות הוא $ {z in CC bar abs(z)<1} $
+  נשים לב שיש תחום בו הטור מתכנס במידה שווה ויש תחום שלא: אם ניקח דיסק ברדיוס $0<r<1$ ונסתכל על $overline(D_r) = {z in CC bar abs(z)<=r}$ אז לכל $z in overline(D_r)$ מתקיים $abs(z^n)=abs(z)^n<=r^n$ אז ממבחן ה־$M$ של ויירשטראס אם נבחר $M_n =r^n$ אז זה טור גיאומטרי מתכנס ולכן הטור מתכנס בדיסקים הללו.\
+  מצד שני, אנחנו יודעים ש־$S_N (z) = sum_(n=1)^N z^n = z/(1-z)$ ולו הוא היה מתכנס במידה שווה על הדיסק אזי היה מתקיים $ lim_(N arrow.r infinity) sup_(abs(z)<1) abs(S(z)-S_N (z)) = 0 $
+  אזי $S(z) = S_N (z) = z^(N+1)/(1-z)$, עבור בחירה של $z= 1-delta$ כאשר $delta>0$ קטן כרצוננו, היה מתקיים
+  $ lim_(N arrow.r infinity) sup_(abs(z)<1) abs(S(z)-S_N (z)) = (abs(1-delta)^(N+1))/delta arrow.r infinity $
+  כלומר אין התכנסות במידה שווה בדיסק הפתוח.
 ]
 
+#pagebreak()
 #sub_subquestion()
 $sum_(n=1)^infinity z^n/n^2$.
 
 #solution[
+  נסמן $z_0 = 0$ ו־$a_n = 1/n^2$, אז לפי נוסחת הדמארד מתקיים
+  $
+    1/R = lim_(n arrow.r infinity) sup root(n, abs(a_n))= lim_(n arrow.r infinity) sup abs(1/n^2)^(1/n)= lim_(n arrow.r infinity) sup e^((1/n) ln(1/n^2)) = 1
+  $
+  אז לכל $abs(z)<1$ מתקיים שהטור מתכנס ואחרת הוא מתבדר, עבור $abs(z)=0$ מתקיים
+  $ sum_(n=1)^infinity abs(z^n/n^2) = sum_(n=1)^infinity 1^n/n^2 < infinity $
+  ולכן הטור מתכנס גם עבור $abs(z)=1$ ובעצם תחום ההתכנסות הוא דיסק היחידה הסגור
+  $ overline(DD) = {z in CC bar abs(z)<=1} $
+  בשביל להראות התכנסות במידה שווה מספיק שניקח $M_n = 1/n^2$ וזה טור שמתכנס ולכן לפי מבחן ה־$M$ של ויירשטראס מתקיים שהטור מתכנס במידה שווה על דיסק היחידה.
+]
 
+#subquestion()
+נביא דוגמה נגדית שהתכנסות במידה שווה על דיסק פתוח לא גוררת התכנסות במידה שווה על הדיסק הסגור.
+
+#proof[
+  ניקח את הטור $sum_(n=0)^infinity z^n/(n+1)$, זה טור סביב $0$ ו־$a_n = n+1$.\
+  מנוסחת הדמארד מתקיים
+  $
+    1/R = lim_(n arrow.r infinity) sup root(n, abs(a_n)) = lim_(n arrow.r infinity) sup 1/root(n, n+1) ==> R = 1/(lim_(n arrow.r infinity) sup 1/(root(n, n+1))) = 1/(lim_(n arrow.r infinity) sup 1/e^(1/n ln(n+1)))=_"לופיטל"1
+  $
+  אז הוא מתכנס בדיסק הפתוח ${z in CC bar abs(z)<1}$, כאשר $abs(z)=1$.\
+  ממבחן אבל אם ניקח $a_n = 1/(n+1), b_n = z^n$ אז הטור שלנו מתכנס (כמכפלה של שני אלו), אבל אם $abs(z)=1$ נקבל וריאציה של הטור ההרמוני שמתבדר.\
+  מתקיים
+  $ sum_(n=0)^infinity z^n/(n+1) = 1/z sum_(n=0)^infinity z^(n+1)/(n+1) = 1/z sum_(k=1)^infinity z^k/k = -1/z ln(1-z) $
+  אבל כאשר $z arrow.r 1^minus$ הביטוי שלנו לעיל שואף ל־$minus infinity$ ובפרט זה אומר שגם שסדרת הסכומים החלקיים לא יכולה להתכנס במידה שווה (כי הסכום החלקי אפילו לא חסום).
 ]
