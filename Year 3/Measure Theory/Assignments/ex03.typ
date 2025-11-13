@@ -73,12 +73,31 @@
 #question()
 יהי $(X, cal(A), mu)$ מרחב מידה. \
 נניח כי $N subset.eq X$ מוכלת בקבוצה ממידה אפס וש־$f : N^c arrow.r CC$ ונניח כי $f_1, f_2 :X arrow.r CC$ הרחבות מדידות של $f$ לכל $X$ \
-(כלומר $f_1 display(harpoon.tr)_(N^c) = f_2 harpoon.tr_(N^c) = f$).\
+(כלומר $f_1 harpoon.tr(N^c) = f_2 harpoon.tr_(N^c) = f$).\
 נראה כי
 $ integral_X f_1 d mu = integral_X f_2 d mu $
 
 #proof[
-
+  נראה שמתקיים
+  $ integral_X f_1 d mu = integral_(N^c) f_1 d mu $
+  תהיי $s<=f$ פונקציה פשוטה ונוכיח ש־$integral_X s d mu = integral_(N^c) s d mu$ אבל לפי תכונות האינטגרל שראינו בשאלה $1$, זה נכון אם ורק אם
+  $
+    integral_X s d mu = integral_(N^c) s d mu <==> integral_X s d mu - integral_(N^c) s d mu = 0 <==> integral_N s d mu = 0
+  $
+  $s$ פשוטה, כלומר $s=sum_(i=1)^n alpha_i bb(1)_(E_i)$ עבור $alpha_i in RR^plus$ ו־$E_i$ קבוצות מדידות זרות בזוגות.\
+  מהגדרת האינטגרל
+  $ integral_N s d mu = sum_(i=1)^n alpha_i mu(E_i inter N) $
+  אבל $N$ היא ממידה אפס ולכן גם $E_i inter N subset.eq N$ היא קבוצה ממידה אפס ולכן
+  $ integral_N s d mu = sum_(i=1)^n alpha_i mu(E_i inter N) = sum_(i=1)^n alpha_i 0 = 0 $
+  כלומר
+  $ integral_X s d mu = integral_(N^c) s d mu $
+  בפרט, מהגדרת האינטגרל זה יהיה נכון לכל $s$ פשוטה ולכן
+  $ integral_X f_1 d mu = integral_(N^c) f_1 d mu = integral_(N^c) f d mu $
+  כאשר השיוויון הימני נובע מההזדהות של הפונקציות על $N^c$.\
+  נשים לב שמטיעון זהה נקבל
+  $ integral_X f_2 d mu = integral_(N^c) f d mu $
+  ומטריכוטומיה
+  $ integral_X f_1 d mu = integral_X f_2 d mu $
 ]
 
 #question()
@@ -149,9 +168,7 @@ $ integral_X (f compose rho) d mu = integral_Y f d rho_*mu $
 נתאר במילים את מה המידה $rho_*lambda$ מודדת.
 
 #solution[
-  זו בעצם המידה על מעגל היחידה שלוקח לכל קשת מדידה $E$ את האורך שלה.\
-  #todo?
-]
+  זו בעצם המידה על מעגל היחידה שלוקח לכל קשת מדידה $E$ את האורך שלה.]
 
 #question()
 יהי $(X, cal(A), mu)$ מרחב מידה סופי. \
@@ -166,7 +183,7 @@ $ integral f d mu = inf {integral phi d mu bar f<=phi, " פשוטה" phi } eq.co
   במילים אחרות אנחנו רוצים להראות $underline(I)=overline(I)$ ולכן נראה $underline(I)<=overline(I)$ וכן $overline(I)<=underline(I)$.\
   נבחין שהכיוון $overline(I) <= underline(I)$ הוא ישיר, שכן אם $psi$ היא פונקציה פשוטה המקיימת $psi<=f$ ו־$phi$ היא פונקציה פשוטה המקיימת $f<=phi$ אז בהכרח מתקיים $psi<=phi$.\
   ממונוטוניות האינטגרל (שהוכחנו בשאלה $1$ סעיף א') ומאריתמטיקה של אינפימום וסופרמום מתקיים
-  $ overline(I) = sup {integral_X psi d mu bar} <= inf {integral_X phi d mu } = underline(I) $
+  $ overline(I) = sup {integral_X psi d mu} <= inf {integral_X phi d mu } = underline(I) $
   שכן אם לכל $phi, psi$ מתקיים $psi<=phi$ אז גם הסופרמום של כל ה־$psi$־ים בהכרח יהיה קטן שווה לאינפימום של כל ה־$phi$־ים.\
   עבור הכיוון השני, נגדיר $g(x) = M - f(x)$ ומהנתון על החסימות של הפונקציה והמידה מתקיים $0<=g(x)<=M$ ומוגדרת היטב (אין חיסור עם אינסוף).\
   מתקיים
