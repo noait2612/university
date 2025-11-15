@@ -105,6 +105,9 @@
     font: "Libertinus Serif",
   )
 
+  // Size of cases
+  set math.cases(gap: 1em)
+
   // Space between lines
   set par(leading: 0.8em)
 
@@ -135,6 +138,14 @@
   }
 
   show: thmrules.with(qed-symbol: $square$)
+
+  // To fix the bug where the letter א is being interpreted as aleph number.
+  show regex("\p{Hebrew}.+"): it => text(
+    dir: rtl,
+    font: "Libertinus Serif",
+    lang: "he",
+  )[#it] // Dark Magic: https://github.com/typst/typst/issues/3695
+  set math.cases(gap: 1em)
 
   box(height: 60pt)
   align(center, text(17.28pt, title))
@@ -385,6 +396,13 @@
   })
   math.cases(..cases)
 }
+
+// Custom math functions
+// Complex Analysis
+#let Arg = math.italic(math.op("Arg"))
+#let Hol = math.op("Hol")
+#let im = math.italic(math.op("Im"))
+#let re = math.italic(math.op("Re"))
 
 // headings
 //#show heading: it => {
