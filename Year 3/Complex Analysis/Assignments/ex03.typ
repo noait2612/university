@@ -4,16 +4,7 @@
   signature: [#align(center)[#image("../../../src/duck.png", width: 30%, fit: "contain")]],
 )
 
-#show regex("\p{Hebrew}.+"): it => text(
-  dir: rtl,
-  font: "Libertinus Serif",
-  lang: "he",
-)[#it] // Dark Magic: https://github.com/typst/typst/issues/3695
-#set math.cases(gap: 1em)
-#let Arg = math.italic(math.op("Arg"))
-#let Hol = math.op("Hol")
-#let im = math.italic(math.op("Im"))
-#let re = math.italic(math.op("Re"))
+#let diam = math.op("diam")
 
 #question()
 נראה כי ההעתקה $z mapsto ((1+z)/(1-z))^2$ ו־$z mapsto i (1-z^2)/(1+z^2)$ ממפות את החצי העליון של הדיסק לחצי מישור העליון.
@@ -253,3 +244,68 @@ $
     = sin^2(a) + sinh^2(b)(sin^2(a)+cos^2(a)) = sin^2(a) + sinh^2(b)
   $
 ]
+
+#question()
+#subquestion()
+תהיי $gamma = {t e^(i (3pi)/4) bar t in [0,infinity)}$. נבנה ונתאר ענף של הארגומנט עבור $G = CC without gamma$.
+
+#solution[
+  נתחיל מלהוכיח טענה שמופיעה בסיכומי הרצאות של עדי: לכל $z,w$ מתקיים $Arg(z w) = (Arg(z) + Arg(w)) (mod 2pi)$: \
+  נסמן $z=r_1e^(i theta_1), w=r_2e^(i theta_2)$ ולכן $z w = r_1 r_2 e^(i (theta_1+theta_2)$, מתקיים
+  $
+    Arg(z) = theta_1 + 2pi k space (k in ZZ) \
+    Arg(w) = theta_2 + 2 pi k space (k in ZZ) \
+    Arg(z w) = theta_1 + theta_2 + 2pi k space (k in ZZ)
+  $
+  כלומר
+  $ Arg(z w) = theta_1 + theta_2 = Arg(z)+Arg(w) (mod 2pi) $
+  כעת ניזכר בהגדרה של הענף שראינו בתרגול: אנחנו מגדירים ענף של ארגומנט להיות כל פונקציה $alpha(z)$ שרציפה מעל התחום שלנו ומקיימת שלכל $z$ בתחום מתקיים $alpha(z) in {Arg(z)+2pi dot.op k bar k in ZZ}$.\
+  אנחנו יודעים שהארגומנט רציף ב־$CC without (-infinity, 0]$ וש־$Arg : CC without {0} arrow.r [-pi, pi)$.\
+  בנתונים שלנו מתקיים ש"הרמנו" את החלק הלא רציף ב־$pi/4$ וזה עכשיו הישר שלנו של האי־רציפות שלנו ולכן אנחנו בפועל רוצים להזיז את הקו אי־הגדרה גם בפונקציית הארגומנט שלנו.\
+  לכן נגדיר את הענף
+  $ alpha(z) = Arg(z dot.op e^(-(pi i)/4)) +pi/4 $
+  עשינו את ההזה מבפנים כדי לתקן את האי־רציפות וההוספה של ה־$pi/4$ נועדה כדי לתקן את הזווית (כדי לקבל את הזווית האמיתית ולא הערך המוזז).\
+  מהטענה שהוכחנו לעיל, קיבלנו את התנאי השני של הענף ונשאר רק להראות רציפות:\
+  אבל זה רציף כי הרכבנו פונקציה רציפה ($Arg$ רציף ב־$CC without (-infinity, 0]$) והזזה זו פעולה רציפה ולכן מהגדרה $alpha$ רציפה ב־$CC without e^(-(pi i)/4) (-infinity, 0]$.\
+  תוסיפי ציור להמחשה.
+  #todo
+]
+
+#subquestion()
+יהי $0 in K subset CC$ חסומה עם $0 in.not partial K$.\
+נבנה ענף של הארגומנט עבור $G=K-diam(K)={z-diam(K) bar z in K}$ כאשר $diam(K)=sup_(x,y in K) abs(x-y)$.
+
+#solution[
+  במילים אחרות, יש לנו צורה חסומה שאיננה כוללת את $0$ (כי הזזתי את הקוטר, ו־$0$ היה בפנים).\
+  ניזכר שהארגומנט רציף על $CC without (-infinity, 0]$ ונטען שהפעם הארגומנט איננו רציף ב־$[0,infinity)$.\
+  יהי $x in [0,infinity)$ ונראה ש־$x in.not G$: נשים לב שזה שקול ללהגיד
+  $ x in.not G = K -diam(K) <==> x + diam(K) in.not K <==> forall x in [diam(K),infinity), x in.not K $
+  ידוע כי $0 in K$ ולכן בהכרח $0+diam(K) in.not K$.\
+  נניח בשלילה ש־$x in K$ ולכן $0, x in K$ ובפרט $x=abs(x-0)<=diam(K)$, אבל $diam(K)<=x$ ולכן $x=diam(K)$.\
+  ידוע כי $0 in K^circle.small.stroked$ ולכן קיים $epsilon>0$ כך ש־$B(0, epsilon) subset.eq K$ ולכן $epsilon/2 in K$ כמספר מרוכב.\
+  כעת, $epsilon/2, x in K$ ומטיעון דומה נקבל $x=diam(K)-epsilon$  וזו סתירה!\
+  לכן $[0,infinity) inter G = emptyset$ ולכן מספיק שנמצא ענף לארגומנט בתחום $CC without [0,infinity)$.\
+  אם נסתכל על זה על הצירים, זה כמו לזוז בזווית של $pi$, כלומר
+  $ alpha(z)=Arg(-z)+pi $
+  משיקולים של הסעיף הקודם נקבל שאכן $alpha$ ענף בתחום ולכן $alpha' = alpha harpoon.tr G$ ענף רציף של הארגומנט ב־$G$.
+  #todo
+]
+
+#subquestion()
+יהי $0 in K subset CC$ חסומה עם $0 in.not partial K$ ו־$theta in (-pi, pi]$. \
+נבנה ענף של הארגומנט עבור $G_theta = K + e^(i theta) dot.op diam(K)$.
+
+#solution[
+  נראה שהפעם אם $x in e^(i theta)[0,infinity)$ אז $x in.not G$:\
+  נשים לב שהטענה שקולה לטענה ש־$x e^(i theta) in.not e^(i theta) G$ אבל ככה נקבל $K$ כמו בסעיף ב' וכן $x e^(i theta) in [0,infinity)$ ולכן הטענה נובעת ונסיק שוב \
+  ש־$G inter e^(i theta) [0,infinity) = emptyset$.\
+  נשים לב שהפעם אנחנו מחפשים
+  $ e^(pi i) mapsto e^(theta i) = e^(pi i - (pi-theta)i) = e^(pi i) dot.op e^(-(pi-theta)i) $
+  כלומר
+  $ alpha(z) = Arg(e^((theta-pi)i) z) + (pi-theta) $
+  בהתאם לשיקולים בסעיפים הקודמים מצאנו ענף ובשל שיקולי הזזה $alpha$ רציף ב־$CC without e^(i theta)[0,infinity)$ אבל $G subset.eq CC without e^( i theta)[0,infinity)$ ולכן $alpha harpoon.tr G$ רציף וענף.
+  #todo
+]
+
+#question()
+#todo
