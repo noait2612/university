@@ -8,7 +8,7 @@
 יהי $(X, cal(A), mu)$ מרחב מידה.
 
 #subquestion()
-נוכיח כי אם לכל $(f_n)_(n=1)^infinity$ סדרת פונקציות מדידות המתכנסת במידה לפונקציה מדידה $f$ אזי קיימת לה תת־סדרה המתכנסת ל־$f$ כמעט־תמיד.
+נוכיח כי אם לכל $(f_n)_(n=1)^infinity$ סדרת פונקציות מדידות המתכנסת במידה לפונקציה מדידה $f$ אזי קיימת לה תת־סדרה המתכנסת ל־$f$ כמעט תמיד.
 
 #proof[
   נאמר ש־$f_n arrow.r f$ במידה אם לכל $epsilon > 0$ מתקיים $mu({x bar abs(f_n (x)- f(x))>=epsilon}) arrow.r 0$.\
@@ -46,19 +46,24 @@
 
 #proof[
   נניח ש־$X$ מרחב ממידה סופית. \
-  מההנחה ש־$f_n arrow.r f$ נגדיר $A = {x in X bar f_n (x) arrow.r f(x)}$ אז נובע ש־$mu(X without A)=0$.\
-  יהי $epsilon>0$, נרצה להראות ש־$mu({x in X bar abs(f_n (x)-f(x))>=epsilon}) arrow.r 0$.\
-  לכל $n in NN$ נגדיר $B_n = {x in X bar abs(f_n (x)-f(x))>=epsilon}$.\
-  מהיות $f_n arrow.r f$  כמעט תמיד, נובע שלכל $x in A$ מתקיים $f_n (x) arrow.r f(x)$, כלומר יש $n>=N$ כך ש־$x in.not B_n$ כמעט לכל $x in A$.\
-  $ mu(B_n) = mu(B_n inter A) + mu(B_n inter (X without A)) = mu(B_n inter A) + 0 $
-  נבחן את $mu(B_n inter A)$ כאשר $n arrow.r infinity$.\
-  עבור $n$ גדול מספיק, כמעט לכל $x in A$ מתקיים $abs(f_n (x) - f(x))<epsilon$
-  #todo
+  נגדיר
+  $ E_n = {x in X bar abs(f_n (x) - f(x))>epsilon} $
+  מההתכנסות כמעט תמיד, נובע שכמעט כל $x$ מתקיים $abs(f_n (x) - f(x))>epsilon$ כמות סופית של פעמיים, באופן שקול
+  $ limsup_(n arrow.r infinity) E_n = inter.big_(n=1)^infinity union.big_(k>=n) E_n $
+  ממידה אפס.\
+  נסמן $U_k = union.big_(n>=k) E_n$ וזו סדרה יורדת של קבוצות מדידות, מהסופיות מתקיים גם $mu(U_1)<=mu(X)<infinity$ אז מרציפות המידה לסדרות יורדות
+  $ mu(limsup_n E_n) = mu(inter.big_(n=1)^infinity U_n) = lim_(n arrow.r infinity) mu(U_n) = 0 $
+  לכל $n$ מתקיים $E_n subset.eq U$ ולכן ממונוטוניות המידה, $mu(E_n) <= mu(U_n)$ ובפרט
+  $ limsup_(n arrow.r infinity) mu(E_n) <= limsup_(n arrow.r infinity) mu(U_n) = 0 $
+  כלומר לכל $epsilon > 0$ מתקיים
+  $ mu({x bar abs(f_n (x)-f(x))<epsilon}) arrow.r 0 $
+  כלומר, מתכנס במידה, כנדרש.
 ]
 
 #question()
 יהי $(X, cal(A), mu)$ מרחב מידה. ונניח כי $f, f_n$ פונקציות אי־שליליות כך ש־$f_n arrow.r f$ במידה. \
-נראה כי $integral f d mu <= lim inf integral f_n d mu$
+נראה כי $integral f d mu <= lim inf integral f_n d mu$.
+
 #proof[
   ראשית ניזכר שמהגדרת האינפימה, יש סדרת אינדקסים $(n_k)_(k=1)^infinity$ כך שמתקיים
   $ lim_(k arrow.r infinity) integral_X f_n_k d mu = liminf_(n arrow.r infinity) integral_X f_n d mu $
@@ -139,4 +144,70 @@ $ d_E (x) colon.eq inf {d(x,y) bar Y in E} $
   ראשית זו הרכבה של פונקציות רציפות ולכן רציף ובפרט מהפיצול למקרים שראינו לעיל נובע כי המכנה לעולם לא מתאפס ולכן רציפה ומוגדרת היטב.\
   נשאר להראות ש־$f bar_K = 1, f bar_(U^c) = 0$.\
   ואכן, אם $x in K$ מתקיים $f(x) = (d_(U^c) (x))/(d_(U^c) (x)+0)=1$ ואם $x in U^c$ מתקיים $f(x)=0/(0+d_K (x))=0$.
+]
+
+#question()
+יהי $(RR, cal(B)_RR, lambda)$ הישר הממשי עם מידת לבג.\
+בכל סעיף, נקבע האם לסדרת הפונקציות $(f_n)_(n=1)^infinity : RR arrow.r RR$ יש גבול נקודתי, נקודתי כמעט תמיד, ב־$L^1$ או במידה ואם קיימים – נמצא אותם.
+
+#subquestion()
+$ f_n (x) = f(n x), space f(x) = mycases(e^(-x), x>=0, 0, "אחרת") $
+
+#solution[
+  ראשית, עבור $x<0$ מתקיים $f_n (x) = 0$ לכל $n in NN$ ובפרט $display(lim_(n arrow.r infinity) f_n (x) = lim_(n arrow.r infinity) 0 = 0)$.\
+  אם $x=0$ אז $f(x)=1$ ולכן $display(lim_(n arrow.r infinity) f_n (0) = lim_(n arrow.r infinity) n dot.op 1 = infinity)$.\
+  אם $x>0$ אזי $f(x) = e^(-x)$ ולכן $ lim_(n arrow.r infinity) f_n (x) = lim_(n arrow.r infinity) n/e^(n x) =_"לופיטל" lim_(n arrow.r infinity) 1/(x e^(n x)) = 0 $
+  לכן קיבלנו שני דברים:
+  $ f_n (x) arrow.r f_0 (x) = mycases(0, x!=0, infinity, x=0) $
+  ובפרט $f_n arrow.r 0$ כמעט תמיד.\
+  עבור התכנסות ב־$L^1$ מתקיים
+  $
+    lim_(n arrow.r infinity) integral_RR abs(f-0) d lambda = lim_(n arrow.r infinity) integral_RR f d lambda = lim_(n arrow.r infinity) (integral_(-infinity)^0 0 d lambda + integral_0^infinity n e^(-n x) d lambda) = lim_(n arrow.r infinity) integral_0^infinity n e^(-n x) d lambda
+  $
+  מתקיים
+  $
+    integral_0^infinity n e^(-n x) d lambda =_(u = n x \ d u = n d lambda) integral_0^infinity e^(-u) d u = [-e^(-u)]_0^infinity = 0 - (-1) = 1
+  $
+  כלומר
+  $ lim_(n arrow.r infinity) integral_0^infinity n e^(-n x) d lambda = lim_(n arrow.r infinity) 1 = 1!=0 $
+  ולכן לא מתכנס ב־$L^1$.\
+  נשאר להראות התכנסות במידה: כלומר, להראות האם לכל $epsilon>0$ מתקיים $lambda({x bar abs(f_n (x)-f(x))>=epsilon}) arrow.r 0$.\
+  יהי $epsilon >0$ ונסמן $A_n (epsilon) = {x in RR bar f_n (x) = n e^(-n x)>=epsilon}$ (כי עבור $x<=0$ מתקיים $f_n (x) =0 < epsilon$).\
+  נסמן $g_n (x) = n e^(-n x)$ ונבחין כי $x=0$ זו נקודת מקסימום עבורה מתקיים $g_n (0) = n$.\
+  אם $n<=epsilon$ אז $f_n (x)<=n<=epsilon$ לכל $x$ ולכן $A_n (epsilon) = emptyset$או $A_n (epsilon) = {0}$ אם $n=epsilon$ וניקח $f_n (x) > epsilon$.\
+  בגלל שהמידה של יחידון היא עדיין אפס במידת לבג, ממתקיים בכל אופן $lambda(A_n (epsilon))=0$.\
+  אם $n>epsilon$ אז אי־השיוויון $n e^(-n x)>=epsilon$ מתקיים עבור $x in [0,x_n]$ כאשר $x_n$ הוא הפיתרון למשוואה $n e^(-n x_n)=epsilon$, כלומר
+  $
+    n e^(-n x_n) = epsilon <==> e^(-n x_n) = epsilon/n <==> -n x_n = ln(epsilon/n) <==> n x_n = ln(n/epsilon) <==> x_n = 1/n ln(n/epsilon)
+  $
+  ואז מתקיים $lambda(A_n (epsilon)) = lambda([0, x_n])=1/n ln(n/epsilon)$ כלומר
+  $
+    lim_(n arrow.r infinity) lambda(A_n (epsilon)) = lim_(n arrow.r infinity) 1/n ln(n/epsilon) = lim_(n arrow.r infinity) (ln(n)-ln(epsilon))/n =_"לופיטל" lim_(n arrow.r infinity) (1/n-0)/1 = lim_(n arrow.r infinity) 1/n = 0
+  $
+  ולכן זה מתכנס במידה.
+]
+
+#subquestion()
+$ f_n (x) = n f(n^2x), space f(x) = mycases(e^(-x), x>=0, 0, "אחרת") $
+
+#solution[
+  ניזכר שהתכנסות ב־$L^1$ גוררת התכנסות במידה וראינו שהתכנסות במידה גוררת התכנסות כמעט תמיד לפי שאלה $1$, אז מתקיים
+  $
+    lim_(n arrow.r infinity) integral_RR abs(f-0) d lambda = lim_(n arrow.r infinity) n e^(-n^2 x) d lambda = lim_(n arrow.r infinity) [n dot.op -1/n^2 e^(-n^2x)]_0^infinity = lim_(n arrow.r infinity) -1/n(0-1) = lim_(n arrow.r infinity) 1/n = 0
+  $
+  ולכן יש התכנסות ב־$L^1$ ולכן גם במידה וגם התכנסות נקודתית וכמעט תמיד.
+]
+
+#subquestion()
+$ f_n (x) = f(x/n), space f(x) = mycases(x^2, x in [-1,1], 0, "אחרת") $
+
+#solution[
+  ראשית אם $x in.not [-1,1]$ אזי $f_n (x)=0$ לכל $n in NN$.\
+  אם $x in [-1,1]$אז $f(x/n) = x^2/n^2$ אבל $x in [-1,1]$ ולכן $abs(f(x/n))=abs(x^2/n^2)<=1/n^2$ ולכן $lim_(n arrow.r infinity) x^2/n^2 = 0$ במקרה זה.\
+  כלומר, $f_n arrow.r 0$ כמעט תמיד.\
+  נבדוק התכנסות ב־$L^1$
+  $
+    lim_(n arrow.r infinity) integral_RR abs(f_n - f) d lambda = lim_(n arrow.r infinity) = lim_(n arrow.r infinity) 1/n^2 integral_(-1)^1 x^2 d lambda = lim_(n arrow.r infinity) 1/n^2 [x^3/3]_(-1)^1 = lim_(n arrow.r infinity) 1/n^2 (1/3+1/3) = lim_(n arrow.r infinity) 2/(3n^2) = 0
+  $
+  ולכן יש התכנסות ב־$L^1$ ולכן גם במידה וגם התכנסות נקודתית וכמעט תמיד.
 ]
