@@ -258,7 +258,7 @@ $
     Arg(z w) = theta_1 + theta_2 + 2pi k space (k in ZZ)
   $
   כלומר
-  $ Arg(z w) = theta_1 + theta_2 = Arg(z)+Arg(w) (mod 2pi) $
+  $ Arg(z w) = theta_1 + theta_2 = (Arg(z)+Arg(w)) (mod 2pi) $
   כעת ניזכר בהגדרה של הענף שראינו בתרגול: אנחנו מגדירים ענף של ארגומנט להיות כל פונקציה $alpha(z)$ שרציפה מעל התחום שלנו ומקיימת שלכל $z$ בתחום מתקיים $alpha(z) in {Arg(z)+2pi dot.op k bar k in ZZ}$.\
   אנחנו יודעים שהארגומנט רציף ב־$CC without (-infinity, 0]$ וש־$Arg : CC without {0} arrow.r [-pi, pi)$.\
   בנתונים שלנו מתקיים ש"הרמנו" את החלק הלא רציף ב־$pi/4$ וזה עכשיו הישר שלנו של האי־רציפות שלנו ולכן אנחנו בפועל רוצים להזיז את הקו אי־הגדרה גם בפונקציית הארגומנט שלנו.\
@@ -266,9 +266,10 @@ $
   $ alpha(z) = Arg(z dot.op e^(-(pi i)/4)) +pi/4 $
   עשינו את ההזה מבפנים כדי לתקן את האי־רציפות וההוספה של ה־$pi/4$ נועדה כדי לתקן את הזווית (כדי לקבל את הזווית האמיתית ולא הערך המוזז).\
   מהטענה שהוכחנו לעיל, קיבלנו את התנאי השני של הענף ונשאר רק להראות רציפות:\
-  אבל זה רציף כי הרכבנו פונקציה רציפה ($Arg$ רציף ב־$CC without (-infinity, 0]$) והזזה זו פעולה רציפה ולכן מהגדרה $alpha$ רציפה ב־$CC without e^(-(pi i)/4) (-infinity, 0]$.\
-  תוסיפי ציור להמחשה.
-  #todo
+  אבל זה רציף כי הרכבנו פונקציה רציפה ($Arg$ רציף ב־$CC without (-infinity, 0]$) והזזה זו פעולה רציפה ולכן מהגדרה $alpha$ רציפה ב־$CC without e^(-(pi i)/4) (-infinity, 0]$.
+  #figure(
+    image("../../../src/images/complex analysis ex03 question 4a.jpg", width: 30%, fit: "contain"),
+  )
 ]
 
 #subquestion()
@@ -288,7 +289,9 @@ $
   אם נסתכל על זה על הצירים, זה כמו לזוז בזווית של $pi$, כלומר
   $ alpha(z)=Arg(-z)+pi $
   משיקולים של הסעיף הקודם נקבל שאכן $alpha$ ענף בתחום ולכן $alpha' = alpha harpoon.tr G$ ענף רציף של הארגומנט ב־$G$.
-  #todo
+  #figure(
+    image("../../../src/images/complex analysis ex03 question 4b.jpg", width: 30%, fit: "contain"),
+  )
 ]
 
 #subquestion()
@@ -304,8 +307,28 @@ $
   כלומר
   $ alpha(z) = Arg(e^((theta-pi)i) z) + (pi-theta) $
   בהתאם לשיקולים בסעיפים הקודמים מצאנו ענף ובשל שיקולי הזזה $alpha$ רציף ב־$CC without e^(i theta)[0,infinity)$ אבל $G subset.eq CC without e^( i theta)[0,infinity)$ ולכן $alpha harpoon.tr G$ רציף וענף.
-  #todo
+  #figure(
+    image("../../../src/images/complex analysis ex03 question 4c.jpg", width: 30%, fit: "contain"),
+  )
 ]
 
 #question()
-#todo
+יהי $q in RR without 0$ ונדיר $gamma_q = {t e^(i q t) bar t in [0,infinity)}$.\
+נגדיר $G_t = CC without gamma_q$ ונבנה ענף של הארגומנט $alpha_q : G_q arrow.r RR$ ונראה כי הקבוצה ${k in ZZ bar exists z in G_q, space alpha_q (z) = Arg(z) + 2pi k}$ איננו חסום.
+
+#proof[
+  נשחזרר את התהליך מהתרגול/הרצאה.\
+  לכל $q in RR without 0$ נגדיר $U_n^q = {z in G_q bar q abs(z)-Arg(z) < 2pi} without union.big_(x=0)^(n-1) U_x^q$.\
+  עוד נגדיר $ t^q (z) = 2pi n, z in U_n^q \
+  alpha_q (z) = Arg(z) + t_q (z) $
+  כך שמתקיים $alpha_q (z) in {Arg(z) + 2pi k}$  ואכן רציף
+  $
+    lim_(z arrow.r z)0^plus alpha_q (z) = pi + 2 pi n \
+    lim_(z arrow.r z_0^minus) alpha_q (z) = -pi + 2pi(n+1) = pi + 2pi n
+  $
+  אז קיבלנו רציפות על $[-infinity, 0]$ ולכן רציפה בכל $G_q$.\
+  נשאר להראות ש־$K={k in ZZ bar exists z in G_q, space alpha_q (z) = Arg(z) + 2pi k}$  איננו חסום:\
+  במילים אחרות, נראה שלכל $n in NN$ קיים $z$ כך ש־$z in U_n$, אבל זה אומר שמתקיים $q abs(z)-Arg(z) < 2pi n$.\
+  עבור $Arg(z)=0$ מתקיים $ 2pi(n-1)<q abs(z) < 2pi n <==> (2 pi(n-1))/q < abs(z) < (2pi n)/q $
+  מצפיפות הממשיים קיימת $z in G_q$ ששייכת לקטע ולכן $U_n != emptyset$ לכל $n$, כלומר $NN subset.eq K$ והוא איננו חסום, כנדרש.
+]
