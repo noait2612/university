@@ -5,6 +5,40 @@
 )
 
 #question()
+תהיי $f(z) = sqrt((1+z)/(1-z))$, הרבה של העתקת מוביוס ופונקציית השורש.
+
+#subquestion()
+#sub_subquestion()
+נסמן $G_1 = CC without (-infinity,-1] union [1, infinity)$. נראה כי העתקת מוביוס ממפה את $G_1$ אל $CC without [0,infinity)$.
+
+#proof[
+  נסמן $m(z) = (1+z)/(1-z)$ ונניח בשלילה שקיים $z in G_1$ כך שמתקיים $m(z) in [0,infinity)$.\
+  אז $t = m(z) <==> (1+z)/(1-z) = t <==> 1+z = t(z-1) <==> z(1-t) = -(t+1) <==> z = (t+1)/(t-1)$
+  ונחלק למקרים על $t>=0$:
+  + אם $t>1$ אז $(t+1)/(t-1) > 1$ כלומר $z in (1, infinity)$
+  + אם $0<=t<1$ אז $(t+1)/(t-1) <= -1$ ולכן $x in (-infinity, -1]$
+  + אם $t=0$ אז $z=-1$
+  + לא ייתכן ש־$t=1$ כי אז $z=infinity$
+  בחלק המקרים מתקיים $z in (-infinity, -1] union [1, infinity)$, אבל $z in G_1$ ולכן זו סתירה ולכן $m(G_1) subset.eq CC without [0,infinity)$.\
+  נשאר להראות את ההכלה בכיוון השני, עבור $CC without [0,infinity) subset.eq m(G_1)$ כדי לקבל שיוויון.\
+  לכל $w in CC without [0,infinity)$ נסמן
+  $ z = (w+1)/(w-1) $
+  שמוגדר היטב מהתחום של $w$.\
+  נניח ש־$z in.not G_1$ ולכן $z in (-infinity, -1] union [1,infinity)$ אבל אז $m(z)=w$ זה מספר ממשי אי־שלילי,, אבל אמרנו ש־$w in.not [0,infinity)$ ולכן זו סתירה וקיבלנו את ההכלה בכיוון השני.\
+  הראנו הכלה דו־כיוונית ולכן $m(G_1) = CC without [0,infinity)$.
+]
+
+#sub_subquestion()
+ניקח את הענף מהתרגול ונראה ש־$f$ היא חד־חד ערכית ועל וממפה את הקטע $(-1,1)$ אל הישר ${re(z)=0}$.
+
+#proof[
+  בתרגול לקחנו את הענף
+  $ l(z) = Log(e^(i pi) z)+ i pi $
+  כדי להגדיר
+  $ f(z)=e^(1/2l((1+z)/(1-z))) $
+  מהסעיף הקודם נובע ש־$m$ היא העתקה חד־חד ערכית ועל בין $G_1$ לבין $CC without [0,infinity)$.\
+
+]
 
 #question()
 יהי $sigma in CC$.
@@ -59,7 +93,32 @@ $ (1+z)^sigma = sum_(n=1)^infinity binom(sigma, n) z^n $
 נראה ש־$f$ הולומורפית ואם $z!=0$ אז $u_r = 1/r v_t$ ו־$-1/r u_t = v_r$.
 
 #proof[
-
+  יהי $z=r e^(i t)$ עם $r>0$ ו־$t in RR$, נכתוב
+  $ f(z)=u(x,y)+i v(x,y) eq.colon U(r,t) + i V(r,t) $
+  כאשר $ U(r,t) = u(x(r,t), y(r,t)) space V(r,t) = v(x(r,t), y(r,t))\
+  x = r cos(x), space y = r sin(x) $
+  נגזור
+  $ x_r = cos(t), space x_t = - r sin(t), space y_r = sin(t), space y_t = r cos(t) $
+  מכלל שרשרת נקבל
+  $
+    U_r = u_x x_r + u_y y_r = u_x cos(t) + u_y sin(t) \
+    U_t = u_x x_t + u_y y_t = u_x (-r sin(t))+ u_y (r cos(t)) = r(-u_x sin(t)+u_y cos(t))
+  $
+  ובאותו אופן גם נקבל
+  $
+    V_r = u_x cos(t) + v_y sin(t) \
+    V_t = r(-v_x sin(t)+ v_y cos(t))
+  $
+  $f$ הולומורפית ולכן ממשוואות קושי־רימן, מתקיים $u_x = v_y, space u_y = -v_x$ ולכן
+  $
+    U_r = u_x cos(t) + u_y sin(t) = v_y cos(t) + (-v_x) sin(t) = v_y cos(t) - v_x sin(t) \
+    1/r V_t = -v_x sin(t) + v_y cos(t)
+  $
+  כלומר $U_r = 1/r V_t$.\
+  באופן דומה נקבל גם
+  $ V_r = v_x cos(t) + v_y sin(t) = (-u_y) cos(t) + u_x sin(t) $
+  ולכן
+  $ -1/r U_t = -(-u_x sin(t) + u_y cos(t)) = u_x sin(t) - u_y cos(t) ==> V_r = -1/r U_t $
 ]
 
 #question()
@@ -89,20 +148,21 @@ $ Z_v colon.eq {z = x+i y bar u(x,y)=im(f(z))=0 } $
 #question()
 _תזכורת_:
 $ partial_z = 1/2 (partial_x - i partial_y), wide partial_(overline(z))=1/2 (partial_x + i partial_y) $
+
 #subquestion()
 נוכיח את הזהות $overline(partial_(overline(z)) f) = partial_z overline(f)$.
 
 #proof[
   ניזכר כי עבור $w_1, w_2, in CC$ מתקיים $overline(w_1+w_2) = overline(w_1)+overline(w_2)$ וכן $overline(i)=-i$, אז
   $
-    overline(partial_(overline(z)) f) = 1/2 overline(partial_x f + i partial_y f) = 1/2 overline(u_x + i v_x + i(u_y + i v_y)) \
-    = 1/2 overline((u_x + v_y) + i(v_x + u_y)) = 1/2 ((u_x + v_y)+i(v_x + u_y)) = 1/2((u_x + i v_x) + i(u_y+i v_y)) \
-    = 1/2()
+    overline(partial_(overline(z)) f) = 1/2 (overline(partial_x f + i partial_y f)) = 1/2 (overline(u_x + i v_x + i(u_y - i v_y))) = 1/2 overline((u_x + i v_x + i u_y +v_y)) = 1/2 (u_x - i v_x - i u_y + v_y) \
+    = 1/2 ((u_x - v_y) - i(v_x + u_y))
   $
-  #todo
+  מצד שניי, $overline(f) = u - i v$ ולכן
   $
-    overline(partial_(overline(z)) f) = overline(1/2 (partial_x f + i partial_y f)) = 1/2 (partial_x overline(f) - i partial_y overline(f)) = partial_z overline(f)
+    partial_z overline(f) = 1/2(partial_x overline(f)+ i partial_y overline(f))= 1/2 (u_x - i v_x - i u_y - i (-i) v_y) = 1/2 (u_x - i v_x - i u_y - v_y) = 1/2 ((u_x - v_y)- i(v_x + u_y))
   $
+  אז יש לנו שיוויון.
 ]
 
 #subquestion()
@@ -129,6 +189,26 @@ $ partial_z = 1/2 (partial_x - i partial_y), wide partial_(overline(z))=1/2 (par
 נוכיח את הזהות $partial_(overline(z)) (f compose g) = ((partial_z f) compose g) partial_overline(z) g + ((partial_(overline(z)) f) compose g) partial_(overline(z))overline(g)$.
 
 #proof[
-  $ partial_(overline(z)) (f compose g) = 1/2(partial_x (f compose g) + i partial_y (f compose g)) = 1/2 $
-  #todo
+  נפעל כמו בתרגול, נכתוב את $f$ על־ידי $z, overline(z)$ כלומר $g, overline(g)$ לאחר ההרכבה, ונקבל
+  $ partial_overline(z) (f compose g) = partial_overline(z) (f(g(z,overline(z)),overline(g)(z, overline(z)))) $
+  לנוחות נסמן $w =g(z,overline(z)), overline(w)=overline(g(z,overline(w)))$ ומכלל השרשרת לפונקציות ממשיות
+  $
+    partial_x (f(g(z),overline(g(z)))) = f_w partial_x w + f_overline(w) partial_x overline(w) \
+    partial_y (f(g(z),overline(g(z)))) = f_w partial_y w + f_overline(w) partial_y overline(w)
+  $
+  כאשר
+  $ f_w = partial_w f, space f_overline(w) = partial_overline(w) f $
+  ולכן
+  $
+    partial_(overline(z)) (f compose g) = 1/2 (partial_x + i partial_y) (f(w(z))) = 1/2 (f_w partial_x w + f_overline(w) partial_x overline(w)+i f_w partial_y w + f_overline(w) partial_y overline(w)) \
+    = 1/2 (f_w (partial_x w + i partial_y w) + f_overline(w) (partial_x overline(w)+i partial_y overline(w))) = f_w dot.op 1/2 (partial_x + i partial_y) w + f_overline(w) dot.op 1/2 (partial_x + i partial_y) overline(w)
+  $
+  נשים לב
+  $
+    1/2(partial_x + i partial_y)w = partial_overline(z) w = partial_overline(z) g, space 1/2(partial_x + i partial_y)overline(w) = partial_overline(z) overline(w) = partial_overline(z) overline(g)
+  $
+  כעת, $w=g(z)$ וכן $partial_W f = partial_z f, partial_overline(w) f = partial_overline(w) f$ ולכן
+  $
+    partial_overline(w) (f compose g) = (partial_w f compose g) partial_overline(z) g + (partial_overline(w) f compose g) partial_overline(z) overline(g) = (partial_z f compose g) partial_overline(z) g + (partial_overline(z) f compose g) partial_overline(z) overline(g)
+  $
 ]
