@@ -403,7 +403,13 @@
 #let Hol = math.op("Hol")
 #let im = math.italic(math.op("Im"))
 #let re = math.italic(math.op("Re"))
+#let Log = math.italic(math.op("Log"))
 
+// Geneeral Calculs
+#let supp = math.op("supp")
+
+// Probability
+#let Ber = math.italic(math.op("Ber"))
 // headings
 //#show heading: it => {
 //	let c = if it.level == 1 {
