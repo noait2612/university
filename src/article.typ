@@ -405,6 +405,8 @@
 #let im = math.italic(math.op("Im"))
 #let re = math.italic(math.op("Re"))
 #let Log = math.italic(math.op("Log"))
+#let Length = math.op("Length")
+#let Area = math.op("Area")
 
 // Geneeral Calculs
 #let supp = math.op("supp")
