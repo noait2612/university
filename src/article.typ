@@ -210,6 +210,7 @@
 
 // Reimplementation of subquestion macros
 #let subquestion(number: -1) = {
+  sub_subquestion_counter.update(0)
   if number == -1 {
     subquestion_counter.step()
   } else {
