@@ -115,7 +115,7 @@
 
 #proof[
   ראשית הענף מהסעיף הקודם עונה על תנאי השאלה כי יש לנו הרכבה של פונקציות הולומורפיות וחד־חד ערכיות ועל. נשאר רק להראות שהתמונה של הקו הישר בין $1$ ל־$-1$ דרך אינסוף ממופה אל ${im(z)>0}$:\
-  נשים לב ש־$x in RR inter G_2 = (-infinity,-1) union (1,infinity)$ ושם $m(x) in (0,infinity)$ אז עבור $t>0$ מתקיים $S(t)=exp(1/2 ln(t))=sqrt(t) in (0,infinity)$ אז $f(x) in (0,infinity) subset.eq RR$ כלומר ${im(w)=0}$ ונשים לב שמאריתמטיקה של גבולות אם $x=-1$ אז $S(m(x)) arrow.r infinity$ על הציר הממשי החיובי.\
+  נשים לב ש־$x in RR inter G_2 = (-infinity,-1) union (1,infinity)$ ושם $m(x) in (0,infinity)$ אז עבור $t>0$ מתקיים $S(t)=exp(1/2 ln(t))=sqrt(t) in (0,infinity)$ אז $f(x) in (0,infinity) subset.eq RR$ כלומר ממופה בידיוק אל ${im(w)=0}$ ונשים לב שמאריתמטיקה של גבולות אם $x=-1$ אז $S(m(x)) arrow.r infinity$ על הציר הממשי החיובי.\
   הקטע שהחסרנו $[-1,1)$ ממופה על־ידי $m$ אל $(-infinity, 0]$ ותחת $S$ אל ${i t bar t>=0}$ אבל הקטע הזה איננו ב־$G_2$
 ]
 
