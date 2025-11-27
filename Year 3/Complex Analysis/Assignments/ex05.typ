@@ -41,12 +41,12 @@
   עבור $t in [0,2pi]$.\
   בהרצאה הגדרנו אורך של מסילה להיות
   $
-    L(f compose gamma) = integral_a^b abs(f'(gamma(t))) abs(dot(gamma)(t)) d t
+    L(f compose gamma) = integral_a^b abs(f'(gamma(t))) abs(gamma'(t)) d t
   $
   כאשר $gamma : [a,b] arrow.r CC$
   ולכן
   $
-    L(f compose gamma) = integral_a^b abs(f'(gamma(t))) abs(dot(gamma)(t)) d t = integral_0^(2pi) abs((-2(1-z)) compose (cos(t)+ i sin(t)))abs(i cos(t) - sin(t)) d t \
+    L(f compose gamma) = integral_a^b abs(f'(gamma(t))) abs(gamma'(t)) d t = integral_0^(2pi) abs((-2(1-z)) compose (cos(t)+ i sin(t)))abs(i cos(t) - sin(t)) d t \
     = integral_0^(2pi) abs(-2(1-cos(t)-i sin(t))) abs(i cos(t)-sin(t)) d t = 2 integral_0^(2pi) abs(1-cos(t)- i sin(t))abs(i cos(t)-sin(t)) d t \
     = 2integral_0^(2pi) sqrt((1-cos(t)- i sin(t))(1-cos(t)+ i sin(t)))sqrt((i cos(t)-sin(t))(-i cos(t)-sin(t))) d t \
     = 2integral_0^(2pi) sqrt(2-2cos(t)) d t = 2 integral_0^(2pi) sqrt(2(1-cos(t))) d t = 2 integral_0^(2pi) sqrt(2(2sin^2(t/2))) d t = 4 integral_0^(2pi) abs(sin(t/2)) d t
@@ -57,7 +57,7 @@
   $
   נשים לב שיותר קצר לפתור את זה עם הביטוי בצורת אקספוננט:
   $
-    L(f compose gamma) = integral_a^b abs(f'(gamma(t))) abs(dot(gamma)(t)) d t = integral_0^(2pi) abs((-2(1-z)) compose e^(i t))abs(i e^(i t)) d t = 2 integral_0^(2pi) abs(1-e^(i t)) d t \
+    L(f compose gamma) = integral_a^b abs(f'(gamma(t))) abs(gamma'(t)) d t = integral_0^(2pi) abs((-2(1-z)) compose e^(i t))abs(i e^(i t)) d t = 2 integral_0^(2pi) abs(1-e^(i t)) d t \
     = 2 integral_0^(2pi) sqrt((1-cos(t))^2+sin^2(t)) d t = 2 integral_0^(2pi) sqrt(1-2cos(t)+cos^2(t)+sin^2(t)) = 2 integral_0^(2pi) sqrt(2-2cos(t)) d t
   $
   המשך החישוב זהה.
@@ -84,5 +84,50 @@
   נשים לב ש־$D$ קבוצה יפה מספיק (היא פתוחה ולכן מדידה) אז
   $
     Area(D) = integral.double_D abs(f'(w))^2 d D = integral.double_D 4 abs(z-1)^2 d D =_"משפט החלפת משתנה" integral_0^(2pi)integral_0^1 4r^2 dot.op r d r d theta = 4 integral_0^(2pi) d theta integral_0^1 r^3 d r = 4 integral_0^(2pi) 1/4 d theta = 2pi
+  $
+]
+
+#question()
+יהיו $G subset.eq CC$ תחום ותהיינה $f,g : G arrow.r CC$ פונקציות רציפות ו־$gamma in C^1([a,b],G)$ מסילה.
+
+#subquestion()
+נוכיח $ integral_gamma (f+g) d gamma = integral_gamma f d gamma + integral_gamma g d gamma $
+
+#proof[
+  $
+    integral_gamma (f+g) d gamma = integral_a^b (f+g)(gamma(t))gamma'(t) d t = integral_a^b (f(gamma(t))+g(gamma(t)))gamma'(t) d t = integral_a^b f(gamma(t))gamma'(t)+g(gamma(t))gamma'(t) d t \
+    =_((star)) integral_a^b f(gamma(t))gamma'(t) d t + integral_a^b g(gamma(t))gamma'(t) d t = integral_gamma f d gamma + integral_gamma g d gamma
+  $
+  כאשר האדטיביות שהשתמשנו בה ב־$(star)$ זה אדטיביות האינטגרל מאינפי3.
+]
+
+#subquestion()
+נוכיח שאם $lambda in CC$ אז $ integral_gamma lambda f d gamma = lambda integral_gamma f d gamma $
+
+#proof[
+  $
+    integral_gamma lambda f d gamma = integral_a^b (lambda f) (gamma(t))gamma'(t) d t = integral_a^b (lambda f(gamma(t)))gamma'(t) d t = integral_a^b lambda (f(gamma(t))gamma'(t)) d t =_((star)) lambda integral_a^b f(gamma(t))gamma'(t) d t \
+    = lambda integral_gamma f d gamma
+  $
+  כאשר האדטיביות שהשתמשנו בה ב־$(star)$ זה לינאריות האינטגרל מאינפי3.
+]
+
+#subquestion()
+נוכיח שאם $beta$ היא המסילה שמתקדמת בכיוון ההפוך מ־$gamma$ (כלומר, $beta(t)=gamma(a+b-t)$) אז
+$ integral_beta f d beta = - integral_gamma f d gamma $
+
+#proof[
+  נשים לב
+  $ beta(a) = gamma(a+b-a)=gamma(b), space beta(b)=gamma(a+b-b)=gamma(a) $
+  אז
+  $ integral_beta f d beta = integral_a^b f(beta(t))beta'(t) d t $
+  אבל $beta(t) = gamma(a+b-t)$ ולכן מכלל שרשרת $ beta'(t)=d/(d t) (gamma(a+b-t)) =_(u=a+b \
+  (d u)/(d t) = -1) gamma'(u) dot.op (d u)/(d t) = gamma'(a+b-t) dot.op (-1) = -gamma'(t)(a+b-t) $
+  ולכן
+  $
+    integral_beta f d beta = integral_a^b f(beta(t))beta'(t) d t = integral_a^b f(gamma(a+b-t)) dot.op (-gamma'(t)(a+b-t)) d t \
+    =_"סעיף ב'" - integral_a^b f(gamma(a+b-t)) dot.op (gamma'(t)(a+b-t)) d t \ =_(u = a + b - t \
+    (d u)/(d t) = -1) - integral_b^a f(gamma(u))gamma'(u)(-d u) =_"סעיף ב'" integral_b^a f(gamma(u))gamma'(u) d u \
+    =_"היפוך תחום אינטגרציה" - integral_a^b f(gamma(u))gamma'(u) d u = - integral_gamma f d gamma
   $
 ]
