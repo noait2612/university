@@ -402,6 +402,7 @@
 // Complex Analysis
 #let Arg = math.italic(math.op("Arg"))
 #let Hol = math.op("Hol")
+#let Harm = math.op("Harm")
 #let im = math.italic(math.op("Im"))
 #let re = math.italic(math.op("Re"))
 #let Log = math.italic(math.op("Log"))

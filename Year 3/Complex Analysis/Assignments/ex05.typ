@@ -131,3 +131,59 @@ $ integral_beta f d beta = - integral_gamma f d gamma $
     =_"היפוך תחום אינטגרציה" - integral_a^b f(gamma(u))gamma'(u) d u = - integral_gamma f d gamma
   $
 ]
+
+#question()
+נחשב את $integral_gamma f d gamma$ כאשר $f(z)=log(abs(z))+ i Arg(z)$ ו־$gamma$ מציירת מעגל ברדיוס $2$ סביב הראשית, נגד כיוון השעון וכאשר $Arg$ הוא הענף הראשי של הארגומנט.\
+מהיות $Arg$ לא רציפה בקרן $(-infinity,0]$ נגדיר בשביל תרגיל זה $forall x <0, space Arg(x)=pi$.
+
+#solution[
+  $gamma$ מסילה ברדיוס $2$ סביב הראשית נגד כיוון השעון ולכן $gamma(t)=2e^(i t)$ עבור $t in [0,2pi]$ ולכן כמובן $gamma'(t) =2 i e^(i t)$.\
+  מתקיים
+  $ f(gamma(t)) = ln(abs(gamma(t)))+ i Arg(gamma(t)) = ln(abs(2e^(i t))) + i Arg(2 e^(i t))= ln(2) + i Arg(2e^(i t)) $
+  כמו־כן, מהגדרת $Arg(z)$ להיות הזווית $theta$ כך שמתקיים $z=abs(z)e^(i theta)$ עבור $theta in (-pi, pi]$, נצטרך להתחשב בנקודות אי־רציפות שקורות כאשר $t in (pi, 2pi]$: בקטע זה אנחנו עוברים מהציר השלילי הממשי תחת חצי המישור התחתון אל הציר הממשי החיובי.\
+  אם נבחר $t=pi$ אנחנו נצא מהתחום המוגדר וכדי לחזור לתחום של הארגומנט הראשי עלינו להחסיר $2pi$ (כי זה שקול לסיבוב מלא), כלומר
+  $ Arg(2e^(i t))= mycases(t, t in [0, pi], t-2pi, (pi, 2pi]) $
+  כי אנחנו צריכים להישאר בתחום $(-pi, pi]$.\
+  אז האינטגרל שעלינו לחשב היינו
+  $
+    integral_gamma f dif gamma = integral_0^(2pi) f(gamma(t))gamma'(t) dif t = integral_0^(2pi) (ln(2)+ i Arg(2e^(i t)))2i e^(i t) dif t =_"אדטיביות"
+    integral_0^(2pi) ln(2)2i e^(i t) dif t - integral_0^(2pi) 2e^(i t) Arg(2e^(i t)) dif t \
+    = 2i ln(2) integral_0^(2pi) e^(i t) dif t - 2 integral_0^(2pi)e^(i t) Arg(2e^(i t)) dif t \
+    =_"לינארית האינטגרל" 2i ln(2) integral_0^(2pi) e^(i t) dif t -2(integral_0^pi e^(i t)Arg(2e^(i t)) dif t + integral_pi^(2pi) e^(i t)Arg(2e^(i t)) dif t) \
+    = 2i ln(2) integral_0^(2pi) e^(i t) dif t -2(integral_0^pi e^(i t)t dif t + integral_pi^(2pi) e^(i t)(t-2pi) dif t) \
+    = [2 ln(2) e^(i t)]_(t=0)^(t=2pi) - [2(1-i t)e^(i t)]_(t=0)^(t=pi) -[2e^(i k)(1-i k)]_(k=-pi)^(k=0) = 0-2((-2 + i p)+(2 + i p)) = -4 i pi
+  $
+]
+
+#question()
+נמצא בשיטה שראינו בהרצאה צמודה הרמונית לפונקציה $f(x,y)=x/(x^2+y^2)$ בדיסק $B_1 (0)$.
+
+#solution[
+  ראשית נציין שהסיבה שאנחנו צריכים את הדיסק זה בשביל שהמכנה לא יתתאפס.\
+  ראינו שפונקציה היא הרמונית אם היא גזירה פעמיים והלפסליאן שלה הוא $0$.\
+  נכתוב $z=x + i y$ ולכן מהנתון נקבל
+  $ 1/z = 1/(x + i y) = (x-i y)/(x^2+y^2) $
+  וכן
+  $ u(x,y) = re(1/z) = x/(x^2+y^2) wide v(x,Y) = im(1/z)=-y/(x^2+y^2) $
+  נחשב נגזרות שניות של החלק הממשי
+  $
+    u_x = (-x^2+y^2)/(x^2+y^2)^2 wide u_y = -(2x y)/(x^2+y^2)^2 \
+    u_(x x) = (2x(x^2-3y^2))/(x^2+y^2)^3 wide u_(y y) = (2x(-x^2+3y^2))/(x^2+y^2)^3
+  $
+  ואכן
+  $ Delta u =u_(x x) + u_(y y) = 0 $
+  ובאותו אופן
+  $
+    v_x = (2y x)/(x^2+y^2)^2 wide v_y -(x^2-y^2)/(x^2+y^2)^2 \
+    v_(x x) = (2y(y^2-3x^2))/(x^2+y^2)^3 wide v_(y y) = (2y(3x^2-y^2))/(x^2+y^2)^3
+  $
+  ואכן
+  $ Delta v = v_(x x) + v_(y y) = 0 $
+  ולכן $u, v in Harm(G)$.\
+  כאשר הנגזרות השניות של החלק הממשי והמדומה קיימות כי זו מנה של פונקציות גזירות (מנת פולינומים).\
+  נשאר להראות ש־$f = u + i v in Hol(G)$ ולכן נקבל מטענה שראינו בהרצאה שהם צמודות הרמונית.\
+  מספיק שנראה שמשוואות קושי־רימן מתקיימות:\
+  ואכן מהחישובים לעיל
+  $ u_x = v_y = (-x^2+y^2)/(x^2+y^2)^2 wide u_y = -(2x y)/(x^2+y^2)^2 = - ((2y x)/(x^2+y^2)^2) = - v_x $
+  אז משוואות קושי־רימן מתקיימות ואלו פונקציות הרמוניות ולכן $f in Hol(G)$ ומתקיים $v=accent(u, tilde)$ צמודה הרמונית.
+]
