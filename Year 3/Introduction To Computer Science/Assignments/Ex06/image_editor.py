@@ -13,9 +13,8 @@
 import PIL
 import math
 import sys
-
-from Assignments.Ex06 import ex6_helper
-from Assignments.Ex06.ex6_helper import *
+from ex6_helper import *
+from typing import Optional
 
 
 ##############################################################################
@@ -25,14 +24,12 @@ from Assignments.Ex06.ex6_helper import *
 
 # We can assume we get a valid image.
 def separate_channels(image: ColoredImage) -> List[SingleChannelImage]:
-    channels_count, rows_length, columns_length = extract_matrix_metadata(image)
-
     channels = []
-    for channel_index in range(channels_count):
+    for channel_index in range(len(image[0][0])):
         channel = []
-        for row_index in range(rows_length):
+        for row_index in range(len(image)):
             row_data = []
-            for column_index in range(columns_length):
+            for column_index in range(len(image[0])):
                 row_data.append(image[row_index][column_index][channel_index])
             channel.append(row_data)
         channels.append(channel)
@@ -41,13 +38,12 @@ def separate_channels(image: ColoredImage) -> List[SingleChannelImage]:
 
 
 def combine_channels(channels: List[SingleChannelImage]) -> ColoredImage:
-    channels_count, rows_length, columns_length = extract_matrix_metadata(channels)
     image_matrix = []
-    for row_index in range(rows_length):
+    for row_index in range(len(channels[0])):
         row_data = []
-        for column_index in range(columns_length):
+        for column_index in range(len(channels[0][0])):
             pixel = []
-            for channel_index in range(channels_count):
+            for channel_index in range(len(channels)):
                 pixel.append(channels[channel_index][row_index][column_index])
             row_data.append(pixel)
         image_matrix.append(row_data)
@@ -243,20 +239,13 @@ def get_threshold_matrix(image, blurred_image, block_size, c):
     return threshold_matrix
 
 
-def extract_matrix_metadata(source):
-    channels_count = len(source)
-    rows_length = len(source[0])
-    columns_length = len(source[0][0])
-    return channels_count, rows_length, columns_length
-
-
 def check_is_grayscale_image(image):
     if type(image[0][0] == list):
         return False
     return True
 
 
-def check_is_valid_kernel_size(kernel_size):
+def try_parse_kernel_size(kernel_size):
     if not kernel_size.isdigit():
         return False
 
@@ -264,10 +253,10 @@ def check_is_valid_kernel_size(kernel_size):
     if kernel_size % 2 == 0 or kernel_size <= 0:
         return False
 
-    return True
+    return True, kernel_size
 
 
-def validate_resize_parameters(resize_parameters):
+def try_parse_resize_parameters(resize_parameters):
     splitted_parameters = resize_parameters.split(',')
 
     if len(splitted_parameters) != 2:
@@ -288,8 +277,8 @@ def validate_resize_parameters(resize_parameters):
     return True, height, width
 
 
-def validate_edge_parameters(edge_parameters):
-    splitted_parameters = resize_parameters.split(',')
+def try_parse_edge_parameters(edge_parameters):
+    splitted_parameters = edge_parameters.split(',')
 
     if len(splitted_parameters) != 3:
         return False
@@ -304,7 +293,7 @@ def validate_edge_parameters(edge_parameters):
     if c < 0:
         return False
 
-    if not check_is_valid_kernel_size(blur_size) or not check_is_valid_kernel_size(block_size):
+    if not try_parse_kernel_size(blur_size) or not try_parse_kernel_size(block_size):
         return False
 
     return True, blur_size, blur_size, c
@@ -320,7 +309,7 @@ def apply_image_function_on_colored_image(image, lambda_function):
     return image
 
 
-def check_is_valid_hues(hues_parameter):
+def try_parse_hues_parameter(hues_parameter):
     if not hues_parameter.isdigit():
         return False
 
@@ -338,7 +327,7 @@ if __name__ == '__main__':
         sys.exit(1)
 
     try:
-        image = ex6_helper.load_image(args[1])
+        image = load_image(args[1])
     except FileNotFoundError:
         print("Image file not found.")
         sys.exit(1)
@@ -347,7 +336,7 @@ if __name__ == '__main__':
         sys.exit(1)
 
     is_grayscale_image = check_is_grayscale_image(image)
-    input_message = "Choose option: \n 1. convert image to grayscale \n 2. blur image \n 3. resize image \n 4. rotate image in 90 degrees \n 5. create image edges \n 6.quantize image \n 7. show image \n 8. exit"
+    input_message = "Choose option: \n 1. convert image to grayscale \n 2. blur image \n 3. resize image \n 4. rotate image in 90 degrees \n 5. create image edges \n 6.quantize image \n 7. show image \n 8. exit \n"
 
     user_input = input(input_message)
     while user_input != "8":
@@ -360,24 +349,20 @@ if __name__ == '__main__':
                     is_grayscale_image = True
             case "2":
                 kernel_size = input("Enter kernel size (pixel): ")
-                if check_is_valid_kernel_size(kernel_size):
+                is_valid, kernel_size = try_parse_kernel_size(kernel_size)
+                if is_valid:
                     kernel = blur_kernel(kernel_size)
                     if is_grayscale_image:
                         image = apply_kernel(image, kernel)
                     else:
                         image = apply_image_function_on_colored_image(image,
                                                                       lambda channel: apply_kernel(channel, kernel))
-                        # seperated_channels = separate_channels(image)
-                        # applied_kernels = []
-                        # for channel in seperated_channels:
-                        #   applied_kernels.append(apply_kernel(channel,kernel))
-                        # image = combine_channels(applied_kernels)
                 else:
                     print("Invalid kernel size.")
             case "3":
                 resize_parameters = input(
                     "Enter resize parameters: new height, new width (in that order, seperated by ',')")
-                is_valid, height, width = validate_resize_parameters(resize_parameters)
+                is_valid, height, width = try_parse_resize_parameters(resize_parameters)
                 if is_valid:
                     if is_grayscale_image:
                         image = resize(image, height, width)
@@ -395,7 +380,7 @@ if __name__ == '__main__':
             case "5":
                 edges_parameters = input(
                     "Enter edges parameters: blur_size, block_size, c (in the following order, seperated by ',')")
-                is_valid, blur_size, block_size, c = validate_edge_parameters(edges_parameters)
+                is_valid, blur_size, block_size, c = try_parse_edge_parameters(edges_parameters)
                 if is_valid:
                     if not is_grayscale_image:
                         image = RGB2grayscale(image)
@@ -405,7 +390,7 @@ if __name__ == '__main__':
                     print("Invalid edges parameters.")
             case "6":
                 hues_parameter = input("Enter number of hues: ")
-                is_valid, number_of_hues = check_is_valid_hues(hues_parameter)
+                is_valid, number_of_hues = try_parse_hues_parameter(hues_parameter)
                 if is_valid:
                     if is_grayscale_image:
                         image = quantize(image, number_of_hues)
@@ -415,9 +400,12 @@ if __name__ == '__main__':
                 else:
                     print("Invalid number of hues.")
             case "7":
-                ex6_helper.show_image(image)
+                show_image(image)
             case _:
                 print("Unknown input.")
         user_input = input(input_message)
     path = input("Enter path to save image file: ")
-    ex6_helper.save_image(image, path)
+    try:
+        save_image(image, path)
+    except ValueError:
+        print("Image could not be saved in given path.")
