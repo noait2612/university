@@ -16,7 +16,73 @@ $ sum_(k=1)^infinity a_k/3^k, space forall k, space a_k in {0,2} $
 $ E_0 = {0}, wide E_n = {sum_(k=1)^n a_k/3^k bar a_k in {0,2}} $
 ונוכיח כי לכל $n$
 $ E_(n+1) = E_n/3 union.big (2/3 + E_n/3) $
-עוד נסיק כי אם לכל $n$, $E_n$ היא קבוצת הקצוות השמאליים של הקטעים ב־$cal(T)_n$ שאיחודים הוא $C_n$
+עוד נסיק כי אם לכל $n$, $E_n$ היא קבוצת הקצוות השמאליים של הקטעים ב־$cal(T)_n$ שאיחודים הוא $C_n$.
+
+#proof[
+  זוהי בעצם נוסחת נסיגה:\
+  יהי $x in E_(n+1)$ ולכן $x = sum_(k=1)^(n+1) a_k/3^k$ עבור $a_k in {0,2}$.\
+  אם $a_1 = 0$ אז $x=sum_(k=2)^(n+1) a_k/3^k = 1/3 sum_(k=1)^n a_(k+1)/3^k$ כאשר $sum_(k=1)^n a_(k+1)/3^k in E_n$ ולכן $x in E_n/3$.\
+  אם $a_1=2$ אז $x=2/3+ sum_(k=2)^(n+1) a_k/3^k = 2/3 + 1/3 sum_(k=1)^n a_(k+1)/3^k$ ושוב באותו אופן נקבל $x in 2/3 + E_n/3$ ולכן קיבלנו את ההכלה $ E_(n+1) subset.eq E_n/3 union (2/3 + E_n/3) $
+  נראה את ההכלה בכיוון השני: יהי $y=sum_(k=1)^n b_k/3^k$ עם $b_k in {0,2}$ ולכן
+  $ y/3 = sum_(k=1)^n b_k/3^(k+1) = sum_(k=1)^(n+1) a_k/3^k $
+  עבור $a_1=0, a_(k+1) = b_k$ כלומר $y/3 in E_(n+1)$ ובאופן דומה
+  $ 2/3 + y/3 = sum_(k=1)^(n=1) a_k/3^k $
+  עם $a_1=2$ ו־$a_(k+1)=b_k$ ולכן $2/3 + y/3 in E_(n+1)$ וקיבלנו גם את ההכלה השנייה.\
+  נראה כעת $E_n subset C_n$ לכל $n$: באינדוקציה, עבור $E_0 subset.eq C_0$ והנחת האינדוקציה $E_n subset C_n$, אז
+  $ E_(n+1) = E_n/3 union (2/3 + E_n/3) subset C_n/3 union (2/3 + C_n/3) = C_(n+1) $
+  $E_n$ היא קבוצת הקצוות השמאליים של הקטעים ב־$cal(T)_n$ שכן $C_n$ הוא איחוד זר של קטעים סגורים מאורך $1/3^n$ אבל $E_n$ מכילה בידיוק $2^n$ נקודות מהנוסחת נסיגה.\
+  בהתאם מתרגול $6$, $P_n = E_n, Omega = cal(T)_n$
+]
+
+#pagebreak()
+
+#subquestion()
+יהי $n in NN$ ו־$t = sum_(k=1)^n b_k/3^k in E_n$ ונניח כי $T in cal(T)_n$ הוא הקטע ש־$t$ הוא הקצה השמאלי שלו. \
+עבור $m>n$, נמצא כמה איברים $sum_(k=1)^m a_k/3^k in E_m$ מקיימים $a_k=b_k$ לכל $1<=k<=n$ ונסיק כי מספר זה שווה ל־$abs(T inter E_m)$.
+
+#proof[
+  יהי $t = sum_(k=1)^n b_k/3^k in E_n$. הקטע $T in cal(T)_n$ שהקצה השמאלי שלו הוא $t$ הוא $T=[t,t+1/3^n]$.
+  #todo
+]
+
+#subquestion()
+לכל $n in NN$ נגדיר את הפונקציונל $Lambda_n$ על $C_C (RR)$ על־ידי $Lambda_n f = 1/2^n sum_(x in E_n) f(x)$.\
+נראה כי לכל $f in C_C (RR)$ הסדרה $Lambda_n f$ מתכנסת.
+
+#proof[
+  נקבע $x = sum_(k=1)^n a_k/3^k in E_n$ ולכן עבור $m>=n$, נקודה ב־$E_m$ שהיא עם $n$ ספרות ראשונות אותו הדבר כמו $x$ היא מהצורה
+  $ y=sum_(k=1)^n a_k/3^k + sum_(k=n+1)^m a_k/3^k $
+  כלומר הזנב $R=sum_(k=n+1)^m a_k/3^k$ מכיל את שאר הספרות בפיתוח, בפרט זה טור אי־שלילי ולכן
+  $ 0<=R<=sum_(k=n+1)^infinity 2/3^k =_"תור הנדסי" 2/3^(n+1) dot.op 1/(1-1/3) = 2/3^(n+1) dot.op 3/2 = 1/3^n $
+  בפרט זה אומר שכל $y in E_m$ כאשר $n$ הספרות הראשונות של $y$ מזדהות עם הספרות של $x$ מקיימות
+  $ y in [x,x+1/3^n] $
+  וכמובן
+  $ [x,x+1/3^n] stretch(arrow.r)_(n arrow.r infinity) [x,x] $
+  אז אם נסמן ב־$D_m$ את קבוצת הנקודות הללו, מתקיים
+  $ Lambda_m f = 1/2^m sum_(y in E_m) f(y) = 1/2^n sum_(x in E_n) (1/2^(m-n) sum_(y in D_m) f(y)) $
+  $f in C_C (RR)$ ולכן רציפה במידה שווה. יהי $epsilon > 0$ ונבחר $delta>0$ כך ש־$abs(f(u)-f(v))<epsilon$ עבור $abs(u-v)<delta$ ונקבע $N$ עבורו $3^(-N) < delta$.\
+  אז לכל $n>=N$, לכל $x in E_n$, כל $D_m subset.eq [x,x+3^(-n)] subset.eq [x,x+delta)$
+  ולכן לכל $y in D_m$ מתקיים
+  $ abs(f(y)-f(x))<epsilon ==> abs(1/2^(m-n) sum_(y in D_m) f(y) - f(x))<epsilon $
+  ולכן גם
+  $
+    abs(Lambda_m f - Lambda_n f) = abs(1/2^n sum_(x in E_n) ( 1/2^(m-n) sum_(y in D_m) f(y)-f(x)))<=1/2^n sum_(x in E_n) epsilon = epsilon
+  $
+  כלומר מצאנו סדרת קושי ולכן מתכנסת.
+]
+
+#subquestion()
+נגדיר את $Lambda f colon.eq lim_(n arrow.r infinity) Lambda_n f$.\
+נוודא שזהו פונקציונל לינארי חיובי ונגדיר את $mu$ להיות המידה על $RR$ המייצגת את $Lambda$ לפי משפט ההצגה של ריס. נמצא את $supp(mu)$ ונחשב את $mu([2/9, 1/3])$.
+
+#proof[#todo]
+
+#subquestion()
+נגדיר $phi_0 (x) = x/3, phi_2 (x) = 2/3 + x/3$ ונראה כי
+$ mu = 1/2 (phi_0)_*mu + 1/2(phi_2)_* mu $
+כאשר $(phi_i)_*mu$ היא הדחיפה קדימה של $mu$ לפי $phi_i$.
+
+#proof[#todo]
 
 #question()
 יהי $X$ מרחב האוסדרוף קומפקטי מקומית ו־$sigma$־קומפקטי ונניח כי $phi: C_C (X) arrow.r CC$ פונקציונל לינארי חיובי.\
