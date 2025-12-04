@@ -414,6 +414,9 @@
 
 // Probability
 #let Ber = math.italic(math.op("Ber"))
+#let Bin = math.italic(math.op("Bin"))
+#let Geo = math.italic(math.op("Geo"))
+#let Poi = math.italic(math.op("Poi"))
 // headings
 //#show heading: it => {
 //	let c = if it.level == 1 {
