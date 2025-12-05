@@ -41,8 +41,9 @@ $ E_(n+1) = E_n/3 union.big (2/3 + E_n/3) $
 עבור $m>n$, נמצא כמה איברים $sum_(k=1)^m a_k/3^k in E_m$ מקיימים $a_k=b_k$ לכל $1<=k<=n$ ונסיק כי מספר זה שווה ל־$abs(T inter E_m)$.
 
 #proof[
-  יהי $t = sum_(k=1)^n b_k/3^k in E_n$. הקטע $T in cal(T)_n$ שהקצה השמאלי שלו הוא $t$ הוא $T=[t,t+1/3^n]$.
-  #todo
+  יהי $t = sum_(k=1)^n b_k/3^k in E_n$. הקטע $T in cal(T)_n$ שהקצה השמאלי שלו הוא $t$ הוא $T=[t,t+1/3^n]$.\
+  עבור $m>m$, $x = sum_(k=1)^m a_k/3^k in E_m$ מקיים $a_k = b_k$ לכל $1<=k<=n$ אם ורק אם $x=t + sum_(k=n+1)^m a_k/3^k$ אבל כל איבר בסכום ל־$1/3^n$ מחישוב ישיר ולכן כל $x in T$.\
+  יש לנו $m-n$ מקומות מתוך $n+1$ עד $m$ לבחור $a_k$ כך שלכל אחד יש $2$ אפשרויות ולכן יש לנו $2^(m-n)$ אפשרויות אבל זה בידיוק $abs(T inter E_m)$ (אפשר להראות גם באינדוקציה אבל זה נובע מהנוסחת נסיגה).
 ]
 
 #subquestion()
@@ -53,7 +54,7 @@ $ E_(n+1) = E_n/3 union.big (2/3 + E_n/3) $
   נקבע $x = sum_(k=1)^n a_k/3^k in E_n$ ולכן עבור $m>=n$, נקודה ב־$E_m$ שהיא עם $n$ ספרות ראשונות אותו הדבר כמו $x$ היא מהצורה
   $ y=sum_(k=1)^n a_k/3^k + sum_(k=n+1)^m a_k/3^k $
   כלומר הזנב $R=sum_(k=n+1)^m a_k/3^k$ מכיל את שאר הספרות בפיתוח, בפרט זה טור אי־שלילי ולכן
-  $ 0<=R<=sum_(k=n+1)^infinity 2/3^k =_"תור הנדסי" 2/3^(n+1) dot.op 1/(1-1/3) = 2/3^(n+1) dot.op 3/2 = 1/3^n $
+  $ 0<=R<=sum_(k=n+1)^infinity 2/3^k =_"טור הנדסי" 2/3^(n+1) dot.op 1/(1-1/3) = 2/3^(n+1) dot.op 3/2 = 1/3^n $
   בפרט זה אומר שכל $y in E_m$ כאשר $n$ הספרות הראשונות של $y$ מזדהות עם הספרות של $x$ מקיימות
   $ y in [x,x+1/3^n] $
   וכמובן
@@ -71,22 +72,45 @@ $ E_(n+1) = E_n/3 union.big (2/3 + E_n/3) $
   כלומר מצאנו סדרת קושי ולכן מתכנסת.
 ]
 
+#pagebreak()
+
 #subquestion()
 נגדיר את $Lambda f colon.eq lim_(n arrow.r infinity) Lambda_n f$.\
 נוודא שזהו פונקציונל לינארי חיובי ונגדיר את $mu$ להיות המידה על $RR$ המייצגת את $Lambda$ לפי משפט ההצגה של ריס. נמצא את $supp(mu)$ ונחשב את $mu([2/9, 1/3])$.
 
-#proof[#todo]
+#proof[מהסעיף הקודם, לכל $n in NN$ הפונקציונל $Lambda f_n$ מוגדר היטב ובהתאם אם $f>=0$ אז הטור הוא טור חיובי עם סקלר חיובי וכמובן שהגבול משמר את החיוביות ולכן הפונקציונל חיובי./
+  בהתאם ממשפט ההצגה של ריס קיימת ויחידה מידה $mu$ המקיימת
+  $ forall C_C (RR), space integral f d mu = Lambda f $
+  נטען $supp(mu)=C$: נניח $x in RR$ כך ש־$x in F$ קבוצה סגורה. אז
+  $
+    mu(F)=integral bb(1)_(F) d mu = Lambda bb(1)_(F) = lim_(n arrow.r infinity) Lambda_n bb(1)_(F) = lim_(n arrow.r infinity) 2^(-n) sum_(x in E_n) bb(1)_(F) = lim_(n arrow.r infinity) 2^(-n) abs(E_n inter F)
+  $
+  מסעיף א' שנקבל שאם קיים $T in cal(T)$ כך ש־$T subset.eq F$ אז $abs(E_n inter F)>=2^m$ כאשר $T$ מאורך $3^(-m)$ ואם אין כזה נקבל $mu(F)=0$, כלומר $supp(mu)=C$.\
+  נעבור לחישוב $mu([2/9, 1/3])$: נשים לב שזה אחד הקטעים שמרכיבים את $C_2$:
+  $ C_2 = [0,1/9] union [2/9, 3/9] union [6/9,7/9] union [8/9, 1] $
+  אז מהגדרה של $mu$ נקבל ישירות $mu([2/9, 1/3])=1/2^2 = 1/4$.
+]
 
 #subquestion()
 נגדיר $phi_0 (x) = x/3, phi_2 (x) = 2/3 + x/3$ ונראה כי
 $ mu = 1/2 (phi_0)_*mu + 1/2(phi_2)_* mu $
 כאשר $(phi_i)_*mu$ היא הדחיפה קדימה של $mu$ לפי $phi_i$.
 
-#proof[#todo]
+#proof[
+  נסמן $A_i = phi_i^(-1)$ לכל $i in {0,2}$, אז מהגדרת הדחיפה קדימה של המידה
+  $
+    (phi_i)_* mu(E) = mu(A_i) = integral bb(1)_(A_i) d mu = Lambda bb(1)_(A_i) = lim_(n arrow.r infinity) Lambda_n bb(1)_(A_i) = lim_(n arrow.r infinity) 2^(-n) sum_(x in E_n) bb(1)_(A_i) = lim_(n arrow.r infinity) 2^(-n) abs(E_n inter phi_i^(-1)(E))
+  $
+  כעת,  מהגדרת $phi_i$ מתקיים $phi_0^(-1)(E) inter phi_2^(-1)(E) = emptyset$ ולכן
+  $
+    (phi_0)_* mu(E) + (phi_2)_* mu(E) = lim_(n arrow.r infinity) 2^(-n) (abs(E_n inter phi_0^(-1)(E))+abs(E_n inter phi_2^(-1)(E)) \
+    = lim_(n arrow.r infinity) 2^(-n) abs(E_n inter (phi_2^(-1)(E) union.dot phi_0^(-1)(E))) = lim_(n arrow.r infinity) 2^(-n) abs(E_n inter E) = mu(E)
+  $
+]
 
 #question()
 יהי $X$ מרחב האוסדרוף קומפקטי מקומית ו־$sigma$־קומפקטי ונניח כי $phi: C_C (X) arrow.r CC$ פונקציונל לינארי חיובי.\
-נסמן $M$ ו־$mu$ ה־$sigma$־אלגברה ומידה שקיומם נובע ממשפט ההצגה של ריז.
+נסמן $M$ ו־$mu$ ה־$sigma$־אלגברה ומידה שקיומם נובע ממשפט ההצגה של ריס.
 
 #subquestion()
 נראה כי אם $E in cal(M)$ ו־$epsilon>0$, אז קיימת $F$ סגורה ו־$V$ פתוחה כך שמתקיים
