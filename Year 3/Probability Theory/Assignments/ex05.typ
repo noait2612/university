@@ -182,7 +182,32 @@ $ n>=0, space X_n = sum_(i=1)^n Y_i, wide Z = sum_(n=0)^infinity bb(1)_(X_n=0) $
 
 #solution[
   ראשית נשים לב $PP(Z=0)=0$.\
-  #todo
+  ראשית בגלל ש־${Y_i}$ שווי התפלגות על $ZZ$ נובע שאפשר לקבל ערכים שליליים עליהם ואם נסתכל על הסכום $X_n = sum_(i=1)^n Y_i$ עבור $n>=0$ אז הוא יכול להיות אפס אם החלק השלילי של הסכום מבטל את החלק החיובי של הסכום, כלומר אם נסתכל על זה כצעדים חזרנו למקור.\
+  אז נגדיר
+  $ T_0 = 0, space T_1 = inf{n>, X_n = 0}, space T_k = inf {n>T_(k-1) bar X_n = 0} $
+  כאשר כקונבנציה $inf emptyset = infinity$  ונגדיר $q = PP(T_1 < infinity)$ ולכן $p=1-q$ (שמתאים להגדרה שנתונה לנו) ולכן באופן שקול אפשר להסתכל על $Z=1+ hash{n>0 bar X_n=0}$ ונרצה להראות $PP(Z=m) = q^(m-1) p$ עבור $m>=1$:\
+  עבור $k>=1$ מתקיים
+  $ {Z>=k+1} = {"פעמים לראשית" k+1 "חזרנו לפחות"} = {T_k < infinity} $
+  כלומר
+  $ PP(Z>=k+1) = PP(T_k < infinity) $
+  ונראה באינדוקציה על $k$ שמתקיים $PP(T_k < infinity) = q^k$: מקרה בסיס נכון מהגדרה ולכן נניח ש־${T_k = n}$ ונרצה להראות ${T_(k+1) < infinity}$ בהינתן ${T_k = n}$, אז עבור $m>n$ יש לנו
+  $ X_m = X_n + sum_(i=n+1)^m Y_i = sum_(i=n+1)^m Y_i $
+  אבל מהגדרת האי־תלות אם נסמן $A={T_k=n}$ ו־$B={T_(k+1)<infinity}$ הם בלתי־תלויים : שכן $A$ תלוי רק ב־$Y_1, dots.h, Y_n$ ו־$B$ תלוי ב־$Y_(n+1), Y_(n+2), dots.h$ ולכן
+  $
+    PP(T_(k+1) bar T_k = n) = PP(T_(k+1)<infinity, T_k = n)/PP(T_k = n) = PP(T_(k+1)<infinity)PP(T_k = n)/PP(T_k = n) = PP(T_(k+1)<infinity) = PP(T_1 < infinity) = q
+  $
+  כאשר המעבר האחרון נובע מכך שלא משנה באיזה זמן התחלנו, ההסתברות שלא נחזור לראשית היא תמיד $q$, לא משנה בנקודה בזמן של תחילת הצעדים.\
+  אם כך מתקיים
+  $
+    PP(T_(k+1) < infinity) = sum_(n=1)^infinity PP(T_(k+1) < infinity, T_k = n) =_"הסתברות שלמה" sum_(n=1)^infinity PP(T_k=n)PP(T_(k+1) < infinity bar T_k = n) = q sum_(n=1)^infinity PP(t_k = n) \
+    = q dot.op PP(T_k < infinity) =_"הנחת האינדוקציה" q dot.op q^k = q^(k+1)
+  $
+  אז סיימנו את מהלך האינדוקציה.\
+  אם $Z~Geo(p)$ הוא נתמך על הטבעיים ולכן עבור $m>=1$ יש לנו
+  $ PP(Z>=m) = PP(T_(m-1) < infinity) = q^(m-1) $
+  כלומר
+  $ PP(Z=m) = PP(Z>=m)-PP(Z>=m+1) = q^(m-1)-q^m = q^(m-1) (1-q) = q^(m-1) p $
+  אם $m=1$ זה בסדר כי כקונבנציה הגדרנו $PP(Z=0)=0$.
 ]
 
 #question()
@@ -190,7 +215,21 @@ $ n>=0, space X_n = sum_(i=1)^n Y_i, wide Z = sum_(n=0)^infinity bb(1)_(X_n=0) $
 $ (X bar X+Y=n)~Bin(n, lambda/(lambda+eta)) $
 
 #solution[
-  #todo
+  נגדיר את המשתנה המקרי $Z = X+Y$ ולפי מה שראינו בהרצאה/תרגול מתקיים $Z~Poi(lambda + eta)$.\
+  מהגדרת ההסתברות המותנית אנחנו מחפשים את
+  $ PP(X=k bar X+Y=n) = PP(X=k, X+Y=n)/PP(X+Y=n) $
+  עבור $X+Y=n$ כאשר $X=k$ אנחנו צריכים $Y=n-k$ ולכן ${X=k, X+Y=n}={X=k, Y=n-k}$.\
+  $X,Y ~ Poi$ ולכן אי־שליליים ועל־כן $k>=0$ ובהתאמה $n-k>=0 <==> k<=n$ ולכן $k in {0, 1, dots.h, n}$ וכמובן $X,Y$ בלתי־תלויים ומתפלגים פואסון ולכן בסך־הכל
+  $
+    PP(X=k bar X+Y=n) = PP(X=k, X+Y=n)/PP(X+Y=n) = (PP(X=k)PP(Y=n-k))/PP(X+Y=n) = ((e^(-lambda) lambda^k)/k! (e^(-eta) eta^(n-k))/(n-k)!)/((e^(-(lambda+eta))(lambda+eta)^n)/n!) \
+    = ((e^(-(lambda+eta)) lambda^k eta^(n-k))/(k!(n-k)!))/((e^(-(lambda+eta)) (lambda+eta)^n)/n!) = ((lambda^k eta^(n-k))/(k!(n-k)!))/((lambda+eta)^n/n!) = (n! lambda^k eta^(n-k))/(k!(n-k)!(lambda+eta)^n) = binom(n, k) dot.op lambda^k/(lambda+eta)^k dot.op eta^(n-k)/(lambda+eta)^(n-k) \
+    = binom(n, k) dot.op (lambda/(lambda+eta))^k dot.op (eta/(lambda+eta))^(n-k)
+  $
+  נסמן $ p = lambda/(lambda+eta) ==> 1-p = 1- lambda/(lambda+eta) = eta/(lambda+eta) $ ונקבל
+  $
+    PP(X=k bar X+Y=n) = binom(n, k) dot.op (lambda/(lambda+eta))^k dot.op (eta/(lambda+eta))^(n-k) = binom(n, k) p^k (1-p)^(n-k)
+  $
+  וזו בידיוק התפלגות בינומית עם פרמטר $p=lambda/(lambda+eta)$.
 ]
 
 #question()
