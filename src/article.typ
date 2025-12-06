@@ -417,6 +417,10 @@
 #let Bin = math.italic(math.op("Bin"))
 #let Geo = math.italic(math.op("Geo"))
 #let Poi = math.italic(math.op("Poi"))
+
+// Measure
+#let esssup = math.op("ess sup")
+#let essinf = math.op("ess inf")
 // headings
 //#show heading: it => {
 //	let c = if it.level == 1 {
