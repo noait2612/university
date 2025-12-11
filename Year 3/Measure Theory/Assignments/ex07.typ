@@ -5,14 +5,6 @@
 )
 
 #question()
-נקרא את ההוכחה למשפח $3.5$ בספר Analysis Complex and Real של W.Rudin, המתחילה בעמוד 63.\
-תוכן ההוכחה הוא אי־שיוויונות מניקובסקי והלדר.
-
-#proof[
-  קראתי.
-]
-
-#question()
 יהי $(X, cal(A), mu)$ מרחב מידה. עבור $0<r<1$ נגדיר לכל $f: X arrow.r CC$ מדידה
 $
   norm(f)_r = (integral abs(f)^r dif mu)^(1/r)
@@ -65,7 +57,7 @@ $
   אם $s=t$ סיימנו ולכן נניח שיש שם אי־שיוויון חזק ושכרגע $t<infinity$.\
   תהי $f in L^t (mu)$,  ונסמן $g(x)=1$.\
   נסמן $p=t/s, q = t/(t-s)$ ומההנחות מתקיים $q,p>=1$ ובדיקה מראה שהם צמודים אחד לשנייה
-  $ 1/p + 1/q = s/t + (t-s)/t = (s+t-s)/t = 1 $
+  $1/p + 1/q = s/t + (t-s)/t = (s+t-s)/t = 1$.\
   מאי־שיוויון הולדר
   $
     norm(f)_s = (integral abs(f)^s dif mu)^(1/s) = (integral abs(f)^s dot.op 1 dif mu)^(1/s) <= norm(abs(f)^s)_(t/s)^(1/s) norm(1)_(t/s)^(1/s)
@@ -152,20 +144,41 @@ $
 נוכיח כי הסופרמום והאינפימום של $K$ הם בידיוק $esssup f, essinf f$.
 
 #proof[
+  נסמן
+  $ M colon.eq esssup f = inf {alpha in RR bar mu(f^(-1)(alpha, infinity))=0} $
+  יהי $epsilon > 0$, מהגדרת האיפנימום נובע $mu(f^(-1)((M+epsilon, infinity)))=0$ ומהמשיכה קדימה של המידה
+  $ (f_*mu)((M+epsilon,infinity))=mu(f^(-1)((M+epsilon, infinity)))=0 $
+  מהגדרת התומך מתקיים ש־$(M+epsilon, infinity) subset.eq RR without K$, מהיות $epsilon$ שרירותי נובע שכל הקטע $(M, infinity)$ ב־$RR without K$, כלומר לכל $y in (M,infinity)$, $y in.not K$.\
+  מצד שני, כל $x in K$ מקיים $x<=M$ אז $sup K <= M = esssup f$.\
+  הכיוון השני הוא סימטרי: נסמן $ T colon.eq essinf f $
+  אז לכל $epsilon > 0$ מתקיים $mu(f^(-1)(-infinity, T-epsilon))=0$, אז אף נקודה שקטנה מ־$T-epsilon$ אינה ב־$K$, ולכן $inf K >= T$, אבל לכל $beta>T$ מתקיים $mu(f^(-1)(-infinity, beta))>0$ ולכן $(-infinity, beta) inter K != emptyset$ ולכן $K<=T$ וקיבלנו $inf K = T = essinf f$.
 ]
 
 #subquestion()
 נראה כי לכל $f$ מדידה
 $ norm(f)_1 <= mu(X) dot.op norm(f)_infinity $
 
-#proof[]
+#proof[
+  נסמן $M colon.eq norm(f)_infinity$, אז לכל $epsilon > 0$ מהגדרת ה־$esssup$ נגדיר
+  $ A_epsilon colon.eq {x in X bar abs(f(x))> M + epsilon} ==> mu(A_epsilon) = 0 $
+  יתר על־כן, נובע מכך שמתקיים $abs(f(x))<=M$ כמעט בכל מקום ולכן ממונוטוניות האינטגרל
+  $
+    norm(f)_1 = integral_X abs(f) dif mu <= integral_X norm(f)_infinity dif mu = norm(f)_infinity dot.op integral_X 1 dif mu = norm(f)_infinity mu(X)
+  $
+]
 
 #subquestion()
 נניח כי $f_n, f$ פונקציות מדידות כך ש־$norm(f_n - f)_infinity stretch(arrow.r)_(n arrow.r infinity) 0$.\
 נראה כי קיימת ל־$f_n$ תת־סדרה המתכנסת נקודתית ל־$f$.
 
 #proof[
-
+  נסמן $M_n colon.eq norm(f_n - f)_infinity$ ומהנתון $M_n stretch(arrow.r)_(n arrow.r infinity) 0$  ומהגדרת $esssup$, אם $M_n < alpha$ אזי $mu({abs(f_n -f)<alpha})=0$.\
+  ניקח סדרת אינדקסים $(n_j)_(j>=1)$  כך שמתקיים $m_n_j < 1/j$ לכל $j$ וזה אפשרי מהיות $M_n stretch(arrow.r)_(n arrow.r infinity) 0$ ונגדיר
+  $ E_j colon.eq {x in X bar abs(f_n (x) - f(x))>1/j} $
+  אז לכל $j$ מתקיים ש־$mu(E_j)=0$ (מהגדרת $esssup$) ונסתכל על $A = union.big_(j=1)^infinity A_j$, זה איחוד בן־מנייה של קבוצות ממידה אפס ולכן $mu(A)=0$.\
+  אם $x in.not A$ אז עבור $j$ גדול דיו מתקיים
+  $ abs(f_n_j (x) - f(x))<=1/j stretch(arrow.r)_(j arrow.r infinity) 0 $
+  כלומר $f_n_j (x) arrow.r f(x)$ לכל $x in.not A$, כלומר לכל $x in X$ למעט בקבוצה ממידה אפס, כלומר קיבלנו $f_n_j arrow.r f$ כמעט בכל מקום/כמעט תמיד.
 ]
 
 #question()
