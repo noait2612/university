@@ -423,6 +423,8 @@
 #let Bin = math.italic(math.op("Bin"))
 #let Geo = math.italic(math.op("Geo"))
 #let Poi = math.italic(math.op("Poi"))
+#let Var = math.op("Var")
+#let Cov = math.op("Cov")
 
 // Measure
 #let esssup = math.op("ess sup")
