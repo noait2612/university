@@ -417,14 +417,17 @@
 
 // Geneeral Calculs
 #let supp = math.op("supp")
+#let Span = math.op("Span")
 
 // Probability
+#let Unif = math.italic(math.op("Unif"))
 #let Ber = math.italic(math.op("Ber"))
 #let Bin = math.italic(math.op("Bin"))
 #let Geo = math.italic(math.op("Geo"))
 #let Poi = math.italic(math.op("Poi"))
 #let Var = math.op("Var")
 #let Cov = math.op("Cov")
+#let Proj = math.op("Proj")
 
 // Measure
 #let esssup = math.op("ess sup")
