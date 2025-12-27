@@ -152,10 +152,31 @@
 ]
 
 #question()
-יהיו $X,Y$ משתנים מקריים ב־$L^2$ בעלתי תוחלת $mu_X, mu_Y$ וסטיות תקן $sigma_X, sigma_Y$ בהתאמה. נראה כי
+יהיו $X,Y$ משתנים מקריים ב־$L^2$ בעלתי תוחלת $mu_X, mu_Y$ וסטיות תקן $sigma_X, sigma_Y$ בהתאמה.\
+נראה כי
 $ min{EE((X-Z)^2) bar Z in Span(1, Y))}=EE((X-Proj_(1,Y) (X))^2) = sigma_X^2 - Cov(X, Y)^2/(sigma_Y^2) $
+כאשר ההטלה של $X$ על $Span(1, Y)$ נתונה במפורש על־ידי $Proj_(1,Y) (X) = mu_X + Cov(X, Y)/sigma_Y^2 (Y-mu_Y)$.
 
-#proof[#todo]
+#proof[
+  נשים לב ש־$Span(1, Y)$ מגדיר את כל הפונקציות הלינאריות של $Y$, כלומר ${a+b Y bar a,b in RR}$ ולפי טענה שראינו בהרצאה (6.51 בספר), הערך $Z$ שממעזר את הסטייה הריבועית של $EE((X-Z)^2)$ היא ההטלה האורתוגונלית של $X$ על ה־$Span$ הזה.\
+  נגדיר $beta=Cov(X, Y)/sigma_Y^2$ ונגדיר $ accent(X, hat)=Proj_(Span(1, Y)) (X) = mu_X + Cov(X, Y)/sigma_Y^2 (Y- mu_Y) $ ואנחנו רוצים לחשב את $EE((X-accent(X, hat))^2)$ כאשר
+  $ X-accent(X, hat)=X - mu_X - beta(Y-mu_Y) $
+  נגדיר משתנים מקריים ממורכזים
+  $ accent(X, tilde) = X - mu_X, space accent(Y, tilde) = Y - mu_Y $
+  ומתקיים מהגדרות $ EE(accent(X, tilde))=0, space EE(accent(Y, tilde))=0, space EE(accent(X, tilde)^2)=mu_X^2, space EE(accent(Y, tilde)^2)=mu_Y^2, EE(accent(X, tilde) accent(Y, tilde))=Cov(X, Y) $
+  ונקבל
+  $
+    EE((X-accent(X, hat))^2)=EE((accent(X, tilde)-beta accent(Y, tilde))^2) = EE(accent(X, tilde)^2-2beta accent(X, tilde)accent(Y, tilde)+beta^2accent(Y, tilde)^2) = EE(accent(X, tilde)^2)-2beta EE(accent(X, tilde) accent(Y, tilde))+beta^2EE(accent(Y, tilde)^2)\
+    =sigma_X^2-2beta Cov(X, Y)+beta^2sigma_Y^2
+  $
+  נציב בחזרה את $beta$ ונקבל
+  $
+    EE((X-accent(X, hat))^2)=sigma_X^2 - 2(Cov(X, Y)/sigma_Y^2) Cov(X, Y)+(Cov(X, Y)/sigma_Y^2)^2 sigma_Y^2 = sigma_X^2-2Cov(X, Y)^2/sigma_Y^2+Cov(X, Y)^2/sigma_Y^2 \
+    = sigma_X^2-Cov(X, Y)^2/sigma_Y^2
+  $
+  כלומר
+  $ min_(Z in Span(1, Y)) EE((X-Z)^2) = sigma_X^2 -Cov(X, Y)^2/sigma_Y^2 $
+]
 
 #question()
 #subquestion()
@@ -246,17 +267,29 @@ $ PP(X-EE(X)>=a)<=exp(-a^2/(2M^2)) $
 שיכור עומד על ציר המספרים השלמים. הוא מטיל מטבע שנופל על עץ בהסתברות $q$. אם יוצא לו עץ הוא הולך שני צעדים ימינה ואם יוצא לו פלי הוא הולך צד אחד שמאלה. הוא מבצע $n$ הטלות מטבע כאלו באופן בלתי־תלוי. יהי $X_n$ מיקומו אחרי $n$ הצעדים האלו.\
 נמצא עבור אילו ערכים של $q$ ניתן לחסום בצורה לא טריוויאלית את $PP(X_n>=0)$ בעזרת אי־שיוויון הופדינג ונמצא מהו החסם שמתקבל.
 
-#solution[#todo]
-
-#question()
-עבור $f : NN arrow.r [0,1]$ המקיימת
-$ sum_(n=1)^infinity f(n)=a <=infinity $
-נגדיר משתנה מקרי $X$ הנתמך על $ZZ without 0$ בעל פונקציית ההתפלגות הנקודתית
-$ p_ZZ = f(abs(z))/(2a) $
-לכל $N in NN$ ו־$epsilon > 0$ נגדיר
-$ p_(N, epsilon) colon.eq PP(abs((sum_(n=1)^N X_n)/N)<=epsilon) $
-עבור $X_1, X_2, dots.h, X_n$ בלתי־תלויים ושווי התפלגות ל־$X$.\
-נאמר כי $X$ מקיים את מסקנת החוק החלש אם לכל $epsilon>0$ מתקיים $lim_(N arrow.r infinity) p_(N, epsilon) = 1$.\
-נראה כי עבור $f(n)=1/(n^2log(n))$ המשתנה $X$ מקיים את מסקנת החוק החלש על־אף שאינו עומד בתנאי משפט החוק החלש ונסיק כי החוק החלש אינו משפט של אם ורק אם.
-
-#proof[#todo]
+#solution[
+  נגדיר $Y_i$ המשתנה המקרי של כמות הצעדים שהשיכור זז בצעד ה־$i$, קרי זה משתנה מקרי מתפלג ברנולי והתומך שלו הוא ${2, -1}$, כלומר
+  $ PP(Y_i=2)=q, space PP(Y_i=-1) = 1-q $
+  ו־$X_n = sum_(i=1)^n Y_i$ סך כל הצעדים, כאשר כל $Y_i$ בלתי־תלויים מהנתון.\
+  בהתאם התוחלת של משתנה ברנולי מוזז
+  $ EE(Y_i) = (2 dot.op q) + (-1 dot.op (1-q))= 2q -1 + q = 3q-1 $
+  בשביל להשתמש באי־שיוויון הופדינג עלינו לנרמל את המשתנה המקרי לעיל כאשר המשתנה המקרי המנורמל, נסמנו $Z_i$, יהיה בעל תוחלת $0$ ויתקיים $abs(Z_i) <=^(a.s.) 1$.\
+  בשביל התנאי של התוחלת, נגדיר $Z_i = Y_i - EE(Y_i)=Y_i - 3q+1$ אך עדיין לא מתקיים $abs(Z_i) <=^(a.s.) 1$: \
+  אנחנו כבר יודעים ש־$supp(Y_i) = {2,-1}$, אז נחלק למקרים הללו ונקבל מהחישוב הלא מדוייק לעיל
+  $
+    Y_i = 2 ==> Z_i = Y_i - (3q-1)=2-3q+1 = 3(1-q) \
+    Y_1 = -1 ==> Z_i = Y_i - (3q-1) = -1-3q+1 = -3q
+  $
+  ונקבל אם כך
+  $ abs(Y_i-(3q-1))<=max{3(1-q), 3q}<=3 $
+  ולכן עלינו לנרמל בחילוק ב־$3$ ולכן בעצם $Z_i = (Y_i-(3q-1))/3$ וזה יביא לנו $EE(Z_i)=0, abs(Z_i) <=^(a.s.) 1$.\
+  עוד נשים לב שמתקיים  $supp(Z_i) = {-q, 1-q} subset.eq [-1,1]$ שכן $q <= 1$ (מהגדרת ההסתברות) ואנחנו עומדים בכל תנאי אי־שיוויון הופדינג.\
+  נפעיל אותו ונקבל אם כך
+  $
+    PP(X_n>=0) & = PP(sum_(i=1)^n Y_i >=0) \
+               & = PP(sum_(i=1)^n (3Z_i+(3q-1))>=0) \
+               & = PP(sum_(i=1)^n Z_i >= (n(1-3q))/3) \
+               & <=_((star)) exp(-(n^2(1-3q)^2)/(9 dot.op 2n)) = exp(-(n(1-3q)^2)/18)
+  $
+  נשים לב שכדי שהמהלך $(star)$ לעיל יהיה מוגדר היטב (כי $d>0$ בתנאי אי־שיוויון הופדינג), צריך להתקיים $1-3q > 0==> q<1/3$.
+]
