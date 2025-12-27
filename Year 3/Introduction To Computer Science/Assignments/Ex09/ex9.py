@@ -100,20 +100,32 @@ class Diagnoser:
 
     def minimize(self, remove_empty=False):
        self.__inner_minimize(self.root, remove_empty)
-       if self.__redundant_node(self.root):
-           self.root = self.root.positive_child
 
     def __inner_minimize(self, node: Node, remove_empty=False):
-        if node is None or node.positive_child is None:
+        if node is None:
             return
 
         self.__inner_minimize(node.positive_child, remove_empty)
         self.__inner_minimize(node.negative_child, remove_empty)
-        if self.__redundant_node(node.positive_child):
-            node.positive_child = node.positive_child.positive_child
+        if self.__redundant_node(node):
+            node.data = node.positive_child.data
+            node.negative_child = None
+            node.positive_child = None
 
-        if self.__redundant_node(node.negative_child):
-            node.negative_child = node.negative_child.positive_child
+        if not remove_empty and node.positive_child is not None:
+            return
+
+        a = self.__inner_all_illnesses(node.positive_child)
+        if len(a) == 1 and a[0] == 'healthy':
+            node.data = node.negative_child.data
+            node.positive_child = node.negative_child.positive_child
+            node.negative_child = node.negative_child.negative_child
+
+        a = self.__inner_all_illnesses(node.negative_child)
+        if len(a) == 1 and a[0] == 'healthy':
+            node.data = node.positive_child.data
+            node.negative_child = node.positive_child.negative_child
+            node.positive_child = node.positive_child.positive_child
 
     def __redundant_node(self, node):
         if node.positive_child is None or node.negative_child is None:
@@ -124,13 +136,14 @@ class Diagnoser:
 
 def build_tree(records, symptoms):
     # TODO: What about exceptions Noa!?!?!?!
+    records = [record for record in records if set(record.symptoms).issubset(set(symptoms))]
     node = __inner_build_tree(records, symptoms)
     return Diagnoser(node)
 
 
 def __inner_build_tree(records, symptoms):
     if not symptoms:
-        return Node(records[0].illness if len(records) > 0 else None)
+        return Node(records[0].illness if len(records) > 0 else "healthy")
 
     node = Node(symptoms[0])
     node.negative_child = __inner_build_tree([record for record in records if symptoms[0] not in record.symptoms],
@@ -205,7 +218,9 @@ if __name__ == "__main__":
         print("Test failed. Should have printed the thing, printed: ", paths)
 
     #symptoms = list(set(chain.from_iterable(x.symptoms for x in records)))
-    symptoms = ['headache', 'fever', 'cough', 'fur', 'yellowness']
+    symptoms = ['fever', 'headache', 'cough', 'fur', 'yellowness']
+    symptoms = ['headache', 'fever', 'cough']
     diagnoser = build_tree(records, symptoms)
-    diagnoser.minimize()
+    print(diagnoser.root)
+    diagnoser.minimize(True)
     print(diagnoser.root)
