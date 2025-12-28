@@ -1,5 +1,13 @@
+#################################################################
+# FILE : ex9.py
+# WRITER : your_name , your_login , your_id
+# EXERCISE : intro2cs ex9 2025
+# DESCRIPTION: A class that represents a tree logic.
+# STUDENTS I DISCUSSED THE EXERCISE WITH: -
+# WEB PAGES I USED: w3schools, docs.python.org
+# NOTES: ...
+#################################################################
 from itertools import *
-
 
 class Node:
     def __init__(self, data, positive_child=None, negative_child=None):
@@ -7,6 +15,8 @@ class Node:
         self.positive_child = positive_child
         self.negative_child = negative_child
 
+
+    # Using json to more clear build of object in text
     def __str__(self):
         string = f"{{ \"data\": \"{self.data}\""
         if self.positive_child is not None:
@@ -23,6 +33,8 @@ class Record:
         self.illness = illness
         self.symptoms = symptoms
 
+
+    # Using json to more clear build of object in text
     def __str__(self):
         return f'(Illness: {self.illness}, symptoms: {self.symptoms})'
 
@@ -44,38 +56,45 @@ class Diagnoser:
         return f'Diagnoser(root: {self.root})'
 
     def diagnose(self, symptoms):
-        pos = self.root
+        position = self.root
 
         # Since we can have both Nones or both not Nones, it is enough to check on one of them.
-        while pos.positive_child is not None:
-            pos = pos.positive_child if pos.data in symptoms else pos.negative_child
+        while position.positive_child is not None:
+            position = position.positive_child if position.data in symptoms else position.negative_child
 
-        return pos.data
+        return position.data
+
 
     def calculate_success_rate(self, records):
         if len(records) == 0:
             raise ValueError("Not supported length of records")
 
-        count = 0
+        count_of_hits = 0
         for record in records:
             calculated_diagnosis = self.diagnose(record.symptoms)
             if calculated_diagnosis == record.illness:
-                count += 1
+                count_of_hits += 1
 
-        return count / len(records)
+        return count_of_hits / len(records)
+
 
     def all_illnesses(self):
-        extracted_illnesses = self.__inner_all_illnesses(self.root)
-        return [x[0] for x in sorted(groupby(extracted_illnesses), key=lambda kv: len(list(kv[1])), reverse=True)]
+        mapped_illnesses = {}
+        self.__map_illnesses(self.root, mapped_illnesses)
+        sorted_illnesses = sorted(mapped_illnesses.keys(), key=lambda x: mapped_illnesses[x], reverse=True)
+        return sorted_illnesses
 
-    def __inner_all_illnesses(self, node):
+
+    def __map_illnesses(self, node, mapped_illnesses):
         if node is None:
-            return []
+            return
+        if node.positive_child is None and node.negative_child is None:
+            if node.data is not None:
+                mapped_illnesses[node.data] = mapped_illnesses.get(node.data, 0)
+                return
 
-        if node.negative_child is None and node.positive_child is None:
-            return [node.data]
-
-        return self.__inner_all_illnesses(node.negative_child) + self.__inner_all_illnesses(node.positive_child)
+        self.__map_illnesses(node.positive_child, mapped_illnesses)
+        self.__map_illnesses(node.negative_child, mapped_illnesses)
 
     def paths_to_illness(self, illness) -> list:
         return self.__inner_paths_to_illness(illness, [], self.root)
@@ -87,89 +106,106 @@ class Diagnoser:
             else:
                 return None
 
-        a = self.__inner_paths_to_illness(illness, path + [False], node.negative_child)
-        b = self.__inner_paths_to_illness(illness, path + [True], node.positive_child)
-        ans = []
-        if a:
-            ans += a
+        inner_paths_from_negative_node = self.__inner_paths_to_illness(illness, path + [False], node.negative_child)
+        inner_paths_from_positive_node = self.__inner_paths_to_illness(illness, path + [True], node.positive_child)
+        result = []
+        if inner_paths_from_negative_node:
+            result += inner_paths_from_negative_node
 
-        if b:
-            ans += b
+        if inner_paths_from_positive_node:
+            result += inner_paths_from_positive_node
 
-        return ans
+        return result
 
     def minimize(self, remove_empty=False):
-       self.__inner_minimize(self.root, remove_empty)
+        self.root = self.__inner_minimize(self.root, remove_empty)
 
-    def __inner_minimize(self, node: Node, remove_empty=False):
-        if node is None:
-            return
+    def __inner_minimize(self, node: Node, remove_empty):
+        if node.positive_child is None and node.negative_child is None:
+            return node
 
-        self.__inner_minimize(node.positive_child, remove_empty)
-        self.__inner_minimize(node.negative_child, remove_empty)
-        if self.__redundant_node(node):
-            node.data = node.positive_child.data
-            node.negative_child = None
-            node.positive_child = None
+        node.positive_child = self.__inner_minimize(node.positive_child, remove_empty)
+        node.negative_child = self.__inner_minimize(node.negative_child, remove_empty)
 
-        if not remove_empty and node.positive_child is not None:
-            return
+        if self.__are_subtrees_equal(node.positive_child, node.negative_child):
+            return node.positive_child
 
-        a = self.__inner_all_illnesses(node.positive_child)
-        if len(a) == 1 and a[0] == 'healthy':
-            node.data = node.negative_child.data
-            node.positive_child = node.negative_child.positive_child
-            node.negative_child = node.negative_child.negative_child
+        if remove_empty:
+            if self.__is_only_none(node.positive_child):
+                return node.negative_child
+            if self.__is_only_none(node.negative_child):
+                return node.positive_child
 
-        a = self.__inner_all_illnesses(node.negative_child)
-        if len(a) == 1 and a[0] == 'healthy':
-            node.data = node.positive_child.data
-            node.negative_child = node.positive_child.negative_child
-            node.positive_child = node.positive_child.positive_child
+        return node
 
-    def __redundant_node(self, node):
-        if node.positive_child is None or node.negative_child is None:
+    def __are_subtrees_equal(self, node1, node2):
+        if node1 is node2:
+            return True
+        if node1 is None or node2 is None:
             return False
+        if node1.data != node2.data:
+            return False
+        return (self.__are_subtrees_equal(node1.negative_child, node2.negative_child)
+                and self.__are_subtrees_equal(node1.positive_child, node2.positive_child))
 
-        return set(self.__inner_all_illnesses(node.negative_child)) == set(self.__inner_all_illnesses(node.positive_child))
+    def __is_only_none(self, node):
+        if node is None:
+            return True
+        if node.positive_child is None and node.negative_child is None:
+            return node.data is None
+        return self.__is_only_none(node.positive_child) and self.__is_only_none(node.negative_child)
 
 
 def build_tree(records, symptoms):
-    # TODO: What about exceptions Noa!?!?!?!
-    records = [record for record in records if set(record.symptoms).issubset(set(symptoms))]
+    if not all(isinstance(r, Record) for r in records):
+        raise TypeError("Not supported records")
+    if not all(isinstance(s, str) for s in symptoms):
+        raise TypeError("Not supported symptoms")
+
     node = __inner_build_tree(records, symptoms)
     return Diagnoser(node)
 
 
-def __inner_build_tree(records, symptoms):
-    if not symptoms:
-        return Node(records[0].illness if len(records) > 0 else "healthy")
+def __inner_build_tree(current_records, reamining_symptoms):
+    if not reamining_symptoms:
+        if not current_records:
+            return Node(None)
 
-    node = Node(symptoms[0])
-    node.negative_child = __inner_build_tree([record for record in records if symptoms[0] not in record.symptoms],
-                                             symptoms[1:])
-    node.positive_child = __inner_build_tree([record for record in records if symptoms[0] in record.symptoms],
-                                             symptoms[1:])
-    return node
+        mapped_symptoms = {}
+        for r in current_records:
+            mapped_symptoms[r.illness] = mapped_symptoms.get(r.illness, 0) + 1
+        max_illness = max(mapped_symptoms, key=mapped_symptoms.get)
+        return Node(max_illness)
+
+    question = reamining_symptoms[0]
+    positive_records = [record for record in current_records if question in record.symptoms]
+    negative_records = [record for record in current_records if question not in record.symptoms]
+
+    return Node(question, __inner_build_tree(positive_records, reamining_symptoms[1:]),
+                __inner_build_tree(negative_records, reamining_symptoms[1:]))
 
 
 def optimal_tree(records, symptoms, depth):
-    # TODO: Noa!!!!!!!!!
-    options = combinations(symptoms, depth)
-    current = None
-    current_score = -1
-    for option in options:
-        diagnoser = build_tree(records, option)
-        score = diagnoser.calculate_success_rate(records)
-        if score > current_score:
-            current_score = score
-            current = diagnoser
+    if not (0 <= depth <= len(symptoms)):
+        raise ValueError("Not supported depth")
+    if len(set(symptoms)) != len(symptoms):
+        raise ValueError("Symptoms contains duplicates")
 
-    return current
+    current_best_diagnoser = None
+    current_best_score = -1
+
+    for subset in combinations(symptoms, depth):
+        current_diagnoser = build_tree(records, list(subset))
+        score = current_diagnoser.calculate_success_rate(records)
+
+        if score > current_best_score:
+            current_best_score = score
+            current_best_diagnoser = current_diagnoser
+
+    return current_best_diagnoser
 
 
-if __name__ == "__main__":
-
+def manually_test():
     # Manually build a simple tree.
     #                cough
     #          Yes /       \ No
@@ -177,50 +213,56 @@ if __name__ == "__main__":
     #   Yes /     \ No
     # covid-19   cold
 
-    flu_leaf = Node("covid-19", None, None)
-    cold_leaf = Node("cold", None, None)
-    inner_vertex = Node("fever", flu_leaf, cold_leaf)
-    healthy_leaf = Node("healthy", None, None)
-    root = Node("cough", inner_vertex, healthy_leaf)
+    # flu_leaf = Node("covid-19", None, None)
+    # cold_leaf = Node("cold", None, None)
+    # inner_vertex = Node("fever", flu_leaf, cold_leaf)
+    # healthy_leaf = Node("healthy", None, None)
+    # root = Node("cough", inner_vertex, healthy_leaf)
+    #
+    # diagnoser = Diagnoser(root)
+    #
+    # # Simple test
+    # diagnosis = diagnoser.diagnose(["cough"])
+    # if diagnosis == "cold":
+    #     print("Test passed")
+    # else:
+    #     print("Test failed. Should have printed cold, printed: ", diagnosis)
+    #
+    # # Add more tests for sections 2-7 here.
+    # records = [
+    #     Record("cold", ["cough"]),
+    #     Record("covid-19", ["cough", "fever"]),
+    #     Record("hepatitis", ["yellowness"]),
+    #     Record("lupus", ["fever", "fur"])
+    # ]
+    # ratio = diagnoser.calculate_success_rate(records)
+    # if ratio == 0.5:
+    #     print("Test passed")
+    # else:
+    #     print("Test failed. Should have printed 0.5, printed: ", ratio)
+    #
+    # all_illnesses = diagnoser.all_illnesses()
+    # if all_illnesses == ['healthy', 'cold', 'covid-19']:
+    #     print("Test passed")
+    # else:
+    #     print("Test failed. Should have printed the thing, printed: ", all_illnesses)
+    #
+    # paths = diagnoser.paths_to_illness('cold')
+    # if paths == [[True, False]]:
+    #     print("Test passed")
+    # else:
+    #     print("Test failed. Should have printed the thing, printed: ", paths)
+    #
+    # # symptoms = list(set(chain.from_iterable(x.symptoms for x in records)))
+    # symptoms = ['fever', 'headache', 'cough', 'fur', 'yellowness']
+    # symptoms = ['headache', 'fever', 'cough']
+    # diagnoser = build_tree(records, symptoms)
+    # print(diagnoser.root)
+    # diagnoser.minimize(True)
+    # print(diagnoser.root)
 
-    diagnoser = Diagnoser(root)
+    pass
 
-    # Simple test
-    diagnosis = diagnoser.diagnose(["cough"])
-    if diagnosis == "cold":
-        print("Test passed")
-    else:
-        print("Test failed. Should have printed cold, printed: ", diagnosis)
 
-    # Add more tests for sections 2-7 here.
-    records = [
-        Record("cold", ["cough"]),
-        Record("covid-19", ["cough", "fever"]),
-        Record("hepatitis", ["yellowness"]),
-        Record("lupus", ["fever", "fur"])
-    ]
-    ratio = diagnoser.calculate_success_rate(records)
-    if ratio == 0.5:
-        print("Test passed")
-    else:
-        print("Test failed. Should have printed 0.5, printed: ", ratio)
-
-    all_illnesses = diagnoser.all_illnesses()
-    if all_illnesses == ['healthy', 'cold', 'covid-19']:
-        print("Test passed")
-    else:
-        print("Test failed. Should have printed the thing, printed: ", all_illnesses)
-
-    paths = diagnoser.paths_to_illness('cold')
-    if paths == [[True, False]]:
-        print("Test passed")
-    else:
-        print("Test failed. Should have printed the thing, printed: ", paths)
-
-    #symptoms = list(set(chain.from_iterable(x.symptoms for x in records)))
-    symptoms = ['fever', 'headache', 'cough', 'fur', 'yellowness']
-    symptoms = ['headache', 'fever', 'cough']
-    diagnoser = build_tree(records, symptoms)
-    print(diagnoser.root)
-    diagnoser.minimize(True)
-    print(diagnoser.root)
+if __name__ == "__main__":
+    manually_test()
