@@ -5,12 +5,39 @@
 )
 
 #question()
-נניח שאם $G$ תחום כוכבי אז לכל $f in Hol(G)$ יש פונקציה קדומה.\
-נסיק את משפט קושי בתחום כוכבי: תהיי $S$ תחום כוכבי חסום ו־$G$ סביבה של $S$. אז לכל $f in Hol(G)$ מתקיים $integral_(partial S) f dif gamma = 0$.\
+נניח ש־$G$ תחום כוכבי ונוכיח שלכל לכל $f in Hol(G)$ יש פונקציה קדומה.\
+נסיק את משפט קושי בתחום כוכבי: תהיי $S$ תחום כוכבי חסום עם שפה $C^1$ למקוטעין בעלת אורך סופי (כלומר, ניתן לתאר את השפה בעזרת מסילה גזירה ברציפות ולמקוטעין) ו־$G$ סביבה של $S$. אז לכל $f in Hol(G)$ מתקיים $integral_(partial S) f dif gamma = 0$.\
 _תזכורת (קבוצה כוכבית)_: קבוצה $S subset.eq RR^n$ נקראת כוכבית אם קיים $x_0 in S$ כך שלכל $x in S$ מתקיים $[x_0, x] subset.eq S$.
 
 #proof[
-  #todo
+  יהי $z_0 in G$ עבורו לכל $z in G$ מתקיים $[z_0, z] subset.eq G$, נעזר ברמז ונגדיר
+  $ F(z) = integral_([z_0, z]) f(z) dif z $
+  מהיות $f$ אנליטית, אז עבור $z_1 in G$ ו־$epsilon>0$ יש $delta>0$ כך ש־$B_delta (z_1) subset.eq G$ ומתקיים לכל $z_2 in B_delta (z_1)$
+  $ (star) space abs(f(z_1)-f(z_2))<epsilon $
+  ולכן ניקח $z_2 in B_delta (z_1)$ ונקבל $[z_1,z_2] subset.eq B_delta (z_1) subset.eq G$.\
+  ניקח משולש $T$ להיות המשולש עם הקודקודים $z_0, z_1, z_2$.\
+  נשים לב שאם $y in T$, יש $x in [z_1, z_2]$ כך ש־$y in [z_0, x]$, אבל $x in G$ ולכן $[z_0, x] subset.eq G$ ו־$y in G$.\
+  לכן מתקיימים כל התנאים למשפט קושי במשולש ומתקיים
+  $ integral_(partial T) f(z) dif z = 0 $
+  נכתוב את המשולש בדרך אחרת מלינארית האינטגרל
+  $ integral_([z_0,z_1]) f(z) dif z + integral_([z_1, z_2]) f(z) dif z + integral_([z_2, z_0]) f(z) dif z = 0 $
+  וכן
+  $
+    F(z_2) - F(z_1) = integral_([z_0, z_2]) f(z) dif z - integral_([z_0, z_1]) f(z) dif z = -integral_([z_2, z_0]) f(z) dif z - integral_([z_0, z_1]) f(z) dif z = integral_([z_1, z_2]) f(z) dif z
+  $
+  ולכן בפרט מתקיים
+  $
+    abs(F(z_2) - F(z_1) - (z_2-z_1)f(z_1)) = abs(integral_([z_1, z_2]) (f(z)-f(z_1)) dif z) <=_((star)) abs(integral_([z_1, z_2]) epsilon dif z)=epsilon abs(z_2-z_1)
+  $
+  אבל זה בידיוק אומר
+  $ F'(z_1) = lim_(z_2 arrow.r z_1) (F(z_2)-F(z_1))/(z_2-z_1) = f(z_1) $
+  וזה נכון לכל $z_1 in G$, כלומר $F$ קדומה של $f$.\
+  נעבור לחלק השני – הסקה של משפט קושי בתחום כוכבי: תהיי $gamma : [a,b] arrow.r G$ מסילה סגורה, אז ממה שהוכחנו לעיל מתקיים $f(z)=F'(z)$, אז
+  $
+    integral_gamma f(z) dif z = integral_a^b f(gamma(t))gamma'(t) dif t = integral_a^b F'(gamma(t))gamma'(t) dif t =_"כלל שרשרת" integral_a^b dif/(dif t) (F(gamma(t))) dif t =_"המשפט היסודי" F(gamma(b))-F(gamma(a)) = 0
+  $
+  כאשר המעבר האחרון נובע מהיות המסילה מסילה סגורה, כלומר $gamma(b)=gamma(a)$.\
+  נסמן $gamma = partial S$, מסילה סגורה ורציפה למקוטעין בעלת אורך סופי והטענה נובעת.
 ]
 
 #question()
