@@ -49,21 +49,76 @@ _תזכורת_: בהינתן $f : CC arrow.r CC$ רציפה, נגדיר $M_(f,z_
 #subquestion()
 נוכיח שאם $f$ לא קבועה אז לכל $z_0$ קיים קבוע $C$ כך שלכל $r$ גדול מספיק $m_(f, z_0)>=C(r+1)$.
 
-#proof[#todo]
+#proof[
+  נקבע $z_0 in CC$.\
+  מהיות $f$ לא קבועה, קיים $n in NN$ כך ש־$f^(n) (z_0)!=0$ נקבע $n$ זה  ונקבל לכל $r>0$
+  $ abs(f^(n) (z_0))<=n!/r^n M_(f, z_0) (r) <==> M_(f, z_0) (r) >= abs(f^(n) (z_0))/n! r^n $
+  מהיות $1<=n in NN$ נובע שלכל $r>=1$ מתקיים
+  $ r^n >= r $
+  ולכן במקרה זה מתקיים
+  $ M_(f, z_0) (r) >= abs(f^(n) (z_0))/n! r $
+  בנוסף עבור $r>=1$ מתקיים
+  $ r>=1/2(r+1) $
+  כלומר
+  $ M_(f, z_0) (r) >= abs(f^(n) (z_0))/(2n!) (r+1) $
+  אז אם נסמן
+  $ C colon.eq abs(f^(n) (z_0))/(2n!) $
+  נקבל שעבור $r$ גדול מספיק ובפרט $r>=1$ נקבל
+  $ M_(f, z_0) (r) >= C(r+1) $
+]
 
 #subquestion()
 נוכיח שאם
 $ lim_(r arrow.r infinity) (log M_(f, z_0) (r))/log(r) = N < infinity $
 אז $N in NN union {0}$
 
-#proof[#todo]
+#proof[
+  מההנחה על הגבול, נובע שלכל $epsilon>0$ קיים $R_epsilon$ כך שלכל $r>R_epsilon$ מתקיים
+  $ N-epsilon < (log M_(f, z_0) (r))/log(r) < N+epsilon $
+  כלומר
+  $ (log M_(f, z_0) (r)) < (N+ epsilon) log (r) ==> M_(f, z_0) (r) < r^(N+epsilon) $
+  ומהמסקנה מנוסחת האינטגרל של קושי, לכל $n in NN$ ו־$r>0$
+  $ abs(f^(n) (z_0))<=n!/r^n M_(f, z_0) (r) $
+  כלומר מאי־השיוויון הנתון מהגבול
+  $ abs(f^(n)(z_0)) <= n!/r^n r^(N+epsilon)=n! r^(N + epsilon-n) $
+  כאשר $r>R_epsilon$ ונקבע $n>N$, אז עבור $epsilon$ קטן דיו נקבל $N+epsilon-n<0$ ונקבל
+  $
+    abs(f^(n) (z_0))<=n! r^(N + epsilon-n) stretch(arrow.r)_(r arrow.r infinity) 0 ==> f^(n) (z_0) = 0 space forall n>N
+  $
+  אבל כל הנגזרות מסדר גדול מ־$N$ מתאפסות ב־$z_0$ אז הטור טיילור של $f$ סביב $z_0$ הוא סופי, כלומר עבור $m<=N$
+  $ f(z) = sum_(k=0)^m a_k (z-z_0)^k $
+  כלומר $f$ היא פולינום מדרגה $m$ (כי החל מאינדקס מסויים כל המקדמים הם 0).\
+  לכל פולינום שאיננו אפס ממעלה $m$, קצב הגדילה חסום על־ידי המונום המוביל, כלומר
+  $ M_(f, z_0) (r) ~ abs(a_m)r^m space (lim_(r arrow.r infinity) (M_(f,z_0) (r))/(abs(a_m) r^m) = 1) $
+  ואם ניקח גבול על הלוגריתם
+  $ lim_(r arrow.r infinity) log(abs(a_m) r^m)/log(r) = lim_(r arrow.r infinity) (log abs(a_m) + m log(r))/log(r) = m $
+  אבל מהנתון
+  $ lim_(r arrow.r infinity) (log M_(f, z_0) (r))/log(r) = N $
+  כלומר $N=m in NN$ אבל הפולינום יכול להיות קבוע, אז $N in NN {0}$.
+]
 
 
 #question()
 יהיו $G$ תחום כוכבי ו־$f in Hol(G)$ שלא מתאפסת.\
 נוכיח שיש ל־$f$ לוגריתם, כלומר קיימת פונקציה $g in Hol(G)$ כך ש־$e^(g(z))=f(z)$.
 
-#proof[#todo]
+#proof[
+  נעזר ברמז ונגדיר
+  $ h(z) colon.eq (f'(z))/(f(z)) $
+  שמוגדרת היטב כי $f in Hol(G)$ והחילוק מוגדר היטב כי $f$ איננה מתאפסת ב־$G$ ועל־כן מנה של פונקציות הולומורפיות היא הולומורפית.\
+  משאלה 1 נקבל שקיימת $g_0 in Hol(G)$ כך שמתקיים
+  $ g' (z) = h(z) = (f'(z))/(f(z)) $
+  נעזר בהנחייה ונראה ש־$e^(g(z))/f$ קבועה על־ידי גזירה (מנה של פונקציות הולומורפיות היא הולומורפית וזה לא מתאפס לפי הנתון):
+  $
+    (e^(g(z)) dot.op g'(z) dot.op f(z) - f'(z) dot.op e^(g(z)))/(f(z))^2 = (e^(g(z)) dot.op (f'(z))/(f(z)) dot.op f(z) - f'(z) dot.op e^(g(z)))/(f(z))^2 = (e^(g(z)) dot.op f'(z) - f'(z)e^(g(z)))/(f(z))^2 = 0
+  $
+  אבל $G$ הוא תחום כוכבי ולכן קשיר ולפי טענה שראינו בהרצאה נובע שיש $c$ כך ש־$c= e^(g(z))/f(z)$.\
+  אבל לכל $z in G$ מתקיים $f(z)!=0$ ולכן $e^(g(z))=c dot.op f(z)$ ו־$c!=0$ ולכן קיים $alpha$ כך ש־$e^alpha = 1/c$, אז אם נגדיר
+  $
+    G(z)=g(z)+alpha ==> e^(G(z))=e^(g(z)+alpha)=e^(g(z)) dot.op e^(alpha) = e^(g(z)) dot.op 1/c =_(e^(g(z))=c dot.op f(z)) (cancel(c) dot.op f(z))/cancel(c) = f(z)
+  $
+  אבל $g$ הולומורפית ו־$alpha$ קבוע, אז $G$ הולומורפית ב־$G$ ולכן $g$ היא לוגריתם הולומורפי של $f$, כנדרש.
+]
 
 #question()
 תהיי $f: CC arrow.r CC$ שלמה, כלומר הולומורפית בכל המישור.
