@@ -425,6 +425,7 @@
 #let Bin = math.italic(math.op("Bin"))
 #let Geo = math.italic(math.op("Geo"))
 #let Poi = math.italic(math.op("Poi"))
+#let Exp = math.italic(math.op("Exp"))
 #let Var = math.op("Var")
 #let Cov = math.op("Cov")
 #let Proj = math.op("Proj")
