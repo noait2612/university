@@ -29,7 +29,16 @@ def mul_mat_vec(A: numpy.ndarray, B: numpy.ndarray) -> numpy.ndarray:
 
 
 def is_inverse_vec(A: numpy.ndarray, B: numpy.ndarray, eps: float = 1e-6) -> bool:
+    if A.size == 0:
+        return B.size == 0
+
+    if B.size == 0:
+        return False
+
     if A.shape[0] != A.shape[1] or B.shape[0] != B.shape[1] or A.shape != B.shape:
+        return False
+
+    if A.shape[0] == 0 or B.shape[0] == 0:
         return False
 
     multiplied_matrix = mul_mat_vec(A, B)

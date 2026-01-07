@@ -120,3 +120,33 @@ def test_float_precision_trap():
 
     middle_cell = result[1, 1]
     assert middle_cell == 1
+
+
+def test_dead_cell_float_trap():
+    kernel = numpy.array([[0.1, 0.2, 0], [0, 0, 0], [0, 0, 0]])
+    board = numpy.array([[1, 1, 0], [0, 0, 0], [0, 0, 0]])
+
+    result = game_of_life_kernel(board, kernel, gen_num=1, life_threshold=0.3)
+    print(result)
+    assert result[1,1] == 0
+
+
+def test_integer_integrity():
+    kernel = numpy.array([
+        [0, 1, 0],
+        [1, 0, 1],
+        [0, 1, 0]
+    ])
+
+    life_threshold = 2
+    overcrowding_threshold = 3
+
+    board_birth = numpy.array([
+        [0, 1, 0],
+        [1, 0, 1],
+        [0, 0, 0]
+    ])
+    result_birth = game_of_life_kernel(board_birth, kernel, gen_num=1,
+                                       life_threshold=life_threshold,
+                                       overcrowding_threshold=overcrowding_threshold)
+    assert result_birth[1,1] == 1

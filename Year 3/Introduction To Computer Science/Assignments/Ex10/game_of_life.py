@@ -57,7 +57,8 @@ def game_of_life_kernel(board: numpy.ndarray, kernel: numpy.ndarray, gen_num: in
                 if abs(s-life_threshold) < 1e-10: #I use epsilon since we need to support floats. I could use floor too.
                     output[i, j] = board[i, j]
 
-                if overcrowding_threshold >= s > life_threshold:
+                # This needs to be elif otherwise we can't support floats in kernel matrix as desired!
+                elif overcrowding_threshold >= s > life_threshold:
                     output[i, j] = 1
 
         board = output

@@ -78,6 +78,12 @@ def mul_mat_native(A: List[List[float]], B: List[List[float]]) -> List[List[floa
 
 
 def is_inverse_native(A: List[List[float]], B: List[List[float]], eps: float = 1e-6, ) -> bool:
+    if len(A) == 0:
+        return len(B) == 0
+
+    if len(B) == 0:
+        return False
+
     if len(A) != len(A[0]) or len(B) != len(B[0]) or len(A) != len(B):
         return False
 
