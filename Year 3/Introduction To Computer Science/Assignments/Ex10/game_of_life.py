@@ -2,9 +2,9 @@
 # FILE : game_of_life.py
 # WRITER : your_name , your_login , your_id
 # EXERCISE : intro2cs ex10 2025
-# DESCRIPTION: A class that implements game of life (math question) for default kenrel and special kernel.
+# DESCRIPTION: A class that implements game of life (math question) for default kernel and special kernel.
 # STUDENTS I DISCUSSED THE EXERCISE WITH: -
-# WEB PAGES I USED: numpy.org
+# WEB PAGES I USED: numpy.org, w3schools, docs.python.org
 # NOTES: ...
 #################################################################
 import numpy
@@ -49,13 +49,15 @@ def game_of_life_kernel(board: numpy.ndarray, kernel: numpy.ndarray, gen_num: in
     height, width = kernel.shape
     for _ in range(gen_num):
         output = numpy.zeros(board.shape)
-        input_padded = numpy.pad(board, pad_width=len(kernel)//2, mode='constant', constant_values=0)
+        input_padded = numpy.pad(board, pad_width=len(kernel) // 2, mode='constant', constant_values=0)
         for i in range(board.shape[0]):
             for j in range(board.shape[1]):
                 region = input_padded[i:i + height, j:j + width]
                 s = numpy.sum(region * kernel)
+                if abs(s-life_threshold) < 1e-10: #I use epsilon since we need to support floats. I could use floor too.
+                    output[i, j] = board[i, j]
 
-                if overcrowding_threshold > s >= life_threshold:
+                if overcrowding_threshold >= s > life_threshold:
                     output[i, j] = 1
 
         board = output

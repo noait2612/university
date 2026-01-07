@@ -14,7 +14,7 @@ def ndarray_equal(A: numpy.ndarray, B: numpy.ndarray, eps: float = 1e-6) -> bool
     if A.shape != B.shape:
         return False
 
-    return numpy.allclose(A, B, atol = eps) # atol is for The absolute tolerance parameter.
+    return numpy.allclose(A, B, atol = eps, rtol = 0) # atol is for The absolute tolerance parameter.
 
 
 def sum_matrix_vec(A: numpy.ndarray, axis: int) -> numpy.ndarray:
@@ -29,7 +29,7 @@ def mul_mat_vec(A: numpy.ndarray, B: numpy.ndarray) -> numpy.ndarray:
 
 
 def is_inverse_vec(A: numpy.ndarray, B: numpy.ndarray, eps: float = 1e-6) -> bool:
-    if A.shape[0] != A.shape[1] or B.shape[0] != B.shape[1]:
+    if A.shape[0] != A.shape[1] or B.shape[0] != B.shape[1] or A.shape != B.shape:
         return False
 
     multiplied_matrix = mul_mat_vec(A, B)

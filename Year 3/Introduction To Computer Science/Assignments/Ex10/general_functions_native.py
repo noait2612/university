@@ -11,6 +11,12 @@ from typing import List
 
 
 def list_equal(A: List[List[float]], B: List[List[float]], eps: float = 1e-6) -> bool:
+    if len(A) == 0 and len(B) == 0:
+        return True
+    if len(A) == 0 and len(B) != 0:
+        return False
+    if len(A) != 0 and len(B) == 0:
+        return False
     if len(A) != len(B) or len(A[0]) != len(B[0]):
         return False
 
@@ -72,7 +78,7 @@ def mul_mat_native(A: List[List[float]], B: List[List[float]]) -> List[List[floa
 
 
 def is_inverse_native(A: List[List[float]], B: List[List[float]], eps: float = 1e-6, ) -> bool:
-    if len(A) != len(A[0]) or len(B) != len(B[0]):
+    if len(A) != len(A[0]) or len(B) != len(B[0]) or len(A) != len(B):
         return False
 
     multiplied_matrix = mul_mat_native(A, B)
@@ -83,7 +89,7 @@ def is_inverse_native(A: List[List[float]], B: List[List[float]], eps: float = 1
 def create_identity_matrix(dimension: int) -> List[List[float]]:
     matrix = []
     for row_index in range(dimension):
-        row = [0] * dimension
+        row = [0.0] * dimension
         row[row_index] = 1.0
         matrix.append(row)
 
