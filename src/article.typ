@@ -414,10 +414,12 @@
 #let Log = math.italic(math.op("Log"))
 #let Length = math.op("Length")
 #let Area = math.op("Area")
+#let res = math.op("res")
 
 // Geneeral Calculs
 #let supp = math.op("supp")
 #let Span = math.op("Span")
+#let dist = math.op("dist")
 
 // Probability
 #let Unif = math.italic(math.op("Unif"))
