@@ -24,7 +24,7 @@
 נחשב את השונות של $X_i$ לכל $i$.
 
 #solution[
-  שוב מהיות $Y_i$ בלתי־תלויים מטענה שראינו גם בהפעלה של פונקציה רציפה עליהם האי־תלות נשמרת ולכן גם $Y_i^2, Y_(i+1)^2$ הם בלתי־תלויים ונקבל
+  מהיות $Y_i$ בלתי־תלויים מטענה שראינו גם בהפעלה של פונקציה רציפה עליהם האי־תלות נשמרת ולכן גם $Y_i^2, Y_(i+1)^2$ הם בלתי־תלויים ונקבל
   $ Var(X_i) = EE(X_i^2)-EE(X_i)^2 = EE(Y_i^2 Y_(i+1)^2) - EE(Y_i Y_(i+1))^2 = EE(Y_i^2)EE(Y_(i+1)^2)-(1/4)^2 $
   כאשר את $EE(Y_i^2)$ נחשב על־ידי טענה 8.31 – תוחלת של פונקציה של משתנה מקרי ונקבל
   $ EE(Y_i^2) = integral_0^1 y^2 dif y = [y^3/3]_(y=0)^(y=1) = 1/3 $
@@ -32,10 +32,10 @@
   $ Var(X_i) = (1/3)^2 - (1/4)^2 = 1/9 - 1/16 = 7/144 $
   בשביל השונות המשותפת עלינו להבחין ש־$X_i, X_(i+1)$ בעלי שונות משותפת כי הם שניהם מסתמכים על $Y_(i+1)$ כלומר לכל $i$ מתקיים ש־$X_i, X_(i+1)$ תלויים ולכל $j!=i+1$ מתקיים $X_i, X_j$ שהם בלתי־תלויים. ונחשב:
   $ Cov(X_i, X_(i+1)) = EE(X_i X_(i+1))-EE(X_i)EE(X_(i+1)) = EE(X_i X_(i+1)) - 1/16 $
-  ונכתוב
-  $ X_i X_(i+1) = (Y_i Y_(i+1))(Y_(i+1) Y_(i+2))=Y_i Y_(i+1)^2 Y_(i+2) $
-  ולכן מהיות המשתנים המקריים בלתי־תלויים (כזכור הפעלת הפונקציה משמרת את האי־תלות)
-  $ EE(X_i X_(i+1)) = EE(Y_i Y_(i+1)^2 Y_(i+2)) = EE(Y_i) EE(Y_(i+1)^2) EE(Y_(i+2)) = 1/2 dot.op 1/3 dot.op 1/2 = 1/12 $
+  כזכור הפעלת פונקציה רציפה משמרת את האי־תלות ומהיות המשתנים בלתי־תלויים
+  $
+    X_i X_(i+1) = (Y_i Y_(i+1))(Y_(i+1) Y_(i+2))=Y_i Y_(i+1)^2 Y_(i+2) ==> EE(X_i X_(i+1)) = EE(Y_i Y_(i+1)^2 Y_(i+2)) = EE(Y_i) EE(Y_(i+1)^2) EE(Y_(i+2)) = 1/2 dot.op 1/3 dot.op 1/2 = 1/12
+  $
   ולכן
   $ Cov(X_i, X_(i+1)) = 1/12 - 1/16 = 1/48 $
 ]
@@ -43,7 +43,26 @@
 #subquestion()
 נוכיח כי סדרת הממוצעים מקיימת $ 1/n sum_(i=1)^n X_i arrow.r^d EE(X_i) $
 
-#proof[#todo]
+#proof[
+  נגדיר
+  $ overline(X_n)=1/n sum_(i=1)^n X_i $
+  אז מכיול ריבועי של השונות נקבל
+  $
+    Var(overline(X_n))=Var(1/n sum_(i=1)^n X_i)=1/n^2 Var(sum_(i=1)^n X_i) = 1/n^2 (sum_(i=1)^n Var(X_i)+2 sum_(1<=i<j<=n) Cov(X_i, X_j))
+  $
+  והמסעיפים הקודמים אם כך
+  $
+    Var(overline(X_n))= 1/n^2 (n dot.op 7/144+ (2(n-1))/48)=1/n^2 ((7n)/144+(n-1)/24)=1/n^2 dot.op (13n-6)/(144n^2) stretch(arrow.r)_(n arrow.r infinity) 0
+  $
+  ונשים לב שמתקיים מלינארית התוחלת
+  $ EE(overline(X_n))=EE(1/n sum_(i=1)^n X_i)=1/n sum_(i=1)^n EE(X_i) = 1/n dot.op n dot.op 1/4 = 1/4 $
+  אז לכל $epsilon>0$ מאי־שיוויון צ'בישב נקבל
+  $
+    PP(abs(overline(X_n)-EE(overline(X_n)))>= epsilon)<=Var(overline(X_n))/epsilon^2 = (13n-6)/(144n^2 epsilon^2) stretch(arrow.r)_(n arrow.r infinity) 0
+  $
+  כלומר
+  $ 1/n sum_(i=1)^n X_i arrow.r^d EE(X_i) $
+]
 
 #question()
 נניח כי $X,Y ~ Exp(1)$ בלתי־תלויים ונחשב את הצפיפות של $X-Y$.
@@ -252,5 +271,22 @@ $ sum_(i=1)^infinity 2^(-i) X_i =^d U $
 $ PP(1/n sum_(i=1)^n 1/X_i >= M) stretch(arrow.r)_(n arrow.r infinity) 1 $
 
 #proof[
-  #todo
+  לכל $M>0$ נגדיר
+  $ {1/n sum_(i=1)^n 1/X_i >=M} supset {max_(1<=i<=n) 1/X_i >= M n} $
+  אז מספיק שנראה
+  $ PP(max_(1<=i<=n) 1/X_i >= M_n) stretch(arrow.r)_(n arrow.r infinity) 1 $
+  נשים לב
+  $ max_(1<=i<=n) 1/X_i >= M_n <==> min_(1<=i<=n) X_i <= 1/(M n) $
+  כלומר
+  $ PP(max_(1<=i<=n) 1/X_i >= M_n)=PP(X_1 > 1/(M n), dots.h, X_n < 1/(M n)) $
+  היות וכל $X_i ~ Unif([0,1])$ נובע כי
+  $ PP(X_i > 1/(M n))=1-1/(M n) $
+  ומהאי־תלות נקבל
+  $ PP(max_(1<=i<=n) 1/X_i >= M_n)=(1-1/(M n))^n stretch(arrow.r)_(n arrow.r infinity) 1-e^(-1/M) $
+  אבל לכל $M >0$ מתקיים $1-e^(-1/M)>0$ וכאשר $M arrow.r infinity$ הביטוי שואף ל־$1$, כלומר לכל $epsilon>0$ אפשר לבחור $M>0$ גדול מספיק כך שיתקיים
+  $ PP(1/n sum_(i=1)^n 1/X_i < M)<epsilon $
+  כלומר
+  $ PP(1/n sum_(i=1)^n 1/X_i >=M)>1-epsilon $
+  כלומר לכל $M in RR$ מתקיים
+  $ PP(1/n sum_(i=1)^n 1/X_i >= M) stretch(arrow.r)_(n arrow.r infinity) 1 $
 ]
