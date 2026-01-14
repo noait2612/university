@@ -10,12 +10,11 @@
 def uncurry(n):
     def decorator(f):
         def inner(*args):
-            if len(*args) != n:
-                raise TypeError(f"expected {n} arguments, got {len(*args)} arguments")
-            result = f(*args[0])  # This is always defined well since we assume n in NN so at least one.
-
-            for index in range(1, n):
-                result = result(*args[index])
+            if len(args) != n:
+                raise TypeError(f"expected {n} arguments, got {len(args)} arguments")
+            result = f
+            for arg in args: # This is always defined well since we assume n in NN so at least one.
+                result = result(arg)
 
             return result
 
