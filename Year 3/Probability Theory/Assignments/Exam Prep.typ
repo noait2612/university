@@ -4,23 +4,84 @@
   signature: [#align(center)[#image("../../../src/duck.png", width: 30%, fit: "contain")]],
 )
 
-#theorem("אי־שיוויון בול")[]
-#proof[]
+#theorem(
+  "רציפות פונקציית ההסתברות",
+)[יהי $(Omega, cal(F), PP)$ מרחב הסתברות ותהיי ${A_n}_(n in NN)$ סדרה עולה של מאורעות. אז מתקיים
+  $ PP(union.big_(n in NN) A_n) = lim_(n arrow.r infinity) PP(A_n) $
+]
+#proof[
+  נקבע $B_1 = A_1$ ולכל $n>1$ נגדיר $B_n = A_n without A_(n-1)$ ואלו בהכרח מאורעות זרים:\
+  כי אם $m<n$ אז לכל $omega in B_n$ מתקיים $omega in.not A_(n-1)$ ולכן מתקיים $omega in.not A_m supset B_m$.\
+  מצד שני, באינדוקציה
+  $ (star) space union.big.dot_(k in [n]) B_k = union.big_(k in [n]) A_k = A_n $
+  עבור $A_1 = B_1$ הטענה מיידית, נניח כי היא מתקיימת עבור $n>=1$ ונקבל
+  $
+    union.big.dot_(k in [n+1]) B_k = (union.big.dot_(k in [n]) B_k) union.big B_(n+1) =_"הנחת האינדוקציה" A_n union.big (A_(n+1) without A_n) =_(A_n subset A_(n+1)) A_(n+1)
+  $
+  ולכן
+  $ (star star) space union.big_(k in NN) B_k = union.big_(k in NN) A_k $
+  אם־כך מסכימות נקבל
+  $
+    PP(union.big_(k in NN) A_k) =_((star star)) PP(union.big.dot_(k in NN) B_k)=_"סכימות" sum_(k=1)^infinity PP(B_k) =_"הגדרת הטור" lim_(n arrow.r infinity) sum_(k in [n]) PP(B_k)=_"סכימות" lim_(n arrow.r infinity) PP(union.big.dot_(k in [n]) B_k) =_((star)) lim_(n arrow.r infinity) PP(A_n)
+  $
+]
 
 #pagebreak()
 
-#theorem("רציפות פונקציית ההסתברות")[]
-#proof[]
+#theorem("אי־שיוויון בול")[
+  #theorem("אי־שיוויון בול למספר מאורעות")[
+    לכל $m in NN$ ולכל סדרה של $m$ מאורעות ${A_n}_(n in [m])$ במרחב הסתברות $(Omega, cal(F), PP)$ מתקיים
+    $ PP(union.big_( n in [m]) A_n) <= sum_(n in [m]) PP(A_n) $
+  ]
+  #proof[
+    באינדוקציה על $m$, עבור $m=2$ בסיס האינדוקציה: יהיו $A,B$ מאורעות כנ"ל אז $A union B = A union.dot (B without A)$ ולכן
+    $
+      PP(A union B) =_("סכימות פונקציית ההסתברות" \ "למאורעות זרים") PP(A) + PP(B without A)<=_("מונוטוניות פונקציית ההסתברות") PP(A) + PP(B)
+    $
+    כעת נניח את נכונות הטענה עבור $m$ ונוכיחה עבור $m+1$: יהיו $A_1, dots.h, A_(m+1)$ מאורעות ונפעיל את הטענה עבור שני מאורעות $union_(i=1)^m A_i, A_(m+1)$ ונקבל
+    $
+      PP(union.big_(i=1)^(m+1) A_i)<=PP(union.big_(i=1)^m A_i) + PP(A_(m+1)) <=_("הנחת האינדוקציה") sum_(i=1)^(m+1) PP(A_i)
+    $
+    עבור מאורעות יורדים, נשתמש בהיות המשלים שלהם מאורעות עולים.
+  ]
+  #theorem("אי־שיוויון בול לסדרת מאורעות")[לכל סדרת מאורעות ${A_n}_(n in NN)$ במרחב הסתברות $(Omega, cal(F), PP)$ מתקיים
+    $ PP(union.big_(n in NN) A_n)<=sum_(n in NN) PP(A_n) $
+  ]
+  #proof[
+    נגדיר $B_k = union_(k in [n]) A_k$ וזו סדרת מאורעות עולה המקיימת $union_(n in NN) B_n = union_(n in NN) A_n$, אז
+    $
+      PP(union.big_(n in NN) A_n)=PP(union.big_(n in NN) B_n) =_"רציפות פונקציית ההסתברות" lim_(n arrow.r infinity) PP(union.big_(k in [n]) A_k)<=_"אי־שיוויון בול" lim_(n arrow.r infinity) sum_(k=1)^n PP(A_k) = sum_(k=1)^infinity PP(A_k)
+    $
+  ]
+]
 
 #pagebreak()
 
-#theorem("נוסחת ההסתברות השלמה במונחי הסתברות מותנית")[]
-#proof[]
+#theorem("נוסחת ההסתברות השלמה במונחי הסתברות מותנית")[
+  תהיי $cal(A)$ חלוקה בת־מנייה של מרחב הסתברות $(Omega, cal(F), PP)$. אז לכל מאורע $B$ מתקיים
+  $
+    PP(B) = sum_(A in cal(A) \
+    PP(A) > 0) PP(B bar A) PP(A)
+  $
+]
+#proof[
+  נתזכר את כלל השרשרת: יהיו $A,B$ מאורעות במרחב ההסתברות כך שמתקיים $PP(B)>0$, אז
+  $ PP(A bar B) PP(B) = PP(A inter B) $
+  נשתמש בנוסחת ההסתברות השלמה ונקבל
+  $
+    PP(B) = sum_(A in cal(A)) PP(A inter B) = sum_(A in cal(A) \ PP(A) > 0) PP(A inter B) + sum_(A in cal(A) \ PP(A) = 0) PP(A inter B) =_"כלל השרשרת" sum_(A in cal(A) \ PP(A) > 0) PP(B bar A)PP(A) + sum_(A in cal(A) \ PP(A) = 0) 0 = sum_(A in cal(A) \ PP(A) > 0) PP(B bar A) PP(A)
+  $
+]
 
 #pagebreak()
 
-#theorem("כלל בייס")[]
-#proof[]
+#theorem("כלל בייס")[יהי $(Omega, cal(F), PP)$ מרחב הסתברות ויהיו $A,B$ שני מאורעות בעלי הסתברות חיובית, אזי
+  $ PP(A bar B) PP(B) = PP(B bar A) PP(A) $
+  או בניסוח אחר
+  $ PP(A bar B) = PP(B bar A) PP(A)/PP(B) $]
+#proof[
+  $ PP(B) PP(A bar B) = (PP(B) PP(A inter B))/PP(B) = PP(A inter B) = (PP(A) PP(A inter B))/PP(A) = PP(B bar A) PP(A) $
+]
 
 #pagebreak()
 
@@ -29,13 +90,45 @@
 
 #pagebreak()
 
-#theorem("שוויון כמעט־תמיד גורר שיוויון התפלגויות")[]
-#proof[]
+#theorem("שוויון כמעט־תמיד גורר שיוויון התפלגויות")[
+  יהיו $X,Y$ משתנים מקריים על מרחב הסתברות $(Omega,cal(F), PP)$. אם $X=^(a.s) Y$ אז $X=^d Y$.\
+  _תזכורת_:\
+  $
+    PP(X=Y) = PP({omega bar X(omega)=Y(omega)})=1 ==> X=^(a.s) Y \
+    PP_X = PP_Y ==> X=^d Y
+  $
+]
+#proof[
+  אם $X=^(a.s) Y$ אז לכל $S in cal(F)_RR$ מתקיים לפי מונוטוניות $PP(X in S, Y in.not S) <= PP(X!=Y)=0$ ובדומה $PP(X in.not S, Y in S) = 0$, אז
+  $
+    PP_X (s) = PP(X in S) = PP(X in S, Y in S) + PP(X in S, Y in.not S)= PP(X in S, Y in S) + PP(X in.not S, Y in S) = PP(Y in S) = PP_Y (S)
+  $
+]
 
 #pagebreak()
 
-#theorem("שיוויון התפלגויות נשמר תחת הפעלת פונקציה")[]
-#proof[]
+#theorem(
+  "שיוויון התפלגויות נשמר תחת הפעלת פונקציה",
+)[יהיו $X,Y$ משתנים מקריים בדידים ושווי התפלגות (לאו דווקא על אותו מרחב הסתברות) ותהיי $f in cal(F)_(RR arrow.r RR)$ אזי $f(X)=^d f(Y)$.]
+#proof[תהיי $S subset RR$ אזי
+  $ PP_(f(X)) (S) = PP(f(X) = S) = PP(X in f^(-1)(S))=_(X=^d Y) PP(Y in f^(-1)(S)) = PP(f(Y) in S) = PP_(f(Y)) (S) $]
+
+#pagebreak()
+
+#theorem(
+  "שיוויון כמעט־תמיד נשמר תחת הפעלת פונקציה",
+)[יהיו $X,Y$ משתנים מקריים בדידים המקיימים $X=^(a.s) Y$ ותהיי $f in cal(F)_(RR arrow.r RR)$ אזי $f(X)=^(a.s) f(Y)$.]
+#proof[
+
+  מכך שמתקיים $X =^(a.s.) Y$ נובע שמתקיים $PP(X=Y)=PP({omega in X(omega)=Y(omega)})=1$, כלומר $PP(X!=Y)=0$ מהגדרת המשלים.\
+  נסמן
+  $ N colon.eq {omega in Omega bar X(omega)!=Y(omega)} $
+  נרצה להראות ש־$PP(f(X)!=f(y))=0$, אז נגדיר
+  $ N_f colon.eq {omega in Omega bar f(X(omega))!=f(Y(omega))} $
+  אם $omega in N$, מתקיים $X(omega)!=Y(omega)$ ויכול להיות $f(X(omega))!= f(Y(omega))$ ויכול להיות $f(X(omega))!=f(Y(omega))$.\
+  אם $omega in.not N$ מתקיים $X(omega)=Y(omega)$ כמספרים ממשיים ולכן מהגדרת הפונקציה נובע שמתקיים בהכרח $f(X(omega))=f(Y(omega))$, כלומר אם  \ $omega in.not N$ אז בהכרח $omega in.not N_f$.\
+  כלומר בהכרח מתקיים $N_f subset.eq N$ וממונוטוניות פונקציית ההסתברות מתקיים $PP(N_f)<=PP(N)=0$.
+]
 
 #pagebreak()
 
