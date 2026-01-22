@@ -363,6 +363,43 @@
 
 #pagebreak()
 
+#theorem("אי־שיוויון מרקוב")[
+  + תהיי $f$ מדידה ואי־שלילית, אז לכל $0<a<infinity$ מתקיים
+    $ mu(f^(-1)[alpha, infinity])<= (integral f dif mu)/a $
+  + תהיי $f:X arrow.r [0,infinity]$ אינטגרבילית. אז $mu(f^(-1)({infinity}))=0$ והקבוצה $f^(-1)((0, infinity))$ היא $sigma$־סופית.
+]
+
+#proof[
+  + נגדיר
+    $
+      E_a colon.eq f^(-1)([a, infinity]) = {x in X bar f(x) >= a} \
+      g(x) = a dot.op bb(1)_(E_a) (x)
+    $
+    אם $x in E_a$ אזי $f(x)>=a$ ו־$g(x) = a dot.op 1 = a$ ולכן $f(x) >= g(x)$.\
+    אם $x in.not E_a$ אז $f(x) >= 0$ו־$g(x) = a dot.op 0 = 0$ ולכן $f(x) >= g(x)$
+    כלומר לכל $x in X$ מתקיים $g(x) <= f(x)$.\
+    ממונוטוניות אינטגרל לבג נקבל
+    $ integral_X g dif mu <= integral_X f dif mu $
+    אבל
+    $
+      integral_X g dif mu = integral_X a dot.op bb(1)_(E_a) dif mu = a dot.op integral_X bb(1)_(E_a) dif mu = a dot.op mu(E_a)
+    $
+    כלומר
+    $ a dot.op mu(E_a) <= integral_X f dif mu $
+    היות ו־$0<a<infinity$ ניתן לחלק בלי לשנות את כיוון אי־השיוויון ונקבל
+    $ mu(E_a) <= 1/a integral_X f dif mu $
+  + מהמקרה הקודם אנחנו מקבלים שאם $integral f dif mu < infinity$ אזי אגף ימין שואף לאינסוף כאשר $a arrow.r infinity$ ולכן מרציפות המידה מלמעלה (חיתוכים יורדים) נסיק כי
+    $ mu(f^(-1)({infinity}))=0 $
+    מתקיים
+    $ mu(f^(-1)[1/n, infinity])<infinity $
+    ולכן
+    $ f^(-1)((0, infinity))=union.big_(n=1)^infinity f^(-1)([1/n, infinity]) $
+    היא $sigma$־סופית.
+
+]
+
+#pagebreak()
+
 = קבוצות ממידה אפס
 #theorem("סדרות פונקציות וכמעט־תמיד")[
   תהיי ${f_n bar X arrow.r CC}_(i=1)^n$ סדרת פונקציות מדידות המוגדרות $mu$־כמעט תמיד.\
@@ -418,10 +455,10 @@
   ולכן כקבוצה המוכלת בקבוצה ממידה אפס היא מדידה.\
   $1$ $<==$ שלמות: תהיי $E$ קבוצה המוכלת בקבוצה ממידה אפס אזי $bb(1)_(E) = 0$ כמעט־תמיד ולכן $bb(1)_(E)$ מדידה, אבל אינידיקטור מדיד אם ורק אם הקבוצה שהוא מציין מדידה, כלומר $E$ מדידה.\
   $1$ $<==$ $2$: מאחר והוכחנו ש־$1$ שקול לשלמות, אז $mu$ שלמה. נניח ש־$f_n arrow.r f$ $mu$־כמעט תמיד. \
-  לכן קיימת קבוצה $N$ כך ש־$mu(N) =0$ ובנוסף $f_n (x) arrow.r f(x)$ לכל $x in N^c$ ונגדיר $ accent(f, tilde)_n (x) = mycases(f_n (x), x in N^c, 0, x in N) $
-  אזי מהסעיף הקודם לכל $n in NN$ מתקיים ש־$accent(f, tilde)$ מדידה כי $accent(f, tilde)_n = f_n$ $mu$־כמעט תמיד ו־$accent(f, tilde)$ מתכנסת נקודתית לפונקציה
-  $ accent(f, tilde) (x) = mycases(f(x), x in N^c, 0, x in N) $
-  ולכן $accent(f, tilde)$ מדידה ול־$f=accent(f, tilde)$ $mu$־כמעט תמיד ולכן $f$ מדידה.\
+  לכן קיימת קבוצה $N$ כך ש־$mu(N) =0$ ובנוסף $f_n (x) arrow.r f(x)$ לכל $x in N^c$ ונגדיר $ tilde(f)_n (x) = mycases(f_n (x), x in N^c, 0, x in N) $
+  אזי מהסעיף הקודם לכל $n in NN$ מתקיים ש־$tilde(f)$ מדידה כי $tilde(f)_n = f_n$ $mu$־כמעט תמיד ו־$tilde(f)$ מתכנסת נקודתית לפונקציה
+  $ tilde(f) (x) = mycases(f(x), x in N^c, 0, x in N) $
+  ולכן $tilde(f)$ מדידה ול־$f=tilde(f)$ $mu$־כמעט תמיד ולכן $f$ מדידה.\
   $2$ $<==$ $1$: נניח ש־$f=g$ $mu$־כמעט תמיד ו־$f$ מדידה, אז נגדיר את $f_n$ להיות הסדרה הקבועה $f_n = f$ ומתקיים $f_n arrow.r g$ כמעט־תמיד ולכן $g$ מדידה מההנחה של $2$, כנדרש.
 ]
 
@@ -498,4 +535,86 @@
   $
   נבחין שאת גורם המכפלה מימין הוא בידיוק ביטוי של נורמה של ממוצע משוקלל של פונקציות מנורמה $1$ ולכן נוכל לחסום אותו מלעיל על־ידי $1$ ולקבל
   $ norm(f+g)_p <= norm(f)_p + norm(g)_p $
+]
+
+#pagebreak()
+
+#theorem($CC "הוא מרחב וקטור מעל" cal(L)^p (mu)$)[
+  $cal(L)^p (mu)$ הוא מרחב וקטורי מעל $CC$.
+]
+
+#proof[
+  #theorem[אם $p, q in [1,infinity]$ חזקות צמודות ו־$g in cal(L)^q (mu), f in cal(L)^p (mu)$ אזי $f dot.op g in cal(L)^1 (mu)$.]
+  #proof[
+    עבור $p, q in (1, infinity)$ הטענה נובעת מאי־שיוויון הולדר. אם $p=1$ ו־$q=infinity$ מתקיים $g in cal(L)^infinity (mu)$ וגם $(star) space$$abs(g(x))<=norm(g)_infinity$ $mu$־כמעט תמיד ולכן
+    $
+      norm(f dot.op g)_1 = integral_X abs(f dot.op g) dif mu = integral_X abs(f) dot.op abs(g) dif mu <=_((star)) integral_X abs(f) dot.op norm(g)_infinity dif mu = norm(g)_infinity dot.op integral_X abs(f) dif mu < infinity
+    $
+    כלומר $norm(f dot.op g)_1 < infinity$ ולכן $f dot.op g in cal(L)^1 (mu)$.
+  ]
+  #theorem(
+    "אי־שיוויון המשולש של נורמת p",
+  )[אם $p in [1, infinity]$ אזי לכל $f,g in cal(L)^p (mu)$ מתקיים $norm(f+g)_p <= norm(f)_p + norm(g)_p$.]
+  #proof[
+    אם $p in (1,infinity)$ אז הטענה נובעת מאי־שיוויון מניקובסקי.\
+    אם $p in {1, infinity}$ אז הטענה נובעת מאי־שיוויון המשולש של הערך המוחלט ב־$RR$.
+  ]
+  #proof[
+    נשאר להראות הומגניות – אם $f in cal(L)^p (mu)$ ו־$lambda in CC$ אזי $lambda dot.op f in cal(L)^p (mu)$:
+    $
+      integral_X abs(f lambda f)^p dif mu = integral_X (abs(lambda) dot.op abs(f))^p dif mu = integral_X abs(lambda)^p dot.op abs(f)^lambda dif mu = abs(lambda)^p integral_X abs(f)^p dif mu < infinity
+    $
+    כאשר השתמשנו בתכונות ערך המוחלט ומהומוגניות האינטגרל למכפלה בקבוע.\
+    אי־השיוויון האחרון נובע מהיות $abs(lambda)^p < infinity$ ומהיות $integral abs(f)^p dif mu < infinity$ כי $f in cal(L)^p$ ולכן המכפלה היא סופית.
+  ]
+]
+
+#pagebreak()
+
+#theorem($"הוא מרחב בנך" (L^p (mu), norm(dot.op)_p) "המרחב הנורמי" p in [1,infinity] "לכל"$)[
+  לכל $p in [1, infinity]$, המרחב הנורמי $(L^p (mu), norm(dot.op)_p)$ הוא מרחב בנך (אם ורק אם הוא שלם במטריקה המושרית מהנורמה, כלומר כל סדרת קושי היא מתכנסת).
+]
+
+#proof[
+  תהיי ${[f_n]_mu}_(n=1)^infinity subset.eq L^p (mu)$ סדרת קושי ותהיי ${f_n}_(n=1)^infinity$ נציגים של מחלקות שקילות אלו.\
+  + נניח ש־$p in [1, infinity)$, אז לכל $k in NN$ קיים $n_k in KK$ כך ש־$norm(f_(n_(k+1))-f_(n_k))<1/2^k$ כי הסדרה קושי.\
+    תהיי ${f_(n_k)}_(k=1)^infinity {f_n}_(n=1)^infinity$ תת־הסדרה המקיימת זאת ולכל $k in NN$ נגדיר
+    $ g_k colon.eq sum_(i=1)^k abs(f_(n_(i+1))-f_(n_i)) $ ומתקיים
+    $
+      norm(g_k)_p = norm(sum_(i=1)^k abs(f_(n_(i+1))-f_(n_i)))_p <= sum_(i=1)^k norm(f_(n_(i+1))-f_(n_i))_p < sum_(i=1)^k 1/2^i < infinity
+    $
+    ולכן $g_k in L^p (mu)$ ונסמן $g colon.eq sum_(i=1)^infinity abs(f_(n_(i+1))-f_(n_i))$ והסדרה ${g_k^p = [sum_(i=1)^k abs(f_(n_(i+1))-f_(n_i))]^p}_(k=1)^infinity$ היא סדרה מונוטוניות עולה של פונקציות אי־שלילית המקיימת $g_k^p stretch(arrow.r)_(k arrow.r infinity) g^p= [sum_(i=1)^infinity abs(f_(n_(i+1))-f_(n_i))]^p$ נקודתית, אז ממשפט ההתכנסות המונוטונית נקבל
+    $
+      norm(g)_p^p = integral_X (sum_(i=1)^infinity abs(f_(n_(i+1))-f_(n_i)))^p dif mu = integral_X g^p dif mu = lim_(k arrow.r infinity) integral_X g_k^p dif mu = lim_(k arrow.r infinity) norm(g_k)_p^p < 1
+    $
+    כאשר אי־השיוויון האחרון נובע מהיות
+    $
+      norm(g_k)_p < sum_(i=1)^k 1/2^i < sum_(i=1^infinity) 1/2^i =_"סכום טור הנדסי" (1/2)/(1-1/2) = 1 ==> norm(g_k)_p < 1 ==> norm(g_k)_p^p < 1
+    $
+    ולכן בפרט $norm(g)_p < 1$ ולכן $g(x) < infinity$ $mu$־כמעט לכל $x in X$ כלומר הטור מתכנס בהחלט $mu$־כמעט תמיד אז נגדיר
+    $ f colon.eq f_(n_1) + sum_(i=1)^infinity (f_(n_(i+1))-f_(n_i)) $
+    ונרצה להראות שהסדרה ${f_m}_(m=1)^infinity$ מתכנסת ל־$f$ וכן ש־$f in L^p (mu)$: $f$ מוגדרת $mu$־כמעט תמיד לכן נקבע $f=0$ היכן ש־$f$ לא מוגדרת ואז
+    $ f(x)=f_(n_1) + sum_(i=1)^infinity (f_(n_(i+1))-f_(n_i)) = lim_(i arrow.r infinity) f_(n_i) (x) $
+    שכן זהו טור טלסקופי ולכל $m in NN$ מתקיים $abs(f_m -f_(n_i))^p stretch(arrow.r)_(i arrow.r infinity) abs(f_m - f)^p$ כמעט לכל $x in X$, אז
+    $
+      norm(f_m-f)_p^p = integral_X abs(f_m-f)^p dif mu = integral_X liminf_(i arrow.r infinity) abs(f_m - f_(n_i))^p dif mu <=_"פאטו" liminf_(i arrow.r infinity) integral_X abs(f_m - f_(n_i))^p dif mu = liminf_(i arrow.r infinity) norm(f_m - f_(n_i))_p^p
+    $
+    אבל ${f_n}_(n=1)^infinity$ היא סדרת קושי, אז לכל $epsilon > 0$ קיים $N in NN$ כך שלכל $n,m in NN$ עם $n,m > N$ מתקיים $norm(f_m - f_(n_i))_p < epsilon$ ובפרט עבור $m > N$ נקבל
+    $ norm(f_m-f)_p^p <= liminf_(i arrow.r infinity) norm(f_m - f_(n_i))_p^p < epsilon^p ==> f_m stretch(arrow.r)_(m arrow.r infinity)^norm(dot.op)_p f $ וכן
+    $ norm(f)_p <=_"אי־שיוויון המשולש" norm(f-f_m)_p + norm(f_m)_p < infinity ==> f in L^p (mu) $
+    #colbreak()
+  + אם $p=infinity$ אז ${f_n}_(n=1)^infinity subset.eq L^infinity (mu)$ סדרת קושי של נציגים עבורה קיימת תת־סדרה ${f_(n_i)}_(i=1)^infinity$ כך שמתקיים
+    $ forall i in NN, space norm(f_(n_(i+1))-f_(n_i))_infinity < 1/2^k $
+    נסמן לכל $n in NN, k in NN$
+    $
+      A_n colon.eq {x in X bar abs(f_n (x))>norm(f_n)_infinity} = abs(f_n)^(-1) ((norm(f_n)_infinity, infinity]) \
+      B_(n,k) colon.eq {x in X bar abs(f_n (x) - f_k (x)) > norm(f_n - f_k)_infinity}=abs(f_n - f_k)^(-1)((norm(f_n - f_k)_infinity, infinity])
+    $
+    אבל $f_n in L^infinity (mu)$ אז $esssup{abs(dot.op)}=norm(dot.op)_infinity$ ש־$mu(A_n) = mu(B_(n,k))=0$ אז
+    $ E colon.eq (union.big_(n in NN) A_n) union (union.big_(n,k in NN) B_(n,k)) $
+    ומ־$sigma$־אדטיביות של $mu$ נקבל $mu(E)=0$.\
+    כעת $sum_(i=1)^infinity (f_(n_(i+1))-f_(n_i))$ מתכנס במידה שווה ממבחן ה־$M$ של ויירשטראס על $X without E$ (כי $sum_(k=1)^infinity 2^(-k) < infinity$) ולכן  \
+    $f_(n_1) + sum_(i=1)^infinity (f_(n_(i+1))-f_(n_i))$ מתכנסת במידה שווה ל־$f$ על $X without E$.\
+    אז ${f_n}_(n=1)^infinity$ סדרת קושי ונקבל שהגבול $f(x) = lim_(n arrow.r infinity) f_n (x)$ מוגדר וקיים $mu$־כמעט לכל $x in X$ ו־$f$ חסומה על־ידי $lim_(n arrow.r infinity) norm(f_n)_infinity$ \
+    $mu$־כמעט לכל $x in X$, כלומר $f in L^infinity (mu)$ ומתקיים $norm(f-f_n)_infinity stretch(arrow.r)_(n arrow.r infinity) 0$.
 ]
