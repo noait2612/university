@@ -330,7 +330,7 @@
 #theorem("משפט ההתכנסות הנשלטת")[
   #definition("סדרת פונקציות נשלטת")[
     תהיי $X$ קבוצה ותהיי ${f_n bar X arrow.r RR}_(n=1)^infinity$ סדרת פונקציות כלשהי ותהיי $g:X arrow.r RR$ פונקציה.\
-    נאמר שהסדרה ${f_n}_(n=1)^infinity$ נשלטת על־ידי הפונקציה $g$  מתקיים ורק אם ורק אם לכל $n in NN$ מתקיים $abs(f_n)<=g$.
+    נאמר שהסדרה ${f_n}_(n=1)^infinity$ נשלטת על־ידי הפונקציה $g$ אם ורק אם לכל $n in NN$ מתקיים $abs(f_n)<=g$.
   ]
   תהיי ${f_n bar X arrow.r CC}_(n=1)^infinity$ סדרת פונקציות מדידות המתכנסת נקודתית לפונקציה $f: X arrow.r CC$.\
   אם קיימת $g in L^1(mu)$ כך שהסדרה ${f_n}_(n=1)^infinity$ נשלטת על־ידי $g$ אזי $f in L^1 (mu)$ ומתקיים
@@ -479,6 +479,153 @@
 ]
 
 #pagebreak()
+
+#theorem("טענה על ממוצעי פונקציה")[\
+
+  _תזכורת (ממוצע של פונקציה)_: יהי $(X, cal(A), mu)$ מרחב מידה סופי, תהיי $f in L^1 (mu)$ ותהיי $E in cal(A)$ קבוצה מדידה עם $mu(E)>0$.\
+  הממוצע של $f$ על $E$ ביחס ל־$mu$ הוא
+  $ A_E (f) colon.eq 1/mu(E) integral_E f dif mu $
+  ועכשיו למשפט:\
+  יהי $(X, cal(A), mu)$ מרחב מידה סופי ותהיי $f in L^1 (mu)$. אם $Omega subset.eq CC$ קבוצה סגורה כך שלכל קבוצה מדידה $E in cal(A)$ עם $mu(E)>0$ מתקיים $A_E (f) in Omega$ אז $f(x) in Omega$ $mu$־כמעט לכל $x in X$.
+]
+
+#proof[
+  לכל $r>0$ ולכל $alpha in CC$ נסמן ב־$overline(B)_r (alpha)$, הכדור הסגור ברדיוס $r$ סביב $alpha$.\
+  מכך ש־$Omega$ סגורה נובע כי $Omega^c$ פתוחה ולכן יש איחוד בן־מנייה של כדורים פתוחים שעל־ידו ניתן לייצג את $Omega^c$.\
+  אבל ב־$CC$, כל כדור פתוח ניתן להצגה כאיחוד בן־מנייה של כדורים סגורים, ולכן $Omega^c$ היא איחוד בן־מנייה של כדורים סגורים.\
+  לכן, מספיק להראות שעבור כל $overline(B)_r (alpha) subset.eq Omega^c$ מתקיים $mu(f^(-1)(overline(B)_r (alpha)))=0$, כאשר
+  $ f^(-1) (overline(B)_r (alpha)) = {x in X bar f(x) in overline(B)_r (alpha)} $
+  נניח בשליילה שקיים כדור סגור $overline(B)_r (alpha) subset.eq Omega^c$ כך ש־$mu(f^(-1)(overline(B)_r (alpha)))>0$ ונסמן $E colon.eq. f^(-1) (overline(B)_r (alpha))$.\
+  על $E$ מתקיים $abs(f-alpha)<=r$ ולכן
+  $
+    abs(A_E (f) - alpha)= abs(1/mu(E) integral_E f dif mu - 1/mu(E) dot.op mu(E) dot.op alpha)= abs(1/mu(E) integral_E f dif mu - 1/mu(E) integral_E alpha dif mu) \
+    = abs(1/mu(E) (integral_E f dif mu - integral_E alpha dif mu))=_("לינאריות האינטגרל" \
+    mu(E) > 0) 1/mu(E) abs(integral_E (f-alpha) dif mu) <=_"אי־שיוויון המשולש" 1/mu(E) integral_E abs(f-alpha) dif mu <= 1/mu(E) integral_E r dif mu \
+    = 1/mu(E) dot.op r dot.op mu(E) = r
+  $
+  כלומר $abs(A_E (f) - alpha)<=r$ ולכן $A_E (f) in overline(B)_r (alpha) subset.eq Omega^c$ ולכן $A_E (f) in Omega^c$.\
+  אבל זו סתירה להנחה ש־$A_E (f) in Omega$.
+]
+
+#pagebreak()
+
+= משפט ההצגה של ריס
+
+#pagebreak()
+
+= רגולריות ומידות רדון
+#theorem($"־קומפקטי"sigma "תכונות מידת רדון על מרחב"$)[
+  יהי $(X, cal(m), mu)$ מרחב מידה המכיל את $sigma$־אלגברת בורל על $X$.
+  \ אם $X$ הוא $sigma$־קומפקטי ו־$mu$ מידת רדון אז מתקיימים
+  + לכל $epsilon > 0$ ולכל $E in cal(m)$ קיימת קבוצה פתוחה $V subset.eq X$ וקבוצה סגורה $F subset.eq X$ עם $F subset.eq E subset.eq V$ כך ש־$mu(V without F)<epsilon$
+  + כל קבוצה $E in cal(m)$ היא רגולרית פנימית וחיצונית
+  + לכל $E in cal(m)$ קיימות $A,B in cal(m)$ כאשר $A$ היא $F_sigma$ ו־$B$ היא $G_sigma$ כך ש־$A subset.eq E subset.eq B$ וגם $mu(B without A)=0$
+]
+
+#proof[
+  ראשית מהיות $X$ $sigma$־קומפקטי נובע שקיים אוסף בן־מנייה של קבוצות קומפקטיות ${K_n}_(n=1)^infinity$ כך ש־$X = union_(n=1)^infinity K_n$.\
+  + תהיי $E in cal(m)$ מדידה
+    + מהיות ${K_n}_(n=1)^infinity$ כיסוי של $X$ מתקיים ש־$E = union_(n=1)^infinity E inter K_n$.\
+      מהיות $mu$ מידת רדון ו־$K_n$ קומפקטית נובע ש־$mu(K_n)<infinity$ לכל $n in NN$ ולכן בפרט ממונטוניות $mu(E inter K_n)<infinity$.\ מהרגולריות החיצונית של $mu$ נובע שלכל $epsilon>0$ קיימת $V_n in cal(m)$ פתוחה עם $E inter K_n subset.eq V_n$ כך ש־$mu(V_n)<_((star)) mu(E inter K_n)+epsilon/2^(n+1)$.\
+      נסמן $V colon.eq union_(n=1)^infinity V_n$ ומתקיים מכך ש־$E inter K_n subset.eq K_n$
+      $
+        V without E = (union.big_(n=1)^infinity V_n) without (union.big_(n=1)^infinity E inter K_n) subset.eq union.big_(n=1)^infinity V_n without (E inter K_n)
+      $
+      ולכן
+      $
+        mu(V without E)<=_"מונוטוניות" mu(union.big_(n=1)^infinity V_n without (E inter K_n)) <=_"תת־אדטיביות" sum_(n=1)^infinity mu(V_n without (E inter K_n))= sum_(n=1)^infinity (mu(V_n) - mu(E inter K_n))<_((star)) sum_(n=1)^infinity epsilon/2^(n+1) = epsilon/2
+      $
+    + עבור $E^c in cal(m)$ מתקיים גם ש־$E^c = union_(n=1)^infinity E^c inter K_n$ אפשר לעשות את אותו תהליך שוב:
+      מהיות $mu$ מידת רדון נובע כי $E^c inter K_n$ רגולרית חיצונית ולכן קיימת פתוחה $U_n in cal(m)$ עם $E^c inter K_n subset.eq U_n$ כך ש־$mu(U_n)<_((diamond))mu(E^c inter K_n)+epsilon/2^(n+1)$.\
+      נסמן $U colon.eq union_(n=1)^infinity U_n$ ואז $U$ פתוחה כאיחוד של פתוחות ו־$E^c subset.eq U$ (כי $E^c = union_(n=1)^infinity E^c inter K_n subset.eq union_(n=1)^infinity U_n = U$) ונקבל
+      $
+        U without E^c = (union.big_(n=1)^infinity U_n) without (union.big_(n=1)^infinity E^c inter K_n) subset.eq union.big_(n=1)^infinity U_n without (E^c inter K_n)
+      $
+      ובהתאם
+      $
+        mu(U without E^c) <= mu(union.big_(n=1)^infinity U_n without (E^c inter K_n))<= sum_(n=1)^infinity mu(U_n without E^c inter K_n) = sum_(n=1)^infinity mu(U_n)-mu(E^c inter K_n)<_((diamond)) sum_(n=1)^infinity epsilon/2^(n+1) = epsilon/2
+      $
+      אז אם נסמן $F colon.eq U^c$ נקבל
+      + $U$ פתוחה $==$ $F$ סגורה
+      + $E^c subset.eq U$ $<==$ $U^c subset.eq E$ $<==$ $F subset.eq E$
+      + מתקיים
+        $
+          E without F =E inter F^c = F^c inter E = F^c without E^c ==> mu(E without F) = mu(F^c without E^c) = mu(U without E^c) < epsilon/2
+        $
+    אם כך קיבלנו בסך־הכל קבוצה פתוחה $E subset.eq V$ ו־$F subset.eq E$ סגורה המקיימות
+    $
+      (1) space mu(V without E) = mu(V)-mu(E) < epsilon/2 wide (2) space mu(E without F) = mu(E) - mu(F) < epsilon/2
+    $
+    ולכן
+    $
+      mu(V without F) = underbrace(mu(V) - mu(E), mu(V without E)) + underbrace(mu(E) - mu(F), mu(E without F)) <_((1), (2)) epsilon/2 + epsilon/2 = epsilon ==> mu(V without F) < epsilon
+    $
+  + מהסעיף הקודם, לכל $E in cal(m)$ קיימת קיימת קבוצה סגורה $F in cal(m)$ עם $F subset.eq$ ו־$mu(E without F)<epsilon/2$ ושוב מה־$sigma$־קומפקטיות, $F = union_(n=1)^infinity F inter K_n$, אבל לכל $n$, $F inter K_n$ היא קבוצה קומפקטית (כי חיתוך של קבוצה קומפקטית עם קבוצה סגורה הוא קומפקטי) ולכן לכל $N in NN$ נובע כי $union_(n=1)^N (F inter K_n)$ היא קבוצה קומפקטית כאיחוד סופי של קומפקטיות, אז מרציפות המידה לאיחודים עולים נקבל
+    $
+      lim_(N arrow.r infinity) mu(union.big_(n=1)^N F inter K_n)=mu(union.big_(n=1)^infinity F inter K_n)=mu(F) ==> mu(F) = lim_(N arrow.r infinity) mu(union.big_(n=1)^N F inter K_n)
+    $
+    כלומר לכל $epsilon >0$ קיים $N in NN$ כך שלכל $k>= N$ מתקיים
+    $ mu(F without union.big_(n=1)^k F inter K_n) = mu(F) - mu(union.big_(n=1)^k F inter K_n) < epsilon/2 $
+    נסמן $K colon.eq union_(n=1)^N F inter K_n$ ואז $K subset.eq F subset.eq E$ כאשר $K$ קומפקטית ומאי־השיוויון לעיל נקבל שלכל $epsilon > 0$ קיימת $K subset.eq X$ קומפקטית עם $K subset.eq E$ כך שמתקיים
+    $
+      mu(E) - mu(K) = mu(E) - mu(F) + mu(F) - mu(K) = mu(E without F) + mu(F without K) < epsilon/2 + epsilon/2 = epsilon \
+      ==> mu(E) - mu(K) < epsilon <==> mu(K) > mu(E)-epsilon ==> mu(E) = sup {mu(C) bar C subset.eq E "קומפקטית " C}
+    $
+    כלומר $E in cal(m)$ רגולרית פנימית ומהיות $mu$ מידת רדון ולכן רגולרית חיצונית ביחס לכל קבוצה מדידה, מהיות $E in cal(m)$ שרירותי נובע כי סעיף 2 נכון.
+  + תהיי $E in cal(m)$. מסעיף 1 נובע קיום של $V_n in cal(m)$ פתוחה ו־$F_n in cal(m)$ סגורה עם $F_n subset.eq E subset.eq V_n$ כך ש־$mu(V_n without F_n)<1/n$.\
+    נגדיר $A colon.eq union_(n=1)^infinity F_n, B colon.eq union_(n=1)^infinity V_n$ אז $A$ היא $F_sigma$ ו־$B$ היא $G_sigma$ ומתקיים
+    $
+      B without A = inter.big_(n=1)^infinity V_n without union.big_(n=1)^infinity F_n = inter.big_(n=1)^infinity V_n inter(union.big_(n=1)^infinity F_n)^c = (inter.big_(n=1)^infinity V_n) inter (inter.big_(n=1)^infinity F_n^c) subset.eq inter.big_(n=1)^infinity (V_n inter F_n^c) = inter.big_(n=1)^infinity (V_n without F_n)
+    $
+    אבל $mu(V_n without F_n) < 1/n$ ולכן
+    $
+      forall n in NN, space 0<=mu(B without A)<=mu(inter.big_(n=1)^infinity V_n without F_n) <=_(inter.big_(n=1)^infinity V_n without F_n subset.eq V_n without F_n) mu(V_n without F_n) < 1/n stretch(arrow.r)_(n arrow.r infinity) 0
+    $
+]
+
+#pagebreak()
+
+#theorem("תנאים שגוררים שמידה היא מידת רדון")[
+  יהי $X$ מרחב האוסדרוף קומפקטי־מקומית המקיים שכל קבוצה פתוחה בו היא $sigma$־קומפקטית.\
+  אם $mu$ מידה על $BB(X)$ המקיימת $mu(K)<infinity$ לכל $K subset.eq X$ קומפקטית, אזי $mu$ היא מידת רדון על $cal(m)$ וכל קבוצה מדידה $E in cal(m)$ היא רגולרית פנימית וחיצונית.
+]
+#proof[
+  נחלק את ההוכחה לשלבים כדי לבנות מפתח:
+  + *סופית על קומפקטיות:* מהיות $mu$ סופית על קומפקטיות, נקבל ש־$Lambda f = integral_X f dif mu$ היינו פונקציונל לינארי חיובי על $C_c (X)$.
+  + *משפט ההצגה של ריס*: ממשפט ההצגה של ריס נובע שקיימת מידת רדון $lambda$ על $X$ המקיימת $integral_X f dif lambda =_((star)) integral_X f dif mu$, לכל $f in C_C (X)$.
+  + *שימוש ב־$sigma$־קומפקטיות:* תהיי $V in cal(m)$ פתוחה, מהנתון נובע שהיא $sigma$־קומפקטית ולכן קיים אוסף ${K_n}_(n=1)^infinity$ של קבוצות קומפקטיות כך שמתקיים $ V = union.big_(n=1)^infinity K_n $
+  + *שימוש בלמה של אוריסון:* מהלמה, נובע שלכל $n in NN$ קיימת $g_n in C_C (X)$ עם $K_n prec g_n prec V$.\
+    _תזכורת (הלמה של אוריסון):_ כי מהלמה של אוריסון, במרחב האוסדרוף קומפקטי־מקומית, לכל $K,V subset.eq X$ עם $K subset.eq V$ כאשר $K$ קומפקטית\
+    ו־$V$ פתוחה, קיימת $f in C_C (X)$ המקיימת $K prec f prec V <==> bb(1)_(K) <= f, supp(f) subset.eq V$
+  + *משפט ההתכנסות המונוטונית:* תהיי ${f_N}_(N=1)^infinity$ סדרת פונקציות המוגדרת על־ידי
+    $ forall N in NN, space f_N colon.eq max_(i in [N]) {g_i} $
+    נשים לב שמתקיים
+    + ${f_N}_(N=1)^infinity subset.eq C_C (X)$
+    + ${f_N}_(N=1)^infinity$ מונוטונית עולה
+    + $f_N stretch(arrow.r)_(N arrow.r infinity) bb(1)_(V)$ נקודתית כי $V = union_(n=1)^infinity K_n$ ו־$K_n prec g_n prec V$
+    אם־כך, אנחנו מקיימים את תנאי משפט ההתכנסות המונוטונית ולכן נקבל
+    $
+      mu(V) = integral_X bb(1)_(V) dif mu = integral_X lim_(N arrow.r infinity) f_N dif mu = lim_(N arrow.r infinity) integral_X f_N dif mu = lim_(N arrow.r infinity) integral_X f_N dif lambda = integral_X lim_(N arrow.r infinity) f_N dif lambda = integral_X bb(1)_(V) dif lambda
+    $
+    כלומר לכל $V in cal(m)$ פתוחה מתקיים $mu(V)=lambda(V)$
+  + *שימוש בתכונות מידת רדון:* יהי $epsilon>0$, מהיות $lambda$ מידת רדון נובע שלכל $E in cal(m)$ קיימת קבוצה פתוחה $U subset.eq X$  וקבוצה סגורה $F subset.eq X$ עם $F subset.eq E subset.eq U$ כך ש־$mu(V without F)<epsilon$.\
+    בפרט, נובע מהיות $F subset.eq E$ כי $U without E subset.eq U without F$ ולכן ממונוטוניות $lambda(U without E)<_((star)) epsilon$.\
+    אבל $U without F$ היא פתוחה (כי הפרש של פתוחה וסגורה היא פתוחה) ו־$mu(V)=lambda(V)$ לכל פתוחה ומדידה, ולכן $mu(U without F) = lambda(U without F) < epsilon$, כלומר
+    $ mu(U) - mu(E) <=_("מונוטוניות") mu(U) - mu(F) = mu(U without F) < epsilon ==> mu(U) - epsilon < mu(E) $
+    ולכן מתקיים
+    $
+      lambda(E)-epsilon <=_"מונוטוניות" lambda(U) - epsilon =_(lambda(U)=mu(U) \
+      "פתוחה" U "עבור") mu(E) <_"מונוטוניות" mu(U) =_(lambda(U)=mu(U) \
+      "פתוחה" U "עבור") lambda(U) <_(star) lambda(E) + epsilon \
+      ==> lambda(E) - epsilon < mu(E) < lambda(E) + epsilon <==> -epsilon < mu(E) - lambda(E) < epsilon <==> abs(mu(E) - lambda(E))<epsilon
+    $
+    מהיות $epsilon$ שרירותי נובע כי $mu(E) = lambda(E)$ לכל $E in cal(m)$ כלומר $mu=lambda$ ולכן $mu$ מידת רדון, ומתכונות מידת רדון נובע כי כל קבוצה מדידה \
+    $E in cal(m)$ היא רגולרית פנימית וחיצונית.
+]
+
+#pagebreak()
+
+= התכנסות חלשה-\*
 
 = מרחבי $L^p$
 #theorem(
