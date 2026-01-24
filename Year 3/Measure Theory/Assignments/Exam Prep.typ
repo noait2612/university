@@ -4,6 +4,8 @@
   signature: [#align(center)[#image("../../../src/duck.png", width: 30%, fit: "contain")]],
 )
 
+#let Leb = math.op("Leb")
+
 #set heading(numbering: "1.1")
 #outline(depth: 2)
 
@@ -486,7 +488,8 @@
   הממוצע של $f$ על $E$ ביחס ל־$mu$ הוא
   $ A_E (f) colon.eq 1/mu(E) integral_E f dif mu $
   ועכשיו למשפט:\
-  יהי $(X, cal(A), mu)$ מרחב מידה סופי ותהיי $f in L^1 (mu)$. אם $Omega subset.eq CC$ קבוצה סגורה כך שלכל קבוצה מדידה $E in cal(A)$ עם $mu(E)>0$ מתקיים $A_E (f) in Omega$ אז $f(x) in Omega$ $mu$־כמעט לכל $x in X$.
+  יהי $(X, cal(A), mu)$ מרחב מידה סופי ותהיי $f in L^1 (mu)$. אם $Omega subset.eq CC$ קבוצה סגורה כך שלכל קבוצה מדידה $E in cal(A)$ עם $mu(E)>0$ מתקיים \
+  $A_E (f) in Omega$ אז $f(x) in Omega$ $mu$־כמעט לכל $x in X$.
 ]
 
 #proof[
@@ -718,6 +721,21 @@
 
 #pagebreak()
 
+#theorem("טענות חשובות מתרגילי הבית")[
+  #theorem($L^p "הכלת מרחבי"$)[
+    יהי $(X, cal(A), mu)$ מרחבי מידה $sigma$סופי ויהיו $q<= p in [1, infinity]$
+    + $L^p (mu) subset.eq L^q (mu) <==> mu(X) < infinity$
+    + $L^q (mu) subset.eq L^p (mu) <==> exists epsilon > 0, space forall A in cal(A), space mu(A) < epsilon ==> mu(A) = 0$
+  ]
+  #theorem($L^infinity "תכונות"$)[
+    נניח ש־$(X, cal(A), mu)$ מרחב מידה סופי ותהיי $f in L^infinity (mu)$
+    + אם $norm(f)_infinity = 1$ אז הסדרה ${a_n}_(n=1)^infinity$ המוגדרת על־ידי $a_n = integral_X abs(f)^n dif mu$ מתכנסת
+    + אם $norm(f)_infinity > 0$ אזי $ lim_(n arrow.r infinity) norm(f)_(n+1)^(n+1)/norm(f)_n^n = norm(f)_infinity $
+  ]
+]
+
+#pagebreak()
+
 #theorem($"הוא מרחב בנך" (L^p (mu), norm(dot.op)_p) "המרחב הנורמי" p in [1,infinity] "לכל"$)[
   לכל $p in [1, infinity]$, המרחב הנורמי $(L^p (mu), norm(dot.op)_p)$ הוא מרחב בנך (אם ורק אם הוא שלם במטריקה המושרית מהנורמה, כלומר כל סדרת קושי היא מתכנסת).
 ]
@@ -757,11 +775,219 @@
       A_n colon.eq {x in X bar abs(f_n (x))>norm(f_n)_infinity} = abs(f_n)^(-1) ((norm(f_n)_infinity, infinity]) \
       B_(n,k) colon.eq {x in X bar abs(f_n (x) - f_k (x)) > norm(f_n - f_k)_infinity}=abs(f_n - f_k)^(-1)((norm(f_n - f_k)_infinity, infinity])
     $
-    אבל $f_n in L^infinity (mu)$ אז $esssup{abs(dot.op)}=norm(dot.op)_infinity$ ש־$mu(A_n) = mu(B_(n,k))=0$ אז
+    אבל $f_n in L^infinity (mu)$ אז מהגדרה $esssup{abs(dot.op)}=norm(dot.op)_infinity$ ש־$mu(A_n) = mu(B_(n,k))=0$ אז
     $ E colon.eq (union.big_(n in NN) A_n) union (union.big_(n,k in NN) B_(n,k)) $
     ומ־$sigma$־אדטיביות של $mu$ נקבל $mu(E)=0$.\
     כעת $sum_(i=1)^infinity (f_(n_(i+1))-f_(n_i))$ מתכנס במידה שווה ממבחן ה־$M$ של ויירשטראס על $X without E$ (כי $sum_(k=1)^infinity 2^(-k) < infinity$) ולכן  \
     $f_(n_1) + sum_(i=1)^infinity (f_(n_(i+1))-f_(n_i))$ מתכנסת במידה שווה ל־$f$ על $X without E$.\
     אז ${f_n}_(n=1)^infinity$ סדרת קושי ונקבל שהגבול $f(x) = lim_(n arrow.r infinity) f_n (x)$ מוגדר וקיים $mu$־כמעט לכל $x in X$ ו־$f$ חסומה על־ידי $lim_(n arrow.r infinity) norm(f_n)_infinity$ \
     $mu$־כמעט לכל $x in X$, כלומר $f in L^infinity (mu)$ ומתקיים $norm(f-f_n)_infinity stretch(arrow.r)_(n arrow.r infinity) 0$.
+]
+
+#pagebreak()
+
+#theorem($L^p (mu)"צפופה ב־" cal(S)$)[
+  יהי $cal(S) subset.eq CC^X$ האוסף הנתון על־ידי
+  $ cal(S) colon.eq { s:X arrow.r CC, "פשוטה" s bar mu({x in X bar s(x) != 0}) < infinity} $
+  אזי לכל $p in [1, infinity)$ מתקיים ש־$cal(S)$ צפופה ב־$L^p (mu)$ (כלומר, לכל $f in L^p (mu)$ קיימת סדרת פונקציות ${s_n}_(n=1)^infinity subset.eq cal(S)$ כך ש־$s_n stretch(arrow.r)_(n arrow.r infinity)^norm(op(dot))_p f$).
+]
+
+#proof[
+  מכך שלכל $s in cal(S)$ מתקיים $abs(s(X))<infinity$, יחד עם התנאי $mu({x in X bar s(x) != 0}) < infinity$ נסיק כי $S subset.eq L^p (mu)$ לכל $p in [1,infinity)$.\
+  תהיי $f in L^p (mu)$ אי־שלילית ותהיי ${s_n : X arrow.r CC}_(n=1)^infinity$ המתכנסת אליה נקודתית.\
+  אזי מהתנאי $0<=s_n <= f in L^p (mu)$ נובע ${s_n}_(n=1)^infinity subset.eq L^p (mu)$.\
+  נניח בשלילה שקיים $n_0 in NN$ כך ש־$s_(n_0) in.not cal(S)$, כלומר $mu({x in X bar s_(n_0) (x) != 0}) = infinity$, אז נסמן
+  $ c colon.eq min {0<=alpha < infinity bar mu({x in X bar s_(n_0) (x) = alpha})}=alpha $
+  שמוגדר היטב כי $abs(s(X))<infinity$.\
+  מתקיים
+  $
+    s_(n_0)^(-1) ({alpha}) = {x in X bar s_(n_0) (x) = alpha} ==> c = min {alpha in [0, infinity) bar mu(s_(n_0)^(-1)({alpha}))=infinity}
+  $
+  ולכן
+  $
+    norm(f)_p^p = integral_X abs(f)^p dif mu =_((1)) integral_X f^p dif mu >=_((2)) integral_X s_(n_0)^p dif mu >=_((3)) integral_(s_(n_0)^(-1)({c})) s_(n_0)^p dif mu >=_((4)) c^p dot.op mu(s_(n_0)^(-1) ({c}))=infinity
+  $
+  כאשר
+  + נובע מהיות $f$ אי־שלילית
+  + לכל $n in NN$, $f>=s_n >=0$ אם ורק אם $f^p >= s_n^p >=0$
+  + מונוטוניות המידה ביחס להכלה
+  + מהגדרת $s_(n_0)^(-1)({c})$ ומהגדרת $c$
+  כלומר $norm(f)_p^p = infinity <==> norm(f)_p = infinity$ אבל $f in L^p (mu)$ וזאת סתירה ולכן $mu({x in X bar s_n (x) != infinity})< infinity$ לכל $n in NN$.\
+  מתקיים
+  $
+    s_n stretch(arrow.r)_(n arrow.r infinity) f <==> s_n-f stretch(arrow.r)_(n arrow.r infinity) 0 <==> abs(s_n -f) stretch(arrow.r)_(n arrow.r infinity) 0 <==> abs(s_n -f)^p stretch(arrow.r)_(n arrow.r infinity) 0
+  $
+  כלומר $abs(s_n -f)^p stretch(arrow.r)_(n arrow.r infinity) 0$ נקודתית ומתקיים לכל $n in NN$
+  $ abs(f-s_n)^p = (f-s_n)^p <= f^p in L^p (mu) $
+  כלומר הסדרה ${abs(f-s_n)^p}_(n=1)^infinity$ נשלטת על־ידי הפונקציה $f^p$ אבל $f in L^p (mu)$ ולכן $f in L^1 (p)$ וממשפט ההתכנסות הנשלטת
+  $
+    norm(f-s_n)_p^p = integral_X abs(f-s_n)^p dif mu stretch(arrow.r)_(n arrow.r infinity) 0 ==> s_n stretch(arrow.r)_(n arrow.r infinity)^norm(dot.op)_p f
+  $
+  מהיות $f$ שרירותית נובע כי ניתן לקרב כל $f in L^p (mu)$ על־ידי איברים מ־$cal(S)$ ולכן $overline(cal(S))=L^p (mu)$.
+]
+#remark($L^infinity"אי־נכונות הטענה ב־"$)[
+  $cal(S)$ איננה צפופה ב־$L^infinity (Leb_(RR))$: ניקח $f(x) = 1$ לכל $x in RR$ ו־$f in L^infinity (RR)$ כי $norm(f)_infinity = 1$.\
+  תהיי $s in cal(S)$ ולכן קיימת $E$ כך ש־$mu(E)<infinity$ ו־$s$ נתמכת על $E$ ולכן
+  $ s(x) = 0 space forall x in E^c $
+  אזי
+  $ norm(f-s)_infinity = esssup_(x in RR) abs(f(x)-s(x)) $
+  אבל $mu(RR)=infinity$ ו־$mu(E)<infinity$ ולכן $mu(E^c)=infinity$ וכמובן איננה ממידה אפס ועל $E^c$ מתקיים
+  $ abs(f(x)-s(x))=abs(1-0)=1 ==> norm(f-s)_infinity >=1 $
+  אז אי אפשר לבנות סדרה שמתכנסת ל־$0$ ולכן $cal(S)$ לא צפופה ב־$L^infinity (Leb_(RR))$.
+]
+
+#pagebreak()
+
+#theorem("קירוב על־ידי פונקציות רציפות")[
+  יהי $X$ מרחב האוסדרוף קומפקטי־מקומית ותהיי $mu$ ממידת רדון על $X$.\
+  לכל $p in [1, infinity)$ הקבוצה $C_C (X)$ צפופה ב־$L^p (mu)$.
+]
+#proof[
+  + *$C_C (X) subset.eq L^p (mu)$:* אם $f in C_C (X)$ אזי $f$ רציפה ו־$supp(f)$ קומפקטית ולכן $f$ חסומה ב־$supp(f)$ וכן $abs(f)^p$ חסומה ב־$supp(f)$ ולכן קיים $M>0$ כך ש־$abs(f)^p <= M$ על $supp(f)$.\
+    $mu$ מידת רדון ולכן היא סופית על קומפקטיות ומתקיים $mu(supp(f))<infinity$ ולכן
+    $
+      norm(f)_p^p = integral_(supp(f) union.dot)(supp(f))^c abs(f)^p dif mu = integral_(supp(f)) abs(f)^p dif mu + integral_((supp(f))^c) abs(f)^p dif mu = integral_(supp(f)) abs(f)^p dif mu \
+      <= integral_(supp(f)) M dif mu = M dot.op mu(supp(f))<infinity ==> f in L^p (X)
+    $
+  + *שימוש בצפיפות $cal(S)$*:
+    אז אם
+    $ cal(S) colon.eq { s:X arrow.r CC, "פשוטה" s bar mu({x in X bar s(x) != 0}) < infinity} $
+    מספיק שנראה $S subset.eq overline(C_C (X))$ כי אז נקבל $L^p (mu) = overline(S) subset.eq overline(C_C (X)) subset.eq overline(L^p (mu))=L^p (mu)$ שהמעבר האחרון נובע מהיות $(L^p (mu), norm(dot.op)_p)$ מרחב שלם.\
+    אז תהיי $s in cal(S)$ וממשפט Lusin, לכל $epsilon > 0$ קיימת $g in C_C (X)$ עם
+    $ sup_(x in X) {abs(g(x))}<=sup_(x in X) {abs(s(x))} eq.colon M_s $
+    כך שמתקיים
+    $ mu({x in X bar s(x) != g(x)})<<epsilon^p/(2^p M_s^p) $
+    ומאי־שיוויון המשולש נקבל $abs(g-s)<=2M_s$.\
+    נסמן
+    $ A colon.eq { x in X bar g(x) = s(x)} $
+    ואז על $A$ מתקיים $abs(g-s)^p = eq.triple 0$ וגם $mu(A^c)<epsilon^p/(2^p M_s^p)$ ונקבל
+    $
+      norm(g-s)_p^p = integral_X abs(g-s)^p dif mu = integral_(A union.dot A^c) abs(g-s)^p dif mu = integral_A abs(g-s)^p dif mu + integral_(A^c) abs(g-s)^p dif mu \
+      <= integral_(A^c) 2^p M_s^p dif mu = 2^p M_s^p dot.op mu(A^c) < 2^p M_s^p dot.op epsilon^p/(2^P M_s^p)=epsilon^p
+    $
+    כלומר
+    $ norm(g-s)_p^p < epsilon^p ==> norm(g-s)_p < epsilon $
+    אז הטענה נכונה לכל $epsilon>0$ ו־$M_s$ תלוי ב־$s$ ולא ב־$g$ אז לכל $s$ ניתן לצוא חסם $M_s$ שחוסם את $g in C_C (X)$, כלומר כל $s in cal(S)$ ניתן לקירוב על־ידי פונקציה מ־$C_C (X)$ ולכן $C_C (X)$ צפופה ב־$cal(S)$ כשהאחרון צפוף ב־$L^p (mu)$ ולכן $C_C (X)$ צפוף ב־$L^p (mu)$.
+]
+#remark($L^infinity"אי־נכונות הטענה ב־"$)[
+  הדוגמה מהטענה הקודמת מראה את אי־נכונות הטענה גם כאן.
+]
+
+#pagebreak()
+
+= יחסים בין מידות
+תהיינה $mu, nu$ מידות על מרחב מדיד $(X, cal(A))$.
+#definition("מידה רציפה בהחלט")[
+  נאמר ש־$nu$ רציפה בהחלט ביחס ל־$mu$ ונסמן $nu lt.double mu$ אם ורק אם
+  $ forall E in cal(A), space mu(E) = 0 ==> nu(E) = 0 $]
+#definition(
+  "מידות שקולות",
+)[נאמר ש־$mu$ ו־$nu$ הן שקולות ונסמן $nu ~ mu$ אם ורק אם $mu lt.double nu$ וגם $nu lt.double mu$, כלומר
+  $ forall E in cal(A), space mu(E) = 0 <==> nu(E) =0 $
+]
+#definition("מידות סינגולריות")[
+  נאמר ש־$mu$ ו־$nu$ סינגולריות ונסמן $mu perp nu$ אם ורק  אם קיימות $A, B in cal(A)$ מדידות וזרות כך שמתקיים \
+  $mu(A^c)=mu(B^c)=0$ (באופן שקול, אם $A union.dot B = X$ ו־$nu(B)=mu(A)=0$).
+]
+
+#theorem("טענה שקולה לרציפות בהחלט במרחב סופי")[
+  אם $mu$ סופית אז $mu lt.double nu$ אם ורק אם לכל $epsilon>0$ קיים $delta>0$ כך שאם $nu(A)<delta$ אזי $mu(A)<epsilon$.
+]
+#proof[
+  $<==$ נניח כי $mu lt.double nu$. יהי $epsilon>0$ ונניח בשלילה שלכל $n in NN$ קיימת $A_n$ עם $nu(A_n)<2^(-n)$ כך ש־$mu(A^n)>epsilon$.\
+  לפי בורל־קנטלי $nu(inter union A_n)=0$ אבל מרציפות בהחלט ומסופיות $mu$
+  $ mu(inter.big_(m=1)^infinity union.big_(n=m)^infinity A_n)=mu(limsup A_n)>=limsup mu(A_n) >= epsilon $
+  $==>$ נניח כי $nu(A)=0$ אז $nu(A) < delta$ לכל $delta>0$ ולכן $mu(A)<epsilon$ לכל $epsilon > 0$ ולכן $mu(A)=0$.
+]
+
+#theorem($"־סופי"sigma"טענה שקולה לרציפות בהחלט במרחב "$)[
+  אם $mu$ מידה $sigma$־סופית ו־$nu$ מידה כלשהי אז $nu lt.double mu$ אם ורק אם $nu|_A lt.double mu|_A$ לכל $A$ עם $mu(A)<infinity$.
+]
+#proof[
+  $<==$ כי אם $nu lt.double mu$ זה נכון גם לצמצום.\
+  $==>$ נכתוב $X = union.big_(n) A_n$ עם $mu(A_n)<infinity$ ונניח כי $mu(E)=0$ אז נראה כי $nu(E)=0$: $E_n = A_n inter E$ אז מהיות $mu(E)=0$ נובע כי $mu(E_n) = 0$ ממונוטוניות המידה (כי חיתוך קבוצות מדידות הוא קבוצה מדידה) ולכן $mu|_(A_n) (E) = 0$ ולכן מההנחה $ nu|_(A_n) (E) = 0 = nu(E inter A_n) $ ולכן
+  $ nu(E)<= sum_(n=1)^infinity nu(E inter E_n) = 0 $
+]
+
+#theorem(
+  "אם מידה רציפה בהחלט וסינגולרית ביחס למידה אחרת היא מידת האפס",
+)[ אם $mu lt.double nu$ וגם $mu perp nu$ אז $mu$ היא מידת האפס.]
+
+#proof[מהסינגולריות של המידות נובע כי $mu$ נתמכת על הקבוצה $A$ כך ש־$nu(A)=0$ ומרציפות בהחלט נובע כי $mu(A)=0$, כלומר $mu eq.triple 0$.]
+
+#theorem("תנאי שקול לסינגולריות על מידות חיוביות")[
+  יהיו $mu, nu$ מידות חיוביות על $X$. אז $mu perp nu$ אם ורק אם לכל $epsilon>0$ קיימת קבוצה $A subset X$ מדידה כך ש־$mu(A)<epsilon, nu(A^c)<epsilon$.
+]
+
+#proof[
+  $<==$ אם $mu perp nu$ אזי קיימת קבוצה $A$ כך ש־$mu(A)=0$ ו־$nu(A^c)=0$, כנדרש.\
+  $==>$  נבחר $(A_n)_(n=1)^infinity$ סדרת קבוצות כך שמתקיים
+  $ mu(A_n)<2^(-n), nu(A_n^c)<2^(-n) $
+  נגדיר $A = limsup A_n$ ומבורל־קנטלי נקבל $mu(A)=0$, מצד שני מהלמה של פאטו
+  $ nu(A^c)=nu(liminf A_n^c)<=liminf_(n arrow.r infinity) nu(A_n^c)=0 $
+]
+
+#theorem("מסקנה מתרגילי הבית")[
+  $mu, nu_1, nu_2, dots.h$ מידות חיוביות על $X$ ונגדיר $nu=sum_(i=1)^infinity nu_i$ אזי
+  $
+    (1) space forall i in NN, space nu_i perp mu ==> nu perp mu wide (2) space forall i in NN, space nu_i lt.double mu ==> nu lt.double mu
+  $
+]
+
+#pagebreak()
+
+= מרחבי הילברט
+
+#theorem[אם $mu != 0$ מידה $sigma$־סופית על מרחב מדיד $(X, cal(A))$, אזי קיימת מידה סופית $nu$ על $(X, cal(A))$ כך ש־$mu ~ nu$.]
+#proof[
+  שוב נפרק את ההוכחה לפרקים אולי יעזור לזיכרון...
+  + *שימוש ב־$sigma$ סופיות:* מהיות $(X, cal(A), mu)$ מרחב מידה $sigma$־סופי נובע שקיים אוסף ${A_n}_(n=1)^infinity$ עם $mu(A_n)$ לכל $n in NN$ כך ש־$X = union_(n=1)^infinity A_n$
+  + *הגדרת פונקציית עזר:* נגדיר $w : X arrow.r [0,1]$ על־ידי
+    $ w(x) colon.eq sum_(n=1)^infinity 2^(-n)/(1+mu(A_n)) dot.op bb(1)_(A_n)(x) $
+  + *$w$ מדידה:* כגבול של סדרת פונקציות שהן צירופים לינאריים סופיים של פונקציות מציינות שהן כמובן מדידות
+  + *$0<=w<=1$:* לכל $x in X$ ברור שהביטוי אי־שלילי. כמו־כן, מה־$sigma$־סופיות נובע שקיים לפחות $N in NN$ אחד כך ש־$x in A_n$ ולכן
+    $
+      w(x) = sum_(n=1)^infinity 2^(-n)/(1+mu(A_n)) dot.op bb(1)_(A_n)(x) >= 2^(-n)/(1+ mu(A_n)) dot.op bb(1)_(A_n)(x) = 2^(-n)/(1+mu(A_n)) > 0
+    $
+  + *חסימות:* מהיות $mu(A_n)>0$ נובע כי $1+mu(A_n) > 1$ נובע כי $1/(1+mu(A_n))<=1$, אז
+    $
+      0 < w<=_"הורדנו אינדקטור" sum_(n=1)^infinity 2^(-n)/(1+ mu(A_n))<=sum_(n=1)^infinity 2^(-n) = 1 ==> w(x) in (0,1]
+    $
+  + *הגדרת מידה חדשה:* נגדיר $u : cal(A) arrow.r [0, infinity]$ מידה המוגדרת על־ידי $dif nu = w dif mu$ ראינו שזאת מידה וש־$nu lt.double mu$
+  + *$mu lt.double nu$:* תהיי $E in cal(A)$ כך ש־$0=nu(E)=integral_E w dif mu$.\
+    מהיות $w>0$ נסיק כי $mu(E)=0$ כי אחרת אם $w>0$ וגם $mu(E)>0$ נקבל כי $0=nu(E) = integral_E w dif mu > 0$ בסתירה ולכן $mu lt.double nu$
+  + *הגדרה של מידות שקולות:* מצאנו כי $mu lt.double nu$ וכן $nu lt.double mu$ ולכן מהגדרה של מידות שקולות נובע כי $mu~nu$
+]
+
+#pagebreak()
+
+= נגזרת רדון־ניקודים
+#theorem("משפט נגזרת רדון־ניקודים־לבג")[
+  אם $mu$ ו־$nu$ מידות $sigma$־סופיות על מרחב מדיד $(X, cal(A))$, אזי קיימות שתי מידות יחידות $nu_a, nu_s$ על $(X,cal(A))$ כך שמתקיים
+  + $nu=nu_a + nu_s$ כאשר $nu_a lt.double mu$ וגם $nu_s perp mu$
+  + קיימת פונקציה מדידה $h: X arrow.r [0,infinity)$ יחידה עד־כדי מידה אפס תחת $mu$ המקיימת
+    + $dif nu_a = h dif mu$ כלומר $nu_a (E) = integral_E h dif mu$ לכל $E in cal(A)$
+    + אם $X=union_(n=1)^infinity A_n$ עבור ${A_n}_(n=1)^infinity subset.eq cal(A)$ עם $nu(A_n) < infinity$ אזי $h bb(1)_(A_n) in L^1 (mu)$ לכל $n in NN$
+    + אם $nu$ מידת סופית אזי $h in L^1 (mu)$
+  #remark[הפונקציה $h$ נקראת *נגזרת רדון־ניקודים של $nu$ ביחס ל־$mu$* ומסומנת $(dif nu_a)/(dif mu) = h$.]
+]
+
+#proof[
+  + נניח שהטענה נכונה כאשר $nu$ מידה סופית ו־$mu$ מידה $sigma$־סופית ונראה כי זה גורר נכונות עבור מידות $mu, nu$ $sigma$־סופיות: \
+    $(X, cal(A), nu)$ הוא מרחב מידה $sigma$־סופי ולכן קיים אוסף ${A_n}_(n=1)^infinity subset.eq cal(A)$ של קבוצות מדידות ממידה סופית תחת $nu$ ובלי הגבלת הכלליות נניח שהן זרות זו מזו (תמיד ניתן להזיר אותם) כך ש־$X =_((star)) union.dot_(n=1)^infinity A_n$ ולכל $n in NN$ נסמן
+    $
+      v_n colon.eq nu|_(A_n) wide A_n colon.eq cal(A)|_(A_n) wide (cal(A)|_(A_n) colon.eq {E inter A_n bar E in cal(A)})
+    $
+    כלומר $nu_n$ היא מידה על המרחב המדיד המצומצם $(A_n, cal(A)_n)$ ומהסופיות של $nu_n$ נובע שגם הוא מרחב מידה סופי.\
+    מ־$(star)$ נובע כי $nu = sum_(n=1)^infinity nu_n$ ומההנחה ניתן ליישם את הטענה עבור המידות $mu$ ו־$nu_n$ על $(A_n, cal(A)_n)$:\
+    אז קיימות $nu_(n,a), nu_(n,s)$ על $(A_n, cal(A)_n)$ עם $nu_(n,a) lt.double mu$ וגם $nu_(n,s) perp mu$ כך ש־$nu_n = nu_(n,a) + nu_(n,s)$ אז נגדיר
+    $ nu_s colon.eq sum_(n=1)^infinity nu_(n,s) wide nu_a colon.eq sum_(n=1)^infinity nu_(n,a) $
+    ונקבל אם כך
+    $
+      nu=sum_(n=1)^infinity nu_n = sum_(n=1)^infinity nu_(n,a) + nu_(s,n) = sum_(n=1)^infinity nu_(n,a) + sum_(n=1)^infinity nu_(s,n) = nu_a + nu_s
+    $
+    ולכל $n in NN$ מתקיימים
+    + תהיי $E in cal(A_n)$ עם $mu(E)=0$ אזי $nu_(n,a) lt.double mu$ ולכן $nu_(n,a) (E) = 0$, מכאן ש־$nu_a (E) = sum_(n=1)^infinity nu_(n,a) = 0$ ולכן $nu_a lt.double mu$
+    + $nu_(n,s) perp mu$ ולכן קיימות $A, B in cal(A)$ מדידות וזרות כך ש־$mu(A^c)=nu_(n,s)(B^c)=0$ ולכן $nu_s (B^c) = sum_(n=1)^infinity nu_(n,s) (B^c) = 0 = mu(A^c)$ ולכן $nu_s perp mu$
+  + נוכיח את הטענה תחת ההנחה ש־$nu$ מידה סופית ו־$mu$ מידה $sigma$־סופית
 ]
