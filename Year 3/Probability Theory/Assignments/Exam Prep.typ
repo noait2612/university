@@ -95,10 +95,17 @@
 
 #pagebreak()
 
-= לקט תכונות של אי־תלות
+= אי־תלות נשמרת תחת הפעלת פונקציות
 
-#theorem("לקט תכונות של אי־תלות")[]
-#proof[]
+#theorem("אי־תלות נשמרת תחת הפעלת פונקציות")[
+  יהיו $X_1, dots.h, X_n$ וקטורים מקריים בלתי־תלויים כאשר $X_i$ הוא וקטור $d_i$־מימדי ותהיינה $f_i in cal(F)_(RR^(d_i) arrow.r RR^(s_i))$ עבור $s_i$ כלשהם. אזי $f_1 (X_1), dots.h, f_n (X_n)$ בלתי־תלויים
+]
+#proof[
+  תהיינה $A_i in cal(F)_(RR^(s_i))$ עבור $i in [n]$, אזי
+  $
+    PP(forall i in [n], space f_i (X_i) in A_i) = PP(forall i in [n], space X_i in f_i^(-1)(A_i))=_"אי־תלות" product_(i in [n]) PP(X_i in f_i^(-1)(A_i))=product_(i in [n]) PP(f_i (X_i) in A_i)
+  $
+]
 
 #pagebreak()
 
@@ -168,8 +175,25 @@
 #pagebreak()
 
 = חוסר זיכרון של התפלגות גיאומטרית
-#theorem("חוסר זיכרון של התפלגות גיאומטרית")[]
-#proof[]
+#theorem("חוסר זיכרון של התפלגות גיאומטרית")[
+  #definition(
+    "חוסר זיכרון לכישלון",
+  )[משתנה מקרי $X$ בדיד שנתמך על $NN$ נקרא *חסר זיכרון לכישלון* אם $X$ ו־$X-1 bar X>1$ שווי התפלגות.\
+    כלומר, אם לכל $n in NN$ מתקיים
+    $ PP(X in S) = PP(X-1 in S bar X>1) $
+    לכל $S in cal(F)_RR$.
+  ]
+  יהי $X$ משתנה מקרי הנתמך על $NN$ המקיים $PP(X=1)<1$, אזי $X$ חסר זיכרון לכשלונות אם ורק אם קיים $p in (0,1)$ כך ש־$X~Geo(p)$]
+#proof[
+  $==>$ נניח כי $X~Geo(p)$ ולכן לכל $n in NN$
+  $
+    PP(X-1=n bar X>1) =_("הסתברות מותנית" \ "והכלת מאורעות") PP(X=n+1)/PP(X>1) = ((1-p)^n p)/(1-p) = (1-p)^(n-1) p = PP(X=n)
+  $
+  $<==$ נניח כי $PP(X=n) = PP(X-1 = n bar X>1)$ לכל $n in NN$ ונסמן $p colon.eq PP(X=1)$ ולכן $1-p = PP(X>1)$, אז לכל $k>=1$
+  $
+    PP(X>k+1) =_("כלל השרשרת" \ "והכלת מאורעות") PP(X>k+1 bar X > 1)PP(X > 1) = PP(X-1 > k bar X>1)PP(X>1) =_"ההנחה" PP(X>k)(1-p)
+  $
+]
 
 #pagebreak()
 
@@ -211,8 +235,23 @@
 #pagebreak()
 
 = פואסון כגבול של בינומי במובן הנקודתי
-#theorem("פואסון כגבול של בינומי במובן הנקודתי")[]
-#proof[]
+#theorem(
+  "פואסון כגבול של בינומי במובן הנקודתי",
+)[יהי $Y ~ Poi(lambda)$ עבור $lambda>=0$ ויהיו ${X_n}_(n in NN)$ משתנים מקריים כך שלכל $n>lambda$ מתקיים $X_n ~ Bin(n, lambda/n)$.\
+  אזי לכל $k in NN_0$ מתקיים
+  $ lim_(n arrow.r infinity) PP(X_n=k) = PP(Y=k) $]
+#proof[
+  עבור $k$ קבוע ו־$n$ שואף לאינסוף מתקיים
+  $ binom(n, k) = (n dot.op (n-1) dot.op dots.h.c dot.op (n-k))/(k!) = (n^k (1+o(1)))/(k!) $
+  וכן
+  $
+    lim_(n arrow.r infinity) (1-lambda/n)^(n-k) = lim_(n arrow.r infinity) (1-lambda/n) (1-lambda/n)^(-k) = e^(-lambda) dot.op 1
+  $
+  ונובע אם כך
+  $
+    lim_(n arrow.r infinity)PP(X_n= k) = lim_(n arrow.r infinity) binom(n, k) (lambda/n)^k (1-lambda/n)^(n-k) = lim_(n arrow.r infinity) (n^k (1+o(1)))/k! dot.op lambda^k/n^k dot.op e^(-lambda) = (e^(-lambda) lambda^k)/k! lim_(n arrow.r infinity) (n^k (1+o(1)))/n^k = PP(Y=k)
+  $
+]
 
 #pagebreak()
 
