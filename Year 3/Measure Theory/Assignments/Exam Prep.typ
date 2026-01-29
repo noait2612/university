@@ -5,6 +5,7 @@
 )
 
 #let Leb = math.op("Leb")
+#let Borel = math.op("Borel")
 
 #set heading(numbering: "1.1")
 #outline(depth: 2)
@@ -12,6 +13,7 @@
 #pagebreak()
 
 = מידה
+== תנאי שקול לפונקציה מדידה
 #theorem(
   "תנאי שקול לפונקציה מדידה",
 )[יהי $(X, cal(A))$ מרחב מדיד. אם $f: X arrow.r [-infinity, infinity]$ פונקציה אזי $f$ מדידה אם ורק אם $f^(-1)((alpha, infinity])$ לכל $alpha in RR$.
@@ -41,6 +43,7 @@
 
 #pagebreak()
 
+== מדידות נשמרת תחת הפעלת sup/inf/limsup/liminf
 #theorem(
   "מדידות נשמרת תחת הפעלת sup/inf/limsup/liminf",
 )[יהי $(X, cal(A))$ מרחב מדידה. אם ${f_n : X arrow.r [-infinity, infinity]}_(n=1)^infinity$ סדרת פונקציות מדידות, אז הפונקציות
@@ -75,6 +78,7 @@
 ]
 
 = אינטגרציה
+== לכל פונקציה מדידה יש סדרת פונקציות פשוטות שמתכנסת אליה
 #theorem(
   "לכל פונקציה מדידה יש סדרת פונקציות פשוטות שמתכנסת אליה",
 )[אם $f: X arrow.r [0,infinity]$ פונקציה מדידה כלשהי, אז קיימת סדרת פונקציות פשוטות ${s_n} bar X arrow.r [0, infinity)_(n=1)^infinity$ כך שמתקיים
@@ -100,6 +104,8 @@
 
 #pagebreak()
 
+== תכונות האינטגרל
+
 #theorem("תכונות האינטגרל")[
   תהיינה $f,g : X arrow.r [0,infinity]$ פונקציות מדידות ותהיינה $A,B, E in cal(E)$ מדידות.\
   האינטגרל של $f, g$ ביחס ל־$mu$ מקיים את התכונות הבאות
@@ -112,11 +118,43 @@
   + אינטגרציה על איחוד זר: אם $A inter B = emptyset$ אזי $integral_(A union.dot B) f dif mu = integral_A f dif mu + integral_B dif mu$
 ]
 #proof[
-  + *תעתיקי מהמטלה*
-  + *תעתיקי מהמטלה*
-  + *תעתיקי מהמטלה*
-  + תהיי $s = sum_(i=1)^n alpha_i bb(1)_(A_i)$ פונקציה פשוטה ואם נסתכל על $E$ אזי $0<=s<=f$ וכן $f|_E eq.triple;e 0$ ולכן על $E$, $s(x) = 0$ לכל $x in E$.\
-    מהגדרת האינטגרל של פונקציה פשוטה
+  + בלי הגבלת הכלליות, $X=E$ אחרת ניקח לכל $E in cal(A)$,  $f dot.op bb(1)_(E), g dot.op bb(1)_(E)$ ועדיין נחשב אינטגרציה על כל $X$ ונקבל מהגדרה
+    $ integral f d mu = sup {integral_E s d mu bar 0<=s<=f, " פשוטה" s} $
+    מהיות $0<=f<=g$ נובע גם שלכל $s$ כזאת מתקיים $0<=s<=g$ ולכן מתקיים
+    $
+      {integral_E s d mu bar 0<=s<=f, " פשוטה" s} subset.eq {integral_E s d mu bar 0<=s<=g, " פשוטה" s}
+    $
+    ובפרט בלקיחת סופרמום
+    $
+      integral f d mu = sup {integral_E s d mu bar 0<=s<=f, " פשוטה" s} subset.eq sup {integral_E s d mu bar 0<=s<=g, " פשוטה" s} = integral g d mu
+    $
+  + יהי $x in X$.\
+    אם $x in A$ אז $bb(1)_(A)(x)=1$ ומהנתון $A subset.eq B$ מתקיים $bb(1)_(B)(x)=1$.\
+    אם $x in.not A$ אזי $bb(1)_(A)(x)=0$ ויש שתי אפשרויות: או ש־$x in B$ או ש־$x in.not B$, כלומר או ש־$bb(1)_(B)(x)=1$ או ש־$bb(1)_(B)(x)=0$.\
+    בין כה וכה, מכך ש-$A subset.eq B$ נובע כי בהתאמה מתקיים $bb(1)_(A)(x)<=bb(1)_(B)(x)$ לכל $x in X$.\
+    בפרט נובע מכך שלכל $x in X$ מתקיים $f dot.op bb(1)_(A)(x) <= f dot.op bb(1)_(B)(x)$ והם בהתאמה מתאימים מהגדרה ל־$integral_A f d mu, integral_B f d mu$.\
+    מהסעיף הקודם נובע אם כך ש־$integral_A f d mu <= integral_B f d mu$ (הסעיף הקודם הוא מונוטוניות האינטגרל) עבור $E = X$.
+  + תהיי $E in cal(A)$, ותהיי $s<=f$ פונקציה פשוטה כך שמתקיים $s=sum_(i=1)^n alpha_i bb(1)_(E_i)$ עם $alpha_i >=0$ ו־${E_i}$ קבוצות זרות בזוגות ומדידות ב־$E$.\
+    ראינו שמתקיים $integral_E s d mu = sum_(i=1)^n alpha_i mu(E_i)$.\
+    נבחין שגם $c s$ היא פונקציה פשוטה שכן
+    $
+      c s (x) = sum_(i=1)^n (c alpha_i) bb(1)_(E_i)(x) ==> integral_E c s(x) d mu = sum_(i=1)^n (c alpha_i) mu(E_i) = c sum_(i=1)^n alpha i mu(E_i) = c integral_E s d mu
+    $
+    נסמן מהגדרה
+    $
+      integral_E f d mu = sup { integral_E s d mu bar 0<=s<=f, " פשוטה" s} = S_f \
+      integral_E c f d mu = sup {integral_E p d mu bar 0<=p<=c f, " פשוטה" p} = S_(c f)
+    $
+    נשים לב שלכל $0<=p<=c f$, אם $c>0$ אז אם נגדיר פונקציה פשוטה $0<=s' = p/c <=f$ ומתקיים ממה שראינו לעיל, $ integral_E p d mu = integral_E c s d mu = c integral_E d mu $
+    זה נכון לכל $p$ פשוטה כזאת ולכן
+    $
+      S_(c f) = sup {c integral_E s d mu bar 0<=s<=f, " פשוטה" s} =_"מכפלה עם סופרמה אי־שלילית" c dot.op sup { integral_E s d mu bar 0<=s<=f, " פשוטה" s} = c dot.op S_f
+    $
+    אם $c=0$, אנחנו רוצים להראות
+    $ integral_E 0 dot.op f mu = 0 dot.op integral_E f d mu $
+    בצד שמאל יש לנו פשוט את הפונקציה $g eq.triple 0$ וזאת כמובן פונקציה פשוטה ולכן $ integral_E 0 d mu = sum_(i=1)^n alpha_i mu(E_i) = sum_(i=1)^n 0 mu(E_i) = 0 $
+    מצד שני, יש לנו $0 dot.op integral_E f d mu$ שתמיד כמובן שווה לאפס בזכות הקונבנציה $0 dot.op infinity = 0$.\
+  + תהיי $s = sum_(i=1)^n alpha_i bb(1)_(A_i)$ פונקציה פשוטה ואם נסתכל על $E$ אזי $0<=s<=f$ וכן $f|_E eq.triple 0$ ולכן על $E$, $s(x) = 0$ לכל $x in E$ ומהגדרה
     $ integral_E s dif mu = sum alpha_i mu(A_i inter E) $
     ולכן אם $A_i inter E$ לא ריקה אז המקדמים $alpha_i$ חייבים להיות אפסים ולכן הסכום הוא בידיוק $0$; מהגדרת אינטגרל לבג
     $ integral_E f dif mu = sup{integral_E s dif mu bar 0<=s <= f, "פשוטה" s} $
@@ -135,8 +173,7 @@
     $
       integral_E f dif mu = integral_E (lim_(n arrow.r infinity) s_n) dif mu = lim_(n arrow.r infinity) integral_E s_n dif mu = lim_(n arrow.r infinity) integral_X s_n dot.op bb(1)_(E) dif mu = integral_X (lim_(n arrow.r infinity) s_n dot.op bb(1)_(E)) dif mu = integral_X f dot.op bb(1)_(E) dif mu
     $
-  + מתקיים
-    $ bb(1)_(A union.dot B) (x) = bb(1)_(A)(x)+bb(1)_(B)(x) $
+  + מתקיים $bb(1)_(A union.dot B) (x) = bb(1)_(A)(x)+bb(1)_(B)(x)$
     ולכן מהפעלת הסעיף הקודם פעמיים בקצוות
     $
       integral_(A union.dot B) f dif mu = integral_X f dot.op bb(1)_(A union.dot B) dif mu = integral_X f dot.op (bb(1)_(A) + bb(1)_(B)) dif mu =_"לינאריות" integral_X f dot.op bb(1)_(A) dif mu + integral_X f dot.op bb(1)_(B) dif mu = integral_A f dif mu + integral_B f dif mu
@@ -145,6 +182,7 @@
 
 #pagebreak()
 
+== משפט ההתכנסות המונוטונית
 #theorem("משפט ההתכנסות המונוטונית")[
   יהי $(X, cal(A), mu)$ מרחב מידה ותהיי ${f_n bar X arrow.r [0, infinity]}_(n=1)^infinity$ סדרת פונקציות מדידות.\
   אם ${f_n}_(n=1)^infinity$ סדרה מונוטונית עולה, אזי הפונקציה $ f colon.eq lim_(n arrow.r infinity) f_n = sup_(n in NN) {f_n} $
@@ -156,39 +194,20 @@
 ]
 
 #proof[
-  נוכיח עבור $A=X$ (עבור $A subset X$ ההוכחה זהה) וראינו כי $f= sup_(n in NN) {f_n}$ מדידה.\
-  ${f_n}_(n=1)^infinity$ מונוטונית עולה ולכן קיים $alpha in [0,infinity]$ כך ש־$alpha=lim_(n arrow.r infinity) integral_X f_n dif mu$ ונרצה להראות
-  $ alpha <=_((1)) integral_X f dif mu <=_((2)) alpha ==> alpha = integral_X f dif mu $
-  $(1)$ נכון כי מתקיים
-  $ forall n in NN space 0<=f_n <= sup_(n in NN) {f_n} = f ==> 0<= f_n <=f $
-  וממונוטוניות האינטגרל
-  $ forall n in NN space 0<=integral_X f_n dif mu <=integral_X f dif mu $
-  בפרט בלקיחת גבול נקבל $alpha <= integral_X f dif mu$.\
-  עבור $(2)$ : תהיי $s: X arrow.r [0,infinity)$ פונקציה פשוטה כלשהי המקיימת $0<=s<=f$ ולכן יש ${A_i}_(i=1)^k$ חלוקה כלשהי של $X$ כך שניתן לכתוב $s=sum_(i=1)^k alpha_i bb(1)_(A_i)$.\
-  יהי $x in X$ ויהי $c in (0,1)$, נסמן
-  $ forall n in NN, space E_n colon.eq {x in X bar c dot.op s(x) <= f_n (x)} $
-  מהיות $f(x) = lim_(n arrow.r infinity) f_n (x)$ מתקיים $f(x)=0$ (ואז $f eq.triple 0$) או $f(x) != 0$ ולכן בהכרח $f(x)>0$.\
-  במקרה הראשון
-  $ 0<= c dot.op s(x) <= f_n (x) <= f(x) =0 $
-  ואז $x in E_n$ לכל $n$ וסיימנו.\
-  אחרת, קיים $n_0 in NN$ כך שלכל $n > n_0$ מתקיים $f_n (x) > c dot.op s(x)$ ולכן ${E_n}_(n=1)^infinity$ סדרה עולה ביחס להכלה $(star)$ ממונטוניות ${f_n}$ ולכן $lim_(n arrow.r infinity) E_n = union.big_(n=1)^infinity E_n = X$ ונקבל
+  נוכיח עבור $A=X$ ואז להתבונן ב־$g_n = f_n bb(1)_(A)$ ולהסיק את המקרה הכללי.\
+  ממונוטוניות האינטגרל $0 <= integral f_1 dif mu <= integral f_2 dif mu <= dots.h.c <= integral f dif mu$ ולכן $alpha = sup_(n) integral f_n dif mu$ יקיים $alpha <= integral f dif mu$ ונרצה להראות $alpha >= integral f dif mu$.\
+  נראה שלכל $0<=s<=f$ פשוטה מתקיים $integral s dif mu <= alpha$: תהיי $0<=s<=f$ פשוטה ונקבע $0<c<1$, נסמן $E_n colon.eq {x in X bar f_n (x) >= c s(x)}$ ו־$E_n arrow.t X$ כלומר זוהי סדרה עולה של קבוצות מדידות שאיחודן הוא כל $X$.\
+  מרציפות המידה לסדרות עולות נסיק כי לכל $A in cal(A)$
+  $ mu(A inter E_n) arrow.r_((star)) mu(A inter (union E_n)) = mu(A) $
+  $s$ פשוטה ולכן $s=sum_(i=1)^m alpha_i bb(1)_(A_i)$ ולכל $n$ מתקיים
   $
-    alpha = lim_(n arrow.r infinity) integral_X f_n dif mu >=_("מונוטוניות ביחס להכלה") lim_(n arrow.r infinity) integral_(E_n) f_n dif mu >=_("מונוטוניות") lim_(n arrow.r infinity) integral_(E_n) c dot.op s dif mu = c dot.op lim_(n arrow.r infinity) integral_(E_n) s dif mu = c dot.op lim_(n arrow.r infinity) sum_(i=1)^k alpha_i mu(E_n inter A_i)
+    alpha >= integral f_n dif mu >= integral_(E_n) f_n dif mu >= c dot.op integral_(E_n) s dif mu = c dot.op sum_(i=1)^m alpha_i mu(A_i inter E_n) arrow.r_((star)) c dot.op sum_(i=1)^m alpha_i mu(A_i) = c dot.op integral s dif mu
   $
-  אז מ־$(star)$ נובע
-  $ forall i in [k], space forall n,m in NN, space n<=m ==> A_i inter E_n subset.eq A_i inter E_m $
-  ולכן גם ${A_i inter E_n}_(n=1)^infinity$ סדרה עולה גם היא ו־${A_i}$ חלוקה של $X$ אז
-  $
-    forall i in [k], space union.big_(n=1)^infinity A_i inter E_n = A_i inter (union.big_(n=1)^infinity E_n) = A_i inter X = A_i
-  $
-  אז מרציפות המידה לאיחודים עולים נקבל $mu(A_i inter E_n) stretch(arrow.r)_(n arrow.r infinity) mu(A_i)$ ומכאן
-  $
-    alpha>= c dot.op lim_(n arrow.r infinity) sum_(i=1)^k alpha_i mu(A_i inter E_n) = c dot.op sum_(i=1)^k alpha_i lim_(n arrow.r infinity) mu(A_i inter E_n)
-    = c dot.op sum_(i=1)^k alpha_i mu(A_i) = c dot.op integral_X s dif mu
-  $
-  מהיות $c in (0,1)$ שרירותי נובע $alpha>=integral_X s dif mu$ לכל $0<=s<=f$ פשוטה אבל מהגדרת אינטגרל של פונקציה אי־שלילית נקבל $alpha >= integral_X f dif mu$.
 ]
 
+#pagebreak()
+
+== החלפת סדר אינטגרציה וסכום
 #theorem("החלפת סדר אינטגרציה וסכום")[
   יהי $(X, cal(A), mu)$ מרחב מידה. אם ${f_n bar X arrow.r [0,infinity]}_(n=1)^infinity$ סדרת פונקציות מדידות, אזי
   $ integral_X sum_(n=1)^infinity f_n dif mu = sum_(n=1)^infinity integral_X f_n dif mu $
@@ -225,7 +244,8 @@
 
 #pagebreak()
 
-#theorem("טענה חשובה ללא שם")[
+== קיום מידת אינטגרל
+#theorem("קיום מידת אינטגרל")[
   יהי $(X, cal(A), mu)$ מרחב מידה. אם $h:X arrow.r [0, infinity]$ מדידה אזי הפונקציה $nu: A arrow.r [0,infinity]$ המוגדרת על־ידי
   $ forall E in cal(A), space nu(E) = integral_E h dif mu $
   היא מידה על $(X, cal(A))$ ובמקרה זה נסמן $dif nu colon.eq h dif mu$ ויתר על־כן מתקיים
@@ -239,7 +259,7 @@
   ולכן
   $
     nu(union.big.dot_(n=1)^infinity E_n) = nu(E) =_"הגדרה" integral_E h dif mu = integral_X h bb(1)_(E) dif mu =_((star)) integral_X h sum_(n=1)^infinity bb(1)_(E_n) dif mu \
-    = integral_X sum_(n=1)^infinity h dot.op 1 bb(1)_(E_n) dif mu = sum_(n=1)^infinity integral_X h dot.op bb(1)_(E_n) dif mu = sum_(n=1)^infinity h dif mu = sum_(n=1)^infinity nu(E_n)
+    = integral_X sum_(n=1)^infinity h dot.op bb(1)_(E_n) dif mu = sum_(n=1)^infinity integral_X h dot.op bb(1)_(E_n) dif mu = sum_(n=1)^infinity h dif mu = sum_(n=1)^infinity nu(E_n)
   $
   ולכן $nu$ מידה על $(X, cal(A))$.\
   עבור החלק השני, תהיי $s = sum_(i=1)^k alpha_i bb(1)_(E_i)$ פונקציה פשוטה, אז
@@ -247,16 +267,14 @@
     integral_X s dif nu = sum_(i=1)^k alpha_i nu(E_i) = sum_(i=1)^k alpha_i integral_(E_i) h dif mu = sum_(i=1)^k integral_(E_i) alpha_i h dif mu = sum_(i=1)^k integral_X alpha_i bb(1)_(E_i) h dif mu \
     = integral_X sum_(i=1)^k alpha_i bb(1)_(E_i) h dif mu = integral_X h dot.op sum_(i=1)^k alpha_i bb(1)_(E_i) dif mu = integral_X h dot.op s dif mu
   $
-  אז עבור $g$ מדידה כלשהי ניקח ${s_n}_(n=1)^infinity$ סדרה עולה של פונקציות פשוטות כך ש־$s_n stretch(arrow.r)_(n arrow.r infinity) g$ ונקבל ממשפט ההתכנסות המונוטוניות על מרחב המידה $(X, cal(A), nu)$ שמתקיםי
+  אז עבור $g$ מדידה כלשהי ניקח ${s_n}_(n=1)^infinity$ סדרה עולה של פונקציות פשוטות כך ש־$s_n stretch(arrow.r)_(n arrow.r infinity) g$ ונקבל ממשפט ההתכנסות המונוטוניות על מרחב המידה $(X, cal(A), nu)$ שמתקיים
   $ integral_X g dif nu = lim_(n arrow.r infinity) integral_X s_n dot.op h dif mu = integral_X g dot.op h dif mu $
   כי ${s_n dot.op h}_(n=1)^infinity$ היא עולה ו־$s_n dot.op h stretch(arrow.r)_(n arrow.r infinity) g dot.op h$.
 ]
-#remark[אם $dif nu = h dif mu$ אז לכל $E in cal(A)$ מדידה מתקיים
-  $ mu(E) = 0 ==> nu(E)=0 $
-  כלומר רציפות בהחלט.]
 
 #pagebreak()
 
+== הלמה של פאטו
 #theorem("הלמה של פאטו")[
   יהי $(X, cal(A), mu)$ מרחב מידה. אם ${f_n : X arrow.r [0,infinity]}_(n=1)^infinity$ סדרת פונקציות מדידות כלשהי, אזי
   $ integral_X liminf_(n arrow.r infinity) f_n dif mu <= liminf_(n arrow.r infinity) integral_X f_n dif mu $
@@ -289,6 +307,7 @@
 
 #pagebreak()
 
+== הלמה של בורל־קנטלי
 #theorem("הלמה של בורל־קנטלי")[
   יהי $(X, cal(A), mu)$ מרחב מידה ותהיי $(E_n)_(n=1)^infinity subset.eq cal(A)$ סדרה של קבוצות מדידות כך שמתקיים
   $ sum_(n=1)^infinity mu(E_n) < infinity $
@@ -311,11 +330,7 @@
   אם $f in L^1 (mu)$ אזי $abs(integral_X f dif mu)<= integral_X abs(f) dif mu$.
 ]
 #proof[
-  $integral_X f dif mu in CC$ ולכן קיים $alpha in CC$ עם $abs(alpha)=1$ עבורו מתקיים $alpha integral_X f dif mu = abs(integral_X f dif mu) in RR$:\
-  שכן אם נסמן $z=integral_X f dif mu$ אז אם $z=0$ אז $alpha z = abs(z) in RR$ לכל $alpha in CC$ עם $abs(alpha)=1$ כי נקבל ש־$0=0$.\
-  אחרת, אם $z!=0$ אז קיים $theta in RR$ כך ש־$z = abs(z) dot.op e^(i theta)$ וניקח $alpha = e^(-i theta)$ ונקבל
-  $ alpha z = e^(-i theta) dot.op (abs(z) e^(i theta)) = abs(z)(e^(-i theta) dot.op e^(i theta)))=abs(z) in RR $
-  ולכן יש $alpha in CC$ המקיים זאת.\
+  $integral_X f dif mu in CC$ ולכן קיים $alpha in CC$ עם $abs(alpha)=1$ עבורו מתקיים $alpha integral_X f dif mu = abs(integral_X f dif mu) in RR$ $(star)$.\
   נקבל אם־כך
   $
     abs(integral_X f dif mu) & =alpha integral_X f dif mu \
@@ -325,10 +340,15 @@
                              & <= integral_X abs(re(alpha f)) dif mu \
                              & <= integral_X abs(alpha f) dif mu = integral_X abs(f) dif mu
   $
+  #remark[שכן אם נסמן $z=integral_X f dif mu$ אז אם $z=0$ אז $alpha z = abs(z) in RR$ לכל $alpha in CC$ עם $abs(alpha)=1$ כי נקבל ש־$0=0$.\
+    אחרת, אם $z!=0$ אז קיים $theta in RR$ כך ש־$z = abs(z) dot.op e^(i theta)$ וניקח $alpha = e^(-i theta)$ ונקבל
+    $ alpha z = e^(-i theta) dot.op (abs(z) e^(i theta)) = abs(z)(e^(-i theta) dot.op e^(i theta)))=abs(z) in RR $
+    ולכן יש $alpha in CC$ המקיים זאת.]
 ]
 
 #pagebreak()
 
+== משפט ההתכנסות הנשלטת
 #theorem("משפט ההתכנסות הנשלטת")[
   #definition("סדרת פונקציות נשלטת")[
     תהיי $X$ קבוצה ותהיי ${f_n bar X arrow.r RR}_(n=1)^infinity$ סדרת פונקציות כלשהי ותהיי $g:X arrow.r RR$ פונקציה.\
@@ -365,6 +385,7 @@
 
 #pagebreak()
 
+== אי־שיוויון מרקוב
 #theorem("אי־שיוויון מרקוב")[
   + תהיי $f$ מדידה ואי־שלילית, אז לכל $0<a<infinity$ מתקיים
     $ mu(f^(-1)[alpha, infinity])<= (integral f dif mu)/a $
@@ -403,6 +424,7 @@
 #pagebreak()
 
 = קבוצות ממידה אפס
+== סדרת פונקציות כמעט־תמיד
 #theorem("סדרות פונקציות וכמעט־תמיד")[
   תהיי ${f_n bar X arrow.r CC}_(i=1)^n$ סדרת פונקציות מדידות המוגדרות $mu$־כמעט תמיד.\
   אם $sum_(n=1)^infinity abs(f_n) dif mu < infinity$ אז
@@ -432,6 +454,7 @@
 
 #pagebreak()
 
+== תנאים שקולים לשלמות
 #theorem("תנאים שקולים לשלמות")[
   _תזכורת_: יהי $(X, cal(A), mu)$ מרחב מידה. נאמר שהם *שלם* אם כל קבוצה $E subset.eq X$ המוכלת בקבוצה ממידה אפס היא מדידה בעצמה. ההשלמה של $(X, cal(A), mu)$ ניתנת על־ידי ה־$sigma$־אלגברה
   $ overline(cal(A)) colon.eq {A union E bar A in cal(A), E subset.eq N, mu(N)=0} $
@@ -466,6 +489,7 @@
 
 #pagebreak()
 
+== תנאים שקולים לפונקציה אפסה כמעט־תמיד
 #theorem("תנאים שקולים לפונקציה אפסה כמעט־תמיד")[
   + אם $f : X arrow.r [0,infinity]$ מדידה עם $integral_X f dif mu =0$ אם ורק אם $f=_mu 0$
   + אם $f : X arrow.r CC$ מדידה ולכל $E in cal(A)$ מתקיים $integral_E f dif mu =0$ אזי $f=_mu 0$
@@ -482,8 +506,8 @@
 
 #pagebreak()
 
+== טענה על ממוצעי פונקציה
 #theorem("טענה על ממוצעי פונקציה")[\
-
   _תזכורת (ממוצע של פונקציה)_: יהי $(X, cal(A), mu)$ מרחב מידה סופי, תהיי $f in L^1 (mu)$ ותהיי $E in cal(A)$ קבוצה מדידה עם $mu(E)>0$.\
   הממוצע של $f$ על $E$ ביחס ל־$mu$ הוא
   $ A_E (f) colon.eq 1/mu(E) integral_E f dif mu $
@@ -513,10 +537,29 @@
 #pagebreak()
 
 = משפט ההצגה של ריס
+== משפט ההצגה של ריס – יחידות
+#theorem("יחידות במשפט ההצגה של ריס")[
+  יהי $Lambda : CC_C (RR) arrow.r CC$ פונקציונל לינארי חיובי ונניח כי $mu_1, mu_2$ הן מידות על $(RR, Borel_RR)$ המקיימות
+  + $integral_X f dif mu_i = Lambda f$ לכל $f in C_C (RR)$
+  + $mu_i (K) < infinity$ לכל $K subset.eq RR$ קומפקטית
+  + כל קבוצות בורל ב־$RR$ הן רגולריות פנימית וחיצונית ביחס ל־$mu_i$
+]
+#proof[
+  נבחין תחילה ש־$mu_1, mu_2$ מוגדרות ביחידות על־ידי הערכים שלהן על קבוצות קומפקטיות.\
+  ראשית מ־$(2)$ נובע כי עבור $K subset.eq RR$ קומפקטית מתקיים $mu_i (K) < infinity$.\
+  יהי $epsilon>0$ ומהרגולריות החיצונית נובע כי קיימת $K subset.eq V$ כאשר $V$ פתוחה כך שמתקיים $mu_2 (V)<mu_2(K)+epsilon$.\
+  מהלמה של אוריסון נובע כי קיימת $f in C_C (RR)$ כך שמתקיים $f(X) subset.eq [0,1]$ ומהלמה של אוריסון מתקיים ש־$K prec f prec V$, כלומר $bb(1)_(K) <= f$ וכן $supp(f) subset.eq V$ ולכן $bb(1)_(supp(f)) subset.eq bb(1)_(V)$ אבל $f(X) subset.eq [0,1]$ ולכן $f<= bb(1)_(V)$, אזי
+  $
+    mu_1 (k) = integral_X bb(1)_(K) dif mu_1 <= integral_X f dif mu_1 =_((1)) Lambda f =_((1)) integral_X f dif mu_2 <= integral_X bb(1)_(V) dif mu_2 = mu_2 (V) < mu_2 (K) + epsilon
+  $
+  כלומר $mu_1 (K) <= mu_2 (K)$ לכל $K$ קומפקטית ומהסימטרייה נקבל $mu_2 <= mu_1$, כלומר $mu_1=mu_2$.
+]
 
 #pagebreak()
 
 = רגולריות ומידות רדון
+== תכונות מידת רדון על מרחב $sigma$־קומפקטי
+
 #theorem($"־קומפקטי"sigma "תכונות מידת רדון על מרחב"$)[
   יהי $(X, cal(m), mu)$ מרחב מידה המכיל את $sigma$־אלגברת בורל על $X$.
   \ אם $X$ הוא $sigma$־קומפקטי ו־$mu$ מידת רדון אז מתקיימים
@@ -588,6 +631,7 @@
 
 #pagebreak()
 
+== תנאים שגוררים שמידה היא מידת רדון
 #theorem("תנאים שגוררים שמידה היא מידת רדון")[
   יהי $X$ מרחב האוסדרוף קומפקטי־מקומית המקיים שכל קבוצה פתוחה בו היא $sigma$־קומפקטית.\
   אם $mu$ מידה על $BB(X)$ המקיימת $mu(K)<infinity$ לכל $K subset.eq X$ קומפקטית, אזי $mu$ היא מידת רדון על $cal(m)$ וכל קבוצה מדידה $E in cal(m)$ היא רגולרית פנימית וחיצונית.
@@ -631,6 +675,7 @@
 = התכנסות חלשה-\*
 
 = מרחבי $L^p$
+== אי־שיוויון יאנסן
 #theorem(
   "אי־שיוויון יאנסן",
 )[יהי $(X, cal(A), mu)$ מרחב הסתברות ותהיי $phi : (a,b) arrow.r RR$ קמורה. אם $f : X arrow.r (a,b)$ פונקציה מדידה, אזי
@@ -653,6 +698,7 @@
 
 #pagebreak()
 
+== אי־שיוויון הולדר ואי־שיוויון מניקובסקי
 #theorem("אי־שיוויון הולדר ואי־שיוויון מניקובסקי")[
   יהי $(X, cal(A), mu)$ מרחב מידה ונניח כי $1<=p,q<=infinity$ ומקיימים
   $ 1/p + 1/q = 1 $
@@ -689,6 +735,7 @@
 
 #pagebreak()
 
+== $CC$ הוא מרחב וקטור מעל $cal(L)^p (mu)$
 #theorem($CC "הוא מרחב וקטור מעל" cal(L)^p (mu)$)[
   $cal(L)^p (mu)$ הוא מרחב וקטורי מעל $CC$.
 ]
@@ -721,6 +768,7 @@
 
 #pagebreak()
 
+== טענות חשובות מתרגילי הבית
 #theorem("טענות חשובות מתרגילי הבית")[
   #theorem($L^p "הכלת מרחבי"$)[
     יהי $(X, cal(A), mu)$ מרחבי מידה $sigma$סופי ויהיו $q<= p in [1, infinity]$
@@ -735,6 +783,8 @@
 ]
 
 #pagebreak()
+
+== לכל $p in [1,infinity]$, המרחב הנורמי $(L^p (mu), norm(dot.op)_p)$ הוא מרחב בנך
 
 #theorem($"הוא מרחב בנך" (L^p (mu), norm(dot.op)_p) "המרחב הנורמי" p in [1,infinity] "לכל"$)[
   לכל $p in [1, infinity]$, המרחב הנורמי $(L^p (mu), norm(dot.op)_p)$ הוא מרחב בנך (אם ורק אם הוא שלם במטריקה המושרית מהנורמה, כלומר כל סדרת קושי היא מתכנסת).
@@ -786,6 +836,7 @@
 
 #pagebreak()
 
+== $L^p (mu)$ צפופה ב־$cal(S)$
 #theorem($L^p (mu)"צפופה ב־" cal(S)$)[
   יהי $cal(S) subset.eq CC^X$ האוסף הנתון על־ידי
   $ cal(S) colon.eq { s:X arrow.r CC, "פשוטה" s bar mu({x in X bar s(x) != 0}) < infinity} $
@@ -838,6 +889,7 @@
 
 #pagebreak()
 
+== קירוב על־ידי פונקציות רציפות
 #theorem("קירוב על־ידי פונקציות רציפות")[
   יהי $X$ מרחב האוסדרוף קומפקטי־מקומית ותהיי $mu$ ממידת רדון על $X$.\
   לכל $p in [1, infinity)$ הקבוצה $C_C (X)$ צפופה ב־$L^p (mu)$.
@@ -890,6 +942,7 @@
   $mu(A^c)=mu(B^c)=0$ (באופן שקול, אם $A union.dot B = X$ ו־$nu(B)=mu(A)=0$).
 ]
 
+== טענה שקולה לרציפות בהחלט במרחב סופי
 #theorem("טענה שקולה לרציפות בהחלט במרחב סופי")[
   אם $mu$ סופית אז $mu lt.double nu$ אם ורק אם לכל $epsilon>0$ קיים $delta>0$ כך שאם $nu(A)<delta$ אזי $mu(A)<epsilon$.
 ]
@@ -900,6 +953,7 @@
   $==>$ נניח כי $nu(A)=0$ אז $nu(A) < delta$ לכל $delta>0$ ולכן $mu(A)<epsilon$ לכל $epsilon > 0$ ולכן $mu(A)=0$.
 ]
 
+== טענה שקולה לרציפות בהחלט במרחב $sigma$־סופי
 #theorem($"־סופי"sigma"טענה שקולה לרציפות בהחלט במרחב "$)[
   אם $mu$ מידה $sigma$־סופית ו־$nu$ מידה כלשהי אז $nu lt.double mu$ אם ורק אם $nu|_A lt.double mu|_A$ לכל $A$ עם $mu(A)<infinity$.
 ]
@@ -909,12 +963,14 @@
   $ nu(E)<= sum_(n=1)^infinity nu(E inter E_n) = 0 $
 ]
 
+== תנאי שקול למידת האפס
 #theorem(
   "אם מידה רציפה בהחלט וסינגולרית ביחס למידה אחרת היא מידת האפס",
 )[ אם $mu lt.double nu$ וגם $mu perp nu$ אז $mu$ היא מידת האפס.]
 
 #proof[מהסינגולריות של המידות נובע כי $mu$ נתמכת על הקבוצה $A$ כך ש־$nu(A)=0$ ומרציפות בהחלט נובע כי $mu(A)=0$, כלומר $mu eq.triple 0$.]
 
+== תנאי שקול לסינגולריות על מידות חיוביות
 #theorem("תנאי שקול לסינגולריות על מידות חיוביות")[
   יהיו $mu, nu$ מידות חיוביות על $X$. אז $mu perp nu$ אם ורק אם לכל $epsilon>0$ קיימת קבוצה $A subset X$ מדידה כך ש־$mu(A)<epsilon, nu(A^c)<epsilon$.
 ]
@@ -927,6 +983,7 @@
   $ nu(A^c)=nu(liminf A_n^c)<=liminf_(n arrow.r infinity) nu(A_n^c)=0 $
 ]
 
+== מסקנה מתרגילי הבית
 #theorem("מסקנה מתרגילי הבית")[
   $mu, nu_1, nu_2, dots.h$ מידות חיוביות על $X$ ונגדיר $nu=sum_(i=1)^infinity nu_i$ אזי
   $
@@ -937,7 +994,7 @@
 #pagebreak()
 
 = מרחבי הילברט
-
+== אם $mu$ איננה מידת האפס
 #theorem[אם $mu != 0$ מידה $sigma$־סופית על מרחב מדיד $(X, cal(A))$, אזי קיימת מידה סופית $nu$ על $(X, cal(A))$ כך ש־$mu ~ nu$.]
 #proof[
   שוב נפרק את ההוכחה לפרקים אולי יעזור לזיכרון...
@@ -962,6 +1019,7 @@
 #pagebreak()
 
 = נגזרת רדון־ניקודים
+== משפט נגזרת רדון־ניקודים־לבג
 #theorem("משפט נגזרת רדון־ניקודים־לבג")[
   אם $mu$ ו־$nu$ מידות $sigma$־סופיות על מרחב מדיד $(X, cal(A))$, אזי קיימות שתי מידות יחידות $nu_a, nu_s$ על $(X,cal(A))$ כך שמתקיים
   + $nu=nu_a + nu_s$ כאשר $nu_a lt.double mu$ וגם $nu_s perp mu$
