@@ -313,31 +313,31 @@
   "theorem",
   { context theorem_titles.at("theorem").at(text.lang) },
   inset: inset,
-  base_level: 1,
+  base_level: 2,
 )
 #let lemma = thmbox(
   "lemma",
   { context theorem_titles.at("lemma").at(text.lang) },
   inset: inset,
-  base_level: 1,
+  base_level: 2,
 )
 #let proposition = thmbox(
   "proposition",
   { context theorem_titles.at("proposition").at(text.lang) },
   inset: inset,
-  base_level: 1,
+  base_level: 2,
 )
 #let definition = thmbox(
   "definition",
   { context theorem_titles.at("definition").at(text.lang) },
   inset: inset,
-  base_level: 1,
+  base_level: 2,
 )
 #let corollary = thmbox(
   "corollary",
   { context theorem_titles.at("corollary").at(text.lang) },
   inset: inset,
-  base_level: 1,
+  base_level: 2,
 )
 #let remark = thmbox("remark", { context theorem_titles.at("remark").at(text.lang) }, inset: inset).with(
   numbering: none,
@@ -346,25 +346,25 @@
   "fact",
   { context theorem_titles.at("fact").at(text.lang) },
   inset: inset,
-  base_level: 1,
+  base_level: 2,
 )
 #let exercise = thmbox(
   "exercise",
   { context theorem_titles.at("exercise").at(text.lang) },
   inset: inset,
-  base_level: 1,
+  base_level: 2,
 )
 #let example = thmbox(
   "example",
   { context theorem_titles.at("example").at(text.lang) },
   inset: inset,
-  base_level: 1,
+  base_level: 2,
 )
 #let counterexample = thmbox(
   "counterexample",
   { context theorem_titles.at("counterexample").at(text.lang) },
   inset: inset,
-  base_level: 1,
+  base_level: 2,
 )
 #let notation = thmbox(
   "notation",
@@ -435,6 +435,7 @@
 // Measure
 #let esssup = math.op("ess sup")
 #let essinf = math.op("ess inf")
+
 // headings
 //#show heading: it => {
 //	let c = if it.level == 1 {
