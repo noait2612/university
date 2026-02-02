@@ -367,22 +367,23 @@
 #pagebreak()
 
 == תוחלת
-=== נוסחת התוחלת השלמה (5.26)
-#theorem("נוסחת התוחלת השלמה")[
-  תהיי $cal(A)$ חלוקה בת־מנייה של מרחב הסתברות $(Omega, cal(F), PP)$ ויהי $X$ משתנה מקרי בעל תוחלת סופית על מרחב זה. אז
-  $ EE(X)=sum_(A in cal(A)) EE(X bb(1)_(A)) $
+=== תוחלת של פונקציה על וקטור מקרי (5.3)
+#theorem("תוחלת של פונקציה על וקטור מקרי")[
+  יהי $X=(X_1, dots.h, X_d)$ וקטור מקרי דיד ותהיי $f in cal(F)_(RR^d arrow.r RR)$ פונקציה. אז המשתנה המקרי \
+  $Y=f(X)$ מקיים
+  $ EE(Y)=sum_(x in RR^d) f(x) PP(X=x) $
+  אם טור זה מתכנס בהחלט ואחרת ל־$Y$ אין תוחלת סופית.
 ]
+
 #proof[
-  נוכיח עבור $X$ בדיד: $cal(A)$ חלוקה ולכן $sum_(A in cal(A)) bb(1)_(A)=bb(1)_(Omega)=1$ ולכן גם $sum_(A in cal(A)) X bb(1)_(A)=X$ ונחשב
-  $
-    EE(X)=EE(sum_(A in cal(A)) X bb(1)_(A))=_"הגדרת התוחלת" sum_(x in RR) x PP(sum_(A in cal(A)) X bb(1)_(A))=_"הסתברות שלמה" sum_(x in RR) x sum_(A in cal(A)) PP(X bb(1)_(A)=x) \
-    =_("שינוי סדר סכימה" \ "בטור מתכנס בהחלט") sum_(A in cal(A)) sum_(x in RR) x PP(X bb(1)_(A)=x)=_"הגדרת התוחלת" sum_(A in cal(A)) EE(X bb(1)_(A))
-  $
-  כאשר השיוויון של הסתברות שלמה נובע מכך שלכל $x!=0$
-  $ union.big.dot_(A in cal(A)) {X bb(1)_(A)=x}=union.big.dot_(A in cal(A))({X=x} inter A)={X=x} $
+  ראינו כי התפלגותו של $X$ היא פונקציית הסתברות בדידה על $RR^d$.\
+  נגדיר $Z(x)=f(x)$ משתנה מקרי חדש ומתקיים $Y=^d Z$ ונוכל להפעיל את תוחלת של משתנה מקרי על מרחב הסתברות בדידה על המרחב $(RR^d, cal(F)_RR, PP_X)$ ולקבל
+  $ EE(Z)=sum_(x in RR^d) Z(x)PP_X ({x}) = sum_(x in RR^d) f(x) PP(X=x) $
+  בגלל שהתוחלת נקבעת לפי ההתפלגות, אז מכך ש־$Y=^d Z$ נובע כי $EE(Y)=EE(Z)$.\
   *מפתח להוכחה:*
-  + בגלל שזוהי חלוקה, $X=sum_(A in cal(A)) X bb(1)_(A)$
-  + לשחק עם השיוויונות לפי הגדרת התוחלת והסתברות שלמה
+  + $Z(x)=f(x)$ ו־$Z=^d Y$
+  + תוחלת של משתנה מקרי על מרחב הסתברות בדידה
+  + שימוש בשיוויון התפלגויות
 ]
 
 #pagebreak()
@@ -403,23 +404,55 @@
 
 #pagebreak()
 
-=== תוחלת של פונקציה על וקטור מקרי (5.3)
-#theorem("תוחלת של פונקציה על וקטור מקרי")[
-  יהי $X=(X_1, dots.h, X_d)$ וקטור מקרי דיד ותהיי $f in cal(F)_(RR^d arrow.r RR)$ פונקציה. אז המשתנה המקרי \
-  $Y=f(X)$ מקיים
-  $ EE(Y)=sum_(x in RR^d) f(x) PP(X=x) $
-  אם טור זה מתכנס בהחלט ואחרת ל־$Y$ אין תוחלת סופית.
+=== כפליות התוחלת למשתנים בלתי־תלויים (5.15)
+#theorem("כפליות התוחלת למשתנים בלתי־תלויים")[
+  יהיו $X,Y$ משתנים מקריים בלתי־תלויים ובעלי תוחלת סופית, אזי
+  $ EE(X Y) = EE(X) EE(Y) $
 ]
 
 #proof[
-  ראינו כי התפלגותו של $X$ היא פונקציית הסתברות בדידה על $RR^d$.\
-  נגדיר $Z(x)=f(x)$ משתנה מקרי חדש ומתקיים $Y=^d Z$ ונוכל להפעיל את תוחלת של משתנה מקרי על מרחב הסתברות בדידה על המרחב $(RR^d, cal(F)_RR, PP_X)$ ולקבל
-  $ EE(Z)=sum_(x in RR^d) Z(x)PP_X ({x}) = sum_(x in RR^d) f(x) PP(X=x) $
-  בגלל שהתוחלת נקבעת לפי ההתפלגות, אז מכך ש־$Y=^d Z$ נובע כי $EE(Y)=EE(Z)$.\
+  נבטא את התוחלת של $X Y$ לפי הנוסחה לתוחלת של וקטור מקרי על הוקטור $(X,Y)$
+  $
+    EE(X Y) = sum_(x in RR) sum_(y in RR) x y p_(x,y) (x,y) =_"אי־תלות" sum_(x in RR) sum_(y in RR) x y p_X (x) p_Y (y) = sum_(x in RR) x p_X (x) sum_(y in RR) y p_Y (y) = EE(X)EE(Y)
+  $
+]
+
+#pagebreak()
+
+=== נוסחת התוחלת השלמה (5.26)
+#theorem("נוסחת התוחלת השלמה")[
+  תהיי $cal(A)$ חלוקה בת־מנייה של מרחב הסתברות $(Omega, cal(F), PP)$ ויהי $X$ משתנה מקרי בעל תוחלת סופית על מרחב זה. אז
+  $ EE(X)=sum_(A in cal(A)) EE(X bb(1)_(A)) $
+]
+#proof[
+  נוכיח עבור $X$ בדיד: $cal(A)$ חלוקה ולכן $sum_(A in cal(A)) bb(1)_(A)=bb(1)_(Omega)=1$ ולכן גם $sum_(A in cal(A)) X bb(1)_(A)=X$ ונחשב
+  $
+    EE(X)=EE(sum_(A in cal(A)) X bb(1)_(A))=_"הגדרת התוחלת" sum_(x in RR) x PP(sum_(A in cal(A)) X bb(1)_(A))=_"הסתברות שלמה" sum_(x in RR) x sum_(A in cal(A)) PP(X bb(1)_(A)=x) \
+    =_("שינוי סדר סכימה" \ "בטור מתכנס בהחלט") sum_(A in cal(A)) sum_(x in RR) x PP(X bb(1)_(A)=x)=_"הגדרת התוחלת" sum_(A in cal(A)) EE(X bb(1)_(A))
+  $
+  כאשר השיוויון של הסתברות שלמה נובע מכך שלכל $x!=0$
+  $ union.big.dot_(A in cal(A)) {X bb(1)_(A)=x}=union.big.dot_(A in cal(A))({X=x} inter A)={X=x} $
   *מפתח להוכחה:*
-  + $Z(x)=f(x)$ ו־$Z=^d Y$
-  + תוחלת של משתנה מקרי על מרחב הסתברות בדידה
-  + שימוש בשיוויון התפלגויות
+  + בגלל שזוהי חלוקה, $X=sum_(A in cal(A)) X bb(1)_(A)$
+  + לשחק עם השיוויונות לפי הגדרת התוחלת והסתברות שלמה
+]
+
+#pagebreak()
+
+=== נוסחת התוחלת השלמה במונחי תוחלת מותנית (5.29)
+#theorem("נוסחת התוחלת השלמה במונחי תוחלת מותנית")[
+  תהיי $cal(A)$ חלוקה בת־מנייה של מרחב הסתברות $(Omega, cal(F), PP)$ ויהי $X$ משתנה מקרי בעל תוחלת סופית על מרחב זה. אז
+  $
+    EE(X)=sum_(A in cal(A) \
+    PP(A) > 0) EE(X bar A)PP(A)
+  $
+]
+#proof[
+  נוכיח עבור $X$ בדיד: עבור $A in cal(A)$, אם $PP(A)=0$ אזי $EE(X bb(1)_A)=0$ ואם $PP(A)>0$ אז $EE(X bar A)PP(A)=EE(X bb(1)_A)$ ולכן מנוסחת התוחלת השלמה
+  $
+    EE(X)=sum_(A in cal(A)) EE(X bb(1)_A)=sum_(A in cal(A) \
+    PP(A) > 0) EE(X bar A) PP(A)
+  $
 ]
 
 #pagebreak()
@@ -784,6 +817,34 @@
   + התכנסות בהתפלגות לקבוע גוררת התכנסות בהסתברות (ואז נוח לעבוד עם משפט 6.19)
 ]
 
+#pagebreak()
+
+#proof[
+  + נסמן $A_n^k ={omega bar abs(X_n(omega)-X(omega))<=1/l}$ ולכן
+    $ {X_n (omega) arrow.r X(omega)}=inter.big_(k=1)^infinity union.big_(m=1)^infinity inter.big_(n=m)^infinity A_n^k $
+    כלומר $ X_n arrow.r^(a.s.) X ==> PP(union.big_(m=1)^infinity inter.big_(n=m)^infinity A_n^k)=PP(liminf_(n arrow.r infinity) A_n^k)=1 $
+    אבל $X_n arrow.r^(p) X$ אומר שלכל $k in NN$
+    $ lim_(n arrow.r infinity) PP(A_n^k)=1 $
+    ומהלמה של פאטו
+    $ 1 = PP(liminf_(n arrow.r infinity) A_n^k)<=liminf_(n arrow.r infinity) PP(A_n^k) = 1 $
+  + תהיי $a$ נקודת רציפות של $F_X$ ויהי $epsilon > 0$.\
+    $ PP(X_n <= a) = PP(X_n <= a, X<=a+epsilon)+PP(X_n <=a, X > a+epsilon)<=PP(X<=a+epsilon)+PP(abs(X-X_n)> epsilon) $
+    כלומר $F_(X_n) (a) <=F_X (a+epsilon)+PP(abs(X-X_n)>epsilon)$ ובאופן דומה מקבלים גם
+    $ PP(X<=a-epsilon)<=PP(X_n <=a)+PP(abs(X-X_n)>epsilon) $
+    כלומר $F_X (a-epsilon)<=F_(X_n) (a)+PP(abs(X-X_n)>epsilon)$ ובסך־הכל
+    $ F_X (a-epsilon)-PP(abs(X-X_n)>epsilon)<=F_(X_n) (a)<=F_X (a+epsilon)+PP(abs(X-X_n)>epsilon) $
+    וכאשר $n arrow.r infinity$ נקבל מהתכנסות בהסתברות שלכל $epsilon > 0$
+    $
+      F_X (a-epsilon)<=liminf_(n arrow.r infinity) F_(X_n) (a)<=limsup_(n arrow.r infinity) F_(X_n) (a+epsilon)<= F_X (a+epsilon)
+    $
+    אבל $a$ נקודת רציפות ולכן $F_X (a) <= lim_(n arrow.r infinity) F_(X_n) (a) <= F_X (a)$.
+
+  + תהיי $F_c$ פונקציית ההתפלגות המצטברת של המשתנה המקרי הקבוע $c$.\
+    לכל $epsilon > 0$ מתקיים $F_c (c-epsilon)=0, F_c (c+epsilon)=1$.\
+    אם $X_n arrow.r^(d) c$ אזי $F_(X_n) (c-epsilon) arrow.r 0, F_(X_n) (c+epsilon) arrow.r 1$, כלומר
+    $ PP(abs(X_n-c)<=epsilon)>= F_(X_n) (c+epsilon)-F_(X_n) (c-epsilon) arrow.r 1 $
+]
+
 == כלים שימושים
 + הלמה השנייה של בורל־קנטלי טובה להפרכת התכנסות כמעט־תמיד
 + הלמה הראשונה של בורל־קנטלי טובה להוכחת התכנסות כמעט־תמיד
@@ -877,7 +938,7 @@
   [ $ 1/lambda^2 $ ],
   [ $ 1/lambda $ ],
   [ $ 1-e^(-lambda) $ ],
-  [ $ -lambda e^(lambda t) $ ],
+  [ $ lambda e^(lambda t) $ ],
   [ $ 0<=t $ ],
   [ $ lambda>0 $ ],
   [ $ Exp(lambda) $ ],
