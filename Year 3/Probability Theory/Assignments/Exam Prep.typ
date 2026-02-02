@@ -66,7 +66,7 @@
 #proof[
   נגדיר $B_n = union.big_(k in [n]) A_k$ וזו סדרת מאורעות עולה המקיימת $union.big_(n in NN) B_n = union.big_(n in NN) A_n$, אז
   $
-    PP(union.big_(n in NN) A_n)=PP(union.big_(n in NN) B_n) =_"רציפות פונקציית ההסתברות" lim_(n arrow.r infinity) PP(union.big_(k in [n]) A_k)<=_"אי־שיוויון בול" lim_(n arrow.r infinity) sum_(k=1)^n PP(A_k) = sum_(k=1)^infinity PP(A_k)
+    PP(union.big_(n in NN) A_n)=PP(union.big_(n in NN) B_n) =_"רציפות פונקציית ההסתברות" lim_(n arrow.r infinity) PP(B_n) = lim_(n arrow.r infinity) PP(union.big_(k in [n]) A_k)<=_"אי־שיוויון בול" lim_(n arrow.r infinity) sum_(k=1)^n PP(A_k) = sum_(k=1)^infinity PP(A_k)
   $
   *מפתח להוכחה:* הגדרת $B_k = union.big_(k in [n]) A_k$, שימוש ברציפות פונקציית ההסתברות ובאי־שיוויון בול.
 ]
@@ -140,6 +140,35 @@
   *מפתח להוכחה:* לחשב כל פעם לבד לפי הגדרת ההסתברות המותנית.
 ]
 
+#pagebreak()
+
+=== תכונת משלים לאי־תלות של מאורע באוסף (3.39)
+#theorem("תכונת משלים לאי־תלות של מאורע באוסף")[
+  יהי $(Omega, cal(F), PP)$ מרחב הסתברות ויהיו $A, B_1, dots.h, B_k$ מאורעות כך ש־$A$ בלתי־תלוי באוסף ${B_1, dots.h, B_k}$. אזי $A$ בלתי־תלוי ב־${B_1, dots.h, B_k^c}$.
+]
+
+#proof[
+  יהי $I subset [k]$.\
+  אם $k in.not I$ אז האי־תלות נובעת מתורשתיות תכונת האי־תלות.\
+  אחרת, $I = J union.dot {k}$, מתקיים
+  $
+    A inter inter.big_(j in J) B_j inter B_k^c = (A inter inter.big_(j in J) B_j) without (A inter inter.big_(i in I) B_i) \
+    inter.big_(j in J) B_i inter B_k^c = (inter.big_(j in J) B_j) without (inter.big_(i in I) B_i)
+  $
+  ומהאי־תלות בין $A$ ובין ${B_i}_(i in [k])$
+  $
+    PP(A inter inter.big_(j in J) B_j inter B_k^c) &= PP((A inter inter.big_(j in J) B_j) without (A inter inter.big_(i in I) B_i)) \
+    &= PP(A inter inter.big_(j in J) B_j)-PP(A inter inter.big_(i in I) B_i) \
+    &=_((star)) PP(A)PP(inter.big_(j in J) B_j)-PP(A)PP(A inter.big_(i in I) B_i) \
+    &= PP(A)PP((inter.big_(j in J) B_j) without (inter.big_(i in J) B_i)) =PP(A)PP(inter.big_(j in J) B_i inter B_k^c)
+  $
+  כאשר $(star)$ נובע מהאי־תלות.\
+  *מפתח להוכחה:*
+  + לשים לב שמתקיים
+    $ inter.big_(j in J) B_i inter B_k^c = (inter.big_(j in J) B_j) without (inter.big_(i in I) B_i) $
+  + ולפרק בהתאם את ההסתברות $PP(A inter inter.big_(j in J) B_j inter B_k^c)$ ולהשתמש באי־תלות הידועה.
+
+]
 #pagebreak()
 
 == יחסים בין משתנים מקריים

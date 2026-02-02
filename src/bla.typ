@@ -708,3 +708,55 @@ $ integral_C (y^2-x^2)^(x y) (x^2+y^2)d x d y $
   עובר טיפוס האיזומורפיזם לפי משפט שראינו יתקיים $Gal(E slash FF_2) = Gal(FF_(2^3) slash FF_2) = ZZ slash 3ZZ$.
 
 ]
+
+#question()
+$X,Y$ משתנים מקריים בלתי־מתואמים בעלי שונות $1$ ו־$theta in RR$, נוכיח גם שהמשתנים
+$
+  Z = cos(theta) dot.op X + sin(theta) dot.op Y \
+  Y = sin(theta) dot.op X + cos(theta) dot.op Y
+$
+הם בלתי־מתואמים ובעלי שונות $1$.
+
+#proof[
+  מהיות $X,Y$ בלתי־מתואמים נובע
+  $
+    0=Cov(X, Y) ==> EE(X Y) = EE(X)EE(Y) \
+    Var(X) = EE(X^2)-EE(X)^2 = 1 \
+    Var(Y) = EE(Y^2)-EE(Y)^2 = 1
+  $
+  ראשית מלינאריות התוחלת
+  $
+    EE(Z) = cos(theta) dot.op EE(X) + sin(theta) dot.op EE(Y) \
+    EE(W) = sin(theta) dot.op EE(X) + cos(theta) dot.op EE(Y)
+  $
+  עלינו להראות
+  $ Cov(Z, W)=EE(Z W) = EE(Z)EE(W) $
+  כמה חישובים
+  $
+    EE(Z) = cos(theta) dot.op EE(X) + sin(theta) dot.op EE(Y) \
+    EE(W) = sin(theta) dot.op EE(X) + cos(theta) dot.op EE(Y)
+  $
+  ולכן
+  $
+    EE(Z)EE(W) & = (cos(theta) dot.op EE(X) + sin(theta) dot.op EE(Y))(sin(theta) dot.op EE(X) + cos(theta) dot.op EE(Y)) \
+               & = cos(theta)sin(theta)EE(X)^2+cos^2(theta)EE(X)EE(Y)+sin^2(theta)EE(X)EE(Y)+sin(theta)cos(theta)EE(Y)^2 \
+               & = cos(theta)sin(theta)EE(X)^2+EE(X)EE(Y)+cos(theta)sin(theta)EE(Y)^2
+  $
+  כעת מלינאריות התוחלת
+  $
+    EE(Z W) &= EE((cos(theta) dot.op X + sin(theta) dot.op Y)(sin(theta) dot.op X + cos(theta) dot.op Y)) \
+    &= EE(cos(theta)sin(theta) dot.op X^2 + cos^2(theta) dot.op X dot.op Y + sin^2(theta) dot.op X dot.op Y + sin(theta)cos(theta) dot.op Y^2) \
+    &= cos(theta)sin(theta)(EE(X^2)+EE(Y^2))+EE(X dot.op Y) \
+    &= cos(theta)sin(theta)(EE(X^2)+EE(Y^2)) + EE(X)EE(Y)
+  $
+  כאשר המעבר האחרון זה מהאי־תאימות.\
+  נסמן $t=sin(theta)cos(theta)$ לנוחות
+  וכעת
+  $
+    Cov(Z, W)=EE(Z W) - EE(Z)EE(W) = t(EE(X^2)+EE(Y^2))+EE(X)EE(Y) - t EE(X)^2 - EE(X)EE(Y)-t EE(Y)^2 \
+    = t EE(X^2)+t EE(Y^2) - t EE(X)^2-t EE(Y)^2 \
+    = t(EE(X^2)-EE(X)^2)-t(EE(Y^2)-EE(Y)^2) = t-t = 0
+  $
+  שכן השונות בסוגריים עם ה־$t$ היא $1$.\
+  חישובים דוחים אבל הזהות הכי טובה בעולם באופן דומה השונות של כל אחד מהם תהיה אחת.
+]
