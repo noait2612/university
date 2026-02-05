@@ -148,8 +148,7 @@
 ]
 
 #proof[
-  יהי $I subset [k]$.\
-  אם $k in.not I$ אז האי־תלות נובעת מתורשתיות תכונת האי־תלות.\
+  יהי $I subset [k]$. אם $k in.not I$ אז האי־תלות נובעת מתורשתיות תכונת האי־תלות.\
   אחרת, $I = J union.dot {k}$, מתקיים
   $
     A inter inter.big_(j in J) B_j inter B_k^c = (A inter inter.big_(j in J) B_j) without (A inter inter.big_(i in I) B_i) \
@@ -166,7 +165,7 @@
   *מפתח להוכחה:*
   + לשים לב שמתקיים
     $ inter.big_(j in J) B_i inter B_k^c = (inter.big_(j in J) B_j) without (inter.big_(i in I) B_i) $
-  + ולפרק בהתאם את ההסתברות $PP(A inter inter.big_(j in J) B_j inter B_k^c)$ ולהשתמש באי־תלות הידועה.
+  + ולפרק בהתאם את ההסתברות $PP(A inter inter.big_(j in J) B_j inter B_k^c)$ ולהשתמש באי־תלות הידועה
 
 ]
 #pagebreak()
@@ -966,7 +965,7 @@
   [ $ lambda/(lambda-t) $ ],
   [ $ 1/lambda^2 $ ],
   [ $ 1/lambda $ ],
-  [ $ 1-e^(-lambda) $ ],
+  [ $ 1-e^(-lambda t) $ ],
   [ $ lambda e^(lambda t) $ ],
   [ $ 0<=t $ ],
   [ $ lambda>0 $ ],
