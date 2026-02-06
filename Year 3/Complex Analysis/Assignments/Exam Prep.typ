@@ -4,7 +4,6 @@
   signature: [#align(center)[#image("../../../src/duck.png", width: 30%, fit: "contain")]],
 )
 
-
 #set heading(numbering: "1.1")
 #outline(depth: 3)
 
@@ -22,26 +21,59 @@
 + $ sin(z) = (e^(i z)-e^(-i z))/(2i) $
 + $ sinh(z)=-i sin(i z)=(e^z-e^(-z))/2 $
 + $ cosh(z)=cos(i z)=(e^z+e^(-z))/2 $
-= הגדרות מפה לשם משם לפה
+= ספרינט על החומר
 == גזירות מרוכבת
-#definition("פונקציה הולומורפית")
+=== הקדמה
+#definition("תחום")[
+  נגיד ש־$G subset CC$ היא תחום אם היא קבוצה פתוחה וקשירה. אם $G$ פתוחה אז ניתן לכתוב $G=union.big.dot_(j=1)^N G_j$ כאשר $G_j$ תחום.
+]
+#definition("גזירות מרוכבת")[
+  תהיי $f:U_(z_0) arrow.r CC$, נגיד שהיא $CC$־דיפרנציאבילית ב־$z_0$ אם הגבול הבא קיים וסופי
+  $ lim_(z arrow.r z_0) (f(z)-f(z_0))/(z-z_0) $
+  באופן שקול, קיים $a in RR$ כך שהגבול הבא קיים וסופי
+  $ lim_(z arrow.r z_0) (f(z)-(f(z_0)+a(z-z_0)))/(z-z_0) $
+  כמובן שזה גורר רציפות ב־$z_0$.
+]
+#definition("פונקציה אנליטית")[
+  פונקציה $f$ היא אנליטית ב־$z_0$ אם קיימת סביבה $U_(z_0)$ כך ש־$f$ היא $CC$־דיפרנציאבילית בכל $z in U_(z_0)$.\
+  נגיד ש־$f$ היא אנליטית ב־$CC$ אם לכל $z_0 in CC$, $f$ היא אנליטית ב־$z_0$.
+]
+#definition("פונקציה הולומורפית")[
+  פונקציה $f$ היא הולומורפית אם היא אנליטית ב־$CC$.\
+  נסמן ב־$Hol(G)$ את אוסף כל הפונקציות האנליטיות ב־$G$.
+]
+
+=== טורי חזקות
+
+=== משוואות קושי־רימן
 #definition("משוואות קושי־רימן")
+
+=== פונקציות הרמוניות
 #definition("פונקציה הרמונית")
+
+=== העתקות קונפורמיות
 #definition("העתקה קונפורמית")
 #definition("נגזרת לוגריתמית")[
   אם $f:G arrow.r CC$ לא מתאפסת, הנגזרת הלגוריתמית מוגדרת להיות $f'/f$.
 ]<log_derivative>
 
-== אינטגרלים קווים
-#definition("תחום כוכב")[תחום $G$ נקרא תחום כוכב אם קיים $z_0$ כך שלכל $z in G$ מתקיים $[z_0, z] in G$.]
-
-= משפטים ושאר הירקות
+#pagebreak()
 == אינטגרלים קווים
 === הקדמה
 #definition(
   "אינטגרל קווי",
 )[יהיו $G subset.eq CC$ תחום, $f: G arrow.r CC$ רציפה ו־$gamma$ מסילה $C^1$ שתמונתה מוכלת ב־$G$. האינטגרל המסילתי של $f$ לאורך $gamma$ הוא
   $ integral_gamma f dif gamma colon.eq integral_a^b f(gamma(t))gamma'(t) dif t $]
+#definition("מסילה פשוטה")[
+  מסילה $gamma$ תיקרא פשוטה אם היא חד־חד ערכית. עקומה תקרא פשוטה אם היא תמונה של מסילה פשוטה.
+]
+#definition("תחום טוב")[
+  תחום $G$ ייקרא תחום טוב אם $G$ חסומה ואם $partial G$ היא איחוד סופי זר של מסילות פשוטות ו־$C^1$ למקוטעין מאורך סופי ונגדיר
+  $ integral_(partial G) f(z) dif z = sum_(j=1)^N integral_(Gamma_j) f(z) dif z $
+]
+#definition("תחום כוכב")[
+  תחום $G$ נקרא תחום כוכב אם קיים $z_0$ כך שלכל $z in G$ מתקיים $[z_0, z] in G$.
+]
 #theorem("האי־שיוויון האהוב עלינו ממרוכבות")[לכל $f in Hol(G), gamma:I arrow.r G$ מתקיים
   $
     abs(integral_gamma f(z) dif z)<=max_gamma abs(f) dot.op L(gamma) colon.eq max_(t in I) abs(f(gamma(t))) dot.op L(gamma)
@@ -50,7 +82,12 @@
 #theorem[אם $f_n arrow.r f$ במידה שווה מקומית (במידה שווה בכל קבוצה קומפקטית $K subset G$) ב־$G$ אז לכל $gamma:I arrow.r G$ מתקיים
   $ lim_(n arrow.r infinity) integral_gamma f_n (z) dif z = integral_gamma f(z) dif z $
 ]
-#theorem("קירוב פוליגונלי")
+#theorem(
+  "קירוב פוליגונלי",
+)[תהיי $gamma : I arrow.r G$ כאשר $I=[a,b]$ מסילה רציפה למקוטעין ותהיי $f in Hol(G)$. אז לכל $epsilon > 0$ קיימת חלוקה של $I$, $a=t_0 < t_1 < dots.h.c < t_N = b$ כך שמתקיים
+  $ abs(integral_gamma f(z) dif z - integral_(sum_epsilon) f(z) dif z) < epsilon $
+  כאשר $sum_epsilon = sum_(k=1)^N [gamma(t_(j-1), gamma(t_j))]$.
+]
 
 === משפט קושי
 #theorem("משפט קושי במשולש")[יהי $T$ משולש סגור ו־$G$ סביבה פתוחה של $T$, אזי לכל $f in Hol(G)$ מתקיים
@@ -64,10 +101,34 @@
   $ integral_(partial G) f(z) dif z = 0 $
 ]
 === מסקנות ממשפט קושי
-#theorem("נוסחת אינטגרל קושי")
-#theorem("נוסחת אינטגרל קושי לנגזרת")
-#theorem("משפט מוררה")
-#theorem("משפט ויירטשטראס")
+#theorem("נוסחת אינטגרל קושי")[
+  יהי $G subset CC$ תחום טוב, $gamma = partial G$ ותהיי $f in Hol(G) inter C(overline(G))$. אזי
+  $ integral_gamma f(w)/(w-z) dif w = mycases(2pi i f(z), z in G, 0, z in.not overline(G)) $
+  כאשר האינטגרל בצד שמאל נקרא *אינטגרל קושי*.
+]
+#theorem("נוסחת אינטגרל קושי לנגזרת")[
+  תהיי $gamma$ איחוד סופי של מסילות $C^1$ ותהיי $phi in C(gamma)$. נגדיר
+  $ F(z) colon.eq 1/(2pi i) integral_gamma phi(w)/(w-z) dif w $
+  אז $F in Hol(CC without gamma)$ ויתר על־כן
+  $ F^(n) (z) = n!/(2pi i) integral_gamma phi(w)/(w-z)^(n+1) dif w $
+]
+#corollary("טיילור")[
+  אם $f$ הולומורפית אז פיתוח טיילור של $f$ מסביב ל־$z$ מתכנס במידה שווה בדיסק.\
+  יתר על־כן, $ f^(n) (z) = n!/(2pi i) integral_({abs(w-z)=rho}) f(w)/(w-z)^(n+1) dif w $
+  עבור $rho<dist(z, partial G)$ ומתקיים
+  $ f(w) = sum_(n=0)^infinity (f^(n) (z))/n! (w-z)^n wide abs(z-w)<delta $
+]
+#corollary[
+  אם $f$ הולומורפית אזי היא גזירה אינסוף פעמים במובן המורכב.
+]
+#theorem("משפט מוררה")[
+  אם $G$ תחום ו־$f in C(G)$ מקיימת שלכל משולש $T subset G$ מתקיים $integral_(partial T) f(w) dif w = 0$ אז $f in Hol(G)$.
+]
+#theorem("משפט ויירטשטראס")[
+  אם $f_n in Hol(G)$ ונניח $f_n arrow f$ בצורה לוקאלית במידה שווה, אז
+  + $f in Hol(G)$
+  + לכל $j$, $f_n^(j) arrow.r f^(j)$ בצורה לוקאלית ובמידה שווה ($j^(j)$ זו הנגזרת ה־$j$)
+]
 #theorem("אי־שיוויון קושי")[
   תהיי $f in Hol(B(z_0, R))$ אז לכל $n in NN$
   $
@@ -94,21 +155,47 @@
   יהי $G={z, re(z)>0}$ ו־$f in Hol(G)$ פונקציה חסומה המקיימת $abs(f(z))<=M$ לכל $z in partial G$.\
   אז $abs(f)<=M$ על $G$, כלומר $abs(f)$ חסומה על $G$.
 ]
-#theorem("משפט היחידות 1")
-#theorem("טענה שלפני משפט היחידות 2")
-#theorem("משפט היחידות 2")
+#theorem("משפט היחידות 1")[
+  יהי $G$ תחום ו־$f in Hol(G)$. נניח שקיים $z_0 in G$ כך שלכל $n in NN$ מתקיים $f^(n) (z_0) = 0$. אזי $f eq.triple 0$.
+]
+#theorem("טענה שלפני משפט היחידות 2")[
+  יהי $G$ תחום ו־$f in Hol(G)$ ונניח שהריבוי של $f$ ב־$z_0$ הוא $m$.\
+  אזי $f(z) = g(z) (z-z_0)^m$ עבור $g in Hol(G)$ המקיימת $g(z_0)!=0$.
+]
+#theorem("משפט היחידות 2")[
+  יהי $G$ תחום ו־$f in Hol(G)$ ונניח שקיימת $z_0 in G$ כך ש־${z_n}_(n=1)^infinity subset G$ מקיימת $z_n arrow.r z_0$.\
+  אם $f(z_n) = 0$ לכל $n in NN$ אז $f eq.triple 0$.
+]
 
 
-= איך פותרים תרגילים
-== סינגולריות ומה שביניהם
-=== מיפוי נקודות סינגולריות
-#definition(
-  "נקודה סינגולרית אינטגרבילית",
-)[$x_0$ נקראת סינגולרית אינטגרבילית של $f:RR arrow.r RR^d$ אם $f$ רציפה על $RR without {x_0}$ ומתקיים
+#pagebreak()
+== טורי לורן
+#definition("טור לורן")[
+  טור מהצורה
+  $
+    sum_(n=-infinity)^infinity c_n (z-z_0)^n = sum_(n=-infinity)^(-1) c_n/(z-z_0)^(-n) +sum_(n=0)^infinity c_n (z-z_0)^n = sum_minus + sum_plus
+  $
+  ייקרא טור לורן, כאשר הרדיוס התכנסות עבור
+  $
+    1/R_plus colon.eq limsup_(n arrow.r infinity) abs(c_n)^(1/n) \
+    1/R_minus colon.eq limsup_(n arrow.r infinity) abs(c_(-n))^(1/n)
+  $
+  הוא ${R_minus < abs(z-z_0) < R_plus}$.
+]
+#theorem[תהיי
+  $f in Hol({R_minus}<abs(z-z_0)<R_plus})$, אזי $sum_(n=-infinity)^infinity c_n (z-z_0)^n$ מתכנס לוקאלית במידה שווה ל־$f$ ומתקיים
+  $ c_n colon.eq 1/(2pi i) integral_({abs(zeta-z_0)=r}) f(zeta)/(zeta-z_0)^(n+1) dif zeta $
+]
+
+=== נקודות סינגולריות
+#definition("נקודה סינגולרית אינטגרבילית")[
+  $x_0$ נקראת סינגולרית אינטגרבילית של $f:RR arrow.r RR^d$ אם $f$ רציפה על $RR without {x_0}$ ומתקיים
   $ integral_(x_0-epsilon)^(x_0 + epsilon) abs(f(t)) dif t < infinity $
   #remark[נקודה סינגולרית סליקה היא סינגולרית אינטגרבילית.]
 ]
-#definition[עבור $a in CC$ נסמן ב־$U_a$ סביבה פתוחה של $z$ וב־$U_a^*$ את הסביבה המנוקבת $U_a without {a}$.]
+#definition[
+  עבור $a in CC$ נסמן ב־$U_a$ סביבה פתוחה של $z$ וב־$U_a^*$ את הסביבה המנוקבת $U_a without {a}$.
+]
 #definition("נקודות סינגולריות")[
   תהיי $f in Hol(U_a^*)$. נסווג את הנקודות הסינגולריות של $f$ ב־$z=a$ באופן הבא
   + סליקה – ניתן להמשיך את $f$ לנקודה $a$ כך שתהיה הולומורפית (כלומר, אם $f|_(U_a^*)$ חסומה)
@@ -129,6 +216,32 @@
 #theorem(
   "משפט קורטוזי־ויירשטראס",
 )[אם $a$ סינגולרית עיקרית של הפונקציה $f$, אז $V$, סביבה פתוחה של $a$, הקבוצה $f(V without {a})$ צפופה ב־$CC$ (כלומר $overline(f(V without {a}))=CC$).]
+
+#definition("פונקציה רציונלית")[
+  פונקציה $f:CC^* arrow.r CC^*$ היא פונקציה רציונלית אם $f$ ניתנת לכתיבה על־ידי $f(z)=p(z)/q(z)$ ו־$p,q$ פולינומים בלי שורשים משותפים.
+]
+
+#definition($infinity"נקודות סינגולריות ב־"$)[
+  + נגדיר ש־$f$ אנליטית ב־$infinity$ אם $F$ יש סינגולריות סליקה ב־$0$
+  + אם ל־$f$ יש קוטב ב־$infinity$ אז נגדיר של־$F$ יש קוטב ב־$0$
+  + אם ל־$f$ יש סינגולרית עיקרית ב־$infinity$ אז ל־$F$ יש סינגולרית עיקרית ב־$0$
+]
+
+#definition("פונקציה מרומורפית")[
+  תהיי $f:G arrow.r CC^*$ ל־$G subset CC$. נאמר ש־$f$ היא מומורפית אם לכל $a in G$ קיימת סביבה $U_a subset.eq G$ כך ש־$f in Hol(U_a^*)$ וכן $f$ הולומורפית ב־$a$ או ש־$a$ קוטב (באופן שקול, $f$ מומורפית אם היא הולומורפית בכל $CC$ מלבד בקבוצה של קטבים מבודדים).\
+  את אוסף הפונקציות המומורפיות נסמן ב־$Mer(G)$ (זהו כמובן שדה).
+]
+
+#corollary[
+  תהיי $f:CC^* arrow CC^*$
+  + אם $f$ הולומורפית ב־$CC union {infinity}$ אז $f$ קבועה
+  + אם $f$ הולומורפית ב־$CC$ ויש לה קוטב ב־$infinity$ אז $f$ פולינום
+  + אם $f$ הולומורפית ב־$CC^* without {a_1, a_2, dots.h, a_N}$ ולכל $j$, $a_j$ היא קוטב מסדר $j$, אז $f$ פונקציה רציונלית
+]
+#corollary[
+  אם $f in Hol(CC)$ לא רציונלית, אז ל־$f$ יש סינגולרית עיקרית ב־$infinity$.
+]
+
 === שאריות
 #definition(
   "שארית בנקודה",
@@ -142,14 +255,27 @@
 #proposition[אם $f(z) = (phi(z))/(psi(z))$ מקיימת $psi(a)=0, phi(a) !=0, psi'(a) != 0$ אזי $res_f (a) = (phi(a))/(psi'(a))$.]
 #proposition[אם $f in Hol(G without {a})$ ו־$a$ קוטב מסדר $n$, אזי
   $ res_f (a) = (((z-a)^n f(z))^(n-1) (a))/(n-1)! $]
+
 #definition(
   "שארית באינסוף",
 )[תהיי $f$ הולומורפית בסביבה של $infinity$ (כלומר $f in Hol({z in CC bar abs(z) > R_0})$ ונגדיר
   $ res_f (infinity) = -1/(2pi i) integral_(abs(z)=R) f(z) dif z space (R>R_0) $]
 #proposition[השארית של #link(<log_derivative>, "נגזרת לוגריתמית") היא הסדר של האפס.\
 ]
+
+=== בחזרה לחישוב אינטגרלים ממשיים
+#lemma[אם
+  $phi:{im(z)>=0} arrow.r CC$ פונקציה הולומורפית המקיימת
+  $ limsup_(R arrow.r infinity) max_({abs(z)=R}) abs(z dot.op phi(z))<infinity $
+  אז לכל $lambda > 0$
+  $
+    lim_(R arrow.r infinity) integral_({
+      abs(z)=R, im(z) >0}) e^(i lambda z)phi(z) dif z = 0
+  $
+]
 #pagebreak()
 
+= דברים שימושים בפתרונות תרגילים
 == למצוא כמה פתרונות (כולל ריבויים)
 #theorem(
   "משפט רושה",

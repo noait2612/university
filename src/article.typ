@@ -415,8 +415,9 @@
 #let Length = math.op("Length")
 #let Area = math.op("Area")
 #let res = math.op("res")
+#let Mer = math.op("Mer")
 
-// Geneeral Calculs
+// General Calculus
 #let supp = math.op("supp")
 #let Span = math.op("Span")
 #let dist = math.op("dist")
