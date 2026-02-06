@@ -14,7 +14,46 @@ $ i Delta_gamma f colon.eq Delta_gamma log(f) = psi(b)-psi(a) $
 נוכיח שלכל $gamma_1, gamma_2$ הניתנות לשרשור מתקיים $Delta_(gamma_1 + gamma_2) = Delta_(gamma_1) + Delta_(gamma_2)$.
 
 #proof[
+  נניח ש־$gamma_1$ מוגדרת על $[a,b]$ ו־$gamma_2$ מוגדרת על $[b,c]$, אז $gamma=gamma_1 + gamma_2$ מוגדרת על־ידי
+  $ gamma(t) = mycases(gamma_1 (t), t in [a,b], gamma_2 (t), t in [b,c]) $
+  לפי למת הלוגריתם הרציף, קיימת $psi: [a,c] arrow CC$ כך ש־$e^(psi(t))=f(gamma(t))$ לכל $t in [a,c]$.\
+  אז ישירות מהגדרה
+  $ Delta_gamma f = psi(c) - psi(a) = psi(c)-psi(b)+psi(b)-psi(a) $
+  אבל הצמצום של $psi$ לקטע $[a,b]$ הוא מועמד כשר ללוגריתם הרציף עבור $f compose gamma_1$ ולכן $Delta_(gamma_1) (f) = psi(b) - psi(a)$ ובאופן דומה הצמצום של $psi$ לקטע $[b,c]$ הוא מועמד כשר ללוגירתם הרציף עבור $f compose gamma_2$ ולכן $Delta_(gamma_2) (f)=psi(c)-psi(b)$
+  כלומר
+  $ Delta_(gamma_1 + gamma_2) (f) = Delta_(gamma_2) f + Delta_(gamma_1) f $
+]
 
+#subquestion()
+נראה שלכל $f,g$ רציפות מתקיים $Delta_gamma (f dot.op g)=Delta_gamma f + Delta_gamma g$.
+
+#proof[
+  נסמן $psi_f, psi_g$ הלוגריתמים הרציפים של $f,g$ בהתאמה (כלומר $e^(psi f) = f compose gamma, e^(psi_g) = g compose gamma$).\
+  נסתכל על $Psi (t) =psi_f (t) + psi_g (t)$, מחוקי אקספוננט מתקיים
+  $ e^(psi(t))=e^(psi_f (t) + psi_g (t))=e^(psi_f (t)) dot.op e^(psi_g (t))= f(gamma(t)) dot.op g(gamma(t)) $
+  אבל $psi_f, psi_g$ רציפות ולכן גם הסכום שלהם רציף ו־$Psi$ רציפה ולכן זה מועמד ראוי להיות הלוגריתם הרציף של $f dot.op g$, אז
+  $
+    Delta_gamma (f g) & =Psi(b)-Psi(a) \
+                      & =(psi_f (b)+psi_g (b))-(psi_f (a) + psi_g (a)) \
+                      & = (psi_f (b)-psi_f (a))+(psi_g (b) - psi_g (a)) \
+                      & = Delta_gamma f + Delta_gamma g
+  $
+]
+
+#subquestion()
+נוכיח שעיקרון הארגומנט שקול לכך ש־$\#{Z_f inter G}-\#{P_f inter G}=1/(2pi) Delta_(partial G) f$.
+
+#proof[
+  תהיי $psi(t)$ הלגוריתם הרציף של $f(gamma(t))$, אז מכלל השרשרת
+  $ dif/(dif t) psi(t) = dif/(dif t) log(f(gamma(t)))=(f'(gamma(t)))/f(gamma(t)) dot.op gamma'(t) $
+  ולאורך העקומה נקבל
+  $
+    integral_gamma f'/f dif z = integral_0^1 (f'(gamma(t)))/f(gamma(t)) gamma'(t) dif t = integral_0^1 psi'(t) dif t = psi(1) - psi(0) = Delta_gamma f
+  $
+  אבל מעיקרון הארגומנט
+  $ 1/(2pi i) integral_gamma (f'(z))/f(z) dif z = \#(Z_f) - \#(P_f) $
+  כלומר
+  $ 1/(2pi i) Delta_gamma f = \#(Z_f) - \#(P_f) $
 ]
 
 #question()
