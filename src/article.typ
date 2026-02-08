@@ -416,6 +416,7 @@
 #let Area = math.op("Area")
 #let res = math.op("res")
 #let Mer = math.op("Mer")
+#let ind = math.op("ind")
 
 // General Calculus
 #let supp = math.op("supp")
@@ -437,6 +438,8 @@
 #let esssup = math.op("ess sup")
 #let essinf = math.op("ess inf")
 
+// Algebraic Structures
+#let Aut = math.op("Aut")
 // headings
 //#show heading: it => {
 //	let c = if it.level == 1 {
