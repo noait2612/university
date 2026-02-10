@@ -49,7 +49,7 @@
   תהיי $E subset CC$ ו־$f_n : E arrow.r CC$. אם לכל $n$, $abs(f_n)<=M_n$ ו־$sum_(n=1)^infinity M_n < infinity$ אזי הטור $sum_(n=1)^infinity f_n$ מתכנס בהחלט ובמידה שווה ב־$E$
 ]
 #lemma[
-  אם $sum_(n=0)^infinity c_n (w-z_0)^n$ מתכנס עבור $w!=z_0$ אז הסכום מתכנס במידה שווה ובהחלט ב־${z bar abs(z-z_0)<q abs w-z_0}$ לכל $q in (0,1)$.
+  אם $sum_(n=0)^infinity c_n (w-z_0)^n$ מתכנס עבור $w!=z_0$ אז הסכום מתכנס במידה שווה ובהחלט ב־${z bar abs(z-z_0)<q abs(w-z_0)}$ לכל $q in (0,1)$.
 ]
 #corollary[
   אחד מהבאים מתקיים
@@ -268,7 +268,7 @@
   אם $G$ תחום ו־$f in C(G)$ מקיימת שלכל משולש $T subset G$ מתקיים $integral_(partial T) f(w) dif w = 0$ אז $f in Hol(G)$.
 ]
 #theorem("משפט ויירטשטראס")[
-  אם $f_n in Hol(G)$ ונניח $f_n arrow f$ בצורה לוקאלית במידה שווה, אז
+  אם $f_n in Hol(G)$ ונניח $f_n arrow f$ בצורה לוקאלית (כלומר, על קבוצות קומפקטיות) במידה שווה, אז
   + $f in Hol(G)$
   + לכל $j$, $f_n^(j) arrow.r f^(j)$ בצורה לוקאלית ובמידה שווה ($j^(j)$ זו הנגזרת ה־$j$)
 ]
