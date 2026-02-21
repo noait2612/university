@@ -422,6 +422,7 @@
 #let supp = math.op("supp")
 #let Span = math.op("Span")
 #let dist = math.op("dist")
+#let Hom = math.op("Hom")
 
 // Probability
 #let Unif = math.italic(math.op("Unif"))
