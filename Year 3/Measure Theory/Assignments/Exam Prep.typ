@@ -77,6 +77,35 @@
   $(4)$ באותו אופן למקרה הקודם רק עבור $ liminf_(n arrow.r infinity) f_n = sup_(k in NN){inf_(n in NN \ n>=k) {f_n}} $
 ]
 
+#pagebreak()
+== תכונות בסיסיות של מידה
+#theorem("תכונות בסיסיות של מידה")[
+  אם $mu: cal(A) arrow.r [0, infinity]$ היא מידה על מרחב מדיד $(X, cal(A))$ אזי
+  + $mu eq.triple.not infinity <==> mu(emptyset)=0$
+  + *אדטיביות סופית:*  לכל אוסף סופי זר בזוגות $(E_i)_(i=1)^n subset.eq cal(A)$ מתקיים $mu(union.big_(i=1)^n E_i)=sum_(i=1)^n mu(E_i)$
+  + *מונוטוניות ביחס להכלה:* אם $A subset.eq B in cal(A)$ מדידות אזי $mu(A)<=mu(B)$
+  + *רציפות לסדרות עולות:* תהיי $(A_n)_(n=1)^infinity subset.eq cal(A)$ סדרה עולה של קבוצות מדידות אזי $mu(union.big_(n=1)^infinity A_n)=lim_(n arrow infinity) mu(A_n)$
+  + *רציפות לסדרות יורדות:* תהיי $(C_n)_(n=1)^infinity$ סדרה יורדת של סדרות מדידות. אם $mu(C_1)<infinity$ אזי $mu(inter.big_(n=1)^infinity C_n) = lim_(n arrow infinity) mu(C_n)$
+  + *$sigma$־תת אדטיביות:* אם $(A_n)_(n=1)^infinity subset.eq cal(A)$ אוסף כלשהו של קבוצות מדידות אזי $mu(union.big_(n=1)^infinity A_n)<=sum_(n=1)^infinity mu(A_n)$
+]
+#proof[
+  + כיוון אחד נובע מהגדרת המידה, מהכיוון השני נובע שיש $A in cal(A)$ עם $mu(A)<infinity$ ולכן ניתן להחסיר זאת, כלומר $ cancel(mu(A))=mu(A union.big.dot_(n in NN) emptyset)=_("־אדטיביות"sigma \ "הקבוצה הריקה זרה לעצמה") cancel(mu(A))+sum_(n in NN) mu(emptyset) = 0 $
+  + באופן דומה לסעיף הקודם נשרשר $emptyset$ עם $sigma$־אדטיביות וסיימנו
+  + $ mu(B) = mu((B without A) union.dot A) = mu(B without A) + mu(A) >= mu(A) $
+  + נסמן $B_1 = E_1$ ולכל $n in NN$ נגדיר $B_(n+1) = A_(n+1) without A_n$ אזי $(B_n)_(n=1)^infinity$ סדרה של קבוצות מדידות וזרות בזוגות ולכל $N$ מתקיים $union.big.dot_(n=1)^N B_n = A_N = union.big_(n=1)^N A_n$ ו־$union.big_(n=1)^infinity = union.big.dot_(n=1)^infinity B_n$ ולכן
+    $
+      mu(union.big_(n=1)^infinity A_n)=mu(union.big.dot_(n=1)^infinity B_n) = sum_(n=1)^infinity mu(B_n)=lim_(N arrow infinity) sum_(n=1)^N mu(B_n) = lim_(N arrow infinity) mu(union.big_(n=1)^N A_n)
+    $
+  + נסמן $D_n = C_n without C_(n+1)$ ולכן $C_1 = union.big.dot_(n in NN) D_n union.big.dot_(n in NN) C_n$ ומהאדטיביות סופית והעברת אגפים (שאפשר מהסופיות) נקבל
+    $
+      mu(inter.big_(n in NN) C_n) = mu(C_1) - mu(union.big.dot_(n in NN) D_n)=mu(C_1) -sum_(n in NN) mu(D_n) = lim_(N arrow infinity) mu(C_1) - mu(union.big.dot_(n=1)^N D_n) = lim_(N arrow infinity) mu(C_(N+1))
+    $
+    שכן $C_1 without union.big.dot_(n=1)^N D_n = C_(N+1)$
+  + זה בעצם אי־שיוויון בול מהסתברות רק על מרחבי מידה כלליים: נגדיר $B_1 = A_1, B_(n+1) = B_(n+1) without union.big_(m=1)^n A_n$.\
+    אז $B_n$ זרים בזוגות, $B_n subset.eq A_n$ ו־$union.big.dot_(n in NN) B_n = union.big_(n in NN) A_n$ ומתקיים
+    $ mu(union.big_(n in NN) A_n) = mu(union.big.dot_(n in NN) B_n) = sum_(n in NN) mu(B_n) <= sum_(n in NN) mu(A_n) $
+]
+
 = אינטגרציה
 == לכל פונקציה מדידה יש סדרת פונקציות פשוטות שמתכנסת אליה
 #theorem(
@@ -259,7 +288,7 @@
   ולכן
   $
     nu(union.big.dot_(n=1)^infinity E_n) = nu(E) =_"הגדרה" integral_E h dif mu = integral_X h bb(1)_(E) dif mu =_((star)) integral_X h sum_(n=1)^infinity bb(1)_(E_n) dif mu \
-    = integral_X sum_(n=1)^infinity h dot.op bb(1)_(E_n) dif mu = sum_(n=1)^infinity integral_X h dot.op bb(1)_(E_n) dif mu = sum_(n=1)^infinity h dif mu = sum_(n=1)^infinity nu(E_n)
+    = integral_X sum_(n=1)^infinity h dot.op bb(1)_(E_n) dif mu = sum_(n=1)^infinity integral_X h dot.op bb(1)_(E_n) dif mu = sum_(n=1)^infinity integral_(E_n) h dif mu = sum_(n=1)^infinity nu(E_n)
   $
   ולכן $nu$ מידה על $(X, cal(A))$.\
   עבור החלק השני, תהיי $s = sum_(i=1)^k alpha_i bb(1)_(E_i)$ פונקציה פשוטה, אז
@@ -677,19 +706,24 @@
 #pagebreak()
 
 = שלושת העקרונות של Littlewood
-== משפט לוסין
-#theorem("משפט לוסין")[יהי $X$ מרחב האוסדרוף קומפקטי מקומית ותהיי $mu$ מידת רדון על $X$.\
+== משפט לוזין
+#theorem("משפט לוזין")[יהי $X$ מרחב האוסדרוף קומפקטי מקומית ותהיי $mu$ מידת רדון על $X$.\
   תהיי $f:X arrow CC$ מדידה המקיימת ${x bar f(x)!=0} subset.eq A$ כאשר $mu(A) < infinity$.\
   אזי לכל $epsilon>0$ קיימת $g in C_C (X)$ עבורה $mu({x bar f(x) != g(x)})<epsilon$.]
-#proof[
-  #todo
+#proof("הוכחה במרחב מידה סופי")[
+  נוכיח את משפט לוזין במקרה של מרחב מידה $X$ ממידה סופית ונשתמש במשפט אגרוב/אגורוף.\
+  יהי $epsilon > 0$, אם $f=bb(1)_E$ עבור $E$ מדידה, מרגולריות נוכל למצוא $F subset.eq E subset.eq U$ כך ש־$F$ קומצפקטית ו־$U$ פתוחה ו־$mu(U without F) < epsilon$.\
+  מהלמה של אוריסון נוכל בחור $bb(1)_K <= g<= bb(1)_U$ רציפה וזה מסיים עבור פונקציות מציין.\
+  עבור פונקציות פשוטות שהן הסכום של $k$ פונקציות מציינות נשתמש בלוזין עבור פונקצייה מציינת לכל אחת מהן כשנזרוק כל פעם $epsilon/k$ ושוב נסיים.\
+  אם $f$ מדידה ניקח סדרה של פשוטות המתכנסות אליה $s_n arrow f$. ממשפט לוזין לפונקציות פשוטות נוכל לכל $n$ לבחור $g_n$ המתלכדת עם $s_n$ מחוץ לקבוצה ממידה $epsilon/2 dot.op 2^(-n)$.\
+  אז מחוץ לאיחוד כל הקבוצות האלו שמתת־אדטיביות תהיה לו מידה $epsilon/2$ לכל היותר מתקיים $g_n arrow f$. בעזרת משפט אגרוב/אגורוף נוכל לזרוק עוד קבוצה ממידה $epsilon/2$ שמחוץ אליה $g_n arrow f$ במידה שווה ואז קיבלנו שמחוץ לקבוצה ממידה $epsilon$ יש סדרת פונקציות המתכנסת ל־$f$ במידה שווה, כלומר $f$ רציפה בקבוצה זו.
 ]
 
 #pagebreak()
 
-== משפט אגרוב
+== משפט אגרוב/אגורוף
 #theorem(
-  "משפט אגרוב",
+  "משפט אגרוב/אגורוף",
 )[יהי $(X, cal(A), mu)$ מרחב מידה סופי ונניח כי $f_n : X arrow RR$ מתכנסת כמעט־תמיד ל־$f:X arrow RR$ מדידה. אז לכל $epsilon>0$ קיימת $E in cal(A)$ עם $mu(E)<epsilon$ כך ש־$f_n arrow f$ במידה שווה ב־$E^c$.]
 #proof[
   יהי $epsilon>0$ ונסמן
@@ -1104,7 +1138,8 @@
     + אם $E in cal(A_n)$ עם $mu(E)=0$ אזי $nu_(n,a) lt.double mu$ ולכן $nu_(n,a) (E) = 0$, מכאן ש־$nu_a (E) = sum_(n=1)^infinity nu_(n,a) = 0$ ולכן $nu_a lt.double mu$
     + מכך ש־$nu_(n,s) perp mu$ ולכן קיימות $A, B in cal(A)$ מדידות וזרות כך ש־$mu(A^c)=nu_(n,s)(B^c)=0$ ולכן $ nu_s (B^c) = sum_(n=1)^infinity nu_(n,s) (B^c) = 0 = mu(A^c) ==> nu_s perp mu $
   + נניח ש־$nu$ מידה סופית.\
-    + מטענה שראינו נובע שקיימת פונקציה מדידה וחיובית $w:X arrow (0,1]$ שעבורה $w dif mu$ היא ממידה סופית אז נגדיר את המדיה הסופית $dif lambda = dif nu + w dif mu$
+    + מטענה שראינו נובע שקיימת פונקציה מדידה וחיובית $w:X arrow (0,1]$ שעבורה $w dif mu$ היא ממידה סופית אז נגדיר את המדיה הסופית \
+    $dif lambda = dif nu + w dif mu$
     + לכל $f in L^2 (lambda)$ מתקיים
       $
         abs(integral f dif nu) <= integral abs(f) dif nu <= integral abs(f)(dif nu + w dif mu) = integral abs(f) dot.op 1 dif lambda <=_"קושי־שוורץ" sqrt(integral abs(f^2) dif lambda) sqrt(integral abs(1^2) dif lambda) = sqrt(lambda(X)) norm(f)_(L^2 (lambda))
@@ -1114,28 +1149,28 @@
       $ (triangle) space integral f dif nu = phi.alt (f) = integral f dot.op g dif lambda $
       + לכל $E in cal(A)$ עם $lambda(E) > 0$ מתקיים $bb(1)_E in L^2 (lambda)$ ולכן $nu(E) = integral_E g dif lambda$, כלומר
       $ 0<= nu(E)/lambda(E) = 1/lambda(E) integral_E g dif lambda <=1 $
-      + מלמה שראינו על ממוצעים של פונקציות על קבוצות מדידות נסיק $0<=g<=1$, $lambda$־כמעט תמיד
-      + על־ידי שינוי של $g$ על קבוצה מ־$lambda$־מידה אפס נוכל להסיק כי $0<=g<=1$ תמיד
-      + נגדיר
-        $
-          A colon.eq {x in X bar g(x) in [0, 1)} wide B colon.eq {x in X bar g(x) = 1} \
-          nu_a colon.eq nu|_A wide nu_s colon.eq nu|_B
-        $
-      + מכך ש־$X = A union.dot B$ הרי ש־$nu = nu_a + nu_s$
-      + שכתוב של $triangle$ מביא שלכל $f$
-        $
-          integral f dif nu = integral f g dif nu + integral f g w dif mu <==>_((star)) integral f(1-g) dif nu = integral f g w dif mu
-        $
-      + נראה ש־$nu_s perp mu$: מהיות $(1-g)|_B eq.triple 0$ אז $f=bb(1)_B$ ומ־$(star)$ נקבל
-        $ 0 = integral_B (1-g)dif nu = integral_B g w dif mu $
-        אבל $w>0$ ולכן $mu(B)=0$ ולכן $nu_s (B^c)=0=mu(B)$ כלומר $nu_s perp mu$
-      + נראה ש־$nu_a lt.double mu$: כי $f=(1+g+g^2+ dots.h.c + g^n) bb(1)_E$ אז עבור $E in cal(A)$ מ־$(star)$ נקבל
-        $ integral_E (1-g^(n+1)) dif nu = integral_E (1+g+g^2+dots.h.c + g^n) g w dif mu $
-        אבל $g|_A < 1$ והרי $(1-g^(n+1)) bb(1)_E arrow.tr 1_(A inter E)$ מונטונית ולכן באגף שמאל נקבל
-        $ integral_E (1-g^(n+1)) dif nu arrow.r_(n arrow.r infinity) nu(A inter E) = nu_a (E) $
-        מצד שני $(1+g+g^2+ dots.h.c + g^n) g w arrow.tr h$ מתכנסת מונוטונית ל־$h$ מדידה ב־$[0, infinity)$ ולכן באגף ימין
-        $ integral_E (1+g+g^2 + dots.h.c + g^n) g w dif mu arrow.r_(n arrow.r infinity) integral_E h dif mu $
-        אז $dif nu_a = h dif mu$ ולכן $nu_a lt.double mu$.\ מכך ש־$nu_a$ ממידה סופית נסיק כי $h in L^1 (mu)$.
+    + מלמה שראינו על ממוצעים של פונקציות על קבוצות מדידות נסיק $0<=g<=1$, $lambda$־כמעט תמיד
+    + על־ידי שינוי של $g$ על קבוצה מ־$lambda$־מידה אפס נוכל להסיק כי $0<=g<=1$ תמיד
+    + נגדיר
+      $
+        A colon.eq {x in X bar g(x) in [0, 1)} wide B colon.eq {x in X bar g(x) = 1} \
+        nu_a colon.eq nu|_A wide nu_s colon.eq nu|_B
+      $
+    + מכך ש־$X = A union.dot B$ הרי ש־$nu = nu_a + nu_s$
+    + שכתוב של $triangle$ מביא שלכל $f$
+      $
+        integral f dif nu = integral f g dif nu + integral f g w dif mu <==>_((star)) integral f(1-g) dif nu = integral f g w dif mu
+      $
+    + נראה ש־$nu_s perp mu$: מהיות $(1-g)|_B eq.triple 0$ אז $f=bb(1)_B$ ומ־$(star)$ נקבל
+      $ 0 = integral_B (1-g)dif nu = integral_B g w dif mu $
+      אבל $w>0$ ולכן $mu(B)=0$ ולכן $nu_s (B^c)=0=mu(B)$ כלומר $nu_s perp mu$
+    + נראה ש־$nu_a lt.double mu$: כי $f=(1+g+g^2+ dots.h.c + g^n) bb(1)_E$ אז עבור $E in cal(A)$ מ־$(star)$ נקבל
+      $ integral_E (1-g^(n+1)) dif nu = integral_E (1+g+g^2+dots.h.c + g^n) g w dif mu $
+      אבל $g|_A < 1$ והרי $(1-g^(n+1)) bb(1)_E arrow.tr 1_(A inter E)$ מונטונית ולכן באגף שמאל נקבל
+      $ integral_E (1-g^(n+1)) dif nu arrow.r_(n arrow.r infinity) nu(A inter E) = nu_a (E) $
+      מצד שני $(1+g+g^2+ dots.h.c + g^n) g w arrow.tr h$ מתכנסת מונוטונית ל־$h$ מדידה ב־$[0, infinity)$ ולכן באגף ימין
+      $ integral_E (1+g+g^2 + dots.h.c + g^n) g w dif mu arrow.r_(n arrow.r infinity) integral_E h dif mu $
+      אז $dif nu_a = h dif mu$ ולכן $nu_a lt.double mu$.\ מכך ש־$nu_a$ ממידה סופית נסיק כי $h in L^1 (mu)$.
 
 ]
 
@@ -1156,7 +1191,7 @@
     $
   + *שימוש ברגולריות פנימית:* נבחר $A subset.eq U$ פתוחה עבורה מתקיים $lambda(U)<lambda(A)+epsilon$ $(star)$
   + *צמצום הכיסוי:* נזרוק מ־$cal(F)$ את כל הכדורים שלא מוכלים ב־$U$ והכיסוי החדש עדיין מקיים את $(1), (2)$ ובפרט זה עדיין כיסוי בסיקוביץ' (בגלל (2))
-  + *שימוש בטענה שראינו:* ממשפט שראינו נובע שקיי תת־אוסף בן־מנייה $tilde(E) subset.eq cal(F)$ של כדורי זרים בזוגות עם $mu(A without union.big tilde(E))=0$
+  + *שימוש בטענה שראינו:* ממשפט שראינו נובע שקיים תת־אוסף בן־מנייה $tilde(E) subset.eq cal(F)$ של כדורי זרים בזוגות עם $mu(A without union.big tilde(E))=0$
   + *שימוש במונוטוניות:*
     $
       mu(A)<=mu(union.big tilde(E))+mu(A without union.big tilde(E))<=_"תת־אדטיביות" sum_(B in tilde(E)) mu(B) <=_((2)) sum_(B in tilde(E)) (t+epsilon) lambda(B) =_((star star)) (t+epsilon) dot.op lambda(union.big tilde(E)) \
@@ -1173,7 +1208,7 @@
 == משפט הגזירה של לבג־בסיקוביץ'
 #theorem("משפט הגזירה של לבג־בסיקוביץ'")[
   תהיינה $mu. lambda$ מידות רדון על $RR^d$
-  + $D(mu, lambda, x)$ כמעט וסופי $lambda$־כמעט תמיד
+  + $D(mu, lambda, x)$ קיים וסופי $lambda$־כמעט תמיד
   + $underline(D)(mu, lambda, x)<infinity$  $mu$־כמעט תמיד אם ורק אם $mu lt.double lambda$
   + אם $mu lt.double lambda$ אזי $D(mu, lambda, x) = (dif mu)/(dif lambda)$
 ]
@@ -1229,29 +1264,66 @@
   "משפט הגזירה של לבג",
 )[תהיי $f in L^1 ([a,b])$. אזי הפונקציה $F(x)=integral_a^x f dif lambda$ גזירה כמעט בכל מקום ומקיימת $F'(x) = f(x)$ עבור כמעט כל $x in [a,b]$ (ביחס למידת לבג).]
 #proof[
-  +נראה שכמעט לכל $x in [a,b]$ מתקיים
+  נראה שכמעט לכל $x in [a,b]$ מתקיים
   $ lim_(h arrow 0) 1/h integral_x^(x+h) f dif lambda = f(x) $
-  + אם $f$ רציפה אז זה המשפט היסודי ולכן נניח ש־$f$ חסומה.
-  + לפי משפט לוזין לכל $n in NN$ יש קבוצה $A_n$ כך ש־$lambda(A_n) < 1/n$ ופונקציה רציפה $g_n$ כך שמחוץ ל־$A_n$, $f$ ו־$g_n$ מתלכדות ונסמן $lambda_n$ מידת לבג מצומצמת ל־$A_n$.\
-  + שימוש במשפט הגזירה של בסיקוביץ: מהיות $(dif lambda_n)/(dif lambda) = bb(1)_(A_n)$, ממשפט הגזירה של בסיקוביץ כמעט לכל $x in A_n^c$ מתקיים
-    $
-      lim_(h arrow 0) (lambda_n ((x-h,x+h)))/(lambda((x-h, x+h))) = lim_(h arrow 0) (lambda(A_n inter (x-h,x+h)))/(2h) = bb(1)_(A_n) (x) = 0
-    $
-    אם $x in A_n^c$ מתקיים
-    $
-      abs(1/h integral_x^(x+h) f dif lambda - 1/h integral_x^(x+h) g dif lambda)<=1/h integral_x^(x+h) abs(f-g) dif lambda) = 1/h integral_(A_n inter(x, x+h)) abs(f-g) dif lambda
-    $
-    $g$ חסומה ב־$[a,b]$ כפונקציה רציפה ו־$f$ חסומה מההנחה ולכן קיים $M>0$ כך שמתקיים $abs(f-g)<M$, כלומר
-    $ 1/h integral_(A_n inter(x, x+h)) abs(f-g) dif lambda<= M dot.op (lambda(A_n inter(x-h, x+h)))/h $
-    אגף ימין שואף ל־$0$ כאשר $h arrow 0$ ולכן אם ניקח גבול נקבל
-    $
-      lim_(h arrow 0) abs(1/h integral_x^(x+h) f dif lambda - 1/h integral_x^(x+h) g dif lambda) = 0 ==> lim_(h arrow 0) 1/h integral_x^(x+h) f dif lambda = lim_(h arrow 0) 1/h integral_x^(x+h) g dif lambda = g(x) = f(x)
-    $
-    קיבלנו את השיוויון שרצינו לכל $x in A_n^c$ ומאחר ונוכל לקחת את $A_n$ להיות עם מידה קטנה כרצוננו, כמעט כל $x in [a,b]$ יהיה באחת מ־$A_n^c$ והטענה נכונה עבור $f$ חסומה.\
-  + עבור $f$ כללית: נסמן לכל $n in NN$ את $F_n = bb(1)_(abs(f)<n) dot.op f$ וממשפט הגזירה של בסיקוביץ' (על המידות $abs(f-f_n)dif lambda, dif lambda$) מתקיים כמעט לכל $x in [a,b]$
-    $
-      lim_(h arrow 0) 1/h integral_x^(x+h) abs(f-f_n) dif lambda <= lim_(h arrow 0) 2/(2h) integral_x^(x+h) abs(f-f_n) dif lambda = abs(f(x)-f_n (x))
-    $
-    אגף ימין הוא אפס כמעט לכל $x in bb(1)_(abs(f)<n)$ ומאחר $f in L^1$ אז $abs(f)^(-1)({infinity})$ קבוצה ממידה אפס ולכן כמעט כל $x in [a,b]$ נמצא ב־$bb(1)_(abs(f)<n)$ עבור $n$ כלשהו ולכן
-    $ f(x)=f_n (x) = lim_(h arrow 0) 1/h integral_x^(x+h) f_n (x) = lim_(h arrow 0) 1/h integral_x^(x+h) f(x) $
+  אם $f$ רציפה אז זה המשפט היסודי ולכן נניח ש־$f$ חסומה.
+  לפי משפט לוזין לכל $n in NN$ יש קבוצה $A_n$ כך ש־$lambda(A_n) < 1/n$ ופונקציה רציפה $g_n$ כך שמחוץ ל־$A_n$, $f$ ו־$g_n$ מתלכדות ונסמן $lambda_n$ מידת לבג מצומצמת ל־$A_n$.\
+  שימוש במשפט הגזירה של בסיקוביץ: מהיות $(dif lambda_n)/(dif lambda) = bb(1)_(A_n)$, ממשפט הגזירה של בסיקוביץ כמעט לכל $x in A_n^c$ מתקיים
+  $
+    lim_(h arrow 0) (lambda_n ((x-h,x+h)))/(lambda((x-h, x+h))) = lim_(h arrow 0) (lambda(A_n inter (x-h,x+h)))/(2h) = bb(1)_(A_n) (x) = 0
+  $
+  אם $x in A_n^c$ מתקיים
+  $
+    abs(1/h integral_x^(x+h) f dif lambda - 1/h integral_x^(x+h) g dif lambda)<=1/h integral_x^(x+h) abs(f-g) dif lambda) = 1/h integral_(A_n inter(x, x+h)) abs(f-g) dif lambda
+  $
+  $g$ חסומה ב־$[a,b]$ כפונקציה רציפה ו־$f$ חסומה מההנחה ולכן קיים $M>0$ כך שמתקיים $abs(f-g)<M$, כלומר
+  $ 1/h integral_(A_n inter(x, x+h)) abs(f-g) dif lambda<= M dot.op (lambda(A_n inter(x-h, x+h)))/h $
+  אגף ימין שואף ל־$0$ כאשר $h arrow 0$ ולכן אם ניקח גבול נקבל
+  $
+    lim_(h arrow 0) abs(1/h integral_x^(x+h) f dif lambda - 1/h integral_x^(x+h) g dif lambda) = 0 ==> lim_(h arrow 0) 1/h integral_x^(x+h) f dif lambda = lim_(h arrow 0) 1/h integral_x^(x+h) g dif lambda = g(x) = f(x)
+  $
+  קיבלנו את השיוויון שרצינו לכל $x in A_n^c$ ומאחר ונוכל לקחת את $A_n$ להיות עם מידה קטנה כרצוננו, כמעט כל $x in [a,b]$ יהיה באחת מ־$A_n^c$ והטענה נכונה עבור $f$ חסומה.\
+  *  עבור $f$ כללית:* נסמן לכל $n in NN$ את $f_n = bb(1)_(abs(f)<n) dot.op f$ וממשפט הגזירה של בסיקוביץ' (על המידות $abs(f-f_n)dif lambda, dif lambda$) מתקיים כמעט לכל $x in [a,b]$
+  $
+    lim_(h arrow 0) 1/h integral_x^(x+h) abs(f-f_n) dif lambda <= lim_(h arrow 0) 2/(2h) integral_x^(x+h) abs(f-f_n) dif lambda = abs(f(x)-f_n (x))
+  $
+  אגף ימין הוא אפס כמעט לכל $x in bb(1)_(abs(f)<n)$ ומאחר $f in L^1$ אז $abs(f)^(-1)({infinity})$ קבוצה ממידה אפס ולכן כמעט כל $x in [a,b]$ נמצא ב־$bb(1)_(abs(f)<n)$ עבור $n$ כלשהו ולכן
+  $ f(x)=f_n (x) = lim_(h arrow 0) 1/h integral_x^(x+h) f_n (x) = lim_(h arrow 0) 1/h integral_x^(x+h) f(x) $
 ]
+
+= מרחבי מכפלה
+== משפט פוביני
+#theorem("משפט פוביני")[
+  יהיו $(X, cal(A), mu)$ ו־$(Y, cal(C), nu))$ מרחבי מידה $sigma$־סופיים.
+  + תהיי $f:X times Y arrow [0,infinity]$ מדידה, אזי $f_x$ ו־$f^y$ הן $cal(A), cal(C)$־מדידות (בהתאמה) לכל $x,y$ וכן
+    $
+      integral f dif(mu times nu) = integral (integral f(x,y) dif mu(x)) dif nu(y) = integral (integral f(x,y) dif nu(y)) dif mu(x)
+    $
+  + אם $f:X times Y arrow CC$ מדידה ומקיימת $integral abs(f_x) dif nu < infinity$ אזי $f in L^1(mu times nu)$
+  + אם $f in L^1 (mu times nu)$ אזי $f_x in L^1 (nu)$ $mu$־כמעט לכל $x in X$ וגם $f^y in L^1(mu)$ $nu$־כמעט לכל $y in Y$ ומתקיים
+    $ integral f dif(mu times nu)=integral.double f dif mu dif nu = integral.double f dif nu dif mu $
+]
+#proof[
+  + הוכחנו את הטענה עבור פונקציות מציינות $bb(1)_Q$ כש־$Q in cal(A) times cal(C)$ ולכן זה נכון עבור פונקציות פשוטות (כסכום סופי של פונקציות מציינות).\
+    תהיי $f:X times Y arrow [0,infinity]$ מדידה ותהיי $(s_n)_(n=1)^infinity$ סדרה של פונקציות פשוטות שמתכנסות ל־$f$.\
+    ממשפט ההתכנסות המונוטונית, הפונקציות
+    $ phi(x)=integral f_x dif nu wide psi(y) = integral f^y dif nu $
+    הן גבולות עולים של
+    $ phi_n (x)=integral (s_n)_x dif nu wide psi_n (y) = integral (s_n)^y dif nu $
+    ואילו צירופים לינאריים של פשוטות ולכן $phi_n, psi_n$ מדידות ולכן גם $phi_psi$.\
+    נעשה שימוש נוסף במשפט ההתכנסות המונוטונית ייתן מ־$phi_n arrow.tr phi, psi_n arrow.tr psi$ שמתקיים
+    $
+      integral phi dif mu = lim_(n arrow infinity) integral phi_n dif mu = lim_(n arrow infinity) integral psi_n dif nu = integral psi dif nu
+    $
+    ומתקיים השיוויון
+    $
+      integral f dif(mu times nu)=lim_(n arrow infinity) s_n dif (mu times nu) = integral phi dif mu = integral psi dif nu
+    $
+  + נפעיל את $(1)$ עם $abs(f)$
+  + נפעיל את $(1)$ עם הפירוק של פונקציות מרוכבות לסכום אי־שלילי
+    $ f = u + i v = u_plus - u_minus + i(v_plus - v_minus) $
+    ומכך שמתקיים $integral.double abs(f) dif mu dif nu < infinity$ גורר שמתקיים ל־$nu$־כמעט כל $y in Y$ ש־$integral abs(f^y) dif mu < infinity$ וכנ"ל הפוך.
+]
+
+#corollary[אם $f:X times Y arrow CC$ מדידה ומקיימת $integral.double abs(f(x,y)) dif mu(x) dif nu(y) < infinity$ אזי $integral f dif (mu times nu)=integral.double f dif mu dif nu = integral.double f dif nu dif mu$]
+#proof[נובע ישירות מ־$(2)$ + $(3)$ במשפט פוביני.]
