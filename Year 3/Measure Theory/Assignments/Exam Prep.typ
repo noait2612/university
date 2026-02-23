@@ -714,6 +714,28 @@
 
 #pagebreak()
 
+== טענה ממבחן לדוגמה
+#theorem("טענה ממבחן לדוגמה")[
+  $mu$ מידת רדון על $(RR, Borel_RR)$ שהיינה סופית על קומפקטיות (לכל $K subset.eq RR$ קומפקטית, $mu(K)<infinity$). נוכיח כי $mu$ רגולרית פנימית וחיצונית.
+]
+#proof[
+  מכך ש־$mu$ סופית על קומפקטיאות נקבל ש־$Lambda f = integral_X f dif mu$ פונקציונל לינארי חיובי על $C_C (RR)$ וממשפט ההצגה של ריס נובע שקיימת ויחידה $lambda$ מידת רדון על $X$ המקיימת $integral_X f dif lambda = integral_X f dif mu$ לכל $f in C_C (RR)$.\
+  מכך ש־$RR$ הוא $sigma$־קומפקטי נובע שלכל $V subset.eq RR$ פתוחה יש ${K_n}_(n=1)^infinity subset.eq RR$ קומפקטיות כך ש־$union.big_(n in NN) K_n = V$. \
+  מהלמה של אוריסון נובע שלכל $n in NN$ יש $g_n in C_C (RR)$ כך שמתקיים $K_n prec g_n prec V$ ואם נגדיר ${f_N}_(N=1)^infinity$ על־ידי $f_N colon.eq max_(i in [N]) {g_i}$ נקבל ש־$f_N in C_C (RR)$, ${f_N}$ מונוטונית עולה ו־$f_N arrow bb(1)_V$ נקודתית מבנייה ולכן באמצעות שימוש כפול במשפט ההתכנסות המונוטונית נקבל
+  $
+    mu(V) = integral_X bb(1)_V dif mu = integral_X lim_(N arrow infinity) f_N dif mu = lim_(N arrow infinity) integral_X f_N dif mu = lim_(N arrow infinity) integral_X f_N dif lambda = integral_X lim_(N arrow infinity) f_N dif mu = integral_X bb(1)_V dif lambda = lambda(V)
+  $
+  ולכן $lambda$ ו־$mu$ מזדהות על קבוצות פתוחות.\
+  יהי $epsilon>0$, מכך ש־$lambda$ היא מידת רדון נובע שלכל $E subset.eq RR$ יש $U subset.eq RR$ פתוחה ו־$F subset.eq RR$ סגורה כך ש־$F subset.eq E subset.eq U$ ו־$lambda(U without F) < epsilon$ וממונוטוניות $lambda(U without E) < epsilon$.\
+  $U without F$ פתוחה ולכן $lambda(U without F) = mu(U without F)$ ולכן $mu(U without F) < epsilon$ ונקבל
+  $
+    mu(U)-mu(E) <=_"מונוטוניות" mu(U) - mu(F) = mu(U without F) < epsilon ==> mu(U)-epsilon < mu(E) \
+    lambda(E)-epsilon <=_"מונוטוניות" lambda(U)-epsilon = mu(U)-epsilon < mu(E)<=mu(U)=lambda(U) < lambda(E)+epsilon \
+    ==> lambda(E)-epsilon < mu(E) < lambda(E)+epsilon <==> -epsilon < mu(E)-lambda(E) < epsilon <==> abs(mu(E)-lambda(E))<epsilon
+  $
+  לכל משרירותיות $epsilon$ נקבל ש־$mu(E)=lambda(E)$ לכל $E subset.eq RR$ אז $mu=lambda$ ולכן $mu$ מידת רדון ומתכונות מידת רדון נובע שכל קבוצה מדידה היא רגולרית פנימית וחיצונית.
+]
+
 = התכנסות חלשה-\*
 == טענה מהמבחן
 #theorem("טענה מהמבחן")[
@@ -1017,7 +1039,13 @@
   $
 ]
 #remark($L^infinity"אי־נכונות הטענה ב־"$)[
-  הדוגמה מהטענה הקודמת מראה את אי־נכונות הטענה גם כאן.
+  הדוגמה מהטענה הקודמת מראה את אי־נכונות הטענה גם כאן: מהגדרה, אם $f in C_C (RR)$ אז קיים $M in RR^plus$ כך שמחוץ לקטע$[-M, M]$ מתקיים $f(x)=0$.\
+  ניקח $g(x)=1$ ו־$g in L^infinity (RR)$ שכן $norm(g)_infinity = 1$.\
+  אם ננסה לקרב את $g(x)$ עם כל $f in C_C (RR)$ נקבל
+  $ norm(g-f)_infinity = esssup_(x in RR) abs(1-f(x)) $
+  אז מהיות $f in C_C (RR)$ נובע שעבור $abs(x)>M$ כלשהו מתקיים
+  $ abs(g(x)-f(x))=abs(1-0) = 1 $
+  כלומר $norm(g-f)_infinity >=1$ ולכן לא ניתן לקרב ו־$C_C (RR)$ לא צפופה ב־$L^infinity (RR)$.
 ]
 
 #pagebreak()
@@ -1143,7 +1171,7 @@
 
 #proof[
   + הוכחת הטענה נכונה כאשר $nu$ מידה סופית ו־$mu$ מידה $sigma$־סופית ונראה כי זה גורר נכונות עבור מידות $mu, nu$ $sigma$־סופיות: \
-    מהיות המרחב $sigma$־סופי ולכן קיים אוסף ${A_n}_(n=1)^infinity subset.eq cal(A)$ של קבוצות מדידות ממידה סופית תחת $nu$ ובלי הגבלת הכלליות נניח שהן זרות זו מזו (תמיד ניתן להזיר אותם) כך ש־$X =_((star)) union.dot_(n=1)^infinity A_n$ ולכל $n in NN$ נסמן את מרחב המידה המצומצם
+    מהיות המרחב $sigma$־סופי נובע שקיים אוסף ${A_n}_(n=1)^infinity subset.eq cal(A)$ של קבוצות מדידות ממידה סופית תחת $nu$ ובלי הגבלת הכלליות נניח שהן זרות זו מזו (תמיד ניתן להזיר אותם) כך ש־$X =_((star)) union.dot_(n=1)^infinity A_n$ ולכל $n in NN$ נסמן את מרחב המידה המצומצם
     $
       v_n colon.eq nu|_(A_n) wide A_n colon.eq cal(A)|_(A_n)
     $
@@ -1213,7 +1241,8 @@
     כאשר זה מוגדר $mu$־כמעט בכל מקום כאשר $g(x)>0$
   + המשפט היסודי של האלגברה – אם $mu$ מידת לבג ו־$F(x)=nu((-infinity,x])$ (כלומר $F$ היא רציפה בהחלט) אזי
     $ (dif nu)/(dif lambda) (x) = F'(x) $
-  + החלפת משתנה ודחיפה קדימה של המידה – אם $nu = f_*mu$ ואנחנו רוצים את נגזרת רדון־ניקודים ביחס ל־$mu$ זה פשוט היעקוביאן. אם $T:X arrow X$ (במימד אחד לנוחות) גזירה ו־$nu(E) = mu(T^(-1)(E))$ אזי
+  + החלפת משתנה ודחיפה קדימה של המידה – אם $nu = f_*mu$ ואנחנו רוצים את נגזרת רדון־ניקודים ביחס ל־$mu$ זה פשוט היעקוביאן. \
+    אם $T:X arrow X$ (במימד אחד לנוחות) גזירה ו־$nu(E) = mu(T^(-1)(E))$ אזי
     $ (dif nu)/(dif mu) (x) = 1/abs(T'(T^(-1)(x))) $
 
 = גזירה של מידות רדון ב־$RR^d$
@@ -1417,3 +1446,22 @@
 
 #corollary[אם $f:X times Y arrow CC$ מדידה ומקיימת $integral.double abs(f(x,y)) dif mu(x) dif nu(y) < infinity$ אזי $integral f dif (mu times nu)=integral.double f dif mu dif nu = integral.double f dif nu dif mu$]
 #proof[נובע ישירות מ־$(2)$ + $(3)$ במשפט פוביני.]
+
+#pagebreak()
+
+== תנאי שקול לפונקציה מדידה על מרחב מכפלה
+#theorem("תנאי שקול לפונקציה מדידה על מרחב מכפלה")[
+  תהיי $f:(X, cal(A)) arrow (Y times Z, cal(B) times.o cal(C))$ העתקה ותהיינה $ pi_Y : Y times Z arrow Y wide pi_Z : Y times Z arrow Z $
+  ההעתקות הקנוניות. אז $f$ מדידה אם ורק אם ההרכבה שלה עם כל הטלה על מרכב המכפלה היא מדידה.
+]
+#proof[
+  $<==$ נניח ש־$f$ מדידה ונרצה להראות ש־$pi_Y compose f, pi_Z compose f$ מדידות אבל זה נכון כי ראינו ש־$pi_Y, pi_Z$ הן פונקציות מדידות והרכבה של פונקציות מדידות היא תמיד מדידה.\
+  $==>$ נניח ש־$pi_y compose f, pi_z compose f$ מדידות ונראה ש־$f$ מדידה.\
+  עלינו להראות ש־$f^(-1)(E) in cal(A)$ לכל $E in cal(B) times.o cal(C)$, אז נגדיר $cal(R) colon.eq {B times C bar B in cal(B), C in cal(C)}$ ויהי $B times C in cal(R)$ מלבן.\
+  ניתן לכתוב $B times C = pi_Y^(-1)(B) inter pi_Z^(-1)(C)$ ואם נסתכל על המקור תחת $f$ נקבל
+  $
+    f^(-1)(B times C) = f^(-1)(pi_Y^(-1)(B) inter pi_Z^(-1)(C))=f^(-1)(pi_Y^(-1)(B)) inter f^(-1)(pi_Z^(-1)(C)) = (pi_Y compose f)^(-1)(B) inter (pi_Z compose f)^(-1)(C)
+  $
+  אבל מההנחה, $pi_Y compose f$ מדידה ולכן $(pi_Y compose f)^(-1)(B) in cal(A)$ ובאופן דומה $(pi_z compose f)^(-1)(C) in cal(A)$.\
+  היות וחיתוך סופי של קבוצות מדידות הוא מדיד (מהגדרת ה־$sigma$־אלגברה) נובע כי $(pi_Y compose f)^(-1)(B) inter (pi_Z compose f)^(-1)(C) in cal(A)$, וזה נכון לכל $R in cal(R)$ ולכן $f$ מדידה.
+]
