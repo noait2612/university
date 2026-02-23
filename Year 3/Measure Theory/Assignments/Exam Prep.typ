@@ -13,6 +13,19 @@
 #pagebreak()
 
 = מידה
+== תנאי מספיק בשביל פונקציה מדידה
+#theorem("תנאי מספיק בשביל פונקציה מדידה")[
+  $(X, cal(A))$ מרחב מדיד ו־$(Y, tau)$ מרחב טופולוגי. אם $BB_Y colon.eq sigma(tau)$ היא $sigma$־אלגברת בורל על $Y$ אז הפונקציה $f: (X, cal(A)) arrow (Y, BB_Y)$ מדידה אם ורק אם המקור של כל קבוצה פתוחה ב־$tau$ הוא מדיד, כלומר אם ורק אם לכל $U in tau$, $f^(-1)(U) in cal(A)$.
+]
+#proof[
+  הכיוון הראשון נובע ישירות מהגדרת הפונקציה המדידה (כי מהגדרה בשביל שהפונקציה תהיה מדידה צריך שהמקור של כל קבוצה מדידה תחת $f$ יהיה מדיד).\
+  בכיוון השני, נסמן $Omega colon.eq {E subset.eq Y bar f^(-1)(E) in cal(A)}$.\
+  מההנחה, כל $U in tau$ מקיימת $f^(-1)(U) in cal(A)$ ולכן $tau subset.eq Omega$ ומטענה שראינו נובע ש־$Omega$ היא $sigma$־אןלגברה.\
+  מצד שני, $sigma$־אלגברת בורל $BB_Y$ היא ה־$sigma$־אלגברה הקטנה ביותר על $Y$ שמכילה את $tau$ ולכן $sigma(tau)=BB_Y subset.eq Omega$ ולכן לכל $E in BB_Y$ מתקיים $E in Omega$ כלומר $f^(-1)(E) in cal(A)$ ולכן $f$ מדידה לפי $BB_Y$.
+]
+
+#pagebreak()
+
 == תנאי שקול לפונקציה מדידה
 #theorem(
   "תנאי שקול לפונקציה מדידה",
@@ -21,11 +34,11 @@
 #proof[\
   $<==$ מיידי מהגדרה כי אם $f$ מדידה לכל $E in BB([-infinity, infinity])$ מתקיים $f^(-1)(E) in cal(A)$ ולכן בהינתן $alpha in RR$ כלשהו, מתקיים $(alpha, infinity] in BB([infinity, infinity])$ ובפרט $f^(-1)((alpha, infinity]) in cal(A)$.\
   $==>$ מספיק להראות שהמקור של כל אחת מהקבוצות
-  $ (alpha, beta), wide (alpha, infinity], wide [-infinity, beta) $
+  $ (star) wide (alpha, beta), wide (alpha, infinity], wide [-infinity, beta) $
   הוא מדיד, ואכן:
   + בהינתן $beta in RR$ מתקיים
     $
-      f^(-1)([-infinity, alpha)) = union.big_(n=1)^infinity f^(-1)([-infinity, beta-1/n)) = union.big_(n=1)^infinity f^(-1)((beta-1/n, infinity]^c) = union.big_(n=1)^infinity (f^(-1)((beta-1/n, infinity]))^c in cal(A)
+      f^(-1)([-infinity, beta)) = union.big_(n=1)^infinity f^(-1)([-infinity, beta-1/n)) = union.big_(n=1)^infinity f^(-1)((beta-1/n, infinity]^c) = union.big_(n=1)^infinity (f^(-1)((beta-1/n, infinity]))^c in cal(A)
     $
     כאשר המעבר האחרון נובע מההנחה שלכל $alpha in RR$ מתקיים $f^(-1)((alpha, infinity])$ ולכן לכל $n in NN$ בפרט עבור $alpha = beta-1/n in RR$ נקבל \
     $f^(-1)((beta-1/n, infinity]) in cal(A)$.\
@@ -155,7 +168,7 @@
     $
     ובפרט בלקיחת סופרמום
     $
-      integral f d mu = sup {integral_E s d mu bar 0<=s<=f, " פשוטה" s} subset.eq sup {integral_E s d mu bar 0<=s<=g, " פשוטה" s} = integral g d mu
+      integral f d mu = sup {integral_E s d mu bar 0<=s<=f, " פשוטה" s} <= sup {integral_E s d mu bar 0<=s<=g, " פשוטה" s} = integral g d mu
     $
   + יהי $x in X$.\
     אם $x in A$ אז $bb(1)_(A)(x)=1$ ומהנתון $A subset.eq B$ מתקיים $bb(1)_(B)(x)=1$.\
@@ -311,7 +324,7 @@
 
 #proof[
   לכל $k in NN$ נסמן $g_k colon.eq inf_(n in NN \
-  n=>k) {f_n}$ אזי הסדרה ${g_k}_(k=1)^infinity$ סדרה מונוטונית עולה ואי־שלילית.\
+  n >= k) {f_n}$ אזי הסדרה ${g_k}_(k=1)^infinity$ סדרה מונוטונית עולה ואי־שלילית.\
   ממשפט ההתכנסות המונוטונית נקבל
   $ integral_X lim_(k arrow.r infinity) g_k dif mu = lim_(k arrow.r infinity) integral_X g_k dif mu $
   ומתקיים מהגדרה
@@ -621,7 +634,7 @@
         mu(U without E^c) <= mu(union.big_(n=1)^infinity U_n without (E^c inter K_n))<= sum_(n=1)^infinity mu(U_n without E^c inter K_n) = sum_(n=1)^infinity mu(U_n)-mu(E^c inter K_n)<_((diamond)) sum_(n=1)^infinity epsilon/2^(n+1) = epsilon/2
       $
       אז אם נסמן $F colon.eq U^c$ נקבל
-      + $U$ פתוחה $==$ $F$ סגורה
+      + $U$ פתוחה $<==$ $F$ סגורה
       + $E^c subset.eq U$ $<==$ $U^c subset.eq E$ $<==$ $F subset.eq E$
       + מתקיים
         $
@@ -684,7 +697,7 @@
       mu(V) = integral_X bb(1)_(V) dif mu = integral_X lim_(N arrow.r infinity) f_N dif mu = lim_(N arrow.r infinity) integral_X f_N dif mu = lim_(N arrow.r infinity) integral_X f_N dif lambda = integral_X lim_(N arrow.r infinity) f_N dif lambda = integral_X bb(1)_(V) dif lambda
     $
     כלומר לכל $V in cal(m)$ פתוחה מתקיים $mu(V)=lambda(V)$
-  + *שימוש בתכונות מידת רדון:* יהי $epsilon>0$, מהיות $lambda$ מידת רדון נובע שלכל $E in cal(m)$ קיימת קבוצה פתוחה $U subset.eq X$  וקבוצה סגורה $F subset.eq X$ עם $F subset.eq E subset.eq U$ כך ש־$mu(V without F)<epsilon$.\
+  + *שימוש בתכונות מידת רדון:* יהי $epsilon>0$, מהיות $lambda$ מידת רדון נובע שלכל $E in cal(m)$ קיימת קבוצה פתוחה $U subset.eq X$  וקבוצה סגורה $F subset.eq X$ עם $F subset.eq E subset.eq U$ כך ש־$lambda(U without F)<epsilon$.\
     בפרט, נובע מהיות $F subset.eq E$ כי $U without E subset.eq U without F$ ולכן ממונוטוניות $lambda(U without E)<_((star)) epsilon$.\
     אבל $U without F$ היא פתוחה (כי הפרש של פתוחה וסגורה היא פתוחה) ו־$mu(V)=lambda(V)$ לכל פתוחה ומדידה, ולכן $mu(U without F) = lambda(U without F) < epsilon$, כלומר
     $ mu(U) - mu(E) <=_("מונוטוניות") mu(U) - mu(F) = mu(U without F) < epsilon ==> mu(U) - epsilon < mu(E) $
@@ -702,7 +715,87 @@
 #pagebreak()
 
 = התכנסות חלשה-\*
-#theorem("תכניסי פה את הטענה מהמבחן")
+== טענה מהמבחן
+#theorem("טענה מהמבחן")[
+  יהי $X$ מרחב מטרי קומפקטי ו־$(f_k)_(k=1)^infinity$ סדרה של פונקציות רציפות שהיינה צפופה ב־$C(X)$ ביחס למטריקת $sup$.\
+  תהיי $mu_n$ סדרת מידות הסתברות על $X$ ונוכיח כי אם קיים הגבול $lim_(n arrow infinity) integral f_k dif mu_n$ לכל $k$ אזי קיימת מידת הסתברות $mu$ עבורה $mu_n arrow^* mu$.
+]
+#proof[
+  תהיי $f in C(X)$ ו־$epsilon>0$. מהצפיפות נובע שקיימת $f_(k_0)$ כך שמתקיים $norm(f-f_(k_0))_infinity < epsilon$ אז לכל $n$
+  $ abs(integral f dif mu_n - integral f_(k_0) dif mu_n)<=norm(f-f_(k_0))_infinity < epsilon $
+  וגם עבור $m in NN$
+  $ abs(integral f dif mu_m - integral f_(k_0) dif mu_m) < epsilon $
+  ונרצה להראות שזאת סדרת קושי, כלומר
+  $
+    abs(integral f dif mu_n - integral f dif mu_m) <= abs(integral f - f_(k_0) dif mu_n) + abs(integral f_(k_0) dif mu_n - integral f_(k_0) dif mu_m) + abs(integral f_(k_0) - f dif mu_m) <= epsilon + abs(integral f_(k_0) dif mu_n - integral f_(k_0) dif mu_m)
+  $
+  אבל מההנחה $integral f_(k_0) dif mu_n$ מתכנסת וזאת סדרת קושי ולכן עבור $n,m$ גדולים דיו $ abs(integral f_(k_0) dif mu_n - integral f_(k_0) dif mu_m)<epsilon ==> abs(integral f dif mu_n - integral f dif mu_m) < 3epsilon $ ולכן ${integral f dif mu_n}$ זאת סדרת קושי ב־$RR$.\
+  נגדיר $L(f) colon.eq lim_(n arrow infinity) integral f dif mu_n$ והגבול הזה קיים לכל $f in C(X)$.\
+  אבל $mu_n$ הן מידות הסתברות ולכן אם $f>=0$ אזי $L(f)>=0$ ו־$L(1)=1$ ולכן $abs(L(f))<=norm(f)_infinity$.\
+  ממשפט הצגה של ריז נובע ש־$L(f) = integral f dif mu$ (כי קיימת ויחידה $mu$ מידת הסתברות כזאת) ולכן $integral f dif mu_n stretch(arrow)_(n arrow infinity) integral f dif mu$ לכל $f in C(X)$ וזו בידיוק ההגדרה $mu_n arrow^* mu$.\
+]
+#pagebreak()
+
+== מידות הסתברות
+#definition($ cal(P)(X) colon.eq {mu : BB(X) arrow [0,infinity] mu(X)=1 ("probability measure")} $)
+#definition("מרחק בין מידות הסתברות")[
+  תהיינה $mu, nu in cal(P)(X)$ שתי מידות הסתברות על $BB(X)$ ותהיי ${f_n}_(n=1)^infinity subset.eq C(X)$ קבוצה צפופה ב־$C(X)$ כך ש־$0_(C(X)) in.not {f_n}_(n=1)^infinity$.\
+  $ d(mu,nu) colon.eq sum_(n=1)^infinity 1/(2^n norm(f_n)_infinity) abs(integral_X f_n dif mu - integral_X f_n dif nu) $
+]
+
+#lemma[
+  המרחק בין מידות הסתברות היא מטריקה על $cal(P)(X)$ ולכן $(cal(P)(X), d)$ הוא מרחב מטרי
+]
+#proof[
+  ברור כי $d$ אי־שלילית וסימטרית ונניח ש־$d$ ומקיימת את אי־שיוויון המשולש ולכן נשאר להוכיח שאם $d(mu,nu)=0 ==> mu = nu$:
+  $ 0 = d(mu, nu) == forall n in NN, space integral_X f_n dif mu = integral_X f_n dif nu $
+  אז לכל $g in C(X)$ קיימת תת־סדרה $f_(n_k) arrow g$ במידה שווה (בנורמת $sup$) ומהיות $g$ חסומה הרי שהחל ממקום מסוים איברי הסדרה מקיימים $norm(f_n_k)_infinity <= norm(g)_infinity + 1$.\
+  הפונקציה הקבועה $norm(g)_infinity + 1$ אינטגרבילית ביחס ל־$nu,mu$ (מידות הסתברות) אז ממשפט ההתכנסות הנשלטת
+  $
+    integral g dif mu = lim_(n arrow infinity) integral f_(n_k) dif mu = lim_(n arrow infinity) integral f_(n_k) dif nu = integral g dif nu
+  $
+  כלומר $mu,nu$ מגדירות את אותו פונקציונל על $C_C (X)$ ולכן מהיחידות במשפט ההצגה של ריז נסיק $mu=nu$.
+]
+
+#theorem[
+  אם $X$ מרחב מטרי קומפקטי אזי $(cal(P)(X), d)$ מרחב מטרי קופקטי.
+]
+#proof[
+  תהיי ${f_n}_(n=1)^infinity subset.eq C(X)$ צפופה ב־$C(X)$ ותהיי ${mu_n}_(n=1)^infinity subset.eq cal(P)(X)$ ונראה שיש לה תת־סדרה מתכנסת.\
+  מאחר ו־${integral_X f_1 dif mu_n}_(n=1)^infinity$ חסומה ב־$CC$, מבולציאנו־ויירשטראס נקבל ${mu_(n,1)}_(n=1)^infinity$ ו־$alpha_1 in CC$ כך ש־$integral_X f_1 dif mu_(n,1) stretch(arrow)_(n arrow infinity) alpha_1$.\
+  נמשיך בטיעון דומה לכל $f_k$ ונקבל מטיעון אלכסון כי תת־הסדרה ${mu_(n,n)}_(n=1)^infinity$ מקיימת $integral_X f_k dif mu_(n,n) stretch(arrow)_(n arrow infinity) alpha_k$ לכל $k in NN$.\
+  בהינתן $g in C(X)$ ו־$epsilon>0$, קיים $i in NN$ כך ש־$norm(f_i - g)< epsilon/3$ ובנוסף קיים $N in NN$ כך שלכל $N<n,m in NN$  מתקיים $abs(integral_X f_i dif mu_(n,n)-integral_X f_i dif mu_(m,m))<epsilon/3$ כי זאת סדרת קושי, אז
+  $
+    abs(integral_X g dif mu_(n,n)-integral_X g dif mu_(m,m)) &<=abs(integral_X g dif mu_(n,n)-integral_X f_i dif mu_(n,n))+abs(integral_X f_i dif mu_(n,n) - integral_X f_i dif mu_(m,m)) + abs(integral_X f_i dif mu_(m,m)-integral_X g dif mu_(m,m)) \
+    &<= integral_X abs(g-f_i) dif mu_(n,n))+abs(integral_X f_i dif mu_(n,n)-integral_X f_i dif mu_(m,m)) + integral_X abs(f_i-g)d dif mu_(m,m) \
+    &<= norm(g-f_i)_infinity mu_(n,n)(X) + abs(integral_X f_i dif mu_(n,n)-integral_X f_i dif mu_(m,m)) + norm(g-f_i)_infinity mu_(m,m)(X) < epsilon/3 + epsilon/3 + epsilon/3 = epsilon
+  $
+  כלומר ${integral_X g dif mu_(n,n)}_(n=1)^infinity$ סדרת קושי ב־$CC$ ולכן מתכנסת ב־$CC$.\
+  נגדיר $Lambda:C(X) arrow CC$ על־ידי $Lambda g colon.eq lim_(n arrow infinity) integral_X g dif mu_(n,n)$ ולכן ממשפט ההצגה של ריז קיימת מידה $mu$ המתאימה ל־$Lambda$.\
+  נבחין כי $mu in cal(P)(X)$ כי $bb(1)_X in C(X)$ שכן $mu(X) =lim_(n arrow infinity) integral_X bb(1)_X dif mu_(n,n) = 1$.
+]
+
+#pagebreak()
+
+= דינמיקה
+== משפט Krylov–Bogolyubov
+#theorem("Krylov–Bogolyubov")[אם
+  $X$ מרחב מטרי קומפקטי, $T:X arrow X$ רציפה אזי קיימת $mu$ מידת הסתברות $T$־אינווריאנטית (כלומר $T_*mu=mu$) על $X$.
+]
+#proof[
+  נבחר $x_0 in X$ ונתבונן על
+  $ mu_n colon.eq 1/n sum_(k=0)^(n-1) delta_(T^k (x_0)) in cal(P)(X) $
+  מהקומפקטיות של $cal(P)(X)$ נובע שקיימת $mu$ מידת הסתברות עבורה $mu_(n_k) arrow^* mu$ ונראה שהיא $T$־אינווריאנטית: תהיי $f in C_C (X)$, אזי
+  $
+    abs(integral f dif mu-integral f compose T dif mu) &=lim_(k arrow infinity) abs(integral f dif mu_(n_k) - integral f compose T dif mu_(n_k)) \
+    &<= lim_(k arrow infinity) abs(1/n_k sum_(i=0)^(n_k-1) (f-f compose T)(T^i (x_0))) \
+    &=lim_(k arrow infinity) abs(1/n_k sum_(i=0)^(n_k-1) f(T^i (x_0))-f(T^(i+1)(x_0))) \
+    &=_((star)) lim_(k arrow infinity) 1/n_k abs(f(x_0)-f(T^(n_k)(x_0))) \
+    &<=lim_(k arrow infinity) (2 norm(f)_infinity)/(n_k) = 0
+  $
+  כאשר $(star)$ נובע מכך שזה טור טלסקופי.\
+  מיחידות משפט ההצגה של ריס נסיק $T_*mu=mu$.
+]
 #pagebreak()
 
 = שלושת העקרונות של Littlewood
@@ -803,8 +896,8 @@
 
 #pagebreak()
 
-== $CC$ הוא מרחב וקטור מעל $cal(L)^p (mu)$
-#theorem($CC "הוא מרחב וקטור מעל" cal(L)^p (mu)$)[
+== $CC$ הוא מרחב פסודו-נורמי מעל $cal(L)^p (mu)$
+#theorem($CC "הוא מרחב פסודו-נורמי מעל" cal(L)^p (mu)$)[
   $cal(L)^p (mu)$ הוא מרחב וקטורי מעל $CC$.
 ]
 
@@ -833,6 +926,7 @@
     אי־השיוויון האחרון נובע מהיות $abs(lambda)^p < infinity$ ומהיות $integral abs(f)^p dif mu < infinity$ כי $f in cal(L)^p$ ולכן המכפלה היא סופית.
   ]
 ]
+#remark[זה מרחב פסודו-נורמי כי זו לא באמת נורמה $norm(f)_p = 0 cancel(==>) f eq.triple 0$ אבל $norm(f)_p = 0$ אכן גורר $f =_mu 0$]
 
 #pagebreak()
 
@@ -853,96 +947,48 @@
 #pagebreak()
 
 == לכל $p in [1,infinity]$, המרחב הנורמי $(L^p (mu), norm(dot.op)_p)$ הוא מרחב בנך
-
 #theorem($"הוא מרחב בנך" (L^p (mu), norm(dot.op)_p) "המרחב הנורמי" p in [1,infinity] "לכל"$)[
   לכל $p in [1, infinity]$, המרחב הנורמי $(L^p (mu), norm(dot.op)_p)$ הוא מרחב בנך (אם ורק אם הוא שלם במטריקה המושרית מהנורמה, כלומר כל סדרת קושי היא מתכנסת).
 ]
 
 #proof[
-  תהיי ${[f_n]_mu}_(n=1)^infinity subset.eq L^p (mu)$ סדרת קושי ותהיי ${f_n}_(n=1)^infinity$ נציגים של מחלקות שקילות אלו.\
-  + נניח ש־$p in [1, infinity)$, אז לכל $k in NN$ קיים $n_k in KK$ כך ש־$norm(f_(n_(k+1))-f_(n_k))<1/2^k$ כי הסדרה קושי.\
-    תהיי ${f_(n_k)}_(k=1)^infinity {f_n}_(n=1)^infinity$ תת־הסדרה המקיימת זאת ולכל $k in NN$ נגדיר
-    $ g_k colon.eq sum_(i=1)^k abs(f_(n_(i+1))-f_(n_i)) $ ומתקיים
+  + נניח ש־$p in [1, infinity)$ ותהיי ${f_n}$ סדרת קושי, אז קיימת תת־סדרה המקיימת
+    $ norm(f_((n_i)+1) - f_(n_i))_p <2^(-i) $
+    נגדיר
+    $ g_k colon.eq sum_(i=1)^(k-1) abs(f_((n_i)+1) - f_(n_i)) $
+    מאי־שיוויון מניקובסקי נקבל
+    $ norm(g_k)_p <= sum_(i=1)^(k-1) norm(f_((n_i)+1) - f_(n_i))_p <= 1 $
+    ולכן $g_k in L^p (mu)$ לכל $k$ וכן $g_1^p <= g_2^p <= dots.h.c$ וממשפט ההתכנסות המונוטונית מתקיים עבור $g=sum_(i=1)^infinity abs(f_((n_i)+1) - f_(n_i))=lim_(k arrow infinity) g_k$
+    $ integral g^p dif mu = lim_(k arrow infinity) integral g_k^p dif mu <= lim_(k arrow infinity) norm(g_k)_p^p <=1 $
+    ולכן $g in L^p (mu)$ ובפרט $g<infinity$ $mu$־כמעט תמיד ולכן
+    $ f=f_(n_1) + sum_(i=1)^infinity (f_((n_i)+1) - f_(n_i)) $
+    מתכנסת בהחלט $mu$־כמעט תמיד ונגדיר $f = 0$ היכן שהטור מתבדר ומכך שהטור טלסקופי נובע $f = lim_(i arrow infinity) f_(n_i)$ ויתר על־כן
+    $ norm(f)_p <= norm(f_(n_1))_p + norm(g)_p < infinity ==> f in L^p (mu) $
+    מכך שהסדרה ${f_n}$ קושי נובע שלכל $epsilon > 0$ יש $N$ כך שלכל $n,m>N$ מתקיים $norm(f_n - f_m)_p < epsilon$ ולכן עבור $m>N$
     $
-      norm(g_k)_p = norm(sum_(i=1)^k abs(f_(n_(i+1))-f_(n_i)))_p <= sum_(i=1)^k norm(f_(n_(i+1))-f_(n_i))_p < sum_(i=1)^k 1/2^i < infinity
+      norm(f-f_m)_p^p = integral lim_(i arrow infinity) abs(f_m-f_(n_i))^p dif mu <=_"פאטו" liminf_(i arrow infinity) integral abs(f_m - f_(n_i))^p dif mu = liminf_(i arrow infinity) norm(f_m-f_(n_i))_p^p < epsilon^p ==> norm(f-f_n)_p stretch(arrow)_(n arrow infinity) 0
     $
-    ולכן $g_k in L^p (mu)$ ונסמן $g colon.eq sum_(i=1)^infinity abs(f_(n_(i+1))-f_(n_i))$ והסדרה ${g_k^p = [sum_(i=1)^k abs(f_(n_(i+1))-f_(n_i))]^p}_(k=1)^infinity$ היא סדרה מונוטוניות עולה של פונקציות אי־שלילית המקיימת $g_k^p stretch(arrow.r)_(k arrow.r infinity) g^p= [sum_(i=1)^infinity abs(f_(n_(i+1))-f_(n_i))]^p$ נקודתית, אז ממשפט ההתכנסות המונוטונית נקבל
+  + נניח ש־$p=infinity$ ונסמן
     $
-      norm(g)_p^p = integral_X (sum_(i=1)^infinity abs(f_(n_(i+1))-f_(n_i)))^p dif mu = integral_X g^p dif mu = lim_(k arrow.r infinity) integral_X g_k^p dif mu = lim_(k arrow.r infinity) norm(g_k)_p^p < 1
+      A_n colon.eq {x in X bar abs(f_n). norm(f_n)_infinity} wide B_(n,m) colon.eq {x in X bar abs(f_n-f_m)> norm(f_n-f_m)_infinity}
     $
-    כאשר אי־השיוויון האחרון נובע מהיות
-    $
-      norm(g_k)_p < sum_(i=1)^k 1/2^i < sum_(i=1^infinity) 1/2^i =_"סכום טור הנדסי" (1/2)/(1-1/2) = 1 ==> norm(g_k)_p < 1 ==> norm(g_k)_p^p < 1
-    $
-    ולכן בפרט $norm(g)_p < 1$ ולכן $g(x) < infinity$ $mu$־כמעט לכל $x in X$ כלומר הטור מתכנס בהחלט $mu$־כמעט תמיד אז נגדיר
-    $ f colon.eq f_(n_1) + sum_(i=1)^infinity (f_(n_(i+1))-f_(n_i)) $
-    ונרצה להראות שהסדרה ${f_m}_(m=1)^infinity$ מתכנסת ל־$f$ וכן ש־$f in L^p (mu)$: $f$ מוגדרת $mu$־כמעט תמיד לכן נקבע $f=0$ היכן ש־$f$ לא מוגדרת ואז
-    $ f(x)=f_(n_1) + sum_(i=1)^infinity (f_(n_(i+1))-f_(n_i)) = lim_(i arrow.r infinity) f_(n_i) (x) $
-    שכן זהו טור טלסקופי ולכל $m in NN$ מתקיים $abs(f_m -f_(n_i))^p stretch(arrow.r)_(i arrow.r infinity) abs(f_m - f)^p$ כמעט לכל $x in X$, אז
-    $
-      norm(f_m-f)_p^p = integral_X abs(f_m-f)^p dif mu = integral_X liminf_(i arrow.r infinity) abs(f_m - f_(n_i))^p dif mu <=_"פאטו" liminf_(i arrow.r infinity) integral_X abs(f_m - f_(n_i))^p dif mu = liminf_(i arrow.r infinity) norm(f_m - f_(n_i))_p^p
-    $
-    אבל ${f_n}_(n=1)^infinity$ היא סדרת קושי, אז לכל $epsilon > 0$ קיים $N in NN$ כך שלכל $n,m in NN$ עם $n,m > N$ מתקיים $norm(f_m - f_(n_i))_p < epsilon$ ובפרט עבור $m > N$ נקבל
-    $ norm(f_m-f)_p^p <= liminf_(i arrow.r infinity) norm(f_m - f_(n_i))_p^p < epsilon^p ==> f_m stretch(arrow.r)_(m arrow.r infinity)^norm(dot.op)_p f $ וכן
-    $ norm(f)_p <=_"אי־שיוויון המשולש" norm(f-f_m)_p + norm(f_m)_p < infinity ==> f in L^p (mu) $
-    #colbreak()
-  + אם $p=infinity$ אז ${f_n}_(n=1)^infinity subset.eq L^infinity (mu)$ סדרת קושי של נציגים עבורה קיימת תת־סדרה ${f_(n_i)}_(i=1)^infinity$ כך שמתקיים
-    $ forall i in NN, space norm(f_(n_(i+1))-f_(n_i))_infinity < 1/2^k $
-    נסמן לכל $n in NN, k in NN$
-    $
-      A_n colon.eq {x in X bar abs(f_n (x))>norm(f_n)_infinity} = abs(f_n)^(-1) ((norm(f_n)_infinity, infinity]) \
-      B_(n,k) colon.eq {x in X bar abs(f_n (x) - f_k (x)) > norm(f_n - f_k)_infinity}=abs(f_n - f_k)^(-1)((norm(f_n - f_k)_infinity, infinity])
-    $
-    אבל $f_n in L^infinity (mu)$ אז מהגדרה $esssup{abs(dot.op)}=norm(dot.op)_infinity$ ש־$mu(A_n) = mu(B_(n,k))=0$ אז
-    $ E colon.eq (union.big_(n in NN) A_n) union (union.big_(n,k in NN) B_(n,k)) $
-    ומ־$sigma$־אדטיביות של $mu$ נקבל $mu(E)=0$.\
-    כעת $sum_(i=1)^infinity (f_(n_(i+1))-f_(n_i))$ מתכנס במידה שווה ממבחן ה־$M$ של ויירשטראס על $X without E$ (כי $sum_(k=1)^infinity 2^(-k) < infinity$) ולכן  \
-    $f_(n_1) + sum_(i=1)^infinity (f_(n_(i+1))-f_(n_i))$ מתכנסת במידה שווה ל־$f$ על $X without E$.\
-    אז ${f_n}_(n=1)^infinity$ סדרת קושי ונקבל שהגבול $f(x) = lim_(n arrow.r infinity) f_n (x)$ מוגדר וקיים $mu$־כמעט לכל $x in X$ ו־$f$ חסומה על־ידי $lim_(n arrow.r infinity) norm(f_n)_infinity$ \
-    $mu$־כמעט לכל $x in X$, כלומר $f in L^infinity (mu)$ ומתקיים $norm(f-f_n)_infinity stretch(arrow.r)_(n arrow.r infinity) 0$.
+    אז $E = union.big_(n,m) B_(n,m) union union.big_(n) A_n$ היא קבוצה מ־$mu$־מידה אפס (מהגדרת $esssup$) ועל $E^c$ מתקיים ש־$f_n arrow f = lim_(n arrow infinity) f_n$ במידה שווה ולכן $norm(f-f_n)_infinity stretch(arrow)_(n arrow infinity) 0$.
 ]
 
 #pagebreak()
 
 == $L^p (mu)$ צפופה ב־$cal(S)$
 #theorem($L^p (mu)"צפופה ב־" cal(S)$)[
-  יהי $cal(S) subset.eq CC^X$ האוסף הנתון על־ידי
-  $ cal(S) colon.eq { s:X arrow.r CC, "פשוטה" s bar mu({x in X bar s(x) != 0}) < infinity} $
-  אזי לכל $p in [1, infinity)$ מתקיים ש־$cal(S)$ צפופה ב־$L^p (mu)$ (כלומר, לכל $f in L^p (mu)$ קיימת סדרת פונקציות ${s_n}_(n=1)^infinity subset.eq cal(S)$ כך ש־$s_n stretch(arrow.r)_(n arrow.r infinity)^norm(op(dot))_p f$).
+  נסמן ב־$cal(S)_f$ את אוסף הפונקציות הפשוטות $s:X arrow CC$ המקיימות $mu({x in X bar s(x)!=0})<infinity$.\
+  אזי לכל $p in [1, infinity)$, $cal(S)_f$ צפופה ב־$L^p (mu)$.
 ]
-
 #proof[
-  מכך שלכל $s in cal(S)$ מתקיים $abs(s(X))<infinity$, יחד עם התנאי $mu({x in X bar s(x) != 0}) < infinity$ נסיק כי $S subset.eq L^p (mu)$ לכל $p in [1,infinity)$.\
-  תהיי $f in L^p (mu)$ אי־שלילית ותהיי ${s_n : X arrow.r CC}_(n=1)^infinity$ המתכנסת אליה נקודתית.\
-  אזי מהתנאי $0<=s_n <= f in L^p (mu)$ נובע ${s_n}_(n=1)^infinity subset.eq L^p (mu)$.\
-  נניח בשלילה שקיים $n_0 in NN$ כך ש־$s_(n_0) in.not cal(S)$, כלומר $mu({x in X bar s_(n_0) (x) != 0}) = infinity$, אז נסמן
-  $ c colon.eq min {0<=alpha < infinity bar mu({x in X bar s_(n_0) (x) = alpha})}=alpha $
-  שמוגדר היטב כי $abs(s(X))<infinity$.\
-  מתקיים
-  $
-    s_(n_0)^(-1) ({alpha}) = {x in X bar s_(n_0) (x) = alpha} ==> c = min {alpha in [0, infinity) bar mu(s_(n_0)^(-1)({alpha}))=infinity}
-  $
-  ולכן
-  $
-    norm(f)_p^p = integral_X abs(f)^p dif mu =_((1)) integral_X f^p dif mu >=_((2)) integral_X s_(n_0)^p dif mu >=_((3)) integral_(s_(n_0)^(-1)({c})) s_(n_0)^p dif mu >=_((4)) c^p dot.op mu(s_(n_0)^(-1) ({c}))=infinity
-  $
-  כאשר
-  + נובע מהיות $f$ אי־שלילית
-  + לכל $n in NN$, $f>=s_n >=0$ אם ורק אם $f^p >= s_n^p >=0$
-  + מונוטוניות המידה ביחס להכלה
-  + מהגדרת $s_(n_0)^(-1)({c})$ ומהגדרת $c$
-  כלומר $norm(f)_p^p = infinity <==> norm(f)_p = infinity$ אבל $f in L^p (mu)$ וזאת סתירה ולכן $mu({x in X bar s_n (x) != infinity})< infinity$ לכל $n in NN$.\
-  מתקיים
-  $
-    s_n stretch(arrow.r)_(n arrow.r infinity) f <==> s_n-f stretch(arrow.r)_(n arrow.r infinity) 0 <==> abs(s_n -f) stretch(arrow.r)_(n arrow.r infinity) 0 <==> abs(s_n -f)^p stretch(arrow.r)_(n arrow.r infinity) 0
-  $
-  כלומר $abs(s_n -f)^p stretch(arrow.r)_(n arrow.r infinity) 0$ נקודתית ומתקיים לכל $n in NN$
-  $ abs(f-s_n)^p = (f-s_n)^p <= f^p in L^p (mu) $
-  כלומר הסדרה ${abs(f-s_n)^p}_(n=1)^infinity$ נשלטת על־ידי הפונקציה $f^p$ אבל $f in L^p (mu)$ ולכן $f in L^1 (p)$ וממשפט ההתכנסות הנשלטת
-  $
-    norm(f-s_n)_p^p = integral_X abs(f-s_n)^p dif mu stretch(arrow.r)_(n arrow.r infinity) 0 ==> s_n stretch(arrow.r)_(n arrow.r infinity)^norm(dot.op)_p f
-  $
-  מהיות $f$ שרירותית נובע כי ניתן לקרב כל $f in L^p (mu)$ על־ידי איברים מ־$cal(S)$ ולכן $overline(cal(S))=L^p (mu)$.
+  תהיי $9<=f in L^p (mu)$ ותהיי $0<=s_n<=f$ סדרת הפונקציות הפשוטות שמתכנסת אליה ונבחין $mu({s_n !=0})<infinity$.\
+  לכן $s_n in cal(S)_f$ וכן $abs(s_n - f) stretch(arrow)_(n arrow infinity) 0$ נקודתית ומתקיים
+  $ 0<=abs(f-s_n)^p <= f^p $
+  לכן ממשפט ההתכנסות הנשלטת
+  $ norm(f-s_n)_p^p = integral abs(f-s_n)^p dif mu stretch(arrow)_(n arrow infinity) 0 $
+  כל $f in L^p (mu)$ היא צירוף לינארי של פונקציות אי־שליליות ב־$L^p (mu)$ ומכאן הטענה.
 ]
 #remark($L^infinity"אי־נכונות הטענה ב־"$)[
   $cal(S)$ איננה צפופה ב־$L^infinity (Leb_(RR))$: ניקח $f(x) = 1$ לכל $x in RR$ ו־$f in L^infinity (RR)$ כי $norm(f)_infinity = 1$.\
@@ -963,31 +1009,12 @@
   לכל $p in [1, infinity)$ הקבוצה $C_C (X)$ צפופה ב־$L^p (mu)$.
 ]
 #proof[
-  + *$C_C (X) subset.eq L^p (mu)$:* אם $f in C_C (X)$ אזי $f$ רציפה ו־$supp(f)$ קומפקטית ולכן $f$ חסומה ב־$supp(f)$ וכן $abs(f)^p$ חסומה ב־$supp(f)$ ולכן קיים $M>0$ כך ש־$abs(f)^p <= M$ על $supp(f)$.\
-    $mu$ מידת רדון ולכן היא סופית על קומפקטיות ומתקיים $mu(supp(f))<infinity$ ולכן
-    $
-      norm(f)_p^p = integral_(supp(f) union.dot)(supp(f))^c abs(f)^p dif mu = integral_(supp(f)) abs(f)^p dif mu + integral_((supp(f))^c) abs(f)^p dif mu = integral_(supp(f)) abs(f)^p dif mu \
-      <= integral_(supp(f)) M dif mu = M dot.op mu(supp(f))<infinity ==> f in L^p (X)
-    $
-  + *שימוש בצפיפות $cal(S)$*:
-    אז אם
-    $ cal(S) colon.eq { s:X arrow.r CC, "פשוטה" s bar mu({x in X bar s(x) != 0}) < infinity} $
-    מספיק שנראה $S subset.eq overline(C_C (X))$ כי אז נקבל $L^p (mu) = overline(S) subset.eq overline(C_C (X)) subset.eq overline(L^p (mu))=L^p (mu)$ שהמעבר האחרון נובע מהיות $(L^p (mu), norm(dot.op)_p)$ מרחב שלם.\
-    אז תהיי $s in cal(S)$ וממשפט Lusin, לכל $epsilon > 0$ קיימת $g in C_C (X)$ עם
-    $ sup_(x in X) {abs(g(x))}<=sup_(x in X) {abs(s(x))} eq.colon M_s $
-    כך שמתקיים
-    $ mu({x in X bar s(x) != g(x)})<<epsilon^p/(2^p M_s^p) $
-    ומאי־שיוויון המשולש נקבל $abs(g-s)<=2M_s$.\
-    נסמן
-    $ A colon.eq { x in X bar g(x) = s(x)} $
-    ואז על $A$ מתקיים $abs(g-s)^p = eq.triple 0$ וגם $mu(A^c)<epsilon^p/(2^p M_s^p)$ ונקבל
-    $
-      norm(g-s)_p^p = integral_X abs(g-s)^p dif mu = integral_(A union.dot A^c) abs(g-s)^p dif mu = integral_A abs(g-s)^p dif mu + integral_(A^c) abs(g-s)^p dif mu \
-      <= integral_(A^c) 2^p M_s^p dif mu = 2^p M_s^p dot.op mu(A^c) < 2^p M_s^p dot.op epsilon^p/(2^P M_s^p)=epsilon^p
-    $
-    כלומר
-    $ norm(g-s)_p^p < epsilon^p ==> norm(g-s)_p < epsilon $
-    אז הטענה נכונה לכל $epsilon>0$ ו־$M_s$ תלוי ב־$s$ ולא ב־$g$ אז לכל $s$ ניתן לצוא חסם $M_s$ שחוסם את $g in C_C (X)$, כלומר כל $s in cal(S)$ ניתן לקירוב על־ידי פונקציה מ־$C_C (X)$ ולכן $C_C (X)$ צפופה ב־$cal(S)$ כשהאחרון צפוף ב־$L^p (mu)$ ולכן $C_C (X)$ צפוף ב־$L^p (mu)$.
+  מטענה שראינו מספיק להוכיח ש־$overline(C_C (X)) supset.eq cal(S)_f$.\
+  תהיי $s in cal(S)_f$ אז $s$ עומדת בתנאי משפט לוזין ולכן לכל $epsilon > 0$ קיימת פונקציה $g in C_C (X)$ עבורה $mu({s!=g})<epsilon$.\
+  יתר על־כן, ניתן לבחור $g$ כך ש־$sup g <= sup s$ ולכן
+  $
+    norm(g-s)_p^p = integral abs(g-s)^p dif mu = underbrace(integral_({s=g}) abs(g-s)^p dif mu, = 0) + underbrace(integral_({s!=g}) abs(g-s)^p dif mu, mu({s!=g}<epsilon)) <= 0 + epsilon(2 norm(s)_infinity)^p
+  $
 ]
 #remark($L^infinity"אי־נכונות הטענה ב־"$)[
   הדוגמה מהטענה הקודמת מראה את אי־נכונות הטענה גם כאן.
@@ -997,16 +1024,12 @@
 
 = יחסים בין מידות
 תהיינה $mu, nu$ מידות על מרחב מדיד $(X, cal(A))$.
-#definition("מידה רציפה בהחלט")[
-  נאמר ש־$nu$ רציפה בהחלט ביחס ל־$mu$ ונסמן $nu lt.double mu$ אם ורק אם
-  $ forall E in cal(A), space mu(E) = 0 ==> nu(E) = 0 $]
-#definition(
-  "מידות שקולות",
-)[נאמר ש־$mu$ ו־$nu$ הן שקולות ונסמן $nu ~ mu$ אם ורק אם $mu lt.double nu$ וגם $nu lt.double mu$, כלומר
-  $ forall E in cal(A), space mu(E) = 0 <==> nu(E) =0 $
-]
+#definition("מידה רציפה בהחלט, מידות שקולות")[
+  נאמר ש־$nu$ *רציפה בהחלט* ביחס ל־$mu$ ונסמן $nu lt.double mu$ אם ורק אם
+  $ forall E in cal(A), space mu(E) = 0 ==> nu(E) = 0 $
+  נגיד שהמידות הן *שקולות* ונסמן $nu~mu$ אם ורק אם $mu lt.double nu$ וגם $nu lt.double mu$, כלומר $forall E in cal(A), mu(E) = 0 <==> nu(E)=0$.]
 #definition("מידות סינגולריות")[
-  נאמר ש־$mu$ ו־$nu$ סינגולריות ונסמן $mu perp nu$ אם ורק  אם קיימות $A, B in cal(A)$ מדידות וזרות כך שמתקיים \
+  נאמר ש־$mu$ ו־$nu$ *סינגולריות* ונסמן $mu perp nu$ אם ורק  אם קיימות $A, B in cal(A)$ מדידות וזרות כך שמתקיים \
   $mu(A^c)=mu(B^c)=0$ (באופן שקול, אם $A union.dot B = X$ ו־$nu(B)=mu(A)=0$).
 ]
 
@@ -1027,8 +1050,7 @@
 ]
 #proof[
   $<==$ כי אם $nu lt.double mu$ זה נכון גם לצמצום.\
-  $==>$ נכתוב $X = union.big_(n) A_n$ עם $mu(A_n)<infinity$ ונניח כי $mu(E)=0$ אז נראה כי $nu(E)=0$: $E_n = A_n inter E$ אז מהיות $mu(E)=0$ נובע כי $mu(E_n) = 0$ ממונוטוניות המידה (כי חיתוך קבוצות מדידות הוא קבוצה מדידה) ולכן $mu|_(A_n) (E) = 0$ ולכן מההנחה $ nu|_(A_n) (E) = 0 = nu(E inter A_n) $ ולכן
-  $ nu(E)<= sum_(n=1)^infinity nu(E inter E_n) = 0 $
+  $==>$ נכתוב $X = union.big_(n) A_n$ עם $mu(A_n)<infinity$ ונניח כי $mu(E)=0$ אז נראה כי $nu(E)=0$: $E_n = A_n inter E$ אז מהיות $mu(E)=0$ נובע כי $mu(E_n) = 0$ ממונוטוניות המידה (כי חיתוך קבוצות מדידות הוא קבוצה מדידה) ולכן $mu|_(A_n) (E) = 0$ ולכן מההנחה $ nu|_(A_n) (E) = 0 = nu(E inter A_n) ==> nu(E)<= sum_(n=1)^infinity nu(E inter E_n) = 0 $
 ]
 
 == תנאי שקול למידת האפס
@@ -1040,15 +1062,14 @@
 
 == תנאי שקול לסינגולריות על מידות חיוביות
 #theorem("תנאי שקול לסינגולריות על מידות חיוביות")[
-  יהיו $mu, nu$ מידות חיוביות על $X$. אז $mu perp nu$ אם ורק אם לכל $epsilon>0$ קיימת קבוצה $A subset X$ מדידה כך ש־$mu(A)<epsilon, nu(A^c)<epsilon$.
+  יהיו $mu, nu$ מידות חיוביות על $X$. אז $mu perp nu$ אם ורק אם לכל $epsilon>0$ קיימת קבוצה \
+  $A subset X$ מדידה כך ש־$mu(A)<epsilon, nu(A^c)<epsilon$.
 ]
 
 #proof[
   $<==$ אם $mu perp nu$ אזי קיימת קבוצה $A$ כך ש־$mu(A)=0$ ו־$nu(A^c)=0$, כנדרש.\
-  $==>$  נבחר $(A_n)_(n=1)^infinity$ סדרת קבוצות כך שמתקיים
-  $ mu(A_n)<2^(-n), nu(A_n^c)<2^(-n) $
-  נגדיר $A = limsup A_n$ ומבורל־קנטלי נקבל $mu(A)=0$, מצד שני מהלמה של פאטו
-  $ nu(A^c)=nu(liminf A_n^c)<=liminf_(n arrow.r infinity) nu(A_n^c)=0 $
+  $==>$  נבחר $(A_n)_(n=1)^infinity$ סדרת קבוצות כך שמתקיים $mu(A_n)<2^(-n), nu(A_n^c)<2^(-n)$.\
+  נגדיר $A = limsup A_n$ ומבורל־קנטלי נקבל $mu(A)=0$; מצד שני מהלמה של פאטו $nu(A^c)=nu(liminf A_n^c)<=liminf_(n arrow.r infinity) nu(A_n^c)=0$.
 ]
 
 == מסקנה מתרגילי הבית
@@ -1138,45 +1159,99 @@
     + אם $E in cal(A_n)$ עם $mu(E)=0$ אזי $nu_(n,a) lt.double mu$ ולכן $nu_(n,a) (E) = 0$, מכאן ש־$nu_a (E) = sum_(n=1)^infinity nu_(n,a) = 0$ ולכן $nu_a lt.double mu$
     + מכך ש־$nu_(n,s) perp mu$ ולכן קיימות $A, B in cal(A)$ מדידות וזרות כך ש־$mu(A^c)=nu_(n,s)(B^c)=0$ ולכן $ nu_s (B^c) = sum_(n=1)^infinity nu_(n,s) (B^c) = 0 = mu(A^c) ==> nu_s perp mu $
   + נניח ש־$nu$ מידה סופית.\
-    + מטענה שראינו נובע שקיימת פונקציה מדידה וחיובית $w:X arrow (0,1]$ שעבורה $w dif mu$ היא ממידה סופית אז נגדיר את המדיה הסופית \
+    מטענה שראינו נובע שקיימת פונקציה מדידה וחיובית $w:X arrow (0,1]$ שעבורה $w dif mu$ היא ממידה סופית אז נגדיר את המדיה הסופית \
     $dif lambda = dif nu + w dif mu$
-    + לכל $f in L^2 (lambda)$ מתקיים
-      $
-        abs(integral f dif nu) <= integral abs(f) dif nu <= integral abs(f)(dif nu + w dif mu) = integral abs(f) dot.op 1 dif lambda <=_"קושי־שוורץ" sqrt(integral abs(f^2) dif lambda) sqrt(integral abs(1^2) dif lambda) = sqrt(lambda(X)) norm(f)_(L^2 (lambda))
-      $
-    + אז הפונקציונל $phi.alt : L^2 (lambda) arrow CC$ הנתון על־ידי $phi.alt (f) = integral f dif nu$ הוא חסום
-    + ממשפט הצגה של פרשה־ריס, נסיק שקיימת $g in L^2 (lambda)$ כך שלכל $f in L^2 (lambda)$ מתקיים
-      $ (triangle) space integral f dif nu = phi.alt (f) = integral f dot.op g dif lambda $
-      + לכל $E in cal(A)$ עם $lambda(E) > 0$ מתקיים $bb(1)_E in L^2 (lambda)$ ולכן $nu(E) = integral_E g dif lambda$, כלומר
-      $ 0<= nu(E)/lambda(E) = 1/lambda(E) integral_E g dif lambda <=1 $
-    + מלמה שראינו על ממוצעים של פונקציות על קבוצות מדידות נסיק $0<=g<=1$, $lambda$־כמעט תמיד
-    + על־ידי שינוי של $g$ על קבוצה מ־$lambda$־מידה אפס נוכל להסיק כי $0<=g<=1$ תמיד
-    + נגדיר
-      $
-        A colon.eq {x in X bar g(x) in [0, 1)} wide B colon.eq {x in X bar g(x) = 1} \
-        nu_a colon.eq nu|_A wide nu_s colon.eq nu|_B
-      $
-    + מכך ש־$X = A union.dot B$ הרי ש־$nu = nu_a + nu_s$
-    + שכתוב של $triangle$ מביא שלכל $f$
-      $
-        integral f dif nu = integral f g dif nu + integral f g w dif mu <==>_((star)) integral f(1-g) dif nu = integral f g w dif mu
-      $
-    + נראה ש־$nu_s perp mu$: מהיות $(1-g)|_B eq.triple 0$ אז $f=bb(1)_B$ ומ־$(star)$ נקבל
-      $ 0 = integral_B (1-g)dif nu = integral_B g w dif mu $
-      אבל $w>0$ ולכן $mu(B)=0$ ולכן $nu_s (B^c)=0=mu(B)$ כלומר $nu_s perp mu$
-    + נראה ש־$nu_a lt.double mu$: כי $f=(1+g+g^2+ dots.h.c + g^n) bb(1)_E$ אז עבור $E in cal(A)$ מ־$(star)$ נקבל
-      $ integral_E (1-g^(n+1)) dif nu = integral_E (1+g+g^2+dots.h.c + g^n) g w dif mu $
-      אבל $g|_A < 1$ והרי $(1-g^(n+1)) bb(1)_E arrow.tr 1_(A inter E)$ מונטונית ולכן באגף שמאל נקבל
-      $ integral_E (1-g^(n+1)) dif nu arrow.r_(n arrow.r infinity) nu(A inter E) = nu_a (E) $
-      מצד שני $(1+g+g^2+ dots.h.c + g^n) g w arrow.tr h$ מתכנסת מונוטונית ל־$h$ מדידה ב־$[0, infinity)$ ולכן באגף ימין
-      $ integral_E (1+g+g^2 + dots.h.c + g^n) g w dif mu arrow.r_(n arrow.r infinity) integral_E h dif mu $
-      אז $dif nu_a = h dif mu$ ולכן $nu_a lt.double mu$.\ מכך ש־$nu_a$ ממידה סופית נסיק כי $h in L^1 (mu)$.
+    לכל $f in L^2 (lambda)$ מתקיים
+    $
+      abs(integral f dif nu) <= integral abs(f) dif nu <= integral abs(f)(dif nu + w dif mu) = integral abs(f) dot.op 1 dif lambda <=_"קושי־שוורץ" sqrt(integral abs(f^2) dif lambda) sqrt(integral abs(1^2) dif lambda) = sqrt(lambda(X)) norm(f)_(L^2 (lambda))
+    $
+    אז הפונקציונל $phi.alt : L^2 (lambda) arrow CC$ הנתון על־ידי $phi.alt (f) = integral f dif nu$ הוא חסום
+    ממשפט הצגה של פרשה־ריס, נסיק שקיימת $g in L^2 (lambda)$ כך שלכל $f in L^2 (lambda)$ מתקיים
+    $ (triangle) space integral f dif nu = phi.alt (f) = integral f dot.op g dif lambda $
+    + לכל $E in cal(A)$ עם $lambda(E) > 0$ מתקיים $bb(1)_E in L^2 (lambda)$ ולכן $nu(E) = integral_E g dif lambda$, כלומר
+    $ 0<= nu(E)/lambda(E) = 1/lambda(E) integral_E g dif lambda <=1 $
+    מלמה שראינו על ממוצעים של פונקציות על קבוצות מדידות נסיק $0<=g<=1$, $lambda$־כמעט תמיד
+    על־ידי שינוי של $g$ על קבוצה מ־$lambda$־מידה אפס נוכל להסיק כי $0<=g<=1$ תמיד
+    נגדיר
+    $
+      A colon.eq {x in X bar g(x) in [0, 1)} wide B colon.eq {x in X bar g(x) = 1} \
+      nu_a colon.eq nu|_A wide nu_s colon.eq nu|_B
+    $
+    מכך ש־$X = A union.dot B$ הרי ש־$nu = nu_a + nu_s$
+    שכתוב של $triangle$ מביא שלכל $f$
+    $
+      integral f dif nu = integral f g dif nu + integral f g w dif mu <==>_((star)) integral f(1-g) dif nu = integral f g w dif mu
+    $
+    נראה ש־$nu_s perp mu$: מהיות $(1-g)|_B eq.triple 0$ אז $f=bb(1)_B$ ומ־$(star)$ נקבל
+    $ 0 = integral_B (1-g)dif nu = integral_B g w dif mu $
+    אבל $w>0$ ולכן $mu(B)=0$ ולכן $nu_s (B^c)=0=mu(B)$ כלומר $nu_s perp mu$
+    נראה ש־$nu_a lt.double mu$: כי $f=(1+g+g^2+ dots.h.c + g^n) bb(1)_E$ אז עבור $E in cal(A)$ מ־$(star)$ נקבל
+    $ integral_E (1-g^(n+1)) dif nu = integral_E (1+g+g^2+dots.h.c + g^n) g w dif mu $
+    אבל $g|_A < 1$ והרי $(1-g^(n+1)) bb(1)_E arrow.tr 1_(A inter E)$ מונטונית ולכן באגף שמאל נקבל
+    $ integral_E (1-g^(n+1)) dif nu arrow.r_(n arrow.r infinity) nu(A inter E) = nu_a (E) $
+    מצד שני $(1+g+g^2+ dots.h.c + g^n) g w arrow.tr h$ מתכנסת מונוטונית ל־$h$ מדידה ב־$[0, infinity)$ ולכן באגף ימין
+    $ integral_E (1+g+g^2 + dots.h.c + g^n) g w dif mu arrow.r_(n arrow.r infinity) integral_E h dif mu $
+    אז $dif nu_a = h dif mu$ ולכן $nu_a lt.double mu$.\ מכך ש־$nu_a$ ממידה סופית נסיק כי $h in L^1 (mu)$.
 
 ]
 
 #pagebreak()
+== איך מחשבים נגזרת רדון־ניקודים
+נניח שיש לנו את המידות $mu, nu$ ואנחנו רוצים לחשב את הנגזרת רדון־ניקודים $(dif nu)/(dif mu)$.
++ קודם כל חייב להתקיים $nu lt.double mu$ כלומר אם $mu(E) = 0$ אזי $nu(E)=0$ אחרת תנאי המשפט לא מתקיימים
++ כמו־כן, חייב שהמרחב שעלינו אנחנו מחשבים הוא $sigma$־סופי
++ חלוקה למקרים של "מסת" המידות
+  + אם $nu$ מוגדרת על־ידי חלוקה כלשהי – נניח $nu(E)=sum a_n mu (E_n inter E)$ כאשר ${E_n}$ חלוקה של המרחב, אז אם נכתוב
+    $
+      nu(E) = sum_(n in NN) integral_(E inter E_n) a_n dif lambda = integral_E sum_(n in NN) a_n bb(1)_(E_n) (x) dif lambda(x) ==> (dif nu)/(dif lambda) (x) = sum_(n in NN) a_n bb(1)_(E_n) (x)
+    $
+    כלומר הערך בתוך האינטגרל הוא הנגזרת רדון־ניקודים
+  + אם לשתי המידות יש צפיפות – כלומר $mu, nu$ מוגדרות על $RR$ עם צפיפויות $g(x), h(x)$ ביחס למידת לבג אז
+    $ dif nu = h(x) dif x wide dif mu = g(x) dif x $
+    אזי
+    $ (dif nu)/(dif mu) (x) = h(x)/g(x) $
+    כאשר זה מוגדר $mu$־כמעט בכל מקום כאשר $g(x)>0$
+  + המשפט היסודי של האלגברה – אם $mu$ מידת לבג ו־$F(x)=nu((-infinity,x])$ (כלומר $F$ היא רציפה בהחלט) אזי
+    $ (dif nu)/(dif lambda) (x) = F'(x) $
+  + החלפת משתנה ודחיפה קדימה של המידה – אם $nu = f_*mu$ ואנחנו רוצים את נגזרת רדון־ניקודים ביחס ל־$mu$ זה פשוט היעקוביאן. אם $T:X arrow X$ (במימד אחד לנוחות) גזירה ו־$nu(E) = mu(T^(-1)(E))$ אזי
+    $ (dif nu)/(dif mu) (x) = 1/abs(T'(T^(-1)(x))) $
 
 = גזירה של מידות רדון ב־$RR^d$
+== מסקנות ממשפט הכיסוי של בסיקוביץ'
+#corollary("מסקנה 1")[
+  תהיי $mu$ מידת בורל סופית על $RR^d$ (בפרט מידת רדון) ותהיי $A subset.eq RR^d$ חסומה. אז לכל כיסוי בסיקוביץ' $cal(F)$ של $A$ קיים תת־אוסף $tilde(cal(E)) subset.eq cal(F)$ סופי של כדורים אוקלידיים סגורים וזרים בזוגות המקיימים $mu(union.big_(B in tilde(cal(E))) B) >= 1/(2Q) mu(A)$, כאשר $Q$ הקבוע האוניברסלי ממשפט הכיסוי.
+]
+#proof[
+  ממשפט הכיסוי קיימים תתי־אוספים $cal(E)_1, dots.h, cal(E)_Q$ (אולי חלקם ריקים) שמהווים חלוקה של תת־הכיסוי $cal(E) subset.eq cal(F)$ המובטח ממשפט הכיסוי.\
+  אזי
+  $ mu(A)=mu(union.big cal(E) inter A)=sum_(i=1)^Q mu((union.big cal(E)_i) inter A) $
+  ולכן לא ייתכן שקיים $1<=i<=Q$ שעבורו מתקיים $mu(union.big cal(E)_i inter A)<1/Q mu(A)$.\
+  לכן קיים $i_0 in [Q}]$ המקיים $mu(union.big cal(E)_i inter A)>=1/Q mu(A)$ ומאחר ש־$cal(E)_i$אוסף בן־מנייה של כדורים זרים בזוגות, ניתן לחלץ תת־אוסף סופי $tilde(cal(E)) subset.eq cal(E)_i$ ממידה  $mu(union.big tilde(cal(E)) inter A)>=1/(2Q) mu(A)$.
+]
+
+#corollary("מסקנה 2")[
+  תהיי $mu$ מידת רדון על $RR^d$ ותהיי $A subset.eq RR^d$ מדידה עם כיסוי בסיקוביץ' $cal(F)$ המקיים שלכל $x in A$ מתקיים $inf{r bar B_r (x) in cal(F)} = 0$.\
+  אז קיים תת־אוסף בן־מנייה $tilde(cal(E)) subset.eq cal(F)$ המורכב מכדורים זרים בזוגות המקיים $mu(A without union.big tilde(cal(E)))$.
+]
+#proof[
+  נניח ש־$A subset.eq RR^d$ חסומה.\
+  אז מהיות $mu$ מידת רדון היא סופית על קומפקטיות ורגולרית חיצונית ולכן קיימת $A subset.eq U$ פתוחה המקיימת $mu(U) < (1+1/(4Q)) mu(A)$.\
+  נזרוק מ־$cal(F)$ את כל הכדורים שלא מוכלים ב־$U$ ומהמסקנה לעיל נובע שקיים תת־אוסף סופי $tilde(cal(E))_1 subset.eq cal(F)$ המקיים $mu(union.big tilde(cal(E))_1 inter A) >= 1/(2Q) mu(A)$.\
+  נסמן $A_1 colon.eq A without union.big tilde(cal(E))_1$ ונקבל
+  $
+    mu(A_1) <= mu(U without union.big tilde(cal(E))_1) <= mu(U) - mu(union.big tilde(cal(E))_1)<= (1+1/(4Q)) mu(A) - 1/(2Q) mu(A) = (1-1/(4Q)) mu(A)
+  $
+  ניקח $A_1 subset.eq U_1$ פתוחה עם $mu(U_1) < (1+1/(4Q)) mu(A_1)$ ונחזור על התהליך עד שנקבל $mu(A_n)=0$ או עד אינסוף.\
+  נגדיר $tilde(cal(E)) colon.eq union.big_(i=1)^infinity tilde(cal(E))_n$ ומהבנייה לכל $n in NN$ מתקיים
+  $ mu(A without union.big tilde(cal(E))) <= mu(A_n) <= (1-1/(4Q))^n mu(A) stretch(arrow)_(n arrow infinity) 0 $
+  וכן $tilde(cal(E)) subset.eq cal(F)$ מורכב מכדורים זרים בזוגות וסיימנו.\
+  אם $A subset.eq RR^d$ אינה חסומה, נוכל לחלק את $RR^d$ לאוסף בן־מנייה של תתי־קבוצות פתוחות, זרות וחסומות ולקבוצה מ־$mu$־מידה אפס.\
+  מאחר ש־$mu$ סופית על קומפקטיות הרי שיש לכל היותר מספר בן־מנייה של ספירות סביב הראשית ממידה חיובית.\
+  אילו היה אוסף לא בן־מניהי של ספירות ממידה חיובית $(partial B_r (0))$ אז היו קיימות מספר אינסופי ולא בן־מניה של ספירות ממידה $0<delta<$ המוכלות ב־$B_R (0)$ עבור $0<R, delta$ כלשהו וזו סתירה לכך ש־$mu(B_R (0)) < infinity$.\
+  לכן קיימים $r_n arrow.tr infinity$ עם $r_(n+1) - r_n > 1$ עם ספירה ממידה אפס ואם נחלק את $A$ לאיחוד בן־מנייה על רכיבי הקשירות הנותרים ונפעיל את הטיעון על קבוצות חסומות נקבל את הטענה.
+]
+#pagebreak()
+
 == משפט לב הגזירה
 #theorem("משפט לב הגזירה")[
   תהיינה $mu. lambda$ מידות רדון על $RR^d$ ו־$A subset.eq RR^d$ קבוצה מדידה וחסומה ו־$0<t<infinity$
@@ -1200,9 +1275,6 @@
     כאשר $(star star)$ נובע מכך שזה אוסף זר של כדורים זרים בזוגות ומ־$sigma$־אדטיביות.
 
 ]
-#pagebreak()
-
-== הטענות על כיסוי בסיקוביץ'?
 #pagebreak()
 
 == משפט הגזירה של לבג־בסיקוביץ'
@@ -1259,7 +1331,25 @@
 
 #pagebreak()
 
-== משפט הגזירה של לבג
+== משפט הגזירה של לבג לפונקציה אינטגרבילית מקומית
+#theorem("משפט הגזירה של לבג עבורה פונקציה אינטגרבילית מקומית")[
+  תהיי $lambda$ מידת רדון ב־$RR^d$ ו־$f:RR^d arrow CC$ אינטגרבילית מקומית (כלומר לכל קבוצה מדידה וחסומה $E subset.eq RR^d$ מתקיים $f dot.op bb(1)_E in L^1(lambda)$).\
+  אז עבור $lambda$־כמעט כל $x in RR^d$ מתקיים
+  $ 1/lambda(B_r (x)) integral_(B_r (x)) f dif lambda stretch(arrow)_(r arrow 0) f(x) $
+  בפרט לכל $A subset.eq RR^d$ מדידה מתקיים $lambda$־כמעט תמיד
+  $ lambda(B_r (x) inter A)/lambda(B_r (x)) stretch(arrow)_(r arrow 0) bb(1)_A $
+]
+#proof[
+  מספיק להוכיח עבור פונקציות אי־שליליות אינטגרבליות מקומית $f:RR^d arrow [0,infinity]$.\
+  אז עבור המידה $dif mu = f dif lambda$ היא מידת רדון וכן $(dif mu)/(dif lambda)=f$ וממשפט הגזירה של לבג־בסיקוביץ' נקבל $D(mu,lambda,x)=f(x)$ $lambda$־כמעט תמיד שהרי
+  $
+    (integral_(B_r (x)) f dif lambda)/lambda(B_r (x))=mu(B_r (x))/lambda(B_r (x)) stretch(arrow)_(r arrow 0) D(mu,lambda, x) = f(x)
+  $
+]
+
+#pagebreak()
+
+== משפט הגזירה של לבג (מהתרגול)
 #theorem(
   "משפט הגזירה של לבג",
 )[תהיי $f in L^1 ([a,b])$. אזי הפונקציה $F(x)=integral_a^x f dif lambda$ גזירה כמעט בכל מקום ומקיימת $F'(x) = f(x)$ עבור כמעט כל $x in [a,b]$ (ביחס למידת לבג).]
