@@ -20,7 +20,7 @@
 #proof[
   הכיוון הראשון נובע ישירות מהגדרת הפונקציה המדידה (כי מהגדרה בשביל שהפונקציה תהיה מדידה צריך שהמקור של כל קבוצה מדידה תחת $f$ יהיה מדיד).\
   בכיוון השני, נסמן $Omega colon.eq {E subset.eq Y bar f^(-1)(E) in cal(A)}$.\
-  מההנחה, כל $U in tau$ מקיימת $f^(-1)(U) in cal(A)$ ולכן $tau subset.eq Omega$ ומטענה שראינו נובע ש־$Omega$ היא $sigma$־אןלגברה.\
+  מההנחה, כל $U in tau$ מקיימת $f^(-1)(U) in cal(A)$ ולכן $tau subset.eq Omega$ ומטענה שראינו נובע ש־$Omega$ היא $sigma$־אלגברה.\
   מצד שני, $sigma$־אלגברת בורל $BB_Y$ היא ה־$sigma$־אלגברה הקטנה ביותר על $Y$ שמכילה את $tau$ ולכן $sigma(tau)=BB_Y subset.eq Omega$ ולכן לכל $E in BB_Y$ מתקיים $E in Omega$ כלומר $f^(-1)(E) in cal(A)$ ולכן $f$ מדידה לפי $BB_Y$.
 ]
 
@@ -109,7 +109,7 @@
     $
       mu(union.big_(n=1)^infinity A_n)=mu(union.big.dot_(n=1)^infinity B_n) = sum_(n=1)^infinity mu(B_n)=lim_(N arrow infinity) sum_(n=1)^N mu(B_n) = lim_(N arrow infinity) mu(union.big_(n=1)^N A_n)
     $
-  + נסמן $D_n = C_n without C_(n+1)$ ולכן $C_1 = union.big.dot_(n in NN) D_n union.big.dot_(n in NN) C_n$ ומהאדטיביות סופית והעברת אגפים (שאפשר מהסופיות) נקבל
+  + נסמן $D_n = C_n without C_(n+1)$ ולכן $C_1 = union.big.dot_(n in NN) D_n union.big.dot inter.big_(n in NN) C_n$ ומהאדטיביות סופית והעברת אגפים (שאפשר מהסופיות) נקבל
     $
       mu(inter.big_(n in NN) C_n) = mu(C_1) - mu(union.big.dot_(n in NN) D_n)=mu(C_1) -sum_(n in NN) mu(D_n) = lim_(N arrow infinity) mu(C_1) - mu(union.big.dot_(n=1)^N D_n) = lim_(N arrow infinity) mu(C_(N+1))
     $
@@ -158,6 +158,12 @@
   + אינטגרציה על קבוצות ממידה אפס: אם $mu(E)=0$ אזי $integral_E f dif mu = 0$ (גם אם $f|_E eq.triple infinity$)
   + אינטגרציה על קבוצה בניסוח עם הפונקציה המציינת: אם $0<=f$ אזי $integral_E f dif mu = integral_X f dot.op bb(1)_(E) dif mu$
   + אינטגרציה על איחוד זר: אם $A inter B = emptyset$ אזי $integral_(A union.dot B) f dif mu = integral_A f dif mu + integral_B dif mu$
+]
+#convention[
+  $
+    forall alpha in RR, space alpha+infinity=infinity, space infinity-infinity=infinity \
+    forall alpha in RR^plus, space alpha dot.op infinity=infinity, space 0 dot.op infinity = 0
+  $
 ]
 #proof[
   + בלי הגבלת הכלליות, $X=E$ אחרת ניקח לכל $E in cal(A)$,  $f dot.op bb(1)_(E), g dot.op bb(1)_(E)$ ועדיין נחשב אינטגרציה על כל $X$ ונקבל מהגדרה
