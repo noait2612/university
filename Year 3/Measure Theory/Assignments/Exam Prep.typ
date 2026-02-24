@@ -183,15 +183,14 @@
     בפרט נובע מכך שלכל $x in X$ מתקיים $f dot.op bb(1)_(A)(x) <= f dot.op bb(1)_(B)(x)$ והם בהתאמה מתאימים מהגדרה ל־$integral_A f d mu, integral_B f d mu$.\
     מהסעיף הקודם נובע אם כך ש־$integral_A f d mu <= integral_B f d mu$ (הסעיף הקודם הוא מונוטוניות האינטגרל) עבור $E = X$.
   + תהיי $E in cal(A)$, ותהיי $s<=f$ פונקציה פשוטה כך שמתקיים $s=sum_(i=1)^n alpha_i bb(1)_(E_i)$ עם $alpha_i >=0$ ו־${E_i}$ קבוצות זרות בזוגות ומדידות ב־$E$.\
-    ראינו שמתקיים $integral_E s d mu = sum_(i=1)^n alpha_i mu(E_i)$.\
-    נבחין שגם $c s$ היא פונקציה פשוטה שכן
+    ראינו שמתקיים $integral_E s d mu = sum_(i=1)^n alpha_i mu(E_i)$ ונבחין שגם $c s$ היא פונקציה פשוטה שכן
     $
       c s (x) = sum_(i=1)^n (c alpha_i) bb(1)_(E_i)(x) ==> integral_E c s(x) d mu = sum_(i=1)^n (c alpha_i) mu(E_i) = c sum_(i=1)^n alpha i mu(E_i) = c integral_E s d mu
     $
     נסמן מהגדרה
     $
-      integral_E f d mu = sup { integral_E s d mu bar 0<=s<=f, " פשוטה" s} = S_f \
-      integral_E c f d mu = sup {integral_E p d mu bar 0<=p<=c f, " פשוטה" p} = S_(c f)
+      integral_E f d mu = sup { integral_E s d mu bar 0<=s<=f, " פשוטה" s} eq.colon S_f wide
+      integral_E c f d mu = sup {integral_E p d mu bar 0<=p<=c f, " פשוטה" p} eq.colon S_(c f)
     $
     נשים לב שלכל $0<=p<=c f$, אם $c>0$ אז אם נגדיר פונקציה פשוטה $0<=s' = p/c <=f$ ומתקיים ממה שראינו לעיל, $ integral_E p d mu = integral_E c s d mu = c integral_E d mu $
     זה נכון לכל $p$ פשוטה כזאת ולכן
@@ -402,7 +401,7 @@
     תהיי $X$ קבוצה ותהיי ${f_n bar X arrow.r RR}_(n=1)^infinity$ סדרת פונקציות כלשהי ותהיי $g:X arrow.r RR$ פונקציה.\
     נאמר שהסדרה ${f_n}_(n=1)^infinity$ נשלטת על־ידי הפונקציה $g$ אם ורק אם לכל $n in NN$ מתקיים $abs(f_n)<=g$.
   ]
-  תהיי ${f_n bar X arrow.r CC}_(n=1)^infinity$ סדרת פונקציות מדידות המתכנסת נקודתית לפונקציה $f: X arrow.r CC$.\
+  תהיי ${f_n : X arrow.r CC}_(n=1)^infinity$ סדרת פונקציות מדידות המתכנסת נקודתית לפונקציה $f: X arrow.r CC$.\
   אם קיימת $g in L^1(mu)$ כך שהסדרה ${f_n}_(n=1)^infinity$ נשלטת על־ידי $g$ אזי $f in L^1 (mu)$ ומתקיים
   $ integral_X abs(f_n - f) dif mu stretch(arrow.r)_(n arrow.r infinity) 0 $
   ובפרט
@@ -457,7 +456,7 @@
     $
     כלומר
     $ a dot.op mu(E_a) <= integral_X f dif mu $
-    היות ו־$0<a<infinity$ ניתן לחלק בלי לשנות את כיוון אי־השיוויון ונקבל
+    מהיות $0<a<infinity$ ניתן לחלק בלי לשנות את כיוון אי־השיוויון ונקבל
     $ mu(E_a) <= 1/a integral_X f dif mu $
   + מהמקרה הקודם אנחנו מקבלים שאם $integral f dif mu < infinity$ אזי אגף ימין שואף לאינסוף כאשר $a arrow.r infinity$ ולכן מרציפות המידה מלמעלה (חיתוכים יורדים) נסיק כי
     $ mu(f^(-1)({infinity}))=0 $
@@ -474,7 +473,7 @@
 = קבוצות ממידה אפס
 == סדרת פונקציות כמעט־תמיד
 #theorem("סדרות פונקציות וכמעט־תמיד")[
-  תהיי ${f_n bar X arrow.r CC}_(i=1)^n$ סדרת פונקציות מדידות המוגדרות $mu$־כמעט תמיד.\
+  תהיי ${f_n : X arrow.r CC}_(n=1)^infinity$ סדרת פונקציות מדידות המוגדרות $mu$־כמעט תמיד.\
   אם $sum_(n=1)^infinity abs(f_n) dif mu < infinity$ אז
   + הפונקציה $f:X arrow.r CC$ הנתונה על־ידי $x mapsto sum_(n=1)^infinity f_n (x)$ מוגדרת $mu$־כמעט תמיד
   + $f in L^1(mu)$
@@ -482,13 +481,13 @@
 ]
 
 #proof[
-  + נניח ש־$f_n$ מוגדרת על קבוצה $S_n subset.eq X$ כך ש־$mu(S_n^c)=0$, אז $phi = sum_(n=1)^infinity abs(f_n)$ מוגדרת על $S colon.eq inter_(n=1)^infinity S_n$ ומתקיים
+  + נניח ש־$f_n$ מוגדרת על קבוצה $S_n subset.eq X$ כך ש־$mu(S_n^c)=0$, אז $phi = sum_(n=1)^infinity abs(f_n)$ מוגדרת על $S colon.eq inter.big_(n=1)^infinity S_n$ ומתקיים
     $ mu(S^c) = mu((inter.big_(n=1)^infinity S_n)^c) = mu(union.big_(n=1)^infinity S_n^c) = 0 ==> mu(S^c) =0 $
     ולכן $phi$ מוגדרת $mu$־כמעט תמיד ומהטענה אודות החלפת סדר של גבול ואינטגרל עבור טורים של פונקציות אי־שליליות מתקיים
     $
       integral_X phi dif mu = integral_X sum_(n=1)^infinity abs(f_n) dif mu = sum_(n=1)^infinity integral_X abs(f_n) dif mu < infinity ==> integral_X phi dif mu < infinity
     $
-    בפרט $mu(abs(phi(x)))<infinity$ $mu$־כמעט לכל $x in X$ ולכן $phi in L^1 (mu)$ ולכן עבור $mu$־כמעט לכל $x in X$ הטור $sum_(n=1)^infinity f_n (x)$ מתכנס בהחלט $mu$־כמעט תמיד ולכן הוא מתכנס ב־$CC$ $mu$־כמעט תמיד ולכן $f = sum_(n=1)^infinity f_n$ מוגדרת $mu$־כמעט תמיד
+    בפרט $mu(abs(phi(x)))<infinity$ $mu$־כמעט לכל $x in X$ ולכן $phi in L^1 (mu)$ ולכן עבור $mu$־כמעט לכל $x in X$ הטור $sum_(n=1)^infinity f_n (x)$ מתכנס בהחלט \ $mu$־כמעט תמיד ולכן הוא מתכנס ב־$CC$ $mu$־כמעט תמיד ולכן $f = sum_(n=1)^infinity f_n$ מוגדרת $mu$־כמעט תמיד
   + לכל $k in NN$ נסמן $g_k colon.eq sum_(n=1)^k f_n$ ומתקיים
     $
       forall k in NN, space abs(g_k)=abs(sum_(n=1)^k f_n)<= sum_(n=1)^k abs(f_n) <= sum_(n=1)^infinity abs(f_n) = phi ==> abs(g_k)<=infinity
@@ -503,11 +502,12 @@
 #pagebreak()
 
 == תנאים שקולים לשלמות
+_תזכורת_: יהי $(X, cal(A), mu)$ מרחב מידה. נאמר שהמרחב *שלם* אם $E in cal(A)$ מקיימת שלכל $N subset.eq E$ מתקיים ש־$N$ מדידה ו־$mu(N)=0$.\
+ההשלמה של $(X, cal(A), mu)$ ניתנת על־ידי ה־$sigma$־אלגברה
+$ overline(cal(A)) colon.eq {A union E bar A in cal(A), E subset.eq N, mu(N)=0} $
+והמידה
+$ overline(mu)(A union E) = mu(A) $
 #theorem("תנאים שקולים לשלמות")[
-  _תזכורת_: יהי $(X, cal(A), mu)$ מרחב מידה. נאמר שהם *שלם* אם כל קבוצה $E subset.eq X$ המוכלת בקבוצה ממידה אפס היא מדידה בעצמה. ההשלמה של $(X, cal(A), mu)$ ניתנת על־ידי ה־$sigma$־אלגברה
-  $ overline(cal(A)) colon.eq {A union E bar A in cal(A), E subset.eq N, mu(N)=0} $
-  והמידה
-  $ overline(mu)(A union E) = mu(A) $
   יהי $(X, cal(A), mu)$ מרחב מידה, אזי הגרירות הבאות נכונות אם ורק אם $mu$ שלמה:
   + אם $f$ מדידה ו־$f=g$ $mu$־כמעט תמיד, אז $g$ היא מדידה
   + אם ${f_n}_(n=1)^infinity$ סדרת פונקציות מדידות ובנוסף $f_n arrow.r f$ $mu$־כמעט תמיד, אזי $f$ היא מדידה
@@ -517,7 +517,7 @@
   אז $F$ מדידה: זה נכון כי $F without E subset.eq G without E$ והתלכדות המידות גוררת ש־$mu(G without E) =0$ ולכן $F without E$ מדידה וגם $F$.\
   שלמות $<==$ 1: אם $f$ מדידה ו־$f=g$ $mu$־כמעט תמיד, נרשום $ N colon.eq {x bar f(x) != g(x)} $
   מאחר ו־$N$ מוכלת בקבוצה ממידה אפס ו־$mu$ שלמה אזי $N$ מדידה.\
-  מתקיים
+  מתקיים לכל $A$ מדידה בורל
   $ g^(-1)(A) = (g^(-1)(A) inter f^(-1) (A)) union (g^(-1)(A) without f^(-1)(A)) $
   מאחר ו־$N^c$ היא בידיוק הקבוצה בה הפונקציות מתלכדות, נוכל לכתוב
   $ f^(-1)(A) inter N^c subset.eq f^(-1)(A) inter g^(-1)(A) subset.eq f^(-1)(A) $
@@ -537,29 +537,22 @@
 
 #pagebreak()
 
-== תנאים שקולים לפונקציה אפסה כמעט־תמיד
-#theorem("תנאים שקולים לפונקציה אפסה כמעט־תמיד")[
-  + אם $f : X arrow.r [0,infinity]$ מדידה עם $integral_X f dif mu =0$ אם ורק אם $f=_mu 0$
-  + אם $f : X arrow.r CC$ מדידה ולכל $E in cal(A)$ מתקיים $integral_E f dif mu =0$ אזי $f=_mu 0$
+== תנאי שקול לפונקציה אפסה כמעט־תמיד
+#theorem("תנאי שקול לפונקציה אפסה כמעט־תמיד")[
+  אם $f : X arrow.r [0,infinity]$ מדידה עם $integral_X f dif mu =0$ אם ורק אם $f=_mu 0$.
 ]
 
 #proof[
-  + ההנחה ש־$integral_X f dif mu =0$ גוררת ש־$mu({x in X bar f(x) >=1/n})=0$ חכח $n in NN$ ולכן $f=0$, $mu$־כמעט תמיד
-  + נסמן $f=u + i v$ ותהיי $E = {x in X bar u(x)>=0}$. אז מהגדרת $E$ ומההנחה שלכל $E in cal(A)$ מתקיים $integral_E f dif mu=0$ נובע $integral_E re(f) dif mu = 0$ ולכן לכל $h in {u,v}$ מתקיים
-  $
-    0=integral_E re(f) dif mu = integral_E h dif mu = integral_X h^plus.minus dif mu ==> h^plus.minus =_mu 0 \
-    ==> h^plus.minus =_mu 0 ==> u^plus.minus, v^plus.minus =_mu 0 ==> u, v =_mu 0 ==> f =_mu 0
-  $
+  ההנחה ש־$integral_X f dif mu =0$ גוררת ש־$mu({x in X bar f(x) >=1/n})=0$ לכל $n in NN$ ולכן $f=0$ $mu$־כמעט תמיד.
 ]
 
 #pagebreak()
 
 == טענה על ממוצעי פונקציה
+_תזכורת (ממוצע של פונקציה)_: יהי $(X, cal(A), mu)$ מרחב מידה סופי, תהיי $f in L^1 (mu)$ ותהיי $E in cal(A)$ קבוצה מדידה עם $mu(E)>0$.\
+הממוצע של $f$ על $E$ ביחס ל־$mu$ הוא
+$ A_E (f) colon.eq 1/mu(E) integral_E f dif mu $
 #theorem("טענה על ממוצעי פונקציה")[\
-  _תזכורת (ממוצע של פונקציה)_: יהי $(X, cal(A), mu)$ מרחב מידה סופי, תהיי $f in L^1 (mu)$ ותהיי $E in cal(A)$ קבוצה מדידה עם $mu(E)>0$.\
-  הממוצע של $f$ על $E$ ביחס ל־$mu$ הוא
-  $ A_E (f) colon.eq 1/mu(E) integral_E f dif mu $
-  ועכשיו למשפט:\
   יהי $(X, cal(A), mu)$ מרחב מידה סופי ותהיי $f in L^1 (mu)$. אם $Omega subset.eq CC$ קבוצה סגורה כך שלכל קבוצה מדידה $E in cal(A)$ עם $mu(E)>0$ מתקיים \
   $A_E (f) in Omega$ אז $f(x) in Omega$ $mu$־כמעט לכל $x in X$.
 ]
@@ -570,7 +563,7 @@
   אבל ב־$CC$, כל כדור פתוח ניתן להצגה כאיחוד בן־מנייה של כדורים סגורים, ולכן $Omega^c$ היא איחוד בן־מנייה של כדורים סגורים.\
   לכן, מספיק להראות שעבור כל $overline(B)_r (alpha) subset.eq Omega^c$ מתקיים $mu(f^(-1)(overline(B)_r (alpha)))=0$, כאשר
   $ f^(-1) (overline(B)_r (alpha)) = {x in X bar f(x) in overline(B)_r (alpha)} $
-  נניח בשליילה שקיים כדור סגור $overline(B)_r (alpha) subset.eq Omega^c$ כך ש־$mu(f^(-1)(overline(B)_r (alpha)))>0$ ונסמן $E colon.eq. f^(-1) (overline(B)_r (alpha))$.\
+  נניח בשלילה שקיים כדור סגור $overline(B)_r (alpha) subset.eq Omega^c$ כך ש־$mu(f^(-1)(overline(B)_r (alpha)))>0$ ונסמן $E colon.eq f^(-1) (overline(B)_r (alpha))$.\
   על $E$ מתקיים $abs(f-alpha)<=r$ ולכן
   $
     abs(A_E (f) - alpha)= abs(1/mu(E) integral_E f dif mu - 1/mu(E) dot.op mu(E) dot.op alpha)= abs(1/mu(E) integral_E f dif mu - 1/mu(E) integral_E alpha dif mu) \
@@ -593,10 +586,12 @@
   + כל קבוצות בורל ב־$RR$ הן רגולריות פנימית וחיצונית ביחס ל־$mu_i$
 ]
 #proof[
+  ניזכר ש־$RR$ הוא מרחב האוסדרוף קומפקטי־מקומית.\
   נבחין תחילה ש־$mu_1, mu_2$ מוגדרות ביחידות על־ידי הערכים שלהן על קבוצות קומפקטיות.\
   ראשית מ־$(2)$ נובע כי עבור $K subset.eq RR$ קומפקטית מתקיים $mu_i (K) < infinity$.\
   יהי $epsilon>0$ ומהרגולריות החיצונית נובע כי קיימת $K subset.eq V$ כאשר $V$ פתוחה כך שמתקיים $mu_2 (V)<mu_2(K)+epsilon$.\
-  מהלמה של אוריסון נובע כי קיימת $f in C_C (RR)$ כך שמתקיים $f(X) subset.eq [0,1]$ ומהלמה של אוריסון מתקיים ש־$K prec f prec V$, כלומר $bb(1)_(K) <= f$ וכן $supp(f) subset.eq V$ ולכן $bb(1)_(supp(f)) subset.eq bb(1)_(V)$ אבל $f(X) subset.eq [0,1]$ ולכן $f<= bb(1)_(V)$, אזי
+  מהלמה של אוריסון נובע כי קיימת $f in C_C (RR)$ כך שמתקיים $f(X) subset.eq [0,1]$ ועוד מתקיים ש־$K prec f prec V$, כלומר $bb(1)_(K) <= f$ וכן \
+  $supp(f) subset.eq V$ ולכן $bb(1)_(supp(f)) subset.eq bb(1)_(V)$ אבל $f(X) subset.eq [0,1]$ ולכן $f<= bb(1)_(V)$, אזי
   $
     mu_1 (k) = integral_X bb(1)_(K) dif mu_1 <= integral_X f dif mu_1 =_((1)) Lambda f =_((1)) integral_X f dif mu_2 <= integral_X bb(1)_(V) dif mu_2 = mu_2 (V) < mu_2 (K) + epsilon
   $
@@ -1176,10 +1171,10 @@
 ]
 
 #proof[
-  + הוכחת הטענה נכונה כאשר $nu$ מידה סופית ו־$mu$ מידה $sigma$־סופית ונראה כי זה גורר נכונות עבור מידות $mu, nu$ $sigma$־סופיות: \
-    מהיות המרחב $sigma$־סופי נובע שקיים אוסף ${A_n}_(n=1)^infinity subset.eq cal(A)$ של קבוצות מדידות ממידה סופית תחת $nu$ ובלי הגבלת הכלליות נניח שהן זרות זו מזו (תמיד ניתן להזיר אותם) כך ש־$X =_((star)) union.dot_(n=1)^infinity A_n$ ולכל $n in NN$ נסמן את מרחב המידה המצומצם
+  + נניח שהטענה נכונה כאשר $nu$ מידה סופית ו־$mu$ מידה $sigma$־סופית ונראה את הנכונות עבור מידות $mu, nu$ שהן $sigma$־סופיות:\
+    המרחב $(X, cal(A), nu)$ הוא מרחב $sigma$־סופי נובע שקיים אוסף ${A_n}_(n=1)^infinity subset.eq cal(A)$ של קבוצות מדידות ממידה סופית תחת $nu$ ובלי הגבלת הכלליות נניח שהן זרות זו מזו (תמיד ניתן להזיר אותם) כך ש־$X =_((star)) union.dot_(n=1)^infinity A_n$ ולכל $n in NN$ נסמן את מרחב המידה המצומצם
     $
-      v_n colon.eq nu|_(A_n) wide A_n colon.eq cal(A)|_(A_n)
+      v_n colon.eq nu|_(A_n) wide cal(A_n) colon.eq cal(A)|_(A_n)
     $
     אז $nu_n$ מידה על מרחב מדיד מצומצם ומהסופיות של $nu_n$ נובע שגם $(A_n, cal(A_n))$ מרחב מידה סופי.\
     מ־$(star)$ נובע כי $nu = sum_(n=1)^infinity nu_n$ ומההנחה ניתן ליישם את הטענה עבור המידות $mu$ ו־$nu_n$ על $(A_n, cal(A)_n)$:\
@@ -1193,38 +1188,38 @@
     + אם $E in cal(A_n)$ עם $mu(E)=0$ אזי $nu_(n,a) lt.double mu$ ולכן $nu_(n,a) (E) = 0$, מכאן ש־$nu_a (E) = sum_(n=1)^infinity nu_(n,a) = 0$ ולכן $nu_a lt.double mu$
     + מכך ש־$nu_(n,s) perp mu$ ולכן קיימות $A, B in cal(A)$ מדידות וזרות כך ש־$mu(A^c)=nu_(n,s)(B^c)=0$ ולכן $ nu_s (B^c) = sum_(n=1)^infinity nu_(n,s) (B^c) = 0 = mu(A^c) ==> nu_s perp mu $
   + נניח ש־$nu$ מידה סופית.\
-    מטענה שראינו נובע שקיימת פונקציה מדידה וחיובית $w:X arrow (0,1]$ שעבורה $w dif mu$ היא ממידה סופית אז נגדיר את המדיה הסופית \
+    מטענה שראינו נובע שקיימת פונקציה מדידה וחיובית $w:X arrow (0,1]$ שעבורה $w dif mu$ היא ממידה סופית אז נגדיר את המידה הסופית \
     $dif lambda = dif nu + w dif mu$
     לכל $f in L^2 (lambda)$ מתקיים
     $
-      abs(integral f dif nu) <= integral abs(f) dif nu <= integral abs(f)(dif nu + w dif mu) = integral abs(f) dot.op 1 dif lambda <=_"קושי־שוורץ" sqrt(integral abs(f^2) dif lambda) sqrt(integral abs(1^2) dif lambda) = sqrt(lambda(X)) norm(f)_(L^2 (lambda))
+      abs(integral f dif nu) <= integral abs(f) dif nu <= integral abs(f)(dif nu + w dif mu) = integral abs(f) dot.op 1 dif lambda <=_"קושי־שוורץ" sqrt(integral abs(f)^2 dif lambda) sqrt(integral abs(1^2) dif lambda) = sqrt(lambda(X)) norm(f)_(L^2 (lambda))
     $
     אז הפונקציונל $phi.alt : L^2 (lambda) arrow CC$ הנתון על־ידי $phi.alt (f) = integral f dif nu$ הוא חסום
-    ממשפט הצגה של פרשה־ריס, נסיק שקיימת $g in L^2 (lambda)$ כך שלכל $f in L^2 (lambda)$ מתקיים
+    וממשפט הצגה של פרשה־ריס נסיק שקיימת $g in L^2 (lambda)$ כך שלכל $f in L^2 (lambda)$ מתקיים
     $ (triangle) space integral f dif nu = phi.alt (f) = integral f dot.op g dif lambda $
-    + לכל $E in cal(A)$ עם $lambda(E) > 0$ מתקיים $bb(1)_E in L^2 (lambda)$ ולכן $nu(E) = integral_E g dif lambda$, כלומר
+    לכל $E in cal(A)$ עם $lambda(E) > 0$ מתקיים $bb(1)_E in L^2 (lambda)$ ולכן $nu(E) = integral_E g dif lambda$, כלומר
     $ 0<= nu(E)/lambda(E) = 1/lambda(E) integral_E g dif lambda <=1 $
     מלמה שראינו על ממוצעים של פונקציות על קבוצות מדידות נסיק $0<=g<=1$, $lambda$־כמעט תמיד
-    על־ידי שינוי של $g$ על קבוצה מ־$lambda$־מידה אפס נוכל להסיק כי $0<=g<=1$ תמיד
+    ועל־ידי שינוי של $g$ על קבוצה מ־$lambda$־מידה אפס נוכל להסיק כי $0<=g<=1$ תמיד
     נגדיר
     $
       A colon.eq {x in X bar g(x) in [0, 1)} wide B colon.eq {x in X bar g(x) = 1} \
       nu_a colon.eq nu|_A wide nu_s colon.eq nu|_B
     $
-    מכך ש־$X = A union.dot B$ הרי ש־$nu = nu_a + nu_s$
+    מכך ש־$X = A union.dot B$ הרי ש־$nu = nu_a + nu_s$.\
     שכתוב של $triangle$ מביא שלכל $f$
     $
       integral f dif nu = integral f g dif nu + integral f g w dif mu <==>_((star)) integral f(1-g) dif nu = integral f g w dif mu
     $
     נראה ש־$nu_s perp mu$: מהיות $(1-g)|_B eq.triple 0$ אז $f=bb(1)_B$ ומ־$(star)$ נקבל
     $ 0 = integral_B (1-g)dif nu = integral_B g w dif mu $
-    אבל $w>0$ ולכן $mu(B)=0$ ולכן $nu_s (B^c)=0=mu(B)$ כלומר $nu_s perp mu$
+    אבל $w>0$ ולכן $mu(B)=0$ ולכן $nu_s (B^c)=0=mu(B)$ כלומר $nu_s perp mu$.\
     נראה ש־$nu_a lt.double mu$: כי $f=(1+g+g^2+ dots.h.c + g^n) bb(1)_E$ אז עבור $E in cal(A)$ מ־$(star)$ נקבל
     $ integral_E (1-g^(n+1)) dif nu = integral_E (1+g+g^2+dots.h.c + g^n) g w dif mu $
     אבל $g|_A < 1$ והרי $(1-g^(n+1)) bb(1)_E arrow.tr 1_(A inter E)$ מונטונית ולכן באגף שמאל נקבל
-    $ integral_E (1-g^(n+1)) dif nu arrow.r_(n arrow.r infinity) nu(A inter E) = nu_a (E) $
+    $ integral_E (1-g^(n+1)) dif nu stretch(arrow)_(n arrow.r infinity) nu(A inter E) = nu_a (E) $
     מצד שני $(1+g+g^2+ dots.h.c + g^n) g w arrow.tr h$ מתכנסת מונוטונית ל־$h$ מדידה ב־$[0, infinity)$ ולכן באגף ימין
-    $ integral_E (1+g+g^2 + dots.h.c + g^n) g w dif mu arrow.r_(n arrow.r infinity) integral_E h dif mu $
+    $ integral_E (1+g+g^2 + dots.h.c + g^n) g w dif mu stretch(arrow)_(n arrow.r infinity) integral_E h dif mu $
     אז $dif nu_a = h dif mu$ ולכן $nu_a lt.double mu$.\ מכך ש־$nu_a$ ממידה סופית נסיק כי $h in L^1 (mu)$.
 
 ]
@@ -1299,7 +1294,7 @@
     $
       (1) space forall B in cal(F), mu(B)/lambda(B) < t + epsilon wide (2) space forall x in A, inf{r bar B_r (x) in cal(F)}=0
     $
-  + *שימוש ברגולריות פנימית:* נבחר $A subset.eq U$ פתוחה עבורה מתקיים $lambda(U)<lambda(A)+epsilon$ $(star)$
+  + *שימוש ברגולריות חיצונית:* נבחר $A subset.eq U$ פתוחה עבורה מתקיים $lambda(U)<lambda(A)+epsilon$ $(star)$
   + *צמצום הכיסוי:* נזרוק מ־$cal(F)$ את כל הכדורים שלא מוכלים ב־$U$ והכיסוי החדש עדיין מקיים את $(1), (2)$ ובפרט זה עדיין כיסוי בסיקוביץ' (בגלל (2))
   + *שימוש בטענה שראינו:* ממשפט שראינו נובע שקיים תת־אוסף בן־מנייה $tilde(E) subset.eq cal(F)$ של כדורי זרים בזוגות עם $mu(A without union.big tilde(E))=0$
   + *שימוש במונוטוניות:*
@@ -1333,7 +1328,7 @@
     נסמן
     $ A_(infinity, r) colon.eq { x in B_r (0) bar overline(D)(mu, lambda, x)=infinity} $
     ולכן $A_(infinity, r) = inter.big_(n in NN) A_(n,r)$
-    מהיות $lambda(A_1, r) < infinity$, ממונוטוניות לסדרות יורדות נסיק
+    מהיות $lambda(A_1, r) < infinity$ וממונוטוניות לסדרות יורדות נסיק
     $ lambda(A_(infinity, r))=lim_(n arrow.r infinity) lambda(A_(n,r))<=lim_(n arrow infinity) 1/n mu(B_r (0)) = 0 $
     אזי
     $
