@@ -13,9 +13,10 @@
 #pagebreak()
 
 = מידה
-== תנאי מספיק בשביל פונקציה מדידה
-#theorem("תנאי מספיק בשביל פונקציה מדידה")[
-  $(X, cal(A))$ מרחב מדיד ו־$(Y, tau)$ מרחב טופולוגי. אם $BB_Y colon.eq sigma(tau)$ היא $sigma$־אלגברת בורל על $Y$ אז הפונקציה $f: (X, cal(A)) arrow (Y, BB_Y)$ מדידה אם ורק אם המקור של כל קבוצה פתוחה ב־$tau$ הוא מדיד, כלומר אם ורק אם לכל $U in tau$, $f^(-1)(U) in cal(A)$.
+== תנאי מספיק בשביל פונקציה מדידה למרחב טופולוגי
+#theorem("תנאי מספיק בשביל פונקציה מדידה למרחב טופולוגי")[
+  $(X, cal(A))$ מרחב מדיד ו־$(Y, tau)$ מרחב טופולוגי. אם $BB_Y colon.eq sigma(tau)$ היא \
+  $sigma$־אלגברת בורל על $Y$ אז הפונקציה $f: (X, cal(A)) arrow (Y, BB_Y)$ מדידה אם ורק אם המקור של כל קבוצה פתוחה ב־$tau$ הוא מדיד, כלומר אם ורק אם לכל $U in tau$, $f^(-1)(U) in cal(A)$.
 ]
 
 #proof[
@@ -29,13 +30,15 @@
 
 == תנאי שקול לפונקציה מדידה
 #theorem("תנאי שקול לפונקציה מדידה")[
-  יהי $(X, cal(A))$ מרחב מדיד. אם $f: X arrow.r [-infinity, infinity]$ פונקציה אזי $f$ מדידה אם ורק אם $f^(-1)((alpha, infinity])$ לכל $alpha in RR$.
+  יהי $(X, cal(A))$ מרחב מדיד ותהיי $f: X arrow.r [-infinity, infinity]$.\
+  אז $f$ מדידה אם ורק אם $forall alpha in RR, space f^(-1)((alpha, infinity]) in cal(A)$.
 ]
 
 #proof[
-  $<==$ מיידי מהגדרה כי אם $f$ מדידה לכל $E in BB([-infinity, infinity])$ מתקיים $f^(-1)(E) in cal(A)$ ולכן בהינתן $alpha in RR$ כלשהו, מתקיים $(alpha, infinity] in BB([infinity, infinity])$ ובפרט $f^(-1)((alpha, infinity]) in cal(A)$.\
+  $<==$ מיידי מהגדרה כי אם $f$ מדידה לכל $E in BB([-infinity, infinity])$ מתקיים $f^(-1)(E) in cal(A)$ ולכן בהינתן $alpha in RR$, מתקיים \
+  $(alpha, infinity] in BB([infinity, infinity])$ ובפרט $f^(-1)((alpha, infinity]) in cal(A)$.\
   $==>$ מספיק להראות שהמקור של כל אחת מהקבוצות
-  $ (star) wide (alpha, beta), wide (alpha, infinity], wide [-infinity, beta) $
+  $ (star) wide (alpha, beta) wide (alpha, infinity] wide [-infinity, beta) $
   הוא מדיד, ואכן:
   + בהינתן $beta in RR$ מתקיים
     $
