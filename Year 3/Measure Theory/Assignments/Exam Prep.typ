@@ -283,8 +283,10 @@
   $
   אז הטענה נכונה עבור פונקציות פשוטות.\
   תהיינה $f_1, f_2 in {f_n bar X arrow.r [0,infinity]}_(n=1)^infinity$ מדידות ותהיינה ${s_n}_(n=1)^infinity, {t_n}_(n=1)^infinity$ סדרות עולות של פונקציות פשוטות כך שמתקיים
-  $ s_n stretch(arrow.r)_(n arrow.r infinity) f_1 wide t_n stretch(arrow.r)_(n arrow.r infinity) f_2 $
-  נקודתית ומאריתמטיקה של גבולות נקבל $s_n + t_n stretch(arrow.r)_(n arrow.r infinity) f_1+f_2$ כאשר זו התכנסות עולה לכן לפי משפט ההתכנסות המונוטונית
+  $
+    ("התכנסות נקודתית") space s_n stretch(arrow.r)_(n arrow.r infinity) f_1 wide t_n stretch(arrow.r)_(n arrow.r infinity) f_2
+  $
+  ומאריתמטיקה של גבולות נקבל $s_n + t_n stretch(arrow.r)_(n arrow.r infinity) f_1+f_2$ כאשר זו התכנסות עולה לכן לפי משפט ההתכנסות המונוטונית
   $
     integral_X (f_1+g_2) dif mu = lim_(n arrow.r infinity) integral_X (s_n+t_n) dif mu = lim_(n arrow.r infinity) (integral_X s_n dif mu + integral_X t_n dif mu) = lim_(n arrow.r infinity) integral_X s_n dif mu + lim_(n arrow.r infinity) integral_X t_n dif mu \
     = integral_X f_1 dif mu + integral_X f_2 dif mu
@@ -297,7 +299,8 @@
 
 == קיום מידת אינטגרל
 #theorem("קיום מידת אינטגרל")[
-  יהי $(X, cal(A), mu)$ מרחב מידה. אם $h:X arrow.r [0, infinity]$ מדידה אזי הפונקציה $nu: A arrow.r [0,infinity]$ המוגדרת על־ידי
+  יהי $(X, cal(A), mu)$ מרחב מידה. \
+  אם $h:X arrow.r [0, infinity]$ מדידה אזי הפונקציה $nu: cal(A) arrow.r [0,infinity]$ המוגדרת על־ידי
   $ forall E in cal(A), space nu(E) = integral_E h dif mu $
   היא מידה על $(X, cal(A))$ ובמקרה זה נסמן $dif nu colon.eq h dif mu$ ויתר על־כן מתקיים
   $ integral_X g dif nu = integral_X g dot.op h dif mu $
@@ -604,6 +607,21 @@ $ A_E (f) colon.eq 1/mu(E) integral_E f dif mu $
     mu_1 (k) = integral_X bb(1)_(K) dif mu_1 <= integral_X f dif mu_1 =_((1)) Lambda f =_((1)) integral_X f dif mu_2 <= integral_X bb(1)_(V) dif mu_2 = mu_2 (V) < mu_2 (K) + epsilon
   $
   כלומר $mu_1 (K) <= mu_2 (K)$ לכל $K$ קומפקטית ומהסימטרייה נקבל $mu_2 <= mu_1$, כלומר $mu_1=mu_2$.
+]
+
+#remark("בניית המידה במשפט ההצגה של ריס")[
+  נגדיר את המידה $mu$ על קבוצות פתוחות: לכל $V subset.eq X$ פתוחה נגדיר $mu(V) colon.eq sup_(f prec V) { Lambda f}$.\
+  לכל $E subset.eq X$ נגדיר $mu(E) colon.eq inf {mu(V) bar E subset.eq V "פתוחה"}$.\
+  ההגדרות הללו מתלכדות בגלל שלכל $V subset.eq U subset.eq X$ פתוחות מתקיים $mu(V)<=mu(U)$ ולכן ההרחבה גם כשרה ולכל $A subset.eq B$ מתקיים $mu(A)<=mu(B)$.\
+]
+
+#remark($"אלגברה במשפט ההצגה של ריס" sigma"בניית ה־"$)[
+  נגדיר
+  $
+    m_F colon.eq {E subset.eq X bar mu(E) < infinity, space mu(E) = sup{mu(K) bar E supset.eq K "קומפקטית" }} \
+    m colon.eq {E subset.eq X bar E inter K in m_F space forall K "קומפקטית"}
+  $
+  נשים לב שאם $E subset.eq X$ עם $mu(E)=0$ אז $E in m_F$ מכיוון ש־$emptyset subset.eq E$ קומפקטית ו־$mu(emptyset)=0$ ולכן $E in m$ ונקבל כתוצר לוואי של ההוכחה ש־$(X, m, mu)$ מרחב מידה שלם.
 ]
 
 #pagebreak()
@@ -1334,7 +1352,7 @@ $ cal(H)^* colon.eq {phi.alt in Hom(cal(H), CC) bar norm(phi.alt)_op < infinity}
       A_(t,r) colon.eq {x in B_r (0) bar overline(D)(mu, lambda, x) >= t} wide A_(s,t,r) colon.eq {x in B_r (0) bar underline(D)(mu, lambda, x) <= s<t<=overline(D)(mu, lambda, x)}
     $
     ומתקיים $A_(s,t,r) subset.eq A_(t,r)$
-    מתקיים מטענה על גזירהה שראינו
+    מתקיים מטענה על גזירה שראינו
     $ t dot.op lambda(A_(s,t,r))<=_(overline(D)>=t) mu(A_(s,t,r))<=_(underline(D)<=s) dot.op lambda(A_(s,t,r)) $
     ומהיות $s<t$ ו־$lambda(A_(s,t,r))<infinity$ הרי ש־$lambda(A_(s,t,r)) = 0$ לכל $s<t,r$.
     עבור $A_(t,r)$ מתקיים
