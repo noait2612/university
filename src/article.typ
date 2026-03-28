@@ -441,6 +441,9 @@
 
 // Algebraic Structures
 #let Aut = math.op("Aut")
+
+// Mainfolds
+#let Mesh = math.op("Mash")
 // headings
 //#show heading: it => {
 //	let c = if it.level == 1 {
