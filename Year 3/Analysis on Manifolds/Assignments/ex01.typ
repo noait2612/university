@@ -13,13 +13,14 @@
 Let $gamma : [a,b] arrow RR^n$ be a parametrized curve.\
 We will show that $gamma''(t) = 0$ for all $t in [a,b]$ if and only if there exist $p_0, v_0 in RR^n$ such that $gamma(t)=p_0 + t v_0$.
 
-#proof[ since $gamma$ is a parametrized curve we can write it as $gamma(t) = (gamma_1 (t), gamma_2 (t), dots.h, gamma_n (t))$ when each $gamma_i (t)$ is a component.\
+#proof[
+  Since $gamma$ is a parametrized curve we can write it as $gamma(t) = (gamma_1 (t), gamma_2 (t), dots.h, gamma_n (t))$ when each $gamma_i (t)$ is a component.\
   $==>$ Assume that $gamma''(t) = 0$ for all $t in [a,b]$.\
   By our assumption, $gamma''_i (t) = 0$ for all $i in [n]$ and hence from The Fundamental Theorem Of Calculus we get by integration for each component that $gamma'_i (t) = c_i$ for $c_i in RR$.\
   We use again The Fundamental Theorem Of Calculus and we get $gamma_i (t) = c_i t + d_i$ for $d_i in RR$.\
   By substitute these components we get $gamma (t)= (c_1 t + d_1, c_2 t + d_2, dots.h, c_n t + d_n) = (d_1, d_2, dots.h, d_n) + t(c_1, c_2, dots.h, c_n)$ and we can choose $p_0 = (d_1, d_2, dots.h, d_n), v_0 = (c_1, c_2, dots.h, c_n)$ and we get that $gamma(t) = p_0 + t v_0$.\
   $<==$ Assume that there exists $p_0, v_0 in RR^n$ such that $gamma(t)=p_0 + t v_0$.\
-  We can differentiate $gamma(t)$ with respect to $t$ and we remember that a derivative os a constant vector is the zero vector
+  We can differentiate $gamma(t)$ with respect to $t$ and we remember that a derivative of a constant vector is the zero vector
   $ gamma'(t) = dif/(dif t) (p_0 + t v_0) = v_0 $
   Since $v_0$ is a constant vector we can differentiate again and we will get that $ gamma'' (t) = dif/(dif t) (v_0) = 0 $
   And that is true for all $t in [a,b]$.
@@ -52,12 +53,12 @@ Let $gamma : [a,b] arrow RR^n$ be a parametrized curve. We will show that there 
 
 #proof[
   $==>$ Assume that $norm(gamma(t))=c in RR$.\
-  By out assumption we get $norm(gamma(t))^2 = c^2$ so if we can define
+  By out assumption we get $norm(gamma(t))^2 = c^2$ so if we define
   $
     g(t)=chevron.l gamma(t), gamma(t) chevron.r = c^2 \
     g'(t) = 2 chevron.l gamma'(t), gamma(t) chevron.r
   $
-  We differentiate $g(t)$ by The Chain Rule.\
+  We differentiated $g(t)$ by The Chain Rule.\
   But $g(t)$ is constant and so $g'(t) = 0$, therefore $chevron.l gamma'(t), gamma(t) chevron.r = 0$ which means $gamma'(t) perp gamma(t)$.\
   $<==$ Assume that $chevron.l gamma'(t), gamma(t) chevron.r = 0$.\
   From The Fundamental Theorem Of Calculus we can define
@@ -93,7 +94,8 @@ We will use the identity $f^(-1) compose f = id$ to show that if $f, f^(-1)$ are
 #subquestion()
 We will use the identity $forall A in GL_n (RR), space A^(-1) = 1/(det(A)) Adj(A)$ to prove that the function $i : GL_n (RR) arrow GL_n (RR)$ define by $i(A) = A^(-1)$ is smooth.
 
-#proof[
+#proof[\
+
   _Reminder:_
   $ adj(A)_(i,j) = (-1)^(i+j) abs(M_(j,i))=(-1)^(i+j) abs(M_(i,j)^T) $
   We can identity the space of all $M_n (RR)$ with the Euclidean vector space, $RR^(n^2)$.\
@@ -175,7 +177,7 @@ We will show that for every $epsilon > 0$ there exists $delta > 0$ such that if 
   $
   From the previous subquestion we know that
   $ norm(gamma(t_i)-gamma(t_(i-1))-gamma'(c_i)(t_i - t_(i-1))) < epsilon(t_i - t_(i-1)) $
-  As $Mesh arrow 0$ we have that the difference above goes to $0$, which means that $abs(S_gamma - S(h))<epsilon$ for sufficiently small mesh.
+  As $Mesh arrow 0$ we have that the difference above goes to $0$, which means that $abs(S_gamma - S(h))<epsilon$ for sufficiently small Mash.
 ]
 
 #subquestion()
