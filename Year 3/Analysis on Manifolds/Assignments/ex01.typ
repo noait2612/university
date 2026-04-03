@@ -15,8 +15,8 @@ We will show that $gamma''(t) = 0$ for all $t in [a,b]$ if and only if there exi
 
 #proof[ since $gamma$ is a parametrized curve we can write it as $gamma(t) = (gamma_1 (t), gamma_2 (t), dots.h, gamma_n (t))$ when each $gamma_i (t)$ is a component.\
   $==>$ Assume that $gamma''(t) = 0$ for all $t in [a,b]$.\
-  By our assumption, $gamma''_i (t) = 0$ for all $i in [n]$ and hence from The Fundamental theorem of calculus we get by integration for each component that $gamma'_i (t) = c_i$ for $c_i in RR$.\
-  We use again The Fundamental theorem of calculus and we get $gamma_i (t) = c_i t + d_i$ for $d_i in RR$.\
+  By our assumption, $gamma''_i (t) = 0$ for all $i in [n]$ and hence from The Fundamental Theorem Of Calculus we get by integration for each component that $gamma'_i (t) = c_i$ for $c_i in RR$.\
+  We use again The Fundamental Theorem Of Calculus and we get $gamma_i (t) = c_i t + d_i$ for $d_i in RR$.\
   By substitute these components we get $gamma (t)= (c_1 t + d_1, c_2 t + d_2, dots.h, c_n t + d_n) = (d_1, d_2, dots.h, d_n) + t(c_1, c_2, dots.h, c_n)$ and we can choose $p_0 = (d_1, d_2, dots.h, d_n), v_0 = (c_1, c_2, dots.h, c_n)$ and we get that $gamma(t) = p_0 + t v_0$.\
   $<==$ Assume that there exists $p_0, v_0 in RR^n$ such that $gamma(t)=p_0 + t v_0$.\
   We can differentiate $gamma(t)$ with respect to $t$ and we remember that a derivative os a constant vector is the zero vector
@@ -48,10 +48,24 @@ We will show that $gamma(t_0) perp gamma'(t_0)$.
 #pagebreak()
 
 #subquestion()
-Let $gamma : [a,b] arrow RR^n$ be a parametrized curve. We will show that there exists $c in RR$ such that forall $t in [a,b]$, $abs(gamma'(t))=c$ if and only if for all $t in [a,b]$, $gamma'(t) perp gamma(t)$.
+Let $gamma : [a,b] arrow RR^n$ be a parametrized curve. We will show that there exists $c in RR$ such that for all $t in [a,b]$, $norm(gamma'(t))=c$ if and only if for all $t in [a,b]$, $gamma'(t) perp gamma(t)$.
 
 #proof[
-  #todo
+  $==>$ Assume that $norm(gamma(t))=c in RR$.\
+  By out assumption we get $norm(gamma(t))^2 = c^2$ so if we can define
+  $
+    g(t)=chevron.l gamma(t), gamma(t) chevron.r = c^2 \
+    g'(t) = 2 chevron.l gamma'(t), gamma(t) chevron.r
+  $
+  We differentiate $g(t)$ by The Chain Rule.\
+  But $g(t)$ is constant and so $g'(t) = 0$, therefore $chevron.l gamma'(t), gamma(t) chevron.r = 0$ which means $gamma'(t) perp gamma(t)$.\
+  $<==$ Assume that $chevron.l gamma'(t), gamma(t) chevron.r = 0$.\
+  From The Fundamental Theorem Of Calculus we can define
+  $
+    g(t) = norm(gamma(t))^2 \
+    g'(t) = 2 chevron.l gamma'(t), gamma(t) chevron.r = 0
+  $
+  So $g(t)$ is a constant and we are done.
 ]
 
 #question()
@@ -124,14 +138,15 @@ $ abs(t-s)<delta ==> norm(gamma'(c)(t-s)-(gamma(t)-gamma(s)))<epsilon $
   We will use the given hint.\
   As we did in the first question, since $gamma$ is a parametrized curve in $RR^n$ we can write it as $gamma(t) = (gamma_1 (t), dots.h, gamma_n (t))$.\
   By the Lagrange Mean Value Theorem to each component $gamma_i$ on $[s,t]$, for each $i$ there exists $c_i in (s,t)$ such that
-  $ gamma_i (t) - gamma_i (s) = gamma'_i (c_i)(t-s) $
-  so
-  $ gamma(t)-gamma(s) = (gamma'_1 (c_1)(t-s), dots.h, gamma'_n (c_n)(t-s)) $
+  $
+    gamma_i (t) - gamma_i (s) = gamma'_i (c_i)(t-s) \
+    gamma(t)-gamma(s) = (gamma'_1 (c_1)(t-s), dots.h, gamma'_n (c_n)(t-s))
+  $
   So if we compare $gamma'(c)(t-s)-(gamma(t)-gamma(s))$ componentwise we get
-  $ ((gamma'_1(c)-gamma'_1(c_1)))(t-s), dots.h, (gamma'_n(c)-gamma'_n(c_n)))(t-s)) $
+  $ ((gamma'_1(c)-gamma'_1(c_1)))(t-s), dots.h, (gamma'_n (c)-gamma'_n (c_n)))(t-s)) $
   From the hint, $norm(x)<=sum_(i=1)^n abs(x_i)$ so
   $
-    (star) norm(gamma'(c)(t-s)-(gamma(t)-gamma(s)))<=sum_(i=1)^n abs((gamma'_i (c)-gamma'_i (c_i))(t-s)) = abs(t-s) sum_(i=1)^n abs(gamma'_i (c)-gamma'_i (c_i))
+    (star) space norm(gamma'(c)(t-s)-(gamma(t)-gamma(s)))<=sum_(i=1)^n abs((gamma'_i (c)-gamma'_i (c_i))(t-s)) = abs(t-s) sum_(i=1)^n abs(gamma'_i (c)-gamma'_i (c_i))
   $
   Since $gamma$ is smooth we get that $gamma'$ is continuous on $[a,b]$ and from Cantor Theorem we can that $gamma'$ is uniformly continuous.\
   So for every $epsilon > 0$ there exists $delta > 0$ such that
@@ -143,19 +158,41 @@ $ abs(t-s)<delta ==> norm(gamma'(c)(t-s)-(gamma(t)-gamma(s)))<epsilon $
 ]
 
 #subquestion()
-For every partition of $P = {a = t_0 < t_1 < dots.h.c < t_k = b}$ of $[a,b]$ and a choice of intermediate points $c_i in [t_(i-1), t_i]$ where $1<=i<=k$ we define the mesh of the partition $Mesh(P)=max_(1<=i<=k) norm(gamma(t_i) - gamma(t_(i-1)))$ and the Riemann sum
+For every partition of $P = {a = t_0 < t_1 < dots.h.c < t_k = b}$ of $[a,b]$ and a choice of intermediate points $c_i in [t_(i-1), t_i]$ where $1<=i<=k$ we define the mesh of the partition $Mesh(P)=max_(1<=i<=k) abs(gamma(t_i) - gamma(t_(i-1)))$ and the Riemann sum
 $ S_gamma (f, P, {c_i}_(i=1)^k)=sum_(i=1)^k f(gamma(c_i)) norm(gamma(t_i)-gamma(t_(i-1))) $
 We also denote by $h:[a,b] arrow RR$ the function $h(t)=f(gamma(t))norm(gamma'(t))$ and
 $ S(h, P, {c_i}_(i=1)^k)=sum_(i=1)^k h(c_i) (t_i - t_(i-1)) $
 We will show that for every $epsilon > 0$ there exists $delta > 0$ such that if $Mesh(P) < delta$ then $ abs(S_gamma (f, P, {c_i}_(i=1)^k)-S(h, P, {c_i}_(i=1)^k))<epsilon $
 
 #proof[
-  #todo
+  First, we subtract and by the triangle inequality we will get
+  $
+    abs(S_gamma - S(h))=abs(sum f(gamma(c_i)) (norm(gamma(t_i)-gamma(t_(i-1))) - norm(gamma'(c_i))(t_i - t_(i-1)))) <= sum abs(f(gamma(c_i)))abs(norm(gamma(t_i)-gamma(t_(i-1)))-norm(gamma'(c_i))(t_i - t_(i-1)))
+  $
+  Since $f$ is continuous on a compact set hence it is a bounded function, which means there exists $M in RR$ so that $abs(f)<=M$ and from the inequality above
+  $
+    sum abs(f(gamma(c_i)))abs(norm(gamma(t_i)-gamma(t_(i-1)))-norm(gamma'(c_i))(t_i - t_(i-1))) <= M sum abs(norm(gamma(t_i)-gamma(t_(i-1)))-norm(gamma'(c_i))(t_i - t_(i-1)))
+  $
+  From the previous subquestion we know that
+  $ norm(gamma(t_i)-gamma(t_(i-1))-gamma'(c_i)(t_i - t_(i-1))) < epsilon(t_i - t_(i-1)) $
+  As $Mesh arrow 0$ we have that the difference above goes to $0$, which means that $abs(S_gamma - S(h))<epsilon$ for sufficiently small mesh.
 ]
 
 #subquestion()
 We will conclude that for every $epsilon > 0$ there exists $delta > 0$ such that if $Mesh(P) < delta$ then $ abs(S_gamma (f, P,{c_i}_(i=1)^k - integral_gamma f dif s))<epsilon $
 
 #proof[
-  #todo
+  We define the continuous function
+  $ h(t)=f(gamma(t))norm(gamma'(t)) $
+  Since $h$ is continuous it is Riemann integrable and so
+  $ S(h, P, {c_i}_(i=1)^k) arrow integral_a^b h(t) dif t $
+  By the Path integral definition we have
+  $ integral_gamma f dif s = integral_a^b f(gamma(t))norm(gamma'(t)) dif t $
+  And thus
+  $ S_gamma arrow integral_gamma f dif s $
+  Which means
+  $ lim_(Mesh(P) arrow 0) S_gamma (f, P, {c_i}_(i=1)^k) = integral_gamma f dif s $
+  Therefore for every $epsilon > 0$ there exists $delta > 0$ such that
+  $ abs(S_gamma (f, P, {c_i}_(i=1)^k) - integral_gamma f dif s) < epsilon $
+
 ]
