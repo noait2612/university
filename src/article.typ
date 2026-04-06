@@ -423,6 +423,7 @@
 #let Span = math.op("Span")
 #let dist = math.op("dist")
 #let Hom = math.op("Hom")
+#let normop(x) = $norm(#x)_italic("op")$
 
 // Probability
 #let Unif = math.italic(math.op("Unif"))

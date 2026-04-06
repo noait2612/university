@@ -248,7 +248,7 @@
 ]
 
 #proof[
-  נוכיח עבור $A=X$ ואז להתבונן ב־$g_n = f_n bb(1)_(A)$ ולהסיק את המקרה הכללי.\
+  נוכיח עבור $A=X$ ואז אם נתבונן ב־$g_n = f_n bb(1)_(A)$ נוכל להסיק את המקרה הכללי.\
   ממונוטוניות האינטגרל $0 <= integral f_1 dif mu <= integral f_2 dif mu <= dots.h.c <= integral f dif mu$ ולכן $alpha = sup_(n) integral f_n dif mu$ יקיים $alpha <= integral f dif mu$ ונרצה להראות $alpha >= integral f dif mu$.\
   תהיי $0<=s<=f$ פשוטה ונקבע $0<c<1$, נסמן $E_n colon.eq {x in X bar f_n (x) >= c s(x)}$ ו־$E_n arrow.tr X$ כלומר זוהי סדרה עולה של קבוצות מדידות שאיחודן הוא כל $X$.\
   מרציפות המידה לסדרות עולות נסיק כי לכל $A in cal(A)$
@@ -269,9 +269,9 @@
 
 #proof[
   באינדוקציה על $N in NN$.\
-  מקרה בסיס הוא אדטיביות האינטגרל עבור $N=2$ (עבור $N=1$ הטענה טריוויאלית): תהיינה $s,t : X arrow.r [0,infinity]$ פונקציות פשוטות כלשהן כאשר
+  מקרה בסיס הוא אדטיביות האינטגרל עבור $N=2$: תהיינה $s,t : X arrow.r [0,infinity]$ פונקציות פשוטות כלשהן כאשר
   $ s = sum_(i=1)^n alpha_i bb(1)_(A_i) wide t = sum_(j=1)^m beta_j bb(1)_(B_j) $
-  עבור ${A_i}_(i=1)^n, {B_j}_(j=1)^m$ הן חלוקות של $X$ ומתקיים
+  עבור ${A_i}_(i=1)^n, {B_j}_(j=1)^m$ חלוקות של $X$ ומתקיים
   + ${A_i inter B_j}_((i,j) in [n times m])$ חלוקה של $X$
   + לכל $j in [m]$ מתקיים $union.big.dot_(i=1)^n A_i inter B_j = B_j$ כי ${A_i}_(i=1)^n$ חלוקה של $X$
   + לכל $i in [n]$ מתקיים $union.big.dot_(j=1)^m A_i inter B_j = A_i$ כי ${B_j}_(j=1)^m$ חלוקה של $X$
@@ -338,8 +338,11 @@
 ]
 
 #proof[
-  לכל $k in NN$ נסמן $g_k colon.eq inf_(n in NN \
-  n >= k) {f_n}$ אזי הסדרה ${g_k}_(k=1)^infinity$ סדרה מונוטונית עולה ואי־שלילית.\
+  לכל $k in NN$ נסמן $display(
+    g_k colon.eq inf_(n in NN \
+    n >= k) {f_n}
+  )$ אזי הסדרה ${g_k}_(k=1)^infinity$ היא סדרה מונוטונית עולה ואי־שלילית.\
+  $ gt.eq $
   ממשפט ההתכנסות המונוטונית נקבל
   $ integral_X lim_(k arrow.r infinity) g_k dif mu = lim_(k arrow.r infinity) integral_X g_k dif mu $
   ומתקיים מהגדרה
@@ -569,7 +572,7 @@ $ A_E (f) colon.eq 1/mu(E) integral_E f dif mu $
 
 #proof[
   $Omega$ סגורה $<==$ $Omega^c$ פתוחה $<==$ $Omega^c$ היא איחוד בן־מנייה של כדורים פתוחים.\
-  אבל ב־$CC$ כל כדור פתוח ניצן להצגה כאיחוד בן־מנייה של כדורים סגורים ולכן $Omega^c$ איחוד בן־מנייה של כדורים סגורים.\
+  אבל ב־$CC$ כל כדור פתוח ניתן להצגה כאיחוד בן־מנייה של כדורים סגורים ולכן $Omega^c$ איחוד בן־מנייה של כדורים סגורים.\
   נראה שלכל $overline(B)_r (alpha) subset.eq Omega^c$ מתקיים $mu(f^(-1)(overline(B)_r (alpha)))=0$, כאשר
   $ f^(-1) (overline(B)_r (alpha)) = {x in X bar f(x) in overline(B)_r (alpha)} $
   נניח בשלילה שקיים כדור סגור $overline(B)_r (alpha) subset.eq Omega^c$ כך ש־$mu(f^(-1)(overline(B)_r (alpha)))>0$ ונסמן $E colon.eq f^(-1) (overline(B)_r (alpha))$.\
@@ -596,11 +599,11 @@ $ A_E (f) colon.eq 1/mu(E) integral_E f dif mu $
 
 #proof[
   ניזכר ש־$RR$ הוא מרחב האוסדרוף קומפקטי־מקומית.\
-  נבחין תחילה ש־$mu_1, mu_2$ מוגדרות ביחידות על־ידי הערכים שלהן על קבוצות קומפקטיות.\
-  ראשית מ־$(2)$ נובע כי עבור $K subset.eq RR$ קומפקטית מתקיים $mu_i (K) < infinity$.\
+  ראשית, $mu_1, mu_2$ מוגדרות ביחידות על־ידי הערכים שלהן על קבוצות קומפקטיות ומ־$(2)$ נובע כי עבור $K subset.eq RR$ קומפקטית מתקיים $mu_i (K) < infinity$.\
   יהי $epsilon>0$ ומהרגולריות החיצונית נובע כי קיימת $K subset.eq V$ כאשר $V$ פתוחה כך שמתקיים $mu_2 (V)<mu_2(K)+epsilon$.\
-  מהלמה של אוריסון נובע כי קיימת $f in C_C (RR)$ כך שמתקיים $f(X) subset.eq [0,1]$ ועוד מתקיים ש־$K prec f prec V$, כלומר $bb(1)_(K) <= f$ וכן \
-  $supp(f) subset.eq V$ ולכן $bb(1)_(supp(f)) subset.eq bb(1)_(V)$ אבל $f(X) subset.eq [0,1]$ ולכן $f<= bb(1)_(V)$, אזי
+  מהלמה של אוריסון נובע שקיימת $f in C_C (RR)$ כך שמתקיים $f(X) subset.eq [0,1]$ ו־$K prec f prec V$ (כלומר $bb(1)_(K) <= f$ וכן
+  $supp(f) subset.eq V$) ומהיות $f(X) subset.eq [0,1]$ נקבל $f<= bb(1)_(supp(f))$ כלומר $f<= bb(1)_V$.\
+  אם־כך, מתקיים
   $
     mu_1 (k) = integral_X bb(1)_(K) dif mu_1 <= integral_X f dif mu_1 =_((1)) Lambda f =_((1)) integral_X f dif mu_2 <= integral_X bb(1)_(V) dif mu_2 = mu_2 (V) < mu_2 (K) + epsilon
   $
@@ -610,10 +613,8 @@ $ A_E (f) colon.eq 1/mu(E) integral_E f dif mu $
 #remark("בניית המידה במשפט ההצגה של ריס")[
   נגדיר את המידה $mu$ על קבוצות פתוחות: לכל $V subset.eq X$ פתוחה נגדיר $mu(V) colon.eq sup_(f prec V) { Lambda f}$.\
   לכל $E subset.eq X$ נגדיר $mu(E) colon.eq inf {mu(V) bar E subset.eq V "פתוחה"}$.\
-  ההגדרות הללו מתלכדות בגלל שלכל $V subset.eq U subset.eq X$ פתוחות מתקיים $mu(V)<=mu(U)$ ולכן ההרחבה גם כשרה ולכל $A subset.eq B$ מתקיים \
-  $mu(A)<=mu(B)$.
+  ההגדרות הללו מתלכדות כי לכל $V subset.eq U subset.eq X$ פתוחות מתקיים $mu(V)<=mu(U)$ ולכן ההרחבה גם כשרה ולכל $A subset.eq B$ מתקיים $mu(A)<=mu(B)$.
 ]
-
 #remark($"אלגברה במשפט ההצגה של ריס" sigma"בניית ה־"$)[
   נגדיר
   $
@@ -837,7 +838,7 @@ $ A_E (f) colon.eq 1/mu(E) integral_E f dif mu $
 
 #proof("עבור מרחב מידה סופי")[
   נוכיח את משפט לוזין במקרה של מרחב מידה סופי ונשתמש במשפט אגרוב/אגורוף.\
-  יהי $epsilon > 0$, אם $f=bb(1)_E$ עבור $E$ מדידה, מרגולריות נוכל למצוא $F subset.eq E subset.eq U$ כך ש־$F$ קומצפקטית ו־$U$ פתוחה ו־$mu(U without F) < epsilon$.\
+  יהי $epsilon > 0$, אם $f=bb(1)_E$ עבור $E$ מדידה, מרגולריות נוכל למצוא $F subset.eq E subset.eq U$ כך ש־$F$ קומפקטית ו־$U$ פתוחה ו־$mu(U without F) < epsilon$.\
   מהלמה של אוריסון נוכל בחור $bb(1)_K <= g<= bb(1)_U$ רציפה וזה מסיים עבור פונקציות מציין.\
   עבור פונקציות פשוטות שהן הסכום של $k$ פונקציות מציינות נשתמש בלוזין עבור פונקצייה מציינת לכל אחת מהן כשנזרוק כל פעם $epsilon/k$ ושוב נסיים.\
   אם $f$ מדידה ניקח סדרה של פשוטות המתכנסות אליה $s_n arrow f$. ממשפט לוזין לפונקציות פשוטות נוכל לכל $n$ לבחור $g_n$ המתלכדת עם $s_n$ מחוץ לקבוצה ממידה $epsilon/2 dot.op 2^(-n)$.\
@@ -847,14 +848,14 @@ $ A_E (f) colon.eq 1/mu(E) integral_E f dif mu $
 #pagebreak()
 
 == לכל פונקציה מדידה יש סדרת פונקציות רציפות שמתכנסות אליה
-#theorem("לכל פונקציה מדידה יש סדרת פונקציות רציפות שמתכנסות אליה")[
+#theorem("לפונקציה מדידה יש סדרת פונקציות רציפות שמתכנסות אליה")[
   יהי $X$ מרחב האוסדרוף קומפקטי־מקומית ותהיי $mu$ מידת רדון על $X$.\
   לכל $f:X arrow CC$ מדידה עם $mu({f != 0})< infinity$ קיימת סדרת פונקציות $g_n in C_C (X)$ עבורן $lim_(n arrow infinity) g_n (x) = f(x)$, $mu$–כמעט תמיד.
 ]
 
 #proof[
   ממשפט לוזין, לכל $n in NN$ קיימת $g_n in C_C (X)$ כך ש־$mu({f!=g_n})<2^(-n)$ ונסמן $J_n colon.eq {f!=g_n}$.\
-  מהלמה של בורל־קנטלי מתקיים $mu(limsup J_n)=0$ כלומר $mu$־כמעט תמיד כל $x in X$ מוכל במספר בסופי של $J_n$־ים ולכן $f(x)=lim_(n arrow infinity) g_n (x)$.
+  מהלמה של בורל־קנטלי מתקיים $mu(limsup J_n)=0$ כלומר $mu$־כמעט כל $x in X$ מוכל במספר בסופי של $J_n$־ים ולכן $f(x)=lim_(n arrow infinity) g_n (x)$.\
 ]
 
 #pagebreak()
@@ -891,12 +892,12 @@ $ A_E (f) colon.eq 1/mu(E) integral_E f dif mu $
 ]
 
 #proof[
-  נסמן $T colon.eq integral_X f dif mu in (a,b)$ ונסמן $beta colon.eq sup_(s<T) {(phi(T)-phi(s))/(T-s)}$.\
+  נסמן $T colon.eq integral_X f dif mu in (a,b)$ ו־$beta colon.eq sup_(s<T) {(phi(T)-phi(s))/(T-s)}$.\
   לכל $s<T$ מתקיים
-  $ phi(T)-phi(S) <= beta(T-s) ==> phi(s) >= phi(T)-beta(s-T) $
+  $ phi(T)-phi(s) <= beta(T-s) ==> phi(s) >= phi(T)-beta(s-T) $
   מתקיים טריוויאלית עבור $s=T$ ולכל $T<s$ מהקמירות של $phi$ מתקיים
   $ beta<=(phi(s)-phi(T))/(s-T) < infinity $
-  ולכן האי־שיוויון נכול לכל $s in (a,b)$ ובפרט, לכל $x in X$ מתקיים $phi(f(x))>=phi(T)+beta(f(x)-T)$ וממונוטוניות האינטגרל
+  ולכן האי־שיוויון נכון לכל $s in (a,b)$ ובפרט, לכל $x in X$ מתקיים $phi(f(x))>=phi(T)+beta(f(x)-T)$ וממונוטוניות האינטגרל
   $
     integral phi compose f dif mu >= integral phi(T) + beta(integral f - T dif mu) = phi(integral f dif mu) + cancel(beta(T - T underbrace(mu(X), mu(X)=1)))
   $
@@ -911,21 +912,20 @@ $ A_E (f) colon.eq 1/mu(E) integral_E f dif mu $
   $ 1/p + 1/q = 1 $
   אז לכל $f,g$ מדידות אי־שליליות מתקיימים
   $
-    (1) space integral_X f g dif mu <= (integral_X f^p dif mu)^(1/p) (integral_X g^p dif mu)^(1/q) \
-    (2) space (integral_X (f+g)^p dif mu)^(1/p) <= (integral_X f^p dif mu)^(1/p) + (integral_X g^p dif mu)^(1/p)
+    ("אי־שיוויון הולדר") space integral_X f g dif mu <= (integral_X f^p dif mu)^(1/p) (integral_X g^p dif mu)^(1/q) \
+    ("אי־שיוויון מניקובסקי") space (integral_X (f+g)^p dif mu)^(1/p) <= (integral_X f^p dif mu)^(1/p) + (integral_X g^p dif mu)^(1/p)
   $
-  כאשר הראשון זה אי־שיוויון הולדר והשני הוא אי־שיוויון מניקובסקי ואם $p=q=2$ זה אי־שיוויון קושי־שוורץ.
 ]
 
 #proof[
-  נוכיח את $(1)$ בהנחה ש־$norm(f)_p = norm(g)_q=1$ ונראה כי $norm(f g)_1 <= 1$: $log$ היא פונקציה קעורה ולכן אם נניח ש־$f g != 0$ נקבל
+  נוכיח את אי־שיוויון הולדר בהנחה ש־$norm(f)_p = norm(g)_q=1$ ונראה כי $norm(f g)_1 <= 1$: $log$ היא פונקציה קעורה ולכן אם נניח ש־$f g != 0$ נקבל
   $ log(f g) = log f + log g = (log f^p)/p + (log g^q)/q <= log(f^p/p + g^q/q) $
   ואם נעלה את $e$ בחזקת אלו נקבל
   $ (star) space f g <= f^p/p + g^q/q $
   אי־שיוויון זה טריוויאלי במקרה שבו $f g = 0$ ולכן נוכל להתעלם מההנחה הזאת ומלינאריות, מונוטוניות ומההנחה ש־$norm(f)_p = norm(g)_q = 1$ נקבל
   $ integral_X f^p/p + g^q/q dif mu = 1/p + 1/q = 1 $
   ואם ניקח אינטגרל על שני האגפים, $(star)$ יביא לנו $norm(f g)_1 <= 1$.\
-  כדי להוכיח את $(2)$ נניח ש־$norm(f)_p = norm(g)_p=1$ ונשתמש בקמירות $x^p$ ונקבל שלכל $t in (0,1)$
+  כדי להוכיח את אי־שיוויון מניקובסקי נניח ש־$norm(f)_p = norm(g)_p=1$ ונשתמש בקמירות $x^p$ ונקבל שלכל $t in (0,1)$
   $ ((1-t) f + t g)^p <= (1-t)f^p + t g^p $
   ושוב מלינאריות וממונוטוניות
   $ integral_X ((1-t) f + t g)^p dif mu = (1-t)+t = 1 $
@@ -978,8 +978,7 @@ $ A_E (f) colon.eq 1/mu(E) integral_E f dif mu $
 ]
 
 #remark[
-  זה לא מרחב נורמי כי זו לא באמת נורמה $norm(f)_p = 0 cancel(==>) f eq.triple 0$ אבל $norm(f)_p = 0$ אכן גורר $f =_mu 0$.\
-  אבל $L^p (mu)$ הוא אכן מרחב נורמי.
+  זה לא מרחב נורמי כי זו לא באמת נורמה $norm(f)_p = 0 cancel(==>) f eq.triple 0$ אבל $norm(f)_p = 0$ אכן גורר $f =_mu 0$ אבל $L^p (mu)$ הוא אכן מרחב נורמי.
 ]
 
 #pagebreak()
@@ -1150,7 +1149,7 @@ $ A_E (f) colon.eq 1/mu(E) integral_E f dif mu $
 = מרחבי הילברט
 == משפט ההצגה של Riesz–Fréchet
 _תזכורת:_
-$ cal(H)^* colon.eq {phi.alt in Hom(cal(H), CC) bar norm(phi.alt)_op < infinity} $
+$ cal(H)^* colon.eq {phi.alt in Hom(cal(H), CC) bar normop(phi.alt) < infinity} $
 #theorem("משפט ההצגה של Riesz–Fréchet")[
   יהי $cal(H)$ מרחב הילברט, ההעתקה ששולחת כל וקטור $h in cal(H)$ לפונקציונל $phi.alt_h (x) colon.eq chevron.l x,h chevron.r$ הינה איזומורפיזם צמוד־לינארי בין $cal(H)$ ל־$cal(H)^*$ שהיינה גם איזומטריה.
 ]
@@ -1159,7 +1158,7 @@ $ cal(H)^* colon.eq {phi.alt in Hom(cal(H), CC) bar norm(phi.alt)_op < infinity}
   מהגדרת המכפלה הפנימית נסיק $h mapsto phi.alt_h$ היא צמודה־לינארית.\
   מאי־שיוויון קושי־שוורץ לכל $norm(x)=1$ מתקיים
   $ abs(phi_h (x))=abs(chevron.l x","h chevron.r) <= norm(x) dot.op norm(h) = norm(h) $
-  נובע אם כך $norm(phi.alt_h)_op <= norm(h)$ אבל $h/norm(h)$ הוא מנורמה $1$ ומקיים $phi.alt_h (h/norm(h))=chevron.l h/norm(h) "," h chevron.r = norm(h)$ אז $norm(phi.alt_h)_op = norm(h)$ ולכן ההעתקה היא איזומטריה.\
+  נובע אם כך $normop(phi.alt_h) <= norm(h)$ אבל $h/norm(h)$ הוא מנורמה $1$ ומקיים $phi.alt_h (h/norm(h))=chevron.l h/norm(h) "," h chevron.r = norm(h)$ אז $normop(phi.alt_h) = norm(h)$ ולכן ההעתקה היא איזומטריה.\
   יהי $ell in cal(H)^*$ ונסמן $V = ker ell$, אז $V subset.eq cal(H)$ תת־מרחב סגור כי $ell$ פונקציונל חסום ולכן רציף ו־$V$ היא המקור של קבוצה סגורה ${0}$.\
   אם $V = cal(H)$ אז $ell=phi.alt_0$; אחרת, $V subset cal(H)$ ולכן קיים $0 != z in V^perp$ אז נוכיח שהוקטור $w=overline(ell(z))/(norm(z)^2) dot.op z$ מקיים $ell=phi.alt_w$.\
   ואכן לכל $x in cal(H)$ מתקיים
@@ -1179,7 +1178,7 @@ $ cal(H)^* colon.eq {phi.alt in Hom(cal(H), CC) bar norm(phi.alt)_op < infinity}
 ]
 
 #proof[
-  מהיות $(X, cal(A), mu)$ מרחב מידה $sigma$־סופי נובע שקיים אוסף ${A_n}_(n=1)^infinity$ עם $mu(A_n)$ לכל $n in NN$ כך ש־$X = union_(n=1)^infinity A_n$.\
+  מהיות $(X, cal(A), mu)$ מרחב מידה $sigma$־סופי נובע שקיים אוסף ${A_n}_(n=1)^infinity$ עם $mu(A_n)$ לכל $n in NN$ כך ש־$X = union.big_(n=1)^infinity A_n$.\
   נגדיר $w : X arrow.r [0,1]$ על־ידי
   $ w(x) colon.eq sum_(n=1)^infinity 2^(-n)/(1+mu(A_n)) dot.op bb(1)_(A_n)(x) $
   ו־$w$ מדידה כגבול של סדרת פונקציות שהן צירופים לינאריים סופיים של פונקציות מציינות שהן כמובן מדידות.\
@@ -1191,7 +1190,7 @@ $ cal(H)^* colon.eq {phi.alt in Hom(cal(H), CC) bar norm(phi.alt)_op < infinity}
   $
     0 < w<=_"הורדנו אינדקטור" sum_(n=1)^infinity 2^(-n)/(1+ mu(A_n))<=sum_(n=1)^infinity 2^(-n) = 1 ==> w(x) in (0,1]
   $
-  אז נגדיר $u : cal(A) arrow.r [0, infinity]$ מידה המוגדרת על־ידי $dif nu = w dif mu$ ראינו שזאת מידה וש־$nu lt.double mu$, נשאר להראות $mu lt.double nu$, ואכן:\
+  אז נגדיר $nu : cal(A) arrow.r [0, infinity]$ מידה המוגדרת על־ידי $dif nu = w dif mu$ ראינו שזאת מידה וש־$nu lt.double mu$, נשאר להראות $mu lt.double nu$, ואכן:\
   תהיי $E in cal(A)$ כך ש־$0=nu(E)=integral_E w dif mu$.\
   מהיות $w>0$ נסיק כי $mu(E)=0$ כי אחרת אם $w>0$ וגם $mu(E)>0$ נקבל כי $0=nu(E) = integral_E w dif mu > 0$ בסתירה ולכן $mu lt.double nu$.\
   מצאנו ש־$mu lt.double nu$ וכן $nu lt.double mu$ ולכן מהגדרה $mu~nu$ קרי המידות שקולות.
@@ -1210,7 +1209,7 @@ $ cal(H)^* colon.eq {phi.alt in Hom(cal(H), CC) bar norm(phi.alt)_op < infinity}
 
 #proof[
   + נניח שהטענה נכונה כאשר $nu$ מידה סופית ו־$mu$ מידה $sigma$־סופית ונראה את הנכונות עבור מידות $mu, nu$ שהן $sigma$־סופיות:\
-    המרחב $(X, cal(A), nu)$ הוא מרחב $sigma$־סופי נובע שקיים אוסף ${A_n}_(n=1)^infinity subset.eq cal(A)$ של קבוצות מדידות ממידה סופית תחת $nu$ ובלי הגבלת הכלליות נניח שהן זרות זו מזו (תמיד ניתן להזיר אותם) כך ש־$X =_((star)) union.dot_(n=1)^infinity A_n$ ולכל $n in NN$ נסמן את מרחב המידה המצומצם
+    המרחב $(X, cal(A), nu)$ הוא מרחב $sigma$־סופי ולכן קיים אוסף ${A_n}_(n=1)^infinity subset.eq cal(A)$ של קבוצות מדידות ממידה סופית תחת $nu$ ובלי הגבלת הכלליות נניח שהן זרות זו מזו כך ש־$X =_((star)) union.big.dot_(n=1)^infinity A_n$ ולכל $n in NN$ נסמן את מרחב המידה המצומצם
     $
       v_n colon.eq nu|_(A_n) wide cal(A)_n colon.eq cal(A)|_(A_n)
     $
@@ -1227,7 +1226,7 @@ $ cal(H)^* colon.eq {phi.alt in Hom(cal(H), CC) bar norm(phi.alt)_op < infinity}
     + מכך ש־$nu_(n,s) perp mu$ ולכן קיימות $A, B in cal(A)$ מדידות וזרות כך ש־$mu(A^c)=nu_(n,s)(B^c)=0$ ולכן $ nu_s (B^c) = sum_(n=1)^infinity nu_(n,s) (B^c) = 0 = mu(A^c) ==> nu_s perp mu $
   + נניח ש־$nu$ מידה סופית.\
     מטענה שראינו נובע שקיימת פונקציה מדידה וחיובית $w:X arrow (0,1]$ שעבורה $w dif mu$ היא ממידה סופית אז נגדיר את המידה הסופית \
-    $dif lambda = dif nu + w dif mu$
+    $dif lambda = dif nu + w dif mu$.\
     לכל $f in L^2 (lambda)$ מתקיים
     $
       abs(integral f dif nu) <= integral abs(f) dif nu <= integral abs(f)(dif nu + w dif mu) = integral abs(f) dot.op 1 dif lambda <=_"קושי־שוורץ" sqrt(integral abs(f)^2 dif lambda) sqrt(integral abs(1^2) dif lambda) = sqrt(lambda(X)) norm(f)_(L^2 (lambda))
@@ -1238,7 +1237,10 @@ $ cal(H)^* colon.eq {phi.alt in Hom(cal(H), CC) bar norm(phi.alt)_op < infinity}
     לכל $E in cal(A)$ עם $lambda(E) > 0$ מתקיים $bb(1)_E in L^2 (lambda)$ ולכן $nu(E) = integral_E g dif lambda$, כלומר
     $ 0<= nu(E)/lambda(E) = 1/lambda(E) integral_E g dif lambda <=1 $
     מלמה שראינו על ממוצעים של פונקציות על קבוצות מדידות נסיק $0<=g<=1$, $lambda$־כמעט תמיד
-    ועל־ידי שינוי של $g$ על קבוצה מ־$lambda$־מידה אפס נוכל להסיק כי $0<=g<=1$ תמיד
+    ועל־ידי שינוי של $g$ על קבוצה מ־$lambda$־מידה אפס נוכל להסיק כי $0<=g<=1$ תמיד.\
+
+    #colbreak()
+
     נגדיר
     $
       A colon.eq {x in X bar g(x) in [0, 1)} wide B colon.eq {x in X bar g(x) = 1} \
@@ -1324,20 +1326,20 @@ $ cal(H)^* colon.eq {phi.alt in Hom(cal(H), CC) bar norm(phi.alt)_op < infinity}
 
 == משפט לב הגזירה
 #theorem("משפט לב הגזירה")[
-  תהיינה $mu. lambda$ מידות רדון על $RR^d$ ו־$A subset.eq RR^d$ קבוצה מדידה וחסומה ו־$0<t<infinity$
+  תהיינה $mu, lambda$ מידות רדון על $RR^d$ ו־$A subset.eq RR^d$ קבוצה מדידה וחסומה ו־$0<t<infinity$
   + אם $underline(D)(mu, lambda, x) <=t$ לכל $x in A$ אזי $mu(A)<= t dot.op lambda(A)$
   + אם $overline(D)(mu, lambda, x)>=t$ לכל $x in A$ אזי $mu(A)>= t dot.op lambda(A)$
 ]
 
 #proof[
   נוכיח את $(1)$ ו־$(2)$ הוא אנלוגי.\
-  $epsilon>0$ אזי קיים כיסוי בסיקוביץ' $cal(F)$ של $A$ המקיים
+  יהי $epsilon>0$ אזי קיים כיסוי בסיקוביץ' $cal(F)$ של $A$ המקיים
   $
-    (1) space forall B in cal(F), mu(B)/lambda(B) < t + epsilon wide (2) space forall x in A, inf{r bar B_r (x) in cal(F)}=0
+    (1) space forall B in cal(F), mu(B)/lambda(B) < t + epsilon wide (2) space forall x in A, space inf{r bar B_r (x) in cal(F)}=0
   $
-  מהיות $mu$ מידת רדון נוכל לבחור (מהרגולריות החיצונית) $A subset.eq U$ פתוחה עבורה מתקיים $lambda(U)<lambda(A)+epsilon$ $(star)$.\
+  מהיות $lambda$ מידת רדון נוכל לבחור (מהרגולריות החיצונית) $A subset.eq U$ פתוחה עבורה מתקיים $lambda(U)<lambda(A)+epsilon$ $(star)$.\
   נזרוק מ־$cal(F)$ את כל הכדורים שלא מוכלים ב־$U$ והכיסוי החדש עדיין מקיים את $(1), (2)$ ובפרט זה עדיין כיסוי בסיקוביץ' (בגלל (2)).\
-  ממשפט שראינו נובע שקיים תת־אוסף בן־מנייה $tilde(E) subset.eq cal(F)$ של כדורי זרים בזוגות עם $mu(A without union.big tilde(E))=0$ ולכן משימוש במונוטוניות נקבל
+  ממשפט שראינו נובע שקיים תת־אוסף בן־מנייה $tilde(E) subset.eq cal(F)$ של כדורים זרים בזוגות עם $mu(A without union.big tilde(E))=0$ ולכן משימוש במונוטוניות נקבל
   $
     mu(A)<=mu(union.big tilde(E))+mu(A without union.big tilde(E))<=_"תת־אדטיביות" sum_(B in tilde(E)) mu(B) <=_((1)) sum_(B in tilde(E)) (t+epsilon) lambda(B) =_((star star)) (t+epsilon) dot.op lambda(union.big tilde(E)) \
     <=_((star)) (t+epsilon) lambda(U) <=_((star)) (t+epsilon)(lambda(A)+epsilon)= t dot.op lambda(A) + epsilon(lambda(A) + epsilon + t) arrow_(epsilon arrow 0) t dot.op lambda(A)
@@ -1392,7 +1394,7 @@ $ cal(H)^* colon.eq {phi.alt in Hom(cal(H), CC) bar norm(phi.alt)_op < infinity}
     $
       integral_B D(mu,lambda,x) dif lambda =_((1)) integral_(B_plus) D(mu,lambda,x) dif lambda = sum_(p in ZZ) integral_(B_p) D(mu,lambda,x) dif lambda <= sum_(p in ZZ) t^(p+1) lambda(B_p) <=_((star)) sum_(p in ZZ) t^(p+1)(1/t^p mu(B_p))=t sum_(p in ZZ) mu(B_p) <= t mu(B)
     $
-    כאשר $(1)$ נובע מסעיף $(1)$ ומכך שזרקנו קבוצה עליה האינטגרנד הוא אפס ו־$(star)$ נובע מהטענה שראינו על גזירה. כאשר $t arrow.br 1$ נקבל את הטענת עזר.\
+    כאשר $(1)$ נובע מסעיף $(1)$ שאומר ש־$D(mu, lambda, x)$ קיים וסופי $lambda$־כמעט תמיד ומכך שזרקנו קבוצה עליה האינטגרנד הוא אפס ו־$(star)$ נובע מהטענה שראינו על גזירה וכאשר $t arrow.br 1$ נקבל את הטענת עזר.\
     אם $mu lt.double lambda$ אז מ־$(1)$ והחלפת תפקידים בין $mu, lambda$ נסיק $D(lambda, mu, x) < infinity$ $mu$־כמעט תמיד ולכן $D(mu, lambda, x) > 0$ $mu$־כמעט תמיד ומהיות $mu lt.double lambda$ הרי ש־$D(mu,lambda, x)<infinity$ $mu$־כמעט תמיד ולכן $mu(B)=mu(B_plus)$ ולכן
     $
       integral_B D(mu,lambda,x) dif lambda = integral_(B_plus) D(mu,lambda,x) dif lambda = sum_(p in ZZ) integral_(B_p) D(mu,lambda,x) dif lambda >= sum_(p in ZZ) t^p lambda(B_p) >= sum_(p in ZZ) t^p/t^(p+1) mu(B_p) = t^(-1) sum_(p in ZZ) mu(B_p) = t^(-1) mu(B_plus) = t^(-1) mu(B)
