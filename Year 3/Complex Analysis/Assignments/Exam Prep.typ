@@ -36,20 +36,19 @@
   כמובן שזה גורר רציפות ב־$z_0$.
 ]
 #definition("פונקציה אנליטית")[
-  פונקציה $f$ היא אנליטית ב־$z_0$ אם קיימת סביבה $U_(z_0)$ כך ש־$f$ היא $CC$־דיפרנציאבילית בכל $z in U_(z_0)$.\
-  נגיד ש־$f$ היא אנליטית ב־$CC$ אם לכל $z_0 in CC$, $f$ היא אנליטית ב־$z_0$.
+  פונקציה $f$ היא אנליטית ב־$z_0$ אם קיימת סביבה $U_(z_0)$ כך ש־$f$ היא $CC$־דיפרנציאבילית בכל $z in U_(z_0)$.
 ]
 #definition("פונקציה הולומורפית")[
-  פונקציה $f$ היא הולומורפית אם היא אנליטית ב־$CC$.\
+  $G subset CC$ תחום, פונקציה $f$ היא הולומורפית ב־$G$ אם היא אנליטית ב־$G$.\
   נסמן ב־$Hol(G)$ את אוסף כל הפונקציות האנליטיות ב־$G$.
 ]
 
 === טורי חזקות
 #theorem("משפט ה־M של ויירשטראס")[
-  תהיי $E subset CC$ ו־$f_n : E arrow.r CC$. אם לכל $n$, $abs(f_n)<=M_n$ ו־$sum_(n=1)^infinity M_n < infinity$ אזי הטור $sum_(n=1)^infinity f_n$ מתכנס בהחלט ובמידה שווה ב־$E$
+  תהיי $E subset CC$ ו־$f_n : E arrow.r CC$. אם לכל $n$, $abs(f_n)<=M_n$ ו־$sum_(n=1)^infinity M_n < infinity$ אזי הטור $sum_(n=1)^infinity f_n$ מתכנס בהחלט ובמידה שווה ב־$E$.
 ]
 #lemma[
-  אם $sum_(n=0)^infinity c_n (w-z_0)^n$ מתכנס עבור $w!=z_0$ אז הסכום מתכנס במידה שווה ובהחלט ב־${z bar abs(z-z_0)<q abs(w-z_0)}$ לכל $q in (0,1)$.
+  אם $sum_(n=0)^infinity c_n (w-z_0)^n$ מתכנס עבור $w!=z_0$ אז הסכום מתכנס במידה שווה ובהחלט ב־${z bar abs(z-z_0)<q abs(w-z_0)}$ לכל \ $q in (0,1)$.
 ]
 #corollary[
   אחד מהבאים מתקיים
@@ -90,9 +89,9 @@
 #remark[
   נשים לב שיכול להיות שעבור $z_1, z_2 in G$ מתקיימים
   $ e^(z_1) = e^(z_2) wide Arg(z_1)=Arg(z_2) wide Log(z_1) = Log(z_2) $
-  אבל $z_1 != z_2$! לדוגמה, $z_1 = z_2 + 2 pi k$ (זאת מכיוון ש־$log$ זוכר אורך ולא זווית ו־$Arg$ זוכר זוויות).\
+  אבל $z_1 != z_2$! לדוגמה, $z_1 = z_2 + 2 pi k$ (זאת מכיוון ש־$log$ זוכר אורך ולא זווית ו־$Arg$ זוכר זווית ולא אורך).\
   #link("https://www.desmos.com/calculator/ukhazznn82", "דוגמה של דניאל (אני לחיץ):")
-  $ z_1 = abs(-10), z_2 = abs((10(1+i))/sqrt(2)) $
+  $ z_1 = abs(-10), space z_2 = abs((10(1+i))/sqrt(2)) $
   אכן הזווית של שניהם היא אפס (הם על הציר הממשי) והאורך שלהם אותו הדבר מחוקי לגוריתמים.
 ]
 
@@ -106,7 +105,7 @@
 ]
 
 #theorem("משפט העתקה הפתוחה")[
-  תהיי $f:G arrow.r CC$ פונקציה הולומורפית אז $f$ העתקה פתוחה, כלומר שולחת קבוצות פתוחות לקבוצות פתוחות.
+  תהיי $f:G arrow.r CC$ פונקציה הולומורפית אז $f$ העתקה פתוחה (שולחת קבוצות פתוחות לקבוצות פתוחות).
 ]
 
 #definition("נגזרת לוגריתמית")[
@@ -126,10 +125,11 @@
   $ f'=(partial u)/(partial x) + i (partial v)/(partial x) = (partial v)/(partial y) - i (partial u)/(partial y) $
 ]
 #theorem("משוואות קושי־רימן")[
-  תהיי $f:CC arrow.r CC$ שהיא $CC$־דיפרנציאבילית ב־$z=x+i y$ אם ורק אם מתקיימות המשוואות הבאות (משוואות קושי־רימן)
+  תהיי $f:CC arrow.r CC$ שהיא $CC$־דיפרנציאבילית ב־$z=x+i y$ אם ורק אם מתקיימות המשוואות הבאות
   $
     (partial u)/(partial x) (x,y) = (partial v)/(partial y) (x,y) wide (partial u)/(partial y) (x,y) = - (partial v)/(partial x) (x,y)
   $
+  וכאשר כל הנגזרות החלקיות רציפות ב־$z$
   ובמקרה זה זה שווה לנגזרת.
 ]
 #theorem[
@@ -141,6 +141,8 @@
   + $abs(f)$ קבועה
   + $arg(f)$ קבועה (אם $f!=0$)
 ]
+
+#pagebreak()
 
 #definition("Wirtinger Operators")[
   $
@@ -165,35 +167,40 @@
   $ Delta u = (partial^2 u)/(partial x^2)+(partial^2 u)/(partial y^2) = 4partial_(z overline(z)) u $
 ]
 #definition("פונקציה הרמונית")[
-  נגדיר כי $u : RR^2 arrow.r RR$ היא הרמונית אם היא גזירה פעמיים ומתקיים $Delta u = 0$
+  נקרא ל־ $u : RR^2 arrow.r RR$ הרמונית אם היא גזירה פעמיים ומתקיים $Delta u = 0$.
 ]
 
 #theorem[
-  אם $f in Hol(G) inter C^2 (G)$ אז $re(f), im(f)$ הן הרמוניות
+  אם $f in Hol(G) inter C^2 (G)$ אז $re(f), im(f)$ הן הרמוניות.
 ]
 
 #definition("הרמונית צמודה")[
-  תהיינה $u, v in Harm(G)$, הן נקראות הרמוניות צמודות אם $u+i v in Hol(G)$ (כלומר מקיימות את משוואות קושי רימן) ואז $v=overline(u)$ (בפרט, הצמידות היא יחידה).
+  יהי $G subset.eq CC$ תחום ותהיינה $u, v in Harm(G)$. נגיד ש־$v$ היא צמודה הרמונית של $u$ אם $u+i v in Hol(G)$ (כלומר מקיימות את משוואות קושי רימן) ואז $v=overline(u)$ (בפרט, הצמידות היא יחידה).
 ]
 
 #corollary[
-  אם $G$ הוא דיסק או מלבן אז לכל $u in Harm(G)$ יש $tilde(u) in Harm(G)$ כך ש־$u+i tilde(v) in Hol(G)$.
+  אם $G$ הוא דיסק או מלבן אז לכל $u in Harm(G)$ יש $tilde(u) in Harm(G)$ כך ש־$u+i tilde(u) in Hol(G)$.
 ]
 #theorem("דרך לחישוב הרמונית צמודה")[
-  אם $G$ דיסק או מלבן אז $(x_0, y_0) in G$ ו־$u in Harm(G)$, אז
-  $ v(x_0,y_0)=integral_y^(y_0) u_x (x_0, t) dif t - integral_x^(x_0) u_y (t,y) dif t -v(x_0,y_0) $
+  אם $G$ דיסק או מלבן, $(x_0, y_0) in G$ ו־$u in Harm(G)$, אז
+  $ v(x,y)=integral_(x_0)^x -u_y (t,y) dif t + integral_(y_0)^y u_x (x_0, t) dif t + v(x_0, y_0) $
 ]
 === העתקות קונפורמיות
 #definition("נקודה רגולרית")[
   $t_0 in I$ תקרא רגולרית אם $gamma'(t_0) !=0$.
+]
+#definition("העתקה משמרת זוויות בין מסילות")[
+  נגיד ש־$f$ משמרת זוויות בין מסילות ב־$z_0$ אם לכל שתי מסילות $gamma_1, gamma_2$ המקיימות \
+  $gamma_1 (t_1) = gamma_2 (t_2) = z_0$ מתקיים
+  $ arg gamma_2 (t_2) - arg gamma_1 (t_1) = arg(f compose gamma_2)(t_2)-arg(f compose gamma_1)(t_1) $
 ]
 #theorem[
   + אם $f in Hol(G) inter C^1(G)$ ו־$f'(z_0)!=0$ אז $f$ משמרת זוויות בין מסילות כלומר $z_0$ היא נקודה רגולרית.
   + אם $f in C^1 (G)$ ו־$f$ משמרת זוויות בין מסילות עבורן $z_0$ היא נקודה רגולרית אז $f$ היא $CC$־דיפרנציאבילית ו־$f'(z_0) = 0$
 ]
 #definition("העתקה קונפורמית")[
-  נגדיר ש־$f$ היא העתקה קונפורמית אם היא משמרת זוויות בין מסילות או באופן שקול אם היא הולומורפית ו־$f'!=0$.\
-  בפרט, העתקה קונפורמית היא הפיכה וההופכית שלה היא גם העתקה קונפורמית.
+  נגיד ש־$f$ היא העתקה קונפורמית אם היא משמרת זוויות בין מסילות או באופן שקול אם היא הולומורפית \
+  ו־$f'!=0$. בפרט, העתקה קונפורמית היא הפיכה וההופכית שלה היא גם העתקה קונפורמית.
 ]
 
 #pagebreak()
@@ -270,13 +277,14 @@
 #theorem("משפט ויירטשטראס")[
   אם $f_n in Hol(G)$ ונניח $f_n arrow f$ בצורה לוקאלית (כלומר, על קבוצות קומפקטיות) במידה שווה, אז
   + $f in Hol(G)$
-  + לכל $j$, $f_n^(j) arrow.r f^(j)$ בצורה לוקאלית ובמידה שווה ($j^(j)$ זו הנגזרת ה־$j$)
+  + לכל $j$, $f_n^(j) arrow.r f^(j)$ בצורה לוקאלית ובמידה שווה ($f^(j)$ זו הנגזרת ה־$j$)
 ]
 #theorem("אי־שיוויון קושי")[
   תהיי $f in Hol(B(z_0, R))$ אז לכל $n in NN$
   $
     abs(f^(n) (z))=n!/(2pi i) integral_({abs(w-z)=rho}) abs(f(w))/abs(w-z)^(n+1) dif w <= abs(n!/(2pi)) (max_(abs(w-z)=R) abs(f))/R^(n+1) dot.op L({abs(z-w)=R})=n!/R^n max_(abs(w-z)) abs(f)
   $
+  באופן זהה, אם $f(z)=sum_(n=0)^infinity b_n z^n$ פיתוח טיילור של $f$ אז אפשר להפעיל את אי־שיוויון קושי גם על $b_n = (f^(n)(z))/n!$.
 ]
 #theorem("משפט ליוביל")[
   אם $f in Hol(CC)$ ו־$f$ חסומה, אז $f$ קבועה.
@@ -310,6 +318,16 @@
   אם $f(z_n) = 0$ לכל $n in NN$ אז $f eq.triple 0$.
 ]
 
+#definition("נקודת הצטברות")[
+  נגיד ש־$x$ היא נקודת הצטברות של קבוצה $A$ אם בכל סביבה של $x$ יש לפחות $y != x$ כך ש־$y in A$.
+]
+
+#corollary("מסקנות ממשפט היחידות")[
+  + כל אפס של פונקציה הולומורפית שאינה פונקציית האפס הוא אפס מבודד (קיימת לו סביבה נקובה שאין בה אפסים) שכן אחרת לפי משפט היחידות זו פונקציית האפס
+  + לפונקציחה הולומורפית שאינה פונקציית האפס יש מספר בן־מנייה של אפסים שכן לכל אפס מבודד ניתן להתאים באופן חד־חד ערכי נקודה במישור קוארדינאטות רציונליות
+  + ניסוח שקול למשפט היחידות: שאם $f,g$ פונקציות הולומורפיות המוגדרות בתחום $G$ ו־$A subset.eq G$ קבוצה בעלת נקודת הצטברות ב־$G$ כך שמתקיים$f(z)=g(z)$ לכל $z in A$ אזי $f(z)=g(z)$ לכל $z in G$
+]
+
 
 #pagebreak()
 == טורי לורן
@@ -326,7 +344,7 @@
   הוא ${R_minus < abs(z-z_0) < R_plus}$.
 ]
 #theorem[תהיי
-  $f in Hol({R_minus}<abs(z-z_0)<R_plus})$, אזי $sum_(n=-infinity)^infinity c_n (z-z_0)^n$ מתכנס לוקאלית במידה שווה ל־$f$ ומתקיים
+  $f in Hol({R_minus<abs(z-z_0)<R_plus})$, אזי $sum_(n=-infinity)^infinity c_n (z-z_0)^n$ מתכנס לוקאלית במידה שווה ל־$f$ ומתקיים
   $ c_n colon.eq 1/(2pi i) integral_({abs(zeta-z_0)=r}) f(zeta)/(zeta-z_0)^(n+1) dif zeta $
 ]
 
@@ -353,8 +371,9 @@
   "הקשר בין טור לורן לבין נקודות סינגולריות",
 )[
   נניח $f(z) = sum_(n=-infinity)^infinity c_n (z-a)^n$, אז
-  + $a$ קוטב אם ורק אם קיים $m>=1$ כך שלכל $n<-m$ מתקיים $c_n = 0$ (כלומר , טור הלורן מכיל רק מספר סופי של חזקות שליליות )
-  + $a$ סינגולרית עיקרית אם ורק אם טור הלורן מכיל אינסוף חזקות שליליות
+  + $a$ קוטב אם ורק אם קיים $m>=1$ כך שלכל $n< -m$ מתקיים $c_n = 0$ (כלומר טור הלורן סביב $a$ מכיל רק מספר סופי של חזקות שליליות)
+  + $a$ סינגולרית עיקרית אם ורק אם טור הלורן סביב $a$ מכיל אינסוף חזקות שליליות
+  + באופן טריוויאלי אם $a$ נקודה סינגולרית סליקה אז לטור לורן סביב $a$ אין חזקות שליליות בכלל
 ]
 #theorem(
   "משפט קורטוזי־ויירשטראס",
@@ -365,13 +384,15 @@
 ]
 
 #definition($infinity"נקודות סינגולריות ב־"$)[
-  + נגדיר ש־$f$ אנליטית ב־$infinity$ אם $F$ יש סינגולריות סליקה ב־$0$
-  + אם ל־$f$ יש קוטב ב־$infinity$ אז נגדיר של־$F$ יש קוטב ב־$0$
-  + אם ל־$f$ יש סינגולרית עיקרית ב־$infinity$ אז ל־$F$ יש סינגולרית עיקרית ב־$0$
+  נניח שב־$infinity$ ל־$f$ יש נקודה סינגולרית מבודדת, כלומר $f in Hol({abs(z)>rho})$ עבור $rho > 0$ ולכן נוכל להגדיר $F(z) colon.eq f(1/z)$ ואז $F in Hol(B(1/rho, 0)^*)$ ויש ל־$F$ נקודה סינגולרית בראשית. אז
+  + $f$ אנליטית ב־$infinity$  אם ל־$F$ יש סינגולריות סליקה ב־$0$
+  + ל־$f$ יש קוטב ב־$infinity$ אם ל־$F$ יש קוטב ב־$0$
+  + ל־$f$ יש סינגולרית עיקרית ב־$infinity$ אם ל־$F$ יש סינגולרית עיקרית ב־$0$
 ]
 
 #definition("פונקציה מרומורפית")[
-  תהיי $f:G arrow.r CC^*$ ל־$G subset CC$. נאמר ש־$f$ היא מומורפית אם לכל $a in G$ קיימת סביבה $U_a subset.eq G$ כך ש־$f in Hol(U_a^*)$ וכן $f$ הולומורפית ב־$a$ או ש־$a$ קוטב (באופן שקול, $f$ מומורפית אם היא הולומורפית בכל $CC$ מלבד בקבוצה של קטבים מבודדים).\
+  תהיי $f:G arrow.r CC^*$ ל־$G subset CC$. נאמר ש־$f$ היא מומורפית אם לכל $a in G$ קיימת סביבה $U_a subset.eq G$ עבורה \
+  $f in Hol(U_a^*)$ וכן $f$ הולומורפית ב־$a$ או ש־$a$ קוטב (באופן שקול, $f$ מומורפית אם היא הולומורפית בכל $CC$ מלבד בקבוצה של קטבים מבודדים).\
   את אוסף הפונקציות המומורפיות נסמן ב־$Mer(G)$ (זהו כמובן שדה).
 ]
 
@@ -390,19 +411,33 @@
   "שארית בנקודה",
 )[יהיו $a in CC$ ו־$f in Hol(U_a^*)$. נקבע $epsilon > 0$ כך ש־${0<abs(z-a)<epsilon} subset U_a^*$ ונגדיר את השארית ב־$a$ להיות
   $ res_f (a) = 1/(2pi i) integral_(abs(z-a)=epsilon) f(z) dif z $
+
+  #remark[
+    + מהגדרה לכל $f,g$ שמוגדרות ב־$U_a^*$ מתקיים $res_(f+g) (a) + res_f (a) +res_g (a)$
+    + מהגדרה $res_f (a)$ זה המקדם של $c_(-1)$ בפיתוח לורן של $f$ סביב $a$
+  ]
 ]
 #theorem(
   "משפט השארית של קושי",
 )[יהי $G subset CC$ תחום טוב, $f in Hol((G without {a_1, a_2, dots.h, a_N} ) inter (overline(G) without {a_1, a_2, dots.h, a_N}))$. אזי
   $ 1/(2pi i) integral_(partial G) f(z) dif z = sum_(j=1)^N res_f (a_j) $]
-#proposition[אם $f(z) = (phi(z))/(psi(z))$ מקיימת $psi(a)=0, phi(a) !=0, psi'(a) != 0$ אזי $res_f (a) = (phi(a))/(psi'(a))$.]
-#proposition[אם $f in Hol(G without {a})$ ו־$a$ קוטב מסדר $n$, אזי
-  $ res_f (a) = (((z-a)^n f(z))^(n-1) (a))/(n-1)! $]
+
+#proposition[
+  אם $f(z) = (phi(z))/(psi(z))$ עם $a$ נקודה סינגולרית מסוג קוטב פשוט ומתקיים $psi(a)=0, phi(a) !=0, psi'(a) != 0$ אזי $res_f (a) = (phi(a))/(psi'(a))$.
+]
+
+#proposition[
+  אם $f in Hol(G without {a})$ ו־$a$ קוטב מסדר $n$, אזי
+  $ res_f (a) = (((z-a)^n f(z))^(n-1) (a))/(n-1)! $
+  באופן שקול
+  $ res_f (a) = 1/(n-1)! lim_(z arrow a) dif^(n-1)/(dif z^(n-1))[(z-a)^n f(z)] $
+]
 
 #definition(
   "שארית באינסוף",
 )[תהיי $f$ הולומורפית בסביבה של $infinity$ (כלומר $f in Hol({z in CC bar abs(z) > R_0})$ ונגדיר
-  $ res_f (infinity) = -1/(2pi i) integral_(abs(z)=R) f(z) dif z space (R>R_0) $]
+  $ res_f (infinity) = -1/(2pi i) integral_(abs(z)=R) f(z) dif z space (R>R_0) $
+  באופן שקול, $res_f (infinity) = -c_(-1)$.]
 #proposition[השארית של #link(<log_derivative>, "נגזרת לוגריתמית") היא הסדר של האפס.\
 ]
 
@@ -464,14 +499,14 @@
 #theorem[
   + הפונקציה $ind_gamma (dot.op) : CC without gamma arrow ZZ$ היא רציפה
   + $ind_gamma (infinity) =lim_(z arrow.r, infinity) ind_gamma (z) = 0$
-  + אם $CC without gamma = union.dot Omega_j$ כאשר $Omega_j$ הם הרכיבי קשירות של $CC without gamma$ אזי $ind_gamma (dot.op)|_)(Omega_j)$ סופי ו־$ind_gamma (dot.op)|_(Omega_infinity) = 0$ כאשר $Omega_infinity$ זה הרכיב קשירות הלא חסום.
+  + אם $CC without gamma = union.big.dot Omega_j$ כאשר $Omega_j$ הם הרכיבי קשירות של $CC without gamma$ אזי $ind_gamma (dot.op)|_(Omega_j)$ סופי ו־$ind_gamma (dot.op)|_(Omega_infinity) = 0$ כאשר $Omega_infinity$ זה רכיב הקשירות הלא חסום.
 ]
 
 #definition("מעגל מוכלל")[
   תהיי $gamma$ עקומה גזירה ברציפות למקוטעין. נאמר ש־$gamma$ היא מעגל מוכלל אם היא פשוטה וסגורה.
 ]
 
-#theorem("משפט קושי גרסה מוכללת")[
+#theorem("משפט קושי המוכלל")[
   אם $G subset CC$ תחום ו־$gamma : I arrow.r G$ מעגל מוכלל המקיים $ind_gamma (z) = 0$ לכל $z in.not overline(G)$ אזי לכל $f in Hol(G)$
   $ integral_gamma f(z) dif z =0 $
 ]
@@ -522,7 +557,7 @@
 ]
 
 #theorem("משפט ההעתקה של רימן")[
-  יהי $G subset CC$ תחום פשוט קשר כך ש־$CC without GG != emptyset$ ו־$a in G$. אז אז קיימת העתקה קונפורמית (פונקציה הולומורפית, חד־חד ערכית ועל שההופכית שלה היא הולומורפית, נקרא ביהולומורפית) יחידה $phi:DD arrow.r G$ המקיימת $phi(0) = a$ ו־$phi'(0) > 0$.
+  יהי $G subset CC$ תחום פשוט קשר כך ש־$CC without GG != emptyset$ ו־$a in G$. אז קיימת העתקה קונפורמית (פונקציה הולומורפית, חד־חד ערכית ועל שההופכית שלה היא הולומורפית, נקראת ביהולומורפית) יחידה $phi:DD arrow.r G$ המקיימת $phi(0) = a$ ו־$phi'(0) > 0$.
 ]
 
 #theorem("משפט מונטל")[
@@ -535,7 +570,7 @@
 ]
 = דברים שימושים בפתרונות תרגילים
 == למצוא כמה פתרונות (כולל ריבויים)
-שאלות קלאסיות לשימוש #link(<Rouches_theorem>)[משפט רושה (אני לחיץ)] ו#link(<Rouches_theorem_ring>)[משפט רושה בטבעת (אני לחיץ)]
+שאלות קלאסיות לשימוש #link(<Rouches_theorem>)[משפט רושה (אני לחיץ)] ו#link(<Rouches_theorem_ring>)[משפט רושה בטבעת (אני לחיץ).]
 #example[
   נמצא כמה פתרונות (כולל ריבועיים) יש למשוואות בתחומים הנתונים.
   + $z^7-5z^4+z^2-2=0$ בדיסק היחידה $DD$
@@ -573,11 +608,13 @@
 + $ abs(w)<1, space 1/(1-w)= sum_(n=0)^infinity w^n $
 + $ 1/(1+w) = sum_(n=0)^infinity (-1)^n w^n $
 + $ 1/(1-w)^k = sum_(n=0)^infinity binom(n+k-1, k-1)w^n $
++ $ abs(w)<1, space k in NN, space (1+w)^k= sum_(n=0)^infinity binom(k, n)w^n $
++ $ abs(w)<1, space (1+w)^(-2)= sum_(n=0)^infinity (-1)^k (k+1)w^k $
 + $ e^z = sum_(n=0)^infinity z^n/n! $
 + $ abs(w)<1, space (1+w) = sum_(n=1)^infinity (-1)^(n+1) w^n/n $
 + $ sin(z)=sum_(n=0)^infinity (-1)^n z^(2n+1)/(2n+1)! $
 + $ cos(z)=sum_(n=0)^infinity (-1)^n z^(2n)/(2n)! $
-+ $ abs(w)<1, space (1+w)^k sum_(n=0)^infinity binom(k, n)w^n $
+
 === How To Guide
 נזכור שטור לורן הוא חמדן/זללן, ולכן מתכנס *בכל טבעת* שבו הוא רק יכול.\
 אז בגדול זה בכל תחום שבו הוא מוגדר היטב (כלומר, הנקודות הסינגולריות שלו הן הנקודות קפיצה).\
@@ -590,28 +627,3 @@ $
 $
 פותרים את המערך משוואות, מקבלים פונקציה ומפתחים בהתאם: משתמשים בהגבלות כדי לחסום ולהגיע לטורים ידועים.\
 תמיד נרצה להגיע לאחד מהטורים שרשום לעיל כי הם הכי קלים.
-
-#pagebreak()
-== כשאתה מבולבל – הרם קושי אל־על
-יש לנו 3 מסקנות חזקות מאוד ממשפט קושי
-+ #theorem("נוסחת אינטגרל קושי")[
-    יהי $G subset CC$ תחום טוב, $gamma = partial G$ ותהיי $f in Hol(G) inter C(overline(G))$. אזי
-    $ integral_gamma f(w)/(w-z) dif w = mycases(2pi i f(z), z in G, 0, z in.not overline(G)) $
-    כאשר האינטגרל בצד שמאל נקרא *אינטגרל קושי*.
-  ]
-+ #theorem("נוסחת אינטגרל קושי לנגזרת")[
-    תהיי $gamma$ איחוד סופי של מסילות $C^1$ ותהיי $phi in C(gamma)$. נגדיר
-    $ F(z) colon.eq 1/(2pi i) integral_gamma phi(w)/(w-z) dif w $
-    אז $F in Hol(CC without gamma)$ ויתר על־כן
-    $ F^(n) (z) = n!/(2pi i) integral_gamma phi(w)/(w-z)^(n+1) dif w $
-  ]
-+ #theorem("אי־שיוויון קושי")[
-    תהיי $f in Hol(B(z_0, R))$ אז לכל $n in NN$
-    $
-      abs(f^(n) (z))=n!/(2pi i) integral_({abs(w-z)=rho}) abs(f(w))/abs(w-z)^(n+1) dif w <= abs(n!/(2pi)) (max_(abs(w-z)=R) abs(f))/R^(n+1) dot.op L({abs(z-w)=R})=n!/R^n max_(abs(w-z)) abs(f)
-    $
-  ]
-
-הם כולם עוזרים לנו לקבל מידע על הפונקציות גם כשאנחנו לא יודעים עליהן כלום.
-
-== תוכיחי קיום/אי קיום
