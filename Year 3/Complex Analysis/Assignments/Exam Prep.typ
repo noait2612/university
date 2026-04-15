@@ -43,6 +43,32 @@
   נסמן ב־$Hol(G)$ את אוסף כל הפונקציות האנליטיות ב־$G$.
 ]
 
+=== העתקות מוביוס
+#definition("העתקת מוביוס")[
+  העתקות מהצורה $h: hat(CC) arrow hat(CC)$ (עם הטופולוגיה המושרית מההטלה הסטיראוגרפית) מהצורה
+  $ h(z) = (a dot.op z+b)/(c dot.op z+d) $
+  עבור $a,b,c,d in CC$ ו־$a d - b c !=0$.
+]
+
+#proposition("תכונות העתקות מוביוס")[
+  + כל העתקת מוביוס $h(z)$ מתאימה למטריצה $A=mat(a, b; c, d)$
+  + $h_A compose h_B = h_(A B)$
+  + $h_A^(-1)=h_(A^(-1))$
+  + $h'(z)=(a d- b c)/((c z+d)^2)$ וכמסקנה מכך העתקת מוביוס היא העתקה קונפורמית
+  + כל העתקת מוביוס היא הרכבה של פעולות אלמנטריות
+    + הזזה $z mapsto z+b$
+    + סקלר $z mapsto a dot.op z$ עבור $a in RR$
+    + סיבוב $z mapsto z dot.op e^(i theta)$
+    + הופכי $z mapsto 1/z$
+  + העתקת מוביוס נקבעת ביחידות על־ידי שלוש נקודות $z_1, z_2, z_3$ שנשלחות ל־$1,0,infinity$
+  + העתקת מוביוס שולחת מעגל/קו למעגל/קו
+]
+
+#example("העתקות מוביוס חשובות")[
+  + העתקה ששולחת את הדיסק לחצי המישור העליון $h:DD(abs(z)<1) arrow HH^plus colon.eq {z in CC bar im(z)>0}$ נתונה על־ידי $h(z)=i (1-z)/(1+z)$
+  + אוטומורפיזמים של הדיסק $f:DD arrow Aut(DD)$ נתונה על־ידי $f(z)=lambda (z-a)/(1-overline(z)a)$ עבור $a in DD$ ו־$abs(lambda)=1$
+]
+
 === טורי חזקות
 #theorem("משפט ה־M של ויירשטראס")[
   תהיי $E subset CC$ ו־$f_n : E arrow.r CC$. אם לכל $n$, $abs(f_n)<=M_n$ ו־$sum_(n=1)^infinity M_n < infinity$ אזי הטור $sum_(n=1)^infinity f_n$ מתכנס בהחלט ובמידה שווה ב־$E$.
@@ -100,8 +126,7 @@
 ]
 
 #definition("ענף לוגריתמי של פונקציה")[
-  תהיי $f in Hol(G)$ ו־$f(z)!=0$ לכל $z in G$, אז נגדיר ענף של $log(f)$ להיות כל פונקציה רציפה $g$ המקיימת $e^(g(z))=f(z)$.\
-  בפרט נובע ש־$g$ הולומורפית ו־$g'(z)=(f'(z))/f(z)$
+  תהיי $f in Hol(G)$ ו־$f(z)!=0$ לכל $z in G$, אז נגדיר ענף של $log(f)$ להיות כל פונקציה רציפה $g$ המקיימת $e^(g(z))=f(z)$. בפרט נובע ש־$g$ הולומורפית ו־$g'(z)=(f'(z))/f(z)$.
 ]
 
 #theorem("משפט העתקה הפתוחה")[
@@ -141,8 +166,6 @@
   + $abs(f)$ קבועה
   + $arg(f)$ קבועה (אם $f!=0$)
 ]
-
-#pagebreak()
 
 #definition("Wirtinger Operators")[
   $
@@ -282,7 +305,7 @@
 #theorem("אי־שיוויון קושי")[
   תהיי $f in Hol(B(z_0, R))$ אז לכל $n in NN$
   $
-    abs(f^(n) (z))=n!/(2pi i) integral_({abs(w-z)=rho}) abs(f(w))/abs(w-z)^(n+1) dif w <= abs(n!/(2pi)) (max_(abs(w-z)=R) abs(f))/R^(n+1) dot.op L({abs(z-w)=R})=n!/R^n max_(abs(w-z)) abs(f)
+    abs(f^(n) (z))=n!/(2pi i) integral_({abs(w-z)=rho}) abs(f(w))/abs(w-z)^(n+1) dif w <= abs(n!/(2pi)) (max_(abs(w-z)=R) abs(f))/R^(n+1) dot.op L({abs(z-w)=R})=n!/R^n max_(abs(w-z)=R) abs(f)
   $
   באופן זהה, אם $f(z)=sum_(n=0)^infinity b_n z^n$ פיתוח טיילור של $f$ אז אפשר להפעיל את אי־שיוויון קושי גם על $b_n = (f^(n)(z))/n!$.
 ]
@@ -502,18 +525,11 @@
   + אם $CC without gamma = union.big.dot Omega_j$ כאשר $Omega_j$ הם הרכיבי קשירות של $CC without gamma$ אזי $ind_gamma (dot.op)|_(Omega_j)$ סופי ו־$ind_gamma (dot.op)|_(Omega_infinity) = 0$ כאשר $Omega_infinity$ זה רכיב הקשירות הלא חסום.
 ]
 
-#definition("מעגל מוכלל")[
-  תהיי $gamma$ עקומה גזירה ברציפות למקוטעין. נאמר ש־$gamma$ היא מעגל מוכלל אם היא פשוטה וסגורה.
-]
-
-#theorem("משפט קושי המוכלל")[
-  אם $G subset CC$ תחום ו־$gamma : I arrow.r G$ מעגל מוכלל המקיים $ind_gamma (z) = 0$ לכל $z in.not overline(G)$ אזי לכל $f in Hol(G)$
-  $ integral_gamma f(z) dif z =0 $
-]
-
 #corollary[
   לכל $z in G without gamma$ ו־$f in Hol(G)$
-  $ 1/(2pi i) integral_gamma f(zeta)/(zeta - z) dif z = ind_gamma (z) dot.op f(z) $
+  $
+    ind_gamma (z) = 1/(2pi i) integral_gamma f(zeta)/(zeta - z) dif z = 1/(2pi) ind_gamma (w-z) wide ind_gamma (f) = 2pi 1/(2pi i) integral_gamma f'/f = 2pi ind_(f compose gamma) (0)
+  $
 ]
 
 === הלמה של שוורץ
@@ -529,7 +545,7 @@
 ]
 
 #theorem[
-  $f in Aut(DD) <==> f(z) = lambda dot.op (z-a)/(1-z dot.op overline(a))$ עבור $a in DD, abs(lambda)=1$.
+  $f in Aut(DD) <==> f(z) = lambda dot.op (z-a)/(1-z dot.op overline(a))$ עבור $a in DD, abs(lambda)=1$ (זו העתקת מוביוס).
 ]
 
 #theorem("משפט שוורץ-פיק")[
@@ -538,7 +554,7 @@
     $ abs((f(z_2)-f(z_1))/(1-f(z_2)overline(f(z_1)))) <= abs((z_2-z_1)/(1-z_2 overline(z_1))) $
   + כל $z in DD$ מקיים
     $ abs(f'(z))<=(1-abs(f(z))^2)/(1-abs(z)^2) $
-  + אם באחת הנקודות יש שיוויון באחד משני המקרים הקודמים, $f in Aut(DD)$
+  אם באחת הנקודות יש שיוויון באחד משני המקרים הקודמים אז $f in Aut(DD)$.
 ]
 
 === משפט ההעתקה של רימן
@@ -607,6 +623,7 @@
 === פיתוחים שימושים
 + $ abs(w)<1, space 1/(1-w)= sum_(n=0)^infinity w^n $
 + $ 1/(1+w) = sum_(n=0)^infinity (-1)^n w^n $
++ $ 1/(1+w)^k = sum_(n=0)^infinity binom(k, n) w^k $
 + $ 1/(1-w)^k = sum_(n=0)^infinity binom(n+k-1, k-1)w^n $
 + $ abs(w)<1, space k in NN, space (1+w)^k= sum_(n=0)^infinity binom(k, n)w^n $
 + $ abs(w)<1, space (1+w)^(-2)= sum_(n=0)^infinity (-1)^k (k+1)w^k $
