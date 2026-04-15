@@ -63,13 +63,45 @@ $ x(t)=e^(phi(t))(integral_(t_0)^t e^(-phi(s))f(s)dif s + c) $
 נמצא את הפיתרון הכללי למשוואה $x'(t)=x(t)(1-x(t))$ בתחום $RR$.
 
 #solution[
-
+  זו משוואה ניתנת להפרדה כי $(dif x)/(dif t)=x(1-x) = (dif x)/(x(1-x)) = dif t$ ונגדיר $f(x)=x(1-x)$ ו־$g(t) eq.triple 1$.\
+  $g$ רציפה ו־$f$ לא מתאפסת בסביבה שלא מכילה את $0,1$ ולכן נוכל להשתמש בטענה מהתרגול בצורה לוקאלית ולהגדיר
+  $
+    phi(x)=integral 1/f(x) dif x = integral 1/(x(1-x)) dif x = integral 1/x + 1/(1-x) dif x = ln abs(x)-ln abs(1-x)=ln abs(x/(1-x))
+  $
+  ומהמשפט נקבל
+  $ x(t)=phi^(-1)(integral g(s) dif s + C)= phi^(-1)(t + C) $
+  כאשר את $phi^(-1)$ נחשב
+  $
+    y=ln abs(x/(1-x)) <==> e^y = x/(1-x) <==> x=e^y(1-x) <==> x = e^y -e^y x <==> x+e^y x =e^y <==> x(1+e^y)=e^y \
+    ==> phi^(-1)(y)=e^y/(1+e^y)
+  $
+  ולכן
+  $
+    x(t) = phi^(-1)(t+C) = e^(t+C)/(1+e^(t+C)) =_(K colon.eq t+C \
+    K in RR) e^K/(1+e^K)
+  $
+  כאשר ב־$0,1$ נקבל $x(t)=0, x(t)=1$ כי אם נסתכל על $x(t)=0$ נקבל ש־$x'(t)=0$ ולכן
+  $ x(t)(1-x(t))=0 dot.op (1-0)=0 $
+  כלומר התנאי של $x'(t)=x(t)(1-x(t))$ מתקיים ולכן $x(t)=0$ זה פיתרון, באותו אופן עושים גם בשביל $1$.
 ]
 
 #question()
 נמצא את הפיתרון למשוואה $x''(t)-18x(t)^3=0$ עם תנאי ההתחלה $x(0)=1, x'(0)=-3$.
 
-#solution[]
+#solution[
+  נעזר בהכוונה ונכפול ב־$x'(t)$ ונקבל $x''(t)x'(t)-18x(t)^3x'(t)=0$ ולכן
+  $ integral_0^t x' x''-18x^3x' dif t= 0 $
+  נעשה אינטגרציה איבר איבר
+  $ integral x' x'' dif t = (x')^2/2 $
+  כי אם נסמן $u=x'(t)$ אז $(dif u)/(dif t)=x''(t)$ ולכן $x'(t)x''(t)=u dif u$.\
+  בשביל האיבר השני באינטגרל נסמן $u=x(t)$ ולכן $dif u = x'(t)$ ונקבל
+  $ integral 18x^3 x' dif t = integral 18x^3 dif x = 18/4 x^4 = 9/2 x^4 $
+  כלומר
+  $ integral_0^t x' x''-18x^3x' dif t = 0 <==> (x')^2/2 - 9/2 x^4=C <==> (x')^2 -9x^4=C $
+  מהנתון $x(0)=1, x'(0)=-3$ ולכן
+  $ (-3)^2-9(1)^4=9-9=0 ==> C = 0 ==> (x')^2 = 9x^4 <==> x' = plus.minus 3x^2 ==>_(x'(0)=-3) x'=-3x^2 $
+  #todo
+]
 
 #question()
 תהיי $Omega subset RR times RR^n$ פתוחה ותהיי $f:Omega arrow RR^n$.\
