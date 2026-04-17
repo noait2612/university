@@ -1,6 +1,6 @@
 #import "../../../src/article.typ": *
 #show: article.with(
-  title: [ Solution to Exercise 2 --- Analysis on Manifolds, 80416 ],
+  title: [ Solution to Exercise 02 --- Analysis on Manifolds, 80416 ],
   signature: [#align(center)[#image("../../../src/duck.png", width: 30%, fit: "contain")]],
   language: "en",
 )
@@ -12,8 +12,15 @@
 We will draw the following paths and calculate the line or path integrals for each following path and vector fields \
 $F: RR^n arrow RR^n$ or functions $f:RR^n arrow RR$.\
 _Reminder:_
-$ integral_gamma F dif l = integral_0^1 chevron.l F(gamma(t)) comma dot(gamma)(t) chevron.r dif t $
-So in each part we calculate each component in this integral.
+The line integral of $F$ along $gamma$ is defined by
+$
+  integral_gamma F dif l = integral_0^1 chevron.l F(gamma(t)) comma dot(gamma)(t) chevron.r dif t
+$
+The path integral of $f$ along $gamma$ with respect to the length element is defined by
+$
+  integral_gamma f dif s = integral_a^b f(gamma(t))norm(dot(gamma)(t)) dif t
+$
+So in each part we calculate each component in these integrals.
 
 #subquestion()
 $gamma :[0,1] arrow RR^2, space gamma(t)=(t^2,t^2-t), space F(x,y)=(x^2y,y-3x)$ and we will calculate $integral_gamma F dif l$.
@@ -51,24 +58,29 @@ $gamma:[0,1] arrow RR^3, space gamma(t)=(t, cos(t), sin(t)), space F(x,y,z)=(0,-
 $gamma:[1/4, 3/4] arrow RR^2, space gamma(t)=(2t-1,sqrt(1-(2t-1)^2)), space f(x,y)=x y^4$ and we will calculate $integral_gamma f dif s$.
 
 #solution[
-  First w do variable change for $x=2t-1$ so $gamma(t)=(x, sqrt(1-x^2))$ so this is the upper semicircle of radius 1.\
-  We will use the hint and use the arc-length reparameterization:
+  First w do variable change for $x=2t-1$ so $gamma(t)=(x, sqrt(1-x^2))$ so this is the upper semicircle of radius 1 where start point is at $t=1/4$ which means $x=-1/2$ and so $gamma(1/4)=(-1/2, sqrt(3)/2)$ and end point is at $t=3/4$ which means $x=1/2$ and so $gamma(3/4)=(1/2, sqrt(3)/2)$.\
+  We will use the hint and use the arc-length reparameterization and work as we saw in the recitation:
   $
     dot(gamma)(t) = (2, (-2(2t-1))/sqrt(1-(2t-1)^2)) \
-    norm(dot(gamma)(t)) = 4 + (4(2t-1)^2)/(1-(2t-1)^2) = (4(1-(2t-1)^2)+4(2t-1)^2)/(1-(2t-1)^2) = 4/(1-(2t-1)^2) \
-    l(gamma)=integral_(1/4)^(3/4) norm(dot(gamma)(t)) dif t = integral_(1/4)^(3/4) 4/(1-(2t-1)^2) dif t
+    norm(dot(gamma)(t)) = sqrt(2^2 + ((-2(2t-1))/sqrt(1-(2t-1)^2))^2) = 2/sqrt(1-(2t-1)^2) \
+    l(gamma)=integral_(1/4)^(3/4) norm(dot(gamma)(t)) dif t = integral_(1/4)^(3/4) 2/(1-(2t-1)^2) dif t =_(u=2t-1 \
+    dif u = 2dif t) integral_(-1/2)^(1/2) 1/sqrt(1-u^2) dif u = [arcsin(u)]_(u=-1/2)^(u=1/2) pi/6-(-pi/6)=pi/3
   $
-  To calculate the integral we will use subsution
+  We define the function $phi:[1/4, 3/4] arrow [0, pi/3]$ by
   $
-    integral 4/(1-(2t-1)^2) dif t
-    =_(u=2t-1 \
-    dif t = 1/2 dif u) 2 integral 1/(1-u^2) dif u = -2 integral 1/((u-1)(u+1)) dif u = -2 integral - (1/(u+1)-1/(u-1))/2 dif u \
-    = integral 1/(u+1) dif u - integral 1/(u-1) dif u = ln(abs(u+1))-ln(abs(u-1)) = ln(abs(t))-ln(abs(t-1))
+    phi(t) = integral_(-1/4)^t norm(dot(gamma)(s)) dif s = integral_(1/4)^t 2/sqrt(1-(2s-1)^2) dif s = [arcsin(2s-1)]_(s=1/4)^(s=t) = arcsin(2t-1)-arcsin(-1/2)=arcsin(2t-1)+pi/6
   $
-  So
-  $ l(gamma)=[ln(abs(t))-ln(abs(t-1))]_(t=1/4)^(t=3/4) = -2ln(1/4) $
-  We then get
-  $ phi(t)=integral $
+  Now we need to find $phi^(-1)$ so we solve for $t$ in terms of arc length $s in [0, pi/3]$
+  $ s =arcsin(2t-1)+pi/6 <==> s-pi/6 = arcsin(2t-1) <==> 2t-1 = sin(s-pi/6) ==> t=phi^(-1)(s) = 1/2 (sin(s-pi/6)+1) $
+  And so
+  $ x(s)=2phi^(-1)(s)-1=sin(s-pi/6) wide y(s)=sqrt(1-sin^2(s-pi/6))=cos(s-pi/6) $
+  Where $y(s)$ is from the fact the $y>=0$ on our interval.\
+  $ overline(gamma)=(sin(s-pi/6), cos(s-pi/6)) $
+  We saw that $integral_gamma f dif s$ is invariant under re-parametrizations so
+  $
+    integral_gamma f dif s = integral_0^(pi/3) f(overline(gamma)(s))norm(dot(overline(gamma))(s)) dif s = integral_0^(pi/3) sin(s-pi/6)cos^4(s-pi/6) dif s =_(v = cos(s-pi/6) \
+    dif v = -sin(s-pi/6) dif s) integral_(sqrt(3)/2)^(sqrt(3)/2) -v^4 dif v = 0
+  $
   #todo
 
 ]
@@ -129,7 +141,7 @@ We will show that for every $t_0 in [a, b], space l(γ) >= norm(gamma(t_0) - A) 
     l(gamma scripts(harpoon.tr)_([a,t_0])) >= norm(gamma(t_0) - gamma(a))=norm(gamma(t_0) - A) \
     l(gamma scripts(harpoon.tr)_([t_0,b])) >= norm(gamma(b) - gamma(t_0))=norm(B - gamma(t_0))
   $
-  We add both inequalities
+  We sum both inequalities
   $
     l(gamma)=l(gamma scripts(harpoon.tr)_([a,t_0]))+l(gamma scripts(harpoon.tr)_([t_0,b])) >= norm(gamma(t_0) - A) + norm(B - gamma(t_0))
   $
@@ -180,7 +192,18 @@ $ forall x in RR^n, space F(x) = g(norm(x))x $
 We will show that if $F: RR^n without {0} arrow RR^n$ is a radial field then there exists a $f in C^1, space f : RR^n without {0} arrow RR$ such that $F = gradient f$.
 
 #proof[
-  #todo
+  Same as in the recitation, we notice that $F(x)$ depends only on $norm(x)$ and points in the direction $x$.\
+  We look for a function $f$ that depends only on the distance to the origin so we define $f:RR^n without {0} arrow RR$ as
+  $ f(x)=integral_0^norm(x) u dot.op g(u) dif u $
+  We can integrate since $g in C^1$ so $u dot.op g(u) in C^1$
+  From the Chain Rule we have
+  $ (dif f)/(dif x_i) = (norm(x) dot.op g(norm(x))) dot.op x_i/norm(x) = g(norm(x))x_i $
+  Therefore
+  $
+    gradient f = ((partial f)/(partial x_1), dots.h, (partial f)/(partial x_n)) =(g(norm(x))x_1, dots.h, g(norm(x))x_n)
+    = g(norm(x)) dot.op vec(x_1, dots.v, x_n)
+    = g(norm(x)) x = F(x)
+  $
 ]
 
 #question()
