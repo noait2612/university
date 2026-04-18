@@ -424,6 +424,7 @@
 #let dist = math.op("dist")
 #let Hom = math.op("Hom")
 #let normop(x) = $norm(#x)_italic("op")$
+#let sign = math.op("sgn")
 
 // Probability
 #let Unif = math.italic(math.op("Unif"))
