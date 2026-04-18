@@ -1037,7 +1037,7 @@
   [ $ 1/lambda^2 $ ],
   [ $ 1/lambda $ ],
   [ $ 1-e^(-lambda t) $ ],
-  [ $ lambda e^(lambda t) $ ],
+  [ $ lambda e^(-lambda t) $ ],
   [ $ 0<=t $ ],
   [ $ lambda>0 $ ],
   [ $ Exp(lambda) $ ],
