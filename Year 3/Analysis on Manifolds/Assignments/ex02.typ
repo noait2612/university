@@ -4,9 +4,6 @@
   signature: [#align(center)[#image("../../../src/duck.png", width: 30%, fit: "contain")]],
   language: "en",
 )
-#let Adj = math.op("Adj")
-#let adj = math.op("adj")
-#let GL = math.op("GL")
 
 #question()
 We will draw the following paths and calculate the line or path integrals for each following path and vector fields \
@@ -34,8 +31,15 @@ $gamma :[0,1] arrow RR^2, space gamma(t)=(t^2,t^2-t), space F(x,y)=(x^2y,y-3x)$ 
   $
     integral_gamma F dif l = integral_0^1 (t^6-t^5, -2t^2-t) dot.op (2t, 2t-1) dif t = integral_0^1 2t^7-2t^6 -4t^3+t dif t = [t^8/4-(2t^7)/7 - t^4+t^2/2]_(t=0)^(t=1) = -15/28
   $
-  #todo
+  For the drawing: we have a 2D curve that starts at the origin (0,0) and ends at (1,0) and from $dot(gamma)(0)=(0,-1)$ we get that the curve starts by moving straight down from the origin.\
+  Furthermore, from $dot(gamma)(t)$ we can see that the curve has a horizontal tangent at $t=1/2$ and this is the lowest point on the curve $(1/4, -1/4)$ and at the end we get that $dot(gamma)(1)=(2,1)$ so the curve finishes while moving up and to the right.\
+  From $x=t^2$ we know that $t=sqrt(x)$ since $t in [0,1]$ so the $y$ equation becomes $y=x-sqrt(x)$ so the drawing is
+  #figure(
+    image("../../../src/images/mainfolds ex02 question 1a.jpg", width: 30%, fit: "contain"),
+  )
 ]
+
+#pagebreak()
 
 #subquestion()
 $gamma:[0,1] arrow RR^3, space gamma(t)=(t, cos(t), sin(t)), space F(x,y,z)=(0,-z,y)$ and we will calculate $integral_gamma F dif l$.
@@ -49,7 +53,11 @@ $gamma:[0,1] arrow RR^3, space gamma(t)=(t, cos(t), sin(t)), space F(x,y,z)=(0,-
   $
     integral_gamma F dif l = integral_0^1 (0, -sin(t), cos(t)) dot.op (1, -sin(t), cos(t)) dif t = integral_0^1 0+sin^2(t)+sin^2(t) dif t = integral_0^1 1 dif t = 1
   $
-  #todo
+  For the drawing: This is a 3D curve and we notice that $y^2+z^2=cos^2(t)+sin^2(t)=1$ so in the $y z$-plane the path is the unit circle and since the $x$-coordinate is exactly $t$, the path moves forward along the $x$-axis as it "circles" the $y z$-plane.\
+  Furthermore, since $norm(dot(gamma)(t))=sqrt(2)$ we understand that this is a smooth $C^1$ curve so that drawing is
+  #figure(
+    image("../../../src/images/mainfolds ex02 question 1b.jpg", width: 30%, fit: "contain"),
+  )
 ]
 
 #pagebreak()
@@ -58,7 +66,7 @@ $gamma:[0,1] arrow RR^3, space gamma(t)=(t, cos(t), sin(t)), space F(x,y,z)=(0,-
 $gamma:[1/4, 3/4] arrow RR^2, space gamma(t)=(2t-1,sqrt(1-(2t-1)^2)), space f(x,y)=x y^4$ and we will calculate $integral_gamma f dif s$.
 
 #solution[
-  First w do variable change for $x=2t-1$ so $gamma(t)=(x, sqrt(1-x^2))$ so this is the upper semicircle of radius 1 where start point is at $t=1/4$ which means $x=-1/2$ and so $gamma(1/4)=(-1/2, sqrt(3)/2)$ and end point is at $t=3/4$ which means $x=1/2$ and so $gamma(3/4)=(1/2, sqrt(3)/2)$.\
+  First we do variable change for $x=2t-1$ so $gamma(t)=(x, sqrt(1-x^2))$ so this is the upper semicircle of radius 1 with start point at $t=1/4$ which means $x=-1/2$, $gamma(1/4)=(-1/2, sqrt(3)/2)$ and end point at $t=3/4$ which means $x=1/2$, $gamma(3/4)=(1/2, sqrt(3)/2)$.\
   We will use the hint and use the arc-length reparameterization and work as we saw in the recitation:
   $
     dot(gamma)(t) = (2, (-2(2t-1))/sqrt(1-(2t-1)^2)) \
@@ -72,16 +80,20 @@ $gamma:[1/4, 3/4] arrow RR^2, space gamma(t)=(2t-1,sqrt(1-(2t-1)^2)), space f(x,
   $
   Now we need to find $phi^(-1)$ so we solve for $t$ in terms of arc length $s in [0, pi/3]$
   $ s =arcsin(2t-1)+pi/6 <==> s-pi/6 = arcsin(2t-1) <==> 2t-1 = sin(s-pi/6) ==> t=phi^(-1)(s) = 1/2 (sin(s-pi/6)+1) $
-  And so
-  $ x(s)=2phi^(-1)(s)-1=sin(s-pi/6) wide y(s)=sqrt(1-sin^2(s-pi/6))=cos(s-pi/6) $
-  Where $y(s)$ is from the fact the $y>=0$ on our interval.\
-  $ overline(gamma)=(sin(s-pi/6), cos(s-pi/6)) $
+  We remember that $y>=0$ on our interval and we gets that
+  $
+    x(s)=2phi^(-1)(s)-1=sin(s-pi/6) wide y(s)=sqrt(1-sin^2(s-pi/6))=cos(s-pi/6) \
+    ==> overline(gamma)=(sin(s-pi/6), cos(s-pi/6))
+  $
   We saw that $integral_gamma f dif s$ is invariant under re-parametrizations so
   $
     integral_gamma f dif s = integral_0^(pi/3) f(overline(gamma)(s))norm(dot(overline(gamma))(s)) dif s = integral_0^(pi/3) sin(s-pi/6)cos^4(s-pi/6) dif s =_(v = cos(s-pi/6) \
     dif v = -sin(s-pi/6) dif s) integral_(sqrt(3)/2)^(sqrt(3)/2) -v^4 dif v = 0
   $
-  #todo
+  For the drawing: since we already know that this is an arc of the upper unit circle from $x=-1/2$ to $x=1/2$ the drawing is
+  #figure(
+    image("../../../src/images/mainfolds ex02 question 1c.jpg", width: 30%, fit: "contain"),
+  )
 
 ]
 
