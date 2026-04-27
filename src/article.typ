@@ -269,7 +269,7 @@
   ),
   "definition": (
     "he": "הגדרה",
-    "en": "Defination",
+    "en": "Definition",
   ),
   "corollary": (
     "he": "מסקנה",
@@ -425,6 +425,10 @@
 #let Hom = math.op("Hom")
 #let normop(x) = $norm(#x)_italic("op")$
 #let sign = math.op("sgn")
+#let closure(X) = $overline(#X)$
+#let interior(X) = $#X^(circle.small)$
+#let boundary(X) = $partial #X$
+#let Lip = math.op("Lip")
 
 // Probability
 #let Unif = math.italic(math.op("Unif"))
