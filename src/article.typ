@@ -1,5 +1,5 @@
 // Import theorems package
-#import "@preview/ctheorems:1.1.3": *
+#import "@preview/thmbox:0.3.0": *
 
 #let gim_table = (
   "1": "א",
@@ -58,6 +58,51 @@
 
   return a.join()
 }
+
+
+
+#let counter-id(counter) = {
+  let counter-repr = repr(counter)
+  return "thmbox-counter-level" + counter-repr.slice("counter(".len(), counter-repr.len() - 1)
+}
+
+/// Initializes a custom counter to work with thmbox.
+/// It has a level, which means how many numbers it uses. The last one will increase per usage
+/// of the counter (in thmboxes for example) while the previous ones will reflect the headings
+///
+/// For example, with level 2, the counter uses the format X.Y where X is the chapter the counter
+/// is used and Y increases in this chapter.
+///
+/// - counter (counter): The counter to use
+/// - level (int): How many numbers the counter should have. 2 makes the numbers have the format X.X, for example.
+#let sectioned-counter(counter, level: 2) = doc => {
+  // Metadata
+  [
+    #metadata(level) #label(counter-id(counter))
+  ]
+
+  show heading: it => {
+    if it.level < level {
+      context counter.update(
+        (..std.counter(heading).get(), 0),
+      )
+    }
+    it
+  }
+
+  context {
+    let current-heading = std.counter(heading).get()
+    let slice = current-heading.slice(
+      0,
+      calc.min(level, current-heading.len()) - 1,
+    )
+    counter.update((..slice, 0))
+  }
+
+  doc
+}
+
+#let thm_counter = counter("my_thmbox")
 
 #let article(
   title: none,
@@ -140,10 +185,11 @@
   ]
   show heading.where(level: 1): it => {
     pagebreak(weak: true)
-    it
+    it // Render the heading FIRST so the chapter number increments to 1
+    counter(figure.where(kind: "thmbox")).update(0) // Then reset the box counter
   }
 
-  show: thmrules.with(qed-symbol: $square$)
+  // show: thmrules.with(qed-symbol: $square$)
 
   // To fix the bug where the letter א is being interpreted as aleph number.
   show regex("\p{Hebrew}.+"): it => text(
@@ -172,17 +218,23 @@
       it
     }
   }
+
+  // ADD THIS: Apply your sectioned counter so it tracks the document's headings
+  show: sectioned-counter(thm_counter, level: 2)
+
+  show figure.where(kind: "thmbox"): it => {
+    show figure.caption: none
+    it
+  }
+
+  // 3. REVERT THIS: You don't need custom reference logic for thmboxes anymore!
+  // Typst will handle it natively. Just keep the equation logic.
   show ref: it => {
     let el = it.element
     if el != none and el.func() == math.equation {
       link(
         el.location(),
-        numbering(
-          // don't forget to change the numbering according to the one
-          // you are actually using (e.g. section numbering)
-          "(1)",
-          counter(math.equation).at(el.location()).at(0) + 1,
-        ),
+        numbering("(1)", counter(math.equation).at(el.location()).at(0) + 1),
       )
     } else {
       it
@@ -308,82 +360,243 @@
     "en": "Goal",
   ),
 )
-#let inset = (x: 0em, y: -0.3em)
-#let theorem = thmbox(
-  "theorem",
-  { context theorem_titles.at("theorem").at(text.lang) },
-  inset: inset,
-  base_level: 2,
+// 1. Wrap the entire function in context so all variables evaluate safely
+// The outer function is ALREADY a context block
+#let my_thmbox(
+  color: colors.dark-gray,
+  variant: "Thmbox",
+  title: none,
+  numbering: "1.1",
+  sans: true,
+  fill: none,
+  body: [],
+  bar-thickness: 3pt,
+  bar-color: none,
+  title-separator: h(1fr),
+  ..args,
+) = {
+  let pa = args.pos()
+  let num-pas = pa.len()
+
+  let final_variant = if num-pas == 3 { pa.at(0) } else { variant }
+  let final_title = if num-pas == 2 or num-pas == 3 { pa.at(num-pas - 2) } else { title }
+  let final_body = if num-pas > 0 and num-pas <= 3 { pa.at(num-pas - 1) } else { body }
+
+  // Define a native numbering function so `@references` automatically format correctly
+  let fig_num = if numbering != none {
+    n => context {
+      let h_arr = std.counter(heading).get()
+      let h = if h_arr.len() > 0 { h_arr.first() } else { 0 }
+      std.numbering(numbering, h, n)
+    }
+  } else { none }
+
+  // NO CONTEXT WRAPPER HERE! The figure is on the outside to catch the <labels>
+  figure(
+    caption: [], // Empty caption makes it natively referenceable
+    gap: 0em,
+    kind: "thmbox",
+    supplement: final_variant,
+    numbering: fig_num,
+    outlined: false,
+  )[
+    // Push context to the inside where it belongs for language/visual styling
+    #context {
+      let is_he = text.lang == "he"
+      if is_he [ #set text(dir: rtl) ]
+      set align(start)
+
+      let actual_bar_color = if bar-color == none { color } else { bar-color }
+      let bar = stroke(paint: actual_bar_color, thickness: bar-thickness)
+      let opposite-inset = if fill != none { 1em - bar-thickness } else { 0em }
+
+      block(
+        stroke: (
+          left: if is_he { none } else { bar },
+          right: if is_he { bar } else { none },
+        ),
+        inset: (
+          left: if is_he { opposite-inset } else { 1em },
+          right: if is_he { 1em } else { opposite-inset },
+          top: 0.6em,
+          bottom: 0.6em,
+        ),
+        fill: fill,
+        width: 100%,
+      )[
+        // --- TITLE SECTION ---
+        #if final_variant != none or final_title != none {
+          block(
+            above: 0em,
+            below: 1.2em,
+            sticky: true,
+          )[
+            #set text(color, weight: "bold")
+
+            #let counter-display = if numbering != none {
+              " "
+              let h_arr = std.counter(heading).get()
+              let h = if h_arr.len() > 0 { h_arr.first() } else { 0 }
+              let f = std.counter(figure.where(kind: "thmbox")).get().first()
+              std.numbering(numbering, h, f)
+            } else { none }
+
+            #let display_title = if final_title != none [ (#final_title)] else []
+
+            #final_variant#counter-display#title-separator#display_title
+          ]
+        }
+
+        // --- BODY SECTION ---
+        #block(width: 100%, spacing: 0em)[#final_body]
+      ]
+    }
+  ]
+}
+
+#let deep-steel-blue = rgb("#2F4F6F")
+#let muted-rust = rgb("#7A3E2B")
+#let muted-olive = rgb("#556B2F")
+#let muted-pink = rgb("#c91753")
+#let natural-grey = rgb("#4A4A4A")
+
+// 3. Define environments cleanly using .with() and just passing the dictionary key
+#let theorem = my_thmbox.with(
+  color: muted-pink,
+  variant: context theorem_titles.at("theorem").at(text.lang),
 )
-#let lemma = thmbox(
-  "lemma",
-  { context theorem_titles.at("lemma").at(text.lang) },
-  inset: inset,
-  base_level: 2,
+
+/// Used for propositions, uses a light blue color by default.
+#let proposition = my_thmbox.with(
+  color: muted-pink,
+  variant: context theorem_titles.at("proposition").at(text.lang),
 )
-#let proposition = thmbox(
-  "proposition",
-  { context theorem_titles.at("proposition").at(text.lang) },
-  inset: inset,
-  base_level: 2,
+
+/// Used for lemmas, uses a light turquoise color by default.
+#let lemma = my_thmbox.with(
+  color: muted-pink,
+  variant: context theorem_titles.at("lemma").at(text.lang),
 )
-#let definition = thmbox(
-  "definition",
-  { context theorem_titles.at("definition").at(text.lang) },
-  inset: inset,
-  base_level: 2,
+
+/// Used for corollaries, uses a pink color by default.
+#let corollary = my_thmbox.with(
+  color: muted-pink,
+  variant: context theorem_titles.at("corollary").at(text.lang),
 )
-#let corollary = thmbox(
-  "corollary",
-  { context theorem_titles.at("corollary").at(text.lang) },
-  inset: inset,
-  base_level: 2,
+
+/// Used for definitions, uses an orange color by default.
+#let definition = my_thmbox.with(
+  color: deep-steel-blue,
+  variant: context theorem_titles.at("definition").at(text.lang),
 )
-#let remark = thmbox("remark", { context theorem_titles.at("remark").at(text.lang) }, inset: inset).with(
+
+/// Used for examples, uses a lime color and is not numbered by default.
+#let example = my_thmbox.with(
+  color: natural-grey,
+  variant: context theorem_titles.at("example").at(text.lang),
+  numbering: none,
+  sans: false,
+)
+
+#let counterexample = my_thmbox.with(
+  color: natural-grey,
+  variant: context theorem_titles.at("counterexample").at(text.lang),
+  numbering: none,
+  sans: false,
+)
+
+/// Used for remarks, uses a gray color and is not numbered by default.
+#let remark = my_thmbox.with(
+  color: natural-grey,
+  variant: context theorem_titles.at("remark").at(text.lang),
+  numbering: none,
+  sans: false,
+)
+
+/// Used for exercises, uses a blue color by default.
+#let exercise = my_thmbox.with(
+  color: muted-olive,
+  variant: context theorem_titles.at("exercise").at(text.lang),
+  sans: false,
+)
+
+/// Used for algorithms, uses a purple color by default.
+#let notation = my_thmbox.with(
+  color: natural-grey,
+  variant: context theorem_titles.at("notation").at(text.lang),
+  numbering: none,
+  stroke: none,
+)
+
+/// Used for claims, uses a green color and is not numbered by default.
+#let claim = my_thmbox.with(
+  color: natural-grey,
+  variant: context theorem_titles.at("claim").at(text.lang),
   numbering: none,
 )
-#let fact = thmbox(
-  "fact",
-  { context theorem_titles.at("fact").at(text.lang) },
-  inset: inset,
-  base_level: 2,
-)
-#let exercise = thmbox(
-  "exercise",
-  { context theorem_titles.at("exercise").at(text.lang) },
-  inset: inset,
-  base_level: 2,
-)
-#let example = thmbox(
-  "example",
-  { context theorem_titles.at("example").at(text.lang) },
-  inset: inset,
-  base_level: 2,
-)
-#let counterexample = thmbox(
-  "counterexample",
-  { context theorem_titles.at("counterexample").at(text.lang) },
-  inset: inset,
-  base_level: 2,
-)
-#let notation = thmbox(
-  "notation",
-  { context theorem_titles.at("notation").at(text.lang) },
-  inset: inset,
-).with(numbering: none)
-#let convention = thmbox(
-  "convention",
-  { context theorem_titles.at("convention").at(text.lang) },
-  inset: inset,
-).with(numbering: none)
-#let goal = thmbox("goal", { context theorem_titles.at("goal").at(text.lang) }, inset: inset).with(numbering: none)
-#let proof = thmproof("proof", { context theorem_titles.at("proof").at(text.lang) }, inset: inset)
-#let solution = thmproof(
-  "solution",
-  { context theorem_titles.at("solution").at(text.lang) },
-  inset: inset,
-  base_level: 1,
-)
+
+
+#let proof(
+  title: translations.variant("proof"),
+  separator: ":",
+  body: [],
+  ..args,
+) = {
+  // set values
+  let pa = args.pos()
+  let num-pas = pa.len()
+  let title = if num-pas == 2 [#translations.variant("proof-of") #pa.at(0)] else { title }
+  let body = if num-pas > 0 and num-pas <= 3 { pa.at(num-pas - 1) } else { body }
+
+  [
+    #set text(style: "oblique")
+    #title;#separator
+  ]
+  [#body #qed()]
+}
+
+#let proof(
+  title: context theorem_titles.at("proof").at(text.lang),
+  separator: ":",
+  body: [],
+  ..args,
+) = {
+  // set values
+  let pa = args.pos()
+  let num-pas = pa.len()
+  let title = if num-pas == 2 [#translations.variant("proof-of") #pa.at(0)] else { title }
+  let body = if num-pas > 0 and num-pas <= 3 { pa.at(num-pas - 1) } else { body }
+
+  [
+    #set text(style: "oblique")
+    #title;#separator
+  ]
+  [#body #qed()]
+}
+#let solution(
+  title: context theorem_titles.at("solution").at(text.lang),
+  separator: ":",
+  body: [],
+  ..args,
+) = {
+  // set values
+  let pa = args.pos()
+  let num-pas = pa.len()
+  let title = if num-pas == 2 [#translations.variant("proof-of") #pa.at(0)] else { title }
+  let body = if num-pas > 0 and num-pas <= 3 { pa.at(num-pas - 1) } else { body }
+
+  [
+    #set text(style: "oblique")
+    #title;#separator
+  ]
+  [#body #qed()]
+}
+
+// #let solution = thmproof(
+//   "solution",
+//   { context theorem_titles.at("solution").at(text.lang) },
+//   inset: inset,
+// )
 
 #let todo = text(red)[*TODOOOOOOOOOOOOOOOOOO*]
 
@@ -429,6 +642,8 @@
 #let interior(X) = $#X^(circle.small)$
 #let boundary(X) = $partial #X$
 #let Lip = math.op("Lip")
+#let Id = math.op("Id")
+// #let no-conv = math(arrow.double)_(math.display(math.arrow.double.l.not))
 
 // Probability
 #let Unif = math.italic(math.op("Unif"))
