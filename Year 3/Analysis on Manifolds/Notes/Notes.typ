@@ -66,7 +66,7 @@
   $
     integral_boundary(Omega) P dif x = integral_(boundary(Omega) inter V) P dif x = integral_(-1)^1 P(phi(t, 0)) (dif x)/(dif t) (t,0) dif t
   $
-  #end_of_lecture("3 – 28/04")
+  #end_of_lecture("6 – 28/04")
 ]
 
 #example[
