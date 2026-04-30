@@ -1,19 +1,19 @@
 #import "../../../src/article.typ": *
-#show: article.with(
+#import "../../../src/article_he.typ": *
+
+
+#show: thmbox-init()
+
+#show: article_he.with(
   title: [ משוואות דיפרנציאליות ],
   signature: [#align(center)[#image("../../../src/duck.png", width: 30%, fit: "contain")]],
 )
-#show: thmbox-init()
-#let thm_counter = counter("my_thmbox")
-#show: sectioned-counter(thm_counter, level: 2)
-// #set heading(numbering: "1")
-#outline(depth: 1)
 
-= הרצאה 1
-= הרצאה 2
-= הרצאה 3
+#set heading(numbering: "1.1")
+#outline(depth: 2)
 
-= הרצאה 4 – 20/04
+= משוואות דיפרנציאליות רגילות
+== תלות בתנאי ההתחלה
 _תזכורת:_ ראינו שאם $U subset.eq RR^n$ פתוחה ו־$F : U arrow RR$ ליפשיץ מקומית אזי לכל $p in U$ יש $delta>0$ כך שלבעיה $ (star) space cases(x'(t) = F(x(t)), x(0)=p) $
 יש פיתרון יחיד בקטע $(-delta, delta)$.\
 את הקיום הראנו באמצעות משפט פיאנו ואת היחידות הראנו באמצעות למה.
@@ -81,9 +81,9 @@ _תזכורת:_ ראינו שאם $U subset.eq RR^n$ פתוחה ו־$F : U arrow
     $ 2 norm(p-q) <= e^(-L tau) norm(x_p (tau) - x_q (tau)) <= norm(p-q) $
     וזאת סתירה.
   ]
+  #end_of_lecture("4 – 20/04")
 ]
 
-= הרצאה 5 – 27/04
 כל מה שעובר פה הוא קצת חוזר על מה שהיה בהרצאה הקודמת אז תסדרי את זה...\
 _תזכורת:_ $U subset.eq RR^n$ פתוחה ו־$F:U arrow RR^n$ ליפשיץ מקומית כך שעבור $p in U$
 $ cases(x'_p (t) = F(x_p (t)), x_p (0) = p) $
@@ -127,6 +127,7 @@ $ Omega = {(p,t) bar t in J_p^*, space p in U} $
     norm(Phi(p, t_0)-Phi(q, t))<= norm(Phi(p, t_0)-Phi(q, t_0))+norm(Phi(q, t_0)-Phi(q, t)) <= underbrace(2e^(L t_0) norm(p-q), "Lemma 1") + underbrace(M abs(t-t_0), Phi(q, t) in tilde(C))
   $
 ]
+
 נשים לב
 $ x'_p (t) = (partial Phi(, p, t))/(partial t) = F compose Phi(p, t) = F(x_p (t)) $
 מה לגבי הגזירה של $Phi$ לפי מיקום? \
@@ -160,8 +161,8 @@ $ partial/(partial t) D Phi = D(partial/(partial t) Phi) = D(F compose Phi)=D F(
   $ norm(F(z)-D F (x_p (t)) z - F(x_p (t))+D F(x_p (t))x_p (t))=norm(F(z)-F(x_p (t))-D F(x_p (t))(z-x_p (t))) $
   מרציפות בתנאי ההתחלה קיים $delta>0$ כך שלכל $q$ עם $norm(p-q)<delta$ ולכל $0<=t<=T$ מתקיים $norm(x_p (t) - x_q (t))<r$ ולכן מצאנו $delta$.\
 ]
+#end_of_lecture("5 – 27/04")
 
-= הרצאה 6 – 28/04
 #theorem[$U subset.eq RR^n$ פתוחה, $p in U$ ו־$F : U arrow RR^n$ גזירה ברציפות.\
   אז לכל $T in J_p^*$, $phi_T (dot.op) space$ גזירה ב־$p$ והדיפרנציאל שלה מקיים $D phi_T (p) = M(t)$ היכן ש־$M$ מקיימת
   $ M'(t)=D F(x_p (t))M(t), space M(0)= Id $
@@ -200,8 +201,4 @@ $ partial/(partial t) D Phi = D(partial/(partial t) Phi) = D(F compose Phi)=D F(
   ובסך־הכל
   $ norm(u(T)) <= e^(T(L+eta)) eta K T norm(q-p) < epsilon norm(q-p) $
 ]
-
-#theorem[בלה][
-  $a^2 + b^2 = c^2$
-  #lorem(400)
-]
+#end_of_lecture("6 – 28/04")

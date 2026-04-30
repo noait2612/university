@@ -1,28 +1,24 @@
 #import "../../../src/article.typ": *
-#show: article.with(
+#import "../../../src/article_en.typ": *
+
+#show: thmbox-init()
+
+#show: article_en.with(
   title: [ Analysis on Manifolds ],
   signature: [#align(center)[#image("../../../src/duck.png", width: 30%, fit: "contain")]],
   language: "en",
 )
+#set heading(numbering: "1.1")
+#outline(depth: 2)
 
-// #show: thmbox-init()
-// #let thm-counter = counter("thmbox")
-#outline(depth: 1)
-
-= Lecture 1
-#definition[]
-= Lecture 2
-= Lecture 3
-= Lecture 4
-= Lecture 5
-= Lecture 6 -- 28/04
+= Introduction
+== Conservative Fields and Locally Conservative Fields
 #definition[
-  Let $F: Omega arrow RR^d$ be a vector field. We say that $F$ is *locally conservative* in $Omega$ if $forall 1<=k, ell = d$,\
-  $partial_k F_ell = partial_ell F_k$ in $Omega$ (We showed $forall x in Omega, exists B_r (x) subset Omega$ s.t. $F$ is conservative)
+  Let $F: Omega arrow RR^d$ be a vector field. We say that $F$ is *locally conservative* in $Omega$ if $forall 1<=k, ell = d$,
+  $partial_k F_ell = partial_ell F_k$ in $Omega$ (We showed $forall x in Omega, space exists B_r (x) subset Omega space s.t. space F "is conservative"$)
 ]
 #definition[
-  A domain $Omega subset RR^d$ is *$C^k$-smooth* if for all $x in boundary(Omega)$ there exists a neighborhood $x in V$ and a \
-  $C^k$-differomorphism $phi: B_1 (0) arrow V$ such that $phi(B_1 (0) inter {x_d > 0}) = V inter Omega$ and we call $phi$ a rectifying map.
+  A domain $Omega subset RR^d$ is *$C^k$-smooth* if for all $x in boundary(Omega)$ there exists a neighborhood $x in V$ and a   $C^k$-differomorphism $phi$ with $phi: B_1 (0) arrow V$ such that $phi(B_1 (0) inter {x_d > 0}) = V inter Omega$ and we call $phi$ a rectifying map.
 ]
 #notation[
   $ integral_gamma arrow(F) dif arrow(ell) = integral_gamma F_1 dif x_1 + F_2 dif x_2 + dots.h + F_ell dif x_ell $
@@ -36,10 +32,9 @@
   $
     integral_gamma P dif x + Q dif y = integral (P(x(t), y(t))x'(t) + Q(x(t), y(t))y'(t)) dif t = integral chevron.l vec(P, Q) comma vec(x', y') dif t
   $
-
 ]
 #proof[
-  1st case: Suppose $supp(F) subset Omega$ (_Reminder:_ $supp(F) = closure({x in Omega bar F(x)!=0})$).\
+  #underline("1st case:") Suppose $supp(F) subset Omega$ (_Reminder:_ $supp(F) = closure({x in Omega bar F(x)!=0})$).\
   Since $F|_(boundary(Omega))=0$ we attain that
   $ integral_(boundary(Omega)) arrow(F) dif arrow(ell) = 0 $
   We want to show that $ integral_Omega (partial_x Q - partial_y P) dif x dif y = 0 $
@@ -49,8 +44,9 @@
     &= integral_(-M)^M integral_(-M)^M (partial_x Q) dif x dif y - integral_(-M)^M integral_(-M)^M (partial_y P) dif y dif x \
     &= integral_(-M)^M Q(M,y)-Q(-M, y) dif y + integral_(-M)^M P(x,M)-P(x,-M) dif x = 0
   $
-  Where the second equal is Fubini's Theorem and the third one is Fundamental Theorem of Calculus.\
-  2nd case: Assume $Omega = {(x,y) in RR^2 bar x^2+y^2 < 1, space y>0}$ and $supp(F) subset B_1 (0)$.\
+  Where the second equal is Fubini's Theorem and the third one is Fundamental Theorem of Calculus.
+  #colbreak()
+  #underline("2nd case:") Assume $Omega = {(x,y) in RR^2 bar x^2+y^2 < 1, space y>0}$ and $supp(F) subset B_1 (0)$.\
   First, we need to find a parametrization for our boundary: With $-1<=t<=1$ we have $gamma(t)=(t,0)$ with $gamma'(t)=(1,0)$ hence
   $
     integral_boundary(Omega) P dif x + Q dif y = integral_(-1)^1 P(t,0) dot.op 1 + Q(t,0) dot.op 0 dif t = integral_(-1)^1 P(t,0) dif t
@@ -65,20 +61,15 @@
     - integral partial_y P dif x dif y = - integral_((-1, 1) times (0,1)) partial_y P dif x dif y = - integral_(-1)^1 integral_0^1 partial_y P dif y dif x = - integral_(-1)^1 underbrace(P(x,1), =0)-P(x,0)) dif x = integral_(-1)^1 P(x,0) dif x
   $
   Using a change of variable we finish this case.\
-  #underline("3rd case:") Let $p in boundary(Omega)$, $V$ is a neighborhood of p and $phi: B_1 (0) arrow V$ is a rectifying map with $supp(F) subset V$ we pull our vector field back to the upper half circle and go back to the 2nd case: our parametrization is $gamma(t)=phi(t, 0), space phi(t, s)=(x(t,s), y(t,s))$
+  #underline("3rd case:") Let $p in boundary(Omega)$, $V$ is a neighborhood of p and $phi: B_1 (0) arrow V$ is a rectifying map with $supp(F) subset V$ we pull our vector field back to the upper half circle and go back to the 2nd case: our parametrization is $ gamma(t)=phi(t, 0), space phi(t, s)=(x(t,s), y(t,s)) $
+  Hence
   $
     integral_boundary(Omega) P dif x = integral_(boundary(Omega) inter V) P dif x = integral_(-1)^1 P(phi(t, 0)) (dif x)/(dif t) (t,0) dif t
   $
+  #end_of_lecture("3 – 28/04")
 ]
 
-#theorem[Bla][
-  $a^2 + b^2 = c^2$
-  #lorem(400)
-]<basic-box>
-// It can be referenced (see @basic-box).
-#exercise[My my... my!!!]
-#notation[What]
 #example[
-  Suppose that $F$ is locally conservative in $Omega subset.eq RR^2$ so $F=(P,Q)$ and $partial_y P = partial_x Q$ so from Green's theorem
+  Suppose that $F$ is locally conservative in $Omega subset.eq RR^2$ so $F=(P,Q)$ and $partial_y P = partial_x Q$ from Green's theorem
   $ integral_(boundary(Omega)) arrow(F) dif arrow(ell)=0 $
 ]
