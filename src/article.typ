@@ -102,13 +102,26 @@
     }
   }
 
-  // Set the text design to imitate my latex setup
+  // Set the text design, notice that in Hebrew we need to change font in two places.
   set text(
-    size: 10pt,
     lang: language,
+    size: 10pt,
     dir: if language == "he" { rtl } else { ltr },
+    // font: if language == "he" {
+    //   "David Libre"
+    // } else {
+    //   "Libertinus Serif" // Replace with your preferred English font
+    // },
     font: "Libertinus Serif",
   )
+
+  // To fix the bug where the letter א is being interpreted as aleph number.
+  show regex("\p{Hebrew}.+"): it => text(
+    dir: rtl,
+    // font: "David Libre",
+    font: "Libertinus Serif",
+    lang: "he",
+  )[#it] // Dark Magic: https://github.com/typst/typst/issues/3695
 
   // Size of cases
   set math.cases(gap: 1em)
@@ -121,7 +134,7 @@
     numbering: "1",
     paper: "a4",
     margin: (
-      x: 1.5cm,
+      x: 1cm,
     ),
   )
 
@@ -130,9 +143,8 @@
   }
 
   // Spacing after titles
-  show heading: set block(below: 1.2em)
+  show heading: set block(below: 1em)
 
-  // These will set the numbering to imitate latex as well
   // set heading(numbering: "1.1") // this line should be uncommented only on notes file!
   show heading.where(level: 3): it => [
     #block(it.body)
@@ -142,14 +154,6 @@
     it
   }
 
-  // show: thmrules.with(qed-symbol: $square$)
-
-  // To fix the bug where the letter א is being interpreted as aleph number.
-  show regex("\p{Hebrew}.+"): it => text(
-    dir: rtl,
-    font: "Libertinus Serif",
-    lang: "he",
-  )[#it] // Dark Magic: https://github.com/typst/typst/issues/3695
   set math.cases(gap: 1em)
 
   box(height: 60pt)
@@ -163,9 +167,7 @@
   show math.equation: it => {
     if it.fields().keys().contains("label") {
       math.equation(block: true, numbering: "(1)", number-align: left, it)
-      // Don't forget to change your numbering style in `numbering`
-      // to the one you actually want to use.
-      //
+      // Don't forget to change your numbering style in `numbering` to the one you actually want to use.
       // Note that you don't need to #set the numbering now.
     } else {
       it
@@ -192,7 +194,7 @@
 }
 
 // Colors
-#let deep-steel-blue = rgb("#2F4F6F")
+#let deep-steel-blue = rgb("#345c84")
 #let muted-rust = rgb("#7A3E2B")
 #let muted-olive = rgb("#556B2F")
 #let muted-pink = rgb("#c91753")
