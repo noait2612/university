@@ -138,23 +138,29 @@
 
 == Conservative Fields and Locally Conservative Fields
 #definition[Locally Conservative][
-  Let $F: Omega arrow RR^d$ be a vector field. We say that $F$ is *locally conservative* in $Omega$ if $forall 1<=k, ell = d$,
-  $partial_k F_ell = partial_ell F_k$ in $Omega$ (We showed $forall x in Omega, space exists B_r (x) subset Omega space s.t. space F "is conservative"$)
+  Let $F: Omega arrow RR^d$ be a vector field. We say that $F$ is *locally conservative* (meshamer mekomit) in $Omega$ if for every $k,ell = 1, dots.h, d$, $ partial_k F_ell = partial_ell F_k <==> (partial F_ell)/(partial k) = (partial F_k)/(partial ell) $
+  // (We showed $forall x in Omega, space exists B_r (x) subset Omega space s.t. space F "is conservative"$)
 ]
+
 #definition[$bold(C^k"-smooth")$][
-  A domain $Omega subset RR^d$ is *$C^k$-smooth* if for all $x in boundary(Omega)$ there exists a neighborhood $x in V$ and a   $C^k$-differomorphism $phi$ with $phi: B_1 (0) arrow V$ such that $phi(B_1 (0) inter {x_d > 0}) = V inter Omega$ and we call $phi$ a rectifying map. \
+  Domain $Omega subset RR^d$ is *$C^k$-smooth* if for all $x in boundary(Omega)$ there exists a neighborhood $x in V$ and a $C^k$-diffeomorphism $phi: B_1 (0) arrow V$ such that $phi(B_1 (0) inter {x_d > 0}) = V inter Omega$ and we call $phi$ a rectifying map. \
   Informal: $Omega$ is smooth if for all $p in boundary(Omega)$ there exists a neighborhood $p in V$ such that $V inter Omega$ looks like a half circle.
 ]
+
 #definition[Simply Connected][
   $X$ a topological space is *simply connected* if is path connected and any loop ($gamma: [0,1] arrow X$ with $gamma(0)=gamma(1)$) in $X$ can be continuously contracted a point (i.e., is homotopic to a constant loop, with no "holes").\
 ]
+
 #theorem[
   If $Omega$ is simply connected and $F$ is locally conservative in $Omega$ then $F$ is a conservative in $Omega$.
 ]
+
 #proof[In exercise 3.]
+
 #notation[
   $ integral_gamma arrow(F) dif arrow(ell) = integral_gamma F_1 dif x_1 + F_2 dif x_2 + dots.h + F_ell dif x_ell $
 ]
+
 #theorem[Green's Theorem][
   Let $Omega subset RR^2$ be a bounded smooth domain and Let $F=(P,Q)$ be a smooth vector field in a neighborhood of $boundary(Omega)$ and $boundary(Omega)$ be positively orienated (left leg rule) then
   $
@@ -165,18 +171,19 @@
     integral_gamma P dif x + Q dif y = integral (P(x(t), y(t))x'(t) + Q(x(t), y(t))y'(t)) dif t = integral chevron.l vec(P, Q) comma vec(x', y') chevron.r dif t
   $
 ]
-#proof[
-  #underline("1st case:") Suppose $supp(F) subset Omega$ (_Reminder:_ $supp(F) = closure({x in Omega bar F(x)!=0})$).\
-  Since $F|_(boundary(Omega))=0$ we attain that
-  $ integral_(boundary(Omega)) arrow(F) dif arrow(ell) = 0 $
-  We want to show that $ integral_Omega (partial_x Q - partial_y P) dif x dif y = 0 $
+
+#proof[\
+  #underline("1st case:") Suppose $supp(F) = closure({x in Omega bar F(x)!=0}) subset Omega$.\
+  Since $F|_(boundary(Omega))=0$ we attain that $integral_(boundary(Omega)) arrow(F) dif arrow(ell) = 0$ so we need to show that the integral on the right is also zero.\
+  // and we want to show that $ integral_Omega (partial_x Q - partial_y P) dif x dif y = 0 $
   Since $Omega$ is a bounded smooth domain there exists $M in RR_plus$ so $Omega subset [-M, M] times [-M, M]$ hence
   $
     integral_Omega (partial_x Q - partial_y P) dif x dif y &= integral_([-M, M] times [-M, M]) (partial_x Q - partial_y P) dif x dif y \
     &= integral_(-M)^M integral_(-M)^M partial_x Q dif x dif y - integral_(-M)^M integral_(-M)^M partial_y P dif y dif x \
     &= integral_(-M)^M Q(M,y)-Q(-M, y) dif y + integral_(-M)^M P(x,M)-P(x,-M) dif x = 0
   $
-  Where the second equal is Fubini's Theorem and the third one is Fundamental Theorem of Calculus.
+  Where the second equal is Fubini's Theorem and the third one is Fundamental Theorem of Calculus.\
+  #colbreak()
   #underline("2nd case:") Assume $Omega = {(x,y) in RR^2 bar x^2+y^2 < 1, space y>0}$ and $supp(F) subset B_1 (0)$.\
   First, we need to find a parametrization for our boundary: With $-1<=t<=1$ we have $gamma(t)=(t,0)$ with $gamma'(t)=(1,0)$ hence
   $
@@ -201,36 +208,40 @@
   $
   For the other side, we start by computing
   $
-    J_phi = det mat((partial x)/(partial t), (partial x)/(partial s); (partial y)/(partial t), (partial y)/(partial s)) = (partial x)/(partial t) dot.op (partial y)/(partial s) - (partial x)/(partial s)(partial y)/(partial t)
+    J_phi = det mat((partial x)/(partial t), (partial x)/(partial s); (partial y)/(partial t), (partial y)/(partial s)) = (partial x)/(partial t) (partial y)/(partial s) - (partial x)/(partial s)(partial y)/(partial t)
   $
   Since $F$ is smooth we use change of variable to get
   $
-    integral_(Omega) partial_x Q - partial_y P dif x dif y = integral_(Omega inter V) partial_x Q - partial_y P dif x dif y = integral_(arcfill) (partial_x Q compose phi - partial_y P compose phi) J_phi dif t dif s \
-    = integral_(arcfill) (partial_x Q compose phi -partial_y P compose phi) ((partial x)/(partial t) dot.op (partial y)/(partial s) - (partial x)/(partial s) -(partial y)/(partial t)) dif t dif s
-  $
-  Retwrite with $(1)$ Chain Rule and $(2)$ Leibniz Integral Rule as
-  $
-    = integral_(arcfill) ((partial_x Q compose phi) (partial x)/(partial t) + cancel((partial_y Q compose phi) (partial y)/(partial t))) (partial y)/(partial s) - ((partial_x Q compose phi) (partial x)/(partial s) + cancel((partial_y Q compose phi) (partial y)/(partial s))) (partial y)/(partial t)
+    integral_(Omega) partial_x Q - partial_y P dif x dif y &= integral_(Omega inter V) partial_x Q - partial_y P dif x dif y \
+    &= integral_(arcfill) (partial_x Q compose phi - partial_y P compose phi) J_phi dif t dif s \
+    &= integral_(arcfill) (partial_x Q compose phi -partial_y P compose phi) ((partial x)/(partial t) (partial y)/(partial s) - (partial x)/(partial s) (partial y)/(partial t)) dif t dif s \
+    &= integral_(arcfill) ((partial_x Q compose phi) (partial x)/(partial t) + cancel((partial_y Q compose phi) (partial y)/(partial t))) (partial y)/(partial s) - ((partial_x Q compose phi) (partial x)/(partial s) + cancel((partial_y Q compose phi) (partial y)/(partial s))) (partial y)/(partial t)
     \
-    + ((partial_x P compose phi) (partial x)/(partial t) + (partial_y P compose phi) (partial y)/(partial t)) (partial x)/(partial s) - ((partial_x P compose phi) (partial x)/(partial s) + (partial_y P compose phi) (partial y)/(partial s)) (partial x)/(partial t) \
-    =_((1))
+    &+ ((partial_x P compose phi) (partial x)/(partial t) + (partial_y P compose phi) (partial y)/(partial t)) (partial x)/(partial s) - ((partial_x P compose phi) (partial x)/(partial s) + (partial_y P compose phi) (partial y)/(partial s)) (partial x)/(partial t) \
+    &=_((1))
     integral_(arcfill) [(partial (Q compose phi))/(partial t) (partial y)/(partial s) - (partial (Q compose phi))/(partial s) (partial y)/(partial t) + (partial (P compose phi))/(partial t)(partial x)/(partial s) - (partial(P compose phi))/(partial s) (partial x)/(partial t)] dif t dif s \
-    =_((2)) integral_(arcfill) [partial/(partial t) ((Q compose phi) (partial y)/(partial s)) - partial/(partial s) ((Q compose phi) (partial y)/(partial t)) + partial/(partial t) ((P compose phi) (partial x)/(partial s)) - partial/(partial s) ((P compose phi) (partial x)/(partial t))] dif t dif s \
-    integral_arcfill [partial/(partial t) (underbrace((P compose phi) (partial x)/(partial s) + (Q compose phi)(partial y)/(partial s), tilde(Q)))-partial/(partial s) (underbrace((P compose phi)(partial x)/(partial t) + (Q compose phi) (partial y)/(partial t), tilde(P)))] dif t dif s
+    &=_((2)) integral_(arcfill) [partial/(partial t) ((Q compose phi) (partial y)/(partial s)) - partial/(partial s) ((Q compose phi) (partial y)/(partial t)) + partial/(partial t) ((P compose phi) (partial x)/(partial s)) - partial/(partial s) ((P compose phi) (partial x)/(partial t))] dif t dif s \
+    &= integral_arcfill [partial/(partial t) (underbrace((P compose phi) (partial x)/(partial s) + (Q compose phi)(partial y)/(partial s), tilde(Q)))-partial/(partial s) (underbrace((P compose phi)(partial x)/(partial t) + (Q compose phi) (partial y)/(partial t), tilde(P)))] dif t dif s
   $
-  If we take $arrow(G)(t,s) = (tilde(P), tilde(Q))$, the 2nd case gives us $ integral_(boundary(Omega)) tilde(P)dif t + tilde(Q) dif = integral_arcfill (partial tilde(Q))/(partial t) - (partial tilde(P))/(partial s) dif t dif s $
-  We have $gamma(t) = (t,0), dot(gamma)(t) = (1,0)$ $ integral tilde(P) dif t + tilde(Q) dif s = integral_(-1)^1 tilde(P) dif t = integral_(-1)^1 [(P compose phi) (partial y)/(partial t) (t,0) + (Q compose phi)(partial y)/(partial t) (t,0)] dif t = $
+  Where $(1)$ is Chain Rule and $(2)$ Leibniz Integral Rule (Notice the line break with the $plus$).\
+  #colbreak()
+  If we take $arrow(G)(t,s) = (tilde(P), tilde(Q))$ and since $gamma(t) = (t,0), dot(gamma)(t) = (1,0)$, the 2nd case gives us
+  $
+    integral_(boundary(Omega)) tilde(P)dif t + tilde(Q) dif = integral_arcfill (partial tilde(Q))/(partial t) - (partial tilde(P))/(partial s) dif t dif ==> integral tilde(P) dif t + tilde(Q) dif s = integral_(-1)^1 tilde(P) dif t = integral_(-1)^1 [(P compose phi) (partial y)/(partial t) (t,0) + (Q compose phi)(partial y)/(partial t) (t,0)] dif t s
+  $
   Which is indeed the left side.\
   In other words for the 3rd case: we pull our vector field back to the upper half circle and go back to the 2nd case.
 ]
+
 #remark[
-  In the exercises we will prove Green's Theorem in another domain.
+  Green Theorem works for other domains and for example in the exercise we will prove for rectangles.
 ]
 
 #example[
   Suppose that $F$ is locally conservative in $Omega subset.eq RR^2$ so $F=(P,Q)$ and $partial_y P = partial_x Q$ from Green's theorem
   $ integral_(boundary(Omega)) arrow(F) dif arrow(ell)=0 $
 ]
+
 #exercise[
   Let $p in boundary(Omega)$, $V$ a neighborhood of $p$ and $phi: B_1 (0) arrow V$ a rectifying map with $supp(F) subset.eq V$ ($phi(t, s) = (x(t,s), y(t,s))$).\
   If $J_p > 0$ then $phi(t, 0)$ is a parametrization of $boundary(Omega) inter V$ with positive orientation (since we never use reflection).

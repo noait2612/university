@@ -105,7 +105,8 @@
   // Set the text design, notice that in Hebrew we need to change font in two places.
   set text(
     lang: language,
-    size: 10pt,
+    size: if language == "he" { 9.5pt } else { 10pt },
+    // size: 10pt,
     dir: if language == "he" { rtl } else { ltr },
     // font: if language == "he" {
     //   "David Libre"
@@ -113,6 +114,12 @@
     //   "Libertinus Serif" // Replace with your preferred English font
     // },
     font: "Libertinus Serif",
+  )
+
+  set par(
+    leading: 0.6em, // Reduced from 0.8em to fit more lines per page
+    justify: true, // Essential for a "full" professional look
+    first-line-indent: 0pt,
   )
 
   // To fix the bug where the letter א is being interpreted as aleph number.
@@ -127,14 +134,19 @@
   set math.cases(gap: 1em)
 
   // Space between lines
-  set par(leading: 0.8em)
+  set par(leading: 0.7em)
 
   // Set page numbering
   set page(
     numbering: "1",
     paper: "a4",
+    // margin: (
+    //   x: 1cm,
+    // ),
     margin: (
-      x: 1cm,
+      top: 1.8cm,
+      bottom: 1.8cm,
+      x: 0.8cm, // Narrower margins for more content per line
     ),
   )
 
@@ -143,8 +155,8 @@
   }
 
   // Spacing after titles
-  show heading: set block(below: 1em)
-
+  // show heading: set block(below: 0.5em)
+  show heading: set block(above: 1.2em, below: 0.7em)
   // set heading(numbering: "1.1") // this line should be uncommented only on notes file!
   show heading.where(level: 3): it => [
     #block(it.body)
