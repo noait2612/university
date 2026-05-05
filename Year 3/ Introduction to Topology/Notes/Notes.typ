@@ -11,10 +11,6 @@
 #set heading(numbering: "1.1")
 #outline(depth: 2)
 
-#let trivialTopology(x) = $#x _italic("triv")$
-#let discrateTopology(x) = $#x _italic("disc")$
-#let cofiniteTopology(x) = $#x _italic("cofinite")$
-
 = מרחבים טופולוגיים
 == טופולוגיה
 #definition[טופולוגיה][
@@ -23,19 +19,24 @@
   + #underline("סגירות לאיחוד כלשהו:") אם ${U_alpha}_(alpha in I) subset.eq tau$ אז $union.big_(alpha in I) U_alpha in tau$
   + #underline("סגירות לחיתוך סופי:") אם ${U_i}_(i=1)^n subset.eq tau$ אז $inter.big_(i=1)^n U_i in tau$
 ]
+
 #remark[
   מספיק לדרוש שאם $U,V in tau$ יתקיים $U inter V in tau$.
 ]
+
 #example[
   + הטופולוגיה הטריוויאלית – $trivialTopology(tau) = {X, emptyset}$
   + הטופולוגיה הדיסקרטית – $discrateTopology(tau)=cal(P)(X)$
 ]
+
 #definition[מרחב טופולוגי][
   תהיי $X$ קבוצה ו־$tau$ טופולוגיה על $X$ נאמר שהזוג הסדור $(X,tau)$ הוא *מרחב טופולוגי* ונקרא לאיברי $tau$ קבוצות פתוחות.
 ]
+
 #definition[טופולוגיה חזקה וחלשה ביחס לאחרת][
   נניח ש־$tau, tau^prime$ טופולוגיות על $X$. אם $tau subset.eq tau^prime$ נאמר ש־$tau$ *גסה/חלשה* ביחס ל־$tau^prime$ וש־$tau^prime$ *חזקה יותר* מ־$tau$ או *מעדנת* את $tau$.
 ]
+
 == מרחבים מטריים
 #definition[מטריקה][
   מטריקה על קבוצה $X$ היא פונקציה $d:X times X arrow RR_plus$ המקיימת
@@ -44,15 +45,18 @@
   + אי־שיוויון המשולש – לכל $x,y,z in X$ מתקיים $d(x,y)<=d(x,z)+d(z,y)$
   לזוג הסדור $(X, d)$ נקרא מרחב מטרי.
 ]
+
 #definition[כדור פתוח במטריקה][
   הכדור הפתוח ביחס למטריקה $d$ מוגדר על־ידי $B_r (x) colon.eq {y in X bar d(x,y)<r}$.
 ]
+
 #proposition[טופולוגיה המושרית ממטריקה][
   יהי $(X,d)$ מרחב מטרי. הטופולוגיה המושרית $tau subset.eq cal(P)(X)$ נתונה על־ידי
   $
     tau colon.eq {union.big_(i in I) B_i (x_i) bar r_i > 0, space x_i in X} = {U subset.eq X bar forall y in U, space exists r>0, space B_r (y) subset.eq U}
   $
 ]
+
 #proof[
   נראה את השקילות מימין ונראה שזו אכן טופולוגיה.\
   #underline("שקילות:")
@@ -61,29 +65,38 @@
   מצד שני, אם $y in U in tau$ אז יש כדור $y in B_s (z) subset.eq U$ ולכן עבור $r=s-d(y,z) > 0$ ומתקיים $B_r (y) subset.eq U$ מאי־שיוויון המשולש.\
   #underline("טופולוגיה"):
   + $X, emptyset in tau$ שכן $X=union.big_(x in X) B_1 (x)$
-  + איחוד של איחודים הוא איחוד: אם ${U_alpha}_(alpha in I) subset.eq tau$ אז לכל $alpha in I$ מתקיים $display(U_alpha = union.big_(i in I_alpha) B_(r_(x_i)) (x_i))$ עבור אוסף $I_alpha$ כלומר $display(union.big_(alpha in I) U_alpha =union.big_(alpha in I) union.big_(i in I_alpha) B_(r_(x_i)) (x_i))$.
-  + יהי ${U_i}_(i=1)^n subset.eq U$ ונסמן $V = inter.big_(i=1)^n U_i$ ונרצה להראות ש־$V in tau$: מהשקילות נובע שלכל $y in V$ מתקיים $y in U_i$ לכל $i in [n]$ ולכן יש $r_i > 0$ שעבורו $B_(r_i) (y) subset.eq U_i$. נגדיר $r=min_(i in [n]) (r_i)$ ולכן $y in B_r (y) subset.eq B_(r_i) (y) subset.eq U_i$ ולכן $B_(r_i) subset.eq V$
+  + איחוד של איחודים הוא איחוד: אם ${U_alpha}_(alpha in I) subset.eq tau$ אז לכל $alpha in I$ מתקיים $U_alpha = union.big_(i in I_alpha) B_(r_(x_i)) (x_i)$ עבור אוסף $I_alpha$ כלומר $union.big_(alpha in I) U_alpha =union.big_(alpha in I) union.big_(i in I_alpha) B_(r_(x_i)) (x_i)$.
+  + יהי ${U_i}_(i=1)^n subset.eq U$ ונסמן $V = inter.big_(i=1)^n U_i$ ונראה ש־$V in tau$: מהשקילות נובע שלכל $y in V$ מתקיים $y in U_i$ לכל $i in [n]$ ולכן יש $r_i > 0$ שעבורו $B_(r_i) (y) subset.eq U_i$. נגדיר $r=min_(i in [n]) (r_i)$ ונקבל $y in B_r (y) subset.eq B_(r_i) (y) subset.eq U_i$ ולכן $B_(r_i) subset.eq V$
 ]
+
 #definition[שקילות מטריקות][
   שתי מטריקות $d, d^prime$ על $X$ נקראות שקולות אם קיימים $0<=c<=C$ עבורם לכל $x,y in X$ מתקיים
   $ c d(x,y)<= d^prime (x, y) <= C d(x,y) <==> 1/C d^prime (x,y) <= d(x,y) <= 1/c d^prime (x,y) $
   על כדורים נכתוב $B_r (y)$ הכדור הפתוח ביחס למטריקה $d$ ו־$B_r^prime (y)$ הכדור הפתוח ביחס למטריקה $d^prime$.
 ]
+
 #proposition[מטריקות שקולות משרות את אותה הטופולוגיה][
   מהגדרת השקילות לכל $y in X$ נקבל
   $B_r^prime (y) subset.eq B_(C r) (y), space B_r (y) subset.eq B_(c r)^prime (y)$ שכן
   $ d(x,y) < r ==> d^prime (x,y) = C d(x,y) < C r ==> B^prime_(C r) (y) $
-  תהיינה $tau, tau^prime$ הטופולוגיות המושרות מ־$d, d^prime$ בהתאמה. אם $U in tau$ אז מההגדרה השקולה ביחס ל־$d$ נקבל שעבור כל $y in U$ קיים $r>0$ כך שמתקיים $B_r (y) subset.eq U$ ולכן $B_(r/C)^prime (y) subset.eq B_r (y) subset.eq U$ וההגדרה השקולה מתקיימת גם ל-$d^prime$ ולכן $U in tau^prime$ והכיוון השני זהה עם היפוך תפקידים.
+  תהיינה $tau, tau^prime$ הטופולוגיות המושרות מ־$d, d^prime$ בהתאמה. \
+  אם $U in tau$ אז מההגדרה השקולה ביחס ל־$d$ נקבל שעבור כל $y in U$ קיים $r>0$ כך שמתקיים $B_r (y) subset.eq U$ ולכן $B_(r/C)^prime (y) subset.eq B_r (y) subset.eq U$ וההגדרה השקולה מתקיימת גם ל-$d^prime$ ולכן $U in tau^prime$ והכיוון השני זהה עם היפוך תפקידים.
 ]
+
 #remark[
   הכיוון השני לא נכון – שתי מטריקות יכולות להשרות את אותה הטופולוגיה אך לא להיות שקולות.\
   אם ניקח $X=RR$ עם המטריקה הסטנדרטית ו־$d^prime (x,y) = d(x,y)/((1+d(x,y)))$ הן כמובן אינן שקולות.
 ]
-#proposition[לא כל טופולוגיה מושרית ממטריקה.]
+
+#proposition[
+  לא כל טופולוגיה מושרית ממטריקה.
+]
+
 #proof[
   ניקח $X={a,b}$ עם $tau={emptyset, {a}, X}$ ובבירור זוהי טופולוגיה.\
   נניח שיש מטריקה $d$ על $X$ ונגדיר $t colon.eq d(a,b)>0$ אז $B_r (b) = {b} in.not tau$ ולכן ההגדרה השקולה לטופולוגיה המושרית ממטריקה לא מתקיימת.
 ]
+
 == הטופולוגיה הקו־סופית
 #definition[הטופולוגיה הקו־סופית][
   תהיי $X$ קבוצה אינסופית ונגדיר $ cofiniteTopology(tau) colon.eq {emptyset} union.big {U subset.eq X bar abs(X without U)<infinity } $
@@ -91,28 +104,79 @@
   יהיו ${V_i}_(i in I) subset.eq tau$ ונניח שלפחות $i in I$ אחד מקיים ש־$V_i !=emptyset$ (אחרת האיחוד הוא טריוויאלי הקבוצה הריקה) ולכן $(union.big_(i in I) V_i)^c = inter.big_(i in I) V_i^c subset.eq V_i^c$ והאחרון הוא סופי מהגדרת $tau$ ולכן $union.big_(i in I) V_i in tau$.\
   כעת, יהיו ${U_i}_(i=1)^n subset.eq tau$ ונסמן $V = inter.big_(i=1)^n U_i$. מכללי דה־מורגן נקבל $V^c=(inter.big_(i=1)^n U_i)^c = union.big_(i=1)^n U_i^c$ איחוד סופי של קבוצות סופיות אז $V in tau$.
 ]
+
 #remark[
   אם $X$ סופי אז $cofiniteTopology(tau)=discrateTopology(tau)$.
 ]
+
 == בסיס טופולוגי
 #definition[בסיס של טופולוגיה][
   תהיי $X$ קבוצה נקרא ל־$cal(B) subset.eq cal(P)(X)$ *בסיס* של $X$ אם היא מקיימת
   + $X subset.eq union.big_(V in cal(B)) V$ (קרי $cal(B)$ מכסה את $X$)
   + אם $U, V in cal(B)$ ו־$y in U inter V$ אז קיים $W in cal(B)$ המקיים $y in W subset.eq U inter V$
 ]
+
 #remark[
   אם $cal(B)$ מכסה את $X$ וסגור לחיתוכים סופיים אז היא בסיס.
 ]
+
 #example[
   נסתכל על כדורים פתוחים במרחב מטרי אז לכל $y in X$ מתקיים $y in B_1 (y)$ ולכן $X subset.eq union.big_(y in X) B_1 (y)$. נניח $V = B_t (w), U=B_s (z)$ עבור $w,z in X$ ונניח שקיים $y in U inter V$ אז אם נגדיר $r colon.eq min{s-d(y,z), t-d(y,w)}$ נקבל ש־$y in B_r (y) subset.eq U inter V$.
 ]
+
 #definition[טופולוגיה מושרית מבסיס][
   יהי $cal(B)$ בסיס של $X$. *הטופולוגיה המושרית* מ־$cal(B)$ היא אוסף תתי־הקבוצות של $X$ שהן איחוד של איברים מ־$cal(B)$.
 ]
-#remark[
-  זו אכן טופולוגיה: מהכיסוי נובע ש־$X, emptyset in tau$ וכפי שראינו איחוד של איחודים הוא איחוד אז נשאר להראות רק סגירות לחיתוכים סופיים: יהיו $U_1, U_2 in tau$ ונסמן $V=U_1 inter U_2$. לכל $y in V$ ו־$i in {1,2}$ ניקח $Z_i in cal(B)$ עבורו $y in Z_i subset.eq U_i$ ולכן $y in Z_1 inter Z_2$ ולכן קיים גם $W_y in cal(B)$ עם $y in W_y subset.eq Z_1 inter Z_2$ ולכן $V = union.big_(y in V) W_y in tau$
-]
+נסמן את הטופולוגיה המושרית מהבסיס $cal(B)$ ב־$tau_(cal(B))$ ונראה שזו אכן טופלוגיה.\
+מהגדרת הבסיס כיסוי נובע ש־$X, emptyset in tau_cal(B)$ וכפי שראינו איחוד של איחודים הוא איחוד אז נשאר להראות רק סגירות לחיתוכים סופיים:\
+יהיו $U_1, U_2 in cal(B)$ ונראה ש־$V = U_1 inter U_2 in tau_cal(B)$, אז יהי $x in V$.\
+מאחר ש־$U_1$ היא איחוד של איברים מ־$cal(B)$ אז קיים $Z_1 in cal(B)$ כך ש־$x in Z_1 subset.eq U_1$.  באופן דומה, קיים $Z_2 in cal(B)$ עבורו $x in Z_2 subset.eq U_2$ ולכן $x in Z_1 inter Z_2$  ולכן מהגדרת הבסיס קיים $W_x in cal(B)$ כך ש־$x in W_x subset.eq Z_1 inter Z_2$ ובפרט $x in W_x subset.eq V$.
+
 #end_of_lecture("1 – 23/03")
+
+#example[
+  + יהי $(X,d)$ מרחב מטרי אינסופי, נגדיר $cal(B)= {B_(1/n) (x) bar x in X, n in NN}$ והוא מהווה בסיס על $X$ והוא משרה את הטופולוגיה של המרחב המטרי (כלומר הטופולוגיה המושרית מהמטריקה $d$)
+  + אם $X=RR$ נוכל להגדיר שני בסיסים
+    + $cal(B) = {(a,b) bar a<b}$ זהו אוסף הכדורים (קטעים) הפתוחים ביחס למטריקה הסטנדרטית על
+    + $cal(B)^prime = {[a,b) bar a<b}$
+    האם $cal(B)=cal(B)^prime$? האם טופולוגיה אחת חלשה מהאחרת?\
+    אז $cal(B)$ חלשה ממש מ־$cal(B)^prime$ כלומר $cal(B) subset.neq cal(B)^prime$.\
+    שכן, האיברים של $cal(B)^prime$ אינם פתוחים ביחס למטריקה הרגילה על $RR$ (כי אין קטע פתוח מסביב ל־$a$ המוכל ב־$[a,b)$) ולכן $cal(B)^prime subset.eq.not cal(B)$.\
+    מצד שני, איברי $cal(B)$ שייכים ל־$cal(B)^prime$ שכן לכל קטע פתוח $(a,b) in cal(B)$ מתקיים
+    $ (a,b) = union.big_(a^prime in (a,b)) [a^prime, b) in cal(B)^prime $
+    מסגירות $cal(B)^prime$ לאיחוד נובע ש־$cal(B) subset.eq cal(B)^prime$.
+]
+
+#lemma[
+  יהי $(X,tau)$ מרחב טופולוגי ו־$B subset.eq tau$ ונניח כי לכל $U in tau$ ולכל $x in U$ קיים $H in B$ כך ש־$x in H subset.eq U$.\
+  אז $B$ הוא בסיס והוא משרה את $tau$.
+]
+
+#proof[
+  נוודא ש־$B$ הוא אכן בסיס: מהיות $X in tau$ מההנחה נובע שלכל $x in X$ קיים $H in B$ כך ש־$x in H$ וזה בידיוק אומר ש־$B$ הוא כיסוי של $X$.\
+  יהיו $V,W in B$ ויהי $x in V inter W$. מסגירות לחיתוך סופי נובע ש־$V inter W in tau$ ולכן מההנחה קיים $H in B$ כך ש־$x in H subset.eq V inter W$.\
+  אז $B$ הוא אכן בסיס.\
+  תהיי $tau^prime$ הטופולוגיה המושרית מ־$B$ ונראה ש־$tau^prime=tau$ על־ידי הכלה דו־כיוונית.\
+  $(subset.eq)$ נובע ישירות מכך ש־$B subset.eq tau$ ולכן $tau^prime subset.eq tau$.\
+  $(supset.eq)$ יהי $U in T$ ומההנחה קיים $x in U$ ו־$H_x in B$ כך ש־$x in H_x subset.eq U$ אז $U = union.big_(x in U) H_x in tau^prime$.
+]
+
+#definition[תת־בסיס][
+  נגדיר את *תת־הבסיס* על $X$ להיות $C subset.eq cal(P)(X)$ המכסה את $X$ ואת *הבסיס המושרה מ־$C$* נגדיר להיות אוסף החיתוכים הסופיים של איברים ב־$C$ (לא כולל חיתוך ריק).
+]
+נסמן ב־$cal(C)$ את הבסיס המושרה מ־$C$ ונראה שהוא אכן בסיס.\
+מכך ש־$cal(C)$ מכיל את $C$ הוא בבירור מכסה את $X$ ואם $U, V in cal(C)$ ו־$x in U inter V$ אז אם ניקח $W = U inter V$ נסיים כי $U,V$ הם חיתוכים סופיים של איברים ב־$C$ ולכן גם $U inter V$ הוא חיתוך סופי של איברים ב־$C$ אז $x in W subset.eq U inter V$.
+
+
+#example[
+  תהיי $X$ קבוצה ונסתכל על התת־בסיס $C={X}$. אז הבסיס המושרה מ־$C$ הוא $cal(C)={X}$ והטופולוגיה המושרית מ־$cal(C)$ היא $tau = {emptyset, X}$.
+]
+
+#definition[הטופולוגיה המושרית מתת־קבוצה]
+#todo
+#lemma[#todo]
+
+#end_of_lecture("2 – 24/03")
 == מרחבים טופולוגיים מיוחדים
 == סגירות במרחב טופולוגי
 == רציפות במרחב טופולוגי
@@ -190,7 +254,8 @@ $
   + $(-1, 1) tilde.equiv RR$ כי $x mapsto tan((x pi)/2)$ פונקציה חד־חד ערכית ועל עם הופכית $y mapsto (2 arctan(y))/pi$
   + אם נסתכל על $RR^2$ ו־$S^2 = {(x,y,z) in RR^3 bar x^2+y^2+z^2=1, space N=(0,0,1)}$ אז אם נסתכל על $S^2 without {N} tilde.equiv RR^2$ כי $ (x,y,z) mapsto (x/(1 z), y/(1-z)) wide (u,v) mapsto ((2u)/(u^2+v^2+1), (2v)/(u^2+v^2+1), (u^2+v^2-1)/(u^2+v^2+1)) $
     נשים לב שאם ניקח $t mapsto^f (cos(t), sin(t))$ ב־$[0, 2pi)$ אז היא חד־חד ערכית ועל ורציפה אבל $f^(-1)$ לא רציפה ולכן $f$ לא הומיאומורפיזם (זה בגלל הנקודות $0, 2pi$).\
-    נסתכל על $[0, epsilon) subset.eq [0, 2pi)$ שהוא קטע פתוח ב־$RR$, אז אם $f^(-1)=g$ רציפה אזי $g^(-1)([0,epsilon)) subset.eq S^2$ פתוחה אבל בגלל שהטופולוגיה שלנו מושרית מהטופולוגיה על $RR^2$ כלומר כדורים פתוחים אז כדי להגיד שהקטע הזה פתוח זה אומר שהוא חייב להכיל איזשהו סביבה בסיסית של הנקודה בקצה בקטע וזה חיתוך של כדור ב־$RR^2$ עם $S^2$ ולכן הוא תמיד מכיל עוד נקודות בסביבה אז זו לא יכולה להיות סביבה פתוחה.
+    נסתכל על $[0, epsilon) subset.eq [0, 2pi)$ שהוא קטע פתוח ב־$RR$, אז אם $f^(-1)=g$ רציפה אזי $g^(-1)([0,epsilon)) subset.eq S^2$ פתוחה אבל בגלל שהטופולוגיה שלנו מושרית מהטופולוגיה על $RR^2$ כלומר כדורים פתוחים אז כדי להגיד שהקטע הזה פתוח זה אומר שהוא חייב להכיל איזשהו סביבה בסיסית של הנקודה בקצה בקטע וזה חיתוך של כדור\
+    ב־$RR^2$ עם $S^2$ ולכן הוא תמיד מכיל עוד נקודות בסביבה אז זו לא יכולה להיות סביבה פתוחה.
 ]
 
 #definition("ניתנות להפרדה")[
@@ -264,7 +329,8 @@ $
   עבור $A,B subset.eq X$ סגורות זרות נרצה הפרדה. לכל $x in X$ ו־$D subset.eq X$ נגדיר $d(x,D) = inf_(y in D) d(x,y)>=0$ כי אם $x in D$ זה יהיה אפס אבל זה (כמובן יכול להיות אפס גם בלי זה מהגדרת $inf$).\
   אם $A$ סגורה אזי לכל $x in.not A$, $d(x,A)>A$ כי $x in A^c subset.eq X$ פתוחה ולכן יש $epsilon > 0$ עם $B_epsilon (x) subset.eq A^c$ ואז $d(x,A)>=epsilon>0$.\
   נגדיר $ A subset.eq U = union.big_(x in A) B_(d(x,B)/3) (x) wide B subset.eq V=union.big_(y in B) B_(d(y,A)/3) (x) $ והן פתוחות ב־$X$ כאיחוד של קבוצות פתוחות.\
-  נצטרך להראות שהן זרות אחת לשנייה: אם לא, יש $z in U inter V$ ולכן יש $x in A$ כך ש־$z in B_(d(x,B)/3) (x)$ וגם $y in B$ כך ש־$z in B_(d(y,A)/3) (y)$ ולכן $z in B_(d(x,B)/3) (x) inter B_(d(y, A)/3) (y)$.\
+  נצטרך להראות שהן זרות אחת לשנייה: אחרת, יש $z in U inter V$ כלומר $x in A$ כך ש־$z in B_(d(x,B)/3) (x)$ וגם $y in B$ כך ש־$z in B_(d(y,A)/3) (y)$ ולכן \
+  $z in B_(d(x,B)/3) (x) inter B_(d(y, A)/3) (y)$.\
   אז
   $ d(x,y) <= d(x,z)+d(y,z) < d(x,B)/3 + d(y,A)/3 $
   ומהגדרת האינפימום $d(x,y) >= d(x,B), d(y,A)$.\
@@ -272,5 +338,3 @@ $
   אלו מספרים חיוביים ולכן זאת כמובן סתירה ולכן $U inter V = emptyset$ והן מפרידות.
 ]
 #end_of_lecture("7 – 28/04")
-בלה..! קטן יותר!
-עם שוליים!

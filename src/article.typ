@@ -331,3 +331,9 @@
 
 // Mainfolds
 #let Mesh = math.op("Mash")
+
+// Topology
+#let trivialTopology(x) = $#x _italic("triv")$
+#let discrateTopology(x) = $#x _italic("disc")$
+#let cofiniteTopology(x) = $#x _italic("cofinite")$
+#let ordTopology(x) = $#x _italic("ord")$
