@@ -334,6 +334,8 @@
 
 // Topology
 #let trivialTopology(x) = $#x _italic("triv")$
+#let prodTopology(x) = $#x _italic("prod")$
+#let boxTopology(x) = $#x _italic("box")$
 #let discrateTopology(x) = $#x _italic("disc")$
 #let cofiniteTopology(x) = $#x _italic("cofinite")$
 #let ordTopology(x) = $#x _italic("ord")$
