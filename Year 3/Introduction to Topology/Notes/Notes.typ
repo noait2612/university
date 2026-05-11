@@ -238,6 +238,7 @@ $
 #end_of_lecture("5 – 20/04")
 
 = הפרדה
+== אקסיומות ההפרדה
 #definition[הומיאומורפיזם][
   יהיו $X,Y$ מרחבים טופולוגיים. $f: X arrow Y$ נקראת *הומיאומורפיזם* אם היא רציפה, חד־חד ערכית ועל וגם $f^(-1) : Y arrow X$ רציפה.
 ]
@@ -338,3 +339,153 @@ $
   אלו מספרים חיוביים ולכן זאת כמובן סתירה ולכן $U inter V = emptyset$ והן מפרידות.
 ]
 #end_of_lecture("7 – 28/04")
+אקסיומות ההפרדה ‐ דוגמאות נוספות
+
+== הלמה של אוריסון
+#theorem[הלמה של אוריסון][
+  יהי $X$ מרחב טופולוגי נורמלי ויהיו $C,D subset.eq X$ סגורות זרות. אז קיימת $f:X arrow [0,1]$ רציפה כך ש־$f|_D = 1, f|_C = 0$.
+]
+#proof[
+  נרצה להשתמש בתכונה השקולה לנורמליות: $X$ נורמלי אם ורק אם לכל $U subset.eq X$ פתוחה ו־$A subset.eq X$ סגורה כך ש־$A subset.eq U$ יש קבוצה פתוחה $W subset.eq X$ וקבוצה סגורה $Z subset.eq X$ כך ש־$A subset.eq W subset.eq Z subset.eq U$ (בעבר ניסחנו את זה עם $Z=closure(W)$ אבל הניסוח הזה שקול).\
+  מעכשיו, קבוצות המסומנות ב־$V_i$ תהיינה פתוחות ב־$X$ ו־$C_i$ תהיינה סגורות ב־$X$.
+]
+#end_of_lecture("8 – 04/05")
+#end_of_lecture("9 – 05/05")
+
+== אקסיומת המנייה
+== משפט המטריזציה של אוריסון
+#definition[מרחב מטריזבילי][
+  מרחב טופולוגי $X$ נקרא *מטריזבילי* אם קיימת מטריקה על $X$ שמשרה את הטופולוגיה הנתונה.
+]
+#remark[
+  אם $X$ מרחב טופולוגי מטריזבילי אז גם כל תת־מרחב מושרה שלו הוא גם מטריזבילי.
+]
+#remark[
+  כל מרחב מטריזבילי הוא $T_6$ כי לכל $C!=emptyset$ סגורה הפונקציה $x mapsto min(1, d(x,C))$ היא רציפה ומקבלת $0$ בידיוק כאשר $x in C$.
+]
+#lemma[
+  אם $X$ רגולרי ומקיים את אקסיומת המנייה השנייה אז הוא נורמלי.
+]
+#proof[
+  יהי $cal(B)$ בסיס בן־מנייה ל־$X$ ותהיינה $C,D subset.eq X$ סגורות זרות.\
+  לכל $x in C$ יש קבוצה בסיסית $U_x in cal(B)$ כך ש־$x in U_x subset.eq D^c$ ומרגולריות יש $W_x in cal(B)$ כך שמתקיים $x in W_x subset.eq closure(W_x) subset.eq U_x$.\
+  הקבוצה ${W_x}_(x in X) subset.eq cal(B)$ בת־מנייה ולכן יש נקודות ${x_n}_(n=1)^infinity$ כך ש־${W_x}_(x in X) = {W_(x_n)}_(n=1)^infinity$.\
+  באופן דומה נוכל לבחור ${V_(y_n)}_(n=1)^infinity subset.eq cal(B)$ כך שלכל $y in D$ יש $n$ עבורו $y in V_(y_n) subset.eq closure(V_(y_n)) subset.eq C^c$.\
+  מתקיים אם כך
+  $ C subset.eq union.big_(n=1)^infinity W_(x_n) wide D subset.eq union.big_(n=1)^infinity V_(y_n) $
+  וכן
+  $ union.big_(n=1)^infinity closure(W_(x_n)) inter D = emptyset = union.big_(n=1)^infinity closure(V_(y_n)) inter C $
+  לכל $k in NN$ נגדיר
+  $
+    S_k = W_(x_k) without union.big_(n=1)^k closure(V_(y_n)) subset.eq W_(x_k) \
+    T_ell = V_(y_ell) without union.big_(n=1)^ell closure(W_(x_n)) subset.eq V_(y_ell)
+  $
+  אלו קבוצות פתוחות כי הן מתקבלות מהפרש של קבוצה סגורה מקבוצה פתוחה ולכן גם $U = union.big_(k=1)^infinity S_k, space V = union.big_(ell=1)^infinity T_ell$ פתוחות.\
+  מהיות $C subset.eq union.big_(n in NN) W_(x_n)$ וזרה ל־$union.big_(n in NN) closure(V_(y_n))$ מתקיים $C subset.eq U$ ובאופן דומה גם $D subset.eq V$.\
+  אילו $U,V$ לא היו זרות בפרט היו קיימים בלי הגבלת הכלליות $k<=ell in NN$ כך ש־$S_k, T_ell$ לא זרות אבל $S_k subset.eq W_(x_k) subset.eq closure(W_(x_k))$ ומהגדרת $T_ell$ הוא זר ל־$closure(W_(x_k))$, בסתירה.
+]
+
+#theorem[
+  יהי $X$ מרחב טופולוגי המקיים את $T_4$ ואת אקסיומת המנייה השנייה.\
+  אז $X$ ניתן לשיכון בתוך $[0,1]^p$ עם טופולוגיית המכפלה כאשר $P$ היא קבוצה בת־מנייה.\
+  ניתן לשיכון קרי קיימת $F:X arrow [0,1]^P$ שהיא הומיאומורפיזם מ־$X$ ל־$F(X)$.
+]
+
+#proof[]
+#theorem[משפט המטרזביליות של אוריסון][
+
+]
+
+= קשירות
+== מבוא
+#definition[מרחב קשיר][
+  מרחב טופולוגי $X$ נקרא קשיר אם *לא* ניתן לכתוב $X= U union V$ עם $U,V$ פתוחות, זרות ולא ריקות.\
+  תת־קבוצה $Y subset.eq X$ נקראת קשירה אם היא מהווה תת־מרחב קשיר בטופולוגיה המושרית.
+]
+
+#example[מרחבים לא קשירים][
+  + כל מרחב מהצורה $[a,b] union [c,d]$ לכל $a<b<c<d in RR$ הוא לא קשיר ב־$RR$ (זה נכון גם לקטעים פתוחים)
+  + $QQ$ בטופולוגיה הסטנדרטית אינו קשיר ב־$RR$ כי $QQ=(-infinity, sqrt(2)) union (sqrt(2), infinity)$
+  + מרחב המטריצות ההפיכות $GL_n (RR)$ בטופולוגיה המושרית מ־$RR^(n^2)$ אינו קשיר (כי ניתן להציג אותו כאיחוד זר של אוסף המטריצות המקיימות $det < 0$ ואוסף המטריצות המקיימות $det > 0$ ואלו קבוצות פתוחות בטופולוגיה הסטנדרטית על $GL_n (RR)$ כי פונקציית הדטרמיננטה היא פולינומאלית ולכן רציפה ומכן שהתמונה ההפוכה של הפתוחות $RR_(<=0)$ ו־$RR_(>=0)$ תחת $det$ פתוחה גם היא)
+]
+
+#remark[
+  באופן שקול ניתן להגדיר מרחב טופולוגי $X$ כקשיר אם לא קיימת הצגה מהצורה $X=C union D$ עבור $C,D$ סגורות, זרות ולא ריקות.\
+  #todo תסבירי... ההסבר של שאול לא ברור
+  קל לראות ש־$X$ לא קשיר אם ורק אם $X=A union B$ סגורות, זרות ולא ריקות אם ורק אם קיימת $F:X arrow {0,1}$ בטופולוגיה הדיסקרטית רציפה ולא קבועה ולא ריקה.\
+  $X=f^(-1)({0}) union f^(-1)({1})$ לחילופין אם $X = U union V$ אז $U mapsto 0, v mapsto 1$
+]
+#lemma[
+  אם $X = U union V$ ו־$y subset.eq X$ קשירה אז $Y subset.eq U$ או $Y subset.eq V$.
+]
+
+#proof[
+  מכך ש־$Y subset.eq = U union V$ אזי $Y = (Y inter U) union (Y inter V)$ כשהאיחוד הוא איחוד של פתוחות וזרות ולכן אחת מהן ריקה.
+]
+
+#lemma[
+  אם $X$ קשיר ו־$F:X arrow Y$ רציפה ועל אז גם $Y$ קשיר (במילים אחרות – תמונה של מרחב קשיר היא קשירה).
+]<image-of-connected-domain-over-continuous-function-is-connected>
+
+#proof[
+  נניח שלא, ולכן $Y = U union V$ פתוחות, זרות ולא ריקות ואז $X=f^(-1)(U) union f^(-1)(V)$ פתוחות וזרות (כי $f$ רציפה) ולא ריקות (כי $f$ על) וזאת סתירה.
+]
+
+#corollary[
+  אם $f:X arrow Y$ רציפה ו־$A subset.eq X$ קשירה אזי $f(A) subset.eq Y$ קשירה.
+]
+#proof[
+  כי $f|_A : A arrow f(A)$ היא רציפה ועל ומהלמה הקודמת המסקנה נובעת.
+]
+
+#definition[קטע][
+  קבוצה $I subset.eq RR$ היא קטע אם ורק אם לכל $a < b in I$ ו־$a<c<b$ גם $c in I$.
+]
+
+#proposition[
+  $A subset.eq RR$ קשירה אם ורק אם $A$ היא קטע.
+]
+
+#proof[
+  $<==$ נניח ש־$A$ קשירה ונראה שזה קטע.\
+  אם $A$ לא קטע אזי יש $a<b in A$ ו־$a<c<b$ עם $c in.not A$ ואז $A = [A inter (-infinity, c)] union [A inter (c, infinity)]$ שהן פתוחות, זרות ולא ריקות כי $a in A inter (-infinity, c)$ וגם \
+  $b in A inter (c, infinity)$ כלומר $A$ לא קשירה וזאת סתירה.\
+  $==>$ נניח ש־$A$ קטע ונראה שהיא קשירה.\
+  נניח ראשית ש־$A=[a,b]$ אזי אם $A = U union V$ עבור $U,V$ פתוחות זרות ו־$a in U$ ונראה ש־$V=emptyset$.\
+  נגדיר $ S colon.eq {a<=x<=b bar [a,x] subset.eq U} \
+  m = a<= sup S <= b $
+  מתקיים $a<m$ כי אם לא אז $U={a}$ בסתירה לפתיחותה.\
+  כמו־כן, $m in.not U$ כי אם $m in U$ כדי לשמור על $U$ פתוחה בהכרח $m=b$ ואז $V=emptyset$ בסתירה לקשירות ולכן בהכרח $m in V$.\
+  אבל מהגדרת $m$ נובע שבכל סביבה של $m in V$ קיים משמאל איבר שאינו ב־$V$ בסתירה לפתיחות $V$ ולכן בהכרח קטע מהצורה $[a,b]$ הוא קשיר.\
+  עבור $A$ קטע כללי אם בשלילה $A= U union V$ פתוחות, זרות ולא ריקות אז נבחר בלי הגבלת הכלליות $U in.rev a < b in V$ אבל אז $[a,b] = (U inter [a,b]) union (V inter [a,b])$.
+]
+
+#theorem[משפט ערך הביניים][
+  אם $X$ קשירה ו־$f:X arrow RR$ רציפה אזי לכל $x,y in X$ כך ש־$f(x)<f(y)$  ולכל $f(x) < t < f(y)$ יש $z in X$ כך ש־$f(z)=t$.
+]
+
+#proof[
+  במילים אחרות תמונה של פונקציה רציפה על תחום קשיר היא קטע וב־$RR$ קבוצה קשירה היא מילה נרדפת לקטע.
+]
+
+#lemma[
+  + אם $A subset.eq X$ קשירה אז $closure(A) subset.eq X$ קשירה
+  + אם ${Y_alpha}_(alpha in I) subset.eq X$ אוסף של קבוצות קשירות ויש $beta$ עם $Y_beta inter Y_alpha != emptyset$ לכל $alpha$ אז $union.big_(alpha in I) Y_alpha$ קשירה
+  + $X_alpha$ קשיר לכל $alpha$ אם ורק אם $product Y_alpha$ קשירה (בטופולוגיית המכפלה ולא טופולוגיית הקופסה)
+]
+#proof[
+  במהלך ההוכחה נשתמש בכך שאם $X$ מרחב קשיר אז כל פונקציה רציפה $X arrow {0,1}$ היא קבועה.\
+  + ניקח $f: closure(A) arrow {0,1}$ רציפה אזי $f|_A : A arrow (0,1)$ היא פונקציה רציפה ובלי הגבלת הכלליות $f|_A eq.triple 0$\
+    אזי $f^(-1)(0) subset.eq closure(A)$ סגורה (תמונה של סגורה) וכוללת את $A$ ולכן זה $closure(A)$ ו־$f$ קבועה.
+  + תהיי $g: union.big_(alpha in I) U_alpha arrow {0,1}$ רציפה ובלי הגבת־הכלליות $g|_(Y_alpha) eq.triple 0$ לכל $alpha in I$  ולכן $g|_(Y_alpha) : Y_alpha arrow {0,1}$ קבועה אבל לכל $Y_alpha inter Y_beta != emptyset$ מקבלת $0$ ולכן היא אפסה על הכל ו־$g eq.triple 0$ וקבועה
+  + $==>$ נובע ישירות מ@image-of-connected-domain-over-continuous-function-is-connected עם $pi_alpha : product X_alpha arrow X_alpha$ רציפה ועל.\
+    $<==$ צריך להראות בשלבים.\
+    נניח ש־$X,Y!=emptyset$ קשירות ונראה שגם $X times Y$ קשיר.\
+    נכתוב את $X times Y$ בתור $({x} times Y) union.big_(z in Y) X times {z}$ ו־${x} times Y tilde.equiv Y$ קשירה ו־$X times {z} tilde.equiv X$ קשירה ומ־$(2)$ האיחוד הוא קשיר.\
+    באינדוקציה על $n$, $product_(i=1)^n Y_i$ קשירה שהכופלים קשירים.\
+    עבור מכפלה כללית $P = product_(alpha in I) X_alpha$ ניקח $y = (y_alpha)_(alpha in I) in P$ מאקסיומת הבחירה.\
+    לכל $J subset.eq I$ סופית נגדיר $X_J = product_(alpha in J) X_alpha times product_(alpha in I) {y_alpha} subset.eq P$ קשיר כי מכפלה סופית וכולם נחתכים ב־$y$ ולכן $union.big_J X_J subset.eq P$ קשירה
+]
+
+
+#end_of_lecture("10 – 11/05")
