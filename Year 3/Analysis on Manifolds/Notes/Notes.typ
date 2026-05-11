@@ -212,7 +212,7 @@
   ]
 ]
 
-Notice that the above and @greens-theorem and it's proof were spread over lectures 6,7,8 and each definition / exercise was in the matching lecture for the part of the proof we used it.
+Notice that the above, @greens-theorem and it's proof were spread over lectures 6,7,8 and each definition / exercise was in the matching lecture for the part of the proof we used it.
 
 #theorem[Green's Theorem][
   Let $Omega subset RR^2$ be a bounded smooth domain and Let $F=(P,Q)$ be a smooth vector field in a neighborhood of $boundary(Omega)$ and $boundary(Omega)$ be positively orienated (left leg rule) then
@@ -225,7 +225,17 @@ Notice that the above and @greens-theorem and it's proof were spread over lectur
   $
 ]<greens-theorem>
 
-#proof[\
+#remark[
+  Green Theorem works for other domains and for example in the exercise we will prove for rectangles.
+]
+
+#example[
+  Suppose that $F$ is locally conservative in $Omega subset.eq RR^2$ so $F=(P,Q)$ and $partial_y P = partial_x Q$ from Green's theorem
+  $ integral_(boundary(Omega)) arrow(F) dif arrow(ell)=0 $
+]
+
+
+#proof[@greens-theorem][\
   #underline("1st case:") Suppose $supp(F) = closure({x in Omega bar F(x)!=0}) subset Omega$.\
   Since $F|_(boundary(Omega))=0$ we attain that $integral_(boundary(Omega)) arrow(F) dif arrow(ell) = 0$ so we need to show that the integral on the right is also zero.\
   // and we want to show that $ integral_Omega (partial_x Q - partial_y P) dif x dif y = 0 $
@@ -283,13 +293,13 @@ Notice that the above and @greens-theorem and it's proof were spread over lectur
   Which is indeed the left side.\
   In other words for the 3rd case: we pull our vector field back to the upper half circle and go back to the 2nd case.\
   #end_of_lecture("7 – 30/04")
-
   #underline("4rd case:") For all $p in boundary(Omega)$ there exists a neighborhood $V_p$ and a rectifying map $phi_p : B_1 (0) arrow V_p$.\
   Since $boundary(Omega) subset union.big_(p in boundary(Omega)) V_p$ and since $boundary(Omega)$ is compact then there exists a finite open subcover $boundary(Omega) subset V_(P_1) union dots.h.c union V_(p_m)$.
   Let $V_0 = Omega$ and $closure(Omega) subset V_0 union V_(p_1) union dots.h union V_(p_m)$ and for simplicity of notations let us write $v_j = v_(gamma_j)$.\
   There exists a partition of unity on $closure(Omega)$ subordinate to ${V_j}_(j=0)^m$.\
   Define $arrow(F_j) colon.eq psi_j dot.op arrow(F)$ and $supp(arrow(F_j)) subset V_j$ and we have $ sum_(j=1)^m arrow(F_j) = sum_(j=1)^m (psi_j dot.op arrow(F)) =(sum_(j=1)^m psi_j) dot.op arrow(F) =_("on " closure(Omega)) 1 dot.op arrow(F) = arrow(F) $
-  From the 1st case if we set $arrow(F_j)=(P_j, Q_j)$ we since $supp(arrow(F_0)) subset.eq Omega)$ that
+  #colbreak()
+  From the 1st case if we set $arrow(F_j)=(P_j, Q_j)$ since $supp(arrow(F_0)) subset.eq Omega)$ we have that
   $ integral_boundary(Omega) arrow(F_0) dif arrow(ell) = integral_gamma partial_X Q_0 - partial_y P_0 dif x dif y $
   By the 3rd case we know that for each $1<=j<=m$ we have
   $ integral_boundary(Omega) arrow(F_j) dif arrow(ell) = integral_gamma partial_x Q_j - partial_y P_j dif x dif y $
@@ -299,11 +309,50 @@ Notice that the above and @greens-theorem and it's proof were spread over lectur
   $
 ]
 
-#remark[
-  Green Theorem works for other domains and for example in the exercise we will prove for rectangles.
-]
+#proof[the existence of partition of unity][Will be added.]
 
-#example[
-  Suppose that $F$ is locally conservative in $Omega subset.eq RR^2$ so $F=(P,Q)$ and $partial_y P = partial_x Q$ from Green's theorem
-  $ integral_(boundary(Omega)) arrow(F) dif arrow(ell)=0 $
+= Smooth Mainfolds in $RR^d$
+#grid(
+  columns: (1fr, auto),
+  gutter: 1cm,
+  [
+    We start with a warning: do not confuse a smooth curve with a smooth parametrization.\
+    For example, take $gamma(t)=(t^2,t^3)$ with $-infinity<t<infinity$.\
+    This is a smooth parametrization curve but not a smooth curve since $dot(gamma)(0)=(0,0).$
+  ],
+
+  [#canvas(length: 0.5cm, {
+    import draw: *
+
+    // Axes
+    line((-0.5, 0), (3, 0), mark: (end: ">"))
+    line((0, -4), (0, 4), mark: (end: ">"))
+
+    // Labels
+    content((3.2, 0), [$x$])
+    content((0, 4.2), [$y$])
+
+    // Curve γ(t) = (t², t³)
+    for i in range(-150, 150) {
+      let t1 = i / 100.0
+      let t2 = (i + 1) / 100.0
+
+      let p1 = (t1 * t1, t1 * t1 * t1)
+      let p2 = (t2 * t2, t2 * t2 * t2)
+
+      line(p1, p2, stroke: blue + 0.8pt)
+    }
+
+    // Cusp point
+    circle((0, 0), radius: 0.04, fill: red)
+  })],
+)
+
+#definition[Smooth mainfolds in $RR^d$][
+  Let $k<=d$, a set $M subset.eq RR^d$ is called a *mainfold* of dimension $k$ if for all $p in M$ there exists $W subset.eq RR^d$ a neighborhood of $p$ ($p in W)$, an open set $U subset.eq RR^k$ and a smooth map $phi : U arrow W$ so that
+  + $phi$ is a homeomorphism on it's image
+  + $phi (U) = M inter W$
+  + $rank(D phi_u) = k$ for all $u in U$
+  Informly, a mainfolds of dimension $k$ is any topological space $U$ so that any point $p in U$ has a neighborhood $W$ which is a homeomorphism to a ball in $RR^k$ (A $k$-dimensional manifold is a space that locally looks like $RR^k$).
 ]
+#end_of_lecture("8 – 05/05")

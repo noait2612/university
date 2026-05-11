@@ -339,3 +339,6 @@
 #let discrateTopology(x) = $#x _italic("disc")$
 #let cofiniteTopology(x) = $#x _italic("cofinite")$
 #let ordTopology(x) = $#x _italic("ord")$
+
+// Linear Algebra
+#let rank = math.op("rank")
