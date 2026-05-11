@@ -202,3 +202,114 @@ $ partial/(partial t) D Phi = D(partial/(partial t) Phi) = D(F compose Phi)=D F(
   $ norm(u(T)) <= e^(T(L+eta)) eta K T norm(q-p) < epsilon norm(q-p) $
 ]
 #end_of_lecture("6 – 28/04")
+
+= משוואות לינאריות
+
+נניח שאנחנו יודעים לפתור את המשוואה
+$ (star) space x^prime (t) = A(t) x(t) $
+ויש לנו את המשוואה הלא הומגנית
+$ (star star) space x^prime(t) = A(t) x(t) + g(t) $
+כאשר $A(t)$ היא $n times n$.\
+יהיו ${x_1 (t), x_2 (t), dots.h, space x_n (t)}$ בסיס למרחב הפתרונות של $(star)$.\
+הרעיון הוא לכתוב פיתרון כללי למשוואה לא הומוגנית $(star star)$ וצריך להראות שלכל $x_i (t)$ עם מתקדמים שמשתנים בזמן. כלומר, נכתוב את $y$ פיתרון ל־$(star star)$ כ־$y(t) = sum_(j=1)^n alpha_j (t) x_j (t)$.\
+נסמן ב־$pi(t)$ את המטריצה שעמודותיה הן $x_1 (t), x_2 (t), dots.h, x_n (t)$ והיא נקראית לרוב *המטריצה היסודית / מטריצת פתרונות יסודית*.\
+נשים לב ש־$sum_(j=1)^n alpha_j (t) x_j (t) = pi(t) alpha(t)$ כאשר $alpha(t) = vec(alpha_1 (t), dots.v, alpha_n (t))$.\
+אם $y(t) = pi(t) alpha(t)$ פותר את $(star star)$ אז $y(0)=pi(0)alpha(0)$ אז $y(t)$ מקיים
+$ y^prime (t) = A(t) y(t) + g(t) $
+אבל גם
+$ y^prime (t) = (pi(t) alpha(t))^prime = pi^prime (t) alpha(t) + pi(t) alpha^prime (t) $
+אבל $pi^prime (t)$ מקיימת את המשוואה ההומוגנית ולכן
+$ y^prime (t) = A(t) pi(t) alpha(t) + pi(t) alpha^prime (t) $
+כלומר
+$
+  cancel(A(t) y(t)) + g(t) = y^prime (t) = A(t) underbrace(pi(t) alpha(t), = y(t)) + pi(t) alpha^prime (t) = cancel(A(t) y(t)) + pi(t) alpha^prime (t)
+$
+לכן קיבלנו שתנאי הכרחי על $alpha$ היינו
+$ pi(t)alpha^prime (t) = g(t) ==> alpha^prime (t) pi(t)^(-1) g(t) $
+ו־$pi$ הפיכה כי היא בסיס למרחב הפתרונות (זוהי מטריצה רגולרית).\
+אם כך, מהמשפט היסודי $ alpha(t) = alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s $
+זה תנאי הכרחי, צריך לראות אם זה אכן פיתרון.
+
+#theorem[
+  יהיו $A : I arrow RR^(n times n)$ רציפה ו־$g: I arrow RR^n$ רציפה כאשר $I subset.eq RR$ קטע.\
+  נסמן ב־$pi(t)$ את מטריצת הפתרונות היסודית למשוואה $x^prime (t) = A(t)x(t)$.\
+  אזי פונקציה $y(t)=pi(t)(alpha(0)+integral_0^t pi(s)^(-1) g(s) dif s)$ פותרת את המשוואה $y^prime (t) = A(t)x(t)+g(t)$ עם תנאי ההתחלה $y(0)=pi(0)alpha(0)$.
+]
+#proof[
+  נגזור
+  $
+    y^prime (t) & = [pi(t)(alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s)]^prime \
+                & = pi^(prime) (t) (alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s) + pi(t) pi(t)^(-1)g(t) \
+                & = A(t) pi(t) (alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s) + g(t) \
+                & = A(t) y(t) + g(t)
+  $
+]
+
+אם $A$ פונקציה קבועה כלומר $A(t)=A$ ו־$x_i (0) = "e"_i$ (הבסיס הסטנדרטי ב־$0$) אז $pi(t) = e^(A t)$ ונקבל
+$ y(t)= e^(t A) y_0 + integral_0^t e^((t -s)A) g(s) dif s $
+זה נקרא *עיקרון דוהמל*.
+
+= התנהגות לוקלית, התנהגות גלובלית ויציבות
+לאורך פרק זה יש לנו $U subset.eq RR^n$ פתוחה ו־$F: U arrow RR^n$ גזירה ברציפות והסימון הרגיל של $Phi(p, t) = phi_t (p)=x_p (t)$ היא הנקודה בה נמצא הפיתרון של $x^prime = F(x)$ עם תנאי התחלה $p$ לאחר זמן $t$.
+
+#theorem[
+  תהיי $p in U$ ונניח ש־$F(p)!=0$.\
+  אזי קיימות קבוצות פתוחות $p in U_0 subset.eq U_1 subset.eq U$, $V$ פתוחה ב־$RR^n$ כך ש־$0 in V subset.eq RR^n$ והעתקה חד־חד ערכית ועל, גזירה ברציפות ושגם ההופכית שלה היא גזירה ברציפות $alpha:U_1 arrow V$ ו־$delta>0$ כך ש־$alpha(p)=0$ ולכל $x in U_0$ ו־$t in (-delta, delta)$ מתקיים
+  $phi_t (x) in U_1$ ו־$alpha(phi_t (x))=alpha(x)+(t, 0, dots.h, 0)$.
+]
+
+#proof[
+  בלי הגבלת הכלליות נניח ש־$p=0$ ונתבונן בנגזרות החלקיות של $Phi(t, x)$ בנקודה $p=0, t=0$
+  $ (partial Phi)/(partial t) |_((0,0)) = F(0) != 0 wide (partial Phi)/(partial x_i) |_((0,0)) = "e"_i $
+  היות ש־$F(0)!=0$ ניתן לבחור $n-1$ איברים מאיברי $("e"_1, dots.h, "e"_n)$ ונסמנם $"e"_(i_1), dots.h, "e"_(i_(n-1))$ כך ש־$(F(0), "e"_(i_1), dots.h, e_(i_(n-1)))$ זה בסיס.\
+  נניח בלי הגבלת הכלליות ש־$(F(0), "e"_i, dots.h, "e"_(n-1))$ זה בסיס.\
+  נגדיר העתקה $beta: RR^n"סביבת 0 ב־" arrow RR^n$ על־ידי $beta(t, x_1, dots.h, x_(n-1))=phi_t (x_1, x_2, dots.h, x_(n-1), 0)$.\
+  ממשפט הפונקציה ההפוכה יש סביבה $p in U_1$ וסביבה $0 in V$ כך ש־$beta: V arrow U_1$ היא דיפאומורפיזם גזיר ברציפות ונגדיר $alpha=beta^(-1)$.\
+  קיימת סביבה פתוחה $p in U_0 subset.eq U_1$ ו־$delta>0$ כך שלכל $x in U_0$ ו־$t in (-delta, delta)$ מתקיים $phi_t (x) in U_1$.\
+  נשאר לבדוק: יהי $x in U_0$ אז יש $s, y_1, y_2, dots.h, y_(n-1)$ כך ש־$x=beta(s, y_1, dots.h, y_(n-1))$ לכומר $x=phi_s (y_1, dots.h, y_(n-1), 0)$ ואז עבור $abs(t)<delta$ מתקיים $phi_t (x) in U_1$ ולכן
+  $
+    alpha(phi_t (x)) & = alpha(phi_t (phi_s (y_1, dots.h, y_(n-1), 0))) \
+                     & = alpha(phi_(t+s) (y_1, dots.h, y_(n-1), 0)) \
+                     & = alpha(beta(t+s, y_1, dots.h, y_(n-1))) \
+                     & = (s, y_1, dots.h, y_(n-1))+(t, 0, dots.h, 0) \
+                     & = alpha(x) + (t, 0, dots.h, 0)
+  $
+]
+
+#definition[נקודת שיווי משקל][
+  הנקודה $p in U$ נקראת *נקודת שיווי משקל* (לפעמיים נקודת שבת) אם $F(p)=0$.\
+]
+#definition[נקודת שיווי משקל יציבה][
+  נקודת שיווי משקל $p$ תקרא *נקודת שיווי משקל יציבה* אם לכל $epsilon > 0$ יש $delta>0$ כך שלכל $q in B_delta (p)$ ולכל $t>0$ מתקיים $phi_t (q) in B_epsilon (p)$.
+]
+#definition[נקודת שיווי משקל יציבה אסימפטוטית][
+  נקודת שיווי משקל $p$ תקרא *נקודת שיווי משקל אסימפטוטית* אם $p$ יציבה וקיימת גם $eta>0$ כך שלכל $q in B_eta (p)$ מתקיים $display(lim_(t arrow infinity) phi_t (q) = p)$.
+]
+#theorem[הקריטריון הלינארי ליציבות אסימפטוטית][
+  תהיי $p in U$ נקודת שיווי משקל של $F$ ונניח שלכל ערך עצמי של $D F(p)$ יש חלק ממשי שלילי. אזי $p$ יציבה אסימפטוטית.
+]<linear-criterion-for-asymptotic-stability>
+#lemma[
+  תהיי $A in CC^(n times n)$ מטריצה עם קבוצת ערכים עצמיים $Lambda subset.eq CC$ ונניח ש־$max_(lambda in Lambda) re(lambda)<0$.\
+  אזי לכל $0<alpha<min_(lambda in Lambda) abs(re(lambda))$ יש $C>0$ כך שלכל $t>=0$ מתקיים
+  $ norm(exp(t A))_p <= C e^(-t alpha) $
+  בפרט
+  $ lim_(t arrow infinity) exp(t A)=0 $
+]
+#proof[
+  נניח ש־$J = P A P^(-1)$ צורת ז'ורדן של $A$.\
+  נשים לב ש־$J + alpha I$ היא מטריצה בצורדת ז'ורדן שכל שלכל ערכייה העצמיים חלק ממשי שלילי.\
+  לכן עבור $t>=0$ הערכים של $exp(t (J + alpha I))$ הם פולינומים ב־$t$ כפול אקספוננט עם מעריך שלילי ב־$t$ ולכן קיים $C^prime > 0$ כך שמתקיים $ sup_(t >=0) normop(exp(t(J + alpha I))) <= C^prime $
+  לכן
+  $
+    normop(exp(t A)) & = normop(P exp(t J) P^(-1)) \
+                     & <= normop(P) normop(P^(-1)) normop(exp(t J)) \
+                     & = normop(P)normop(P^(-1))normop(exp(t J + t alpha I - t alpha I)) \
+                     & = normop(P)normop(P^(-1))normop(exp(t(J + alpha I))) dot.op e^(-t alpha) <= C dot.op e^(-t alpha)
+  $
+]
+#end_of_lecture("9 – 11/05")
+
+#proof
+[@linear-criterion-for-asymptotic-stability, הקריטריון הלינארי ליציבות אסימפטוטית][
+
+]
