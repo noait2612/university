@@ -342,3 +342,4 @@
 
 // Linear Algebra
 #let rank = math.op("rank")
+#let GL = math.op("GL")
