@@ -127,3 +127,149 @@ _תזכורת:_
   $
 ]
 #end_of_lecture("3 – 28/04")
+
+= מיון מרחבים ריבועיים
+תשלימי...
+
+#end_of_lecture("4 – 05/05")
+
+#example[
+  + $FF=CC$ ויהי $(V,q)$ מרחב ריבועי לא מנוון מעל $CC$, אז קיים בסיס $cal(B)$ של $V$ כך שמתקיים $[g_q]_cal(B) = I_n$.\
+    בפרט, אם $(V,q), (V^prime, q^prime)$ מרחבים ריבועיים לא מנוונים מעל $CC$ כך ש־$dim V = dim V^prime$ אז $(V,q) tilde.equiv (V^prime, q^prime)$.
+  + $FF=RR$ יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $RR$ כאשר $dim V = n$ אז קיים בסיס $cal(B)$ של $V$ כך שמתקיים $[g_q]_cal(B) = mat(
+      I_k, 0;
+      0, -I_(n - k)
+    )$ כאשר $0<=k<=n$.
+]
+
+#theorem[משפט סילבסטר][
+  יהיו $k, ell in ZZ, n in NN$ כך ש־$0<=k<ell<=n$.\
+  נגדיר $q_1, q_2 : RR^n arrow RR$ על־ידי
+  $
+    q_1 vec(x_1, dots.v, x_n) = x_1^2 + dots.h.c + x_k^2 - x_(k+1)^2 - dots.h.c - x_n^2 \
+    q_2 vec(x_1, dots.v, x_n) = x_1^2 + dots.h.c + x_ell^2 - x_(ell-1)^2 - dots.h.c - x_n^2
+  $
+  אז $(RR^n, q_1) tilde.equiv.not (RR^n, q_2)$.
+]
+
+#proof[
+  נניח בשלילה שקיים איזומורפיזם $f:(RR^n, q_1) arrow (RR^n, q_2)$.\
+  נסמן ב־$U = Span("e"_1, dots.h, "e"_ell)$, $V = Span("e"_(k+1), dots.h, "e"_n)$ ואת $W=f(V)$.\
+  מתקיים ש־$dim U = ell$ ומכך ש־$f$ איזומורפיזם $dim W = dim V = n-k$.\
+  מכאן נובע
+  $ dim(U inter W) = dim U + dim W - dim(U + W) >= ell + (n-k) - n = ell - k >=1 $
+  לכן קיים $0_V != z in U inter W$.\
+  מאחר ש־$z in U$ נובע שקיימים $c_1, dots.h, c_ell in RR$ כך שלא כולם אפס ומתקיים $z=vec(c_1, dots.v, c_ell, 0, dots.v, 0)$ ולכן
+  $ q_2 (z) = c_1^2 + dots.h.c + c_ell^2 - 0^2 + dots.h.c + 0^2 > 0 $
+  מאחר ש־$z in W$ נובע שקיים $0_V != v in V$ כך ש־$f(v)=z$ ולכן קיימים $d_(k+1), dots.h, d_n in RR$ לא כולם אפס ומתקיים $v = vec(0, dots.v, 0, d_(k+1), dots.v, d_n)$ ולכן
+  $ q_2 (z) = q_2 (f(v)) =_((star)) q_1 (v) = 0^2 + dots.h.c + 0^2 - d_(k+1)^2 - dots.h.c - d_n^2 < 0 $
+  כאשר $(star)$ נובע מכך ש־$f$ איזומורפיזם וכמובן שהגענו לסתירה.
+]
+
+#example[
+  יהי $p != 2$ ראשוני, נסמן $FF=FF_p$ ו־$r in FF_p^times without (FF_p^times)^2$.\
+  יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF_p$ עם $dim V = n$.\
+  אז קיים בסיס $cal(B)$ של $V$ כך שמתקיים $[g_q]_cal(B) = mat(
+    I_k, 0;
+    0, r I_(n - k)
+  )$ (מטריצת בלוקים).
+]<example_for_blocks>
+
+#definition[תבניית מייצגת][
+  יהי $(V,q)$ מרחב ריבועי מעל $FF$ ו־$a in FF$. אומרים ש־$q$ מייצגת את $a$ כאשר $a in q(V without {0_V})$.
+]
+
+#exercise[
+  יהיו $(V, q), (V^prime, q^prime)$ מרחבים ריבועיים כך ש־$(V,q) tilde.equiv (V^prime, q^prime)$. אז $q(V without {0_V}) = q^prime (V^prime without {0_V})$.
+]
+
+#theorem[
+  יהי $p$ ראשוני ויהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF_p$ עם $dim V = 2$. אז $FF_p^times subset.eq q(V without {0})$.
+]
+
+#proof[
+  יהי $cal(B)$ בסיס אורתוגונלי של $V$ אז $[g_q]_cal(B) = mat(a_1, 0; 0, a_2)$ כאשר $a_1, a_2 in FF_p^times$.\
+  נגדיר $q^prime : FF_p^2 arrow FF_p$ על־ידי $ q^prime vec(x_1, x_2) = a_1 x_1^2 + a_2 x_2^2 $
+  ולכן $(V,q) tilde.equiv (FF_p^2, q^prime)$ כי הם מיוצגים על־ידי אותה המטריצה.\
+  יהי $b in FF_p^times$ ונוכיח כי קיימים $vec(x_1, x_2) in FF_p^2$ כך ש־$q^prime vec(x_1, x_2) = b$.\
+  נסמן
+  $
+    A_1 colon.eq {a_1 x^2 bar x in FF_p} \
+    A_2 colon.eq {a_2 x^2 bar x in FF_p} \
+    B colon.eq {b-a_2 x^2 bar x in FF_p}
+  $
+  נגדיר $f:(FF_p^times)^2 union {0} arrow A_1$ על־ידי $f(x_1) = a_1 x$ ולכן $f$ היא חד־חד ערכית ועל (ההופכית זה חילוק) ולכן $abs((FF_p^times)^2 union {0}) = abs(A_1) = (p+1)/2$.\
+  באופן דומה גם $abs(A_2) = (p+1)/2$.\
+  נגדיר $g: A_2 arrow B$ על־ידי $g(y)=b-y$ וכמובן שגם $g$ היא חד־חד ערכית ועל ולכן $abs(B)=abs(A_2)=(p+1)/2$ ומכאן
+  $ abs(A_1 inter B) = abs(A_1) + abs(B) - abs(A_1 union B) >= (p+1)/2 + (p+1)/2 - p = 1 $
+  כלומר החיתוך שלהם לא ריק ולכן קיים $c in A_1 inter B$ כלומר קיימים $x_1, x_2 in FF_p$ כך ש־$a_1 x_1^2 = c = b-a_2 x_2^2$ ומכאן $q^prime vec(x_1, x_2) = a_1 x_1^2 + a_2 x_2^2 = b$.\
+  יתר על־כן, $vec(x_1, x_2) != vec(0, 0)$ כי $b!=0$.
+]
+
+#remark[
+  זה כמובן לא נכון ב־$RR$ כשהדוגמה הקלאסית היא מכפלה פנימית למרות שהיא מגדירה מרחב ריבועי לא מנוון.
+]
+
+#corollary[
+  יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF_p$ עם $dim V >=2$. אז $FF_p^times subset.eq q(V without {0})$.
+]
+
+#proof[
+  נסמן $dim V = n$ ויהי $cal(B) = (v_1, dots.h, v_n)$ בסיס אורתוגונלי של $V$ אז קיימים $a_1, dots.h, a_n in FF_p^times$ כך שמתקיים $[g_q]_cal(B) = mat(a_1, , 0; , dots.down, , ; 0, , a_n)$.\
+  נסמן $cal(C)=(v_1, v_2)$, $U = Span cal(C), space$ אז $dim U = 2$ וגם $[g_(q|_U)]_cal(C) = mat(a_1, 0; 0, a_2)$.\
+  לכן $(U, q|_U)$ מרחב לא מנוון ומתקיים $FF_p^times subset.eq q|_U (U without {0_V}) subset.eq q(V without {0})$.
+]
+
+#lemma[
+  יהי $(V,q)$ מרחב ריבועי לא מנוון ותהיי $u in V$ כך ש־$q(u)!=0$. נסמן $W={u}^perp$ אז $(W, q|_W)$ הוא מרחב ריבועי לא מנוון.
+]
+
+#proof[
+  יהי $z in W$ בגרעין של $(W, q|_W)$ כלומר לכל $w in W$ מתקיים $g_q (z,w) = 0$.\
+  יהי $v in V$, מאחר ש־$V = Span(u) plus.o W$ נובע שקיימים $w in W, c in FF$ כך ש־$v=c u + w$ ומכאן
+  $ g_q (z,v) = c q_g (z,u) + g_q (z,w) = 0 $
+  כאשר $g_q (z,u)=0$ כי $z in w$ בגרעין ולכן $z in V^perp$.\
+  מאחר ש־$(V,q)$ לא מנוון אנו מקבלים כי $z=0_V$ ולכן $(W, q|_W)$ לא מנוון.
+]
+
+#theorem[
+  יהי $p!=2$ ראשוני ו־$r in FF_p^times without (FF_p^times)^2$ ויהי $(V,q)$ מרחב ריבועי לא מנוון עם $dim V = n$. אז קיים בסיס $cal(B)$ של $V$ כך ש־$[g_q]_cal(B) = I_n$ או $[g_q]_cal(B) = mat(I_(n-1), 0; 0, r)$.
+]
+
+#proof[
+  באינדוקציה על $n$: עבור $n=1$ כבר ראינו ב@example_for_blocks ונניח כי הטענה נכונה למרחב ריבועי ממימד $n-1$.\
+  מאחר ש־$1 in FF_p^times subset.eq q(V without {0_V})$ וגם $dim V >=2$ קיים $u in V$ כך ש־$q(u)=1$.\
+  נסמן $W = {u}^perp$ אז $dim W = n-1$ וגם $(W, q|_W)$ לא מנוון ומהנחת האינדוקציה קיים בסיס $cal(C) = (w_1, dots.h, w_(n-1))$ של $W$ כך ש־$[g_(q|_W)]_cal(C) = I_(n-1)$ או \
+  ש־$[g_(q|_W)]_cal(C)= mat(I_(n-2), 0; 0, r)$.\
+  נגדיר $cal(B) = (u, w_1, dots.h, w_(n-1))$. מאחר ש־$V = Span(u) plus.o W$ נובע ש־$cal(B)$ הוא בסיס של $V$.\
+  כמו־כן, $[g_q]_cal(B) = I_n$ או $[g_q]_cal(B) = mat(I_(n-1), 0; 0, r)$.
+]
+
+#proposition[
+  יהי $n in NN$ ונגדיר $q_1, q_2 : FF_p^n arrow FF_p$ על־ידי
+  $
+    q_1 vec(x_1, dots.v, x_n) = x_1^2 + dots.h.c + x_n^2 \
+    q_2 vec(x_1, dots.v, x_n) = x_1^2 + dots.h.c + x_(n-1)^2 + r x_n^2
+  $
+  כאשר $r in FF_p^times without (FF_p^times)^2$ כבטענה הקודמת. אז $(FF_p^n, q_1) tilde.equiv.not (FF_p^n, q_2)$.
+]
+
+#proof[
+  נניח בשלילה שהם איזומורפיים ולכן המטריצות $[g_(q_1)]_cal(E) = I_n$ ו־$[g_(q_2)] = mat(I_(n-1), 0; 0, r)$ חופפות כלומר קיימת $P in M_n (FF_p)$ הפיכה כך שמתקיים
+  $ mat(I_(n-1), 0; 0, r) = P^t I_n P = P^t P $
+  נסמן $det P = c$ ו־$c!=0$ כי $P$ הפיכה ונקבל
+  $ r = det mat(I_(n-1), 0; 0, r) = det(P^t P) = c^2 in (FF_p^times)^2 $
+  וזאת סתירה.
+]
+
+#corollary[
+  יהיו $(V,q), (V^prime, q^prime)$ מרחבים ריבועיים לא מנוונים מעל $FF_p$ ויהיו $cal(B), cal(B)^prime$ בסיסים של $V, V^prime$ בהתאמה כך שמתקיים
+  + $dim V = dim V^prime$
+  + $det [g_q]_cal(B) dot.op (FF_p^times)^2 = det [g_(q^prime)]_(cal(B)^prime) dot.op (FF_p^times)^2$
+  אז $(V,q) tilde.equiv (V^prime, q^prime)$.
+]
+
+#example[
+  עבור $p=7$ אז $q:FF_7^2 arrow FF_7$ אז $r = -1 in.not (FF_7^times)^2$ והתבנית $q vec(x_1, x_2) = -x_1^2-x_2^2$.\
+  מהמשפט קיים בסיס $cal(B)$ של $FF_7^2$ כך שמתקיים $[g_q]_cal(B) = mat(1, 0; 0, plus.minus 1)$.
+]
