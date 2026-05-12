@@ -38,22 +38,89 @@
 #subquestion()
 נסמן ב־$RR_l$ את $RR$ עם הטופולוגיה הנוצרת על־ידי הבסיס ${[a,b) bar a,b in RR}$ ונוכיח ש־$RR_l$ מרחב $T_4$.
 
-#proof[#todo]
+#proof[
+  כדי להראות שמרחב הוא $T_4$ עלינו להראות שהוא נורמלי ושהוא $T_1$ לפי שקילות שראינו בהרצאה.\
+  אמרנו שמרחב יהיה $T_1$ אם לכל $x,y in X$ כך ש־$x!=y$ יש קבוצה פתוחה $U$ בטופולוגיה כך ש־$x in U$ וגם $y in.not U$.\
+  יהיו $a,b in RR$ כך ש־$a!=b$ ובלי הגבלת הכלליות $a<b$.\
+  נבחר $U = [a,b)$ ולפי הגדרת הבסיס זו קבוצה פתוחה כך ש־$a in U$ ו־$b in.not U$.\
+  נגדיר $V=[b, b+1)$ וגם זו קבוצה פתוחה מהגדרת הבסיס עבורה $a in.not V$ ו־$b in V$.\
+  נובע אם כך מהגדרה ש־$RR_l$ הוא $T_1$.\
+  נשאר להראות נורמליות כאשר הגדרנו את $X$ להיות מרחב כנורמלי אם ורק אם כל שתי קבוצות סגורות וזרות $A,B subset.eq X$ ניתנות להפרדה כלומר יש $U,V in tau$ זרות זו לזו כך ש־$A subset.eq U$ ו־$B subset.eq V$ וגם $U inter V = emptyset$.\
+  תהיינה אם כך $A,B subset.eq RR_l$ סגורות וזרות.\
+  יהי $a in A$ ומכיוון ש־$B$ סגורה ו־$a in.not B$ קיימת פתוחה בסיסית כך ש־$[a, x_a) inter B = emptyset$ ובאופן דומה גם לכל $b in B$ קיימת פתוחה בסיסית $[b, y_b) inter A = emptyset$.\
+  נגדיר $V colon.eq union.big_(b in B) [b, y_b), space U colon.eq union.big_(a in A) [a, x_a)$ כאשר $U,V$ פתוחות כאיחוד כלשהו של פתוחות וברור כי $B subset.eq V, A subset.eq U$ רק צריך להראות ש־$U inter V = emptyset$.\
+  נניח שלא זרות ולכן קיים $z in U inter V$ כלומר $z in U$ וגם $z in V$ ולכן קיימים $a in A, b in B$ כך ש־$z in [a,x_a)$ וגם $z in [b, y_b)$.\
+  מכך ש־$a<b$ וגם $b<=z$ נובע כי $a<b<=z<x_a$ נקבל ש־$b in [a, x_a)$ אבל הנחנו ש־$A inter B = emptyset$ וזאת סתירה ולכן $U inter V = emptyset$ ו־$RR_l$ נורמלי.\
+  מצאנו ש־$RR_l$ נורמלי וגם $T_1$ ולכן $RR_l$ הוא $T_4$.
+]
 
 #question()
-#subquestion()
-#solution[#todo]
+יהיו $X,Y$ מרחבים טופולוגיים. בהינתן $f:X arrow Y$ (לאו דווקא רציפה) נגדיר את הגרף של $f$ על־ידי
+$ Gamma_f = {(x, f(x)) bar x in X} subset.eq X times Y $
+עם הטופולוגיה המושרית מ־$X times Y$.
 
 #subquestion()
-#proof[#todo]
+נבדוק ש־$Gamma_(id_Y)$ הוא האלכסון של $Y$ ונסיק שאם $Y$ אינו האוסדרוף אז קיימת פונקציה רציפה אל תוך $Y$ עם גרף שאינו סגור ב־$X times Y$.
+
+#solution[
+  מההגדרה
+  $ Gamma_(id_Y) = {(y, id_Y (y)) bar y in Y } = {(y,y) bar y in Y} $
+  וזה בידיוק $Delta_Y$.\
+  בהרצאה ראינו שמרחב $Y$ הוא האוסדרוף אם ורק אם האלכסון $Delta_Y$ הוא קבוצה סגורה במרחב המכפלה $Y times Y$ ולכן אם $Y$ אינו האוסדרוף אז $Delta_Y$ איננה סגורה ב־$Y times Y$.\
+  בשביל הפונקציה, אם נבחר $X=Y$ ו־$f=id_Y$ אז $f$ רציפה כי העתקת הזהות רציפה, ראינו ש־$Gamma_(id_Y) = Delta_Y$ ו־$Y$ אינו האוסדרוף ולכן $Delta_Y$ אינו סגור ב־$X times Y$.
+]
 
 #subquestion()
-#proof[#todo]
+נסמן ב־$pi_X : X times Y arrow X$ את ההטלה לרכיב הראשון ונוכיח ש־$f: X arrow Y$ רציפה אם ורק אם הצמצום $pi_X scripts(harpoon.tr)_(Gamma_f)$ הוא הומיאומורפיזם $Gamma_f arrow X$.
+
+#proof[
+  ראשית נחדד $pi_X scripts(harpoon.tr)_(Gamma_f) : Gamma_f arrow X$ כך ש־$pi_X (x, f(x))=x$ לכל $(x, f(x)) in Gamma_f$.\
+  $<==$ נניח ש־$f:X arrow Y$ רציפה ונראה להראות ש־$pi_X scripts(harpoon.tr)_(Gamma_f)$ הוא הומיאומורפיזם $Gamma_f arrow X$.\
+  עלינו להראות שהיא חד־חד ערכית, על, רציפה ובעלת הופכית רציפה.\
+  בשביל הרציפות כבר ראינו שההטלות הן רציפות מהגדרת טופולוגיית המכפלה וצמצום של פונקציה רציפה לתת־מרחב הוא תמיד רציף.\
+  נשים לב שהפונקציה ההפוכה היא $g:X arrow Gamma_F$ המוגדרת על־ידי
+  $ g(x) = (x, f(x)) $
+  ו־$g$ רציפה בכל קורדינאטה ולכן רציפה (כי $f$ רציפה).\
+  בשביל העל, לכל $x in X$ מתקיים ש־$(x, f(x)) in Gamma_f$ ו־$pi_X (x, f(x)) = x$ ולכן קיבלנו על.\
+  בשביל החד־חד ערכיות, אם $pi_X (x,f(x)) = pi_X (x^prime, f(x^prime))$ נובע $x=x^prime$ וכן $f(x)=f(x^prime)$ ולכן הם זהים וקיבלנו חד־חד ערכיות. \
+  אז קיבלנו ש־$pi_X scripts(harpoon.tr)_(Gamma_f)$ הוא הומיאומורפיזם $Gamma_f arrow X$.\
+  $==>$ נניח ש־$pi_X scripts(harpoon.tr)_(Gamma_f)$ הוא הומיאומורפיזם $Gamma_f arrow X$ ונרצה להראות ש־$f$ רציפה.\
+  ראינו שהפונקציה $g:X arrow Gamma_f$ הנתונה על־ידי $g(x)=(x, f(x))$ היא ההופכית של $pi_X scripts(harpoon.tr)_(Gamma_f)$ והיא רציפה מהגדרת ההומיאומורפיזם.\
+  תהיי $pi_Y : X times Y arrow Y$ פונקציית ההטלה ל־$Y$ שהיא רציפה ונבחין
+  $ f=pi_Y compose g $
+  שכן $ pi_Y (g(x)) = pi_Y (x, f(x)) = f(x) $
+  אבל $g$ רציפה מהגדרת ההומיאומורפיזם ו־$pi_Y$ רציפה ולכן $f$ רציפה כהרכבת פונקציות רציפות.
+]
 
 #subquestion()
-#solution[#todo]
+נניח ש־$Y$ האוסדרוף, $f:X arrow Y$ רציפה ו־$S subset.eq X$ צפופה. נוכיח ש־$closure(Gamma_(f scripts(harpoon.tr)_S)) subset.eq X times Y$ הוא $Gamma_f$.
 
+#proof[
+  מכך ש־$Y$ האוסדרוף נובע ש־$Delta_Y$ היא קבוצה סגורה.\
+  נגדיר $h:X times Y arrow Y times Y$ על־ידי
+  $ h(x,y) = (f(x),y) $
+  ו־$h$ היא פונקציה רציפה מהרכבת פונקציות רציפות (ההטלה היא רציפה).\
+  נשים לב שמתקיים בידיוק $ Gamma_f = h^(-1)(Delta_Y) $
 
+  ומכיוון ש־$Delta_Y$ סגורה כי $Y$ הוא האוסדרוף ו־$h$ רציפה אז המקור של קבוצה סגורה חייב להיות סגור.\
+  מכאן נובע ישירות ש־$Gamma_(f scripts(harpoon.tr)_S) subset.eq Gamma_f$ ו־$Gamma_f$ היא סגורה מהגדרת הסגור נובע ש־$closure(Gamma_(f scripts(harpoon.tr)_S)) subset.eq Gamma_f$.\
+  בשביל ההכלה בכיוון השני יהי $(x, f(x)) in Gamma_f$.\
+  מצפיפות $S$ נובע שקיימת ${s_alpha} subset.eq S$ כך ש־$s_alpha arrow x$.\
+  מרציפות $f$ נובע ש־$f(s_alpha) arrow f(x)$ ולכן בטופולוגיית המכפלה $(s_alpha, f(s_alpha)) arrow (x, f(x))$.\
+  כל $(s_alpha, f(s_alpha)) in Gamma_(f scripts(harpoon.tr)_S)$ ולכן מהגדרת הסגור כאוסף נקודת ההצטברות נובע כי הגבול שלהם חייב להיות בסגור שלהם, כלומר $(x, f(x)) in closure(Gamma_(f scripts(harpoon.tr)_S))$.
+]
+
+#subquestion()
+ניתן דוגמה ל־$Y$ האוסדרוף ולפונקציה $f:X arrow Y$ שאינה רציפה אבל $Gamma_f$ סגור ב־$X times Y$.
+
+#solution[
+  נבחר $X=[0, 1)$ עם הטופולוגיה הסטנדרטית ואת $Y$ להיות המעגל $S^1 subset RR^2$ עם הטופולוגית המושרית.\
+  נגדיר $f:[0, 1) arrow S^1$ על־ידי $f(t)=(cos(2 pi t), sin(2 pi t))$.\
+  ברור ש־$f$ לא רציפה (ראינו את זה עבור $g(t)=(cos(t), sin(t))$) אבל אם ניקח את הסדרה $t_n = 1-1/n$ נקבל את אותה הסתירה לרציפות כי $t_n stretch(arrow)_(n arrow infinity) 1 in.not X$\
+  ו־$f(t_n) stretch(arrow)_(n arrow infinity) (1,0) in Y$. יש לנו פשוט חור בקצה כי זה קטע פתוח.\
+  נטען ש־$Gamma_f$ סגורה ב־$X times Y$: ניקח סדרה $(t_n, f(t_n))$ המתכנסת לנקודה $(t_0, y_0) in X times Y$. מכיוון ש־$t_n arrow t_0$ ו־$t_0 in [0,1)$ הרי ש־$t_0$ היא נקודה שבה $f$ רציפה ומרציפות $f$ נובע $f(t_n) arrow f(t_0)$ ומיחידות הגבול במרחב האוסדרוף ומכך ש־$Y$ האוסדרוף מתקיים $y_0 = f(t_0)$ ו־$(t_0, y_0) in Gamma_f$.\
+  אז כל נקודות ההצטברות של הגרף שנמצאות במרחב $X times Y$ שייכות לגרף ולכן הוא סגור.
+]
 
 #question()
 יהיו ${(X_i, tau_i)}_(i in I)$ מרחבים טופולוגיים, נסמן ב־$X=product_(i in I) X_i$ המכפלה שלהם ולכל $i in I$ נסמן ב־$pi_i : X arrow X_i$ את ההטלה.\
