@@ -411,9 +411,9 @@ $
 
 #remark[
   באופן שקול ניתן להגדיר מרחב טופולוגי $X$ כקשיר אם לא קיימת הצגה מהצורה $X=C union D$ עבור $C,D$ סגורות, זרות ולא ריקות.\
-  #todo תסבירי... ההסבר של שאול לא ברור
-  קל לראות ש־$X$ לא קשיר אם ורק אם $X=A union B$ סגורות, זרות ולא ריקות אם ורק אם קיימת $F:X arrow {0,1}$ בטופולוגיה הדיסקרטית רציפה ולא קבועה ולא ריקה.\
-  $X=f^(-1)({0}) union f^(-1)({1})$ לחילופין אם $X = U union V$ אז $U mapsto 0, v mapsto 1$
+  כי אם $X$ קשיר אז קיימות $U,V$ פתוחות, זרות ולא ריקות המקיימות $X=U union V$ ולכן $emptyset = V^c inter U^c$.\
+  אבל להגיד ש־$emptyset = U inter V$ זה שקול ללהגיד ש־$X=V^c union U^c$.\
+  אבל אם $U,V$ פתוחות אזי $V^c, U^c$ סגורות ולכן $emptyset != U,V$ אם ורק אם $emptyset != V^c, U^c$.
 ]
 #lemma[
   אם $X = U union V$ ו־$y subset.eq X$ קשירה אז $Y subset.eq U$ או $Y subset.eq V$.
@@ -425,7 +425,7 @@ $
 
 #lemma[
   אם $X$ קשיר ו־$F:X arrow Y$ רציפה ועל אז גם $Y$ קשיר (במילים אחרות – תמונה של מרחב קשיר היא קשירה).
-]<image-of-connected-domain-over-continuous-function-is-connected>
+]<image_of_connected_domain_over_surjective_continuous_function_is_connected>
 
 #proof[
   נניח שלא, ולכן $Y = U union V$ פתוחות, זרות ולא ריקות ואז $X=f^(-1)(U) union f^(-1)(V)$ פתוחות וזרות (כי $f$ רציפה) ולא ריקות (כי $f$ על) וזאת סתירה.
@@ -468,24 +468,84 @@ $
   במילים אחרות תמונה של פונקציה רציפה על תחום קשיר היא קטע וב־$RR$ קבוצה קשירה היא מילה נרדפת לקטע.
 ]
 
-#lemma[
+#lemma[תנאים שגוררים קשירות][
   + אם $A subset.eq X$ קשירה אז $closure(A) subset.eq X$ קשירה
   + אם ${Y_alpha}_(alpha in I) subset.eq X$ אוסף של קבוצות קשירות ויש $beta$ עם $Y_beta inter Y_alpha != emptyset$ לכל $alpha$ אז $union.big_(alpha in I) Y_alpha$ קשירה
   + $X_alpha$ קשיר לכל $alpha$ אם ורק אם $product Y_alpha$ קשירה (בטופולוגיית המכפלה ולא טופולוגיית הקופסה)
-]
+]<conditions_that_implies_connected>
 #proof[
   במהלך ההוכחה נשתמש בכך שאם $X$ מרחב קשיר אז כל פונקציה רציפה $X arrow {0,1}$ היא קבועה.\
   + ניקח $f: closure(A) arrow {0,1}$ רציפה אזי $f|_A : A arrow (0,1)$ היא פונקציה רציפה ובלי הגבלת הכלליות $f|_A eq.triple 0$\
     אזי $f^(-1)(0) subset.eq closure(A)$ סגורה (תמונה של סגורה) וכוללת את $A$ ולכן זה $closure(A)$ ו־$f$ קבועה.
   + תהיי $g: union.big_(alpha in I) U_alpha arrow {0,1}$ רציפה ובלי הגבת־הכלליות $g|_(Y_alpha) eq.triple 0$ לכל $alpha in I$  ולכן $g|_(Y_alpha) : Y_alpha arrow {0,1}$ קבועה אבל לכל $Y_alpha inter Y_beta != emptyset$ מקבלת $0$ ולכן היא אפסה על הכל ו־$g eq.triple 0$ וקבועה
-  + $==>$ נובע ישירות מ@image-of-connected-domain-over-continuous-function-is-connected עם $pi_alpha : product X_alpha arrow X_alpha$ רציפה ועל.\
+  + $==>$ נובע ישירות מ@image_of_connected_domain_over_surjective_continuous_function_is_connected עם $pi_alpha : product X_alpha arrow X_alpha$ רציפה ועל.\
     $<==$ צריך להראות בשלבים.\
     נניח ש־$X,Y!=emptyset$ קשירות ונראה שגם $X times Y$ קשיר.\
     נכתוב את $X times Y$ בתור $({x} times Y) union.big_(z in Y) X times {z}$ ו־${x} times Y tilde.equiv Y$ קשירה ו־$X times {z} tilde.equiv X$ קשירה ומ־$(2)$ האיחוד הוא קשיר.\
     באינדוקציה על $n$, $product_(i=1)^n Y_i$ קשירה שהכופלים קשירים.\
     עבור מכפלה כללית $P = product_(alpha in I) X_alpha$ ניקח $y = (y_alpha)_(alpha in I) in P$ מאקסיומת הבחירה.\
-    לכל $J subset.eq I$ סופית נגדיר $X_J = product_(alpha in J) X_alpha times product_(alpha in I) {y_alpha} subset.eq P$ קשיר כי מכפלה סופית וכולם נחתכים ב־$y$ ולכן $union.big_J X_J subset.eq P$ קשירה
+    לכל $J subset.eq I$ סופית נגדיר $X_J = product_(alpha in J) X_alpha times product_(alpha in I) {y_alpha} subset.eq P$ קשיר כי מכפלה סופית וכולם נחתכים ב־$y$ ולכן $union.big_J X_J subset.eq P$ קשירה.
+    #todo עדיף להשלים מסודר מהסיכום של תמי
 ]
 
-
 #end_of_lecture("10 – 11/05")
+
+#corollary[
+  אם $X tilde.equiv Y$ אז אם $X$ קשיר גם $Y$ קשיר.
+]
+
+#proof[
+  יש לנו הומיאומורפיזם $f:X arrow Y$ (ובכיוון ההפוך $f^(-1) : Y arrow X$) וזו כמובן פונקציה שהיא על ולכן מ@image_of_connected_domain_over_surjective_continuous_function_is_connected הטענה נובעת.
+]
+
+#definition[רכיב קשירות][
+  יהי $X$ מרחב טופולוגי ו־$y in X$ אזי רכיב הקשירות של $y$ מוגדר להיות $display(
+    C_y colon.eq
+    union.big_(y in A subset.eq X \
+    "קשירה" A) A supset.eq {y}
+  )$.
+]
+
+#proposition[תכונות רכיבי הקשירות][
+  + רכיבי הקשירות הם קשירים וסגורים
+  + לכל $y, z in X$ מתקיים או $C_y = C_z$ או $C_y inter C_z = emptyset$
+  + רכיבי קשירות מייצרים יחס שקילות על $X$ (להיות באותו רכיב קשירות)
+]
+
+#proof[
+  + נובע מ־2 ו־1 ב@conditions_that_implies_connected בהתאמה
+  + אם $C_y inter C_z != emptyset$ אזי מ@conditions_that_implies_connected נובע ש־$C_y union C_z$ קשירה ואז $C_y = C_y union C-z = C_z$ ואם יש $A subset.eq X$ קשירה עם $y,z in A$ אזי $C_y inter C_z != emptyset$ כי $A in C_y inter C_z$.
+]
+
+#example[
+  + $X$ קשיר ולכן $C_y = X$ לכל $y in X$
+  + $X=QQ$ ולכן לכל $y in QQ$ מתקיים $C_y = {y}$ שכן $QQ$ לא מכיל אף קטע שאינו יחידון (נקרא *בלתי קשיר לחלוטין*)
+  + ראינו ש־$GL_2 (RR)$ מרחב לא קשיר אבל $GL_2^plus (RR), GL_2^minus (RR)$ הם רכיבי קשירות
+]
+
+== קשירות מקומית
+#definition[קשירות מקומית][
+  מרחב טופולוגי $X$ נקרא *קשיר מקומית* ב־$y in X$ אם לכל סביבה $y in E$ יש $y in U subset.eq E$ פתוחה וקשירה.\
+  נגיד ש־$X$ *קשיר מקומית* אם היא קשירה מקומית בכל $y in X$.
+]
+
+#example[
+  + $X$ דיסקרטי הוא כזה ולא קשיר אם $abs(X)>=2$ כי אם ניקח את $U = {y}$ וקיבלנו קשירות מקומית.
+  + $RR$ קשיר מקומית כי כל פתוחה מכילה קטע
+  + $QQ$ לא קשיר מקומית באף $y in QQ$ (אין סביבה קשירה סביב אף $y in QQ$)
+]
+
+#remark[
+  בוודאי שקשיר מקומית לא גורר קשירות אבל גם הכיוון השני לא נכון.
+  נגדיר את $X$ להיות מרחב המסרק
+  $
+    X colon.eq ([0,1] times {0}) union ({0} times [0,1]) union (union.big_(n in NN) {1/n} times [0,1])
+  $
+  ו־$X$ קשיר מ@conditions_that_implies_connected.\
+  מצד שני, לכל $t>0$ נסתכל על $y=(0,t)$ ועבור $epsilon < t/(1-t)$ וניקח סביבה
+  $ [0,epsilon] times (t-epsilon, t+epsilon) inter X $
+  #todo
+  דורש הרחבה.
+]
+
+#end_of_lecture("11 – 12/05")

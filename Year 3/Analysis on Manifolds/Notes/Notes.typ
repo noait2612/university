@@ -148,7 +148,7 @@
 ]
 
 #definition[Simply Connected][
-  $X$ a topological space is *simply connected* if is path connected and any loop ($gamma: [0,1] arrow X$ with $gamma(0)=gamma(1)$) in $X$ can be continuously contracted a point (i.e., is homotopic to a constant loop, with no "holes").\
+  $X$ a topological space is *simply connected* if it is a path connected and any loop ($gamma: [0,1] arrow X$ with $gamma(0)=gamma(1)$) in $X$ can be continuously contracted a point (i.e., is homotopic to a constant loop, with no "holes").\
 ]
 
 #theorem[
@@ -318,7 +318,7 @@ Notice that the above, @greens-theorem and it's proof were spread over lectures 
   [
     We start with a warning: do not confuse a smooth curve with a smooth parametrization.\
     For example, take $gamma(t)=(t^2,t^3)$ with $-infinity<t<infinity$.\
-    This is a smooth parametrization curve but not a smooth curve since $dot(gamma)(0)=(0,0).$
+    This is a smooth parametrization curve but not a smooth curve since $dot(gamma)(0)=(0,0)$.
   ],
 
   [#canvas(length: 0.5cm, {
@@ -344,11 +344,11 @@ Notice that the above, @greens-theorem and it's proof were spread over lectures 
     }
 
     // Cusp point
-    circle((0, 0), radius: 0.04, fill: red)
+    circle((0, 0), radius: 0.10, fill: red)
   })],
 )
 
-#definition[Smooth mainfolds in $RR^d$][
+#definition[Smooth mainfolds in $bold(RR^d)$][
   Let $k<=d$, a set $M subset.eq RR^d$ is called a *mainfold* of dimension $k$ if for all $p in M$ there exists $W subset.eq RR^d$ a neighborhood of $p$ ($p in W)$, an open set $U subset.eq RR^k$ and a smooth map $phi : U arrow W$ so that
   + $phi$ is a homeomorphism on it's image
   + $phi (U) = M inter W$
@@ -356,3 +356,98 @@ Notice that the above, @greens-theorem and it's proof were spread over lectures 
   Informly, a mainfolds of dimension $k$ is any topological space $U$ so that any point $p in U$ has a neighborhood $W$ which is a homeomorphism to a ball in $RR^k$ (A $k$-dimensional manifold is a space that locally looks like $RR^k$).
 ]
 #end_of_lecture("8 – 05/05")
+
+#definition[Graph of dim $bold(k)$][
+  A set $Gamma subset.eq RR^d$ is *a graph of dim $k$* if there exists a partition ${1,2, dots.h, d} = I union.dot J$ with $abs(I)=k$, an open set $U subset.eq RR^k$ and a function $f:U arrow RR^(d-k)$ such that
+  $ Gamma = {x in RR^d bar X_I in U, space X_J = f(X_I)} $
+]
+
+#example[
+  Let $U subset.eq RR^d$ be an open set with $k=d$, we show  that $U$ is a graph.\
+  We take $I = {1, 2, dots.h, d}$ and $J=emptyset$ with $f:U arrow RR^0 = {0}$ with $f(u) = 0$ and we get that
+  $ U = {x in RR^d bar x in U} = {x in RR^d bar X_I in U, X_J = f(X_I)} $
+  Since $f(X_I)$ is an empty condition.
+]
+
+#definition[Smooth mainfolds of dim $bold(k)$ by graph][
+  A set $M subset.eq RR^d$ is *a smooth mainfold of dim $k$* if for all $p in M$ there exists $p in W subset.eq RR^d$ an open neighborhood so that $W inter M$ is a graph of dim $k$ of a smooth function (we say that $M$ is locally a smooth graph of dim $k$ for a $p in M$).
+]
+
+#definition[Smooth mainfolds of dim $bold(k)$][
+  Let $k<=d$, a set $M subset.eq RR^d$ is called *a smooth mainfold of dim $k$* if for all $p in M$ there exists $W subset.eq RR^d$ a neighborhood of $p$ ($p in W)$, an open set $U subset.eq RR^k$ and a smooth map $phi : U arrow W$ so that
+  + $phi$ is a homeomorphism on it's image
+  + $phi (U) = M inter W$
+  + $rank(D phi_u) = k$ for all $u in U$ (of full rank)
+]
+
+#example[
+  We look at $gamma(t)= (sin(t), sin(2t))$ for $0<t<(5pi)/4$ and we define $S = {gamma(t) bar 0<t<(5pi)/4}$.\
+  Is $S$ a smooth mainfold according to the definition with graph? it is not a graph in a neighborhood of $(0,0)$.\
+  But by our second definition if we define $U = (0, (5pi)/4)$ and $phi(t) = (sin(t), sin(2t))$ then $(D phi)|_(t=0) = (cos(t), 2cos(t))|_(t=0) = (1,2)$ is a matrix of full rank.\
+  $phi$ is continuous and is injective but $phi^(-1)$ is not continuous since if we look at $p_n = gamma(1/n)$ then $p_n arrow (0,0)$ and if $phi^(-1)$ were continuous we would have $phi^(-1)(p_n) arrow phi^(-1)(0,0)$, but $phi^(-1)(p_n) = 1/n arrow 0$ so $phi^(-1)(0,0)=pi$ then continuity would require $1/n arrow pi$ which is a contradiction.
+]
+
+#proposition[
+  Every smooth mainfold by the graph definition is a smooth mainfold.
+]
+
+#proof[
+  Let $Gamma = {x in RR^d bar X_I in U, space X_J = f(X_I)}$ where $f:U arrow RR^(d-k)$, ${1, 2, dots.h, d} = I union.dot J$ and $abs(I)=k$.\
+  Define $phi : U arrow W$ as follows
+  $
+    (pi_I compose phi)(u) = u \
+    (pi_J compose phi)(u) = f(u)
+  $
+  $phi$ is smooth since each coordinate is a smooth function and $D phi |_(phi^(-1)(p))$ is of full rank since $(D phi)|_(I times {1, 2, dots.h, d}) = I_(k times k)$.\
+  Hence
+  $ phi(U) = {phi(u) bar u in U} = {x in RR^d bar (pi_I compose phi)(x) = u, space (pi_J compose phi)(x) = f(u)} $
+  We have $phi:U arrow W inter M$ is invertible since $ (pi_I compose phi)(u) = pi_I (phi(u)) = u \
+  pi_I (phi(phi(pi_I (x)))) = pi_I (x) \
+  pi_J (phi(pi_I (x)))=f(pi_I (x)) = pi_J (x) $
+  So $pi_I : W inter M arrow U$ is a continuous and is the inverse of $phi : U arrow W inter M$.
+]
+
+#theorem[
+  Every smooth mainfolds is a graph mainfold.
+]
+
+#proof[
+  Let $p in M$, $p in W subset.eq RR^d$ open, $U subset.eq RR^k$ and $phi : U arrow W$ with $phi(U) = W inter M$, $(D phi)|_(phi^prime (p))$ is of full rank.\
+  There exists $I subset.eq {1,2,dots.h, d}$ with $abs(I)=k$ so that $(D phi)|_(I times {1, 2, dots.h, k})$ is invertible.\
+  We look at the map $pi_I compose phi : U arrow RR^k$ which is a continuous map from $RR^k$ to $RR^k$ and $D(pi_I compose phi)|_(phi^prime (p)) = (D phi)|_(I times {1, 2, dots.h, k})$ is invertible.\
+  By the inverse function theorem, $pi_I compose phi$ is a locally mainfolds at $phi^prime (p)$ so there exists $phi^prime (p) in U_0 subset U$ open and exists $V_0 subset.eq RR^k$ open so that $(D phi) : U_0 arrow V_0$ is a diffeomorphism.\
+  We define $f:V_0 arrow RR^(d-k)$ by $f(v) = pi_J (phi((pi_I compose phi)^(-1) (v)))$ where $J = {1,2, dots.h, d} without I$, $W_0$ such that $phi(U_0) = W_inter M$ and we need to verify that
+  $ underbrace(W_0 inter M, = A) = underbrace({x in RR^d bar pi_I (X) in V_0, space pi_J (X) = f(pi_I (X))}, =B) $
+  But $W_0 inter M = phi(U_0)$ and let $u in U_0$ so there exists $v in V_0$ so that $(pi_I compose phi)^(-1) (v) = u$  we aim to show that $phi(u) in B$.\
+  From our definition, $pi_I (phi(u))=V in V_0$.\
+  Now, $pi_J (phi(u)) = pi_J (phi((pi_I compose phi)^(-1) (v))) = f(v) = f((pi_I compose f)(u))$.\
+  Why is $B subset A$? Let $x in B$, let $u=_(star) (pi_I compose phi)(pi_I (x)) in U_0$ (ERROR???), does $phi(x)=x$? Since $pi_I (phi(u))=pi_I (x)$ by $(star)$ we have $pi_J (phi(u)) = f(pi_I (x))=pi_J (x)$
+]
+#pagebreak()
+
+== Transition Maps
+Let $M$ be a smooth mainfold of dim $k$ and suppose we have $phi_1 : U_1 arrow W_1, phi_2 : U_2 arrow W_2$ where $W_1, W_2$ neighborhoods of $p$.\
+Denote
+$
+  tilde(U)_1 = phi_1^(-1) (W_1 inter W_2 inter M) \
+  tilde(U)_2 = phi_2^(-1)(W_1 inter W_2 inter M)
+$
+We define $tau_(1 2) : tilde(U)_1 arrow tilde(U)_2$ by $tau_(1 2) (u) = phi_2^(-1)(phi_1 (u))$ where $phi_2 : U_2 arrow W_2 inter M$.\
+We ask ourself is $tau_(1, 2)$ is a smooth map? YES – We look at $phi_2^(-1) compose phi_1 = (phi_2 compose pi_I)^(-1) (pi_I compose phi_1)$
+
+#end_of_lecture("10 – 12/05")
+
+#remark[The following was in resirction 5.]
+#definition[
+  We call $M subset.eq RR^n$ a $k$-mainfold of type $C^r$ if for all $p in M$ there exists an open neighborhood $p in W subset.eq RR^n$, $F:W arrow RR^(n-k)$ with $F in C^r$ so that $D F_p$ is of full rank and $M= W inter F^(-1)({0})$.
+]
+
+#claim[
+  Def 1 <==> Def 3
+]
+
+#proof[
+  $==>$ Let $p in M$ so that exists $p in W subset.eq RR^n$, $U subset.eq RR^k$ and $F:U arrow R^(n-k)$ with $I in binom([n], k)$ and $J=[n] without I$ so that $ M inter W = {x in W bar X_I in W, space F(X_I) = X_J} $
+  we define $W_0 = W inter pi_I^(-1) (U)$ and $F:W_0 arrow RR^(n-k)$ so that $F(X)=X_J - f(X_I)$ and $F in C^r$.\
+  $D F$ is of full rank: for every $j in J$, $(partial F)/(partial x_j) = "e"_j$.
+]
