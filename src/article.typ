@@ -310,6 +310,7 @@
 #let boundary(X) = $partial #X$
 #let Lip = math.op("Lip")
 #let Id = math.op("Id")
+#let Area = math.op("Area")
 
 // Probability
 #let Unif = math.italic(math.op("Unif"))
