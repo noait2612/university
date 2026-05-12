@@ -294,7 +294,7 @@ $ y(t)= e^(t A) y_0 + integral_0^t e^((t -s)A) g(s) dif s $
   $ norm(exp(t A))_p <= C e^(-t alpha) $
   בפרט
   $ lim_(t arrow infinity) exp(t A)=0 $
-]
+]<lemma_before_linear_criterion_for_asymptotic_stability>
 #proof[
   נניח ש־$J = P A P^(-1)$ צורת ז'ורדן של $A$.\
   נשים לב ש־$J + alpha I$ היא מטריצה בצורדת ז'ורדן שכל שלכל ערכייה העצמיים חלק ממשי שלילי.\
@@ -309,7 +309,38 @@ $ y(t)= e^(t A) y_0 + integral_0^t e^((t -s)A) g(s) dif s $
 ]
 #end_of_lecture("9 – 11/05")
 
-#proof
-[@linear-criterion-for-asymptotic-stability, הקריטריון הלינארי ליציבות אסימפטוטית][
-
+#proof[@lemma_before_linear_criterion_for_asymptotic_stability, הקריטריון הלינארי ליציבות אסימפטוטית][
+  כזכור לכל $t in I_p$, $phi_t (x)$ גזירה ב־$p$ ו־$D phi)t (p)$ מקיימת
+  $
+    (star) space dif/(dif t) [D phi_t (p)] = (D phi_t (p))^prime = D F (phi_t (p)) D phi_t (p) \
+    D phi_0 (o) = id
+  $
+  כאשר קראנו ל־$D phi_t (p) = M$ בעבר.\
+  אבל $p$ נקודת שיווי משקל כלומר $F(p)=0$ ולכן $phi_t (p) = p$ לכל $t$ ומכאן נובע ש־$(star)$ היא משוואה לינארית במקדמים קבועים ולכן $M^prime = D F (p) M$.\
+  ולכן $ D phi_t (p) = exp(t D F (p)) $
+  בפרט מ@lemma_before_linear_criterion_for_asymptotic_stability נובע ש־$normop(exp(t D F(p))) stretch(arrow)_(t arrow infinity) 0$ ולכן יש $T > 0$ שעבורו
+  $ normop(exp(T D F(p)))< 1/4 $
+  יהי $epsilon > 0$ וקיימת $delta > 0$ כך שלכל $q in B_delta (p)$ ולכן $t in [0,T]$ מתקיים $phi_t (q) in B_epsilon (p)$ (מתלות רציפה בתנאי ההתחלה).\
+  בנוסף מהקירוב הלינארי
+  $ phi_T (q) = phi_T (p) + D phi_T (p) (q-p) $
+  ולכן על־ידי הקטנה של $delta$ אם צריך נוכל להניח שהמחובר $o(p-q)$ לא עולה על $1/4 normop(p-q)$.\
+  כלמר
+  $ normop(phi_T (q) - phi_T (p)) <= normop(q-p)/2 $
+  בפרט $phi_T (q) in B_delta (p)$ שכן $phi_T (p) = p$ ושוב לכל $0<= t<=T$ מתקיים $phi_(T+t) (q) in B_epsilon (p)$ (שוב מהרציפות בתנאי ההתחלה).\
+  באיטרציה
+  $ normop(phi_(k T) (q) - p)<= 2^(-k) norm(q-p) $
+  ולכן $t in [0,T]$ ולכל $k in NN$ מתקיים $phi_(k T + t) (q) in B_epsilon (p)$ כלומר לכל $t > 0$ $phi_t (q) in B_epsilon (p)$ וזו בידיוק ההגדרה של יציבות.\
+  נשאר להראות יציבות אסימפטוטית: קיבלנו ש־$phi_(k T) (q) stretch(arrow)_(k arrow infinity) p$ לכל $q in B_delta (p)$.\
+  שוב מאותה תלות רציפה בתנאי התחלה נקבל $lim_(t arrow infinity) phi_t (q) = p$ שכן לכל $epsilon^prime > 0$ יש $delta^prime > 0$ כך שאם $y in B_(delta^prime) (p)$ אז לכל $t in [0,T]$ נקבל $ normop(phi_t (y) - p)<epsilon^prime $
 ]
+
+#definition[פונקציית ליאפונוב][
+  יהי $p in B subset.eq U$ כדור.\
+  נאמר ש־$L : B arrow RR$ גזירה ברציפות היא *פונקציית ליאפונוב* ל־$F$ בנקודה $p$ אם $chevron.l gradient L, F(x) chevron.r <= 0$ לכל $x in B$ ול־$L$ יש מינימום חזק / מינימום ממש ב־$p$ (כלומר $L(p) <= L(x)$ לכל $x in B$ עם שיוויון אם ורק אם $x=p$).\
+  נאמר ש־$L$ היא *פונקציית ליאפונוב חזקה* אם היא פונקציית ליאפונוב ומתקיים בנוסף $chevron.l gradient L(x), F(x) chevron.r < 0$ לכל $x!=p$.
+]
+#theorem[משפט ליאפונוב][
+  תהיי $p in U$ נקודת שיווי משקל של $F$. אם ל־$F$ יש פונקציית ליאפונוב ב־$p$ אז $p$ יציבה.\
+  אם ל־$F$ יש פונקציית ליאפונוב חזקה ב־$p$ אז $p$ יציבה אסימפטוטית.
+]
+#end_of_lecture("10 – 12/05")
