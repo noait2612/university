@@ -147,30 +147,82 @@ of $gamma$ is by arc-length parameterization).
   We saw that
   $ x(t)^2 + y(t)^2 = r^2 (dot(x)(t)^2 + dot(y)(t)^2) $
   But since $dot(x)(t)^2 + dot(y)(t)^2 = 1$ we have $x(t)^2 + y(t)^2 = r^2$.\
-  Therefore the image of the curve lies on the circle of radius $r$ so $boundary(Omega) = boundary(B_r (0))$ which are both bounded domains the the same boundary so we can conclude that $Omega = B_r (0)$.
+  Therefore the image of the curve lies on the circle of radius $r$ so $boundary(Omega) = boundary(B_r (0))$ which are both bounded domains with the same boundary so we can conclude that $Omega = B_r (0)$.
 ]
 
 #question()
 Let $Omega subset.eq RR^2$ be a domain. Let $p in boundary(Omega)$ and let $p in V subset.eq RR^2$ be a neighborhood of $p$.\
 Denote by $B = B_1 (0) subset.eq RR^2$ the unit ball centered at $0$ and we will assume that $phi:B arrow V$ is a diffeomorphism.\
 We also assume that $phi({y>0})=V inter Omega$ and $phi({y=0}) subset.eq boundary(Omega)$.\
-We will prove that $det d phi > 0$ if and only if the curve $t mapsto phi(t, 0)$ is a positively oriented with respect to $Omega$.\
+We will prove that $det dif phi > 0$ if and only if the curve $t mapsto phi(t, 0)$ is a positively oriented with respect to $Omega$.\
 Formally, we say that the boundary of a domain $Omega subset.eq RR^2$ parametrized by $gamma:I arrow boundary(Omega)$, $gamma(t)=(x(t), y(t))$ is positively orienated if
 $ forall t in I, space exists delta > 0, space forall h in (0,delta), space gamma(t) + h hat(n) (t) in Omega $
 Where $hat(n)(t) = (-dot(y)(t), dot(x)(t))$.
 
-#proof[#todo]
+#proof[
+  First we need to understand the geometric definition of $phi$.\
+  One can see that on the $x$-axis (where $y=0$) we go to the boundary so $phi$ maps the $x$-axis of the ball into the boundary of $Omega$.\
+  On the upper half ball, where $y>0$, we go to the "inside" of $Omega$ which means the $phi$ maps the ball into the interior of $Omega$.\
+  If we look at the vector $"e"_2 = (0,1)$ this vector points from the boundary into the interior of the ball which means that its image under $d phi("e"_2)$ must therefore points into the domain $Omega$.\
+  If we set the coordinates in the ball to be $(u,v)$ and the coordinates in $Omega$ to be $(x,y)$, the Jacobian matrix $dif phi$ is
+  $
+    mat(display((partial x)/(partial u)), display((partial x)/(partial v)); display((partial y)/(partial u)), display((partial y)/(partial v)))
+  $
+  Hence
+  $
+    det dif phi = (partial x)/(partial u)(partial y)/(partial v)-(partial y)/(partial u)(partial x)/(partial v) = dot(x) (partial y)/(partial v) - dot(y) (partial x)/(partial v)
+  $
+  We define $gamma(t)= phi(t, 0)$ so $dot(gamma)(t)=(partial phi)/(partial u) (t,0) = vec(dot(x)(t), dot(y)(t))$ this is the boundary curve and we notice that $hat(n)(t)$ is a counterclockwise rotation of $dot(gamma)(t)$.\
+  Since $phi({v>0}) subset.eq Omega$ the vector $(partial phi)/(partial v)$ points into the domain $Omega$.\
+  We compute the dot product between $hat(n)(t)$ and the inward pointing vector $v_2 = (partial phi)/(partial v)$
+  $
+    chevron.l vec(-dot(y), dot(x)), v_2 chevron.r = chevron.l vec(-dot(y), dot(x)), vec((partial x)/(partial v), (partial y)/(partial v)) chevron.r = -dot(y) (partial x)/(partial v) + dot(x) (partial y)/(partial v) = det dif phi
+  $
+  $==>$ If $det dif phi > 0$ then the dot product $chevron hat(n)(t), v_2 chevron.r > 0$ which actually means that $gamma(t)$ is positively orienated since $v_2$ points into $Omega$ and $hat(n)(t)$ must also point into $Omega$.\
+  $<==$ If $gamma(t)$ is positively orienated then $hat(n)(t)$ must points into $Omega$ since $phi$ is a diffeomorphism and $v_2$ points into $Omega$ the dot product must be positive which implies $det dif phi >0$.
+]
 
 #question()
 Let $f,g : [a,b] arrow RR$ be $C^1$ functions such that $f<=g$ and we denote $A={(x,y) in RR^2 bar x in [a,b], space y in [f(x), g(x)]}$.\
 Let $Omega$ be a neighborhood of $A$ and let $F=(P,Q) : Omega arrow RR^2$ be a smooth vector field.\
 Let $R in M_2 (RR)$ be an orthogonal matrix such that $det R = 1$.\
-Denote $A_R = {R_p in RR^2 bar p in A}$ and $Omega_R = {R_p in RR^2 bar p in Omega}$ and we define the vector field $F_R = (P_R, Q_R) : Omega_R arrow RR^2$ by \ $F_R = R compose F compose R^(-1)$.\
+Denote $A_R = {R p in RR^2 bar p in A}$ and $Omega_R = {R p in RR^2 bar p in Omega}$ and we define the vector field $F_R = (P_R, Q_R) : Omega_R arrow RR^2$ by \ $F_R = R compose F compose R^(-1)$.\
 We will prove that
 $
   integral_(boundary(A_R)) F_R dif ell = integral_(A_R) (partial Q_R)/(partial x) - (partial P_R)/(partial y) dif x dif y
 $
 
 #proof[
-  #todo
+  We take $gamma:[c,d] arrow RR^2$ a parameterization of the boundary $boundary(A)$.\
+  Since $A_R$ is the image of $A$ under the rotation it can be parametrized by $sigma(t)=R gamma(t)$ and $dot(sigma)(t)=R dot(gamma)(t)$.\
+  The line integral of $F_R$ along $boundary(A_R)$ is defined as
+  $
+    integral.cont_boundary(A_R) F_R dif ell &= integral_c^d F_R (sigma(t)) dot(sigma)(t) dif t \
+    &= integral_c^d (R compose F compose R^(-1))(R gamma(t)) dot.op (R dot(gamma)(t)) dif t \
+    &= integral_c^d (R F(gamma(t))) dot.op (R dot(gamma)(t)) dif t \
+    &= integral_c^d F(gamma(t)) dot.op dot(gamma)(t) dif t = integral.cont_boundary(A) F dif ell
+  $
+  Where the second equality is substituting the definition of $F_R$ and $sigma(t)$ and the forth equality is since $R$ is an orthogonal matrix which means that $chevron.l R u, R v chevron.r = chevron.l u, v chevron.r$.\
+  By change of variable we set $(x,y) = R(u,v)$ and since $det R = 1$ the Jacobian determinant is $abs(det R)=1$ so the double integral becomes
+  $
+    integral.double_(A_R) (partial Q_R)/(partial x)-(partial P_R)/(partial y) dif x dif y = integral.double_A ((partial Q_R)/(partial x)-(partial P_R)/(partial y))|_(R(u,v)) dot.op 1 dif u dif v
+  $
+  We need to simplify the integral: if $dif F$ is the Jacobian of the original field then the Jacobian of the rotated field $F_R$ is $R dif F R^(-1)$.\
+  Furthermore, $(partial Q)/(partial x)-(partial P)/(partial y)$ is rotational invariant since it represents the trace of the field's derivative multiplied by a matrix rotation (from the cyclic property of the trace) so we will have
+  $
+    ((partial Q_R)/(partial x)-(partial P_R)/(partial y))|_(R(u,v)) = (partial Q)/(partial u) - (partial P)/(partial v)
+  $
+  Therefore
+  $
+    integral.double_(A_R) (partial Q_R)/(partial x)-(partial P_R)/(partial y) dif x dif y = integral.double_A (partial Q)/(partial u) - (partial P)/(partial v) dif u dif v
+  $
+  Applying Green's Theorem gives us
+  $
+    integral.cont_boundary(A) F dif ell = integral.double_A (partial Q)/(partial u) - (partial P)/(partial v) dif u dif v
+  $
+  Hence from what we found
+  $
+    integral.cont_boundary(A) F dif ell = integral.double_(A_R) (partial Q_R)/(partial x)-(partial P_R)/(partial y) dif x dif y
+  $
+
 ]
