@@ -344,3 +344,4 @@
 // Linear Algebra
 #let rank = math.op("rank")
 #let GL = math.op("GL")
+#let nullspace(x) = $"null"(#x)$
