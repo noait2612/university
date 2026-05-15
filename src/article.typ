@@ -345,3 +345,4 @@
 #let rank = math.op("rank")
 #let GL = math.op("GL")
 #let nullspace(x) = $"null"(#x)$
+#let diag = math.op("diag")
