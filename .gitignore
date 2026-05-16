@@ -7,3 +7,6 @@
 !**/bin/*.pdf
 !**/*.png
 !**/*.py
+
+/Year 3/Drug Use, Misuse and Treatment/*
+!/Year 3/Drug Use, Misuse and Treatment/Notes/

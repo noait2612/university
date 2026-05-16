@@ -332,6 +332,7 @@
 
 // Mainfolds
 #let Mesh = math.op("Mash")
+#let Vol = math.op("Vol")
 
 // Topology
 #let trivialTopology(x) = $#x _italic("triv")$
