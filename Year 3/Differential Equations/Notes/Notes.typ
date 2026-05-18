@@ -344,3 +344,62 @@ $ y(t)= e^(t A) y_0 + integral_0^t e^((t -s)A) g(s) dif s $
   אם ל־$F$ יש פונקציית ליאפונוב חזקה ב־$p$ אז $p$ יציבה אסימפטוטית.
 ]
 #end_of_lecture("10 – 12/05")
+
+#proof[
+  נוכיח ראשית שאם יש פונקציית ליאפונוב אז יש לנו יציבות.\
+  יהי $r>0$ ו־$L in C^1 (B_r (x_0))$ פונקציית ליאפונוב.\
+  נשיב לב שלכל $p in B_r (x_0)$ אם נסתכל על המסילה $x_p$ ונרכיב עליה את הפונקציה $L(x_p (t))$ היא פונקציה יורדת מהגדרת פונקציית ליאפונוב היא יורדת כל זמן שהיא מוגדרת מכלל השרשרת
+  $ dif/(dif t) (L(x_p (t))) = (x^prime_p (t), gradient L(x_p (t)))=(F(x_p (t)), L(x_p (t)))<0 $
+  יהי $r>epsilon>0$ ומתכונה $(2)$ של פונקציית ליאפונוב ($L(x_0) <= L(x)$) נקבל ש־$display(L(x_0) < min_(x in boundary(B_epsilon (x_0))) L(x))$.\
+  לכן קיים $delta > 0$ כך ש־$display(max_(x in B_delta (x_0)) < min_(x in boundary(B_epsilon (x_0))) L(x))$.\
+  כעת, אם $p in B_delta (x_0)$ מתקיים שאם יש $t>0$ שעבורו $x_p (t) in.not B_epsilon (x_0)$ אז קיים $t_star$ כך ש־$x_p (t_star) in boundary(B_epsilon (x_0))$ אבל אז $L(x_p (t_star)) > L(x_p (0)) = L(p)$ בסתירה למונוטוניות.\
+  כעת נראה ליאפונוב חזקה גורר יציבות אסימפטוטית.\
+  יהי $0<R<r$ ומכך שזו פונקציית ליאפונוב חזקה נובע שיש $eta>0$ כך שלכל $p in B_eta (x_0)$ כך ש־$x_p (t) in B_R (x_0)$ לכל $t>=0$.\
+  נרצה להראות שלכל $p in B_eta (x_0)$ מתקיים ש־$x_p (t) arrow x_0$. נניח שלא ככה, כלומר יש $p in B_eta (x_0)$ ויש $epsilon > 0$ וסדרת זמנים $t_k arrow infinity$ כך ש־$d(x_p (t_k), x_0) >= epsilon$.\
+  נסמן ב־$M = max_(x in B_R (x_0)) norm(F(x))$ ונסמן $C=max {chevron.l gradient L(x), F(x) chevron.r bar epsilon/2 <= norm(x-x_0)<=R}$ ונבחין ש־$0>C$ (מהאי־שיוויון החזק).\
+  נשים לב שאם $norm(x_p (t) -x_0)>epsilon$ אז לכל $t<=s<=t+epsilon/(2M)$ מתקיים ש־$norm(x_p (s)-x_0)>=epsilon/2$ שכן
+  $ norm(integral_t^s x^prime_p (u) dif u)<= M abs(s-t)<=epsilon/2 $
+  כעת נניח על־ידי צמצום לתת־סדרה (אם צריך) ש־$epsilon/(2M) < abs(t_(k+1)-t_k)$ ונחשב את $L(x_p (t))$ עבור $t>0$
+  $
+    L(x_p (t)) & = L(p) + integral_0^t (L (x_p (s)))^prime dif s \
+    & = L(p) + integral_0^t chevron.l gradient L(x_p (s)), F(x_p (s)) chevron.r dif s \
+    &<= L(p) + sum_(k=1)^(n bar t_(n+1) <=t) integral_(t_k)^(t_(k+1)) chevron.l gradient L(x_p (s)), F(x_p (s)) chevron.r dif s \
+    &<= L(p) + sum_(k=1)^(n bar t_(n+1) <=t) integral_(t_k)^(t_k + epsilon/(2M)) chevron.l gradient L(x_p (s)), F(x_p (s)) chevron.l dif s \
+    &= L(p) + sum_(k=1)^(n bar t_(n+1) <=t) C dot.op epsilon/(2M) stretch(arrow)_(t arrow infinity) - infinity
+  $
+  אבל זאת סתירה כי $L$ חסומה ב־$closure(B_R (x_0))$ לכן לכל $p in B_eta (x_0)$ מתקיים $x_p (t) stretch(arrow)_(t arrow infinity) x_0$.
+]
+
+#example[
+  נניח ש־$H:U arrow RR$ גזירה ברציפות (כרגיל $U$ פתוחה) ו־$J$ מטריצה אנטי־סימטרית ($J^t = - J$) ונגדיר $F= J gradient H$ אז $H$ פונקציית ליאפונוב (לא חזקה) עבור $F$ היכן ש־$x_0$ היא נקודת מינימום של $H$ (ברור שאם $x_0$ מינימום (חזקה) של $H$ אז $F(x_0) = 0$).\
+  $H$ פונקציית ליאפונוב שכן
+  $
+    chevron.l F, gradient H chevron.r & = chevron.l J gradient H, gradient H chevron.r \
+                                      & = chevron.l gradient H, J^t gradient H chevron.r \
+                                      & = chevron.l J^t gradient H, gradient H chevron.r \
+                                      & = - chevron.l J gradient H, gradient H chevron.r = 0
+  $
+  אם $x_0$ נקודת שיווי משקל יציבה, האם ייתכן ש־$x_0$ נקודת שיווי משקל יציבה אסימפטוטית? לא ייתכן דבר כזה.\
+  כי $chevron.l F, gradient H chevron.r=0$ אומר ש־$H$ נשארת קבועה לאורך המסלולים (זה בעצם קווי גובה) למה? כי
+  $ dif/(dif t) H(x_p (t)) = chevron.l gradient H, x^prime_p (t) chevron.r = chevron.l gradient H, F chevron.r = 0 $
+]
+
+#example[
+  נסמן ב־$f$ את הכוח, אז החוק השני של ניוטון: $f = m a$ ומיריעות אנחנו יודעים שהפוטנציאל הוא $- gradient V = f = m a$.\
+  נסמן את המיקום ב־$q$ והתנע זה $p=dif/(dif t) m q = m dif/(dif t) q$.\
+  בהינתן $N$ גופים תלת מימדיים יש $3N$ קורדינאטות מיקומים ו־$3N$ קורדינאטות של תנעים $x=(q_1, dots.h, q_(3n), p_1, dots.h, p_(3n))$.\
+  אז $ dif/(dif t) p_i = (-gradient V)_i = - (partial V)/(partial q_i) $
+  אבל $ dif/(dif t) q_i = p_i / m = partial/(partial p_i) ((p_i^2)/(2m)) $
+  נסכום
+  $
+    H = underbrace(sum_(i=1)^(3N) (p_i^2)/(2m), "אנרגיה קינטית") + underbrace(V(q_1, dots.h q_(3N)), "אנרגיה פוטנציאלית")
+  $
+  ולכן
+  $ dif/(dif t) p_i = - (partial H)/(partial q_i), quad (dif q_i)/(dif t) = (partial H)/(partial p_i) $
+  כלומר
+  $
+    dif/(dif t) vec(q_1, q_2, dots.v, q_(3N), p_1, p_2, dots.v, p_(3N)) = underbrace(mat(0, 3N I; - I_n, 0), 6N times 6N) vec((partial H)/(partial q_1), (partial H)/(partial q_2), dots.v, (partial H)/(partial q_(3N)), (partial H)/(partial p_1), dots.v, (partial H)/(partial p_(3N)))
+  $
+  המסקנה מהכתיבה הזו היא שתחת כוח משמר (שתלוי רק במיקום) נובע ש־$H$ קבועה לאורך המסילות – כלומר $H$ קבועה בזמן במערכת ו־$H$ נקראת האנרגיה של המערכת ו־$H$ נקראת המילטוניאן.
+]
+#end_of_lecture("11 – 18/05")
