@@ -347,3 +347,4 @@
 #let GL = math.op("GL")
 #let nullspace(x) = $"null"(#x)$
 #let diag = math.op("diag")
+#let Gram = math.op("Gram")

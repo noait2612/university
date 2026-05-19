@@ -402,4 +402,79 @@ $ y(t)= e^(t A) y_0 + integral_0^t e^((t -s)A) g(s) dif s $
   $
   המסקנה מהכתיבה הזו היא שתחת כוח משמר (שתלוי רק במיקום) נובע ש־$H$ קבועה לאורך המסילות – כלומר $H$ קבועה בזמן במערכת ו־$H$ נקראת האנרגיה של המערכת ו־$H$ נקראת המילטוניאן.
 ]
-#end_of_lecture("11 – 18/05")
+
+#theorem[הקריטריון הלינארי לאי־יציבות][
+  תהיי $U subset.eq RR^n$ פתוחה ו־$F:U arrow RR^n$ שדה גזיר ברציפות ו־$x_o in U$ נקודת שיווי משקל.\
+  אם ל־$D F(x_0)$ יש ערך עצמי עם חלק ממשי חיובי אז $x_0$ לא יציבה.
+]
+
+#proof[
+  נוכיח את המשפט תחת ההנחה שלכל הערכים העצמיים של $A colon.eq D F(x_0)$ יש חלק ממשי שאינו אפס כלומר אין ל־$A$ ערכים עצמיים עם חלק ממשי אפס.\
+  נסמן $H_plus$ יהיה תת־המרחב של $RR^n$ הנפרש על־ידי הוקטורים העצמיים (המוכללים אם צריך) עם ערך עצמי שלו חלק ממשי גדול מאפס ו־$H_minus$ וכן הלאה עם ערך עצמי שלו חלק ממשי קטן מאפס ומההנחה $RR^n = H_plus plus.o H_minus$ ונסמן ב־$pi_plus.minus$ את ההטלות המתאימות לסכום הישר (ההנחה של המשפט אומר ש־$H_plus != {0}$).\
+  #end_of_lecture("11 – 18/05")
+  נניח ש־$x_0 = 0$ ונניח בשלילה ש־$0$ יציבה, כלומר: לכל לכל $epsilon > 0$ יש $delta>0$ כך שאם $p in B_delta (0)$ אז $x_p (t) in B_epsilon (0)$.\
+  נגדיר את הפונקציה $g(x)=F(x)-A x$ כך שיתקיים
+  $ x^prime (t) = F(x(t)) = A x(t) + g(x(t)) $
+  לכן ניתן לכתוב את הפתרון למשוואה באופן הבא
+  $ (star star) space x(t) = e^(t A) x(0) + integral_0^t e^((t-s)A) g(x(s)) dif s $
+  להמשך ההוכחה אנחנו צריכים שתי למות
+  #lemma[
+    קיים $R>0$ כך שאם $x:[0,infinity) arrow B_R (0)$ פותרת את המשוואה $x^prime (t) = F(x(t))$ אז
+    $
+      x(t)=e^(t A) pi_minus (x(0)) + integral_0^t e^((t-s) A) pi_minus g(x(s)) dif s - integral_t^infinity e^((t-s)A) pi_plus + g(x(s)) dif s
+    $
+  ]<first-lemma-for-the-linear-criterion-for-instable>
+  #proof[@first-lemma-for-the-linear-criterion-for-instable][
+    נשים לב
+    $ F(x) = F(0) + A(x+ o(norm(x))) $
+    ולכן מכך ש־$F(0) = 0$
+    $ g(x) =F(x) - A x = o(norm(x)) $
+    בפרט, יש $R>0$ כך שלכל $x in RR$ מתקיים $norm(g(x))<=norm(x)$ ובנוסף
+    $ pi_plus.minus e^(t A) = e^(t A) pi plus.minus $
+    נכפול את $(star star)$ ב־$e^(t A)$ ונפעיל את $pi_plus$ ונקבל (כי $pi_plus$ זו העתקה לינארית וגם אינטגרל הוא לינארי)
+    $
+      (star star star) space e^(-t A) pi_plus x(t) = pi_plus (x(0)) + integral_0^t e^(-s A) pi_plus g(x(s)) dif s ==> pi_plus (x(0)) = - integral_0^infinity e^(-s A) pi_plus + g(x(s)) dif s
+    $
+    נרצה להראת את החץ מימין: קיים קבוע $C>0$ כך שאם $0<mu<min { abs(re(lambda)) bar A "ערך עצמי של" lambda}$ ואז
+    $ normop(pi_plus.minus) <= C $
+    אז לכל $t>0$
+    $ norm(e^(t A) pi_minus x) <= C e^(- mu t) norm(x) $
+    ולכל $t<0$
+    $
+      norm(e^(t A) pi_plus x) <= C e^(-mu abs(t)) norm(x)
+    $
+    לכן אם $x(t) in B_r (0)$ לכל $t<0$ נובע
+    $ norm(e^(-t A) pi_plus (x(t)))<= C^2 e^(-pi t) R stretch(arrow)_(t arrow infinity) 0 $
+    בנוסף לכל $s>0$
+    $ norm(g(x(s)))<=norm(x(s)) $
+    ולכן
+    $ norm(e^(-s A) + pi_plus g(x(s)))<= C^2 e^(-s mu) R $
+    וזה אינטגרבילי ב־$s$ ולכן ניתן ל־$t$ לשאוף לאינסוף ב־$(star star star)$ ונקבל
+    $ pi_plus (x(0)) = - integral_0^infinity e^(-s A) pi_plus g(x(s)) dif s $
+    נתבונן
+    $ x(t)=e^(t A) x(0) + integral_0^t e^((t-s) A) g(x(s)) dif s $
+    ונקבל
+    $
+      x(t) = e^(t A) pi_plus (x(0)) + e^(t A) pi_minus (x(0)) + integral_0^t e^((t-s)A) pi_minus g(x(s)) dif s + integral_0^t e^((t-s)A) pi_plus g(x(s)) dif s \
+      = e^(t A) pi_minus (x(0)) + integral_0^t e^((t-s)A) pi_minus g(X(s)) dif s - integral_t^infinity e^((t-s)A) pi_plus g(x(s)) dif s
+    $
+  ]
+
+  #lemma[
+    קיים $R>R_0 > 0$ מהלמטה הקודמת כך שאם $x,y : [0,infinity) arrow B_(R_0) (0)$ הם פתרונות ל־$x^prime = F(x)$ כך ש־$pi_minus (x(0)) = pi_minus (y(0))$ אז $x(t)=y(t)$ לכל $t$.
+  ]<second-lemma-for-the-linear-criterion-for-instable>
+
+  #proof[@second-lemma-for-the-linear-criterion-for-instable][
+    לכל $epsilon > 0$ קיים $R>R_0 > 0$ כך שלכל $z_1, z_2 in B_(R_0) (0)$ מתקיים
+    $ norm(g(z_1) - g(z_2)) < epsilon norm(z_1 - z_2) $
+    זה נובע מהגזירות ברציפות של $F$ : כי לכל $z_1, z_2$ מתקיים
+    $
+      F(z_2) = F(z_1) + D F(z_1)(z_2 - z_1) + o(norm(z_2-z_1)) = F(z_1) + A(z_2 -z_1) + (D F(z_1) - A)(z_2 - z_1) + o(norm(z_2 - z_1))
+    $
+    לכן
+    $ g(z_2) - g(z_1) = (D F(z_1)-A)(z_2 - z_1) + o(norm(z_2 - z_1)) $
+    נקבע $R_0 = R_0 (epsilon)$ עבור $epsilon=epsilon(C, mu)$ שנכתוב באופן מפורש אחר־כך.
+  ]
+  #end_of_lecture("12 – 19/05")
+  נבחין שההוכחה של @second-lemma-for-the-linear-criterion-for-instable מראה שיציבות היא בלתי אפשרית.
+]
