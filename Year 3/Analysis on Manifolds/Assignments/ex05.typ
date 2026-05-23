@@ -1,5 +1,6 @@
 #import "../../../src/article.typ": *
 #import "../../../src/article_en.typ": *
+#import "@preview/cetz:0.5.0": canvas, draw
 #show: article_en.with(
   title: [ Solution to Exercise 05 --- Analysis on Manifolds, 80416 ],
   signature: [#align(center)[#image("../../../src/duck.png", width: 30%, fit: "contain")]],
@@ -91,13 +92,123 @@ We will prove that the sphere could not be covered with one local parametrizatio
   From its definition, $S^n$ is a closed and bounded subset hence by Heine-Borel theorem its compact.\
   Since $r^(-1) : S^n arrow U$ is a homeomorphism and $S^n$ is compact, its image $U$ must also be a compact subset of $RR^n$.\
   Since any compact subset of $RR^n$ is closed and bounded we get that $U$ is both open and close in $RR^n$.\
-  We saw that $RR^n$ is a connected topological space and the only subsets that are both open and closed is connected topological space are the $emptyset$ and $RR^n$ itself and since $S^n$ is not empty, $U$ cannot be empty, so we must have $U = RR^n$.\
+  We saw that $RR^n$ is a connected topological space and the only subsets that are both open and closed in a connected topological space are the $emptyset$ and $RR^n$ itself and since $S^n$ is not empty, $U$ cannot be empty, so we must have $U = RR^n$.\
   But $RR^n$ is unbounded which means that it is not compoact and that  is a contradiction.
 ]
 
 #question()
+Let $M subset.eq RR^n$ and we assume that for every $p in M$ there exists an open set $p in W subset.eq RR^n$ and a $C^r$ function $F:W arrow RR^(n-k)$ such that $D F_p$ is of full rank and $M inter W = {x in W bar F(x)=0}$.\
+We will show that for every point $p in M$ there exists an open set $p in V subset.eq RR^n$ such that $V inter M$ is a $k$-dimensional graph of a function $f in C^r (U, RR^(n-k))$ where $U subset.eq RR^k$ is open.
+
+#proof[
+  Since $D F_p$ is an $(n-k) times n$ matrix with full rank $n-k$ it must contain an invertible $(n-k) times (n-k)$ submatrix.\
+  By permuting the standard coordinates of $RR^n$ if necessary, we can split the coordinate system into $RR^k times RR^(n-k)$ and write any point as $(x, y)$, such that the point $p = (x_0, y_0)$ and the square submatrix of partial derivatives with respect to $y$, denoted $frac(partial F, partial y)(x_0, y_0)$ is invertible.\
+  According to the Implicit Function Theorem, there exists an open neighborhood $U subset.eq RR^k$ of $x_0$, an open neighborhood $y_0 in V^prime subset.eq RR^(n-k)$ and a unique $C^r$ function $f: U arrow V^prime$ such that for any $(x, y) in U times V^prime$ we have $F(x, y) = 0 <==> y = f(x)$.\
+  We take $V = (U times V^prime) inter W$ and it is an open set in $RR^n$ as intersection of open sets, $p in V$ and the intersection of $M$ with this new open set $V$ is exactly the set of points where $F(x,y) = 0$ restricted to $U times V^prime$.\
+  Therefore $V inter M = {(x, f(x)) bar x in U}$ and this is the definition of a $k$-dimensional graph of the $C^r$ function $f$ over $U$.
+]
 
 #question()
+Denote $U = (0, 1) times (−1, 1) subset.eq R^2$ and define the map $r : U arrow RR^2$ by $r (u, v) = (u + v, v^3)$.
+
+#subquestion()
+We will draw the sets ${r(u_0, v) bar u_0 = 1/4, 1/2, 3/4}$ and ${r(u,v_0) bar v_0 = -1/2, 0, 1/2}$.
+
+#solution[
+  In blue is the set ${r(u_0, v) bar u_0 = 1/4, 1/2, 3/4}$ and in red is the set $r(u,v_0) bar v_0 = -1/2, 0, 1/2}$.
+  #align(center)[
+    #canvas({
+      import draw: *
+
+      scale(2.5)
+      line((-1.5, 0), (2.2, 0), mark: (end: ">"), stroke: gray + 0.5pt)
+      line((0, -1.2), (0, 1.2), mark: (end: ">"), stroke: gray + 0.5pt)
+      content((2.3, 0), text(fill: gray)[$x$])
+      content((0, 1.3), text(fill: gray)[$y$])
+
+      // Draw Axis Ticks
+      line((1, -0.05), (1, 0.05), stroke: gray)
+      content((1, -0.15), text(size: 0.7em, fill: gray)[$1$])
+      line((-1, -0.05), (-1, 0.05), stroke: gray)
+      content((-1, -0.15), text(size: 0.7em, fill: gray)[$-1$])
+      line((-0.05, 1), (0.05, 1), stroke: gray)
+      content((-0.15, 1), text(size: 0.7em, fill: gray)[$1$])
+      line((-0.05, -1), (0.05, -1), stroke: gray)
+      content((-0.15, -1), text(size: 0.7em, fill: gray)[$-1$])
+
+      // ==========================================
+      // Set 1: { r(u0, v) } -> y = (x - u0)^3
+      // Blue cubic curves shifted horizontally
+      // ==========================================
+      let u_vals = (0.25, 0.5, 0.75)
+      for u0 in u_vals {
+        let pts = ()
+        let samples = 60
+        for i in range(0, samples + 1) {
+          // v ranges from -1 to 1
+          let v = -1 + (i / samples) * 2
+          let x_val = u0 + v
+          let y_val = v * v * v
+          pts.push((x_val, y_val))
+        }
+        line(..pts, stroke: blue + 1.2pt)
+      }
+
+      // Labels for Set 1
+      content((1, 1.1), text(fill: blue, size: 0.7em)[$u_0=1/4$])
+      content((1.5, 1.1), text(fill: blue, size: 0.7em)[$u_0=1/2$])
+      content((2, 1.1), text(fill: blue, size: 0.7em)[$u_0=3/4$])
+
+      let v_vals = (-0.5, 0.0, 0.5)
+      for v0 in v_vals {
+        let y_val = v0 * v0 * v0
+        line((v0, y_val), (1 + v0, y_val), stroke: red + 1.5pt)
+        circle((v0, y_val), radius: 0.03, fill: red)
+        circle((1 + v0, y_val), radius: 0.03, fill: red)
+      }
+
+      // Labels for Set 2
+      content((1.55, 0.125 + 0.08), text(fill: red, size: 0.7em)[$v_0=1/2$], anchor: "west")
+      content((1.05, 0.06), text(fill: red, size: 0.7em)[$v_0=0$], anchor: "west")
+      content((0.55, -0.125 - 0.08), text(fill: red, size: 0.7em)[$v_0=-1/2$], anchor: "west")
+    })
+  ]
+]
+
+#subquestion()
+Let $I, J subset.eq R$ be open intervals and let $f : I arrow RR^n$ and $g : J arrow RR^n$ be $C^1$.\
+Let $t_0 ∈ I$ and $s_0 ∈ J$ such that $f (t_0) = g (s_0)$ and denote $f (t_0) = p$.\
+We say that the image of $f$ is parallel to the image of $g$ at $p$ if $f ′ (t_0) , g′ (s_0) ∈ RR^n$ are linearly dependent.\
+For every $(u_0, v_0) ∈ U$ define $f_(v_0) : (0, 1) arrow RR^2$ and $g_(u_0) : (−1, 1) arrow RR^2$ by $f_(v_0) (u) = r (u, v_0)$
+and $g_(u_0) (v) = r (u_0, v)$.\
+We will find all the points $p = (x_0, y_0) ∈ U$ such that the image of $f_(y_0)$ is parallel to the image of $g_(x_0)$ at $p$.
+
+#solution[
+  We need to find points $p = (u_0, v_0) in U$ where the tangent vectors of $f_(v_0) (u)$ and $g_(u_0)(v)$ are linearly dependent.\
+  So we compute the tangent vectors:
+  $
+    f_(v_0)(u) = (u+v_0, v_0^3) arrow.long.double f_(v_0)'(u) = (1, 0) \
+    g_(u_0)(v) = (u_0+v, v^3) arrow.long.double g_(u_0)'(v) = (1, 3v^2)
+  $
+  For these to be parallel, one must be a scalar multiple of the other and since both have a first coordinate of $1$, the scalar multiple must be exactly $1$ and this implies their second coordinates must be equal: $3v_0^2 = 0 v_0 = 0$.\
+  Since $u_0$ can be anything in the domain $(0,1)$, the wanted points in $U$ are all the points of the form $(u, 0)$ for $u in (0, 1)$.
+]
+
+#subquestion()
+We will find all the points $p in U$ such that $D r_p$ is not injective.
+
+#solution[
+  We start by computing $D r_p$
+  $
+    D r_((u,v)) = mat(
+      display((partial x)/(partial u)), display((partial x)/(partial v));
+      display((partial y)/(partial u)), display((partial y)/(partial v))
+    ) = mat(display(1), display(1); display(0), display(3v^2))
+  $
+  Hence the determinant is
+  $ det(D r) = 3v^2 $
+  We want all the values so $det(D r) = 0$ hence in $v=0$ thus the points where $D r_p$ is not injective are $(u,0)$ for $u in (0,1)$.
+]
 
 #question()
 
@@ -121,4 +232,40 @@ We will prove that $C = {(x,y,a sqrt(x^2+y^2)) in RR^3 bar x,y in RR, space a>0}
     Since $U$ must be an open set containing $(0,0)$, it must contain points with $z < 0$. However, there are no points in $C$ that map to negative $z$ values, meaning $C$ cannot be written as a graph over an open set $U$ around $(0,0)$.
 
   Since $C$ cannot be locally represented as a smooth graph over any the coordinate planes at the origin it is a contradiction to the assumption and $C$ is not a manifold of dimension $2$ in $RR^3$.
+]
+
+#subquestion()
+We will prove that $H = {(x,y,0) in RR^3 bar x in RR, space y>=0}$ is not a manifold of dimension $2$ in $RR^3$.
+
+#proof[
+  If $H$ were a $2$-dimensional manifold, it must locally be the graph of a smooth function defined over an open set in $RR^2$ near every point $p in H$ and also in the boundary point $p=(0,0,0)$.\
+  For $H$ to locally be a graph near $(0,0,0)$, it must be projectable onto one of the three coordinate planes such that the projection is an open set in $RR^2$ so we work as before
+  + Projection onto the $x y$ plane \
+    So the image is ${(x, y) : y >= 0}$ and this is a closed half plane, meaning any neighborhood containing $(0,0)$ includes boundary points and it is not an open set in $RR^2$.
+  + Projection onto the $x z$ plane or the $y z$ plane \
+    We do for the $x z$ plane and for the $y z$ is the same reasoning only that also $y>=0$
+    The image is restricted entirely to the line $z = 0$ and a $1$-dimensional line cannot contain an open ball in $RR^2$
+
+  Because there is no coordinate projection where $H$ can locally be described as a graph over an open set in $RR^2$ near $(0,0,0)$, $H$ fails the graphical definition of a manifold.
+]
+
+#question()
+Denote $Gamma$ the graph of the function $f: (0, 1/pi) arrow RR$ defined by $f(x)=sin(1/x)$ and we consider the curve $alpha:(-3, 0) arrow RR^2$ defined by
+$
+  alpha(t) = mycases((0 comma -t-2), t in (-3 comma -1), g(t), t in [-1 comma -1/pi], (-t comma sin(-1/t)), t in (-1/pi comma 0)))
+$
+Where $g:[-1, -1/pi] arrow RR^2$ is a smooth curve such that $g(-1) = (0, -1), g(-1/pi) = (1/pi, 0)$.\
+We also assume that $im g inter Gamma = emptyset$ and that $alpha$ is smooth.\
+We will disprove that $im alpha$ is not a $1$-dimensional manifold.
+
+#proof[
+  We use the given graph in the exercise page.\
+  To be a $1$-dimensional manifold, every point in the set must have an open neighborhood (in the subspace topology) that is homeomorphic to an open interval in $RR$ and in particular in the point $p=(0,0)$ and $p in im alpha$ for $alpha(-2) = (0,0)$.\
+  Let $W$ be any arbitrarily small open ball of radius $r$ centered at $(0,0)$ in $RR^2$ and we look at the intersection $W inter im alpha$: \
+  The first segment of $alpha$ (for $t in (-3, -1)$) traces the vertical line segment from $(0,1)$ to $(0,-1)$ and this means $W inter im alpha$ contains the open vertical segment ${(0, y) : -r < y < r}$.\
+  The third segment of $alpha$ (for $t in (-1/pi, 0)$) traces the curve $(u, sin(1/u))$ as $u arrow 0^+$ and as the $x$-coordinate approaches $0$, the $y$-coordinate oscillates infinitely many times between $-1$ and $1$.\
+  Because of this infinite oscillation, the open ball $W$ will not only capture the vertical line segment but also infinitely many disjoint, separate "strands" of the sine wave entering and exiting the ball.\
+  Therefore, no matter how small you make the neighborhood $W$ around $(0,0)$, the space $W inter im alpha$ consists of a central line segment alongside an infinite number of disjoint curve segments.\
+  A space with infinitely many disjoint connected components is not homeomorphic to a single connected open interval $RR$.\
+  Since it fails to be locally Euclidean at the origin, it is not a $1$-dimensional manifold
 ]
