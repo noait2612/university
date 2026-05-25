@@ -465,7 +465,7 @@ $ y(t)= e^(t A) y_0 + integral_0^t e^((t -s)A) g(s) dif s $
   ]<second-lemma-for-the-linear-criterion-for-instable>
 
   #proof[@second-lemma-for-the-linear-criterion-for-instable][
-    לכל $epsilon > 0$ קיים $R>R_0 > 0$ כך שלכל $z_1, z_2 in B_(R_0) (0)$ מתקיים
+    לכל $epsilon > 0$ קיים $R>R_0 > 0$ ($R$ מהלמה הקודמת) כך שלכל $z_1, z_2 in B_(R_0) (0)$ מתקיים
     $ norm(g(z_1) - g(z_2)) < epsilon norm(z_1 - z_2) $
     זה נובע מהגזירות ברציפות של $F$ : כי לכל $z_1, z_2$ מתקיים
     $
@@ -473,8 +473,52 @@ $ y(t)= e^(t A) y_0 + integral_0^t e^((t -s)A) g(s) dif s $
     $
     לכן
     $ g(z_2) - g(z_1) = (D F(z_1)-A)(z_2 - z_1) + o(norm(z_2 - z_1)) $
-    נקבע $R_0 = R_0 (epsilon)$ עבור $epsilon=epsilon(C, mu)$ שנכתוב באופן מפורש אחר־כך.
+    #end_of_lecture("12 – 19/05")
+    נקבע $R_0 = R_0 (epsilon)$ עבור $epsilon=epsilon(C, mu)$ עבור $mu$ מהלמה הקודמת שנגדיר בהמשך.
+    נניח ש־$x,y$ פתרונות עם $pi_minus (y(0))=pi_minus (x(0))$ כך ש־$x!=y$ ל־$t>0$ ו־$x(t), y(t) in B_(R_0) (0)$ ונסמן
+    $ d = sup_(t in [0,infinity)) norm(x(t)-y(t)) $
+    היות ש־$R>R_0$ ו־$x(t), y(t) in B_R (0)$ ל־$t>0$ ובפרט המסקנה של הלמה הקודמת נכונה עבורם. כלומר
+    $
+      x(t)=e^(t A) pi_minus (x(0))+integral_0^t e^((t-s)A)pi_minus (g(x(s))) dif s - integral_t^infinity e^((t-s) A) pi_plus (g(x(s))) dif s
+    $
+    וכנל עבור $y$.\
+    לכן
+    $
+      norm(x(t)-y(t)) &= norm(integral_0^t e^((t-s) A) pi_minus (g(x(s))-g(y(s))) dif s - integral_t^infinity e^((t-s)A) pi_plus (g(x(s))-g(y(s))) dif s) \
+      &<= integral_0^t norm(e^((t-s)A) pi_minus (g(x(s))-g(y(s))))+integral_t^infinity norm(e^((t-s)A) pi_plus (g(x(s))-g(y(s))))
+      \ &<= integral_0^t C e^(-(t-s)mu) norm(g(x(s))-g(y(s)) dif s) + integral_t^infinity C e^((t-s)mu)norm(g(x(s))-g(y(s))) dif s \
+      &<= epsilon integral_0^t C e^(-(t-s)mu) norm(x(s)-y(s)) dif s + epsilon integral_t^infinity C e^((t-s)mu) norm(x(s)-y(s)) dif s \
+      &<= 2epsilon C d (integral_0^t e^(-s mu) dif s + integral_t^infinity e^(-s mu) dif s) \
+      &= 2 epsilon C d integral_0^infinity e^(-s mu) dif s \
+      &= (2epsilon C d)/mu
+    $
+    כאשר אי־השיוויון השני נובע מהלמה הקודמת.\
+    אז נבחר $epsilon = mu/(4C)$ ונקבל לעיל $d/2$ אבל זו סתירה כי $d$ זה אומר ש־$d=0$ (נזכר ש־$norm(x(t)-y(t))=d$).
   ]
-  #end_of_lecture("12 – 19/05")
   נבחין שההוכחה של @second-lemma-for-the-linear-criterion-for-instable מראה שיציבות היא בלתי אפשרית.
+  שכן, אם $x_0$ נקודה יציבה אז קיימת $eta>0$ כך שלכל $p in B_eta (0)$ מתקיים $x_p (t) in B_(R_0) (0)$ לכל $t>0$.\
+  בפרט, קיימים $x!=y$ כמו בלמה עם $pi_minus (x) = pi_minus (y)$ ולכן $x(0)=y(0)$.
 ]
+
+= מערכות שטורם־ליוביל
+מוטיבציה: מה המשוואה שמתארת את התזוזה של מיתר? היא נתונה על־ידי $u=(x,t)$ ומתקיים
+$ 1/c^2 (partial^2 u)/(partial t^2) = (partial^2 u)/(partial x^2) $
+$c$ הוא קבוע פיזיקלי ועבורנו הוא $1$.\
+נניח שניתן לכתוב פתרון $u$ בצורה $u(x,t) = phi(x)psi(t)$ אז
+$
+  (partial^2 u)/(partial t^2) = phi(x) psi^prime.double (t) wide (partial^2 u)/(partial x^2) = phi^prime.double (x) psi (t) \
+  ==> phi(x) psi^prime.double (t) = phi^prime.double (x) psi(t) <==> (psi^prime.double (t))/psi(t) = (phi^prime.double (t))/phi(t) = lambda
+$
+כלומר $psi^prime.double (t) = lambda psi(t)$ וגם $phi^prime.double (x) = lambda phi(x)$.\
+מה התנאים הטבעיים שהמיתר מספר לנו?
+$ forall t, space u(0,t) = u(pi,t)=0 $
+אז
+$
+  u(x, 0) = f(x) \
+  (partial u)/(partial t) (x,0) = g(x)
+$
+התנאי שלנו של $phi(0)=phi(pi)=0$ זה לא תנאי התחלתי זה תנאי שפה.\
+אז אם נסתכל על המערכת $phi^prime.double (x) = lambda phi(x)$ אז עבור $lambda>0$ הפתרונות הם צירוף לינארי של $e^(plus.minus sqrt(lambda)x)$ אבל זה כמובן לא ייתכן, $lambda=0$ זה פיתרון טריוויאלי ואם $lambda<0$ נסמן $lambda=-m^2$ ונקבל
+$ phi(x) = A_m cos(m x) + B_m sin(m x) $
+אבל $phi(0)=0$ ולכן $A_m = 0$ אבל גם $phi(pi)=0$ אז $m in ZZ$ ולכן $phi_m (x) = B_m sin (m x)$.
+#end_of_lecture("13 – 25/05")
