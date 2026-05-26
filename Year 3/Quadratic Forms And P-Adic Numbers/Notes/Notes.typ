@@ -415,7 +415,188 @@ _תזכורת:_
 ]
 
 #proof[
-
+  מתקבלת באינדוקציה על מימד $V$ בשימוש עם הטענה הקודמת ובטענה $1.25$
 ]
 
 #end_of_lecture("6 – 19/05")
+
+#definition[מרחב אנאיזוטרופי][מרחב ריבועי $(V,q)$ שאינו איזוטרופי נקרא אנאיזוטרופי.]
+
+#remark[
+  מרחב ריבועי $({0_V}, Q)$ היינו אנאיזוטרופי.
+]
+
+#proposition[
+  יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ כך ש־$dim V = 1$ אז $(V,q)$ אנאיזוטרופי.
+]
+
+#proof[
+  כי אם הוא לא מנוון, יש לו בסיס מוקטור אחד שביחס אליו המטריצה היא מטריצה $1 times 1$ שצריכה להיות הפיכה כלומר יש לה ערך אחד שאינו אפס אז כל וקטור הוא סקלר של וקטור הבסיס ששונה מאפס והטענה נובעת.
+]
+
+#proposition[
+  יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ כך ש־$dim V = 2$ ו־$cal(B)$ הוא בסיס של $V$. אז $(V,q)$ איזוטרופי אם ורק אם $minus det [g_q]_cal(B) in (FF^times)^2$.
+]
+
+#proof[
+  $<==$ נניח שהמרחב הוא איזוטרופי ולכן קיים $0_V != v in V$ כך ש־$q(v)=0$.\
+  מאחר ש־$(V,q)$ לא מנוון קיים $w in V$ כך ש־$g_q (v,w) !=0$ ולכן $cal(C)=(v,w)$ בלתי־תלויים לינארית כי אחרת היינו מקבלים ש־$g_q (v,w) =0$.\
+  נסמן $g_q (v,w) = b$ ו־$g_q (w,w) = q(w) = c$ אז
+  $ [g_q]_cal(C) = mat(0, b; b, c) $
+  מאחר ש־$[g_q]_cal(C)$ ו־$[g_q]_cal(B)$ חופפות קיימת מטריצה $P$ הפיכה עבורה מתקיים
+  $ [g_q]_cal(B) = P^t [g_q]_cal(C) P $
+  ולכן
+  $
+    -det [g_q]_cal(B) = - det P^t det [g_q]_cal(C) det P = -(det P)^2 det [g_q]_cal(C) = -(det P^2) (-b^2) = (b det P)^2 in (FF^times)^2
+  $
+  $==>$ יהי $cal(C) = (v_1, v_2)$ בסיס אורתוגונלי של $V$ אז קיימים $a_1, a_2 in FF^times$ עבורם
+  $ [g_q]_cal(C) = mat(a_1, 0; 0, a_2) $
+  קיימת $P$ הפיכה עבורה מתקיים
+  $ [g_q]_cal(C) = P^t [g_q]_cal(B) P $
+  מאחר ש־$-det [g_q]_cal(B) in (FF^times)^2$ קיים $k in FF^times$ כך ש־$det [g_q]_cal(B) = -k^2$.\
+  אז $ a_1 a_2 = det mat(a_1, 0; 0, a_2) = det [g_q]_cal(C) = det P^t det[g_q]_cal(B) det P = -(k det P)^2 $
+  נגדיר $v = k det P v_1 + a_1 v_2$ מאחר ש־$a_1 !=0$ מתקיים $v!=0_V$ ולכן
+  $
+    q(v) & =q(k det P v_1 + a_1 v_2) \
+         & = q(k det P v_1) + g(a_1 v_2) \
+         & = (k det P)^2 q(v_1)+a_1^2 q(v_2) \
+         & = (k det P)^2 a_1 + a_1^2 a_2 \
+         & = a_1 (underbrace((k det P)^2, =-a_1 a_2)+a_1a_2) \
+         & = 0
+  $
+]
+
+#example[
+  + $FF=CC$ מעל המרוכבים כל מספר הוא ריבוע כלשהו.\
+    נבחין שאם $(V,q)$ מרחב ריבועי לא מנוון מעל $CC$ עם $dim V >=2$, אז קיים תת־מרחב $U$ של $V$ כך ש־$(U, q|_U)$ לא מנוון וגם $dim U = 2$.\
+    לפיכך, כל מרחב ריבועי אנאיזוטרופי לא טריוויאלי מעל $CC$ איזומורפי ל־$(CC,q)$ כאשר $q:CC arrow CC$ מוגדר על־ידי $g(x)=x^2$
+  + $FF=RR$
+    כל מרחב ריבועי אנאיזוטרופי לא טריוויאלי מעל $RR$ איזומורפי לאחד מהמרחבים הבאים
+    + $(RR^n, q_1)$ כאשר $q_1 vec(x_1, dots.v, x_n) = sum_(i=1)^n x_i^2$
+    + $(RR^n, q_(-1))$ כאשר $q_(-1) vec(x_1, dots.v, x_n) = sum_(i=1)^n -x_i^2$
+  + $FF = FF_p$ כאשר $p!=2$ ראשוני
+    + יהי $p!=2$ ראשוני כך ש־$-1 in.not (FF_p^times)^2$. אז כל מרחב אנאיזוטרופי לא טריוויאלי מעל $FF_p$ איזומורפי לאחד מהמרחבים הבאים
+      + $(FF_p, q_1)$ כאשר $q_1 : FF_p arrow FF_p$ מוגדר על־ידי $q_1 (x) = x^2$
+      + $(FF_p, q_(-1))$ כאשר $q_(-1) : FF_p arrow FF_p$ מוגדר על־ידי $g_(-1) (x) = -x^2$
+      + $(FF_p^2, q_(1,1))$ כאשר $q_(1,1) : FF_p^2 arrow FF_p$ מוגדר על־ידי $q_(1,1) vec(x_1, x_2) = x_1^2 + x_2^2$
+      כאשר השניים הראשונים ממימד 1 והאחרון ממימד 2.
+    + יהי $p!=2$ ראשוני כך ש־$-1 in (FF_p^times)^2$ ויהי $r in FF_p^times without (FF_p^times)^2$.\
+      אז כל מרחב אנאיזוטרופי לא טריוויאלי מעל $FF_p$ איזומורפי לאחד מהמרחבים הבאים
+      + $(FF_p, q_1)$ כמקודם $q_1 (x) = x^2$
+      + $(FF_p, q_r)$ כאשר $q_r : FF_p arrow FF_p$ מוגדרת על־ידי $q_r (x) = r x^2$
+      + $(FF_p, q_(1,r))$ כאשר $q_(1,r) : FF_p^2 arrow FF_p$ מוגדרת על־ידי $q_(1,r) vec(x_1, x_2) = x_1^2 + r x_2^2$
+]
+
+#proposition[
+  יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF_p$ כך ש־$dim V >=3$. אז $(V,q)$ איזוטרופי.
+]
+
+#proof[
+  קיים בסיס אורתוגונלי $cal(B)=(v_1, dots.h, v_n)$ של $V$ כלומר קיימים $a_1, dots.h, a_n in FF_p^times$ כך שמתקיים
+  $
+    [g_q]_cal(B) = mat(
+      a_1, , 0;
+      , dots.down, ; 0, , a_n
+    )
+  $
+  נגדיר תבנית ריבועית $g^prime : FF_p^2 arrow FF_p$ על־ידי $g^prime vec(x_1, x_2) = a_1 x_1^2 + a_2 x_2^2$ ולכן $ [g_(q^prime)]_cal(E) = mat(a_1, 0; 0, a_2) $
+  ולכן $(FF_p^2, q^prime)$ לא מנוון ולכן קיים $vec(x)1, x_2) in FF_p^2$ כך ש־$a_1x_1^2+a_2x_2^2 = g^prime vec(x_1, x_2) = - a_3$.\
+  נגדיר $v=x_1 v_1 + x_2 v_2 + v_3$ וברור ש־$v!=0$. בנוסף
+  $
+    q(v)=q(x_1v_1)+q(x_2v_2)+q(v_3) = x_1^2 q(v_1) + x_2^2 q(v_2) + q(v_3) = a_1 x_1^2+a_2x_2^2 + a_3 = -a_3 + a_3 = 0
+  $
+]
+
+= מספרים $P$־אדיים
+== שדות נורמיים
+#definition[נורמה][
+  יהי $F$ שדה ממציין כלשהו. פונקציה $norm(dot.op) : FF arrow RR^plus = {x in RR bar x>=0}$ נקראת *נורמה* כאשר
+  + $norm(a)=0$ אם ורק אם $a=0$
+  + $norm(a b) = norm(a)norm(b)$ לכל $a,b in FF$
+  + $norm(a+b)<=norm(a)+norm(b)$ לכל $a,b in FF$
+]
+
+#proposition[תכונות הנורמה][
+  תהיי $norm(dot.op) : FF arrow RR^plus$ נורמה אז
+  + $norm(1) = norm(-1) = 1$
+  + $norm(a^n) = norm(a)^n$ לכל $a in FF$
+  + $norm(a/b) = norm(a)/norm(b)$ לכל $a,b in FF$ עם $b!=0$
+  + $norm(a-b)>= norm(a)-norm(b)$
+  + $norm(n)<=n$ לכל $n in NN$
+]
+
+#proof[
+  כולן נובעות ישירות מהגדרה.
+]
+
+#example[
+  + $FF$ שדה ו־$norm(dot.op) : FF arrow RR^plus$ מוגדרת על־ידי $norm(0)=0, norm(a)=1$ לכל $a in FF^times$
+  + $FF = QQ, RR, CC$ ו־$norm(dot.op) : FF arrow RR^plus$ המוגדרת על־ידי $norm(a)=abs(a)$ לכל $a in FF$
+]<example-norms>
+
+#definition[שדה נורמי][
+  לזוג $(FF, norm(dot.op))$ כאשר $FF$ שדה ו־$norm(dot.op)$ נורמה קוראים *שדה נורמי*.
+]
+
+#definition[מטריקה][
+  יהי $(FF, norm(dot.op))$ שדה נורמי. נגדיר $d:FF times FF arrow RR$ על־ידי $d(a,b)=norm(a-b)$ ו־$d$ היא פונקציית מרחק על $FF$ כלומר $(FF, d)$ הוא מרחב מטרי.
+]
+
+#definition[שדה ארכימדי][
+  שדה נורמי $(FF, norm(dot.op))$ נקרא *ארכימדי* כאשר לכל $a in FF$ קיים $n in NN$ כך ש־$norm(n)>norm(a)$.
+]
+
+#proposition[
+  יהי $(FF, norm(dot.op))$ שדה נורמי. אז $(FF, norm(dot.op))$ ארכימדי אם ורק אם קיים $n in NN$ כך ש־$norm(n)>1$.
+]<archimedean-norm-property>
+
+#proof[
+  $<==$ עבור $a=1$ קיים $n in NN$ כך ש־$norm(n)> norm(1) = 1$.\
+  $==>$ יהי $a in FF$ מאחר ש־$norm(n)>1$ נובע שקיים $N in NN$ כך ש־$norm(n)^N > norm(a)$ (לדוגמה $N=floor(log_norm(n) (norm(a)))+1$). אז $norm(n^N) = norm(n)^N > norm(a)$.
+]
+
+#example[
+  בהמשך ל@example-norms, הנורמה הראשונה לא ארכימדית בעוד הנורמה השנייה כן ארכימדית.
+]
+
+#proposition[
+  יהי $(FF, norm(dot.op))$ שדה נורמי. אז $(FF, norm(dot.op))$ לא ארכימדי אם ורק אם לכל $a,b in FF$ מתקיים $norm(a+b)<=max(norm(a), norm(b))$ (אי־שיוויון האולטרה מטרי).
+]
+
+#proof[
+  $<==$ נניח שהוא לא ארכימדי ויהיו $a,b in FF$ ובלי הגבלת הכלליות נניח $norm(a)>=norm(b)$. מתקיים
+  $
+    norm((a+b))^n = norm((a+b)^n) = norm(sum_(k=0)^n binom(n, k) a^k b^(n-k)) <= sum_(k=0)^n norm(binom(n, k) a^k b^(n-k))
+    = sum_(k=0)^n norm(binom(n, k))norm(a)^k norm(b)^(n-k)
+    <=_((star)) sum_(k=0)^n norm(a)^k norm(b)^(n-k)
+    <= sum_(k=0)^n norm(a)^k norm(a)^(n-k) \
+    = sum_(k=0)^n norm(a)^n = (n+1) norm(a)^n
+  $
+  כאשר $(star)$ נובע מהיות השדה לא ארכימדי ועם טענה @archimedean-norm-property.\
+  מכאן ש־$norm(a+b)^n <= root(n, n+1) norm(a)$ ומאחר ש־$display(lim_(n arrow.r infinity) root(n, n+1))=1$ נסיק כי $norm(a+b)<=norm(a) = max(norm(a), norm(b))$.\
+  $==>$ לכל $n in NN$ מתקיים $norm(n)=norm(sum_(i=1)^n 1) <= max(norm(1), dots.h, norm(1)) = 1$ ולכן $(FF, norm(dot.op))$ לא ארכימדי.
+]
+
+#proposition[
+  יהי $(FF, norm(dot.op))$ שדה נורמי לא ארכימדי ויהיו $a,b in FF$ כך ש־$norm(a)!=norm(b)$ אז $norm(a+b)=max(norm(a), norm(b))$.
+]
+
+#proof[
+  בלי הגבלת הכלליות $norm(b)<norm(a)$ ונניח בשלילה כי $norm(a+b)<max(norm(a), norm(b))=norm(a)$ ולכן
+  $
+    norm(a)>max(norm(a+b), norm(b))=max(norm(a+b), norm(-b))>=_("אי־שיוויון האולטרה מטרי") max(norm(a+b)+(-b)) = norm(a)
+  $
+  וזאת סתירה ולכן $norm(a+b)=max(norm(a), norm(b))$
+]
+
+#proposition[
+  יהי $(FF, norm(dot.op))$ שדה נורמי לא ארכימדי ויהיו $a,b,c in FF$. אז בין המספרים $norm(a-b), norm(b-c), norm(a-c)$ יש שניים ששווים זה לזה.
+]
+
+#proof[
+  בלי הגבלת הכלליות $max(norm(a-b), norm(b-c), norm(a-c)) = norm(a-c)$ ונניח בשלילה כי הם כולם שונים זה מזה ומהנחת השלילה נקבל
+  $ norm(a-c) = norm((a-b)+(b-c))<=_("אי־שיוויון האולטרה מטרי") max(norm(a-b), norm(b-c)) < norm(a-c) $
+  וזאת סתירה ולכן מתוכם יש שניים ששווים זה לזה (ובעצם הוא יהיה שווה למקסימום).
+]
+
+#end_of_lecture("7 – 26/05")
