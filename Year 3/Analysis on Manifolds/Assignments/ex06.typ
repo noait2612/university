@@ -1,6 +1,5 @@
 #import "../../../src/article.typ": *
 #import "../../../src/article_en.typ": *
-#import "@preview/cetz:0.5.0": canvas, draw
 #show: article_en.with(
   title: [ Solution to Exercise 06 --- Analysis on Manifolds, 80416 ],
   signature: [#align(center)[#image("../../../src/duck.png", width: 30%, fit: "contain")]],
@@ -82,8 +81,13 @@ Let $S^n = {x in RR^(n+1) : norm(x) = 1}$ and for $t in R$ let $H_t = {x in RR^(
   By the definition of manifold as the null set of a system of equations we saw in the recitation, the pre-image $f^(-1)(0) = H_t$ is a smooth manifold of dimension $(n+1) - 1 = n$.\
   By definition, $H_t$ and $S^n$ intersect transversally if for every $p in H_t inter S^n$, their tangent spaces span the ambient space
   $ T_p H_t + T_p S^n = RR^(n+1) $
-  First, we identify the tangent spaces at an intersection point $p$.
-  #todo
+  Let $p = (p_1, dots.h, p_n, t ) in H_t inter S^n$, from the definition of $H_t$ its tangent space is $T_p H_t colon.eq {v = (v_1, dots.h, v_(n+1)) bar v_(n+1) = 0 } = ("e"_(n+1))^perp$.\
+  We consider $g(x)=norm(x)^2$ then $D g_p (v) = 2 chevron.l p, v chevron.r$ hence $T_p S^n = ker D g_p = {v bar chevron.l p,v chevron.r = 0} = p^perp$.\
+  By Rank-Nullity we obtain that $T_p H_t$ and $T_p S^n$ are $n$-dimensional hyperplanes in $RR^(n+1)$ since $dim(T_p H_t) = n = dim(T_p S^n)$.\
+  Because both tangent spaces are defined by the kernel of a $1 times (n+1)$ matrix with rank 1, they both lose exactly 1 dimension from the ambient space $RR^(n+1)$, making them both n-dimensional and both with codim of 1.\
+  Therefore $T_p H_t + T_p S^n =RR^(n+1)$ if and only if they are distinct subspaces and they are identical if and only if their normal vectors are linearly dependent.\
+  Since the normals are respectively $"e"_(n+1), p$ the sum fails to be all of $RR^(n+1)$ exactly when these normals are parallel which means $p=lambda "e"_(n+1)$.\
+  Since $p in S^n$ we have $p=plus.minus "e"_(n+1)$ but sinch $p in H_t$ we have $t=plus.minus 1$ thus $H_t ⋔ S^n$ if and only if $abs(t)<1$ (for $t>1$ the intersection is empty and when $abs(t)=1$ the intersection consists of exactly one point (the pole): $p = (0, dots.h, 0, plus.minus 1)$ which is parallel).
 ]
 
 #question()
@@ -120,5 +124,13 @@ Denote $Delta = {(x, y) in RR^d times RR^d : x = y}$. We will prove that $Delta 
 We will prove that $M ⋔ N$ if and only if $M times N ⋔ Delta$.
 
 #proof[
-  #todo.
+  Since $Delta={(x,x)}$ we have $T_((p,p))={(v,v) bar v in RR^d}$.\
+  From the first section we have $T_((p,p))(M times N)=T_p M times T_p N$ thus $T_((p,p))(M times N) = {(u,w) bar u in T_p M, w in T_p N}$.\
+  $==>$ Assume that $M ⋔ N$ so $T_p M + T_p N = RR^d$ and we prove $T_((p,p))(M times N) + T_((p,p)) Delta = RR^(2d)$.\
+  Let $(a,b) in RR^(2d)$ and since $a-b in RR^d = T_p M + T_p N$ there exists $u in T_p M, w in T_p N$ such that $a-b=v-w$.\
+  Let $v=a-u=b-w$ then $(a,b) = (u,w)+(v,v)$ but since $(u,w) in T_((p,p))(M times N)$ and $(v,v) in T_((p,p)) Delta$ we obtain that  \
+  $(a,b) in T_((p,p))(M times N) + T_((p,p)) Delta$ hence $T_((p,p))(M times N) + T_((p,p)) Delta = RR^(2d)$ therefore $M times N ⋔ Delta$.\
+  $<==$ Assume that $T_((p,p))(M times N) + T_((p,p)) Delta = RR^(2d)$.\
+  We take any $z in RR^d$ then $(z,0) in RR^(2d)$ and by our assumption there exists $u in T_p M, w in T_p N, v in RR^d$ such that $(z,0)=(u,w)+(v,v)$ which means $z = u+v$ and $0=w+v$ thus $v=-w$ and therefore $z=u-w$.\
+  Since $u in T_p M, -w in T_p N$ we obtain that $z in T_p M + T_p N$ and as $z$ was arbitrary we have $T_p M+T_p N = RR^d$ hence $M ⋔ N$.
 ]
