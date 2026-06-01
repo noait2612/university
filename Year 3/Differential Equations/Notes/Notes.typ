@@ -593,8 +593,93 @@ $ r^prime (t) sin(theta(t))+r(t)cos(theta(t))theta^prime (t) - 1/p(t) r(t) cos(t
 $ r^prime (t) cos(theta(t))-r(t)sin(theta(t))theta^prime (t) + q(t)r(t)sin(theta(t))=0 $
 מכאן
 $
-  r^prime (t) = (1/p - q) r(t) cos(theta(t) sin(theta(t))) \
+  r^prime (t) = (1/p - q(t)) r(t) cos(theta(t) sin(theta(t))) \
   theta^prime (t) = q(t)sin^2(theta(t))+1/p(t) cos^2(theta(t))
 $
 יונתן טוען שהראשונה לא חשובה והשנייה כן – היא לא לינארית אבל היא מסדר ראשון.
 #end_of_lecture("14 – 26/05")
+נבחין שעבור $k in ZZ$ מתקיים
+$ theta(t) = pi k <==> u(t) =0 $
+לכן אם נתרגם $u(0)=0$ ל־$theta(0)=0$ נקבל ש־$u$ פתרון למערכת המשוואות שלנו  עם תנאי שפה דירכילה אם ורק אם $theta(b)=pi k$ לאיזשהו $k in ZZ$.\
+נתמקד כרגע במשוואה הבאה עבור מערכת S-L
+$ theta^prime (t) = q(t) sin^2 (theta(t)) + 1/p(t) cos^2(theta(t)) $
+
+#proposition[
+  נניח ש־$theta, tilde(theta)$ שתי פונקציות המקיימות
+  $
+    theta^prime (t) >= q(t) sin^2(theta(t))+1/p(t) cos^2(theta(t)) \
+    tilde(theta)^prime (t) <= q(t) sin^2 tilde(theta)(t)+1/p(t) cos^2 (tilde(theta)(t))
+  $
+  ונניח בנוסף ש־$tilde(a)>=tilde(theta)(a)$. אזי $theta(t)>=tilde(theta)(t)$ לכל $t in [a,b]$.\
+  יתרה מזאת, אם $theta(b)=tilde(theta)(b)$ אז $theta(t)=tilde(theta)(t)$ לכל $t in [a,b]$.
+]
+
+#proof[
+  $
+    dif/(dif t) (theta(t) - tilde(theta)(t)) >= q(t)(sin^2(theta(t))-sin^2(tilde(theta)(t)))+1/p(t)(cos^2(theta(t))-cos^2(tilde(theta)(t)))
+  $
+  ידוע שמתקיים
+  $ abs(sin(x)-sin(y))<= abs(x-y) ==> abs(sin^2(x)-sin^2(y)) = abs((sin(x)+sin(y))(sin(x)-sin(y)))<=2abs(x-y) $
+  וזה נכון גם עבור $cos$ ולכן
+  $
+    dif/(dif t) (theta(t) - tilde(theta)(t)) >= q(t)(sin^2(theta(t))-sin^2(tilde(theta)(t)))+1/p(t)(cos^2(theta(t))-cos^2(tilde(theta)(t))) >= -L abs(theta-tilde(theta))
+  $
+  עבור $L>0$.\
+  נניח בשלילה שיש $a<t_1 <=b$ כך ש־$theta(t_1) < tilde(theta)(t_1)$ ונסמן $t_0 =sup{t in [a,t_1), theta(t) >= tilde(theta)(t)}$ ואז $theta(t_0)=tilde(theta)(t_0)$ ולכל $t in [t_0, t_1]$ מתקיים $theta(t)<=tilde(theta)(t)$ או בקטע הפתוח $t in (t_0, t_1]$ מתקיים $theta(t)<tilde(theta)(t)$. לכן בקטע $[t_0, t_1]$ מתקיים
+  $ dif/(dif t)= (theta(t)-tilde(theta)(t))>=L(theta(t)+tilde(theta)(t)) $
+  ולכן הפונקציה $e^(-L t)(theta(t)-tilde(theta)(t))$ מונוטונית עולה בקטע $[t_0, t_1]$ ולכן
+  $ e^(-L t_1)(theta(t_1)-tilde(theta)(t_1))>=0 $
+  בפרט $theta(t_1) >= tilde(theta)(t_1)$ בסתירה להנחה שלנו ולכן $theta(t)>=tilde(theta)(t)$. בפרט, לכל $t in [a,b]$ מתקיים $ dif/(dif t)(theta(t)-tilde(theta)(t))>=-L(theta(t)-tilde(theta)(t)) $
+  כלומר הפונקציה $e^(L t)(theta(t)-tilde(theta)(t))$ מונוטונית עולה ואי־שלילית בקטע ולכן אם $theta(b)=tilde(theta)(b)$ אז $theta(t)=tilde(theta)(t)$ לכל $t in [a, b]$.
+]
+
+#corollary[
+  נניח שהפונקציה $theta$ (על הקטע $[a,b]$) מקיימת את אי־השיוויון
+  $ theta^prime (t) >= q(t)sin^2(theta(t))+1/p(t)cos^2(theta(t)) $
+  ויהי $k in ZZ$ כך ש־$theta(a)>=pi k$ אזי $theta(b)>pi k$.
+]
+
+#proof[
+  נגדיר $tilde(theta) eq.triple pi k$ אזי $ 0=tilde(theta)^prime < q(t)underbrace(sin^2(tilde(theta)(t)), =0)+underbrace(1/p(t)cos^2(tilde(theta)(t)), >0) $ ומתקיים $theta(a)>=tilde(theta)(a)$ ולכן $theta(b)>=tilde(theta)(b)$ ולמעשה האי־שיוויון חזק כי אחרת היה שיוויון ואז $theta$ הייתה קבועה והיינו מקבלים $theta^prime eq.triple 0$ ולכן $theta(b)>pi k$.
+]
+
+#corollary[
+  יהי $p, tilde(p), q, tilde(q)$ פונקציות גזירות ברציפות ב־$[a,b]$ כך ש־$0<p(t)<=tilde(p)(t)$ ו־$q(t)>=tilde(q)(t)$ לכל $t in [a,b]$.\
+  יהיו $u, tilde(u)$ פתרונות למשוואות שטורם־ליוביל המתאימות ו־$theta, tilde(theta)$ הזוויות המתאימות (פונקציות הפאזה המתאימות/משתני פרופר המתאימים).\
+  אם $theta(a)>=tilde(theta)(a)$ אז $theta(t)>=tilde(theta)(t)$ ואם $theta(b)= tilde(theta)(t)$ אז $theta(t)=tilde(theta)(t)$ לכל $t in [a,b]$.
+]
+
+#proof[
+  $
+    theta^prime (t) = q(t)sin^2(theta(t))+1/p(t)cos^2(theta(t)) \
+    tilde(theta)^prime (t) = tilde(q)(t)sin^2(tilde(theta)(t))+1/tilde(p)(t) cos^2(tilde(theta)(t))
+  $
+  ולכן המשפט הוא מסקנה ישירה של הטענה (אם נחלק ונשתמש ב־$0<p(t)<=tilde(p)(t), q(t)>=tilde(q)(t)$).
+]
+
+#corollary[משפט ההשוואה של שטרום][
+  נניח ש־$0<p(t)<=tilde(p)(t)$ ו־$q(t)>=tilde(q)(t)$ לכל $t$ ויהיו $u, tilde(u)$ פתרונות לא טריוויאליים למשוואות S-L המתאימות.\
+  אם $tilde(u)(a)=tilde(u)(b)=0$ אז קיים $tau in (a,b]$ כך ש־$u(tau)=0$.
+]
+
+#proof[
+  נתבונן ב־$theta, tilde(theta)$ פונקציות הפאזה המתאימות. על־ידי הפלכה ב־$(-1)$ אם יש בך צורך ניתן לדאוג ש־$theta(a) in [0, pi)$.\
+  באותו אופן ניתן להניח ש־$tilde(theta)(a)=0$ ולכן $tilde(theta)(b)>0$ מהמסקנה לפני הקודמת.\
+  אבל $tilde(u)(b)=0$ ולכן $tilde(theta)(b)=pi k$ לאיזשהו $k in ZZ$ ולכן $tilde(theta)(b)>=pi$ ומהמסקנה הקודמת $theta(a)>=tilde(theta)(a)$ ומהמסקנה הקודמת $theta(b)>=tilde(theta)(b)>=pi$ וממשפט ערך הביניים יש $tau in (a,b]$ שעבורו $theta(tau)=pi$ אבל אז $u(tau)=0$, כנדרש.
+]
+
+== ערכים עצמיים ופונקציות עצמיות
+יהיו $p,q,rho :[a,b] arrow RR$ פונקציות גזירות ברציפות בקטע $[a,b]$ כך ש־$p,rho>0$ בקטע.
+
+#definition[
+  נאמר ש־$lambda in RR$ הוא ערך עצמי של המערכת S-L המתאימה לפונקציות $p,q, rho$. אז יש פתרון שהוא לא זהותית אפס למערכת
+  $ dif/(dif t) (p(t)+dif/(dif t) u(t))+(q(t)-lambda rho(t))u(t)=0 $
+  וכן $u(a)=u(b)=0$ פתרון $u$ למערכת הזו ייקרא פונקציה עצמית.
+]
+כידוע, לכל $lambda$ ישנו פתרון יחיד למשוואה
+$ (p(t)u^prime (t))^prime + (q(t)+lambda rho(t))u(t) = 0 $
+המקיים
+$ u(a)=0, wide u^prime (a) = 1 $
+נסמן אותו ב־$u_lambda$.
+
+#end_of_lecture("15  – 01/06")
