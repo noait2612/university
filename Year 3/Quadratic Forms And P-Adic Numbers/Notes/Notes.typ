@@ -13,6 +13,13 @@
 #outline(depth: 2)
 
 = תבניות ביליניאריות סימטריות
+
+#end_of_lecture("1 – 24/03")
+תשלימי...
+
+#end_of_lecture("2 – 14/04")
+תשלימי...
+
 == כותרת כלשהי
 _תזכורת:_
 #proposition[
@@ -526,7 +533,7 @@ _תזכורת:_
 ]
 
 #proof[
-  כולן נובעות ישירות מהגדרה.
+  כולן נובעות ישירות מהגדרה (תרגיל).
 ]
 
 #example[
@@ -566,14 +573,14 @@ _תזכורת:_
 #proof[
   $<==$ נניח שהוא לא ארכימדי ויהיו $a,b in FF$ ובלי הגבלת הכלליות נניח $norm(a)>=norm(b)$. מתקיים
   $
-    norm((a+b))^n = norm((a+b)^n) = norm(sum_(k=0)^n binom(n, k) a^k b^(n-k)) <= sum_(k=0)^n norm(binom(n, k) a^k b^(n-k))
+    norm(a+b)^n = norm((a+b)^n) = norm(sum_(k=0)^n binom(n, k) a^k b^(n-k)) <= sum_(k=0)^n norm(binom(n, k) a^k b^(n-k))
     = sum_(k=0)^n norm(binom(n, k))norm(a)^k norm(b)^(n-k)
     <=_((star)) sum_(k=0)^n norm(a)^k norm(b)^(n-k)
     <= sum_(k=0)^n norm(a)^k norm(a)^(n-k) \
     = sum_(k=0)^n norm(a)^n = (n+1) norm(a)^n
   $
-  כאשר $(star)$ נובע מהיות השדה לא ארכימדי ועם טענה @archimedean-norm-property.\
-  מכאן ש־$norm(a+b)^n <= root(n, n+1) norm(a)$ ומאחר ש־$display(lim_(n arrow.r infinity) root(n, n+1))=1$ נסיק כי $norm(a+b)<=norm(a) = max(norm(a), norm(b))$.\
+  כאשר $(star)$ נובע מהיות השדה לא ארכימדי ועם @archimedean-norm-property.\
+  מכאן ש־$norm(a+b)^n <= root(n, n+1) norm(a)$ ומאחר ש־$display(lim_(n arrow.r infinity) root(n, n+1))=1$, נסיק כי $norm(a+b)<=norm(a) = max(norm(a), norm(b))$.\
   $==>$ לכל $n in NN$ מתקיים $norm(n)=norm(sum_(i=1)^n 1) <= max(norm(1), dots.h, norm(1)) = 1$ ולכן $(FF, norm(dot.op))$ לא ארכימדי.
 ]
 
@@ -600,3 +607,157 @@ _תזכורת:_
 ]
 
 #end_of_lecture("7 – 26/05")
+
+#proposition[
+  יהי $(FF, norm(dot.op))$ לא ארכימדי ונגדיר
+  $
+    cal(O)_norm(dot.op) colon.eq {x in FF bar norm(x)<=1} \
+    cal(M)_norm(dot.op) colon.eq {x in FF bar norm(x)<1} \
+    cal(O) without cal(M) = cal(U)_norm(dot.op) colon.eq {x in FF bar norm(x)=1}
+  $
+  אז
+  + $cal(O)_norm(dot.op)$ הוא חוג קומוטטיבי עם יחידה
+  + $cal(O)_norm(dot.op)^times = cal(U)_norm(dot.op)$
+  + $cal(M)_norm(dot.op)$ אידיאל מקסימלי יחיד ב־$cal(O)_norm(dot.op)$
+]
+
+#proof[
+  + נוכיח כי $cal(O)_norm(dot.op)$ סגורה ביחס לחיבור וכפל וכי $-1, 1 in cal(O)_norm(dot.op)$.\
+    יהיו $x,y in cal(O)_norm(dot.op)$ ולכן $norm(x), norm(y)<=1$ ומכאן $norm(x y) = norm(x) norm(y) <= 1$ ואי־שיוויון המשולש האולטרה מטרי מניב לנו $norm(x+y)<=max(norm(x), norm(y)) <=1$.\
+    לכן קיבלנו סגירות לכפל ולחיבור ונשים לב ש־$norm(1)=norm(-1)=1$ ולכן גם $-1, 1 in cal(O)_norm(dot.op)$.
+  + יהי $x in cal(O)_norm(dot.op)$ כלומר $norm(x)<=1$. אז
+    $
+      x in cal(O)_norm(dot.op)^times <==> 1/x in cal(O)_norm(dot.op)^times <==> norm(1/x)<=1 <==> 1/norm(x) <=1 <==> 1<=norm(x) <==> norm(x)=1 <==> x in cal(U)_norm(dot.op)
+    $
+  + יהיו $x,y in cal(M)_norm(dot.op)$. אז $norm(x), norm(y)<1$ ולכן מאי־שיוויון האולטרה מטרי $norm(x+y)<=max(norm(x), norm(y))<1$ ומכאן $x+y in cal(M)_norm(dot.op)$, כלומר $cal(M)_norm(dot.op)$ סגור לחיבור.\
+    יהיו $x in cal(M)_norm(dot.op), y in cal(O)_norm(dot.op)$ אז $norm(y)<=1, norm(x)<1$. מכאן ש־$norm(x y) = norm(x)norm(y) < 1$ ומכאן $x y in cal(M)_norm(dot.op)$ וזה בידיוק אומר ש־$cal(M)_norm(dot.op)$ אידיאל.\
+    יהי $I$ אידיאל ב־$cal(O)_norm(dot.op)$ כך ש־$cal(M) subset.eq I$ ו־$I!=cal(M)$. אז קיים $x in I without cal(M)_norm(dot.op) subset.eq cal(O)_norm(dot.op) without cal(M)_norm(dot.op) = cal(U)_norm(dot.op) in cal(O)_norm(dot.op)^times$.\
+    אז $1/x in cal(O)_norm(dot.op)$ ולכן $1 = 1/x dot.op x in I$ וזאת סתירה, לכן $cal(M)_norm(dot.op)$ אידיאל מקסימלי.\
+    נוכיח כי כל אידיאל של $cal(O)_norm(dot.op)$ מוכל ב־$cal(M)_norm(dot.op)$: יהי $I$ אידיאל ב־$cal(O)_norm(dot.op)$ ונניח בשלילה ש־$I subset.eq.not cal(M)$ כלומר קיים $x in I without cal(M)_norm(dot.op) subset.eq cal(O)_norm(dot.op)^times$ ולכן $1/x in cal(O)_norm(dot.op)$ ולכן $1 = 1/x dot.op x in I$ וזאת סתירה ולכן $I subset.eq cal(M)_norm(dot.op)$ וקיבלנו ש־$cal(M)_norm(dot.op)$ הוא אידיאל מקסימלי יחיד.
+]
+
+#remark[
+  $cal(U)_norm(dot.op)$ זה כל האיברים ההפיכים.
+]
+
+#definition[שדה שאריות][
+  יהי $(FF, norm(dot.op))$ שדה נורמי לא ארכימדי. השדה $closure(FF)_norm(dot.op)$ נקרא *שדה השאריות* של $(FF, norm(dot.op))$.
+]
+
+#definition[הערכה $bold(p)$־אדית][
+  יהי $p$ ראשוני, נגדיר $v_p : ZZ arrow NN union {0} union {infinity}$ על־ידי
+  $ v_p (a) = max {k in NN union {0} bar p^k divides a} $
+]
+
+#proposition[תכונות ההערכה ה־$bold(p)$־אדית][
+  + $v_p (a) = infinity$ אם ורק אם $a=0$
+  + $v_p (a b) = v_p (a) + v_p (b)$ לכל $a,b in ZZ$
+  + $v_p (a+b) >= min(v_p (a), v_p (b))$
+]<p_adic_valuation_properties>
+
+#remark[
+  יהיו $a in ZZ without {0}$, $s in NN union {0}$. אז $v_p (a) =s$ אם ורק אם קיים $u in ZZ without {0}$ כך ש־$a = p^s u$ וגם $p divides.not u$.
+]
+
+#proof[@p_adic_valuation_properties][
+  + ישירות מהגדרה
+  + אם $a=0$ או $b=0$  השיוויון ברור. אחרת, נסמן $t=v_p (b)$ ו־$s = v_p (a)$ ולכן קיימים $u,v in ZZ without {0}$ כך ש־$p divides.not u, p divides.not v$ ואז $a=p^s u$ ו־$b = p^t v$. מכאן
+    $ a b = p^s u dot.op p^t v = p^(s+t) u v $
+    אבל $p divides.not u$ וגם $p divides.not v$ ולכן גם $p divides.not u v$. מכאן $v_p (a b) = s + t = v_p (a) + v_p (b)$
+  + אם $a=0$ או $b=0$ האי־שיוויון ברור.\
+    אחרת, נסמן $t=v_p (b), s=v_p (a)$. אז קיימים $u,v in ZZ$ כך ש־$p divides.not u, p divides.not v$ וגם $a=p^s u, b = p^t v$.\
+    בלי הגבלת הכלליות, $v_p (a) <= v_p (b)$ כלומר $s<=t$. אז
+    $ a +b = p^s u + p^t v =p^s (u + p^(t-s) v) $
+    מכאן נובע ש־$p^s divides a+b$ ולכן $v_p (a+b) >= s = min(s, t) = min(v_p (a), v_p (b))$.
+]
+
+#definition[הרחבת ההערכה ה־$bold(p)$־אדית לרציונליים][
+  נגדיר $tilde(v)_p : QQ arrow ZZ union {infinity}$ עבור $m in ZZ, n in NN$ על־ידי
+  $ tilde(v)_p (m/n) = v_p (m) - v_p (n) $
+]
+
+#remark[
+  $tilde(v)_p$ מוגדרת היטב ולא תלוי בהצגה של $q in QQ$ כשבר: אם $m, m^prime in ZZ, n, n^prime in NN$ כך ש־$m/n = m^prime/n^prime$ אז $m^prime n = n^prime m$ ולכן
+  $ v_p (m^prime) + v_p (n) = v_p (m^prime n) = v_p (n^prime m) = v_p (n^prime) + v_p (m) $
+  ולכן $v_p (m^prime) - v_p (n^prime) = v_p (m) - v_p (n)$.
+]
+
+#proposition[תכונות של $bold(tilde(v)_p)$][
+  + $tilde(v)_p (x) = infinity$ אם ורק אם $x=0$
+  + $tilde(v)_p (x y) = tilde(v)_p (x) + tilde(v)_p (y)$ לכל $x,y in QQ$
+  + $tilde(v)_p (x+y) >= min(tilde(v)_p (x), tilde(v)_p (y))$ לכל $x,y in QQ$
+]
+
+#proof[
+  תרגיל.
+]
+
+#definition[נורמה $bold(p)$־אדית][
+  יהי $alpha in RR$ כך ש־$0<alpha<1$. נגדיר $abs(dot.op)_(p, alpha) : QQ arrow RR^plus$ על־ידי
+  $ abs(x)_(p, alpha) = alpha^(tilde(v)_p (x)) $
+]<p_adic_norm>
+
+#proposition[
+  $(QQ, abs(dot.op)_(p, alpha))$ הוא שדה נורמי לא ארכימדי.
+]
+
+#proof[
+  + $abs(x)_(p, alpha) = 0$ אם ורק אם $tilde(v)_p (x) = infinity$ וזה קורה אם ורק אם $x=0$
+  + $abs(x y)_(p, alpha) = alpha^(tilde(v)_p (x y)) = alpha^(tilde(v)_p (x))alpha^(tilde(v)_p (y)) = abs(x)_(p, alpha)abs(y)_(p, alpha)$
+  + $abs(x +y)_(p, alpha) = alpha^(tilde(v)_p (x+y)) <= alpha^(min(tilde(v)_p (x), tilde(v)_p (y))) = max(alpha^(tilde(v)_p (x)), alpha^(tilde(v)_p (y))) = max(abs(x)_(p, alpha), abs(y)_(p, alpha))$
+]
+
+#definition[
+  $
+    cal(O)_(abs(dot.op)_(p, alpha)) colon.eq {x in QQ bar abs(x)_(p, alpha) <=1} = {x in QQ bar tilde(v)_p (x) >= 0} = {m/n in QQ bar m in ZZ, n in NN, p divides.not n}
+  $
+  בפרט $cal(O)_abs(dot.op)_(p,alpha)$ לא תלוי ב־$alpha$ ונסמן $ZZ_((p)) = cal(O)_abs(dot.op)_(p, alpha)$.
+]
+
+#proposition[
+  ב־$(QQ, abs(dot.op)_(p, alpha))$ מתקיים ש־$closure(ZZ) = ZZ_((p))$.
+]
+
+#proof[\
+  $closure(ZZ) subset.eq ZZ_((p))$: נובע מההגדרה של $ZZ_((p))$ ש־$ZZ_((p))$ קבוצה סגורה (כי זה כדור סגור) ו־$ZZ subset.eq ZZ_((p))$ כי כל מספר שלם אפשר לכתוב כמספר רציונלי עם מכנה $1$ ולפיכך $closure(ZZ) subset.eq ZZ_((p))$.\
+  $closure(ZZ) supset.eq ZZ_((p))$: יהי $x in ZZ_((p))$ כלומר $z = m/n in QQ$ כך ש־$m in ZZ, n in NN$ ו־$p divides.not n$.\
+  יהי $epsilon > 0$ ונוכיח כי קיים $z in ZZ$ כך ש־$abs(z-x)_(p, alpha) < epsilon$.\
+  קיים $N in NN$ כך ש־$alpha^N < epsilon$ (לדוגמה $N=floor(log_alpha (epsilon))+1$).\
+  מאחר ש־$gcd(n, p^N) =1$ נובע שקיימים $s, t in ZZ$ כך ש־$s p^N + t n = 1$ (מאלגוריתם אוקלידס).\
+  מכאן  $m s p^N + m t n = m$ ולכאן $m s p^N = m - m t n$ אבל $p^N divides m s p^N$ נגדיר $z = m t$ ונראה שהוא מקיים את הנדרש:
+  $ N<=v_p (m- m t n) = v_p (m-z n) $
+  לכן $ N<= tilde(v)_p (m-z n) - underbrace(tilde(v)_p (n), =0) = tilde(v)_p ((m-z n)/n) = tilde(v)_p (x-z) $
+  ומכאן
+  $ epsilon>alpha^N>=alpha^(tilde(v)_p (x-z)) = abs(x-z)_(p, alpha) = abs(z-x)_(p, alpha) $
+  לפיכך $x in closure(ZZ)$ כלומר $ZZ_((p)) subset.eq closure(ZZ)$.
+]
+
+#definition[
+  $
+    cal(M)_abs(dot.op)_(p, alpha) = {x in QQ bar abs(x)_(p, alpha) < 1} = {x in QQ bar tilde(v)_p (x) > 0} = {m/n in QQ bar m in ZZ, n in NN, p divides m, p divides.not n}
+  $
+]
+
+#proposition[
+  + $cal(M)_abs(dot.op)_(p, alpha) = p ZZ_((p))$
+  + $cal(M)_abs(dot.op)_(p, alpha) inter ZZ = p ZZ_((p)) inter ZZ = p ZZ$
+]
+
+#proof[
+  תרגיל.
+]
+
+#proposition[
+  $
+    closure(FF)_abs(dot.op)_(p, alpha) = cal(O)_abs(dot.op)_(p, alpha) slash cal(M)_abs(dot.op)_(p, alpha) = ZZ_((p)) slash p ZZ_((p)) = FF_p
+  $
+]
+
+#proof[
+  לכל $x in ZZ_((p))$ קיים $z in ZZ$ כך ש־$abs(x-z)_(p, alpha) < 1$ כלומר $x-z in cal(M)_abs(dot.op)_(p, alpha)$.\
+  נגדיר $pi:ZZ_((p)) arrow ZZ slash p ZZ = FF_p$ על־ידי $pi(x)=z + p ZZ$.\
+  אם $z^prime in ZZ$ כך ש־$abs(x-z^prime)_(p, alpha)<1$ אז $x-z^prime in p ZZ_((p))$ ולכן $z^prime - z in p ZZ_((p))$ וגם $z^prime - z in ZZ$ ולכן $z^prime -z = p ZZ$ כלומר $pi(x)$ לא תלוי בבחירה של $z$.\
+  קל לוודא כי $pi$ הוא הומומורפיזם של חוגים שהוא על וגם ש־$ker pi = p^(ZZ_((p)))$ ולפיכך $ZZ_p slash p ZZ_((p)) tilde.equiv ZZ slash p ZZ_p = FF_p$ ממשפטי האיזומורפיזם.
+]
+
+#end_of_lecture("8 – 02/06")
