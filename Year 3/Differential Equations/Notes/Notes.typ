@@ -673,9 +673,9 @@ $ theta^prime (t) = q(t) sin^2 (theta(t)) + 1/p(t) cos^2(theta(t)) $
 
 #definition[
   נאמר ש־$lambda in RR$ הוא ערך עצמי של המערכת S-L המתאימה לפונקציות $p,q, rho$. אז יש פתרון שהוא לא זהותית אפס למערכת
-  $ dif/(dif t) (p(t)+dif/(dif t) u(t))+(q(t)-lambda rho(t))u(t)=0 $
+  $ (star) space dif/(dif t) (p(t)+dif/(dif t) u(t))+(q(t)-lambda rho(t))u(t)=0 $
   וכן $u(a)=u(b)=0$ פתרון $u$ למערכת הזו ייקרא פונקציה עצמית.
-]
+]<u_lambda_def>
 כידוע, לכל $lambda$ ישנו פתרון יחיד למשוואה
 $ (p(t)u^prime (t))^prime + (q(t)+lambda rho(t))u(t) = 0 $
 המקיים
@@ -683,3 +683,78 @@ $ u(a)=0, wide u^prime (a) = 1 $
 נסמן אותו ב־$u_lambda$.
 
 #end_of_lecture("15  – 01/06")
+
+#proposition[
+  $lambda$ הוא ערך עצמי של המערכת אם ורק אם $u_lambda (b) =0$ ובמקרה הזה כל וקטור/פונקציה עצמית היא כפל של $u_lambda$ בסקלר.
+]
+
+#proof[
+  אם $u_lambda (b) =0$ אז $lambda$ הוא ערך עצמי. מצד שני, אם $lambda$ הוא ערך עצמי אז קיימת פונקציה $u$ כך ש־$u(a)=u(b)=0$ כאשר $u^prime (a) != 0$ המקיימת את $(star)$ ב@u_lambda_def.\
+  נתבונן ב־$tilde(u) = u^prime (a) u_lambda$.\
+  נשים לב ש־$tilde(u)(a)=0$ ו־$tilde(u)^prime (a) = u^prime (a)$ ולכן מיחידות $u = tilde(u)$ כי הם מסכימים על תנאי ההתחלה ובפרט $ u^prime (a) u_lambda (b) = tilde(u)=u(b)=0 $
+  ולכן $u_lambda (b) =0$.
+]
+
+נגדיר $r_lambda, theta_lambda$ להיות פונקציות האמפליטודה והפאזה של $u_lambda$
+$
+  vec(p(t) u_lambda^prime (t), u_lambda (t)) = vec(r_lambda (t) cos(theta_lambda (t)), r_lambda (t) sin(theta_lambda (t)))
+$
+נשים לב ש־$theta_lambda (a) =0$ כי הנגזרת של $u_lambda (a)$ היא $1$ ובפרט היא חיובית (אנחנו שומרים על מערכת המשוואות לעיל) ולכן ממה שר5אינו $theta_lambda (t) > 0$ לכל $b>=t>a$.
+
+#proposition[
+  $lambda$ הוא ערך עצמי אם ורק אם $theta_lambda (b) = pi n$ עבור $n in NN$.
+]
+
+#proof[
+  אנחנו יודעים ש־$lambda$ ערך עצמי אם ורק אם $u_lambda (b) = 0$ וזה קורה אם ורק אם $theta_lambda (b) = pi n$ לאיזשהו $n in ZZ$ אבל $theta_lambda (b) > 0$.\
+  (הראינו שאם $theta(a)=pi n$ אז $theta(b) > pi n$)
+]
+
+#example[
+  כשהסתכלנו על משוואת המיתר
+  $
+    dif^2/(dif t^2) u(t) + lambda u(t) =0 \
+    u(a)=0=u(b)
+  $
+  מהי $u_lambda$?
+  $
+    u_lambda (t) = mycases(
+      1/sqrt(lambda) sin(sqrt(lambda)(t-a)), lambda >0, t-a, lambda=0,
+      1/sqrt(-lambda) sinh(sqrt(-lambda)(t-a)), lambda < 0
+    )
+  $
+  מתקיים ש־$u_lambda (b) =0$ אפשרי רק עבור $lambda>0$ (כי סינוס היפרבולי לא מתאפס)ואז זה קורה אם ורק אם $sqrt(lambda)(b-a) = pi n$ עבור $n in NN$.\
+  כלומר הערכים העצמיים הם
+  $ lambda_n = (pi^2 n^2)/(b-a)^2 $
+  והפונקציות העצמיות הן
+  $ u (t) = C sin((pi n(t-a))/(b-a)) $
+  עבור $C$ קבוע כלשהו.
+]
+
+#proposition[
+  אם $theta_lambda (b) = pi n$ אז לפונקציה $u_lambda (t)$ יש בידיוק $n-1$ אפסים בקטע הפתוח $(a,b)$.
+]
+
+#proof[
+  לכל $0<=k<=n$ נגדיר $tau_k colon.eq inf{t in [a,b] bar theta_lambda (t) >= pi k}$.\
+  נשים לב ש־$a=tau_0$ ו־$tau_n = b$ ומהגדרת האיפימום זאת סדרה עולה
+  $ a=tau_0 < tau_1 < dots.h.c < tau_n = b $
+  לכל $t<tau_k$ מתקיים $theta_lambda (t) < pi k$ ו־$theta_lambda (tau_k) = pi k$ ועבור $t > tau_k$ מתקיים $theta_lambda (t) > pi k$.\
+  אבל $u_lambda (t) =0$ אם ורק אם $theta_lambda (t) = pi k$ לאיזשהו $k$ וזה קורה אם ורק אם $t = tau_k$.
+]
+
+אנחנו רוצים להבין מתי ולאיזה $lambda$ מתקיים $theta_lambda (b) = pi n$ ונראה כעת שלכל $n in NN$ יש $lambda$ יחיד כזה.
+
+#theorem[
+  הפונקציה $lambda mapsto theta_lambda (b)$ היא רציפה ומונוטונית עולה ממש ויתרה מזאת
+  $
+    lim_(lambda arrow.r infinity) theta_lambda (b) = infinity \
+    lim_(lambda arrow.r -infinity) theta_lambda (b) =0
+  $
+]
+
+#proof[
+  את רציפות הפונקציה $lambda mapsto theta_lambda (b)$ נראה בתרגיל.
+]
+
+#end_of_lecture("16  – 02/06")
