@@ -13,6 +13,16 @@
 #outline(depth: 2)
 
 = משוואות דיפרנציאליות רגילות
+
+#end_of_lecture("1 – 23/03")
+תשלימי...
+
+#end_of_lecture("2 – 24/03")
+תשלימי...
+
+#end_of_lecture("3 – 13/04")
+תשלימי...
+
 == תלות בתנאי ההתחלה
 _תזכורת:_ ראינו שאם $U subset.eq RR^n$ פתוחה ו־$F : U arrow RR$ ליפשיץ מקומית אזי לכל $p in U$ יש $delta>0$ כך שלבעיה $ (star) space cases(x'(t) = F(x(t)), x(0)=p) $
 יש פיתרון יחיד בקטע $(-delta, delta)$.\
@@ -43,7 +53,8 @@ _תזכורת:_ ראינו שאם $U subset.eq RR^n$ פתוחה ו־$F : U arrow
   + אם $t in J_p^*$ אז $x_p (t) in K$ אזי $[0, T) subset.eq J_p^*$
 ]
 #proof[
-  אם $T > 0 sup J_p^*$ אז נסמן $T > tau = sup J_p^*$ ונקבל ש־$x([0, tau)) subset.eq K$ אבל אז לא קרה אף אחד מהדברים (לא התפוצצנו ולא נגענו בשפה) בסתירה לכך ש־$tau < T != infinity$.
+  אם $T > 0 sup J_p^*$ אז נסמן $T > tau = sup J_p^*$ ונקבל ש־$x([0, tau)) subset.eq K$ אבל אז לא קרה אף אחד מהדברים (לא התפוצצנו ולא נגענו בשפה) בסתירה לכך \
+  ש־$tau < T != infinity$.
 ]
 #definition[
   נגדיר
@@ -202,6 +213,13 @@ $ partial/(partial t) D Phi = D(partial/(partial t) Phi) = D(F compose Phi)=D F(
   $ norm(u(T)) <= e^(T(L+eta)) eta K T norm(q-p) < epsilon norm(q-p) $
 ]
 #end_of_lecture("6 – 28/04")
+
+
+#end_of_lecture("7 – 04/05")
+תשלימי...
+
+#end_of_lecture("8 – 05/05")
+תשלימי...
 
 = משוואות לינאריות
 
@@ -501,7 +519,8 @@ $ y(t)= e^(t A) y_0 + integral_0^t e^((t -s)A) g(s) dif s $
 ]
 
 = מערכות שטורם־ליוביל
-מוטיבציה: מה המשוואה שמתארת את התזוזה של מיתר? היא נתונה על־ידי $u=(x,t)$ ומתקיים
+== מוטיבציה קצרה
+מה המשוואה שמתארת את התזוזה של מיתר? היא נתונה על־ידי $u=(x,t)$ ומתקיים
 $ 1/c^2 (partial^2 u)/(partial t^2) = (partial^2 u)/(partial x^2) $
 $c$ הוא קבוע פיזיקלי ועבורנו הוא $1$.\
 נניח שניתן לכתוב פתרון $u$ בצורה $u(x,t) = phi(x)psi(t)$ אז
@@ -521,6 +540,8 @@ $
 אז אם נסתכל על המערכת $phi^prime.double (x) = lambda phi(x)$ אז עבור $lambda>0$ הפתרונות הם צירוף לינארי של $e^(plus.minus sqrt(lambda)x)$ אבל זה כמובן לא ייתכן, $lambda=0$ זה פיתרון טריוויאלי ואם $lambda<0$ נסמן $lambda=-m^2$ ונקבל
 $ phi(x) = A_m cos(m x) + B_m sin(m x) $
 אבל $phi(0)=0$ ולכן $A_m = 0$ אבל גם $phi(pi)=0$ אז $m in ZZ$ ולכן $phi_m (x) = B_m sin (m x)$.
+
+== משוואות עם תנאי שפה
 
 #definition[מערכת שטורם ליוביל][
   יהי $[a,b] subset.eq RR$ קטע ויהיו $p,q : [a,b] arrow RR$ גזירות ברציפות.\
@@ -753,8 +774,78 @@ $
   $
 ]
 
+#end_of_lecture("16  – 02/06")
+
 #proof[
-  את רציפות הפונקציה $lambda mapsto theta_lambda (b)$ נראה בתרגיל.
+  את רציפות הפונקציה $lambda mapsto theta_lambda (b)$ נראה בתרגיל.\
+  יהיו $lambda, mu in RR$ עם $lambda > mu$ מתקיים
+  $
+    dif/(dif t) (p(t) dif/(dif) u_lambda (t)) + (q(t) + lambda rho(t))u_lambda (t) = 0 \
+    dif/(dif t) (p(t) dif/(dif) u_mu (t)) + (q(t) + mu rho(t))u_mu (t) = 0
+  $
+  מתקיים $q(t) + lambda rho(t) > q(t) + mu rho(t)$ ולכן $theta_lambda (b) >= theta_mu (b)$ כי ראינו שמכפלה כזאת מובילה לזווית גדולה יותר.\
+  אם יש שיוויון, כלומר $theta_lambda (b) = theta_mu (b)$ ולכן $theta_lambda (t) = theta_mu (t)$ לכל $t$, אבל נשים לב
+  $
+    theta^prime_lambda (t) = (q(t) + lambda rho(t))sin^2 (theta_lambda (t)) + 1/p(t) cos^2(theta_lambda (t)) \
+    theta^prime_mu = (q(t) + mu rho(t))sin^2 (theta_mu (t)) +1/p(t) cos^2 (theta_mu (t))
+  $
+  אז בפרט גם $theta^prime_lambda = theta^prime_mu$ ולכן נובע ש־$mu=lambda$, בסתירה. ולכן $lambda arrow theta_lambda (b)$ היא מונוטונית עולה ממש.\
+  נראה ש־$lim_(lambda arrow infinity) theta_lambda (b) = infinity$.\
+  יהי $n in NN$, נגדיר
+  $ hat(mu)(t) = sin(pi n (t-a)/(b-a)) $
+  נשים לב ש־$hat(u)$ פותרת את המשוואה
+  $ dif/(dif t) (p_max dif/(dif t) hat(u)(t) + (pi^2 n^2)/(b-a)^2 p_max hat(u)(t)) = 0 $
+  היכן ש־$p_max = max{p(t) bar t in [a,b]}$ ונשים לב שמתקיים
+  $ hat(u)(a) = 0 = hat(u)(b) $
+  נגדיר
+  $
+    p_max dif/(dif t) hat(u)(t) = hat(r)(t) cos(hat(theta)(t)) \
+    hat(u)(t) = hat(r)(t)sin(hat(theta)(t)) \
+    hat(theta)(t) = 0
+  $
+  ניתן לבחור $lambda$ כך שיתקיים
+  $ lambda rho_min >= (pi^2 n^2)/(b-a)^2 p_max - q_min $
+  ולכן
+  $ q(t) + lambda rho(t) >= q_min + lambda rho_min >= (pi^2 n^2)/(b-a)^2 p_max $
+  יתרה מזאת, $p(t) <= p_max$ ולכן $theta_lambda (b) >= hat(theta)(b)$ אבל $hat(theta)(b) = pi n$ ולכן מצאנו $lambda$ כך ש־$theta_lambda (b) >= pi n$ ומשרירותיות $n in NN$ ולכן $lim_(lambda arrow.r infinity) theta_lambda (b) = infinity$ (הגבול קיים ממונוטוניות).\
+  נראה ש־$lim_(lambda arrow.r minus infinity) theta_lambda (b) = 0$.\
+  יהי $0<epsilon<pi$ ונבחר $lambda < 0$ כך שיתקיים
+  $ (q_max + lambda rho_min)sin^2 (epsilon) + 1/p_min cos^2 (epsilon) < 0 $
+  היות ש־$rho$ פונקציה חיובית נוכל לבחור $lambda$ קטנה דיו שהביטוי לעיל יהיה שלילי (ובהתאם $sin$ לא מתאפס שם), נראה ש־$theta_lambda (b) <= epsilon$. נניח שלא, כלומר $theta_lambda (b) > epsilon$ ונגדיר
+  $ tau = inf {t in [a,b] bar theta_lambda (t)>epsilon} $
+  וקיימת סדרה $t_j arrow.b tau$ כך ש־$theta_lambda (t_j) > epsilon$ ולכן $theta^prime_lambda (tau) >= 0$. מצד שני
+  $
+    theta^prime_lambda (tau) & = (q(tau)+lambda rho(tau))sin^2 (theta_lambda (tau)) + 1/p(tau) cos^2 (theta_lambda (tau)) \
+                             & = (q(t) + lambda rho(tau))sin^2 (epsilon) + 1/p(tau) cos^2 (epsilon) \
+                             & <= (q_max + lambda rho_min )sin^2 (epsilon) + 1/(p_min (tau)) < 0
+  $
+  וזאת סתירה מההנחה שלנו לעיל ולכן $theta_lambda (b) < epsilon$ ומשרירותיות $epsilon$ נקבל $lim_(lambda arrow.r minus infinity) theta_lambda (b) =0$.
 ]
 
-#end_of_lecture("16  – 02/06")
+#corollary[
+  קיימת סדרה עולה של מספרים ממשיים $lambda_1 < lambda_2 < lambda_3 < dots.h$ כך שמתקיים
+  + $lambda_n$ הוא הפיתרון היחידי של המשוואה $theta_lambda (b) = pi n$
+  + $lambda_n arrow_(n arrow infinity) infinity$
+  + $lambda$ הוא ערך עצמי של המערכת S-L אם ורק אם $lambda<=lambda_n$ עבור $n in NN$
+  + לכל $n in NN$ הפונקציה $mu_lambda_n$ היא פונקציה עצמית של המערכת S-L עם ערך עצמי $lambda_n$. יתרה מזאת, לפונקציה $mu_lambda_n$ יש בידיוק $n-1$ אפסים בקטע $(a,b)$
+]
+
+#proof[
+  לכל $n in NN$ יש $lambda_n$ כך ש־$theta_lambda_n = pi n$ זאת משום הפונקציה $theta mapsto theta_lambda (b)$ היא רציפה ומתקיים
+  $ lim_(lambda arrow infinity) theta_lambda (b) = infinity, lim_(lambda arrow minus infinity) theta_lambda (b) =0 $
+  אז ממשפט ערך הביניים $lambda_n$ יחיד כי הפונקציה מונוטונית ממש וזה מוכיח את 1.\
+  נשים לב ש־$lim_(n arrow infinity) underbrace(theta_lambda_n (b), = pi n) = infinity$ אבל הפונקציה $lambda mapsto theta_lambda (b)$ היא פונקציה רציפה וזה גורר ש־$lim_(n arrow.r infinity) lambda_n = infinity$ וזה סוגר את 2.\
+  הראנו ש־$lambda$ ערך עצמי אם ורק אם $theta_lambda (b) = pi n$ אם ורק אם $lambda = lambda_n$ וזה סוגר את 3 ואת 4 הראינו כבר.
+]
+
+#corollary[
+  לכל מערכת S-L רגולריות ($rho, p > 0$) עם תנאי שפה דירכילה יש אינסוף ערכים עצמיים.
+]
+
+#end_of_lecture("17  – 08/06")
+
+= משוואות דיפרנציאליות חלקיות
+
+
+
+#end_of_lecture("18  – 09/06")
