@@ -845,7 +845,65 @@ $
 #end_of_lecture("17  – 08/06")
 
 = משוואות דיפרנציאליות חלקיות
+== משוואת לפלס
+#definition[משוואת לפלס][
+  עבור $u in C^2 (Omega)$ עבור $Omega subset.eq RR^n$ פתוחה נגדיר את משוואת לפלס להיות המשוואה
+  $ Delta u = sum_(j=1)^n (partial^2 u)/(partial x_j^2) = 0 $
+  ול־$Delta u$ אנחנו קוראים הלפלסיאן ול־$u$ אנחנו קוראים פונקציה הרמונית.
+]
+#remark[
+  + באופן שקול, $Delta u$ הוא ה־$divergence$ של הגרדיאנט (הדיברגנס הופך שדה לסקלר והסקלר אומר מה הקצב של ההתרחבות של השדה) וזה בעצם אנלוג טבעי לנגזרת השנייה במימד אחד.
+  + אם $u in C^2 (Omega)$, $H$ ההסיאן כאשר $H_(i j) = (partial^2 u)/(partial x_i partial x_j)$ מטריצת הנגזרות החלקיות. אז $Delta u = tr H(u)$.\
+    היות שהעקבה לא משתנה תחת שינוי בסיס, $Delta u$ אינווריאנטי לסיבובים ולהזזות.
+]
 
+#example[
+  + אם $n=1$ ו־$u$ הרמונית אז $u(x)=a x + b$
+  + אם $n=2$ טבעי להסתכל על המרוכבים אז $f:CC arrow CC$ הולומורפית כלומר גזירה לפי $z$ אז $f(z) = u + i v$ עבור $u,v : RR arrow RR$ הרמוניות כאשר $CC tilde.equiv RR^2$.
+    כאשר $u(x,y) = re(f(x+i y)), v(x,y) = im(f(x + i y))$. למה? כי פונקציה הולומורפית מקיימת את משוואות קושי רימן
+    $
+      (partial u)/(partial x) = (partial v)/(partial y) wide (partial u)/(partial y) = - (partial v)/(partial x) \
+      (partial^2 u)/(partial x^2) = partial/(partial x) ((partial u)/(partial x)) = partial/(partial x )((partial v)/(partial y)) = partial/(partial y) ((partial y)/(partial x)) = - (partial^2 u)/(partial y^2)
+    $
+]
 
+#theorem[תכונת הערך הממוצע של פונקציות הרמוניות][
+  תהיי $Omega subset.eq RR^n$ פתוחה ותהיי $u in C^2 (Omega)$ אזי $u$ הרמונית ב־$Omega$ אם ורק אם לכל $closure(B(x_0, r_0)) subset.eq Omega$ (כדור שהסגור שלו ב־$Omega$) מתקיים
+  $
+    integral.slash_(B(x_0, r_0)) u dif v colon.eq 1/Vol(B(x_0, r_0)) integral_(B(x_0, r_0)) u dif v = u(x_0) <==> integral.slash_(boundary(B(x_0, r_0))) u dif s = 1/Area(boundary(B(x_0, r_0))) integral_boundary(B(x_0, r_0)) u dif s = u(x_0)
+  $
+]
+
+#proof[
+  נניח ראשית ש־$u$ הרמונית ויהי $closure(B(x_0, r_0)) subset.eq Omega$ נראה ש־$integral.slash_(boundary(B(x_0, r_0))) u dif s = u(x_0)$.\
+  נראה זאת על־ידי שנגדיר לכל $0<r<= r_0$ את $phi(r) = integral.slash_(boundary(B(x_0, r))) u dif s$ ונראה ש־$phi^prime (r) = 0$ ואז מרציפות $u$ נובע $lim_(r arrow.r 0) phi(r) = u(x_0)$ שכן לכל $epsilon > 0$ יש \
+  $delta>0$ כך ש־ אם $y in B(x_0, delta)$ אז $abs(u(y)-u(x_0))<epsilon$ ואז עבור $0<r<delta$ מתקיים
+  $
+    abs(u(x_0) - phi(r)) = abs(integral.slash_(boundary(B(x_0, r))) - u(x_0)) = abs(integral.slash_(boundary(B(x_0, r)))(u(s)-u(x_0)) dif s) <= integral.slash_(boundary(B(x_0, r))) abs(u(s)-u(x_0)) dif s < epsilon integral.slash_(boundary(B(x_0, r))) dif s = epsilon
+  $
+  נגדיר $psi_r : closure(B(0,1)) arrow closure(B(x_0, r))$ על־ידי $psi_r (y) = x_0 + r y$ אז $psi_r$ הוא דיפאומורפיזם בין השפות עם יעקוביאן $r^(n-1)$.
+  $
+    integral.slash_boundary(B(0,1)) (u compose psi_r) dif s = 1/(Area(boundary(B(0,1))) dot.op r^(n-1)) integral_boundary(B(0,1)) (u compose psi_r) r^(n-1) dif = 1/Area(boundary(B(x_0, r))) integral_boundary(B(x_0,r)) u dif s = phi(r) s
+  $
+  #exercise[
+    $ Area(boundary(B(0,1))) dot.op r^(n-1) = Area(boundary(B(x_0, r))) $
+  ]
+  ולכן
+  $
+    phi^prime (r) = integral.slash_boundary(B(0,1)) partial/(partial r) (u compose psi_r) dif s = integral.slash_boundary(B(0,1)) chevron.l gradient u, hat(n) chevron.r dif s =_((star)) 1/Area(boundary(B(0,1))) integral_(B(0,1)) divergence (gradient u) dif v =_((star star)) 1/Area(boundary(B(0,1))) integral_(B(0,1)) Delta u dif v =_((star star star)) 0
+  $
+  כאשר $(star)$ זה משפט הדיברגנץ, $(star star)$ זו הגדרת הלפלסיאן ו־$(star star star)$ זה מהיות $u$ הרמונית.\
+  הראינו שאם $u$ הרמונית אזי $integral.slash_boundary(B(x_0, r_0)) u dif s = u(x_0)$ ו־$phi(r) = integral.slash_boundary(B(x_0, r))$ עבור $0<r<=r_0$ אז $u$ קבועה
+  אז
+  $
+    integral.slash_(B(x_0, r_0)) u dif v &= 1/Vol(B(x_0, r_0)) integral_0^(r_0) dif r integral_boundary(B(x_0, r)) u dif s \
+    &= 1/Vol(B(x_0, r_0)) integral_0^(r_0) dif r (Area(boundary(B(x_0, r))))/(Area(boundary(B(x_0, r)))) integral_boundary(B(x_0, r)) u dif s \
+    &= u(x_0)/Vol(B(x_0, r_0)) integral_0^(r_0) Area(boundary(B(x_0, r))) dif r \
+    &= u(x_0)
+  $
+  אז הראינו שאם $u$ הרמונית אזי $integral.slash_boundary(B(x_0, r_0)) u dif s = u(x_0)$ והראינו ש־$integral.slash_(B(x_0, r_0)) u dif v = u(x_0)$.\
+  נשאר להראות את הכיוון השני ולכן נניח ש־$u$ לא הרמונית ולכן יש כדור קטן שעליו $Delta u > 0$ (בלי הגבלת הכלליות, יכול להיות גם קטן מאפס) אבל אז מההנחה \
+  ש־$integral.slash_(boundary(B(x_0, r_0))) u dif s = u(x_0)$ נקבל ש־$phi^prime (r) = 0$ אבל זאת סתירה.
+]
 
 #end_of_lecture("18  – 09/06")
