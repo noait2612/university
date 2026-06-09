@@ -646,7 +646,7 @@ _תזכורת:_
 
 #definition[הערכה $bold(p)$־אדית][
   יהי $p$ ראשוני, נגדיר $v_p : ZZ arrow NN union {0} union {infinity}$ על־ידי
-  $ v_p (a) = max {k in NN union {0} bar p^k divides a} $
+  $ v_p (a) = max {k in NN union {0} union {infinity} bar p^k divides a} $
 ]
 
 #proposition[תכונות ההערכה ה־$bold(p)$־אדית][
@@ -761,3 +761,125 @@ _תזכורת:_
 ]
 
 #end_of_lecture("8 – 02/06")
+
+#theorem[משפט אוסטרובסקי][
+  תהיי $norm(dot.op) : QQ arrow RR_plus$ נורמה לא ארכימדית ולא טריוויאלית. אז קיימים $p$ ראשוני ו־$alpha in RR$ כך ש־$0<alpha<1$ כך ש־$norm(dot.op)=abs(dot.op)_(p,alpha)$.
+]
+
+#proof[
+  מאחר ש־$norm(dot.op)$ לא ארכימדית, לכל $n in NN$ מתקיים $norm(n)<=1$. מאחר ש־$norm(dot.op)$ לא טריוויאלית, קיים $n in NN$ כך ש־$norm(n)<1$. \
+  נגדיר $p colon.eq min{n in NN bar abs(n)<1}$ ונראה ש־$p$ ראשוני (ברור שהוא לא $1$). נניח בשלילה כי $p$ פריק ולכן קיימים $a,b in NN$ כך ש־$a,b<p$ ו־$p = a b$.\
+  מאחר ש־$a,b < p$ מתקיים ש־$norm(a)=norm(b)=1$ ולכן מכפליות הנורמה $norm(p)=norm(a b) = norm(a)norm(b) =1$ וזו סתירה לכך ש־$norm(p)<1$ ולפיכך $p$ ראשוני.\
+  יהי $u in NN$ כך ש־$p divides.not u$ אז קיימים $q in NN union {0}, r in NN$ כך ש־$u= q p + r$ ו־$r<p$.\
+  מתקיים ש־$norm(r)=1$ וכמו כן $norm(q)<=1$ ולכן $norm(q p) = norm(q) norm(p) < 1$. מאחר ש־$norm(p q) != norm(r)$ מתקיים ש־$norm(u)=norm(q p + r) = max(norm(q p), norm(r)) = norm(r) = 1$.\
+  יהי $v in ZZ_minus$ (כלומר $v in ZZ, v<0$) ו־$p divides.not v$ אז $-v in NN$ ו־$p divides.not -v$ ולכן $norm(v)=norm(-v)=1$.\
+  נגדיר $alpha=norm(p)$ ויהי $0 != q in QQ$ אז קיימים $0 != m in ZZ, n in NN$ כך ש־$q=m/n$. קיימים $s in ZZ, t in NN$ כך ש־$p divides.not s, p divides.not t$ ו־$m=p^(v_p (m)) s, n = p^(v_p (n)) t$. אז
+  $
+    q = (p^(v_p (m)) s)/(p^(v_p (n)) t) = p^(tilde(v)_p (q)) s/t ==> norm(q) = norm(p^(tilde(v)_p (q)) s/t) = norm(p)^(tilde(v)_p (q)) norm(s)/norm(t) = alpha^(tilde(v_p) (q)) 1/1 = alpha^(tilde(v_p) (q)) = abs(q)_(p,alpha)
+  $
+]
+
+#remark[
+  + יהי $p$ ראשוני, $gamma, alpha in RR$ כך ש־$0<alpha<1$ וגם $0<gamma$. אז לכל $q in QQ$
+    $
+      abs(q)_(p, alpha)^gamma = (alpha^(tilde(v)_p (q)))^alpha = (alpha^gamma)^(tilde(v)_p (q)) = abs(q)_(p, alpha^gamma)
+    $
+  + יהי $p$ ראשוני, $alpha, beta in RR$ כך ש־$0<alpha,beta<1$. אז לכל $q in QQ$ $abs(q)_(p, beta) = abs(q)_(p, alpha)$ כאשר $gamma = log_alpha (beta)$.
+]
+
+#proposition[
+  יהיו $p$ ראשונני, $alpha, beta in RR$ כך ש־$0<alpha,beta<1$ ו־$S subset.eq QQ$. אז $S$ פתוחה ב־$(QQ, abs(dot.op)_(p, alpha))$ אם ורק אם $S$ פתוחה ב־$(QQ, abs(dot.op)_(p, beta))$.
+]
+
+#proof[
+  נניח כי $S$ פתוחה ב־$(QQ, abs(dot.op)_(p, beta))$. אז לכל $x in S$ קיים $r>0$ כך שלכל $y in QQ$, $abs(y-x)_(p, beta) < 1$ גורר ש־$y in S$.\
+  אז לכל $y in QQ$ כך ש־$abs(y-x)_(p, alpha) < r^(log_beta (alpha))$ מתקיים
+  $ abs(y-x)_(p, beta)=abs(y-x)_(p, alpha)^(log_alpha (beta)) < (r^(log_beta (alpha)))^(log_alpha (beta)) = r $
+  לפיכך $S$ פתוח ב־$(QQ, abs(dot.op)_(p, alpha))$ והכיוון ההפוך סימטרי.
+]
+
+#proposition[
+  יהיו $p$ ראשוני, $alpha, beta in RR$ כך ש־$0<alpha,beta<1$ ו־$(a_n)_(n=1)^infinity$ היא סדרת מספרים רציונליים. אז $(a_n)_(n=1)^infinity$ היא סדרת קושי ב־$(QQ, abs(dot.op)_(p, alpha))$ אם ורק אם $(a_n)_(n=1)^infinity$ היא סדרת קושי ב־$(QQ, abs(dot.op)_(p, beta))$
+]
+
+#proof[
+  נניח כי $(a_n)_(n=1)^infinity$ היא סדרת קושי ב־$(QQ, abs(dot.op)_(p, alpha))$ ויהי $0<epsilon$ ולכן $0<epsilon^(log_beta (alpha))$ ולכן קיים $N in NN$ כך שלכל $k, l in NN$ המקיימים $k, l > N$ מתקיים
+  $ abs(a_k - a_l)_(p, alpha) < epsilon^(log_beta (alpha)) $
+  מכאן מתקיים
+  $
+    abs(a_k - a_l)_(p, beta) = abs(a_k-a_l)_(p,alpha)^(log_beta (alpha)) < epsilon^(log_beta (alpha))^(log_alpha (beta)) = epsilon
+  $
+  ולכן $(a_n)_(n=1)^infinity$ היא סדרת קושי ב־$(QQ, abs(dot.op)_(p, beta))$
+]
+
+#notation[
+  יהי $p$ ראשוני. אז מסמנים $abs(dot.op)_p = abs(dot.op)_(p, 1/p)$.
+]
+
+== תזכורת על מרחבים מטריים שלמים והשלמה
+
+#definition[מרחב מטרי שלם][
+  מרחב מטרי $(M, d)$ נקרא שלם כאשר כל סדרת קושי בו מתכנסת.
+]
+
+#theorem[יהי
+  $(M,d)$ מרחב מטרי (לאו דווקא שלם). אז קיים מרחב מטרי שלם $(hat(M), hat(d))$ כך ש־$M subset.eq hat(M)$, $hat(d)|_M = d$ ו־$closure(M)=hat(M)$ וההשלמה יחידה (זה לא קריטי לנו).\
+  $underline(:hat(M) "בניית")$ נסמן ב־$C S(M)$ את הקבוצה של כל סדרות קושי ב־$M$. נגדיר יחס $~$ על $C S(M)$ באופן הבא: $(x_n) ~ (y_n)$ אם ורק אם $lim_(n arrow.r infinity) d(x_n, y_n) = 0$.\
+  אז $hat(M)$ היא קבוצת מחלקות השקילות $hat(d)([(x_n)], [(y_n)]) = lim_(n arrow.r infinity) d(x_n, y_n)$.\
+  לכל $x in M$ נתאים סדרה $(x_n)$ כאשר $x_n = x$ לכל $n in NN$. אז $M subset.eq hat(M)$.
+]
+
+#definition[שדה נורמי שלם][
+  יהי $(FF, norm(dot.op))$ שדה נורמי. $(FF, norm(dot.op))$ נקרא שלם כאשר מרחב מטרי $(FF, d)$ שלם עבור $d(x,y) = norm(x-y)$ לכל $x,y in FF$ ונסמן ב־$(hat(FF), hat(d))$ את ההשלמה של $(FF, d)$.\
+  נגדיר $plus, dot.op, norm(dot.op)$ על $hat(FF)$ על־ידי
+  $
+    [(x_n)] + [(y_n)] = [(x_n + y_n)] \
+    [(x_n)] dot.op [(y_n)] = [(x_n dot.op y_n)] \
+    norm([(x_n)]) = hat(d)([(x_n)], [(0)])
+  $
+]
+
+#proposition[
+  + $plus, dot.op$ ב־$hat(FF)$ מוגדרים היטב ומקיימים את אקסיומת השדה
+  + $norm(dot.op)$ היא נורמה ב־$hat(FF)$ וגם $(hat(FF), hat(d))$ שדה נורמי שלם
+  + $(hat(FF), norm(dot.op))$ ארכימדי אם ורק אם $(FF, norm(dot.op))$ ארכימדי
+]
+
+#proof[
+  תרגיל.
+]
+
+#remark[
+  ההשלמה של $(QQ, abs(dot.op))$ היא $(RR, abs(dot.op))$.
+]
+
+#lemma[
+  יהי $(FF, norm(dot.op))$ שדה נורמי לא ארכימדי ו־$(a_n)_(n=1)^infinity$ סדרת קושי ב־$FF$ שאינה שואפת ל־$0$. אז קיים $N in NN$ כך שלכל $n>=N$ מתקיים כי $norm(a_n)= norm(a_N)$ (כלומר החל ממקום מסויים היא קבועה).
+]
+
+#proof[
+  מאחר ש־$(a_n)_(n=1)^infinity$ אינה שואפת ל־$0$, קיים $0<epsilon$ כך שלכל $m in NN$ קיים $n>m$ כך ש־$epsilon<norm(a_n)$.\
+  מאחר ש־$(a_n)_(n=1)^infinity$ סדרת קושי, קיים $M$ כך שלכל $k, l in NN$ עבורם $k, l > M$ מתקיים $norm(a_k-a_l)<epsilon$.\
+  אז קיים $M<N$ כך ש־$epsilon<norm(a_N)$ ואז לכל $N<n$ מתקיים
+  $ norm(a_n) = norm((a_n -a_N) + a_N) = max(norm(a_n - a_N), norm(a_N)) = norm(a_N) $
+]
+
+#proposition[
+  יהי $(FF, norm(dot.op))$ שדה נורמי לא ארכימדי. נסמן את חוג השלמים והאידיאל המקסימלי של $(hat(FF), norm(dot.op))$ ב־$hat(M)_norm(dot.op)$ ו־$hat(O)_norm(dot.op)$ בהתאמה. אז
+  + $hat(O)_norm(dot.op) = closure(O_norm(dot.op))$
+  + $hat(M)_norm(dot.op) = closure(M)_norm(dot.op)$
+  + נסמן ב־$closure(FF_norm(dot.op))$ את שדה השאריות. אז $closure(hat(FF)_norm(dot.op)) tilde.equiv closure(FF_norm(dot.op))$
+  + ${norm(a) bar a in hat(FF)} = {norm(a) bar a in FF}$
+]
+
+#proof[
+  + מאחר ש־$O_norm(dot.op) subset.eq hat(O)_norm(dot.op)$ וגם $hat(O)_norm(dot.op)$ סגור מתקיים ש־$closure(O)_norm(dot.op) subset.eq hat(O)_norm(dot.op)$. בכיוון השני, יהי $0!=a in hat(O)_norm(dot.op)$. אז קיימת סדרת קושי $(a_n)_(n=1)^infinity subset.eq FF$ כך ש־$lim_(n arrow.r infinity) a_n = a$
+    אז $lim_(n arrow.r infinity) norm(a_n) = norm(a)$. לפי הלמה, קיים $N in NN$ כך שלכל $N<n$ מתקיים ש־$norm(a_n) = norm(a_N) = norm(a)$ אבל $norm(a) < 1$ ומכאן $a_n in O_norm(dot.op)$. ולכן $a in closure(O)_norm(dot.op)$ כגבול של סדרה.\
+  + זהה
+  + נגדיר $phi: closure(FF) arrow closure(hat(FF))$ על־ידי $phi(a+M_norm(dot.op)) = a+hat(M)_norm(dot.op)$ לכל $a in O_norm(dot.op)$.\
+    קל לראות שזה מוגדר היטב וזה הומומורפיזם של חוגים. מאחר ש־$closure(FF)$ שדה אז $ker phi = {0}$ ולכן $phi$ חד־חד ערכית.\
+    לא טריוויאלי שהוא על (מה עם ההרחבה גדולה יותר?). יהי $a in hat(O)_norm(dot.op)$ ולכן קיימת סדרת קושי $(a_n)_(n=1)^infinity subset.eq O_norm(dot.op)$ כך ש־$lim_(n arrow.r infinity) a_n = a$. \
+    אז קיים $N in NN$ כך שלכל $N<n$ מתקיים $norm(a_n - a)<1$ כלומר $a_n - a in hat(M)_norm(dot.op)$. מכאן ש־$phi(a_n) = a_n + hat(M)_norm(dot.op) = a + hat(M)_norm(dot.op)$ ולכן $phi$ על ו־$phi$ איזומורפיזם.
+  #end_of_lecture("9 – 09/06")
+
+]
