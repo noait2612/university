@@ -307,6 +307,7 @@
 #let sign = math.op("sgn")
 #let closure(X) = $overline(#X)$
 #let interior(X) = $#X^(circle.small)$
+#let Int = math.op("Int")
 #let boundary(X) = $partial #X$
 #let Lip = math.op("Lip")
 #let Id = math.op("Id")
