@@ -36,12 +36,14 @@ We will use Guldin’s theorem to calculate the area of $S^2 = {(x,y,z) in RR^3 
 We will use Guldin’s theorem to calculate the area of $C = {(x,y,z) in RR^3 bar z^2=a^2(x^2+y^2), 0<z<h space a,h > 0}$.
 
 #solution[
-  To find the generating curve $gamma$ in the $x z$-plane we set $y=0$ so from the equation of the cone we have $z^2=a^2x^2$. Since $a>0$ and $x(t) > 0$ we can take root and get that $z=a x$.\
+  To find the generating curve $gamma$ in the $x z$-plane we set $y=0$ so from the equation of the cone we have $z^2=a^2x^2$.\
+  Since $a>0$ and $x(t) > 0$ we can take root and get that $z=a x$.\
   This is a line segment that can be parametrize as $x(t)=t, z(t) = a t$ and we have constraint on $z$ with $h$ so
   $ 0<z<h <==> 0< a t < h ==> 0 < t < h/a $
-  So we define $gamma : (0, h/a) arrow RR^2$ be the smooth map $gamma(t) = (x(t), z(t))$ with $x(t) = t, z(t) = a t$ and $t in (0, h/a)$.\
+  So we define $gamma : (0, h/a) arrow RR^2$ to be the smooth map $gamma(t) = (x(t), z(t))$ with $x(t) = t, z(t) = a t$ and $t in (0, h/a)$.\
   So we can define
   $ M = {(t cos(theta), t sin(theta), a t) bar t in (0,h/a), theta in [0, 2pi]} $
+  #pagebreak()
   Same as before
   $
     dot(gamma)(t) = (x^prime (t), z^prime (t)) = (1,a) \
@@ -128,4 +130,167 @@ We will calculate the flux of $F$ through $M$ with respect to the unit normal po
   We have $R=(sqrt(5)-1)/2$ as the positive root of $R^2+R+1 = 0$ so
   $ R^3 = R(1-R) = R-R^2 = R-(1-R) = 2R - 1 = sqrt(5)-2 $
   So the final flux is $4pi(sqrt(5)-2)$.
+]
+
+#question()
+Let $Omega subset.eq RR^d$ be a bounded smooth open set. Let $U subset.eq RR^d$ be an open set such that $closure(Omega) subset.eq U$, let $u,v : U arrow RR$ be smooth functions and let $X:U arrow RR^d$ be a smooth vector field. \
+We will show that
+$
+  integral_Omega Delta u dot.op chevron.l gradient u, x chevron.r dif x = integral_boundary(Omega) (partial u)/(partial N) chevron.l gradient u, x chevron.r dif sigma - 1/2 integral_boundary(Omega) norm(gradient u)^2 chevron.l x, N chevron.r dif sigma + (d-2)/2 integral_Omega norm(gradient u)^2
+$
+Where $N$ is the outward pointing unit normal of $Omega$ and $(partial u)/(partial N) colon.eq chevron.l gradient u, N chevron.r$.
+
+#proof[
+  We set $partial_i = partial/(partial x_i)$ so the laplacian is $Delta u = partial_(i i) u$ and the directional derivative along the position vector field is $chevron.l gradient u, x chevron.r = x_j partial_j u$ and our integral on the right side becomes
+  $
+    integral_Omega Delta u chevron.l gradient u, x chevron.r dif x = integral_Omega (partial_(i i) u)(x_j partial_j u) dif x
+  $
+  By the Divergence Theorem
+  $
+    integral_Omega (partial_(i i) u) (x_j partial_j u) dif x = integral_boundary(Omega) N_i (partial_i u)(x_j partial_j u) dif sigma - integral_Omega (partial_i u) partial_i (x_j partial_j u) dif x
+  $
+  We notice that
+  $
+    N_i partial_i u = chevron.l gradient u, N chevron.r = (partial u)/(partial N) \
+    x_j partial_j u = chevron.l gradient u, x chevron.r
+  $
+  This simpelfy the first term with the boundary integral
+  $
+    (star) quad integral_Omega (partial_(i i) u) (x_j partial_j u) dif x = integral_boundary(Omega) (partial u)/(partial N) chevron.l gradient u, x chevron.r dif sigma - integral_Omega (partial_i u) partial_i (x_j partial_j u) dif x
+  $
+  Now, using the product rule we compute $partial_i (x_j partial_j u)$ we obtain that
+  $ partial_i (x_j partial_j u) = (partial_i x_j)(partial_j u) + x_j partial_i (partial_j u) $
+  For smooth functions we have $partial_i (partial_j u) = partial_(i j) u$ so we have
+  $ (partial_i x_j)(partial_j u) + x_j partial_(i j) u $
+  We use Kronecker Delta / The Dirac measure to see that
+  $ delta_(i j) = partial_i x_j = (partial x_j)/(partial x_i) = mycases(1, i = j, 0, i!=j) $
+  Hence
+  $
+    (partial_i x_j)(partial_j u) + x_j partial_(i j) u = delta_(i j) partial_j u + x_j partial_(i j) u = partial_i u + x_j partial_(i j) u
+  $
+  So
+  $
+    (partial_i u)(partial_i u + x_j partial_(i j) u) = (partial_i u)^2 + x_j (partial_i u)(partial_(i j) u) = norm(gradient u)^2 + x_j (partial_i u)(partial_(i j) u)
+  $
+  We look at $x_j (partial_i u)(partial_(i j) u)$, if we think of $(partial_i u)$ as a single function $f$ this term looks like $f dot.op (partial f)/(partial x_j)$ and since $partial/(partial x_j)(f^2) = 2f partial/(partial x_j)$ we get that $f partial/(partial x_j) = 1/2 partial/(partial x_j)(f^2)$ so
+  $ (partial_i u)(partial_(i j) u) = 1/2 partial_j ((partial_i u)^2) $
+  We need to sum both sides over $i$ hence
+  $
+    sum_(i=1)^d (partial_i u)(partial_(i j) u) = 1/2 partial_j sum_(i=1)^d (partial_i u)^2 = 1/2 partial_j (norm(gradient u)^2)
+  $
+  #colbreak()
+  So we have
+  $
+    -integral_Omega [(partial_i u)^2 + x_j (partial_i u)(partial_(i j) u)] dif x = -integral_Omega norm(gradient u)^2 dif x -1/2 integral_Omega x_j partial_j (norm(gradient u)^2) dif x
+  $
+  We can apply the divergence theorem on the term $integral_Omega x_j partial_j (norm(gradient u)^2) dif x$ if we look at the vector field $F=norm(gradient u)^2$ and the divergence of $F$ is
+  $
+    divergence(F) =gradient (norm(gradient u)^2 x) = partial_j (norm(u)^2 x_j) = x_j partial_j (norm(gradient u)^2) + norm(gradient u)^2 (partial_j x_j)
+  $
+  Since the divergence of the position vector field $x$ in $d$ dimensions is $partial_j x_j=d$, we have
+  $ x_j partial_j (norm(gradient u)^2)= gradient (norm(gradient u)^2 x)-d norm(gradient u)^2 $
+  Hence
+  $
+    -1/2 integral_Omega (gradient (norm(gradient u)^2 x)-d norm(gradient u)^2) dif x = -1/2 integral_Omega gradient (norm(gradient u)^2 x) dif x- d/2 integral_Omega norm(u)^2 dif x
+  $
+  From the Divergence theorem
+  $
+    integral_Omega gradient (norm(gradient u)^2 x) dif x = integral_boundary(Omega) norm(u)^2 chevron.l x, N chevron.r dif sigma
+  $
+  So the above evaluates to
+  $
+    (star star) quad - integral_Omega norm(gradient u)^2 dif x - 1/2 integral_boundary(Omega) norm(u)^2 chevron.l x,N chevron.r dif sigma + d/2 integral_Omega norm(gradient u)^2 dif x = ((d-2)/2) integral_Omega norm(gradient u)^2 dif x- 1/2 integral_boundary(Omega) norm(u)^2 chevron.l x,N chevron.r dif sigma
+  $
+  We combine $(star), (star star)$ and we are done.
+]
+
+#question()
+Let $F(x,y,z) = (x,y,z)$ and let $Omega subset.eq RR^3$ be a smooth bounded open set. Let $N$ be the outward pointing unit normal and we will calculate
+$
+  integral_boundary(Omega) N dif sigma \
+  integral_boundary(Omega) F and N dif sigma
+$
+
+#solution[
+  By the remark, let $N=(N_1, N_2, N_3)$, since $N$ is outward pointing unit vector we can use the dot product with the standard basis vector $"e"_1 = (1,0,0)$ to obtain that
+  $
+    integral_boundary(Omega) N dif sigma = integral_boundary(Omega) N_1 dif sigma = integral_boundary(Omega) (1,0,0) dot.op N dif sigma
+  $
+  Now we can apply the Divergence theorem for the constant vector field $(1,0,0)$, since the divergence is just $gradient dot.op (1,0,0) = 0$ hence
+  $ integral_boundary(Omega) (1,0,0) dot.op N dif sigma = integral_Omega 0 dif V = 0 $
+  We can repeat this process for the $y$ and $z$ components using $"e"_2 = (0,1,0), "e"_3 = (0,0,1)$ hence
+  $ integral_boundary(Omega) N dif sigma = 0 $
+  For the second part, we start by calculate the cross product of $F$ and $N$
+  $ F times N = (y N_3 - z N_2, z N_1 - x N_3, x N_2 - y N_1) $
+  We look at the first component
+  $ y N_3 - z N_2 = (0,-z,y) dot.op (N_1, N_2, N_3) $
+  If we apply the Divergence theorem to the vector field $(0,-z,y)$ which it's $divergence$ is 0 we will get that the volume integral is zero and the same for the vector fields $(z,0,-x)$ and $(-y,x,0)$ for the second and third components hence
+  $ integral_boundary(Omega) F and N dif sigma = 0 $
+]
+
+#question()
+Let $Omega subset.eq RR^d$ be a smooth domain and let $p in boundary(Omega)$. Let $p in W subset.eq RR^d$ be an open neighborhood of $p$.\
+Denote by $B subset.eq RR^d$ the open unit ball and let $phi:B arrow W$ be a diffeomorphism such that
+$
+  phi(0) = p \
+  phi({x_d > 0}) = W inter Omega \
+  forall x in B, space det D phi_x > 0
+$
+
+#subquestion()
+Let $A in M_d (RR)$ be a square matrix such t hat $det A > 0$ and let $v_1, dots.h, v_(d-1) in RR^d$ be linearly independent.\
+We will show that $ chevron.l A(v_1 and dots.h.c and v_(d-1)), A v_1 and dots.h.c and A v_(d-1) chevron.r > 0 $
+
+
+#proof[
+  By definition,
+  $ chevron.l v_1 times dots.h.c times v_(d-1), u chevron.r = det(v_1, dots.h, v_(d-1), u) $
+  Let $w = v_1 times dots.h.c times v_(d-1), Y = A v_1 times dots.h.c times A v_(d-1)$ we aim to show that $chevron.l A w, Y chevron.r > 0$.\
+  We take $u= A w$ and obtain that $ chevron.l Y, A w chevron.r = det(A v_1, dots.h, A v_(d-1), A w) = det(A) dot.op det(v_1, dots.h, v_(d-1), w) = det(A) chevron.l w,w chevron.r = det(A) norm(w)^2 $
+  Since $det(A)>0$ is given, and $v_1, dots.h, v_(d-1)$ are linearly independent hence their cross product $w$ is not the zero vector hence $norm(w)^2 > 0$ and finally we obtain that $chevron.l A w, Y chevron.r > 0$ as wanted.
+]
+
+#subquestion()
+We will prove that
+$
+  chevron.l D phi_p^(-1) (partial_1 phi scripts(harpoon.tr)_p and dots.h.c and partial_(d-1) phi scripts(harpoon.tr)_p), e_d chevron.r > 0
+$
+
+#proof[
+  We use the previous subquestion by choosing $A = (D phi)^(-1)_p = (D phi_0)^(-1)$ and $v_i = partial_i phi scripts(harpoon.tr)_p = D phi_0 (e_i)$ for $1<=i<=d-1$.\
+  Since $det D phi_x > 0$ for all $x in B$, we have $det D phi_0 > 0$, which implies
+  $ det A = det(D phi_0^(-1)) = 1 / (det D phi_0) > 0 $
+  The vectors $v_1, dots.h, v_(d-1)$ are linearly independent because $phi$ is a diffeomorphism so from the previous subquestion
+  $
+    chevron.l D phi_p^(-1) (partial_1 phi scripts(harpoon.tr)_p and dots.h.c and partial_(d-1) phi scripts(harpoon.tr)_p), D phi_p^(-1)(partial_1 phi scripts(harpoon.tr)_p) and dots.h.c and D phi_p^(-1)(partial_(d-1) phi scripts(harpoon.tr)_p) chevron.r > 0
+  $
+  We have $D phi_p^(-1)(partial_i phi scripts(harpoon.tr)_p) = D phi_0^(-1)(D phi_0(e_i)) = e_i$ and substituting this into the right hand side of the inner product gives
+  $
+    chevron.l D phi_p^(-1) (partial_1 phi scripts(harpoon.tr)_p and dots.h.c and partial_(d-1) phi scripts(harpoon.tr)_p), e_1 and dots.h.c and e_(d-1) chevron.r > 0
+  $
+  By definition, for any vector $u$, we have $chevron.l e_1 and dots.h.c and e_(d-1), u chevron.r = det(e_1, dots.h, e_(d-1), u)$. Let $u=e_d$ and we will get
+  $ det(e_1, dots.h, e_(d-1), e_d) = det(I_d) = 1 $
+  Since $e_1 and dots.h.c and e_(d-1)$ is orthogonal to $e_1, dots.h, e_(d-1)$, it points purely in the $e_d$ direction, meaning $e_1 and dots.h.c and e_(d-1) = e_d$, substituting this back
+  $
+    chevron.l D phi_p^(-1) (partial_1 phi scripts(harpoon.tr)_p and dots.h.c and partial_(d-1) phi scripts(harpoon.tr)_p), e_d chevron.r > 0
+  $
+]
+
+#subquestion()
+Denote $N=partial_1 phi scripts(harpoon.tr)_p and dots.h.c and partial_(d-1) phi scripts(harpoon.tr)_p$. We will prove that there exists $delta >0$ such that for all $t in (0,delta)$ we have $p-t N in.not Omega$.
+
+#proof[
+  The diffeomorphism $phi$ maps the upper half-ball region ${x in B bar x_d > 0}$ into the interior domain $W inter Omega$, which means that a point $y in W$ belongs to $Omega$ if and only if the $d$-th component of its preimage is strictly positive ($y in Omega <==> chevron.l phi^(-1)(y), e_d chevron.r > 0$).\
+  We look at the path $gamma(t) = p - t N$. Since $W$ is an open neighborhood of $p$ and $gamma(0) = p$, by continuity there exists $delta_1 > 0$ such that $gamma(t) in W$ for all $t in [0, delta_1)$.\
+  #colbreak()
+  Using Taylor Expansion around $t=0$ we obtain that
+  $ phi^(-1)(p - t N) = phi^(-1)(p) + D phi_p^(-1)(-t N) + o(t) = -t D phi_p^(-1)(N) + o(t) $
+  Taking the inner product with $e_d$ to isolate the $d$-th component
+  $
+    chevron.l phi^(-1)(p - t N), e_d chevron.r = -t chevron.l D phi_p^(-1)(N), e_d chevron.r + chevron.l o(t), e_d chevron.r
+  $
+  From the second subquestion, we know that $chevron.l D phi_p^(-1)(N), e_d chevron.r = C$ for some strictly positive constant $C > 0$. Therefore
+  $ chevron.l phi^(-1)(p - t N), e_d chevron.r = -t C + o(t) = t (-C + o(t)/t) $
+  Since $lim_(t arrow 0) o(t)/t = 0$, there exists a sufficiently small $delta in (0, delta_1)$ such that for all $t in (0, delta)$, we have $|o(t)/t| < C$, so that $-C + o(t)/t < 0$.
+  Thus, for all $t in (0, delta)$ we have  $chevron.l phi^(-1)(p - t N), e_d chevron.r < 0$ and this implies $p - t N in.not Omega$.
 ]
