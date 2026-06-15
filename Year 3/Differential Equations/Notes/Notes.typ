@@ -907,3 +907,101 @@ $
 ]
 
 #end_of_lecture("18  – 09/06")
+
+#theorem[עיקרון המקסימום לפונקציות הרמוניות][
+  נניח ש־$Omega subset.eq RR^n$ פתוחה וחסומה ונניח ש־$u in C^2 (Omega) inter C(closure(Omega))$ הרמונית.
+  + העיקרון החלש – המקסימום מתקבל על השפה
+    $ max u (closure(Omega)) = max u(boundary(Omega)) $
+  + העיקרון החזק – אם $Omega$ קשירה וקיים $x_0 in Omega$ כך ש־$u(x_0) = max u(closure(Omega))$ אז $u$ קבועה
+]
+
+#proof[
+  + יהי $x_0 in closure(Omega)$ כך ש־$u(x_0) = max u(closure(Omega))$. אם $x_0 in boundary(Omega)$ אז סיימנו. אחרת, יש $r>0$ כך ש־$B(x_0, r) subset.eq Omega$ מתקיים $u(x_0) = integral.slash_(B(x_0, r)) u dif V$.\
+    אבל זה אומר שלכל $y in B(x_0, r)$ מתקיים $u(y)=u(x_0)$ שכן אם לא מתקיים $u(y) < u(x_0)$ (כי $u(x_0)$ מקסימום) ולכן מרציפות יש קבוצה פתוחה $supset.eq$ $B(x_0, r)$ שעליה $u < u(x_0)$ ואז $integral.slash_(B(x_0, r)) u dif V < u(x_0)$.\
+    אבל זה נכון לכל $r<=dist(x_0, boundary(Omega))$ ולכן לכל $y in boundary(Omega) inter boundary(B(x_0, dist(x_0, boundary(Omega))))$ מתקיים $u(y)=u(x_0) = max u(closure(Omega))$.
+  + נניח ש־$x_0 in Omega$ מקיימת $u(x_0) = max u(Omega)$ ונתבונן בקבוצה $A colon.eq {y in Omega bar u(x_0)=u(y)}$.\
+    $A$ סגורה מרציפות והיא לא ריקה כי $x_0 in A$. אבל הראשנו ש־$A$ פתוחה ב־$Omega$ אבל $Omega$ קשירה ולכן $A=Omega$.
+]
+
+#remark[
+  אם $u$ הרמונית אז $minus u$ הרמונית גם כן ולכן המשפט לגבי עיקרון המקסימום נכון גם למינימום.
+]
+
+#corollary[
+  אם $u,v in C^2 (Omega) inter C(closure(U))$ כאשר $Omega$ פתוחה וחסומה ומתקיים ש־$u|_boundary(Omega)=v|_boundary(Omega)$ ו־$Delta u = Delta v$.\
+  אז $u=v$.
+]
+
+#proof[
+  $u-v$ פונקציה הרמונית ב־$Omega$ ומקיימת $min(u-v)=max(u-v)=0$ ולכן זו פונקציית האפס ו־$u=v$.
+]
+
+#example[בעיית דירכלה][
+  נתונה קבוצה פתוחה וחסומה $Omega subset.eq RR^n$ יפה מספיק ונתונות פונקציות $g in C(boundary(closure(Omega))))$ ו־$f in C(Omega)$.\
+  איך מוצאים פונקציה $u in C^2(boundary(Omega)) inter C(closure(Omega))$ כך ש־$u|_boundary(Omega) = g$ ו־$Delta u|_Omega = f$.
+  לתנאי השני אנחנו קוראים משוואת פואסון.\
+  אולי נתעמק בהמשך.
+]
+
+נקבע פונקציה חלקה ואי־שלילית $eta:(0, infinity) arrow RR$ המקיימת $eta|_([0,1/2)) = 1$ ועבור $x>=1$ ניקח $eta(x)=0$.\
+בהינתן $epsilon > 0$ נגדיר $phi_epsilon : RR^n arrow RR$ על־ידי
+$ phi_epsilon = frac(1, epsilon^n) frac(eta(frac(norm(x), epsilon)), integral_(RR^n) eta(norm(y)) dif y) $
+$phi_epsilon$ חלקה, רדיאלית הנתמכת על $B(0,epsilon)$ ומקיימת $integral_(RR^n) phi_epsilon (y dif y = 1)$.
+
+#definition[שיכוך][
+  תהיי $Omega subset.eq RR^n$ פתוחה. לכל $epsilon > 0$ נסמן
+  $ Omega_epsilon colon.eq {x in Omega bar dist(x, boundary(Omega)>epsilon)} $
+  נניח ש־$u in C(Omega)$ ויהי $epsilon > 0$. השיכוך של $u$ בסקאלה $epsilon$ הוא הפונקציה $u^epsilon : Omega_epsilon arrow RR$ שנתונה על־ידי
+  $ u^epsilon = phi_epsilon * u = integral_(RR^n) phi_epsilon (x-y) u(y) dif y $
+  בפרט $u^epsilon$ חלקה (מהתרגיל).
+]
+
+#theorem[
+  תהיי $Omega subset.eq RR^n$ פתוחה ונניח ש־$u in C(Omega)$ מקיימת את תכונת הערך הממוצע ב־$Omega$. אזי $u in C^infinity (Omega)$ (חלקה) ובפרט הרמונית.
+]
+
+#proof[
+  מספיק להראות שלכל $epsilon > 0$ מתקיים $u|_Omega_epsilon = u^epsilon$.\
+  עבור $x in Omega_epsilon$ מתקיים
+  $
+    u^epsilon (x) & = integral_(B(x, epsilon)) phi_epsilon (x-y)u(y) dif V(y) \
+    & = integral_0^epsilon integral_boundary(B(x,r)) phi_epsilon (x-y)u(y)dif s(y) dif r \
+    & = frac(1, integral_(RR^n) eta(norm(z)) dif z) integral_0^epsilon frac(eta(frac(r, epsilon)), epsilon^n) integral_boundary(B(x,r)) u(y) dif s(y) dif r \
+    &= frac(1, integral_(RR^n) eta(norm(z)) dif z) integral_0^epsilon frac(eta(frac(r, epsilon)), epsilon^n) integral_boundary(B(x,r)) u(x) dif s(y) dif r \
+    &= frac(u(x), integral_(RR^n) eta(norm(z)) dif z) integral_0^epsilon frac(eta(frac(r, epsilon)), epsilon^n) integral_boundary(B(x,r)) dif s(y) dif r \
+    &= u(x) integral_(B(x, epsilon)) phi^epsilon (x-y) dif V(y) \
+    &= u(x) integral_(RR^n) phi^epsilon (y) dif y \
+    &= u(x)
+  $
+]
+
+#corollary[
+  פונקציות הרמוניות הן חלקות.
+]
+
+#corollary[
+  גבול במידה שווה של פונקציות הרמוניות הוא הרמוני (ב־$Omega subset.eq RR^n$ פתוחה).
+]
+
+#proof[
+  אם $(f_n)_(n=1)^infinity$ סדרת פונקציות הרמוניות ו־$f_n arrow.double f$ (במידה שווה).
+  אז $f_n$ רציפות ולכן $f$ רציפה. בנוסף, לכל $x in Omega$ מתקיים
+  $
+    integral.slash_(B(x, r)) f(y) dif V(y) = lim_(n arrow infinity) integral.slash_(B(x,r)) f_n (y) dif V(y) = lim_(n arrow.r infinity) f_n (x) = f(x)
+  $
+]
+
+#theorem[הערכת נגזרות לפונקציות הרמוניות][
+  לכל $n, k in NN$ יש קבוע $0<C(n,k)$ כך שלכל קבוצה פתוחה $Omega subset.eq RR^n$ ולכל $u:Omega arrow RR$ הרמונית ולכל מולטי־אינדקס $alpha = (alpha_1, dots.h, alpha_n)$ (אינדקס וקטורי) עם $abs(alpha)=sum alpha_i = k$ ולכל $closure(B(x,r)) subset.eq Omega$ מתקיים
+  $
+    abs(D^alpha u(x)) = abs(frac(partial^(alpha_1), partial x_1^(alpha_1)) frac(partial^(alpha_2), partial x_2^(alpha_2)) dots.h.c frac(partial^(alpha_n), partial x_n^(alpha_n)) u(x)) <= integral_(B(x,r)) abs(D^alpha phi_r (x-y)) abs(u(y)) dif y <= frac(C(n comma k), r^(n+k)) integral_(B(x,r)) abs(u(y)) dif y
+  $
+]
+
+#proof[
+  מתקיים $u|_Omega_r = u^r$ ולכן $D^alpha u(x) = D^alpha phi_r * u$ כאשר
+  $ phi_r (x-y)=frac(1, r^n integral_(RR^n) eta(norm(z)) dif z) eta(frac(norm(x-y), r)) $
+  על־כל גזירה יוצאת חזקה של $r$ החוצה ואת שאר הגורמים ניתן לחסום מכך ש־$eta$ נתמכת קומפקטית וחלקה.
+]
+
+#end_of_lecture("19  – 15/06")
