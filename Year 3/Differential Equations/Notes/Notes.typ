@@ -928,19 +928,12 @@ $
 ]
 
 #corollary[
-  אם $u,v in C^2 (Omega) inter C(closure(U))$ כאשר $Omega$ פתוחה וחסומה ומתקיים ש־$u|_boundary(Omega)=v|_boundary(Omega)$ ו־$Delta u = Delta v$.\
+  אם $u,v in C^2 (Omega) inter C(closure(U))$ כאשר $Omega$ פתוחה וחסומה ומתקיים ש־$u|_boundary(Omega)=v|_boundary(Omega)$ ו־$Delta u = Delta v$.
   אז $u=v$.
 ]
 
 #proof[
   $u-v$ פונקציה הרמונית ב־$Omega$ ומקיימת $min(u-v)=max(u-v)=0$ ולכן זו פונקציית האפס ו־$u=v$.
-]
-
-#example[בעיית דירכלה][
-  נתונה קבוצה פתוחה וחסומה $Omega subset.eq RR^n$ יפה מספיק ונתונות פונקציות $g in C(boundary(closure(Omega))))$ ו־$f in C(Omega)$.\
-  איך מוצאים פונקציה $u in C^2(boundary(Omega)) inter C(closure(Omega))$ כך ש־$u|_boundary(Omega) = g$ ו־$Delta u|_Omega = f$.
-  לתנאי השני אנחנו קוראים משוואת פואסון.\
-  אולי נתעמק בהמשך.
 ]
 
 נקבע פונקציה חלקה ואי־שלילית $eta:(0, infinity) arrow RR$ המקיימת $eta|_([0,1/2)) = 1$ ועבור $x>=1$ ניקח $eta(x)=0$.\
@@ -1005,3 +998,58 @@ $phi_epsilon$ חלקה, רדיאלית הנתמכת על $B(0,epsilon)$ ומקי
 ]
 
 #end_of_lecture("19  – 15/06")
+
+#theorem[אי־שיוויון הרנאק][
+  יהי $Omega subset.eq RR^n$ קבוצה פתוחה ותהיי $V subset.eq Omega$ פתוחה, קשירה וחסומה כך ש־$closure(V) subset.eq Omega$. אזי יש קבוע $0<C(Omega, V)$ כך שלכל $u : Omega arrow RR$ הרמונית ואי־שלילית מתקיים
+  $ sup u(V) <= C(Omega, V) dot.op inf u(V) $
+]
+
+#proof[
+  נוכיח קודם מקרה פרטי. נניח ש־$V=B(x,r)$ ונניח גם ש־$closure(B(x,4r)) subset.eq Omega$ ונקבע $x_0, x_1 in V$.\
+  מאי־שיוויון המשולש $B(x_1, r) subset.eq B(x_0, 3r)$ ו־$closure(B(x_0, 3r)) subset.eq Omega$ ולכן מערך הממוצע ומאי־אליליות של $u$
+  $
+    u(x_0) & = 1/Vol(B(x_0, 3r)) integral_(B(x_0, 3r)) u(y) dif y \
+           & >= 1/Vol(B(x_0, 3r)) integral_(B(x_1, r)) u(y) dif y \
+           & = frac(Vol(B(x_1, r)), Vol(B(x_0, 3r))) u(x_1) \
+           & = 3^(-n) u(x_1)
+  $
+  כלומר עבור המקרי הפרטי אפשר לקחת את הקבוע להיות $3^n$.\
+  למקרה הכללי, מקומפקטיות יש אוסף סופי של נקודות $o_1, dots.h, p_M in closure(V)$ ורדיוסים $r_1, dots.h, r_M > 0$ כך ש־$closure(V) subset.eq union.big_(i=1)^M B(p_i, r_i)$ ו־$closure(B(p_i, 4r_i)) subset.eq Omega$ לכל $i$.\
+  נקבע $x_0, x_1 in V$ ומכך ש־$V$ תת־קבוצה פתוחה וקשירה של $RR^n$ אז היא קשירה מסילתית. לכן נקבע איזושהי מסילה ב־$V$ שמקשרת בין $x_0$ ו־$x_1$ והמסילה מכוסה על־ידי לכל היותר $M$ מהכדורים.\
+  בלי הגבלת הכלליות אפשר להניח שאפשר להתקדם מ־$x_0$ ל־$x_1$ על־גבי המסילה כאשר בכל צעד אנחנו עוברים מכדור נתון לכדור שעדיין לא ביקרנו בו ובכל מעבר כזה אנחנו צוברים פקטור של לכל היותר $3^(-n)$ בהפרש בין ערכי $u$ על נקודות הקצה של המעבר ולכן $C(Omega,V) = 3^(n M)$ הקבוע הנדרש.
+]
+
+== בעיית דירכלה
+נתונה קבוצה פתוחה וחסומה $Omega subset.eq RR^n$ יפה מספיק ונתונות פונקציות $g in C(boundary(Omega))$ ו־$f in C(Omega)$.
+איך למצוא $u in C^2 (Omega) inter C(closure(Omega))$ כך ש־$u|_boundary(Omega) = g$ ו־$Delta u|_Omega = f$.\
+זו בעיית דירכילה למשוואת פואסון והמקרה הפרטי $f=0$ נקרא בעיית דירכילה למשוואת לפלס/לפונקציות הרמוניות. \
+איך פותרים בעיה כזאת? האסטרטגיה שלנו היא שאם נניח שיש לנו פונקציה $K:Omega times boundary(Omega) arrow RR$ המקיימת שלכל $y$, $Delta_x K(x,y) = 0$ ונניח בנוסף שמתקיים
+$ lim_(x arrow y_0) integral_boundary(Omega) K(x,y)g(y) dif s(y) = g(y_0) $
+אז אם $K$ מספיק "יפה" כדי שיהיה אפשר להצדיק גזירה מתחת לסמן האינטגרל, אז עבור
+$
+  u(x) = integral_boundary(Omega) K(x,y) g(y) dif s(y) ==> Delta u(x) = integral_boundary(Omega) Delta_x K(x,y) g(y) dif s(y) = 0
+$
+אז נקבל פונקציה הרמונית ובנוסף $lim_(x arrow y_0 in boundary(Omega)) u(x) = g(y_0)$.
+
+#example[
+  נזהה $CC tilde.equiv RR^2$. נתבונן בפונקציה $K(z,w)=re(frac(z+w, w-z))$ כאשר $w in boundary(DD), z in DD$ ו־$Omega=DD$.
+  $K$ הרמונית כי החלק הממשי של פונקציה הולומורפית.\
+  $
+    K(z,w)=_(w = e^(i t) \
+    z= r e^(i theta))re(frac(e^(i t) + r e^(i theta), e^(i t)-r e^(i theta))) = re(frac(1+r e^(i(theta-t)), 1- r e^(i(theta-t))))
+  $
+  אנחנו רוצים להבין את ההתנהגות של $K(z,w)$ כאשר $z arrow w_0=e^(i t_0) in boundary(DD)$.
+  נסמן $theta^prime = theta-t$ ואנחנו רוצים להתבונן באינטגרל
+  $
+    integral_boundary(DD) K(z,w)g(w) dif t = 1/(2pi) integral_(minus pi)^pi K(r e^(i theta), e^(i t)) g(e^(i t)) dif t stretch(arrow)_(r arrow 1 \
+    theta arrow t_0) ?
+  $
+  נניח ש־$theta=t_0$ אזי
+  $
+    1/(2pi) integral_(minus pi)^pi K(r e^(i t_0), e^(i t)) g(e^(i t)) dif t = 1/(2pi) integral_(minus pi)^pi re(frac(1+r e^(i(t_0 -t)), 1-r e^(i(t_0 - t)))) g(t) dif t
+  $
+  נשים לב שאם נסמן $t^prime = t_0 - t$ נקבל
+  $ re(frac(1+ r e^(i t^prime), 1- r e^(i t^prime))) = frac(1-r^2, 1-2 r cos(t^prime)+r^2) $
+  וזה בעצם גרעין פואסון! כאשר $t^prime =0$ זה בעצם $frac(1-r^2, 1-2r+r^2) = frac((1-r)(1+r), (1-r)^2) = frac(1+r, 1-r)$ וכאשר $r arrow 1$ זה מתפוצץ.
+]
+#end_of_lecture("20  – 16/06")
