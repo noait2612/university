@@ -4,7 +4,7 @@
 #show: thmbox-init()
 
 #show: article_he.with(
-  title: [ תבניות ריבועיות ומספרים $P$־אדיים ],
+  title: [ תבניות ריבועיות ומספרים $p$־אדיים ],
   signature: [#align(center)[#image("../../../src/duck.png", width: 30%, fit: "contain")]],
 )
 
@@ -514,7 +514,7 @@ _תזכורת:_
   $
 ]
 
-= מספרים $P$־אדיים
+= מספרים $p$־אדיים
 == שדות נורמיים
 #definition[נורמה][
   יהי $F$ שדה ממציין כלשהו. פונקציה $norm(dot.op) : FF arrow RR^plus = {x in RR bar x>=0}$ נקראת *נורמה* כאשר
@@ -593,7 +593,7 @@ _תזכורת:_
   $
     norm(a)>max(norm(a+b), norm(b))=max(norm(a+b), norm(-b))>=_("אי־שיוויון האולטרה מטרי") max(norm(a+b)+(-b)) = norm(a)
   $
-  וזאת סתירה ולכן $norm(a+b)=max(norm(a), norm(b))$
+  וזאת סתירה ולכן $norm(a+b)=max(norm(a), norm(b))$.
 ]
 
 #proposition[
@@ -855,7 +855,7 @@ _תזכורת:_
 
 #lemma[
   יהי $(FF, norm(dot.op))$ שדה נורמי לא ארכימדי ו־$(a_n)_(n=1)^infinity$ סדרת קושי ב־$FF$ שאינה שואפת ל־$0$. אז קיים $N in NN$ כך שלכל $n>=N$ מתקיים כי $norm(a_n)= norm(a_N)$ (כלומר החל ממקום מסויים היא קבועה).
-]
+]<important_lemma>
 
 #proof[
   מאחר ש־$(a_n)_(n=1)^infinity$ אינה שואפת ל־$0$, קיים $0<epsilon$ כך שלכל $m in NN$ קיים $n>m$ כך ש־$epsilon<norm(a_n)$.\
@@ -881,5 +881,112 @@ _תזכורת:_
     לא טריוויאלי שהוא על (מה עם ההרחבה גדולה יותר?). יהי $a in hat(O)_norm(dot.op)$ ולכן קיימת סדרת קושי $(a_n)_(n=1)^infinity subset.eq O_norm(dot.op)$ כך ש־$lim_(n arrow.r infinity) a_n = a$. \
     אז קיים $N in NN$ כך שלכל $N<n$ מתקיים $norm(a_n - a)<1$ כלומר $a_n - a in hat(M)_norm(dot.op)$. מכאן ש־$phi(a_n) = a_n + hat(M)_norm(dot.op) = a + hat(M)_norm(dot.op)$ ולכן $phi$ על ו־$phi$ איזומורפיזם.
   #end_of_lecture("9 – 09/06")
-
+  4. ברור כי ${norm(x) bar x in FF} supset.eq {norm(x) bar x in hat(FF)}$. בכיוון השני, יהי $0!=a in hat(FF)$. אז קיימת סדרה $(a_n)$ של איברים מ־$FF$ כך ש־$lim_(n arrow.r infinity) a$. מהלמה קיים $N in NN$ כך שלכל $N<=n$ מתקיים $norm(a_n) = norm(a_N)$ ומאחר ש־$lim_(n arrow.r infinity) norm(a_n) = norm(a)$ לכל $N<=n$ מתקיים $norm(a_n) = norm(a)$ ולכן $norm(a) = norm(a_n) in {norm(x) bar x in FF}$
 ]
+
+== שדה המספרים ה־$p$־אדיים
+#notation[
+  נסמן את ההשלמה של $(QQ, abs(dot.op)_p)$ ב־$QQ_p$ ונקרא לו שדה המספרים ה־$p$־אדיים.\
+  בנוסף, נסמן
+  $ ZZ_p colon.eq {x in QQ_p bar abs(x)_p <=1} $
+]
+
+#proposition[
+  + $ZZ_p = closure(ZZ_((p))) = closure(ZZ)$
+  + האידיאל המקסימלי ב־$(QQ_p, abs(dot.op)_p)$ הוא $closure(p ZZ_((p))) = p ZZ_p$
+  + שדה השאריות של $(QQ_p, abs(dot.op))$ הוא $ZZ_p slash p ZZ_p tilde.equiv ZZ_((p)) slash p ZZ_((p)) tilde.equiv FF_p$
+  + ${abs(x)_p bar x in QQ_p} = {abs(x)_p bar x in QQ}={1/p^s bar s in ZZ union {infinity}}$
+]
+
+#proof[
+  אנלוגי לטענה הקודמת.
+]
+
+#lemma[
+  יהי $(FF, norm(dot.op))$ שדה נורמי לא ארכימדי שלם ותהיי $(a_n)$ סדרה ב־$FF$ ששואפת ל־$0$. אזי $sum_(n=0)^infinity a_n = lim_(n arrow.r infinity) a_i$ מתכנס.
+]
+
+#proof[
+  יהי $epsilon>0$, קיים $N in NN$ כך שלכל $N <= n$ מתקיים $norm(a_n) < epsilon$. מכאן, לכל $N<-m<n$ מתקיים כי
+  $ norm(b_n - b_m) = norm(sum_(i=1m+)^n a_i) <= max_(m+1<=i<=n) norm(a_i) < epsilon $
+  לכן $(b_n)$ היא סדרת קושי ומאחר ש־$(FF, norm(dot.op))$ שלם היא מתכנסת.
+]
+
+#notation[
+  $NN_0 = NN union {0}$.\
+  מעתה והלאה הנורמה המדוברת היא הנורמה ה־$p$־אדית אלא אם נאמר אחרת (לפעמים נרשם $norm(dot.op)$ או $abs(dot.op)$ אבל הכוונה לנורמה ה־$p$־אדית).
+]
+
+#proposition[
+  תהיי $(a_n)_(n=1)^infinity$ סדרה ב־$ZZ$ כך ש־$0<= a_n <= p-1$ עבור $n in NN_0$.\
+  ב־$QQ_p$ קיים הגבול $sum_(n=0)^infinity a_n p^n = a$ וגם $a in ZZ_p$ ויתר על־כן, $a in p ZZ_p <==> a_0 = 0$.
+]
+
+#proof[
+  מאחר ש־$norm(a_n) in {0,1}$ לכל $n in NN_0$ מתקיים $norm(a_n p^n) in {0, 1/p^n}$ ולכן $lim_(n arrow.r infinity) a_n p^n = 0$ ומהלמה הקודמת הסכום $sum_(n=0)^infinity a_n p^n$ מתכנס ל־$a$.\
+  מאחר ש־$abs(sum_(i=1)^n a_i p^i)_p < 1$ (מ@important_lemma) מתקיים $abs(sum_(i=1)^infinity a_i p^i)_p < 1$ ולכן אם $a_0 = 0$ אז $abs(a)_p = abs(sum_(i=1)^infinity a_i p^i)_p < 1$.\
+  אם $a_0 != 0$ אז $abs(a_0)_p = 1$ ולכן $abs(a)_p = max(abs(a_0)_p, abs(sum_(i=1)^infinity a_i p^i)_p) = 1$.
+]
+
+#proposition[
+  תהיינה $(a_n)_(n=0)^infinity, (b_n)_(n=0)^infinity$ סדרות ב־$ZZ$ כך ש־$0<=a_n, b_n <= p-1$ לכל $n in NN_0$ וגם $sum_(i=0)^infinity a_n p^n = sum_(i=0)^infinity b_n p^n$ אז $a_n = b_n$ לכל $n in NN_0$.
+]
+
+#proof[
+  נניח בשלילה שקיים $n in NN_0$ כך ש־$a_n != b_n$ ולכן נגדיר $m = min{n in NN_0 bar a_n != b_n}$. \
+  אזי $sum_(i=0)^(m-1) a_i p^i = sum_(i=0)^(m-1) b_i p^i$ ולכן גם $sum_(i=m)^infinity a_i p^i = sum_(i=m)^infinity b_i p^i$ (זנב) ומכאן
+  $
+    a_m + sum_(i=m+1)^infinity a_i p^(i-m) = sum_(i=m)^infinity a_i p^(i-m) = sum_(i=m)^infinity b_i p^(i-m) = b_m + sum_(i=m+1)^infinity b_i p^(i-m)
+  $
+  לכן
+  $ a_m - b_m = sum_(i=m+1)^infinity b_i p^(i-m)-sum_(i=m+1)^infinity a_i p^(i-m) $
+  כמו בהוכחה הקודמת,
+  $ abs(sum_(i=m+1)^infinity b_i p^(i-m)-sum_(i=m+1)^infinity a_i p^(i-m))_p < 1 $
+  אבל $a_m != b_m$ ולכן $abs(a_m - b_m)_p = 1$ וזאת סתירה.
+]
+
+#proposition[
+  לכל $x in ZZ_p$ ולכל $k in NN_0$ קיים $r in ZZ$ יחיד כך ש־$0<=r<=p^x-1$ כך ש־$abs(x-r)_p <= 1/p^k$.
+]
+
+#proof[
+  מאחר ש־$closure(ZZ)=ZZ_p$ נובע שקיים $z in ZZ$ כך ש־$abs(x-z)_p <= 1/p^k$.\
+  נחלק את $z$ ב־$p^k$ עם שארית ונקבל $q,r in ZZ$ כך ש־$z=q p^k + r$ ו־$0<=r<=p^k-1$ ומתקיים
+  $ abs(x-r)_p = abs((x-z)+(z-r))_p = abs(x-z+q p^k) <= max(abs(x-z)_p, abs(q p^k)_p) <= 1/p^k $
+  נשאר להראת יחידות – יהיו $0<=r_1, r_2 <= p-1$ כך ש־$abs(x-r_1)_p, abs(x-r_2)_p <= 1/p^k$ מכאן $ abs(r_1 - r_2)_p = abs((x-r_1) - (x-r_2))_p <= max(abs(x-r_1)_p, abs(x-r_2)_p) <= 1/p^k $
+  מאחר ש־$-(p^k-1) <= abs(r_1-r_2) <= p^k - 1$ אנו מסיקים ש־$r_2 - r_1 = 0$.
+]
+
+#corollary[
+  לכל $x in ZZ_p$ קיימת סדרה יחידה $(r_n)_(n=1)^infinity subset.eq ZZ$ כך שמתקיים
+  + $0<=r_k <= p^k-1$
+  + $abs(x-r_k)_p <= 1/p^k$
+  + $p^k divides r_(k+1) - r_k$
+]
+
+#proof[
+  נשים לב ש־$1$ ו־$2$ נובעים מהטענה הקודמת. עבור $3$,
+  $ abs(r_(k+1) - r_k)_p = abs((x-r_k)-(x-r_(k+1))) <= max(abs(x-r_k)_p, abs(x-r_(k+1))_p) <=_((2)) 1/p^k $
+]
+
+#proposition[
+  יהי $x in ZZ_p$ קיימת סדרה $(a_n)_(n=0)^infinity subset.eq ZZ$ כך ש־$0<=a_n <= p-1$ לכל $n in NN_0$ וגם $lim_(n arrow infinity) sum_(i=0)^n a_i p^i =sum_(n=0)^infinity a_n p^n = x$.
+]
+
+#proof[
+  נגדיר $ a_0 = r_1, quad a_1 = frac(r_-2 - r_1, p),quad a_2 = frac(r_3 - r_2, p^2), quad a_i = frac((r_(i+1) - r_(i)), p^i) $
+  מהמסקנה $a_i in ZZ$ ומאחר ש־$0<=r_(i+1)<=p^(i+1)-1$ ו־$0<=r_i <= p^i - 1$ מתקיים $-(p^i-1)<= r_(i+1) - r_i <= p^(i+1) - 1$.\
+  מאחר ש־$p^i divides r^(i+1) - r^i$ מתקיים $0<=r_(i+1)-r_i <= p^(i+1)-p^i$ ולכן $0<=a_i <= p-1$ ולסיום
+  $ r_n = r_(n-1) + a_(n-1) p^(n-1) = r_(n-2) + a_(n-2) p^(n-2) + a_(n-1) p^(n-1) = dots.h.c = sum_(i=0)^(n-1) a_i p^i $
+  ולכן $lim_(n arrow.r infinity) sum_(i=0)^n a_i p^i = lim_(n arrow.r infinity) r_(n+1) = x$.
+]
+
+#proposition[
+  לכל $x in QQ_p^times$ קיים $s in ZZ$ וסדרה $(a_n)_(n=s)^infinity subset.eq ZZ$ כך ש־$0<=a_n <= p-1$ לכל $n in ZZ$ עם $n>=s$ ובנוסף $a_s !=0$ ו־$sum_(n=s)^infinity a_n p^n = x$.
+]
+
+#proof[
+  קיים $s in ZZ$ כך ש־$abs(x)_p = 1/p^s$ ולכן נגדיר $x^prime = frac(x, p^s)$ ואז $abs(x^prime)_p = frac(abs(x)_p, abs(1/p^s)_p) = 1$ ולכן קיימת סדרה $(a^prime_n)_(n=0)^infinity subset.eq ZZ$ כך ש־$0<=a^prime_n <= p-1$ וגם $sum_(n=0)^infinity a^prime_n p^n$ ומאחר ש־$abs(x^prime)=1$ מתקיים $a^prime_0 != 0$ ולכן נגדיר $a_n = a^prime_(n-s)$ לכל $n in NN$ ו־$s<=n$ ונקבל $sum_(n=s)^infinity a_n p^n = sum_(n=0)^infinity a_(n+s) p^(n+s) = sum_(n=0)^infinity a^prime_n p^n p^s = x^prime p^s = x$.
+]
+
+#end_of_lecture("10 – 16/06")
