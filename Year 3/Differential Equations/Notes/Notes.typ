@@ -550,8 +550,8 @@ $ phi(x) = A_m cos(m x) + B_m sin(m x) $
   נקראת משוואת שטורם־ליוביל (S-L).\
   נאמר שהיא רגולרית אם $p(t) > 0$ לכל $t in [a,b]$ ואנחנו נתבונן רק במשוואות רגולריות.\
   נוסיף למשוואה תנאי שפה – כלומר תנאים על $u$ בנקודות $a,b$, למשל
-  + תנאי דירכלה – $u(a)=0=u(b)$
-  + תנאי דירכלה מוכלל – $u(a)=A, u(b) = B$
+  + תנאי דיריכלה – $u(a)=0=u(b)$
+  + תנאי דיריכלה מוכלל – $u(a)=A, u(b) = B$
   + תנאי נוימן $u^prime (a) = 0 = u^prime (b)$
   + תנאי נוימן מוכלל $u^prime (a) = A, u^prime (b) = B$
   + מעורבב $u(a)=A, u^prime (b) = B$
@@ -569,7 +569,7 @@ $ phi(x) = A_m cos(m x) + B_m sin(m x) $
 #theorem[
   עבור משוואות S-L רגולרית הבאים שקולים
   + לכל $A,B in RR$ יש פתרון יחיד $u$ שמקיים  $u(a)=A, u(b)=B$
-  + הפתרון היחידי עבורו תנאי השפה דירכךה $u(a)=0=u(b)$ הוא פתרון ה־$0$
+  + הפתרון היחידי עבורו תנאי השפה דיריכלה $u(a)=0=u(b)$ הוא פתרון ה־$0$
 ]
 
 #proof[
@@ -580,9 +580,9 @@ $ phi(x) = A_m cos(m x) + B_m sin(m x) $
 ]
 
 #remark[
-  מעתה נתבונן במערכות S-L עם תנאי שפה דירכילה.\
+  מעתה נתבונן במערכות S-L עם תנאי שפה דיריכלה.\
   + יש עוד משוואות דיפרנציאליות חלקיות שפיתרון שלהן בעזרת הפרדת משתנים מוביל למערכת S-L ולא רק משוואת המיתר שלנו
-  + הביטוי במערכת S-L עם תנאי שפה דירכלה
+  + הביטוי במערכת S-L עם תנאי שפה דיריכלה
     $
       (p(t)u^prime (t))^prime + q(t)u(t) #text(orange)[(0=)] \
       u(a) = 0 = u(b)
@@ -621,7 +621,7 @@ $
 #end_of_lecture("14 – 26/05")
 נבחין שעבור $k in ZZ$ מתקיים
 $ theta(t) = pi k <==> u(t) =0 $
-לכן אם נתרגם $u(0)=0$ ל־$theta(0)=0$ נקבל ש־$u$ פתרון למערכת המשוואות שלנו  עם תנאי שפה דירכילה אם ורק אם $theta(b)=pi k$ לאיזשהו $k in ZZ$.\
+לכן אם נתרגם $u(0)=0$ ל־$theta(0)=0$ נקבל ש־$u$ פתרון למערכת המשוואות שלנו  עם תנאי שפה דיריכלה אם ורק אם $theta(b)=pi k$ לאיזשהו $k in ZZ$.\
 נתמקד כרגע במשוואה הבאה עבור מערכת S-L
 $ theta^prime (t) = q(t) sin^2 (theta(t)) + 1/p(t) cos^2(theta(t)) $
 
@@ -839,7 +839,7 @@ $
 ]
 
 #corollary[
-  לכל מערכת S-L רגולריות ($rho, p > 0$) עם תנאי שפה דירכילה יש אינסוף ערכים עצמיים.
+  לכל מערכת S-L רגולריות ($rho, p > 0$) עם תנאי שפה דיריכלה יש אינסוף ערכים עצמיים.
 ]
 
 #end_of_lecture("17  – 08/06")
@@ -977,7 +977,7 @@ $phi_epsilon$ חלקה, רדיאלית הנתמכת על $B(0,epsilon)$ ומקי
 ]
 
 #proof[
-  אם $(f_n)_(n=1)^infinity$ סדרת פונקציות הרמוניות ו־$f_n arrow.double f$ (במידה שווה).
+  אם $(f_n)_(n=1)^infinity$ סדרת פונקציות הרמוניות ו־$f_n arrows.rr f$ (במידה שווה).
   אז $f_n$ רציפות ולכן $f$ רציפה. בנוסף, לכל $x in Omega$ מתקיים
   $
     integral.slash_(B(x, r)) f(y) dif V(y) = lim_(n arrow infinity) integral.slash_(B(x,r)) f_n (y) dif V(y) = lim_(n arrow.r infinity) f_n (x) = f(x)
@@ -1015,14 +1015,14 @@ $phi_epsilon$ חלקה, רדיאלית הנתמכת על $B(0,epsilon)$ ומקי
   $
   כלומר עבור המקרי הפרטי אפשר לקחת את הקבוע להיות $3^n$.\
   למקרה הכללי, מקומפקטיות יש אוסף סופי של נקודות $o_1, dots.h, p_M in closure(V)$ ורדיוסים $r_1, dots.h, r_M > 0$ כך ש־$closure(V) subset.eq union.big_(i=1)^M B(p_i, r_i)$ ו־$closure(B(p_i, 4r_i)) subset.eq Omega$ לכל $i$.\
-  נקבע $x_0, x_1 in V$ ומכך ש־$V$ תת־קבוצה פתוחה וקשירה של $RR^n$ אז היא קשירה מסילתית. לכן נקבע איזושהי מסילה ב־$V$ שמקשרת בין $x_0$ ו־$x_1$ והמסילה מכוסה על־ידי לכל היותר $M$ מהכדורים.\
+  נקבע $x_0, x_1 in V$ ומכך ש־$V$ תת־קבוצה פתוחה וקשירה של $RR^n$ אז היא קשירה מסילתית. לכן נקבע איזושהי מסילה ב־$V$ שמקשרת בין $x_0$ ו־$x_1$ והמסילה מכוסה על־ידי לכל היותר $M$ מהכדורים.
   בלי הגבלת הכלליות אפשר להניח שאפשר להתקדם מ־$x_0$ ל־$x_1$ על־גבי המסילה כאשר בכל צעד אנחנו עוברים מכדור נתון לכדור שעדיין לא ביקרנו בו ובכל מעבר כזה אנחנו צוברים פקטור של לכל היותר $3^(-n)$ בהפרש בין ערכי $u$ על נקודות הקצה של המעבר ולכן $C(Omega,V) = 3^(n M)$ הקבוע הנדרש.
 ]
 
-== בעיית דירכלה
+== בעיית דיריכלה
 נתונה קבוצה פתוחה וחסומה $Omega subset.eq RR^n$ יפה מספיק ונתונות פונקציות $g in C(boundary(Omega))$ ו־$f in C(Omega)$.
 איך למצוא $u in C^2 (Omega) inter C(closure(Omega))$ כך ש־$u|_boundary(Omega) = g$ ו־$Delta u|_Omega = f$.\
-זו בעיית דירכילה למשוואת פואסון והמקרה הפרטי $f=0$ נקרא בעיית דירכילה למשוואת לפלס/לפונקציות הרמוניות. \
+זו בעיית דיריכלה למשוואת פואסון והמקרה הפרטי $f=0$ נקרא בעיית דיריכלה למשוואת לפלס/לפונקציות הרמוניות. \
 איך פותרים בעיה כזאת? האסטרטגיה שלנו היא שאם נניח שיש לנו פונקציה $K:Omega times boundary(Omega) arrow RR$ המקיימת שלכל $y$, $Delta_x K(x,y) = 0$ ונניח בנוסף שמתקיים
 $ lim_(x arrow y_0) integral_boundary(Omega) K(x,y)g(y) dif s(y) = g(y_0) $
 אז אם $K$ מספיק "יפה" כדי שיהיה אפשר להצדיק גזירה מתחת לסמן האינטגרל, אז עבור
@@ -1053,3 +1053,110 @@ $
   וזה בעצם גרעין פואסון! כאשר $t^prime =0$ זה בעצם $frac(1-r^2, 1-2r+r^2) = frac((1-r)(1+r), (1-r)^2) = frac(1+r, 1-r)$ וכאשר $r arrow 1$ זה מתפוצץ.
 ]
 #end_of_lecture("20  – 16/06")
+
+== שיטת Perron לפתרון בעיית דיריכלה
+המטרה שלנו היא לפתור את בעיית דיריכלה עבור משוואת לפלס $Delta u|_Omega =0$ כאשר $u|_boundary(Omega) = g$.
+
+#definition[פונקציה תת־הרמונית][
+  תהיי $Omega subset.eq RR^n$ תחום (קבוצה פתוחה וקשירה), $v in C(Omega)$ תקרא תת־הרמונית ב־$Omega$ אם לכל $B subset.eq Omega$ כדור פתוח כך ש־$closure(B) subset.eq Omega$ ולכל $h in C(closure(B))$ הרמונית ב־$B$ המקיימת $u|_boundary(B) <= h|_boundary(B)$ מתקיים $v<=h$ ב־$B$.
+]
+
+#proposition[הגדרה שקולה לפונקציה תת־הרמונית במימד אחד][
+  במימד אחד פונקציה $v$ היא תת־הרמונית אם ורק אם $v$ קמורה.
+]
+
+#remark[
+  כל פונקציה הרמונית היא תת־הרמונית.
+]
+
+#theorem[עיקרון המקסימום החזק עם פונקציות תת־הרמוניות][
+  תהיי $Omega subset.eq RR^n$ תחום ו־$v in C(Omega)$ תת־הרמונית ב־$Omega$. אם $u$ מקבלת מקסימום ב־$Omega$ אז $u$ קבועה ב־$Omega$.
+]
+
+#proof[
+  נסמן $m = max_(x in Omega) u(x)$ ונביט בקבוצה
+  $ A = {x in Omega bar u(x) = M} $
+  $A$ קבוצה סגורה ולא ריקה ונראה ש־$A$ פתוחה.\
+  יהי $x_0 in A$ כך ש־$u(x_0) = M$ ויהי $closure(B) = closure(B(x_0, r)) subset.eq Omega$.\
+  תהיי $h$ הרמונית ב־$B$ כך ש־$h|_boundary(Omega) = v|_boundary(Omega)$ אנו יודעים ש־$u<=h$ ובפרט $m=u(x_0) <= h(x_0)$ ו־$h|_boundary(B) = u|_boundary(Omega)$.\
+  אם־כך, $h$ הרמונית ב־$B$ רציפה ב־$closure(B)$, $h<=M$ על $closure(B)$ ו־$h(x_0)=M$ אז מעיקרון המקסימום לפונקציות הרמוניות $h<=M$ ב־$B$ וכן מאחר ש־$h(x_0)=M$ נקודה פנימית שבה מתקדם המקסימום ונובע כי $h eq.triple|_B M$ אבל לכן מרציפות $h$ נובע ש־$h eq.triple|_closure(Omega) M$ אבל $u|_boundary(B) = h|_boundary(B)=M$.\
+  מאחר שהרדיוס $r$ שרירותי נקבל ש־$u eq.triple M|_B$ לכל כדור.\
+  אז נובע מכך ש־$A$ פתוחה אבל היא גם סגורה ולא ריקה ולכן מקשירות $Omega$ נסיק ש־$A = Omega$.
+]
+
+#theorem[עקרון המקסימום החלש לפונקציות תת־הרמוניות][
+  תהיי $Omega subset.eq RR^n$ תחום חסום ותהיינה $u in C(closure(Omega))$ תת־הרמונית, $h in C(closure(Omega))$ הרמונית ב־$Omega$.\ אם $u<=h$ על $boundary(Omega)$ אז $u<=h$ ב־$Omega$.
+]
+
+#remark[
+  למשל, אם $u<=M$ על $boundary(Omega)$ אזי $u<=M$ ב־$Omega$ (זה בעצם ניסוח שקול).
+]
+
+#proof[
+  נביט ב־$w=u-h$ והיא תת־הרמונית (מהגדרה ואריתמטיקה של פונקציות תת־הרמוניות).\
+  תהיי $x_0 in closure(Omega)$ כך ש־$w(x_0) = max_(closure(Omega)) w$.\
+  נתון ש־$w<=0$ על $boundary(Omega)$ ונחלק למקרים
+  + אם $x_0 in Omega$ אז $w$ קבועה על $closure(Omega)$ מעיקרון המקסימום החזק ולכן $w<=0$ על $boundary(Omega)$ גורר ש־$w<=0$ ב־$Omega$
+  + אם $x_0 in boundary(Omega)$ אז
+    $ forall x in closure(Omega), space w(x) <= w(x_0) <= 0 $
+    כאשר האי־שיוויון הראשון זה כי $x_0$ נקודת מקסימום והשני זה ש־$x_0 in boundary(Omega)$.
+  בכל מקרה $w<=0$ ב־$Omega$ כלומר $u<=h$ ב־$Omega$.
+]
+
+#proposition[
+  אם $u_1, u_2, dots.h, u_N$ תת־הרמוניות ב־$Omega$ אז $v = max{u_1, u_2, dots.h, u_N}$ היא תת־הרמונית ב־$Omega$.
+]
+
+#proof[
+  יהי $closure(B) subset.eq Omega$ ו־$h in C(closure(B))$ הרמונית ב־$B$ כך ש־$u|_boundary(Omega) <= u|_boundary(Omega)$.\
+  אז מתקיים לכל $1<=j<=n$ גם ש־$u_j |_closure(Omega) <= h|_closure(Omega)$ אבל $u_j$ תת־הרמונית ולכן $u_j <= h$ ב־$B$ וזה נכון לכל $j$ ולכן גם $u<=h$.
+]
+
+#pagebreak()
+
+הרעיון של שיטת Perron זה לחפש פונקציות תת־הרמוניות $v$ שמקיימות $v|_boundary(Omega) <=g$ ופותרת את מערכת המשוואה הבאה ב־$Omega$  $ cases(Delta u = 0, u|_boundary(Omega) = g) $ אז נגדיר
+$ u^(p e r) (x) = sup{v(x) bar v|_boundary(Omega)<=g, v in C(closure(Omega)) "sub-harmonic"} $
+
+#definition[ההרמה ההרמונית][
+  תהיי $v$ תת־הרמונית ב־$Omega$ ו־$closure(B) subset.eq Omega$. נגדיר את ההרמה ההרמונית של $v$ לכדור $B$ ב־$closure(v)^B$ כך ש־$closure(v)^B in C(Omega)$ המוגדרת על־ידי
+  $ closure(v)^B (x) = mycases(v(x), x in.not B, h(x) x in B) $
+  כאשר $h in C(closure(B))$, $h|_boundary(B) = v|_boundary(B)$ ו־$h$ הרמונית ב־$B$.
+]
+
+#proposition[
+  $closure(v)^B$ היא תת־הרמונית ב־$Omega$.
+]
+
+#proof[
+  יהי $closure(B^prime) subset.eq Omega$ כדור סגור כלשהו ותהיי $h in C(closure(B^prime))$ הרמונית כך ש־$closure(v)^B|_boundary(B^prime) <= h|_boundary(B^prime)$.\
+  נרצה להראות ש־$closure(v)^B <= h$ ב־$B^prime$.\
+  נראה תחילה ש־$closure(v)^B = v$ ב־$B^prime without B$ ונשים לב ש־$v<=closure(v)^B$ שכן $v|_boundary(B^prime) <= closure(v)^B |_boundary(B^prime)$ ומאחר ש־$v$ תת־הרמונית נקבל ש־$v<=h$ ב־$B^prime$ ובפרט $closure(v)^B = v <=h$ ב־$B^prime without B$.\
+  נראה ש־$closure(v)^B <= h$ ב־$B^prime inter B$, מתקיים
+  $
+    boundary(B^prime inter B) = underbrace((boundary(B^prime) inter closure(B)), I) union underbrace((closure(B^prime) inter boundary(B)), I I)
+  $
+  ב־$I$ מתקיים $closure(v)^B<=h$ שכן $boundary(B^prime) inter closure(B) subset.eq boundary(B^prime)$ ונתון ש־$closure(v)^B <=h$ על $boundary(B^prime)$.\
+  ב־$I I$ מתקיים ש־$closure(B^prime) inter boundary(B) subset.eq closure(B^prime) without B$ ולכן $closure(v)^B$ מתלכדת עם $v$ ב־$I I$ וראינו ש־$v<=h$ ב־$B^prime$ ולכן גם ב־$B^prime without B$ ועל־כן $closure(v)^B <= h$.
+]
+
+#theorem[
+  תהיי $u_n$ סדרה חסומה של פונקציות הרמוניות ב־$Omega$. אזי קיימת תת־סדרה $u_n_k$ המתכנסת לפונקציה הרמונית ב־$Omega$ (ההתכנסות היא במידה שווה על כל תת־קבוצה קומפקטית של $Omega$).
+]
+
+#proof[
+  טבעי לרצות להשתמש במבחן ארצלה הסקאולי מפונקציונלית.\
+  נביט ב־$partial_i u$ (כלומר $frac(partial u, partial x_i)$) והיא גם פונקציה הרמונית ולכן לכל $x_0 in Omega$ מתקיים
+  $
+    partial_i u(x_0) &= frac(1, abs(B(x_0, r))) integral_(B(x_0, r)) (partial_i u) (x) dif x \
+    &= frac(1, abs(B(x_0, r))) integral_(B(x,r)) (partial_i u)(x) dot.op 1 dif x \
+    &= -frac(1, abs(B(x_0, r))) cancel(integral_(B(x_, r)) u(partial_i 1) dif x) + frac(1, abs(B(x_0, r))) integral_boundary(B(x_0,r)) u dot.op 1 dot.op n_i dif Vol_(n-1) \
+    & <= frac(abs(boundary(B(x_0, r))) dot.op max abs(u), abs(B(x_0, r))) \
+    & <= frac(C_n r^(n-1), C_n^prime r^n) dot.op max_closure(Omega) abs(u) \
+    &=frac(max_closure(Omega) abs(u), r)
+  $
+  כאשר $r$ קטן דיו עבור $r<dist(K, boundary(Omega))$ עבור $K subset.eq Omega$ קומפקטית.\
+  אז לכל $x in K$ מתקיים $abs((partial_i u_n) (x))<=frac(M, r)$ ולכן
+  $ abs(u_n (x) - u_n (y))<= max_K abs(gradient u_n) dot.op abs(x-y) <= frac(M, r) abs(x-y) $
+  אז $u_n$ רציפה במידה שווה ואפילו ליפשיצית והיא לא תלויה ב־$n$ ולכן רציפה במידה אחידה וממשפט ארצלה הסקאולי נקבל שקיימת תת־סדרה של $u_n_k$ שמתכנסת במידה שווה על $K$ והגבול הזה הרמוני כי הוא גבול במידה שווה.\
+  אז מטיעון אלכסון $Omega = union.big K_n$ נקבל את הנדרש.
+]
