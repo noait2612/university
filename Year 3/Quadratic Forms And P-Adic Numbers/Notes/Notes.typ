@@ -990,3 +990,105 @@ _תזכורת:_
 ]
 
 #end_of_lecture("10 – 16/06")
+
+#notation[
+  + אם $(a_i)_(i=0)^infinity subset.eq ZZ$ כאשר $0<=a_i<=p-1$ רושמים $(dots.h a_2 a_1 a_0)_p = sum_(i=0)^infinity a_i p^i$
+  + אם $s in ZZ_minus$ ו־$(a_i)_(i=s)^infinity subset.eq ZZ$ עם $0<=a_i <= p-1$ ו־$a_s !=0$ רושמים $( dots.h a_1 a_0.a_(-1) dots.h a_(s+1) a_s)_p = sum_(i=s)^infinity a_i p$
+]
+
+#corollary[
+  $closure(NN_0) = ZZ_p$.
+]
+
+#example[
+  $x=-1$ ואז
+  $
+    -1 = lim_(n arrow.r infinity) (p^n-1) = lim_(n arrow.r infinity) (p-1)(1+p+1+ dots.h.c + p^(n-1)) = lim_(n arrow.r infinity) sum_(i=0)^(n-1) (p-1)p^i = sum_(i=0)^infinity (p-1)p^i
+  $
+  כלומר $(dots.h (p-1)(p-1))=-1$
+]
+
+#proposition[
+  יהיו $s,t in ZZ$, $d in NN$ ו־$(a_i)_(i=s)^infinity subset.eq ZZ$ כך ש־$0<=a_i <=p-1$ לכל $n in ZZ$, $s<=n$ עם $a_s != 0$, $s<=t$ ולכל $t<=i$ מתקיים $a_(i+d) = a_i$.\
+  אזי $sum_(i=s)^infinity a_i p^i in QQ$.
+]
+
+#remark[
+  $s$ המיקום של הספרה הראשונה, $d$ אורך המחזור ו־$t$ כמה ספרות יש עד שזה הופך להיות למחזורי (המיקום של ההתחלה של המחזור הראשון).
+]
+
+#proof[
+  נסמן $ x=sum_(i=s)^infinity a_i p^i, wide r = sum_(i=s)^(t-1) a_i p^i, wide q = sum_(s=t)^(t+d-1) a_i p^i $
+  אז
+  $
+    x-r-q = sum_(i=t+d)^infinity a_i p^i =_(a_(i+d) = a_i) p^d sum_(i=t+d)^infinity a_(i-d) p^(i-d) = p^d sum_(j=t)^infinity a_j p^j = p^d (x-r)
+  $
+  מכאן $(x-r)(1-p^d)=q$ ולכן $x=r+frac(q, 1-p^d) in QQ$.
+]
+
+#proposition[
+  יהיו $s in ZZ$, $(a_i)_(i=s)^infinity subset.eq S$ כך ש־$0<=a_i <= p-1$ לכל $s<=i$, $a_s != 0$ וגם $sum_(i=s)^infinity a_i p^i in QQ$. אז קיימים $t in ZZ$, $s<=t$ ו־$d in NN$ כך ש־$a_(i+d) = a_i$ לכל $t<=i$.
+]
+
+#proof[
+  קיימים $m, n in ZZ$ כך ש־$p divides.not m, p divides.not n$ וגם $sum_(i=s)^infinity a_i p^i = p^s frac(m, n)$ כאשר כמובן $n!=0$.\
+  לכל $i in NN_0$ נגדיר $c_i = a_(i+s)$ ואז
+  $ frac(m, n) = sum_(i=s)^infinity a_i p^(i-s) = sum_(j=0)^infinity a_(j+s) p^j = sum_(j=0)^infinity c_j p^j $
+  מכאן $m=n sum_(j=0)^infinity c_j p^j$.\
+  לכל $k in NN$ נסמן $ r_k colon.eq frac(n sum_(j=k)^infinity c_j p^j, p^k) = frac(m - n sum_(j=0)^(k-1) c_j p^j, p^k) $
+  אז $r_k in QQ$, $abs(r_k)_p <=1$ וגם $r_k in ZZ$. יתר על־כן מתקיים
+  $
+    frac(m+n, p^k)-n = frac(m-n(p^k-1), p^k) <= frac(m-n sum_(j=0)^(k-1) (p-1)p^j, p^k) frac(m-n sum_(j=0)^(k-1) c_j p^j, p^k) <= frac(m, p^k)
+  $
+  קיים $N in NN$ כך שלכל $N<=k$ מתקיים ש־$abs(frac(m, p^k)) < 1$ וגם $abs(frac(m+n, p^k))<1$ ולכן עבור $N <=k$ מתקיים $-n-1 < r_k < 1$ ולכן קיימים $N <= k <l$ כך ש־$r_k = r_l$.\
+  מאחר שמתקיים כי $r_k eq.triple n c_k mod p$ אנו מסיקים כי $n c_k eq.triple n c_l mod p$ ומכאן $c_k eq.triple c_l mod p$ אבל מכך ש־$0<=a_i <= p-1$ נובע כי $c_k = c_l$.\
+  בנוסף, מתקיים ש־$ r_(k+1) = frac(r_k - n c_k, p) = frac(r_l - n c_l, p) = r_(l+1) $
+  אז לכל $i in NN_0$ מתקיים כי $c_(k+1) = c_(l+1)$, נגדיר $t=k+s$, $d=l-k$ ואז לכל $t<=i$ מתקיים $0<=i-k-s$ ולכן $ a_(i+d)= c_(i+d-s) = c_(l+(i-k-s)) = c_(k+i-k-s) = c_(i-s) = a_i $
+]
+
+#example[
+  נמצא הצגה $5$־אדית של $frac(1, 3)$ ולכן נסמן $frac(1, 3) = sum_(i=0)^infinity a_i p^i$ כאן $s=0$, $m=1$, $n=3$, $r_0 = m = 1$ ו־$0<=a_i = c_i <= p-1 = 4$.\
+  מתקיים $1 eq.triple_(mod 5) 3 a_0$ ולכן $a_0 = 2$ אז $r_1 = frac(r_0 - n a_0, p) = frac(1-3 dot.op 2, 5) = frac(-5, 5) = -1$.\
+  כעת ניתן לחשב גם $-1 eq.triple_(mod 5) 3 dot.op a_1$ ולכן $a_1 = 3$ ואז באופן דומה $r_2 = frac(r_1 - n a_1, 5) = frac(-1-3 dot.op 3, 5) = frac(-10, 5) = -2$.\
+  ניקח $-2 eq.triple_(mod 5) 3 dot.op a_2$ ולכן $a_2 = 1$ ושוב $r_3 = frac(r_2 - n a_2, 5) = frac(-2 - 3 dot.op 1, 5) = frac(-5, 5) = -1$.\
+  מתקיים ש־$r_3 = r_1$ ובעצם התחלנו את המחזור ולכן לכל $1<=i$ מתקיים כי $a_(i+2) = a_i$ ולסיכום $(dots.h 1 3 1 3 2)_5 = frac(1, 3)$.
+]
+
+#proposition[
+  כל אידיאל ב־$ZZ_p$ הוא מהצורה $p^n ZZ_p$ עבור $n in NN$.
+]
+
+#proof[
+  יהי $I$ אידיאל ב־$ZZ_p$ ולכן מתקיים $I subset.eq p ZZ_p$ ו־${abs(x)_p bar x in p ZZ_p} = {frac(1, p^i) bar i in NN}$.\
+  לכן קיים $h=max{abs(x)_p bar x in I}$ וגם קיים $a in I$ כך ש־$abs(a)_p = h$. בנוסף, קיים $n in NN$ כך ש־$h = frac(1, p^n)$, נוכיח כי $I = p^n ZZ_p$.\
+  מתקיים כי $abs(p^n)_p = h$ ומכאן $abs(frac(p^n, a))_p = 1$ ולכן $frac(p^n, a) in ZZ_p$ ומכאן $p^n in a ZZ_p subset.eq I$ לפיכך $p^n ZZ_p subset.eq I$.\
+  להכלה השנייה, יהי $b in I$ ואז $abs(b)_p <= abs(a)_p = h$ ומכאן $abs(frac(b, p^n))_p <= 1$ ולכן $frac(b, p^n) in ZZ_p$ וכמקודם $b in p^n ZZ_p$ ולפיכך $I subset.eq p^n ZZ_p$.
+]
+
+#corollary[
+  $ZZ_p$ הוא חוג ראשי (תחום שלמות שכל אידיאל שלו הוא ראשי).
+]
+
+#notation[
+  + עבור $a,b in ZZ_p$ נרשום $a eq.triple_(mod p^n) b$ כאשר $a-b in p^n ZZ$
+  + לכל $a in ZZ_p$ נסמן $closure(a) = a + p ZZ_p in ZZ_p slash p ZZ_p$ (הרדוקציה)
+]
+
+#lemma[הלמה של הנזל][
+  יהיו $f in ZZ_p [x]$ ו־$w_0 in ZZ_p$ כך ש־$closure(f(w_0))=0$ וגם $closure(f^prime (w_0)) != 0$. אז קיים $w in ZZ_p$ יחיד כך ש־$closure(w) = closure(w_0)$ וגם $f(w)=0$.
+]
+
+#remark[
+  עבור $f= c_n x^n + dots.h.c + c_1 x + c_0$ הנגזרת היא $f^prime = n c_n x^(n-1) + dots.h.c + c_1$.
+]
+
+#example[
+  עבור $p!=2$ ראשוני, נבחר $a in ZZ_p$  כך ש־$closure(a)!=0$ (לא מתחלק ב־$p$) ונגדיר $f=x^2-a$.\
+  מתקיים $d^prime = 2x$ ומהלמה של הנזל נובע כי אם קיים $w_0 in ZZ_p$ כך ש־$w_0^2 eq.triple_(mod p) a$ אז מאחר ש־$a eq.triple.not_(mod p) 0$ מתקיים $f^prime (w_0) = 2w_0 eq.triple.not_(mod p) 0$ ולכן קיים $w in ZZ_p$ כך ש־$w^2 = a$ כלומר קיים שורש!
+]
+
+#remark[
+  כאשר $p=2$ הדוגמה לעיל לא נכונה כי עבור $a = 3$ נסתכל על הפולינום $f=x^2-3 = x^2-1$ ועבור $w_0 = 1$ מתקיים ש־$1^2 eq.triple_(mod 2) 3$ אבל ב־$ZZ_2$ אין שום מספר שהריבוע שלו ייתן לנו שלוש בידיוק כי זה או אפס או אחד.
+]
+
+#end_of_lecture("11 – 23/06")
