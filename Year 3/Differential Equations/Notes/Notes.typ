@@ -1052,6 +1052,7 @@ $
   $ re(frac(1+ r e^(i t^prime), 1- r e^(i t^prime))) = frac(1-r^2, 1-2 r cos(t^prime)+r^2) $
   וזה בעצם גרעין פואסון! כאשר $t^prime =0$ זה בעצם $frac(1-r^2, 1-2r+r^2) = frac((1-r)(1+r), (1-r)^2) = frac(1+r, 1-r)$ וכאשר $r arrow 1$ זה מתפוצץ.
 ]
+
 #end_of_lecture("20  – 16/06")
 
 == שיטת Perron לפתרון בעיית דיריכלה
@@ -1141,7 +1142,7 @@ $ u^(p e r) (x) = sup{v(x) bar v|_boundary(Omega)<=g, v in C(closure(Omega)) "su
 
 #theorem[
   תהיי $u_n$ סדרה חסומה של פונקציות הרמוניות ב־$Omega$. אזי קיימת תת־סדרה $u_n_k$ המתכנסת לפונקציה הרמונית ב־$Omega$ (ההתכנסות היא במידה שווה על כל תת־קבוצה קומפקטית של $Omega$).
-]
+]<bounded_harmonic-series_functions_have_sub_converges_harmonic_function>
 
 #proof[
   טבעי לרצות להשתמש במבחן ארצלה הסקאולי מפונקציונלית.\
@@ -1157,6 +1158,68 @@ $ u^(p e r) (x) = sup{v(x) bar v|_boundary(Omega)<=g, v in C(closure(Omega)) "su
   כאשר $r$ קטן דיו עבור $r<dist(K, boundary(Omega))$ עבור $K subset.eq Omega$ קומפקטית.\
   אז לכל $x in K$ מתקיים $abs((partial_i u_n) (x))<=frac(M, r)$ ולכן
   $ abs(u_n (x) - u_n (y))<= max_K abs(gradient u_n) dot.op abs(x-y) <= frac(M, r) abs(x-y) $
-  אז $u_n$ רציפה במידה שווה ואפילו ליפשיצית והיא לא תלויה ב־$n$ ולכן רציפה במידה אחידה וממשפט ארצלה הסקאולי נקבל שקיימת תת־סדרה של $u_n_k$ שמתכנסת במידה שווה על $K$ והגבול הזה הרמוני כי הוא גבול במידה שווה.\
-  אז מטיעון אלכסון $Omega = union.big K_n$ נקבל את הנדרש.
+  אז $u_n$ רציפה במידה שווה ואפילו ליפשיצית והיא לא תלויה ב־$n$ ולכן רציפה במידה אחידה וממשפט ארצלה הסקאולי נקבל שקיימת תת־סדרה של $u_n_k$ שמתכנסת במידה שווה על $K$ והגבול הזה הרמוני כי הוא גבול במידה שווה, יחד עם טיעון אלכסון $Omega = union.big K_n$ נקבל את הנדרש.
 ]
+
+#end_of_lecture("21  – 23/06")
+
+#remark[
+  לא דיברנו על זה (אבל כן ראינו ביריעות) ש־$v in C^2(Omega)$ תת־הרמונית אם ורק אם $Delta v >= 0$ ולכן יש הרבה מאוד פונקציות תת־הרמוניות וקל לייצר כאלו.
+]
+
+#theorem[משפט Perron][
+  נגדיר
+  $
+    S_g colon.eq {v in C(closure(Omega) bar v "sub-harmonic", v|_boundary(Omega)<=g)} \
+    u^(p e r) colon.eq sup {v bar v in S_g}
+  $
+  אז $u^(p e r)$ הרמונית ב־$Omega$ (כלומר מועמד רציני לפיתרון), כאשר הגדרנו
+  $ u^(p e r) (x) = sup{v(x) bar v|_boundary(Omega)<=g, v in C(closure(Omega)) "sub-harmonic"} $
+]
+
+#proof[
+  תהיי $y in Omega$ ולכן קיימת סדרה $v_n in S_g$ כך ש־$v_n (y) stretch(arrow)_(n arrow infinity) u^(p e r) (y)$.\
+  נשים לב ש־$v_n <= sup_boundary(Omega) g$ מעיקרון המקסימום.\
+  נגדיר $tilde(v)_n colon.eq max{v_n, inf_boundary(Omega) g}$ ונשים לב ש־$tilde(v)_n in S_g$ ומקיימת
+  $
+    inf g <= tilde(v)_n <= sup g \
+    v_n (y) <= tilde(v)_n (y) <=_(tilde(v)_n in S_g) u^(p e r) (y)
+  $
+  נשים לב ש־$v_n (y) stretch(arrow)_(n arrow infinity) u^(p e r )(y)$ ולכן מכלל הכריך מתקיים $tilde(v)_n (y) stretch(arrow)_(n arrow infinity) u^(p e r)(y)$.\
+  מצאנו סדרה חסומה של פונקציות ב־$S_g$ כך שבנקודה $y in Omega$ מתקיים $tilde(v)_n (y) stretch(arrow)_(n arrow infinity) u^(p e r)(y)$.\
+  יהי $B = B(y,r) subset.eq Omega$ כך ש־$closure(B) subset.eq Omega$, נשים לב שעם ההרמה ההרמונית $tilde(v)_n <= closure(tilde(v))_n^B$ ולכן $closure(tilde(v))_n^B in S_g$ ואז נקבל את שרשרת אי־השיוויונות
+  $ tilde(v)_n <= closure(tilde(v))_n^B <= u^(p e r) $
+  ולכן בנקודה $y$ נקבל $closure(tilde(v))_n^B (y) stretch(arrow)_(n arrow infinity) u^(p e r) (y)$.\
+  אז $(closure(tilde(v))_n^B)_(n=1)^infinity$ היא סדרה חסומה של פונקציות הרמוניות בכדור $B$ ומ@bounded_harmonic-series_functions_have_sub_converges_harmonic_function קיימת תת־סדרה $closure(tilde(v))_n_k^B$ שמתכנסת ב־$B$ לפונקציה הרמונית $h_v$ ואז נקודתית ב־$B$ מתקיים $ closure(tilde(v))_n_k^B stretch(arrow)_(k arrow infinity) h_v \
+  closure(tilde(v))_n_k^B (y) stretch(arrow)_(k arrow infinity) u^(p e r) \
+  closure(tilde(v))_n_k^B (y) stretch(arrow)_(k arrow infinity) h_v (y) $
+  קיבלנו פונקציה הרמונית $h_v$ ב־$B$ כך ש־$h_v (y) = u^(p e r) (y)$ ונרצה להראות ש־$h_v eq.triple u^(p e r)$ ב־$B$ ונשים לב ש־$h_v <= u^(p e r)$ ב־$B$.\
+  נניח בשלילה שקיימת $z in B$ כך ש־$h_v (z) < u^(p e r) (z)$. תהיי $w_k in S_g$ כך ש־$w_k >= closure(tilde(v))_n_k^B$ ו־$w_k (z) arrow u^(p e r)(z)$.\
+  קיימת סדרה $hat(w)_k in S_g$ כך שהתנאי השני מתקיים (פשוט מהגדרת הסופרמום) ונגדיר את $w_k$ על־ידי $w_k colon.eq max{hat(w)_k, closure(tilde(v))_n_k^B} in S_g$ ולכן
+  $
+    closure(tilde(v))_n_k^B <= w_k <= u^(p e r) \
+    w_k (z) stretch(arrow)_(k arrow infinity) u^(p e r) (z) \
+    w_k (y) stretch(arrow)_(k arrow infinity) u^(p e r)(y)
+  $
+  ושוב עם ההרמה ההרמונית, $closure(w)_k^B in S_g$ ומתקיים
+  $ closure(tilde(v))_n_k^B <= w_k <= closure(w)_k^B <= u^(p e r) $
+  נוכל למצוא תת־סדרה מתכנסת $closure(w)_(k_n)^B$ ב־$B$ לפונקציה הרמונית $h_w$.\
+  קיבלנו שתי פונקציות הרמוניות ב־$B$ המקיימות $h_v <= h_w$ ו־$h_v (y) = h_w (y) = u^(p e r)(y)$ ויתר על־כן $h_v (z) < h_w (z) = u^(p e r) (z)$ (מהנחת השלילה) וזאת כמובן סתירה כי אם נסתכל על $h_v - h_w <= 0$ אבל ב־$y$ היא מתאפסת וב־$z$ היא קטנה ממש מאפס והיא מקבלת מקסימום בנקודה פנימית אבל פונקציה הרמונית מקבלת מקסימום בנקודה פנימית אם ורק אם היא קבועה (מעיקרון המקסימום החזק) ועל־כן, סתירה.\
+  כלומר, $h_v = u^(p e r)$ ב־$B$ ולכן $u^(p e r)$ הרמונית ב־$B$ ומשרירותיות $y$ ו־$B$ נקבל ש־$u^(p e r)$ הרמונית ב־$Omega$.
+]
+
+== תנאי שפה
+#theorem[
+  אם $Omega$ הוא תחום $C^2$ ו־$g:boundary(Omega) arrow RR$ רציפה אז ניתן לפתור באופן יחיד את בעיית דיריכלה ב־$Omega$ $ cases(Delta u =0, u|_boundary(Omega) =g) $
+]
+
+נשים לב שהפיתרון הוא יחיד שכן אם יש שני פתרונות ונסתכל על ההפרש שלהם מעיקרון המקסימום והמינימום (זה מתאפס על השפה).\
+כיצד נפתור
+$ cases(Delta u = f in Omega, u|_boundary(Omega) = g) $
+נוכל להגדיר עם מה שראינו לעיל
+$
+  cases(Delta u_2 = f, u_2 |_boundary(Omega) = 0) quad cases(Delta u_2 = 0, u_2|_boundary(Omega) = g-u_1|_boundary(Omega))
+$
+כאשר אנחנו עם הקונבולוציה $u_1 colon.eq Gamma * f$ עם $u_1 + u_2 = u$.
+
+#end_of_lecture("22  – 24/06")
