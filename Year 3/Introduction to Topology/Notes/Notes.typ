@@ -549,3 +549,156 @@ $
 ]
 
 #end_of_lecture("11 – 12/05")
+
+== קשירות מסילתית
+כל פרק 8 אצל גלעד בסיכום ועוד קצת:
+
+#theorem[
+  אם $X$ קשיר מסילתית וגם $F:X arrow Y$ רציפה ועל אז גם $Y$ קשיר מסילתית.
+]
+#proof[
+  מהגדרה, לכל מסילה $gamma:[0,1] arrow X$ ההרכבה $f compose gamma [0,1] arrow Y$ מסילה.\
+  יהיו $y, z in Y$ ומכך ש־$f$ על יש $x, w in X$ כך ש־$f(w)=z, f(x)=y$ ואם $gamma$ מסילה ב־$X$ מ־$x$ ל־$w$ אז $f compose gamma$ מסילה ב־$y$ ל־$z$.
+]
+
+#proposition[
+  $X_alpha != emptyset$ מרחבים טופולוגים לכל $alpha$ אזי $P = product X_alpha$ קשירה מסילתית אם ורק אם $X_alpha$ קשיר מסילתית לכל $alpha$.
+]
+
+#proof[
+  $<==$ נובע מההטלות.\
+  $==>$ יהיו $y = {y_alpha}_alpha$ ו־$z={z_alpha}_alpha$ ב־$P$.\
+  לכל $alpha$, תהיי $gamma_alpha :[0,1] arrow X_alpha$ ומחברת בין $y_alpha$ ל־$z_alpha$ ולכן מוגדרת.\
+  $gamma:[0,1] arrow P$ מוגדרת על־ידי $pi_alpha compose gamma = gamma_alpha$ לכל $alpha$ והיא רציפה כי $X_alpha$ רציפה לכל $alpha$.\
+  קיבלנו מסילה $gamma$ ב־$P$ עם $gamma(0) = {y_alpha}_alpha = gamma_alpha (0) = y$ ובאותו אופן $gamma(1)=z$.
+]
+
+#lemma[
+  אם $X$ קשיר מסילתית מקומית אזי רכיבי הקשירות המסילתית שלו פתוחים.
+]
+
+#proof[
+  לכל $x$ ברכיב הקשירות המסילתית $V$ של $y$ קיימת סביבה קשירה מסילתית $U_x$ של $x$.\
+  לכל $z in U_x$ מתקיים ש־$y tilde x tilde z$ ולכן $U_x subset.eq V$ ואז $V = union.big_(x in V) U_x$.
+]
+
+#corollary[
+  מרחב שהוא גם קשיר וגם קשיר מסילתית מקומית גורר קשיר מסילתית.
+]
+
+#proof[
+  רכיבי הקשירות המסילתית פתוחים וסגורים ואז יש אחד כזה.
+]
+
+#corollary[
+  כל מרחב קשיר מסילתית מקומית הוא קשיר מקומית.
+]
+
+#example[
+  עבדנו על להראת שהמברק קשיר מסילתית ולכן קשיר אבל לא קשיר מקומית ולכן לא קשיר מסילתית מקומית.
+]
+
+#end_of_lecture("12 – 18/05")
+
+#end_of_lecture("13 – 19/05")
+
+#end_of_lecture("14 – 25/05")
+
+#end_of_lecture("15 – 26/05")
+
+= קומפקטיות
+
+#proposition[
+  אם $X$ מרחב מטרי וקומפקטי סדרתית אז
+  + יש מספר לבג לכל כיסוי
+  + $X$ קומפקטי
+]
+
+#proof[
+  + נניח שלא ואז יש כיסוי פתוח $cal(O)$ של $X$ כך שלכל $n in NN$ יש $x_n in X$ כך ש־$B_(1/n) (x_n)$ לא מוכן במלואו באף $U in cal(O)$.\
+    מקומפקטיות סדרתית יש תת־סדרה ${x_n_k}_(k=1)^infinity$ ו־$y in X$ עם $x_n_k arrow y$. יש $y in V in cal(O)$ ולכן יש $delta>0$ עם $B_delta (y) subset.eq V$ וניקח $k$ מספיק גדול כך ש־$1/n_k < delta/2$ וכן $d(x_n_k, y) < delta/2$ אבל אז נקבל $B_(1/n_k) (x_n_k) subset.eq B_delta (y) subset.eq V in cal(O)$ בסתירה (כי אם $d(z, x_n_k) < 1/n_k$ אז $d(z,y)<1/n_k + delta/2 < delta$ וזאת סתירה).
+  + ניקח כיסוי פתוח $cal(O)$ של $X$ ומ־$1$ יש לבג $epsilon > 0$. מכך ש־$X$ חסום לחלוטין יש ${y_i}_(i=1)^n$ כך ש־$X=union.big_(i=1)^n B_epsilon (y_i)$ ומכך ש־$epsilon$ הוא לבג של $cal(O)$ לכל $i$ יש $U_i in cal(O)$ עם $B_epsilon (y_i) subset.eq U_i$ אבל אז $X=union.big_(i=1)^n B_epsilon (y_i) subset.eq union.big_(i=1)^n U_n subset.eq X$ וקיבלנו תת־כיסוי סופי.
+]
+
+#corollary[
+  המרחב $I=[0,1]$ קומפקטי.
+]
+
+#example[קומפקטיות לא גוררת קומפקטיות סדרתית][
+  $X = I^I = product_(alpha in I) I$ קומפקטי מטיכונוף ונבנה סדרה ללא תת־סדרה מתכנסת: לכל $t in I$ יש פיתוח בינארי ${t_i}_(i=1)^infinity$ כך ש־$t=sum_i t_i/2^i$.\
+  נגדיר $x_n in X$ בו לכל $t in I$ הקורדינאטה ה־$t$־ית היא $t_n$ ונראה של־$x_n$ אין תת־סדרה מתכנסת.\
+  נניח שיש $x_n_k arrow y = {y_t}_(t in I)$ ונגדיר $s in I$ עם
+  $ s_n_k = mycases(0, k mod 2 = 0, 1, k mod 2 = 1) $
+  ומכך ש־$x_n_k arrow y$ נקבל $x_n_s arrow y_s$
+]
+
+#example[קומפקטיות סדרתית לא גוררת קומפקטיות][
+
+]
+
+#definition[קומפקטיות מקומית][מרחב טופולוגי $X$ הו קומפקטי מקומית אם לכל $y in X$ יש סביבה קומפקטית.
+]
+
+#lemma[
+  אם $X$ הוא $T_2$ (האוסדורף) אז $X$ קומפקטי מקומית אם ורק אם לכל $y in X$ יש $y in U$ פתוחה עם $closure(U)$ קומפקטית.
+]
+
+#proof[
+  $==>$ מיידי מהגדרה \
+  $<==$ תהיי $y in U subset.eq E$ עם $U$ פתוחה ו־$E$ קומפקטית ומכך ש־$X$ הוא $T_2$ נקבל ש־$E$ סגורה ולכן $closure(U) subset.eq E$ וזו סגורה בתוך קומפקטית ולכן קומפקטית.
+]
+
+#definition[קומפקטיפיקציה][
+  קומפקטיפיקציה של מרחב טופולוגי $X$ הוא מרחב טופולוגי קומפקטי $Y$ עם תת־קבוצה $tilde(X)$ שהיא צפופה והומיאמורפית ל־$X$.
+]
+
+#theorem[
+  + לכל מרחב טופולוגי $X$ יש קומפקטיפיקציה $hat(X)$ עם $abs(hat(X)-X)<=1$
+  + אם $X$ קומפקטי מקומית והאוסדורף אזי גם $hat(X)$ האוסדורף
+]
+
+#proof[
+  נגדיר את $hat(X) = X union {infinity}$ ($infinity in.not X$) וגם $hat(T) = T union {hat(X) without C bar C subset.eq X "compact and closed"}$ ($T$ הכוונה לטופולוגיה)
+  + $hat(T)$ טופולוגיה כי $emptyset in T$ וגם $hat(X) = hat(X) without emptyset in hat(T)$ ואיחוד סופי של קומפקטיות/סגורות הוא קומפקטי/סגור ולכן $inter.big_(i=1)^n (hat(X) without C_i) = hat(X) without union.big_(i=1)^n C_i in hat(T)$ וגם $union.big_(alpha in I) (X without C_alpha) = X without inter.big_(alpha in I) C_alpha$ אבל $inter.big_(alpha in I) C_alpha$ הוא סגור בתוך קומפקטי ולכן קומפקטי אז $U inter (hat(X) without C) = U without C in T$ וכן $U union (hat(X) without C) = hat(X) without (C without U)$ כאשר $C without U$ קומפקטי סגור אז אכן טופולוגיה.
+]
+
+#end_of_lecture("16 – 01/06")
+
+= דלילות
+#definition[קבוצה דלילה][
+  קבוצה $A subset.eq X$ במרחב טופולוגי $X$ נקראת *דלילה* אם $X without closure(A)$ צפופה ב־$X$ (אם ורק אם $closure(A)^circle.small = emptyset$).\
+  מכאן ברור ש־$A$ דלילה אם ורק אם $closure(A)$ דלילה (כי אם $A$ דלילה אז גם $B subset.eq A$ דלילה).
+]
+
+#example[
+  + ${1/n}_(n=1)^infinity subset.eq RR$ דלילה כי $({1/n}_(n=1)^infinity union {0})^circle.small = emptyset$
+  + $Q subset.eq RR$ לא דלילה
+]
+
+#corollary[
+  מההגדרה, $Z subset.eq X$ צפופה אם ורק אם לכל $emptyset != subset.eq X$ פתוחה, $Z inter U != emptyset$.
+]
+
+#proof[
+  תרגיל.
+]
+
+#definition[קבוצה מקטגוריה ראשונה ושנייה][
+  מרחב טופולוגי $X$ נקרא *מקטגוריה ראשונה* אם $X = union.big_(n=1)^infinity A_n$ עם $A_n subset.eq X$ דלילה לכל $n$.\
+  מרחב טופולוגי $X$ נקרא *מקטגוריה שנייה* אם הוא לא מקטגוריה ראשונה.
+]
+
+#example[
+  $QQ = union.big_(q in QQ) {q}$ הוא מקטגוריה ראשונה.
+]
+
+#theorem[משפט הקטגוריה של בייר][
+  יהי $X$ או מרחב מטרי שלם או קומפקטי האוסדורף. אם $A_n subset.eq X$ דלילה לכל $n$ אזי $X without (union.big_n A_n)$ צפוף ב־$X$.
+]
+
+#proof[
+  בלי הגבלת הכלליות, $A_n$ סגורה לכל $n$ (כי נוכל לקחת את אוסף הסגורים שלהן) ו־$X$ נורמלי (כי הוכחנו בתרגיל שקומפקטי האוסדורף הוא נורמלי ועבור מטרי קומפקטי ו־$T_2$ גורר $T_4$, תרגיל).\
+  תהיי $emptyset != U subset.eq X$ פתוחה וצריך להראות ש־$y in U without (union.big A_n)$.
+]
+
+#end_of_lecture("17 – 02/06")
