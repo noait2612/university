@@ -1071,19 +1071,19 @@ _תזכורת:_
 
 #notation[
   + עבור $a,b in ZZ_p$ נרשום $a eq.triple_(mod p^n) b$ כאשר $a-b in p^n ZZ$
-  + לכל $a in ZZ_p$ נסמן $closure(a) = a + p ZZ_p in ZZ_p slash p ZZ_p$ (הרדוקציה)
+  + לכל $a in ZZ_p$ נסמן $overline(a) = a + p ZZ_p in ZZ_p slash p ZZ_p$ (הרדוקציה)
 ]
 
 #lemma[הלמה של הנזל][
-  יהיו $f in ZZ_p [x]$ ו־$w_0 in ZZ_p$ כך ש־$closure(f(w_0))=0$ וגם $closure(f^prime (w_0)) != 0$. אז קיים $w in ZZ_p$ יחיד כך ש־$closure(w) = closure(w_0)$ וגם $f(w)=0$.
-]
+  יהיו $f in ZZ_p [x]$ ו־$w_0 in ZZ_p$ כך ש־$overline(f(w_0))=0$ וגם $overline(f^prime (w_0)) != 0$. אז קיים $w in ZZ_p$ יחיד כך ש־$overline(w) = overline(w_0)$ וגם $f(w)=0$.
+]<hensels_lemma>
 
 #remark[
   עבור $f= c_n x^n + dots.h.c + c_1 x + c_0$ הנגזרת היא $f^prime = n c_n x^(n-1) + dots.h.c + c_1$.
 ]
 
 #example[
-  עבור $p!=2$ ראשוני, נבחר $a in ZZ_p$  כך ש־$closure(a)!=0$ (לא מתחלק ב־$p$) ונגדיר $f=x^2-a$.\
+  עבור $p!=2$ ראשוני, נבחר $a in ZZ_p$  כך ש־$overline(a)!=0$ (לא מתחלק ב־$p$) ונגדיר $f=x^2-a$.\
   מתקיים $d^prime = 2x$ ומהלמה של הנזל נובע כי אם קיים $w_0 in ZZ_p$ כך ש־$w_0^2 eq.triple_(mod p) a$ אז מאחר ש־$a eq.triple.not_(mod p) 0$ מתקיים $f^prime (w_0) = 2w_0 eq.triple.not_(mod p) 0$ ולכן קיים $w in ZZ_p$ כך ש־$w^2 = a$ כלומר קיים שורש!
 ]
 
@@ -1092,3 +1092,99 @@ _תזכורת:_
 ]
 
 #end_of_lecture("11 – 23/06")
+
+#proof[@hensels_lemma][
+  נבנה סדרה $(r_k)_(k=1)^infinity$ כך ש־$r_k in ZZ$, $0<=r_k <= p^k-1$, $overline(r_k)=overline(w_0)$, $p^k divides r_(k+1) - r_k$, $f(r_k) in p^k ZZ_p$ לכל $k in NN$ באופן רקורסיבי.\
+  קיים $r_1 in ZZ$ יחיד כך ש־$0<=r_1 <= p-1$ ו־$overline(r_1) = overline(w_0)$ ונניח כי $r_1, dots.h, r_k$ כבר הוגדרו ומקיימים את התנאים הנדרשים. \
+  נגדיר $r_(k+1) = r_k + d p^k$ כאשר $0<=d<=p-1$ יוגדר באופן הבא: נניח כי קיים $0<=d<=p-1$ יחיד כך ש־$f(r_(k+1)) in p^(k+1) ZZ_p$.\
+  נסמן $f=c_0 + c_1 x + dots.h.c + c_n x^n$ ואז לכל $d in ZZ$, $0<=d<=p-1$ מתקיים
+  $
+    f(r_(k+1)) &= f(r_k + d p^k) = c_0 + c_1 (r_k + d p^k) + c_2 (r_k + d p^k)^2 + dots.h.c + c_n (r_k + d p^k)^n \
+    &= c_0 + c_1 (r_k + d p^k) + c_2 (r_k^2 + 2r_k d p^k + d^2 p^(2k)) + dots.h.c + c_n (r_k^n + n r_k^(n-1) d p^k + binom(n, 2) r_k^(n-2) d^2 p^(2 k)) + dots.h.c + binom(n, n) d^n p^(n k) \
+    &eq.triple_(mod p^(k+1)) c_0 + c_1 (r_k + d p^k) + c_2 (r_k^2 + 2 r_k d p^k) + c_3 (r_k^3 + 3r_k^2 d p^k) + dots.h.c + c_n (r_k^n + n r_k^(n-1) d p^k) \
+    &= (c_0 + c_1 r_k + c_2 r_k^2 + c_3 r_k^3 + dots.h.c + c_n r_k^n) + (c_1 + 2c_2 r_k + 3 c_3 r_k^2 + dots.h.c + n c_n r_k^(n-1)) d p^k \
+    &= f(r_k) + f^prime (r_k) d p^k mod p^(k+1)
+  $
+  מאחר ש־$f(r_k) in p^k ZZ_p$, קיים $z in ZZ_p$ כך ש־$f(r_k) = z p^k$.\
+  מאחר ש־$f^prime (r_k) = f^prime (w_0) != 0$, קיים ויחיד $d in ZZ$ עבורו $0<=d<=p-1$ כך ש־$f^prime (r_k) d eq.triple_(mod p) -z$ ואז $p divides z + f^prime (r_k) d$.\
+  מכאן
+  $ f(r_k) = f(r_k) + f^prime (r_k) d p^k = (z+f^prime (r_k) d)p^k in p^(k+1) ZZ $
+  בנוסף $0<=r_(k+1) <= p^k - 1 + (p-1)p^k = p^(k+1)-1$ וגם $overline(r_(k+1)) = overline(r_k) = overline(w_0)$ ו־$p^k divides d p^k = r_(k+1) - r_k$.\
+  לפיכך $r_1, dots.h, r_(k+1)$ מקיימים את כל התנאים הנדרשים ולכן הסדרה $(r_k)_(k=1)^infinity$ היא סדרת קושי ולכן קיים $w=lim_(k arrow infinity) r_k$.\
+  יתר על־כן, מתקיים
+  $ f(w)=f(lim_(k arrow infinity) r_k) = lim_(k arrow infinity) f(r_k) = 0 $
+]
+
+#corollary[
+  אם $p !=2$ וגם $a in ZZ_p$ כך ש־$overline(a)!=0$ ו־$w_0 in ZZ_p$ כך ש־$overline(w_0^2) = overline(a)$. אז קיים $w in ZZ_p$ כך ש־$w^2=a$ וגם $overline(w)=overline(w_0)$.
+]
+
+#proof[
+  נגדיר $f=x^2-a$ ואז מכך ש־$overline(w_0^2) = overline(a)$ נקבל
+  $
+    overline(f(w_0)) = overline(w_0^2) - overline(a) = 0 \
+    overline(f^prime (w_0)) = overline(2 w_0) = overline(2) overline(w_0) != 0
+  $
+  לכן קיים $w in ZZ_p$ כך ש־$f(w)=0$ כלומר $w^2=a$.
+]
+
+#remark[
+  + התנאי $p!=2$ הכרחי. דוגמה נגדית קלאסית היא $a=3 in ZZ_2 = ZZ_p$.
+  + התנאי $overline(a)!=0$ הכרחי. דוגמה נגדית קלאסית היא $a=p in ZZ_p$.
+]
+
+#corollary[
+  אם $p!=2$ וגם $a in ZZ_p$ כך ש־$overline(a)=1$ אז קיים $w in ZZ_p$ כך ש־$w^2=a$ וגם $overline(w)=1$.
+]
+
+#proposition[
+  יהי $p!=2$ ראשוני. אז $ ZZ_p^times slash (ZZ_p^times)^2 tilde.equiv FF_p^times slash (FF_p^times)^2 tilde.equiv ZZ slash 2ZZ $
+]
+
+#proof[
+  נגדיר $p r : ZZ_p arrow ZZ_p slash p ZZ_p tilde.equiv FF_p$ על־ידי $p r (a) = a + p ZZ_p$.\
+  אז $p r$ הוא הומומורפיזם של חוגים ולכן $p r|_(ZZ_p^times) : ZZ_p^times arrow FF_p^times$ הוא הומומורפיזם של חבורות שהוא על.\
+  נסמן $pi : FF_p^times arrow FF_p^times slash (FF_p^times)^2$ על־ידי $pi(x)= x dot.op (FF_p^times)^2$ ולכן גם $pi$ הוא הומומורפיזם של חבורות שהוא על.\
+  נרכיב ונקבל $pi compose p r|_(ZZ_p^times) : ZZ_p^times arrow FF_p^times slash (FF_p^times)^2$.\
+  אם $x in (ZZ_p^times)^2$ אזי $p r|_(z_p^times) (x) in (FF_p^times)^2$ ולכן $pi compose p r|_(ZZ_p^times) (x) = 1$ ולכן $(ZZ_p^times)^2 subset.eq ker (pi compose p r|_(ZZ_p^times))$.\
+  יהי $a in ker(pi compose p r|_(ZZ_p^times))$ אז $p r|_(ZZ_p^times) (a) = ker pi = (FF_p^times)^2$ מכאן קיים $w_0 in ZZ_p$ כך ש־$overline(a)=overline(w_0^2)$ ומהמסקנה שראינו קיים $w in ZZ_p$ כך ש־$a=w^2$ ולכן $a in (ZZ_p^times)^2$ ולפיכך $ker(pi compose p r|_(ZZ_p^times)) subset.eq (ZZ_p^times)^2$.\
+  אז לפי משפט ההומומורפיזם מתקיים $ZZ_p^times slash (ZZ_p^times)^2 tilde.equiv FF_p^times slash (FF_p^times)^2$.
+]
+
+#proposition[
+  יהי $p$ ראשוני. אזי $QQ_p^times tilde.equiv ZZ_p^times times ZZ$.
+]
+
+#proof[
+  נגדיר $f:ZZ_p^times times ZZ arrow QQ_p^times$ על־ידי $f(u,s) = u p^s$.\
+  קל לראות ש־$f$ הומומורפיזם, חד־חד ערכית ועל כלומר איזומורפיזם.
+]
+
+#corollary[
+  יהי $p!=2$ ראשוני. אז $QQ_p^times slash (QQ_p^times) tilde.equiv ZZ slash 2ZZ times ZZ slash 2ZZ$.\
+  בנוסף, אם $r in ZZ_p^times$ כך ש־$overline(r) in FF_p^times slash (FF_p^times)^2$ אז
+  $ QQ_p^times slash (QQ_p^times)^2 = {(QQ_p^times)^2, r (QQ_p^times)^2, p(QQ_p^times)^2, r p (QQ_p^times)^2} $
+]
+
+#remark[
+  ניקח כעובדה את המקרה של $p=2$
+  $
+    QQ_2^times slash (QQ_2^times)^2 tilde.equiv ZZ slash 2 ZZ times ZZ slash 2ZZ times ZZ slash 2ZZ \
+    (QQ_2^times) slash (QQ_2^times)^2 = {(QQ_2^times)^2, - (QQ_2^times)^2, 2(QQ_2^times)^2, -2(QQ_2^times)^2, 5(QQ_2^times)^2, -5(QQ_2^times)^2, 10(QQ_2^times)^2, -10(QQ_2^times)^2}
+  $
+]
+
+= בחזרה לתבניות ריבועיות
+#proposition[
+  יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $QQ_p$ עבור $p!=2$.\
+  אז קיים בסיס $cal(B)$ של $V$ כך שמתקיים
+  $
+    [g_q]_cal(B) = mat(
+      a_1, , 0; , dots.down, ;
+      0, , a_n
+    )
+  $
+  כאשר $a_i in {1, r, p, p r}$ לכל $1<=i<=n$.
+]
+
+#end_of_lecture("12 – 30/06")
