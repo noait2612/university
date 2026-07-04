@@ -330,6 +330,7 @@
 
 // Algebraic Structures
 #let Aut = math.op("Aut")
+#let e_base = math.op("e")
 
 // Mainfolds
 #let Mesh = math.op("Mash")
