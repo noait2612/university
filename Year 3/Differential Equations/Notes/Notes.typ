@@ -247,8 +247,11 @@
   משיקולי סימטריה ההוכחה למקרה השני זהה.
 ]
 
-#proposition[בתנאי המשפט, נניח שאנחנו יודעים שקיימת קבוצה קומפקטית $K subset.eq U$ ו־$T>0$ ($T<0$ עובד באופן דומה) כך שלכל $0<t<T$ מתקיים
-  + אם $t in J_p^*$ אז $x_p (t) in K$ אזי $[0, T) subset.eq J_p^*$ #todo
+#proposition[
+  תהיי $U in RR^n$ פתוחה, תהיי $p in U$ ו־$F: U arrow RR^n$ ליפשיץ מקומית.\
+  נניח שאנחנו יודעים שקיימת קבוצה קומפקטית $K subset.eq U$ ו־$T>0$ ($T<0$ עובד באופן דומה) כך שלכל $0<t<T$ מתקיים
+  + אם $t in J_p^*$ אז $x_p (t) in K$
+  + אזי $[0, T) subset.eq J_p^*$
 ]
 
 #proof[
@@ -275,9 +278,11 @@
     M colon.eq sup{norm(F(x)) bar dist(x, C) <= 4r} \
     L colon.eq Lip F|_(dist(x, C)<=4r)
   $
-  #lemma[תהיי $q in U$ כך ש־$norm(q-p)<=r e^(-L t_0)$ אזי לכל $0<=t<=t_0$ כך ש־$(q, t) in Omega$ מתקיים
+  #lemma[
+    תהיי $q in U$ כך ש־$norm(q-p)<=r e^(-L t_0)$ אזי לכל $0<=t<=t_0$ כך ש־$(q, t) in Omega$ מתקיים
     $ norm(Phi(p, t) - Phi(q, t))<=2e^(L t)norm(p-q)<=2r $
   ]
+
   #proof[
     נסמן $x_p (t), x_q (t)$ להיות הפתרונות המתאימים.\
     נניח שקיים $0<=t <=t_0$ כך ש־$(q,t) in Omega$ אבל $norm(x_p (t) - x_q (t))>=2e^(L t) norm(p-q)$.\
@@ -325,7 +330,9 @@ $ Omega = {(p,t) bar t in J_p^*, space p in U} $
   נסמן $tau = inf{t_0 <= t<= t_0 + r/M bar (q, t) in Omega, space dist(q, C)>4r}$.\
   אבל $t_0 <= tau <= t_0 + r/M$ ו־$dist(Phi(q, tau), C) = 4r$ ויתר על־כן לכל $t_0 <= t<=tau$ מתקיים $dist((q,t), C)<=4r$ ובפרט לכל $0<=t<=tau$ מתקיים $norm(F(Phi((q,t))))<=M$ ונשים לב $ dist(Phi(q, tau), C)<=norm(Phi(q, tau) - Phi(q, t_0))+dist(Phi(q, t_0), C)<=M dot.op (tau - t_0) + 2r <= M dot.op r/M + 2r = 3r $
   וזאת כמובן סתירה.
-  #remark[ $(q,t) in Omega <==> t in J_q^*$]
+  #remark[
+    $(q,t) in Omega <==> t in J_q^*$
+  ]
 ]
 
 #lemma[
@@ -357,7 +364,8 @@ $ partial/(partial t) D Phi = D(partial/(partial t) Phi) = D(F compose Phi)=D F(
   אזי לכל $T in I_p^*$, $phi_T$ גזירה ב־$p$ והדיפרנציאל שלה נתון על־ידי $D phi_T (p) = M(t)$.
 ]
 
-#remark[יהי $I subset.eq RR$ קטע פתוח שמכיל את $0$ ותהיי $A : I arrow RR^(n times n)$ פונקציה רציפה (למרחב המטריצות) אזי לבעיית ההתחלה $cases(M'(t)=A(t)M(t), M(0)=Id)$
+#remark[
+  יהי $I subset.eq RR$ קטע פתוח שמכיל את $0$ ותהיי $A : I arrow RR^(n times n)$ פונקציה רציפה (למרחב המטריצות) אזי לבעיית ההתחלה $cases(M'(t)=A(t)M(t), M(0)=Id)$
   קיים פיתרון על כל הקטע $I$ (ראינו/נראה את זה בתרגיל עד־כדי המעבר מוקטור למטריצה שאת זה עושים בקלות כי המטריצה היא אוסף של $n$ וקטורי עמודות).
 ]
 
@@ -383,7 +391,8 @@ $ partial/(partial t) D Phi = D(partial/(partial t) Phi) = D(F compose Phi)=D F(
 
 #end_of_lecture("5 – 27/04")
 
-#theorem[$U subset.eq RR^n$ פתוחה, $p in U$ ו־$F : U arrow RR^n$ גזירה ברציפות.\
+#theorem[
+  $U subset.eq RR^n$ פתוחה, $p in U$ ו־$F : U arrow RR^n$ גזירה ברציפות.\
   אז לכל $T in J_p^*$, $phi_T (dot.op) space$ גזירה ב־$p$ והדיפרנציאל שלה מקיים $D phi_T (p) = M(t)$ היכן ש־$M$ מקיימת
   $ M'(t)=D F(x_p (t))M(t), space M(0)= Id $
 ]
@@ -426,9 +435,67 @@ $ partial/(partial t) D Phi = D(partial/(partial t) Phi) = D(F compose Phi)=D F(
 #end_of_lecture("6 – 28/04")
 
 == משוואות לינאריות עם מקדמים קבועים
-נניח ש־$I subset.eq RR$ קטע וש־$A : I arrow RR^(n times n), g:I arrow RR^n$ רציפות. אזי
-$ cases((star) space x^prime (t) = A(t) x(t) + g(t), x(0)=x_0) $
-בתרגיל בית הראינו שהפתרון המקסימלי מוגדר על כל $I$.
+את המשפט הבא ראינו בתרגיל הבית
+#theorem[
+  יהי $I subset.eq RR$ קטע שמכיל את $0$, $A:I arrow RR^(n times n), g:I arrow RR^n$ פונקציות רציפות.\
+  אזי לכל $x_0 in RR^n$ קיים פתרון יחיד אשר מוגדר על כל $I$ לבעיית ההתחלה
+  $ cases((star) space x^prime (t) = A(t) x(t) + g(t), x(0)=x_0) $
+]
+
+#definition[
+  בתנאי המשפט לעיל, אם $g(t)=0$ לכל $t$ המשוואה $(star)$ נקראת הומוגנית והיא תקרא אוטונומית אם $A$ ו־$g$ אינן תלויות ב־$t$ (אם $A,g$ קבועות אז $(star)$ אוטונומית).
+]
+
+ניתן שתי הוכחות למשפט – הראשונה בהשראת הסיכום מהמודל, השנייה בהתאם למטלות עם הלמה של גרונוול.\
+#proof[
+  מספיק להוכיח את המשפט לכל קטע סגור וחסום $I_0 subset.eq I$.\
+  נסמן $ F(x,t) colon.eq A(t) x + g(t) \
+  L colon.eq sup_(t in I_0) normop(A(t)) \
+  M colon.eq sup_(t in I_0) norm(g(t)) $
+  מתקיים ש־$L<infinity$ שכן $A$ רציפה ו־$I_0$ קומפקטי ולכן $F$ רציפה ב־$RR^n times I_0$ ומקיימת את תנאי ליפשיץ
+  $ norm(F(x,t)-F(y,t)) = norm(A(t) dot.op (x-y)) <= L norm(x-y) $
+  ממשפט פיקארד מספיק להניח רציפות של $F$ במשתנה הזמן וליפשציות מקומית של $F$ במשתנה המיקום עם קבועי ליפשיץ שלא תלויים בזמן ולכן קיים פתרון יחיד לפרק זמן סופי כלשהו.\
+  מאי־שיוויון קושי־שוורץ נקבל
+  $
+    frac(dif, dif t) norm(x(t))^2 & = 2 chevron.l x^prime (t), x(t) chevron.r \
+                                  & = 2 chevron.l A(t)x(t)+g(t), x(t) chevron.r \
+                                  & <= 2 norm(A(t) x(t) + g(t)) dot.op norm(x(t)) \
+                                  & <= 2 norm(A(t) x(t)) dot.op norm(x(t)) + 2 norm(g(t))dot.op norm(x(t)) \
+                                  & <= 2 L norm(x(t))^2 + 2 M norm(x(t))
+  $
+  אז אפשר לקחת $0<C$ שתלוי ב־$L,M$ אבל לא תלוי ב־$t$ (כי א חד ריבועי ב־$norm(x(t))$ והשני לינארי בו) כך שמתקיים
+  $ 2 L norm(x(t))^2 + 2 M norm(x(t)) <= 4 L norm(x(t))^2 + C $
+  בלי הגבלת הכלליות $0<t$ ואז
+  $ frac(dif, dif t) [e^(-4L t) norm(x(t))^2] <= C e^(-4 L t) <= C $
+  מאינטגרציה על התחום $[0,t]$ נקבל
+  $ norm(x(t))^2 e^(-4 L t) - norm(x_0)^2 <= C t ==> norm(x(t))^2 <= C t e^(4 L t) + norm(x_0)^2 e^(4 L t) $
+  החסם הזה מעיד שהפתרון לא יכול להתפוצץ בזמן סופי ($C,M,L$ תלויים בבחירת $I_0$ אבל הם קבועים שלא יכולים להתפוצץ בזמן סופי) ומטריכוטומיה הפתרון מוגדר היטב על כל $I$.
+]
+
+#proof[
+  מספיק להוכיח את המשפט לכל קטע סגור וחסום $I_0 subset.eq I$ המכיל את 0.\
+  נסמן:
+  $
+    F(x,t) colon.eq A(t) x + g(t) \
+    L colon.eq sup_(t in I_0) normop(A(t)) \
+    M colon.eq sup_(t in I_0) norm(g(t))
+  $
+  מתקיים $L<infinity$ שכן $A$ רציפה ו־$I_0$ קומפקטי. לכן $F$ רציפה ב־$RR^n times I_0$ ומקיימת את תנאי ליפשיץ (ביחס למשתנה המיקום):
+  $ norm(F(x,t)-F(y,t)) = norm(A(t) dot.op (x-y)) <= L norm(x-y) $
+  ממשפט פיקארד קיים פתרון יחיד לפרק זמן סופי כלשהו.\
+  נראה שהפתרון אינו מתפוצץ על ידי מעבר למשוואה האינטגרלית השקולה:
+  $ x(t) = x_0 + integral_0^t (A(s)x(s) + g(s)) dif s $
+  נניח ללא הגבלת הכלליות כי $t>0$. מאי־שוויון המשולש לאינטגרלים ותכונות הנורמה נקבל:
+  $
+    norm(x(t)) & <= norm(x_0) + integral_0^t norm(A(s)x(s) + g(s)) dif s \
+               & <= norm(x_0) + integral_0^t (normop(A(s)) norm(x(s)) + norm(g(s))) dif s \
+               & <= norm(x_0) + integral_0^t (L norm(x(s)) + M) dif s \
+               & = (norm(x_0) + M t) + integral_0^t L norm(x(s)) dif s \
+               & = (norm(x_0) + M t) e^(L t)
+  $
+  כאשר המעבר האחרון הוא מהלווה של גרנוול אז אם־כך החסם שקיבלנו מעיד שהנורמה של הפתרון חסומה לכל זמן $t in I_0$.\
+  ממשפט הטריכוטומיה מכיוון שהפתרון חסום על כל קטע סגור $I_0$, הוא אינו מתפוצץ בזמן סופי ולכן מוגדר היטב על כל $I$.
+]
 
 #theorem[
   מרחב הפתרונות המקסימלי למשואוה $(star)$ עם $g(t)=0$ לכל $t$ (ללא תנאי התחלה) הוא מרחב לינארי ממימד $n$.
@@ -441,14 +508,162 @@ $ cases((star) space x^prime (t) = A(t) x(t) + g(t), x(0)=x_0) $
 ]
 
 #proof[
+  נסמן ב־$eBase_k$ את הוקטור הסטנדרטי ונסמן ב־$x_k$ את הפתרון ל־$(star)$ עם תנאי ההתחלה $x(0)=eBase_k$.\
+  ${eBase}_(k in NN)$ בלתי־תלויים כי אם $sum alpha_j x_j (t) = 0$ לאיזשהו $t$ נוכיח ש־$alpha_j = 0$ לכל $c_j$ ואז מיחידות הפונקציה הקבועה $0$ היא הפתרון היחידי ולכן $sum alpha_j x_j (0) =0$ שכן הסכום שלהם הוא אפס וכל פונקציה היא פונקציית האפס ולכן $alpha_j = 0$ לכל $j$ והאיברים בלתי־תלויים.\
+  נראה שהיא גם קבוצה פורשת: יהי $y$ פתרון ולכן $y^prime = A y$ וקיימים ${B_j}_(j=1)^n$ כך ש־$y(0)=sum B_j eBase_j$ ומיחידות $y(t)=sum B_j x_j (t)$ לכל $t in I$ וקיבלנו שהקבוצה פורשת.\
+  יש איזומורפיזם בין מרחב וקטורי למרחב לינארי ולכן סיימנו.
+]
 
+נתבונן במשוואה הומוגונית עם מקדמים קבועים, כלומר $x^prime (t) = A dot.op x(t)$ כאשר $A$ מטריצה קבועה שאינה תלויה ב־$t$ ו־$A in RR^(n times n)$ ונניח ש־$x(0)=x_0$.\
+ננסה להפעיל את איטרציות פיקארד
+$
+  x_1 (t) = x_0 + integral_0^t A x_0 (s) dif s = x_0 + A integral_0^t x_0 = x_0 + A t x_0 \
+  x_2 (t) = x_0 + integral_0^t x_1 (s) dif s = x_0 + A t x_0 + frac(A^2 t^2, 2) x_0 \
+  dots.v \
+  x_n (t) = sum_(i=0)^n frac(A^n t^n x_0, n!) = (id + A t + dots.h.c + frac(A^n t^n, n!)) x_0
+$
+מפיקארד התהליך הזה מתכנס ונסמן את הגבול ב־$exp(t A) dot.op x_0$ (זה בעצם אקספוננט שמציבים בפנים וקטור).
+
+#definition[
+  לכל מטריצה $A in RR^(n times n)$ נגדיר את $exp(A) = sum_(k=0)^infinity frac(A^k, k!)$ כאשר $A^0 = id$.
+]
+
+#proposition[
+  הטור לעיל מתכנס.
+]
+
+#proof[
+  נראה זאת בנורמת אינסוף שכן בלאו הכי כל הנורמות שקולות ומספיק להוכיח שסדרת הסכומים האלו היא סדרת קושי, ואכן
+  $
+    normop(sum_(k=0)^t frac(A^k, k!) - sum_(k=0)^s frac(A^k, k!))<= sum_(k=s+1)^t frac(1, k!) normop(A^k) <= sum_(k=s+1)^t frac(1, k!) normop(A)^k
+  $
+  מהיות $e^normop(A) = sum_(k=0)^infinity frac(1, k!) normop(A)^k < infinity$ זה קטן כרצוננו עבור $s,t$ מספיק גדולים.
+]
+
+#remark[
+  עבור מספרים $exp(t+s)=exp(t) dot.op exp(s)$ אפשר להראות מהפיתוח לטור בעזרת נוסחת הבינום אבל עבור מטריצות באופן כללי זה לא נכון כי אם המטריצות לא מתחלפות $A B != B A$.
+]
+
+#proposition[
+  אם $A,b in RR^(n times n)$ כך ש־$A B = B A$ אזי $exp(A+B)=exp(A) exp(B)$.
+]
+
+#corollary[
+  אם $A in RR^(n times n)$ אז $exp(A)$ מטריצה הפיכה ו־$(exp(A))^(-1) = exp(A^(-1))$.
+]
+
+#proof[
+  $A$ ו־$A^(-1)$ מתחלפות ולכן
+  $ id = exp(-A A) = exp(A) dot.op exp(-A) $
+]
+
+#corollary[
+  לכל $A in RR^(n times n)$ ההעתקה $t mapsto exp(t A)$ (זו ההעתקה $RR arrow GL_n (RR)$) היא הומומורפיזם של חבורות.
+]
+
+#proof[
+  לכל $s,t in RR$, $t A$ ו־$s A$ מתחלפות ואז $(t+s) mapsto exp((t+s)A)$ אבל גם מתקיים
+  $ exp((t+s) A) = exp(t A + s A) = exp(t A) dot.op exp(s A) $
+]
+
+עד כה ראינו שעבור
+$ cases(x^prime = A x, x(0) = x_0) $ מתקיים ש־$x(t)=exp(t A) x_0$ הוא פתרון למשוואה על קטע (אולי קטן) סביב $0$ אבל $exp(t A) x_0$ מוגדר לכל $t$ והפתרון מוגדר לכל $t in I$ וטבעי לשאול האם הם מתלכדים – התשובה לכך היא כן.
+
+#proposition[
+  יהי $y$ הפתרון המקסימלי למשוואה
+  $
+    cases(
+      x^prime (t) = A x (t),
+      x(0) = x_0,
+      x(t) = exp(t A) x_0
+    )
+  $
+  אז $y(t) = exp(t A) x_0$ לכל $t in I$.
+]
+
+#proof[
+  נניח שלא ויש $t>0$ כך ש־$y(t)!=x(t)$, נסמן
+  $ tau = inf {t>0 bar x(t) != y(t)} $
+  מתקיים $0<tau$ כי אנו יודעים שבאיזשוהי סביבה ימנית שבה הם מסכימים. נראה שיש סביבה של $tau$ שבה $x,y$ מסכימים ונקבל סתירה.\
+  נסמן $z_star = exp(tau A) x_0$ ונתבונן בבעיה $ (star star) space cases(z^prime (t) = A z(t), z(tau) = z_star) $
+  מאיטרציות פיקארד ידוע שיש סביבה $0<delta$ של $tau$ כך ש־$z(t)=exp((t-tau)A) z_star$ הוא הפיתרון היחיד לבעיה $(star star)$.\
+  נשים לב שמתקיים $x(tau)=y(tau)$ שכן זה אינפימום היכן שהם לא שווים וכמובן מרציפות ו־$y(tau)=exp(tau A) x_0$ ולכן $y,z$ מתלכדים על סביבה זו של $tau$.\
+  מצד שני, על הסביבה הזו מתקיים
+  $ z(t)=exp((t-tau)A)z_star = exp((t-tau) A) exp(tau A) x_0 =exp(t A - tau A + tau A)x_0 = exp(t A) x_0 = x(t) $
+  מהגדרה וזו כמובן סתירה.
+]
+
+איך מחשבים את $exp(t A)$? נשים לב ש־$P$ מטריצה הפיכה ואז $exp(P A P^(-1)) = P exp(A) P^(-1)$ שכן $P P^(-1) = id$ ואז $(P A P^(-1))^k = A^k$.\
+שנית, אם $A$ אלכסונית, $display(A = mat(lambda_1, , 0; , lambda_2, ; , dots.down, ; , , lambda_n))$ אז $display(exp(t A) = mat(e^(t lambda_1), , 0; , e^(t lambda_2), ; , dots.down, ; , , e^(t lambda_n)))$.\
+שלישית, פעולת האקספוננט מכבדת חלוקה לבלוקים, כלומר
+$
+  exp mat(square, , 0; , square, ; , dots.down, ; 0, , square) = mat(exp square, , 0; , exp square, ; , dots.down, ; 0, , exp square)
+$
+נתבונן ב־$exp$ של בלוקי ז'ורדן
+$ J_lambda = mat(lambda, 1, , , ; , lambda, dots.down, ; , , dots.down, 1; , , , lambda) $
+
+#proposition[
+  לכל בלוק ז'ורדן $J_lambda in CC^(n times n)$ מתקיים
+  $
+    exp(t J_lambda) = e^(t lambda) mat(1, t, frac(t^2, 2), dots.h, frac(t^(n-1), (n-1)!); , 1, t, dots.h, frac(t^(n-2), (n-2)!); , , dots.down, dots.down, dots.v; , , , 1, t; , , , , 1)
+  $
+]
+
+#proof[
+  באינדוקציה על $k$ רואים שמתקיים
+  $
+    (t J_lambda)^k = t^k mat(binom(k, 0) lambda^k, binom(k, 1) lambda^(k-1), dots.h, , binom(k, n) lambda^(k-n); , binom(k, 0) lambda^k, dots.h, , binom(k, n-1) lambda^(k-n+1); , , dots.down, , dots.v; , , , , binom(k, 0)lambda^k)
+  $
+  כאשר $binom(k, j) =0$ לכל $k<j$ ומכאן מתקיים
+  $
+    sum_(k=0)^infinity frac((t J_lambda)^k, k!) = sum_(k=0)^infinity mat(binom(k, 0) frac(t^k, k!) lambda^k, binom(k, 1) frac(t^k, k!) lambda^(k-1), dots.h, , binom(k, n) frac(t^k, k!) lambda^(k-n); , binom(k, 0) frac(t^k, k!) lambda^k, dots.h, , binom(k, n-1) frac(t^k, k!) lambda^(k-n+1); , , dots.down, , dots.v; , , , , binom(k, 0) frac(t^k, k!) lambda^k)
+  $
+  התא ה־$j$ בשורה הראשונה של המטריצה המתקבלת הוא
+  $
+    sum_(k=0)^infinity binom(k, j-1) frac(t^k, k!) lambda^(k-j+1) = t^(j-1) sum_(k=0)^infinity frac(t^(k-j+1) lambda^(k-j+1), (j-1)!(k-j+1)!) = e^(t lambda) frac(t^(j-1), (j-1)!)
+  $
+  על־ידי הצבה של הפיתוח הזה בכל אחד מהתאים במטריצה הנוסחה נובעת.
 ]
 
 #end_of_lecture("7 – 04/05")
-תשלימי...
+
+#remark[
+  נניח ש־$A = P J_lambda P^(-1)$ כלומר $mat(|, , |; v_1, dots.h, v_n; |, , |)$ כאשר ${v_i}_(i=1)^n$ הוקטורים העצמיים המוכללים שמתאימים לבלוק ז'ורדן עבור $J_lambda$, כלומר מקיימים \
+  $A v_i = lambda v_i + v_(i-1)space , A v_1 = lambda v_1$ לכל $2<=i<=m$ אז מחהשבון הקודם נובע לכל $i$
+  $
+    exp(t A)v_i & = P exp(t J_lambda)P^(-1) v_i \
+    & = P exp(t J_lambda) eBase_i \
+    & = e^(lambda t) P(frac(t^(i-1), (i-1)!), frac(t^(i-2), (i-2)!), dots.h, frac(t^(i-i), (i-i)!), 0, dots.h, 0 )^T \
+    &= e^(lambda t) dot.op (frac(t^(i-1), (i-1)!) v_1 9 frac(t^(i-2), (i-2)!) v_2 + dots.h.c + frac(t^(i-i), (i-i)!) v_i)
+  $
+  לכל וקטור שהוא צירוף לינארי של הוקטורים $v_1, dots.h, v_n$ כשמופעלים על $exp(t A)$ הוא צירוף לינארי של הוקטורים העצמיים המוכללים.\
+  קיבלנו אלגוריתם לחישוב של $exp(t A)(x_0)$ לכל $x_0$ בתנאי שאנחנו יודעים לז'רדן את $A$ עבור $x_0 = sum alpha_i v_i$.\
+  אנחנו מתעניינים ב־$A$ ממשית ובפתרונות ל־$x(t)=A(x)$ עם תנאי התחלה ממשיים ובפרט אנחנו יודעים ש־$x(t)=exp(t(A))(x) in RR^n$ לכל $x$ אם $x in RR^n$.\
+  מהיות $A$ מטריצה ממשית, אם $A v = lambda v$ ו־$lambda in.not RR$ אז $overline(lambda) in.not RR$ וגם $A overline(v) = overline(lambda)overline(v)$ כלומר $lambda$ ערך עצמי אם ורק אם $overline(lambda)$ הוא ערך עצמי ואז נשים לב ש־$re v = frac(v+overline(v), 2) in Span{v, overline(v)}$ ואם נפעיל עליו את $exp(t A)$ אז ממה שראינו אפשר לתת אותו על־ידי צירוף לינארי של $v, overline(v)$.\
+  באותו אופן, $im v = frac(v - overline(v), 2) in Span{v, overline(v)}$ ויתרה מזאת
+  $ Span_CC {v, overline(v)} = Span_CC {im v, re v} $
+  ולכן כל וקטור $x_0$ ניתן להצגה כצירוף לינארי עם מקדמים מרוכבים של הוקטורים העצמיים המוכללים של $A$ ולכן אם נכתוב את $x_0 = sum alpha_i v_i$ כאשר ${v_i}$ הם הוקטורים העצמיים המוכללים נקבל
+  $ exp(t A) v = sum alpha_i exp(t A)v_i $
+]
+
+#example[
+  נניח של־$A$ יש ערך עצמי מרוכב $lambda = mu + i nu$ (כאשר $nu != 0$) ויהי $v+i w$ וקטור עצמי שמתאים לו. אז מנוסחת אוילר
+  $ e^(lambda t)(v+i w) = e^(mu t)(cos(nu t)v- sin(nu t)w)+ i e^(mu t)(sin(nu t)v+cos(nu t)w) $
+  כל פתרון ממשי שהוא צירוף לינארי מהצורה $alpha e^(lambda t)(v+i w) + beta e^(overline(lambda)t)(v-i w)$, ניתן לכתיבה על־ידי
+  $ a e^(mu t)(cos(nu t)v-sin(nu t)w)+b e^(mu t)(sin(nu t)v + cos(nu t)w) $
+  באופן שקול, בכתיב מטריציוני
+  $ e^(mu t) mat(|, , |; v, , w; |, , |) mat(cos(nu t), sin(nu t); -sin(nu t), cos(nu t)) vec(a, b) $
+  אם $mu=0$ אז תנאי ההתחלה הוא בדיוק $x_0 = a v + b w$ והנורמה נשארת חסומה.\
+  אם $mu > 0$, ככל שהזמן מתקדם קדימה נקבל ספירלה מתרחבת, ואם $mu<0$ ככל שהזמן מתקדם נקבל ספירלה מתכנסת פנימה. קרי, החלק המרוכב עושה סיבוב והחלק הממשי מחליט אם הפתרון גדל או דועך.
+  נוכיח ש־$v,w$ (החלק הממשי והמדומה של הוקטור העצמי) הם בלתי־תלויים מעל $RR$.\
+  נניח בשלילה שהם תלויים. מאחר שהם וקטורים ממשיים, קיים $t in RR$ כך ש־$w = t v$, ולכן הוקטור העצמי הוא:
+  $ v + i w = v + i t v = (1+i t)v $
+  כלומר הוקטור העצמי הוא כפולה מרוכבת של וקטור ממשי $v$. מאחר ש־$A(v+i w) = lambda(v+i w)$ נקבל:
+  $ A((1+ i t)v) = lambda(1+ i t)v ==> (1+i t)A v = lambda(1+ i t)v ==> A v = lambda v $
+  אבל $A$ מטריצה ממשית וגם $v$ וקטור ממשי, ולכן $A v$ חייב להיות ממשי. זה עומד בסתירה לכך ש־$lambda$ אינו ממשי (שכן $nu != 0$) ו־$v != 0$.
+]
 
 #end_of_lecture("8 – 05/05")
-תשלימי...
 
 נניח שאנחנו יודעים לפתור את המשוואה
 $ (star) space x^prime (t) = A(t) x(t) $
@@ -1459,3 +1674,5 @@ $
   כאשר $phi$ היא פונקציה קדומה ל־$a$ ב־$I$ ו־$C$ קבוע כלשהו.
 ]
 תשלימי....
+
+== איטרציות פיקארד
