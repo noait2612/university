@@ -13,12 +13,12 @@
 == הגדרות בסיסיות
 #definition[משוואה דיפרנציאלית רגילה מסדר $bold(n)$][
   משוואה דיפרנציאלית רגילה מסדר $n$ היא משוואה מהצורה
-  $ F(x(t), x^prime (t), dots.h, x^n (t), t)=0 $
+  $ F(x(t), x^prime (t), dots.h, x^((n)) (t), t)=0 $
   כאשר $t$ משתנה זמן חופשי היכן ש־$F:Omega arrow RR$ כאשר $Omega subset.eq RR^(n+2)$ קבוצה פתוחה.\
   פיתרון של המשוואה בקטע $I subset.eq RR$ הוא פונקציה $x:I arrow RR$ אשר גזירה $n$ פעמים כך ש־$x$ מקיים את המשוואה לכל $t in I$.\
   באופן דומה, מערכת של $m$ משוואות דיפרנציאליות רגילות מסדר $n$ היא מערכת משוואות מהצורה
-  $ F(x(t), x^prime (t), dots.h, x^(n) (t), t) = 0 $
-  עבור $F:Omega subset.eq RR^((n+1)m+1) arrow RR^n$ ופתרון שלה בקטע $I subset.eq RR$ הוא פונקציה גזירה $n$ פעמים $x:I arrow RR^m$ שמספקת שפותרת את המשוואה בכל $t in I$.
+  $ F(x(t), x^prime (t), dots.h, x^((n)) (t), t) = 0 $
+  עבור $F:Omega subset.eq RR^((n+1)m+1) arrow RR^n$ ופתרון שלה בקטע $I subset.eq RR$ הוא פונקציה גזירה $n$ פעמים $x:I arrow RR^m$ שפותרת את המשוואה בכל $t in I$.
 ]
 
 #definition[מערכת/משוואה אוטונומית][
@@ -34,7 +34,7 @@
 ]
 
 #remark[
-  נשים לב שבמשוואה דיפרנציאלית הומוגנית כל צירוף לינארי של פתרונות הוא פתרון. שכן, אם למשל $x_1, dots.h, x_m$ פתרונות למשוואה לינארית הומוגנית ו־$alpha_1, dots.h, alpha_m$ סקלרים, אזי
+  נשים לב שבמשוואה דיפרנציאלית לינארית הומוגנית כל צירוף לינארי של פתרונות הוא פתרון. שכן, אם למשל $x_1, dots.h, x_m$ פתרונות למשוואה לינארית הומוגנית ו־$alpha_1, dots.h, alpha_m$ סקלרים, אזי
   $ g(t) = sum_(i=1)^m alpha_i x_i (t) $
   הוא צירוף לינארי של פתרונות.\
   נציב את הפונקציה במשוואה כדי לקבל את הביטוי $sum_(j=0)^n c_j (t) (g^(j) (t))$ ונרצה להראות שתוצאתו היא $0$: ואכן, מתוך לינאריות הנגזרת והחלפת סדר הסכימה נקבל
@@ -49,7 +49,7 @@
 #remark[
   באינפי2 פתרנו משוואות מהצורה $x^prime (t) = f(t)$.\
   אם יודעים לחשב פונקציה קדומה ל־$f$ אז נוכל לכתוב $x(t) = x(t_0) + integral_(t_0)^t f(s) dif s$ מהמשפט היסודי ($x(t_0)$ זה מידע שתמיד היינו צריכים לקבל מאיפשהו).\
-  לכן, גם בקורס הזה כשתנבונן במשוואות דיפרנציאליות תמיד נקבע את תנאי ההתחלה $x(0)=x_0$ וננסה לפתור את המשוואה עם הנתון הזה. זה נקרא *בעיית התחלה*.
+  לכן, גם בקורס הזה כשנתבונן במשוואות דיפרנציאליות תמיד נקבע את תנאי ההתחלה $x(0)=x_0$ וננסה לפתור את המשוואה עם הנתון הזה. זה נקרא *בעיית התחלה*.
 ]
 
 #pagebreak()
@@ -113,9 +113,9 @@
   + $
       x_2 (t) = mycases(
         tilde(x_0) + t F(tilde(x_0)), t in [-frac(delta, 2), frac(delta, 2)],
-        x_2 (frac(delta, 2)) + (t-frac(delta, 2)F(x_2 (frac(delta, 2)))
-        ), t in [frac(delta, 2), delta],
-        x_2 (-frac(delta, 2)) + (t+frac(delta, 2)F(x_2 (-frac(delta, 2)))), t in [-delta, -frac(delta, 2)]
+        x_2 (frac(delta, 2)) + (t-frac(delta, 2))F(x_2 (frac(delta, 2)))
+      ), t in [frac(delta, 2), delta],
+      x_2 (-frac(delta, 2)) + (t+frac(delta, 2)F(x_2 (-frac(delta, 2)))), t in [-delta, -frac(delta, 2)]
       )
     $
     (זה נראה קצת מסובך אבל בעצם מה שעשינו פה זה שבנינו ישר לינארי)
@@ -185,7 +185,7 @@
 
 יחד עם זאת, ניתן למצוא תנאים ליחידות וזהו משפט פיקארד.
 #theorem[משפט פיקארד][
-  תהיי $U subset.eq RR^n$ פתוחה, $tilde(x_0) in RR$ ותהיי $F:U arrow RR^n$ שהיא ליפשיצית מקומית כלומר לכל $K subset.eq U$ קומפקטית יש קבוע $L_K$ כך ש־$F|_K$ ליפשיצית עם הקבוע $L_K$.\
+  תהיי $U subset.eq RR^n$ פתוחה, $tilde(x_0) in RR^n$ ותהיי $F:U arrow RR^n$ שהיא ליפשיצית מקומית כלומר לכל $K subset.eq U$ קומפקטית יש קבוע $L_K$ כך ש־$F|_K$ ליפשיצית עם הקבוע $L_K$.\
   אזי יש $delta>0$ כך שקיים *פתרון יחיד* בקטע $[-delta, delta]$ לבעיה
   $ cases(x(0) = tilde(x_0), x^prime (t) = F(x(t))) $
 ]<picard_existence_theorem>
@@ -201,12 +201,12 @@
 
   #proof[
     נוכיח ש־$x(t)=y(t)$ לכל $t in I inter J inter [0,infinity)$. נניח שלא ככה ונגדיר $tau = inf{t in I inter J inter (0,infinity) bar x(t) != y(t)}$ ומרציפות $overline(x) = x(tau)=y(tau)$.\
-    ניקח $r>0$ כך ש־$closure(B_(2r) (overline(x))) subset.eq$ וניקח $delta>0$ כך שיתקיים $[tau, tau+delta] subset.eq I inter J$ וגם $x(t), y(t) in closure(B_r (overline(x)))$ לכל $t in [tau, tau + delta]$.\
+    ניקח $r>0$ כך ש־$closure(B_(2r) (overline(x))) subset.eq U$ וניקח $delta>0$ כך שיתקיים $[tau, tau+delta] subset.eq I inter J$ וגם $x(t), y(t) in closure(B_r (overline(x)))$ לכל $t in [tau, tau + delta]$.\
     נסמן ב־$L$ את קבוע ליפשיץ של $F|_closure(B_r (overline(x)))$, עבור $t in [tau, tau+delta]$ מתקיים
     $
       frac(dif, dif t) norm(x(t) - y(t))^2 & = 2(x(t)-y(t), x^prime (t) - y^prime (t)) \
-                                           & = 2(x(t)-y(t), F(x(t))-F(Y(t))) \
-                                           & <=_((star)) 2norm(x(t)-y(t)) dot.op norm(F(x(t))-F(Y(t))) \
+                                           & = 2(x(t)-y(t), F(x(t))-F(y(t))) \
+                                           & <=_((star)) 2norm(x(t)-y(t)) dot.op norm(F(x(t))-F(y(t))) \
                                            & <=_((star star)) 2 L dot.op norm(x(t)-y(t))^2
     $
     כאשר $(star)$ זה אי־שיוויון קושי־שוורץ ו־$(star star)$ זה מהליפשיציות.\
@@ -251,7 +251,7 @@
   תהיי $U in RR^n$ פתוחה, תהיי $p in U$ ו־$F: U arrow RR^n$ ליפשיץ מקומית.\
   נניח שאנחנו יודעים שקיימת קבוצה קומפקטית $K subset.eq U$ ו־$T>0$ ($T<0$ עובד באופן דומה) כך שלכל $0<t<T$ מתקיים
   + אם $t in J_p^*$ אז $x_p (t) in K$
-  + אזי $[0, T) subset.eq J_p^*$
+  + $[0, T) subset.eq J_p^*$
 ]
 
 #proof[
@@ -293,7 +293,7 @@
     לכן $x_p (t), x_q (t)$ לכל $t in [0, tau]$ מוכל בקבוצה $ {x in RR^n bar dist(x, C)<=2r} $
     ולכן $F$ ליפשיץ שם עם קבוע $L$ ובפרט לכל $t in [0, tau]$ $ norm(F(x_p (t))-F(x_q (t)))<=L norm(x_p (t) - x_q (t)) $
     ומכאן
-    $ dif/(dif t) norm(x_p (t) - x_q (t))=2L norm(x_p (t) - x_q (t))^2 $
+    $ dif/(dif t) norm(x_p (t) - x_q (t))^2 <=2L norm(x_p (t) - x_q (t))^2 $
     ולכן הפונקציה $t mapsto e^(-2L t) norm(x_p (t) - x_q (t))^2$ מונוטונית יורדת בקטע $[0,tau]$ ומכאן נקבל
     $ 2 norm(p-q) <= e^(-L tau) norm(x_p (tau) - x_q (tau)) <= norm(p-q) $
     וזאת סתירה.
@@ -360,7 +360,7 @@ $ partial/(partial t) D Phi = D(partial/(partial t) Phi) = D(F compose Phi)=D F(
 
 #theorem[
   תהיי $U subset.eq RR^n$ פתוחה ו־$p in U$ עם $F:U arrow RR^n$ גזירה ברציפות ובפרט ליפשיץ מקומית.\
-  יהי $x_p$ הפיתרון המקסימלי לבעיית התחחלה $cases(x'(t)=F(x(t)), x(0)=p)$ ויהי $M(t)$ הפיתרון המקסימלי לבעיית ההתחלה $cases(M'(t)=D F(x(t))M(t), M(0) = Id)$.\
+  יהי $x_p$ הפיתרון המקסימלי לבעיית ההתחלה $cases(x'(t)=F(x(t)), x(0)=p)$ ויהי $M(t)$ הפיתרון המקסימלי לבעיית ההתחלה $cases(M'(t)=D F(x(t))M(t), M(0) = Id)$.\
   אזי לכל $T in I_p^*$, $phi_T$ גזירה ב־$p$ והדיפרנציאל שלה נתון על־ידי $D phi_T (p) = M(t)$.
 ]
 
@@ -414,7 +414,7 @@ $ partial/(partial t) D Phi = D(partial/(partial t) Phi) = D(F compose Phi)=D F(
     = F(x_q (t)) - F(x_p (t))- D F(x_p (t))(x_q (t)- x_p (t))+D F(x_p (t))u(t)
   $
   נשים לב שממה שמצאנו לעיל והבחירה שלנו של $q$
-  $ norm(F(x_q (t)) - F(x_p (t))-D F(x_q (t) - x_p (t)))< eta norm(x_q (t) - x_p (t)) $
+  $ norm(F(x_q (t)) - F(x_p (t))-D F(x_p (t))(x_q (t) - x_p (t)))< eta norm(x_q (t) - x_p (t)) $
   אז
   $
     norm(u'(t))<= eta norm(x_q (t) - x_p (t))+ L norm(u(t)) = eta norm(u(t)+M(t)(q-p))+L norm(u(t)) \
@@ -427,7 +427,7 @@ $ partial/(partial t) D Phi = D(partial/(partial t) Phi) = D(F compose Phi)=D F(
     dif/(dif t) (e^(-t(L+eta)) norm(u(t)))= e^(-t(L+eta))(-(L+eta)norm(u(t))+dif/(dif t) norm(u(t))) <=_((star)) eta K underbrace(e^(-t(L+eta)), <= 1))norm(q-p) <= eta K norm(q-p)
   $
   אבל האחרון זה נגזרת של פונקציה לינארית $dif/(dif t) (eta K norm(q-p)t)$.\
-  ולכן הפונקציה $e^(-t(L+eta))norm(u(t))-eta K t norm(q-p)$ היא מונוטונית יורדת באינטרוול $(tau, T]$ כי הנגזרת קטנה מאפס (מהצבה) ונקבל $ e^(T (L+eta))norm(u(T))-eta K T norm(q-p)<=e^(-tau(L+eta))underbrace(norm(u(tau)), =0)-eta K tau norm(q-p) = -eta K tau norm(q-p)<=0 $
+  ולכן הפונקציה $e^(-t(L+eta))norm(u(t))-eta K t norm(q-p)$ היא מונוטונית יורדת באינטרוול $(tau, T]$ כי הנגזרת קטנה מאפס (מהצבה) ונקבל $ e^(-T (L+eta))norm(u(T))-eta K T norm(q-p)<=e^(-tau(L+eta))underbrace(norm(u(tau)), =0)-eta K tau norm(q-p) = -eta K tau norm(q-p)<=0 $
   ובסך־הכל
   $ norm(u(T)) <= e^(T(L+eta)) eta K T norm(q-p) < epsilon norm(q-p) $
 ]
@@ -493,12 +493,12 @@ $ partial/(partial t) D Phi = D(partial/(partial t) Phi) = D(F compose Phi)=D F(
                & = (norm(x_0) + M t) + integral_0^t L norm(x(s)) dif s \
                & = (norm(x_0) + M t) e^(L t)
   $
-  כאשר המעבר האחרון הוא מהלווה של גרנוול אז אם־כך החסם שקיבלנו מעיד שהנורמה של הפתרון חסומה לכל זמן $t in I_0$.\
+  כאשר המעבר האחרון הוא מהלמה של גרונוול אז אם־כך החסם שקיבלנו מעיד שהנורמה של הפתרון חסומה לכל זמן $t in I_0$.\
   ממשפט הטריכוטומיה מכיוון שהפתרון חסום על כל קטע סגור $I_0$, הוא אינו מתפוצץ בזמן סופי ולכן מוגדר היטב על כל $I$.
 ]
 
 #theorem[
-  מרחב הפתרונות המקסימלי למשואוה $(star)$ עם $g(t)=0$ לכל $t$ (ללא תנאי התחלה) הוא מרחב לינארי ממימד $n$.
+  מרחב הפתרונות המקסימלי למשוואה $(star)$ עם $g(t)=0$ לכל $t$ (ללא תנאי התחלה) הוא מרחב לינארי ממימד $n$.
 ]
 
 #remark[
@@ -629,12 +629,12 @@ $ J_lambda = mat(lambda, 1, , , ; , lambda, dots.down, ; , , dots.down, 1; , , ,
 
 #remark[
   נניח ש־$A = P J_lambda P^(-1)$ כלומר $mat(|, , |; v_1, dots.h, v_n; |, , |)$ כאשר ${v_i}_(i=1)^n$ הוקטורים העצמיים המוכללים שמתאימים לבלוק ז'ורדן עבור $J_lambda$, כלומר מקיימים \
-  $A v_i = lambda v_i + v_(i-1)space , A v_1 = lambda v_1$ לכל $2<=i<=m$ אז מחהשבון הקודם נובע לכל $i$
+  $A v_i = lambda v_i + v_(i-1)space , A v_1 = lambda v_1$ לכל $2<=i<=m$ אז מהחשבון הקודם נובע לכל $i$
   $
     exp(t A)v_i & = P exp(t J_lambda)P^(-1) v_i \
     & = P exp(t J_lambda) eBase_i \
     & = e^(lambda t) P(frac(t^(i-1), (i-1)!), frac(t^(i-2), (i-2)!), dots.h, frac(t^(i-i), (i-i)!), 0, dots.h, 0 )^T \
-    &= e^(lambda t) dot.op (frac(t^(i-1), (i-1)!) v_1 9 frac(t^(i-2), (i-2)!) v_2 + dots.h.c + frac(t^(i-i), (i-i)!) v_i)
+    &= e^(lambda t) dot.op (frac(t^(i-1), (i-1)!) v_1 + frac(t^(i-2), (i-2)!) v_2 + dots.h.c + frac(t^(i-i), (i-i)!) v_i)
   $
   לכל וקטור שהוא צירוף לינארי של הוקטורים $v_1, dots.h, v_n$ כשמופעלים על $exp(t A)$ הוא צירוף לינארי של הוקטורים העצמיים המוכללים.\
   קיבלנו אלגוריתם לחישוב של $exp(t A)(x_0)$ לכל $x_0$ בתנאי שאנחנו יודעים לז'רדן את $A$ עבור $x_0 = sum alpha_i v_i$.\
@@ -672,7 +672,7 @@ $ (star star) space x^prime(t) = A(t) x(t) + g(t) $
 כאשר $A(t)$ היא $n times n$.\
 יהיו ${x_1 (t), x_2 (t), dots.h, space x_n (t)}$ בסיס למרחב הפתרונות של $(star)$.\
 הרעיון הוא לכתוב פיתרון כללי למשוואה לא הומוגנית $(star star)$ וצריך להראות שלכל $x_i (t)$ עם מתקדמים שמשתנים בזמן. כלומר, נכתוב את $y$ פיתרון ל־$(star star)$ כ־$y(t) = sum_(j=1)^n alpha_j (t) x_j (t)$.\
-נסמן ב־$pi(t)$ את המטריצה שעמודותיה הן $x_1 (t), x_2 (t), dots.h, x_n (t)$ והיא נקראית לרוב *המטריצה היסודית / מטריצת פתרונות יסודית*.\
+נסמן ב־$pi(t)$ את המטריצה שעמודותיה הן $x_1 (t), x_2 (t), dots.h, x_n (t)$ והיא נקראת לרוב *המטריצה היסודית / מטריצת פתרונות יסודית*.\
 נשים לב ש־$sum_(j=1)^n alpha_j (t) x_j (t) = pi(t) alpha(t)$ כאשר $alpha(t) = vec(alpha_1 (t), dots.v, alpha_n (t))$.\
 אם $y(t) = pi(t) alpha(t)$ פותר את $(star star)$ אז $y(0)=pi(0)alpha(0)$ אז $y(t)$ מקיים
 $ y^prime (t) = A(t) y(t) + g(t) $
@@ -727,7 +727,7 @@ $ y(t)= e^(t A) y_0 + integral_0^t e^((t -s)A) g(s) dif s $
   נגדיר העתקה $beta: RR^n"סביבת 0 ב־" arrow RR^n$ על־ידי $beta(t, x_1, dots.h, x_(n-1))=phi_t (x_1, x_2, dots.h, x_(n-1), 0)$.\
   ממשפט הפונקציה ההפוכה יש סביבה $p in U_1$ וסביבה $0 in V$ כך ש־$beta: V arrow U_1$ היא דיפאומורפיזם גזיר ברציפות ונגדיר $alpha=beta^(-1)$.\
   קיימת סביבה פתוחה $p in U_0 subset.eq U_1$ ו־$delta>0$ כך שלכל $x in U_0$ ו־$t in (-delta, delta)$ מתקיים $phi_t (x) in U_1$.\
-  נשאר לבדוק: יהי $x in U_0$ אז יש $s, y_1, y_2, dots.h, y_(n-1)$ כך ש־$x=beta(s, y_1, dots.h, y_(n-1))$ לכומר $x=phi_s (y_1, dots.h, y_(n-1), 0)$ ואז עבור $abs(t)<delta$ מתקיים $phi_t (x) in U_1$ ולכן
+  נשאר לבדוק: יהי $x in U_0$ אז יש $s, y_1, y_2, dots.h, y_(n-1)$ כך ש־$x=beta(s, y_1, dots.h, y_(n-1))$ כלומר $x=phi_s (y_1, dots.h, y_(n-1), 0)$ ואז עבור $abs(t)<delta$ מתקיים $phi_t (x) in U_1$ ולכן
   $
     alpha(phi_t (x)) & = alpha(phi_t (phi_s (y_1, dots.h, y_(n-1), 0))) \
                      & = alpha(phi_(t+s) (y_1, dots.h, y_(n-1), 0)) \
@@ -756,7 +756,7 @@ $ y(t)= e^(t A) y_0 + integral_0^t e^((t -s)A) g(s) dif s $
 #lemma[
   תהיי $A in CC^(n times n)$ מטריצה עם קבוצת ערכים עצמיים $Lambda subset.eq CC$ ונניח ש־$max_(lambda in Lambda) re(lambda)<0$.\
   אזי לכל $0<alpha<min_(lambda in Lambda) abs(re(lambda))$ יש $C>0$ כך שלכל $t>=0$ מתקיים
-  $ norm(exp(t A))_p <= C e^(-t alpha) $
+  $ normop(exp(t A)) <= C e^(-t alpha) $
   בפרט
   $ lim_(t arrow infinity) exp(t A)=0 $
 ]<lemma_before_linear_criterion_for_asymptotic_stability>
@@ -777,7 +777,7 @@ $ y(t)= e^(t A) y_0 + integral_0^t e^((t -s)A) g(s) dif s $
 #end_of_lecture("9 – 11/05")
 
 #proof[@linear-criterion-for-asymptotic-stability, הקריטריון הלינארי ליציבות אסימפטוטית][
-  כזכור לכל $t in I_p$, $phi_t (x)$ גזירה ב־$p$ ו־$D phi)t (p)$ מקיימת
+  כזכור לכל $t in I_p$, $phi_t (x)$ גזירה ב־$p$ ו־$D phi_t (p)$ מקיימת
   $
     (star) space dif/(dif t) [D phi_t (p)] = (D phi_t (p))^prime = D F (phi_t (p)) D phi_t (p) \
     D phi_0 (o) = id
@@ -817,7 +817,7 @@ $ y(t)= e^(t A) y_0 + integral_0^t e^((t -s)A) g(s) dif s $
 #proof[
   נוכיח ראשית שאם יש פונקציית ליאפונוב אז יש לנו יציבות.\
   יהי $r>0$ ו־$L in C^1 (B_r (x_0))$ פונקציית ליאפונוב.\
-  נשיב לב שלכל $p in B_r (x_0)$ אם נסתכל על המסילה $x_p$ ונרכיב עליה את הפונקציה $L(x_p (t))$ היא פונקציה יורדת מהגדרת פונקציית ליאפונוב היא יורדת כל זמן שהיא מוגדרת מכלל השרשרת
+  נשים לב שלכל $p in B_r (x_0)$ אם נסתכל על המסילה $x_p$ ונרכיב עליה את הפונקציה $L(x_p (t))$ היא פונקציה יורדת מהגדרת פונקציית ליאפונוב היא יורדת כל זמן שהיא מוגדרת מכלל השרשרת
   $ dif/(dif t) (L(x_p (t))) = (x^prime_p (t), gradient L(x_p (t)))=(F(x_p (t)), L(x_p (t)))<0 $
   יהי $r>epsilon>0$ ומתכונה $(2)$ של פונקציית ליאפונוב ($L(x_0) <= L(x)$) נקבל ש־$display(L(x_0) < min_(x in boundary(B_epsilon (x_0))) L(x))$.\
   לכן קיים $delta > 0$ כך ש־$display(max_(x in B_delta (x_0)) < min_(x in boundary(B_epsilon (x_0))) L(x))$.\
@@ -856,7 +856,7 @@ $ y(t)= e^(t A) y_0 + integral_0^t e^((t -s)A) g(s) dif s $
 #example[
   נסמן ב־$f$ את הכוח, אז החוק השני של ניוטון: $f = m a$ ומיריעות אנחנו יודעים שהפוטנציאל הוא $- gradient V = f = m a$.\
   נסמן את המיקום ב־$q$ והתנע זה $p=dif/(dif t) m q = m dif/(dif t) q$.\
-  בהינתן $N$ גופים תלת מימדיים יש $3N$ קורדינאטות מיקומים ו־$3N$ קורדינאטות של תנעים $x=(q_1, dots.h, q_(3n), p_1, dots.h, p_(3n))$.\
+  בהינתן $N$ גופים תלת מימדיים יש $3N$ קורדינאטות מיקומים ו־$3N$ קורדינאטות של תנעים $x=(q_1, dots.h, q_(3N), p_1, dots.h, p_(3N))$.\
   אז $ dif/(dif t) p_i = (-gradient V)_i = - (partial V)/(partial q_i) $
   אבל $ dif/(dif t) q_i = p_i / m = partial/(partial p_i) ((p_i^2)/(2m)) $
   נסכום
@@ -867,7 +867,7 @@ $ y(t)= e^(t A) y_0 + integral_0^t e^((t -s)A) g(s) dif s $
   $ dif/(dif t) p_i = - (partial H)/(partial q_i), quad (dif q_i)/(dif t) = (partial H)/(partial p_i) $
   כלומר
   $
-    dif/(dif t) vec(q_1, q_2, dots.v, q_(3N), p_1, p_2, dots.v, p_(3N)) = underbrace(mat(0, 3N I; - I_n, 0), 6N times 6N) vec((partial H)/(partial q_1), (partial H)/(partial q_2), dots.v, (partial H)/(partial q_(3N)), (partial H)/(partial p_1), dots.v, (partial H)/(partial p_(3N)))
+    dif/(dif t) vec(q_1, q_2, dots.v, q_(3N), p_1, p_2, dots.v, p_(3N)) = underbrace(mat(0, I_(3N); - I_(3N), 0), 6N times 6N) vec((partial H)/(partial q_1), (partial H)/(partial q_2), dots.v, (partial H)/(partial q_(3N)), (partial H)/(partial p_1), dots.v, (partial H)/(partial p_(3N)))
   $
   המסקנה מהכתיבה הזו היא שתחת כוח משמר (שתלוי רק במיקום) נובע ש־$H$ קבועה לאורך המסילות – כלומר $H$ קבועה בזמן במערכת ו־$H$ נקראת האנרגיה של המערכת ו־$H$ נקראת המילטוניאן.
 ]
@@ -880,29 +880,33 @@ $ y(t)= e^(t A) y_0 + integral_0^t e^((t -s)A) g(s) dif s $
 #proof[
   נוכיח את המשפט תחת ההנחה שלכל הערכים העצמיים של $A colon.eq D F(x_0)$ יש חלק ממשי שאינו אפס כלומר אין ל־$A$ ערכים עצמיים עם חלק ממשי אפס.\
   נסמן $H_plus$ יהיה תת־המרחב של $RR^n$ הנפרש על־ידי הוקטורים העצמיים (המוכללים אם צריך) עם ערך עצמי שלו חלק ממשי גדול מאפס ו־$H_minus$ וכן הלאה עם ערך עצמי שלו חלק ממשי קטן מאפס ומההנחה $RR^n = H_plus plus.o H_minus$ ונסמן ב־$pi_plus.minus$ את ההטלות המתאימות לסכום הישר (ההנחה של המשפט אומר ש־$H_plus != {0}$).\
+
   #end_of_lecture("11 – 18/05")
+
   נניח ש־$x_0 = 0$ ונניח בשלילה ש־$0$ יציבה, כלומר: לכל לכל $epsilon > 0$ יש $delta>0$ כך שאם $p in B_delta (0)$ אז $x_p (t) in B_epsilon (0)$.\
   נגדיר את הפונקציה $g(x)=F(x)-A x$ כך שיתקיים
   $ x^prime (t) = F(x(t)) = A x(t) + g(x(t)) $
   לכן ניתן לכתוב את הפתרון למשוואה באופן הבא
   $ (star star) space x(t) = e^(t A) x(0) + integral_0^t e^((t-s)A) g(x(s)) dif s $
   להמשך ההוכחה אנחנו צריכים שתי למות
+
   #lemma[
     קיים $R>0$ כך שאם $x:[0,infinity) arrow B_R (0)$ פותרת את המשוואה $x^prime (t) = F(x(t))$ אז
     $
-      x(t)=e^(t A) pi_minus (x(0)) + integral_0^t e^((t-s) A) pi_minus g(x(s)) dif s - integral_t^infinity e^((t-s)A) pi_plus + g(x(s)) dif s
+      x(t)=e^(t A) pi_minus (x(0)) + integral_0^t e^((t-s) A) pi_minus g(x(s)) dif s - integral_t^infinity e^((t-s)A) pi_plus g(x(s)) dif s
     $
   ]<first-lemma-for-the-linear-criterion-for-instable>
+
   #proof[@first-lemma-for-the-linear-criterion-for-instable][
     נשים לב
     $ F(x) = F(0) + A(x+ o(norm(x))) $
     ולכן מכך ש־$F(0) = 0$
     $ g(x) =F(x) - A x = o(norm(x)) $
     בפרט, יש $R>0$ כך שלכל $x in RR$ מתקיים $norm(g(x))<=norm(x)$ ובנוסף
-    $ pi_plus.minus e^(t A) = e^(t A) pi plus.minus $
+    $ pi_plus.minus e^(t A) = e^(t A) pi_plus.minus $
     נכפול את $(star star)$ ב־$e^(t A)$ ונפעיל את $pi_plus$ ונקבל (כי $pi_plus$ זו העתקה לינארית וגם אינטגרל הוא לינארי)
     $
-      (star star star) space e^(-t A) pi_plus x(t) = pi_plus (x(0)) + integral_0^t e^(-s A) pi_plus g(x(s)) dif s ==> pi_plus (x(0)) = - integral_0^infinity e^(-s A) pi_plus + g(x(s)) dif s
+      (star star star) space e^(-t A) pi_plus x(t) = pi_plus (x(0)) + integral_0^t e^(-s A) pi_plus g(x(s)) dif s ==> pi_plus (x(0)) = - integral_0^infinity e^(-s A) pi_plus g(x(s)) dif s
     $
     נרצה להראת את החץ מימין: קיים קבוע $C>0$ כך שאם $0<mu<min { abs(re(lambda)) bar A "ערך עצמי של" lambda}$ ואז
     $ normop(pi_plus.minus) <= C $
@@ -930,7 +934,7 @@ $ y(t)= e^(t A) y_0 + integral_0^t e^((t -s)A) g(s) dif s $
   ]
 
   #lemma[
-    קיים $R>R_0 > 0$ מהלמטה הקודמת כך שאם $x,y : [0,infinity) arrow B_(R_0) (0)$ הם פתרונות ל־$x^prime = F(x)$ כך ש־$pi_minus (x(0)) = pi_minus (y(0))$ אז $x(t)=y(t)$ לכל $t$.
+    קיים $R>R_0 > 0$ מהלמה הקודמת כך שאם $x,y : [0,infinity) arrow B_(R_0) (0)$ הם פתרונות ל־$x^prime = F(x)$ כך ש־$pi_minus (x(0)) = pi_minus (y(0))$ אז $x(t)=y(t)$ לכל $t$.
   ]<second-lemma-for-the-linear-criterion-for-instable>
 
   #proof[@second-lemma-for-the-linear-criterion-for-instable][
@@ -942,7 +946,9 @@ $ y(t)= e^(t A) y_0 + integral_0^t e^((t -s)A) g(s) dif s $
     $
     לכן
     $ g(z_2) - g(z_1) = (D F(z_1)-A)(z_2 - z_1) + o(norm(z_2 - z_1)) $
+
     #end_of_lecture("12 – 19/05")
+
     נקבע $R_0 = R_0 (epsilon)$ עבור $epsilon=epsilon(C, mu)$ עבור $mu$ מהלמה הקודמת שנגדיר בהמשך.
     נניח ש־$x,y$ פתרונות עם $pi_minus (y(0))=pi_minus (x(0))$ כך ש־$x!=y$ ל־$t>0$ ו־$x(t), y(t) in B_(R_0) (0)$ ונסמן
     $ d = sup_(t in [0,infinity)) norm(x(t)-y(t)) $
@@ -964,6 +970,7 @@ $ y(t)= e^(t A) y_0 + integral_0^t e^((t -s)A) g(s) dif s $
     כאשר אי־השיוויון השני נובע מהלמה הקודמת.\
     אז נבחר $epsilon = mu/(4C)$ ונקבל לעיל $d/2$ אבל זו סתירה כי $d$ זה אומר ש־$d=0$ (נזכר ש־$norm(x(t)-y(t))=d$).
   ]
+
   נבחין שההוכחה של @second-lemma-for-the-linear-criterion-for-instable מראה שיציבות היא בלתי אפשרית.
   שכן, אם $x_0$ נקודה יציבה אז קיימת $eta>0$ כך שלכל $p in B_eta (0)$ מתקיים $x_p (t) in B_(R_0) (0)$ לכל $t>0$.\
   בפרט, קיימים $x!=y$ כמו בלמה עם $pi_minus (x) = pi_minus (y)$ ולכן $x(0)=y(0)$.
@@ -1026,7 +1033,7 @@ $ phi(x) = A_m cos(m x) + B_m sin(m x) $
 #proof[
   ברור ש־$1$ גורר את $2$. בכיוון השני, יהיו $A,B in RR$.\
   מרחב הפתרונות למשוואה הוא מרחב לינארי דו־מימדי (זו משוואה לינארית מסדר 2). נתבונן בהעתקה ששולחת פתרון $u$ לערכים $vec(u(a), u(b)) in RR^2$.\
-  זו העתקה לינארית לינארית ומההנחה שלנו הגרעין שלה הוא הגרעין הטריוויאלי – וקטור האפס ולכן זו העתקה חד־חד ערכית ועל וזה בידיוק מה שרצינו.\
+  זו העתקה לינארית ומההנחה שלנו הגרעין שלה הוא הגרעין הטריוויאלי – וקטור האפס ולכן זו העתקה חד־חד ערכית ועל וזה בידיוק מה שרצינו.\
   (הגרעין הוא טריוויאלי ולכן חד־חד ערכית וזו העתקה מ־$RR^2$ ל־$RR^2$ ולכן על).
 ]
 
@@ -1137,7 +1144,7 @@ $ theta^prime (t) = q(t) sin^2 (theta(t)) + 1/p(t) cos^2(theta(t)) $
 ]
 
 #proof[
-  נתבונן ב־$theta, tilde(theta)$ פונקציות הפאזה המתאימות. על־ידי הפלכה ב־$(-1)$ אם יש בך צורך ניתן לדאוג ש־$theta(a) in [0, pi)$.\
+  נתבונן ב־$theta, tilde(theta)$ פונקציות הפאזה המתאימות. על־ידי הכפלה ב־$(-1)$ אם יש בך צורך ניתן לדאוג ש־$theta(a) in [0, pi)$.\
   באותו אופן ניתן להניח ש־$tilde(theta)(a)=0$ ולכן $tilde(theta)(b)>0$ מהמסקנה לפני הקודמת.\
   אבל $tilde(u)(b)=0$ ולכן $tilde(theta)(b)=pi k$ לאיזשהו $k in ZZ$ ולכן $tilde(theta)(b)>=pi$ ומהמסקנה הקודמת $theta(a)>=tilde(theta)(a)$ ומהמסקנה הקודמת $theta(b)>=tilde(theta)(b)>=pi$ וממשפט ערך הביניים יש $tau in (a,b]$ שעבורו $theta(tau)=pi$ אבל אז $u(tau)=0$, כנדרש.
 ]
@@ -1338,7 +1345,7 @@ $
   $
   נגדיר $psi_r : closure(B(0,1)) arrow closure(B(x_0, r))$ על־ידי $psi_r (y) = x_0 + r y$ אז $psi_r$ הוא דיפאומורפיזם בין השפות עם יעקוביאן $r^(n-1)$.
   $
-    integral.slash_boundary(B(0,1)) (u compose psi_r) dif s = 1/(Area(boundary(B(0,1))) dot.op r^(n-1)) integral_boundary(B(0,1)) (u compose psi_r) r^(n-1) dif = 1/Area(boundary(B(x_0, r))) integral_boundary(B(x_0,r)) u dif s = phi(r) s
+    integral.slash_boundary(B(0,1)) (u compose psi_r) dif s = 1/(Area(boundary(B(0,1))) dot.op r^(n-1)) integral_boundary(B(0,1)) (u compose psi_r) r^(n-1) dif = 1/Area(boundary(B(x_0, r))) integral_boundary(B(x_0,r)) u dif s = phi(r)
   $
   #exercise[
     $ Area(boundary(B(0,1))) dot.op r^(n-1) = Area(boundary(B(x_0, r))) $
@@ -1375,7 +1382,7 @@ $
     אבל זה אומר שלכל $y in B(x_0, r)$ מתקיים $u(y)=u(x_0)$ שכן אם לא מתקיים $u(y) < u(x_0)$ (כי $u(x_0)$ מקסימום) ולכן מרציפות יש קבוצה פתוחה $supset.eq$ $B(x_0, r)$ שעליה $u < u(x_0)$ ואז $integral.slash_(B(x_0, r)) u dif V < u(x_0)$.\
     אבל זה נכון לכל $r<=dist(x_0, boundary(Omega))$ ולכן לכל $y in boundary(Omega) inter boundary(B(x_0, dist(x_0, boundary(Omega))))$ מתקיים $u(y)=u(x_0) = max u(closure(Omega))$.
   + נניח ש־$x_0 in Omega$ מקיימת $u(x_0) = max u(Omega)$ ונתבונן בקבוצה $A colon.eq {y in Omega bar u(x_0)=u(y)}$.\
-    $A$ סגורה מרציפות והיא לא ריקה כי $x_0 in A$. אבל הראשנו ש־$A$ פתוחה ב־$Omega$ אבל $Omega$ קשירה ולכן $A=Omega$.
+    $A$ סגורה מרציפות והיא לא ריקה כי $x_0 in A$. אבל הראנו ש־$A$ פתוחה ב־$Omega$ אבל $Omega$ קשירה ולכן $A=Omega$.
 ]
 
 #remark[
@@ -1394,7 +1401,7 @@ $
 נקבע פונקציה חלקה ואי־שלילית $eta:(0, infinity) arrow RR$ המקיימת $eta|_([0,1/2)) = 1$ ועבור $x>=1$ ניקח $eta(x)=0$.\
 בהינתן $epsilon > 0$ נגדיר $phi_epsilon : RR^n arrow RR$ על־ידי
 $ phi_epsilon = frac(1, epsilon^n) frac(eta(frac(norm(x), epsilon)), integral_(RR^n) eta(norm(y)) dif y) $
-$phi_epsilon$ חלקה, רדיאלית הנתמכת על $B(0,epsilon)$ ומקיימת $integral_(RR^n) phi_epsilon (y dif y = 1)$.
+$phi_epsilon$ חלקה, רדיאלית הנתמכת על $B(0,epsilon)$ ומקיימת $integral_(RR^n) phi_epsilon (y) dif y = 1$.
 
 #definition[שיכוך][
   תהיי $Omega subset.eq RR^n$ פתוחה. לכל $epsilon > 0$ נסמן
@@ -1460,8 +1467,8 @@ $phi_epsilon$ חלקה, רדיאלית הנתמכת על $B(0,epsilon)$ ומקי
 ]
 
 #proof[
-  נוכיח קודם מקרה פרטי. נניח ש־$V=B(x,r)$ ונניח גם ש־$closure(B(x,4r)) subset.eq Omega$ ונקבע $x_0, x_1 in V$.\
-  מאי־שיוויון המשולש $B(x_1, r) subset.eq B(x_0, 3r)$ ו־$closure(B(x_0, 3r)) subset.eq Omega$ ולכן מערך הממוצע ומאי־אליליות של $u$
+  נוכיח קודם מקרה פרטי. נניח ש־$V=B(x,r)$ ונניח גם ש־$closure(B(x_0,4r)) subset.eq Omega$ ונקבע $x_0, x_1 in V$.\
+  מאי־שיוויון המשולש $B(x_1, r) subset.eq B(x_0, 3r)$ ו־$closure(B(x_0, 3r)) subset.eq Omega$ ולכן מערך הממוצע ומאי־שליליות של $u$
   $
     u(x_0) & = 1/Vol(B(x_0, 3r)) integral_(B(x_0, 3r)) u(y) dif y \
            & >= 1/Vol(B(x_0, 3r)) integral_(B(x_1, r)) u(y) dif y \
@@ -1469,7 +1476,7 @@ $phi_epsilon$ חלקה, רדיאלית הנתמכת על $B(0,epsilon)$ ומקי
            & = 3^(-n) u(x_1)
   $
   כלומר עבור המקרי הפרטי אפשר לקחת את הקבוע להיות $3^n$.\
-  למקרה הכללי, מקומפקטיות יש אוסף סופי של נקודות $o_1, dots.h, p_M in closure(V)$ ורדיוסים $r_1, dots.h, r_M > 0$ כך ש־$closure(V) subset.eq union.big_(i=1)^M B(p_i, r_i)$ ו־$closure(B(p_i, 4r_i)) subset.eq Omega$ לכל $i$.\
+  למקרה הכללי, מקומפקטיות יש אוסף סופי של נקודות $p_1, dots.h, p_M in closure(V)$ ורדיוסים $r_1, dots.h, r_M > 0$ כך ש־$closure(V) subset.eq union.big_(i=1)^M B(p_i, r_i)$ ו־$closure(B(p_i, 4r_i)) subset.eq Omega$ לכל $i$.\
   נקבע $x_0, x_1 in V$ ומכך ש־$V$ תת־קבוצה פתוחה וקשירה של $RR^n$ אז היא קשירה מסילתית. לכן נקבע איזושהי מסילה ב־$V$ שמקשרת בין $x_0$ ו־$x_1$ והמסילה מכוסה על־ידי לכל היותר $M$ מהכדורים.
   בלי הגבלת הכלליות אפשר להניח שאפשר להתקדם מ־$x_0$ ל־$x_1$ על־גבי המסילה כאשר בכל צעד אנחנו עוברים מכדור נתון לכדור שעדיין לא ביקרנו בו ובכל מעבר כזה אנחנו צוברים פקטור של לכל היותר $3^(-n)$ בהפרש בין ערכי $u$ על נקודות הקצה של המעבר ולכן $C(Omega,V) = 3^(n M)$ הקבוע הנדרש.
 ]
@@ -1514,7 +1521,7 @@ $
 המטרה שלנו היא לפתור את בעיית דיריכלה עבור משוואת לפלס $Delta u|_Omega =0$ כאשר $u|_boundary(Omega) = g$.
 
 #definition[פונקציה תת־הרמונית][
-  תהיי $Omega subset.eq RR^n$ תחום (קבוצה פתוחה וקשירה), $v in C(Omega)$ תקרא תת־הרמונית ב־$Omega$ אם לכל $B subset.eq Omega$ כדור פתוח כך ש־$closure(B) subset.eq Omega$ ולכל $h in C(closure(B))$ הרמונית ב־$B$ המקיימת $u|_boundary(B) <= h|_boundary(B)$ מתקיים $v<=h$ ב־$B$.
+  תהיי $Omega subset.eq RR^n$ תחום (קבוצה פתוחה וקשירה), $v in C(Omega)$ תקרא תת־הרמונית ב־$Omega$ אם לכל $B subset.eq Omega$ כדור פתוח כך ש־$closure(B) subset.eq Omega$ ולכל $h in C(closure(B))$ הרמונית ב־$B$ המקיימת $v|_boundary(B) <= h|_boundary(B)$ מתקיים $v<=h$ ב־$B$.
 ]
 
 #proposition[הגדרה שקולה לפונקציה תת־הרמונית במימד אחד][
@@ -1526,7 +1533,7 @@ $
 ]
 
 #theorem[עיקרון המקסימום החזק עם פונקציות תת־הרמוניות][
-  תהיי $Omega subset.eq RR^n$ תחום ו־$v in C(Omega)$ תת־הרמונית ב־$Omega$. אם $u$ מקבלת מקסימום ב־$Omega$ אז $u$ קבועה ב־$Omega$.
+  תהיי $Omega subset.eq RR^n$ תחום ו־$u in C(Omega)$ תת־הרמונית ב־$Omega$. אם $u$ מקבלת מקסימום ב־$Omega$ אז $u$ קבועה ב־$Omega$.
 ]
 
 #proof[
@@ -1534,8 +1541,8 @@ $
   $ A = {x in Omega bar u(x) = M} $
   $A$ קבוצה סגורה ולא ריקה ונראה ש־$A$ פתוחה.\
   יהי $x_0 in A$ כך ש־$u(x_0) = M$ ויהי $closure(B) = closure(B(x_0, r)) subset.eq Omega$.\
-  תהיי $h$ הרמונית ב־$B$ כך ש־$h|_boundary(Omega) = v|_boundary(Omega)$ אנו יודעים ש־$u<=h$ ובפרט $m=u(x_0) <= h(x_0)$ ו־$h|_boundary(B) = u|_boundary(Omega)$.\
-  אם־כך, $h$ הרמונית ב־$B$ רציפה ב־$closure(B)$, $h<=M$ על $closure(B)$ ו־$h(x_0)=M$ אז מעיקרון המקסימום לפונקציות הרמוניות $h<=M$ ב־$B$ וכן מאחר ש־$h(x_0)=M$ נקודה פנימית שבה מתקדם המקסימום ונובע כי $h eq.triple|_B M$ אבל לכן מרציפות $h$ נובע ש־$h eq.triple|_closure(Omega) M$ אבל $u|_boundary(B) = h|_boundary(B)=M$.\
+  תהיי $h$ הרמונית ב־$B$ כך ש־$h|_boundary(B) = v|_boundary(B)$ אנו יודעים ש־$u<=h$ ובפרט $m=u(x_0) <= h(x_0)$ ו־$h|_boundary(B) = u|_boundary(Omega)$.\
+  אם־כך, $h$ הרמונית ב־$B$ רציפה ב־$closure(B)$, $h<=M$ על $closure(B)$ ו־$h(x_0)=M$ אז מעיקרון המקסימום לפונקציות הרמוניות $h<=M$ ב־$B$ וכן מאחר ש־$h(x_0)=M$ נקודה פנימית שבה מתקבל המקסימום ונובע כי $h eq.triple|_B M$ אבל לכן מרציפות $h$ נובע ש־$h eq.triple|_closure(B) M$ אבל $u|_boundary(B) = h|_boundary(B)=M$.\
   מאחר שהרדיוס $r$ שרירותי נקבל ש־$u eq.triple M|_B$ לכל כדור.\
   אז נובע מכך ש־$A$ פתוחה אבל היא גם סגורה ולא ריקה ולכן מקשירות $Omega$ נסיק ש־$A = Omega$.
 ]
@@ -1564,7 +1571,7 @@ $
 ]
 
 #proof[
-  יהי $closure(B) subset.eq Omega$ ו־$h in C(closure(B))$ הרמונית ב־$B$ כך ש־$u|_boundary(Omega) <= u|_boundary(Omega)$.\
+  יהי $closure(B) subset.eq Omega$ ו־$h in C(closure(B))$ הרמונית ב־$B$ כך ש־$u|_boundary(B) <= h|_boundary(B)$.\
   אז מתקיים לכל $1<=j<=n$ גם ש־$u_j |_closure(Omega) <= h|_closure(Omega)$ אבל $u_j$ תת־הרמונית ולכן $u_j <= h$ ב־$B$ וזה נכון לכל $j$ ולכן גם $u<=h$.
 ]
 
@@ -1600,7 +1607,7 @@ $ u^(p e r) (x) = sup{v(x) bar v|_boundary(Omega)<=g, v in C(closure(Omega)) "su
 ]<bounded_harmonic-series_functions_have_sub_converges_harmonic_function>
 
 #proof[
-  טבעי לרצות להשתמש במבחן ארצלה הסקאולי מפונקציונלית.\
+  טבעי לרצות להשתמש במבחן ארצלה־אסקולי מפונקציונלית.\
   נביט ב־$partial_i u$ (כלומר $frac(partial u, partial x_i)$) והיא גם פונקציה הרמונית ולכן לכל $x_0 in Omega$ מתקיים
   $
     partial_i u(x_0) &= frac(1, abs(B(x_0, r))) integral_(B(x_0, r)) (partial_i u) (x) dif x \
@@ -1613,7 +1620,7 @@ $ u^(p e r) (x) = sup{v(x) bar v|_boundary(Omega)<=g, v in C(closure(Omega)) "su
   כאשר $r$ קטן דיו עבור $r<dist(K, boundary(Omega))$ עבור $K subset.eq Omega$ קומפקטית.\
   אז לכל $x in K$ מתקיים $abs((partial_i u_n) (x))<=frac(M, r)$ ולכן
   $ abs(u_n (x) - u_n (y))<= max_K abs(gradient u_n) dot.op abs(x-y) <= frac(M, r) abs(x-y) $
-  אז $u_n$ רציפה במידה שווה ואפילו ליפשיצית והיא לא תלויה ב־$n$ ולכן רציפה במידה אחידה וממשפט ארצלה הסקאולי נקבל שקיימת תת־סדרה של $u_n_k$ שמתכנסת במידה שווה על $K$ והגבול הזה הרמוני כי הוא גבול במידה שווה, יחד עם טיעון אלכסון $Omega = union.big K_n$ נקבל את הנדרש.
+  אז $u_n$ רציפה במידה שווה ואפילו ליפשיצית והיא לא תלויה ב־$n$ ולכן רציפה במידה אחידה וממשפט ארצלה־אסקולי נקבל שקיימת תת־סדרה של $u_n_k$ שמתכנסת במידה שווה על $K$ והגבול הזה הרמוני כי הוא גבול במידה שווה, יחד עם טיעון אלכסון $Omega = union.big K_n$ נקבל את הנדרש.
 ]
 
 #end_of_lecture("21  – 23/06")
@@ -1670,23 +1677,18 @@ $ u^(p e r) (x) = sup{v(x) bar v|_boundary(Omega)<=g, v in C(closure(Omega)) "su
 ]
 
 נשים לב שהפיתרון הוא יחיד שכן אם יש שני פתרונות ונסתכל על ההפרש שלהם מעיקרון המקסימום והמינימום (זה מתאפס על השפה).\
-כיצד נפתור
-$ cases(Delta u = f in Omega, u|_boundary(Omega) = g) $
-נוכל להגדיר עם מה שראינו לעיל
+כיצד נפתור את הבעיה הכללית (בעיית פואסון)?
+$ cases(Delta u = f quad & text("in ") Omega, u|_boundary(Omega) = g) $
+נוכל לפרק את הבעיה לשתיים בעזרת מה שראינו לעיל. נגדיר $u_1 colon.eq Gamma * f$ (קונבולוציה עם הפוטנציאל הניוטוני), כך שמתקיים $Delta u_1 = f$ בתוך $Omega$.
+כעת, נגדיר את $u_2$ להיות הפתרון לבעיית דיריכלה ההרמונית הבאה:
 $
-  cases(Delta u_2 = f, u_2 |_boundary(Omega) = 0) quad cases(Delta u_2 = 0, u_2|_boundary(Omega) = g-u_1|_boundary(Omega))
+  mycases(Delta u_2 = 0, in Omega, u_2|_boundary(Omega) = g-u_1|_boundary(Omega), in boundary(Omega))
 $
-כאשר אנחנו עם הקונבולוציה $u_1 colon.eq Gamma * f$ עם $u_1 + u_2 = u$.
+מאחר ש־$u_2$ פותרת את משוואת לפלס עם תנאי שפה רציף (מעצם רציפות $g$ ו־$u_1$), ראינו שקיים לה פתרון יחיד.\
+אז, הפונקציה $u = u_1 + u_2$ היא הפתרון הנדרש, שכן
+$
+  Delta u = Delta u_1 + Delta u_2 = f + 0 = f \
+  u|_boundary(Omega) = u_1|_boundary(Omega) + u_2|_boundary(Omega) = u_1|_boundary(Omega) + g - u_1|_boundary(Omega) = g
+$
 
 #end_of_lecture("22  – 24/06")
-
-= חלקים חשובים מהתרגולים
-== שיטות גורם אינטגרציה והפרדת משתנים
-#theorem[שיטת גורם האינטגרציה][
-  יהי $I subset.eq RR$ קטע, $t_0 in I$ זמן התחלה, $a, f : I arrow RR$ פונקציות רציפות. אזי $x:I arrow RR$ היא פיתרון של המשוואה הדיפרנציאלית $x^prime (t) = a(t) x(t) + f(t)$ אם ורק אם היא מהצורה
-  $ x(t) = e^(phi (t)) dot.op (integral_(t_0)^t e^(-phi(s)) f(s) dif s + C) $
-  כאשר $phi$ היא פונקציה קדומה ל־$a$ ב־$I$ ו־$C$ קבוע כלשהו.
-]
-תשלימי....
-
-== איטרציות פיקארד
