@@ -695,6 +695,7 @@ $ pi(t)alpha^prime (t) = g(t) ==> alpha^prime (t) pi(t)^(-1) g(t) $
   נסמן ב־$pi(t)$ את מטריצת הפתרונות היסודית למשוואה $x^prime (t) = A(t)x(t)$.\
   אזי פונקציה $y(t)=pi(t)(alpha(0)+integral_0^t pi(s)^(-1) g(s) dif s)$ פותרת את המשוואה $y^prime (t) = A(t)x(t)+g(t)$ עם תנאי ההתחלה $y(0)=pi(0)alpha(0)$.
 ]
+
 #proof[
   נגזור
   $
@@ -739,15 +740,19 @@ $ y(t)= e^(t A) y_0 + integral_0^t e^((t -s)A) g(s) dif s $
 #definition[נקודת שיווי משקל][
   הנקודה $p in U$ נקראת *נקודת שיווי משקל* (לפעמיים נקודת שבת) אם $F(p)=0$.\
 ]
+
 #definition[נקודת שיווי משקל יציבה][
   נקודת שיווי משקל $p$ תקרא *נקודת שיווי משקל יציבה* אם לכל $epsilon > 0$ יש $delta>0$ כך שלכל $q in B_delta (p)$ ולכל $t>0$ מתקיים $phi_t (q) in B_epsilon (p)$.
 ]
+
 #definition[נקודת שיווי משקל יציבה אסימפטוטית][
   נקודת שיווי משקל $p$ תקרא *נקודת שיווי משקל אסימפטוטית* אם $p$ יציבה וקיימת גם $eta>0$ כך שלכל $q in B_eta (p)$ מתקיים $display(lim_(t arrow infinity) phi_t (q) = p)$.
 ]
+
 #theorem[הקריטריון הלינארי ליציבות אסימפטוטית][
   תהיי $p in U$ נקודת שיווי משקל של $F$ ונניח שלכל ערך עצמי של $D F(p)$ יש חלק ממשי שלילי. אזי $p$ יציבה אסימפטוטית.
 ]<linear-criterion-for-asymptotic-stability>
+
 #lemma[
   תהיי $A in CC^(n times n)$ מטריצה עם קבוצת ערכים עצמיים $Lambda subset.eq CC$ ונניח ש־$max_(lambda in Lambda) re(lambda)<0$.\
   אזי לכל $0<alpha<min_(lambda in Lambda) abs(re(lambda))$ יש $C>0$ כך שלכל $t>=0$ מתקיים
@@ -755,6 +760,7 @@ $ y(t)= e^(t A) y_0 + integral_0^t e^((t -s)A) g(s) dif s $
   בפרט
   $ lim_(t arrow infinity) exp(t A)=0 $
 ]<lemma_before_linear_criterion_for_asymptotic_stability>
+
 #proof[
   נניח ש־$J = P A P^(-1)$ צורת ז'ורדן של $A$.\
   נשים לב ש־$J + alpha I$ היא מטריצה בצורדת ז'ורדן שכל שלכל ערכייה העצמיים חלק ממשי שלילי.\
@@ -767,6 +773,7 @@ $ y(t)= e^(t A) y_0 + integral_0^t e^((t -s)A) g(s) dif s $
                      & = normop(P)normop(P^(-1))normop(exp(t(J + alpha I))) dot.op e^(-t alpha) <= C dot.op e^(-t alpha)
   $
 ]
+
 #end_of_lecture("9 – 11/05")
 
 #proof[@linear-criterion-for-asymptotic-stability, הקריטריון הלינארי ליציבות אסימפטוטית][
@@ -799,10 +806,12 @@ $ y(t)= e^(t A) y_0 + integral_0^t e^((t -s)A) g(s) dif s $
   נאמר ש־$L : B arrow RR$ גזירה ברציפות היא *פונקציית ליאפונוב* ל־$F$ בנקודה $p$ אם $chevron.l gradient L, F(x) chevron.r <= 0$ לכל $x in B$ ול־$L$ יש מינימום חזק / מינימום ממש ב־$p$ (כלומר $L(p) <= L(x)$ לכל $x in B$ עם שיוויון אם ורק אם $x=p$).\
   נאמר ש־$L$ היא *פונקציית ליאפונוב חזקה* אם היא פונקציית ליאפונוב ומתקיים בנוסף $chevron.l gradient L(x), F(x) chevron.r < 0$ לכל $x!=p$.
 ]
+
 #theorem[משפט ליאפונוב][
   תהיי $p in U$ נקודת שיווי משקל של $F$. אם ל־$F$ יש פונקציית ליאפונוב ב־$p$ אז $p$ יציבה.\
   אם ל־$F$ יש פונקציית ליאפונוב חזקה ב־$p$ אז $p$ יציבה אסימפטוטית.
 ]
+
 #end_of_lecture("10 – 12/05")
 
 #proof[
@@ -1060,7 +1069,9 @@ $
   theta^prime (t) = q(t)sin^2(theta(t))+1/p(t) cos^2(theta(t))
 $
 יונתן טוען שהראשונה לא חשובה והשנייה כן – היא לא לינארית אבל היא מסדר ראשון.
+
 #end_of_lecture("14 – 26/05")
+
 נבחין שעבור $k in ZZ$ מתקיים
 $ theta(t) = pi k <==> u(t) =0 $
 לכן אם נתרגם $u(0)=0$ ל־$theta(0)=0$ נקבל ש־$u$ פתרון למערכת המשוואות שלנו  עם תנאי שפה דיריכלה אם ורק אם $theta(b)=pi k$ לאיזשהו $k in ZZ$.\
@@ -1288,11 +1299,13 @@ $
 
 = משוואות דיפרנציאליות חלקיות
 == משוואת לפלס
+
 #definition[משוואת לפלס][
   עבור $u in C^2 (Omega)$ עבור $Omega subset.eq RR^n$ פתוחה נגדיר את משוואת לפלס להיות המשוואה
   $ Delta u = sum_(j=1)^n (partial^2 u)/(partial x_j^2) = 0 $
   ול־$Delta u$ אנחנו קוראים הלפלסיאן ול־$u$ אנחנו קוראים פונקציה הרמונית.
 ]
+
 #remark[
   + באופן שקול, $Delta u$ הוא ה־$divergence$ של הגרדיאנט (הדיברגנס הופך שדה לסקלר והסקלר אומר מה הקצב של ההתרחבות של השדה) וזה בעצם אנלוג טבעי לנגזרת השנייה במימד אחד.
   + אם $u in C^2 (Omega)$, $H$ ההסיאן כאשר $H_(i j) = (partial^2 u)/(partial x_i partial x_j)$ מטריצת הנגזרות החלקיות. אז $Delta u = tr H(u)$.\
@@ -1651,6 +1664,7 @@ $ u^(p e r) (x) = sup{v(x) bar v|_boundary(Omega)<=g, v in C(closure(Omega)) "su
 ]
 
 == תנאי שפה
+
 #theorem[
   אם $Omega$ הוא תחום $C^2$ ו־$g:boundary(Omega) arrow RR$ רציפה אז ניתן לפתור באופן יחיד את בעיית דיריכלה ב־$Omega$ $ cases(Delta u =0, u|_boundary(Omega) =g) $
 ]
