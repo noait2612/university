@@ -238,8 +238,8 @@
   נניח ש־$sup J_p^* = T < infinity$, $liminf_(t arrow T) dist(x(t), boundary(U))>0$ וש־$limsup_(t arrow T) norm(x(t))<infinity$.\
   כלומר, הקבוצה (התמונה של המסילה) $x([0,T))$ חסומה ומוכלת בקבוצה הסגורה $ A_(epsilon_0) colon.eq {x bar dist(x, boundary(U) >= epsilon_0/2)} $ לאיזשהו $epsilon_0 > 0$.\
   ניקח סדרה $0<t_k < T$ כך ש־$t_k stretch(arrow)_(k arrow infinity) T$ ונבחין ש־$x_(t_k)$ כולם שייכים לקבוצה $A_(epsilon_0)$ וגם לקבוצה החסומה $x([0, T))$.\
-  נפעיל את (ההוכחה של) משפט פיאנו  עם $x_(t_k)$ כנקודת התחלה עם אותו $0<delta$ לכולם שכן $delta$ תלוי ברדיוס בכדור שניתן לקחת סביב $x_(t_k)$ ובחסם על $norm(F bar_B)$ אבל את הרדיוס והחסם על הנורמה ניתן לבחור באופן אחיד (כי $F$ רציפה ולכן חסומה וזה חוסם את כל הנקודות).\
-  יהי $K$ כך ש־$T<t_K + delta$ ונקבל סתירה לכך ש־$T=sup J_p^*$ כי ממשפט פיאנו הפיתרון מוגדר מעבר ל־$T$.\
+  נפעיל את (ההוכחה של) משפט פקיארד  עם $x_(t_k)$ כנקודת התחלה עם אותו $0<delta$ לכולם שכן $delta$ תלוי ברדיוס בכדור שניתן לקחת סביב $x_(t_k)$ ובחסם על $norm(F bar_B)$ אבל את הרדיוס והחסם על הנורמה ניתן לבחור באופן אחיד (כי $F$ רציפה ולכן חסומה וזה חוסם את כל הנקודות).\
+  יהי $K$ כך ש־$T<t_K + delta$ ונקבל סתירה לכך ש־$T=sup J_p^*$ כי ממשפט פקיארד הפיתרון מוגדר מעבר ל־$T$.\
   משיקולי סימטריה ההוכחה למקרה השני זהה.
 ]
 
@@ -268,7 +268,7 @@
 #proof[
   תהיי $(p, t_0) in Omega$, נרצה להראות ש־$Omega$ מכילה סביבה של $(p, t_0)$ וש־$Phi$ רציפה שם.\
   ניקח $t_0 >= 0$ (לשלילי אותו הדבר אבל אנחנו אנשים חיוביים) ותהיי $ C colon.eq {Phi(p, t) bar 0<=t<=t_0} subset.eq U $
-  זאת קבוצה סגורה וחסומה ולכן קומפקטית יש לה מרחק חיובי מהשפה (כלומר, קיים $r>0$ כך ש־$0<4r<dist(C, boundary(U))$).\
+  זאת קבוצה סגורה וחסומה ולכן קומפקטית ויש לה מרחק חיובי מהשפה (כלומר, קיים $r>0$ כך ש־$0<4r<dist(C, boundary(U))$).\
   נסמן
   $
     M colon.eq sup{norm(F(x)) bar dist(x, C) <= 4r} \
@@ -304,7 +304,8 @@
   #proof[@lemma_2_for_continuous_dependence_on_initial_conditions][
     בשלילה נניח שיש $0<=t<=t_0 + r/M$ כך ש־$(q,t) in Omega$ אבל $dist(Phi(q, t), C)>4r$ ומהלמה הקודמת ל־$0<=t<=t_0$ מתקיים $dist(Phi(q, t), C)<=2r$ ולכן עבור $t$ כזה מהנחת השלילה בהכרח מתקיים $t_0 < r$ ובפרט $(q, t_0) in Omega$ (הערה: $(q,t) in Omega <==> t in J_q^*$).\
     נסמן $tau = inf{t_0 <= t<= t_0 + r/M bar (q, t) in Omega, space dist(q, C)>4r}$.\
-    אבל $t_0 <= tau <= t_0 + r/M$ ו־$dist(Phi(q, tau), C) = 4r$ ויתר על־כן לכל $t_0 <= t<=tau$ מתקיים $dist((q,t), C)<=4r$ ובפרט לכל $0<=t<=tau$ מתקיים $norm(F(Phi((q,t))))<=M$ ונשים לב $ dist(Phi(q, tau), C)<=norm(Phi(q, tau) - Phi(q, t_0))+dist(Phi(q, t_0), C)<=M dot.op (tau - t_0) + 2r <= M dot.op r/M + 2r = 3r $
+    אבל $t_0 <= tau <= t_0 + r/M$ ו־$dist(Phi(q, tau), C) = 4r$ ויתר על־כן לכל $t_0 <= t<=tau$ מתקיים $dist((q,t), C)<=4r$ ובפרט לכל $0<=t<=tau$ מתקיים \
+    $norm(F(Phi((q,t))))<=M$ ונשים לב $ dist(Phi(q, tau), C)<=norm(Phi(q, tau) - Phi(q, t_0))+dist(Phi(q, t_0), C)<=M dot.op (tau - t_0) + 2r <= M dot.op r/M + 2r = 3r $
     וזאת כמובן סתירה.
   ]
 
@@ -350,8 +351,8 @@ $ partial/(partial t) D Phi = D(partial/(partial t) Phi) = D(F compose Phi)=D F(
   $
     v_j (t) = eBase_j + integral_0^t A(s)v_j (s) dif s ==>_(triangle) norm(v_j (t)) <= norm(eBase_j) + integral_0^t norm(A(s)) dot.op norm(v_j (s)) dif s
   $
-  יהי $[0, t] subset.eq I$ קטע סגור. נסמן $L = sup_(s in [0, t]) norm(A(s)) < infinity$ (מרציפות $A$). נסמן $f(t) = norm(v_j (t))$, ונקבל
-  $ f(t) <= 1 + L integral_0^t f(s) dif s $
+  יהי $[0, t] subset.eq I$ קטע סגור (עבור $t$־ים שליליים ההוכחה זהה). נסמן $L = sup_(s in [0, t]) norm(A(s)) < infinity$ (מרציפות $A$). נסמן $f(t) = norm(v_j (t))$, ונקבל
+  $ f(tau) <= 1 + L integral_0^tau f(s) dif s $
   לפי הלמה של גרונוול, נובע כי $f(t) <= 1 dot.op e^(L t) = e^(L t)$ ולכן הנורמה של כל עמודה חסומה על כל קטע סגור ב־$I$ והחסם $e^(L t)$ תקף לכל $t in I$ וממשפט הטריכוטומיה הפיתרון $M(t)$ מוגדר וקיים על כל $I$.
 ]
 
@@ -371,17 +372,21 @@ $ partial/(partial t) D Phi = D(partial/(partial t) Phi) = D(F compose Phi)=D F(
   יהי $epsilon > 0$, צריך להראות שקיים $delta>0$ כך שלכל $q$ עם $0<norm(q-p)<delta$ מתקיים $norm(u(t))<epsilon norm(q-p)$.\
   נגדיר $ K colon.eq sup_(t in [0,T]) normop(M(t)) wide L colon.eq sup_(t in [0,T]) normop(D F(x_p (t))) $
   ונבחר $eta>0$ כך ש־$eta dot.op K dot.op t dot.op e^((L+eta)T)<epsilon$.\
-  $D F$ רציפה ולכן יש $r>0$ כך שלכל $0<=t<=T$ ולכל $z in B_r (x_p (t))$ מתקיים $normop(D F(z)-D F(x_p (t)))<eta$ ולכן עבור $z$ כאלה $ norm(F(z)-F(x_p (t))-D F(x_p (t))(z-x_p (t)))<eta norm(z-x_p (t)) $
-  הסבר: עד היום תמיד הסכמנו שאם $normop(D G) < M$ אז $norm(G(z)-G(w))<=M norm(z-w)$ על המסלול בין $z$ ל־$w$ (טריק אינטגרציה).\
-  אז עבור $t, p$ נתונים נגדיר $G(z)=F(z)-D F (x_p (t)) z$ ומכללי גזירה
-  $ D G(z)= D F (z)-D F(x_p (t)) $
-  ולכן
-  $ norm(D G(z)) = norm(D F (z) - D F (x_p (t)))<eta $
-  ולכן
-  $ norm(G(z)-G(x_p (t)))<eta norm(z-x_p (t)) $
+  $D F$ רציפה ולכן יש $r>0$ כך שלכל $0<=t<=T$ ולכל $z in B_r (x_p (t))$ מתקיים $normop(D F(z)-D F(x_p (t)))<eta$ ולכן עבור $z$ כאלה
+  $ (star) space norm(F(z)-F(x_p (t))-D F(x_p (t))(z-x_p (t)))<eta norm(z-x_p (t)) $
   אז אם נציב
   $ norm(F(z)-D F (x_p (t)) z - F(x_p (t))+D F(x_p (t))x_p (t))=norm(F(z)-F(x_p (t))-D F(x_p (t))(z-x_p (t))) $
   מרציפות בתנאי ההתחלה קיים $delta>0$ כך שלכל $q$ עם $norm(p-q)<delta$ ולכל $0<=t<=T$ מתקיים $norm(x_p (t) - x_q (t))<r$ ולכן מצאנו $delta$.\
+  #remark[
+    הסבר ל־$(star)$: עד היום תמיד הסכמנו שאם $normop(D G) < M$ אז $norm(G(z)-G(w))<=M norm(z-w)$ על המסלול בין $z$ ל־$w$ (טריק אינטגרציה).\
+    אז עבור $t, p$ נתונים נגדיר $G(z)=F(z)-D F (x_p (t)) z$ ומכללי גזירה
+    $ D G(z)= D F (z)-D F(x_p (t)) $
+    ולכן
+    $ norm(D G(z)) = norm(D F (z) - D F (x_p (t)))<eta $
+    ולכן
+    $ norm(G(z)-G(x_p (t)))<eta norm(z-x_p (t)) $
+  ]
+
 ]
 
 #end_of_lecture("5 – 27/04")
@@ -442,7 +447,6 @@ $ partial/(partial t) D Phi = D(partial/(partial t) Phi) = D(F compose Phi)=D F(
 
 ישנן שתי הוכחות למשפט – הראשונה בהשראת הסיכום מהמודל, השנייה בהתאם למטלות עם הלמה של גרונוול (שתיהן לא הועברו בהרצאה).\
 האקספוזיציה של שתיהן זהה אך החסימה של הביטוי היא בדרך שונה.\
-#pagebreak()
 #proof[
   מספיק להוכיח את המשפט לכל קטע סגור וחסום $I_0 subset.eq I$.\
   נסמן $ F(x,t) colon.eq A(t) x + g(t) \
@@ -492,9 +496,10 @@ $ partial/(partial t) D Phi = D(partial/(partial t) Phi) = D(F compose Phi)=D F(
 
 #proof[
   נסמן ב־$eBase_k$ את הוקטור הסטנדרטי ונסמן ב־$x_k$ את הפתרון ל־$(star)$ עם תנאי ההתחלה $x(0)=eBase_k$.\
-  ${eBase_k}_(k in NN)$ בלתי־תלויים כי אם $sum alpha_j x_j (t) = 0$ לאיזשהו $t$ נוכיח ש־$alpha_j = 0$ לכל $c_j$ ואז מיחידות הפונקציה הקבועה $0$ היא הפתרון היחידי ולכן $sum alpha_j x_j (0) =0$ שכן הסכום שלהם הוא אפס וכל פונקציה היא פונקציית האפס ולכן $alpha_j = 0$ לכל $j$ והאיברים בלתי־תלויים.\
-  נראה שהיא גם קבוצה פורשת: יהי $y$ פתרון ולכן $y^prime = A y$ וקיימים ${B_j}_(j=1)^n$ כך ש־$y(0)=sum B_j eBase_j$ ומיחידות $y(t)=sum B_j x_j (t)$ לכל $t in I$ וקיבלנו שהקבוצה פורשת.\
-  יש איזומורפיזם בין מרחב וקטורי למרחב לינארי ולכן סיימנו.
+  ${x_k}_(k=1)^n$ בלתי־תלויים שכן אם נניח שמתקיים $sum_(j=1)^n alpha_j x_j (t) = 0$ לכל $t$ אז בפרט $sum_(j=1)^n alpha_j x_j (0) = 0$.
+  מכיוון ש־$x_j (0) = eBase_j$, קיבלנו $sum_(j=1)^n alpha_j eBase_j = 0$.
+  מכך שוקטורי הבסיס הסטנדרטי בלתי־תלויים לינארית נסיק כי $alpha_j = 0$ לכל $j$ וקיבלנו בלתי־תלויות.\
+  היא גם פורשת שכן אם $y$ פתרון ולכן $y^prime = A y$ וקיימים ${B_j}$ כך ש־$y(0)=sum B_j eBase_j$ ומיחידות $y(t)=sum B_j x_j (t)$ לכל $t in I$ וקיבלנו שהקבוצה פורשת.\
 ]
 
 נתבונן במשוואה הומוגונית עם מקדמים קבועים, כלומר $x^prime (t) = A dot.op x(t)$ כאשר $A$ מטריצה קבועה שאינה תלויה ב־$t$ ו־$A in RR^(n times n)$ ונניח ש־$x(0)=x_0$.\
@@ -539,8 +544,7 @@ $
 ]
 
 #proof[
-  $A$ ו־$-A$ מתחלפות ולכן מהטענה הקודמת
-  $ Id = exp(0) = exp(A + (-A)) = exp(A) dot.op exp(-A) $
+  $A$ ו־$-A$ מתחלפות ולכן מהטענה הקודמת $Id = exp(0) = exp(A + (-A)) = exp(A) dot.op exp(-A)$.
 ]
 
 #corollary[
@@ -587,9 +591,6 @@ $
 $
   exp mat(square, , 0; , square, ; , dots.down, ; 0, , square) = mat(exp square, , 0; , exp square, ; , dots.down, ; 0, , exp square)
 $
-#pagebreak()
-נתבונן ב־$exp$ של בלוקי ז'ורדן
-$ J_lambda = mat(lambda, 1, , , ; , lambda, dots.down, ; , , dots.down, 1; , , , lambda) $
 
 #proposition[
   לכל בלוק ז'ורדן $J_lambda in CC^(n times n)$ מתקיים
@@ -653,7 +654,7 @@ $ J_lambda = mat(lambda, 1, , , ; , lambda, dots.down, ; , , dots.down, 1; , , ,
 ]
 
 #end_of_lecture("8 – 05/05")
-#pagebreak()
+
 == משוואות לינאריות לא הומגניות
 באופן כללי אנחנו לא יודעים איך לפתור משוואות לינאריות הומוגניות ללא מקדמים קבועים אבל בתנאים מסויימים אנחנו כן יודעים (דוגמה בתרגיל הבית).\
 נניח שיש לנו
@@ -666,7 +667,7 @@ $
 כאשר אנחנו יודעים לפתור את $(star)$ ו־$(star star)$ זו משוואה לא הומוגנית כאשר $A(t)$ היא $n times n$.\
 יהיו ${x_1 (t), x_2 (t), dots.h, space x_n (t)}$ בסיס למרחב הפתרונות של $(star)$.\
 הרעיון הוא לכתוב פיתרון כללי למשוואה לא הומוגנית $(star star)$ כצירוף לינארי של ה־$x_i (t)$־ים עם מקדמים שמשתנים בזמן, כלומר נכתוב את $y= sum_(j=1)^n alpha_j (t) x_j (t)$ כפתרון ל־$(star star)$ עם מקדמים שתלויים בזמן (אם זה היה $alpha_j$ בלי תלות ב־$t$ זה היה הפיתרון הכללי עבור משוואה הומגנית).\
-נסמן ב־$pi(t)$ את מטריצת הפתרונות היסודית
+נסמן ב־$pi(t)$ את מטריצת הפתרונות היסודית (היא הפיכה כי היא בסיס למרחב הפתרונות)
 $ pi(t) = mat(|, |, dots.h, |; x_1 (t), x_2 (t), dots.h, x_n (t); |, |, dots.h, |) $
 נשים לב ש־$sum_(j=1)^n alpha_j (t) x_j (t) = pi(t) alpha(t)$ כאשר $alpha(t) = vec(alpha_1 (t), dots.v, alpha_n (t))$.\
 אם $y(t) = pi(t) alpha(t)$ פותר את $(star star)$ אז $y(0)=pi(0)alpha(0)$ אז $y(t)$ מקיים
@@ -679,9 +680,9 @@ $ y^prime (t) = A(t) pi(t) alpha(t) + pi(t) alpha^prime (t) $
 $
   cancel(A(t) y(t)) + g(t) = y^prime (t) = A(t) underbrace(pi(t) alpha(t), = y(t)) + pi(t) alpha^prime (t) = cancel(A(t) y(t)) + pi(t) alpha^prime (t)
 $
+\
 לכן קיבלנו שתנאי הכרחי על $alpha$ היינו
 $ pi(t)alpha^prime (t) = g(t) ==> alpha^prime (t) = pi(t)^(-1) g(t) $
-ו־$pi$ הפיכה כי היא בסיס למרחב הפתרונות (זוהי מטריצה רגולרית).\
 אם כך, מהמשפט היסודי $ alpha(t) = alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s $
 זה תנאי הכרחי, צריך לראות אם זה אכן פיתרון.
 
@@ -771,12 +772,11 @@ $ pi(t)alpha^prime (t) = g(t) ==> alpha^prime (t) = pi(t)^(-1) g(t) $
 #proof[@linear-criterion-for-asymptotic-stability, הקריטריון הלינארי ליציבות אסימפטוטית][
   כזכור לכל $t in I_p$, $phi_t (x)$ גזירה ב־$p$ ו־$D phi_t (p)$ מקיימת
   $
-    (star) space dif/(dif t) [D phi_t (p)] = (D phi_t (p))^prime = D F (phi_t (p)) D phi_t (p) \
-    D phi_0 (o) = id
+    (star) space dif/(dif t) [D phi_t (p)] = D F (phi_t (p)) D phi_t (p), quad D phi_0 (o) = id
   $
   כאשר קראנו ל־$D phi_t (p) = M$ בעבר.\
-  אבל $p$ נקודת שיווי משקל כלומר $F(p)=0$ ולכן $phi_t (p) = p$ לכל $t$ ומכאן נובע ש־$(star)$ היא משוואה לינארית במקדמים קבועים ולכן $M^prime = D F (p) M$.\
-  ולכן $ D phi_t (p) = exp(t D F (p)) $
+  אבל $p$ נקודת שיווי משקל כלומר $F(p)=0$ ולכן $phi_t (p) = p$ לכל $t$ ומכאן נובע ש־$(star)$ היא משוואה לינארית במקדמים קבועים ולכן $M^prime = D F (p) M$ ולכן
+  $ D phi_t (p) = exp(t D F (p)) $
   בפרט מ@lemma_before_linear_criterion_for_asymptotic_stability נובע ש־$normop(exp(t D F(p))) stretch(arrow)_(t arrow infinity) 0$ ולכן יש $T > 0$ שעבורו
   $ normop(exp(T D F(p)))< 1/4 $
   יהי $epsilon > 0$ וקיימת $delta > 0$ כך שלכל $q in B_delta (p)$ ולכן $t in [0,T]$ מתקיים $phi_t (q) in B_epsilon (p)$ (מתלות רציפה בתנאי ההתחלה).\
@@ -800,8 +800,7 @@ $ pi(t)alpha^prime (t) = g(t) ==> alpha^prime (t) = pi(t)^(-1) g(t) $
 ]
 
 #theorem[משפט ליאפונוב][
-  תהיי $p in U$ נקודת שיווי משקל של $F$. אם ל־$F$ יש פונקציית ליאפונוב ב־$p$ אז $p$ יציבה.\
-  אם ל־$F$ יש פונקציית ליאפונוב חזקה ב־$p$ אז $p$ יציבה אסימפטוטית.
+  תהיי $p in U$ נקודת שיווי משקל של $F$. אם ל־$F$ יש פונקציית ליאפונוב ב־$p$ אז $p$ יציבה ואם ל־$F$ יש פונקציית ליאפונוב חזקה ב־$p$ אז $p$ יציבה אסימפטוטית.
 ]
 
 #end_of_lecture("10 – 12/05")
@@ -809,10 +808,10 @@ $ pi(t)alpha^prime (t) = g(t) ==> alpha^prime (t) = pi(t)^(-1) g(t) $
 #proof[
   נוכיח ראשית שאם יש פונקציית ליאפונוב אז יש לנו יציבות.\
   יהי $r>0$ ו־$L in C^1 (B_r (x_0))$ פונקציית ליאפונוב.\
-  נשים לב שלכל $p in B_r (x_0)$ אם נסתכל על המסילה $x_p$ ונרכיב עליה את הפונקציה $L(x_p (t))$ היא פונקציה יורדת מהגדרת פונקציית ליאפונוב היא יורדת כל זמן שהיא מוגדרת מכלל השרשרת
+  נשים לב שלכל $p in B_r (x_0)$ אם נסתכל על המסילה $x_p$ אז ההרכבה $L(x_p (t))$ היא פונקציה יורדת כל זמן שהיא מוגדרת מהגדרת פונקציית ליאפונוב ומכלל השרשרת
   $ dif/(dif t) (L(x_p (t))) = (x^prime_p (t), gradient L(x_p (t)))=(F(x_p (t)), L(x_p (t)))<0 $
   יהי $r>epsilon>0$ ומתכונה $(2)$ של פונקציית ליאפונוב ($L(x_0) <= L(x)$) נקבל ש־$display(L(x_0) < min_(x in boundary(B_epsilon (x_0))) L(x))$.\
-  לכן קיים $delta > 0$ כך ש־$display(max_(x in B_delta (x_0)) < min_(x in boundary(B_epsilon (x_0))) L(x))$.\
+  לכן קיים $delta > 0$ כך ש־$display(max_(x in B_delta (x_0)) L(x) < min_(x in boundary(B_epsilon (x_0))) L(x))$.\
   כעת, אם $p in B_delta (x_0)$ מתקיים שאם יש $t>0$ שעבורו $x_p (t) in.not B_epsilon (x_0)$ אז קיים $t_star$ כך ש־$x_p (t_star) in boundary(B_epsilon (x_0))$ אבל אז $L(x_p (t_star)) > L(x_p (0)) = L(p)$ בסתירה למונוטוניות.\
   כעת נראה ליאפונוב חזקה גורר יציבות אסימפטוטית.\
   יהי $0<R<r$ ומכך שזו פונקציית ליאפונוב חזקה נובע שיש $eta>0$ כך שלכל $p in B_eta (x_0)$ כך ש־$x_p (t) in B_R (x_0)$ לכל $t>=0$.\
@@ -864,9 +863,10 @@ $ pi(t)alpha^prime (t) = g(t) ==> alpha^prime (t) = pi(t)^(-1) g(t) $
   המסקנה מהכתיבה הזו היא שתחת כוח משמר (שתלוי רק במיקום) נובע ש־$H$ קבועה לאורך המסילות – כלומר $H$ קבועה בזמן במערכת ו־$H$ נקראת האנרגיה של המערכת ו־$H$ נקראת המילטוניאן.
 ]
 
+#pagebreak()
+
 #theorem[הקריטריון הלינארי לאי־יציבות][
-  תהיי $U subset.eq RR^n$ פתוחה ו־$F:U arrow RR^n$ שדה גזיר ברציפות ו־$x_o in U$ נקודת שיווי משקל.\
-  אם ל־$D F(x_0)$ יש ערך עצמי עם חלק ממשי חיובי אז $x_0$ לא יציבה.
+  תהיי $U subset.eq RR^n$ פתוחה ו־$F:U arrow RR^n$ שדה גזיר ברציפות ו־$x_o in U$ נקודת שיווי משקל.  אם ל־$D F(x_0)$ יש ערך עצמי עם חלק ממשי חיובי אז $x_0$ לא יציבה.
 ]
 
 #proof[
@@ -878,7 +878,7 @@ $ pi(t)alpha^prime (t) = g(t) ==> alpha^prime (t) = pi(t)^(-1) g(t) $
   נניח ש־$x_0 = 0$ ונניח בשלילה ש־$0$ יציבה, כלומר: לכל $epsilon > 0$ יש $delta>0$ כך שאם $p in B_delta (0)$ אז $x_p (t) in B_epsilon (0)$.\
   נגדיר את הפונקציה $g(x)=F(x)-A x$ כך שיתקיים
   $ x^prime (t) = F(x(t)) = A x(t) + g(x(t)) $
-  לכן ניתן לכתוב את הפתרון למשוואה באופן הבא
+  לכן ניתן לכתוב את הפתרון למשוואה באופן הבא (עקרון דוהמל)
   $ (star star) space x(t) = e^(t A) x(0) + integral_0^t e^((t-s)A) g(x(s)) dif s $
   להמשך ההוכחה אנחנו צריכים שתי למות
 
@@ -894,34 +894,25 @@ $ pi(t)alpha^prime (t) = g(t) ==> alpha^prime (t) = pi(t)^(-1) g(t) $
     $ F(x) = F(0) + A(x+ o(norm(x))) $
     ולכן מכך ש־$F(0) = 0$
     $ g(x) =F(x) - A x = o(norm(x)) $
-    בפרט, יש $R>0$ כך שלכל $x in RR$ מתקיים $norm(g(x))<=norm(x)$ ובנוסף
-    $ pi_plus.minus e^(t A) = e^(t A) pi_plus.minus $
-    נכפול את $(star star)$ ב־$e^(t A)$ ונפעיל את $pi_plus$ ונקבל (כי $pi_plus$ זו העתקה לינארית וגם אינטגרל הוא לינארי)
+    בפרט, מהגדרת הגבול יש $R>0$ כך שלכל $x in B_R (0)$ מתקיים $(diamond.small) space norm(g(x))<=norm(x)$. \
+    נכפול את $(star star)$ ב־$e^(-t A)$ ונפעיל את $pi_plus$ ונקבל (כי $pi_plus$ זו העתקה לינארית וגם אינטגרל הוא לינארי ובנוסף מתקיים $pi_plus.minus e^(t A) = e^(t A) pi_plus.minus$)
     $
       (star star star) space e^(-t A) pi_plus x(t) = pi_plus (x(0)) + integral_0^t e^(-s A) pi_plus g(x(s)) dif s ==> pi_plus (x(0)) = - integral_0^infinity e^(-s A) pi_plus g(x(s)) dif s
     $
-    נרצה להראת את החץ מימין: קיים קבוע $C>0$ כך שאם $0<mu<min { abs(re(lambda)) bar A "ערך עצמי של" lambda}$ ואז
-    $ normop(pi_plus.minus) <= C $
-    אז לכל $t>0$
-    $ norm(e^(t A) pi_minus x) <= C e^(- mu t) norm(x) $
-    ולכל $t<0$
+    נרצה להראות את החץ מימין: קיים קבוע $C>0$ המקיים $normop(pi_plus.minus) <= C$ כך שאם $0<mu<min { abs(re(lambda)) bar A "ערך עצמי של" lambda}$  ונקבל
     $
-      norm(e^(t A) pi_plus x) <= C e^(-mu abs(t)) norm(x)
+      forall t >0, space norm(e^(t A) pi_minus x) <= C e^(- mu t) norm(x) \
+      forall t <0, space norm(e^(t A) pi_plus x) <= C e^(-mu abs(t)) norm(x)
     $
     לכן אם $x(t) in B_r (0)$ לכל $t<0$ נובע
     $ norm(e^(-t A) pi_plus (x(t)))<= C^2 e^(-mu t) R stretch(arrow)_(t arrow infinity) 0 $
-    בנוסף לכל $s>0$
-    $ norm(g(x(s)))<=norm(x(s)) $
-    ולכן
+    יחד עם $(diamond.small)$ לכל $s>0$ נקבל
     $ norm(e^(-s A) pi_plus g(x(s)))<= C^2 e^(-s mu) R $
-    וזה אינטגרבילי ב־$s$ ולכן ניתן ל־$t$ לשאוף לאינסוף ב־$(star star star)$ ונקבל
-    $ pi_plus (x(0)) = - integral_0^infinity e^(-s A) pi_plus g(x(s)) dif s $
-    נתבונן
-    $ x(t)=e^(t A) x(0) + integral_0^t e^((t-s) A) g(x(s)) dif s $
-    ונקבל
+    וזה אינטגרבילי ב־$s$ ולכן ניתן ל־$t$ לשאוף לאינסוף ב־$(star star star)$ ונקבל את ההצדקה לחץ מימין.\
+    בחזרה ל־$(star star)$ עם הפיצול לסכום ישר וממה שמצאנו לעיל נקבל
     $
-      x(t) = e^(t A) pi_plus (x(0)) + e^(t A) pi_minus (x(0)) + integral_0^t e^((t-s)A) pi_minus g(x(s)) dif s + integral_0^t e^((t-s)A) pi_plus g(x(s)) dif s \
-      = e^(t A) pi_minus (x(0)) + integral_0^t e^((t-s)A) pi_minus g(X(s)) dif s - integral_t^infinity e^((t-s)A) pi_plus g(x(s)) dif s
+      x(t) &= e^(t A) pi_plus (x(0)) + e^(t A) pi_minus (x(0)) + integral_0^t e^((t-s)A) pi_minus g(x(s)) dif s + integral_0^t e^((t-s)A) pi_plus g(x(s)) dif s \
+      &= e^(t A) pi_minus (x(0)) + integral_0^t e^((t-s)A) pi_minus g(x(s)) dif s - integral_t^infinity e^((t-s)A) pi_plus g(x(s)) dif s
     $
   ]
 
@@ -932,13 +923,14 @@ $ pi(t)alpha^prime (t) = g(t) ==> alpha^prime (t) = pi(t)^(-1) g(t) $
   #proof[@second-lemma-for-the-linear-criterion-for-instable][
     לכל $epsilon > 0$ קיים $R>R_0 > 0$ ($R$ מהלמה הקודמת) כך שלכל $z_1, z_2 in B_(R_0) (0)$ מתקיים
     $ norm(g(z_1) - g(z_2)) < epsilon norm(z_1 - z_2) $
-    זה נובע מהגזירות ברציפות של $F$ : כי לכל $z_1, z_2$ מתקיים
-    $
-      F(z_2) = F(z_1) + D F(z_1)(z_2 - z_1) + o(norm(z_2-z_1)) = F(z_1) + A(z_2 -z_1) + (D F(z_1) - A)(z_2 - z_1) + o(norm(z_2 - z_1))
-    $
-    לכן
-    $ g(z_2) - g(z_1) = (D F(z_1)-A)(z_2 - z_1) + o(norm(z_2 - z_1)) $
-
+    #remark[
+      זה נובע מהגזירות ברציפות של $F$ : כי לכל $z_1, z_2$ מתקיים
+      $
+        F(z_2) = F(z_1) + D F(z_1)(z_2 - z_1) + o(norm(z_2-z_1)) = F(z_1) + A(z_2 -z_1) + (D F(z_1) - A)(z_2 - z_1) + o(norm(z_2 - z_1))
+      $
+      לכן
+      $ g(z_2) - g(z_1) = (D F(z_1)-A)(z_2 - z_1) + o(norm(z_2 - z_1)) $
+    ]
     #end_of_lecture("12 – 19/05")
 
     נקבע $R_0 = R_0 (epsilon)$ עבור $epsilon=epsilon(C, mu)$ עבור $mu$ מהלמה הקודמת שנגדיר בהמשך.\
@@ -948,8 +940,7 @@ $ pi(t)alpha^prime (t) = g(t) ==> alpha^prime (t) = pi(t)^(-1) g(t) $
     $
       x(t)=e^(t A) pi_minus (x(0))+integral_0^t e^((t-s)A)pi_minus (g(x(s))) dif s - integral_t^infinity e^((t-s) A) pi_plus (g(x(s))) dif s
     $
-    וכנל עבור $y$.\
-    לכן
+    וכנל עבור $y$. לכן
     $
       norm(x(t)-y(t)) &= norm(integral_0^t e^((t-s) A) pi_minus (g(x(s))-g(y(s))) dif s - integral_t^infinity e^((t-s)A) pi_plus (g(x(s))-g(y(s))) dif s) \
       &<= integral_0^t norm(e^((t-s)A) pi_minus (g(x(s))-g(y(s))))+integral_t^infinity norm(e^((t-s)A) pi_plus (g(x(s))-g(y(s))))
@@ -960,7 +951,7 @@ $ pi(t)alpha^prime (t) = g(t) ==> alpha^prime (t) = pi(t)^(-1) g(t) $
       &= (2epsilon C d)/mu
     $
     כאשר אי־השיוויון השני נובע מהלמה הקודמת.\
-    אז נבחר $epsilon = mu/(4C)$ ונקבל לעיל $d/2$ אבל זו סתירה כי זה אומר ש־$d=0$ (נזכר ש־$norm(x(t)-y(t))=d$).
+    אז נבחר $epsilon = frac(mu, 4C)$ ונקבל לעיל $frac(d, 2)$ אבל זו סתירה כי זה אומר ש־$d=0$ (נזכר ש־$norm(x(t)-y(t))=d$).
   ]
 
   נבחין שההוכחה של @second-lemma-for-the-linear-criterion-for-instable מראה שיציבות היא בלתי אפשרית.\
@@ -1613,7 +1604,7 @@ $
   אז לכל $x in K$ מתקיים $abs((partial_i u_n) (x))<=frac(M, r)$ ולכן
   $ abs(u_n (x) - u_n (y))<= max_K abs(gradient u_n) dot.op abs(x-y) <= frac(M, r) abs(x-y) $
   אז $u_n$ רציפה במידה שווה ואפילו ליפשיצית והיא לא תלויה ב־$n$ ולכן רציפה במידה אחידה וממשפט ארצלה־אסקולי נקבל שקיימת תת־סדרה של $u_n_k$ שמתכנסת במידה שווה על $K$ והגבול הזה הרמוני כי הוא גבול במידה שווה.\
-  כדי להרחיב זאת לכל $Omega$, נבחר סדרה עולה של קבוצות קומפקטיות $K_1 subset.eq K_2 subset.eq dots.h$ כך ש-$union.big_m K_m = Omega$.\
+  כדי להרחיב זאת לכל $Omega$, נבחר סדרה עולה של קבוצות קומפקטיות $K_1 subset.eq K_2 subset.eq dots.h$ כך ש־$union.big_m K_m = Omega$.\
   ממשפט ארצלה־אסקולי קיימת תת־סדרה שמתכנסת במידה שווה על $K_1$. מתוכה נוציא תת־סדרה שמתכנסת במידה שווה על $K_2$, וכן הלאה. נפעיל את טיעון האלכסון של קנטור ונקבל שתת־הסדרה $u_n_k$ מתכנסת במידה שווה על כל קבוצה קומפקטית ב־$Omega$.
 ]
 
