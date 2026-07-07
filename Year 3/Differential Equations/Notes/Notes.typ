@@ -871,7 +871,7 @@ $ pi(t)alpha^prime (t) = g(t) ==> alpha^prime (t) = pi(t)^(-1) g(t) $
     $ F(x) = F(0) + A(x+ o(norm(x))) $
     ולכן מכך ש־$F(0) = 0$
     $ g(x) =F(x) - A x = o(norm(x)) $
-    בפרט, מהגדרת הגבול יש $R>0$ כך שלכל $x in B_R (0)$ מתקיים $(diamond.small) space norm(g(x))<=norm(x)$. \
+    בפרט, מהגדרת הגבול יש $R>0$ כך שלכל $x in B_R (0)$ מתקיים $(suit.heart.stroked) space norm(g(x))<=norm(x)$. \
     נכפול את $(star star)$ ב־$e^(-t A)$ ונפעיל את $pi_plus$ ונקבל (כי $pi_plus$ זו העתקה לינארית וגם אינטגרל הוא לינארי ובנוסף מתקיים $pi_plus.minus e^(t A) = e^(t A) pi_plus.minus$)
     $
       (star star star) space e^(-t A) pi_plus x(t) = pi_plus (x(0)) + integral_0^t e^(-s A) pi_plus g(x(s)) dif s ==> pi_plus (x(0)) = - integral_0^infinity e^(-s A) pi_plus g(x(s)) dif s
@@ -883,7 +883,7 @@ $ pi(t)alpha^prime (t) = g(t) ==> alpha^prime (t) = pi(t)^(-1) g(t) $
     $
     לכן אם $x(t) in B_r (0)$ לכל $t<0$ נובע
     $ norm(e^(-t A) pi_plus (x(t)))<= C^2 e^(-mu t) R stretch(arrow)_(t arrow infinity) 0 $
-    יחד עם $(diamond.small)$ לכל $s>0$ נקבל
+    יחד עם $(suit.heart.stroked)$ לכל $s>0$ נקבל
     $ norm(e^(-s A) pi_plus g(x(s)))<= C^2 e^(-s mu) R $
     וזה אינטגרבילי ב־$s$ ולכן ניתן ל־$t$ לשאוף לאינסוף ב־$(star star star)$ ונקבל את ההצדקה לחץ מימין.\
     בחזרה ל־$(star star)$ עם הפיצול לסכום ישר וממה שמצאנו לעיל נקבל
@@ -1285,7 +1285,7 @@ $
     כאשר $u(x,y) = re(f(x+i y)), v(x,y) = im(f(x + i y))$. למה? כי פונקציה הולומורפית מקיימת את משוואות קושי רימן
     $
       (partial u)/(partial x) = (partial v)/(partial y) wide (partial u)/(partial y) = - (partial v)/(partial x) \
-      (partial^2 u)/(partial x^2) = partial/(partial x) ((partial u)/(partial x)) = partial/(partial x )((partial v)/(partial y)) = partial/(partial y) ((partial y)/(partial x)) = - (partial^2 u)/(partial y^2)
+      (partial^2 u)/(partial x^2) = partial/(partial x) ((partial u)/(partial x)) = partial/(partial x )((partial v)/(partial y)) = partial/(partial y) ((partial u)/(partial x)) = - (partial^2 u)/(partial y^2)
     $
 ]
 
@@ -1520,14 +1520,11 @@ $
 #proof[
   נסמן
   $ M colon.eq max_(x in Omega) u(x), quad A colon.eq {x in Omega bar u(x) = M} $
-  מאחר ש־$u$ רציפה נובע ש־$A$ סגורה ב־$Omega$ ולא ריקה.\
-  יהי $x_0 in A$ ויהי $B=B(x_0, r)$ כדור כך ש־$closure(B) subset.eq Omega$.\
-  תהיי $h$ הרמונית ב־$B$ ורציפה ב־$closure(B)$ המקיימת $h|_boundary(B) = u|_boundary(B)$.
-  מאחר ש־$u<=M$ בכל $Omega$, בפרט על השפה נקבל ש־$h|_boundary(B) = u|_boundary(B) <= M$.\
-  מכיוון ש־$h$ הרמונית, מעיקרון המקסימום נובע ש־$h<=M$ בכל $B$. \
-  מצד שני, $u$ תת־הרמונית ולכן $u|_B <= h|_B$. בפרט בנקודה $x_0$ מתקיים $M = u(x_0) <= h(x_0)$. \
-  קיבלנו ש־$h<=M$ בכל הכדור, אך $h(x_0) >= M$, ולכן בהכרח $h(x_0) = M$.
-  כלומר, הפונקציה ההרמונית $h$ מקבלת מקסימום בנקודה פנימית, ולכן מעיקרון המקסימום החזק לפונקציות הרמוניות נובע ש־$h eq.triple M$ בכל $closure(B)$. \
+  מאחר ש־$u$ רציפה נובע ש־$A$ סגורה ב־$Omega$ ולא ריקה ויהיו $x_0 in A$, $B=B(x_0, r)$ כדור כך ש־$closure(B) subset.eq Omega$.\
+  תהיי $h$ הרמונית ב־$B$ ורציפה ב־$closure(B)$ המקיימת $h|_boundary(B) = u|_boundary(B)$.\
+  מאחר ש־$u<=M$ בכל $Omega$, בפרט נקבל ש־$h|_boundary(B) = u|_boundary(B) <= M$ אבל $h$ הרמונית ולכן מעיקרון המקסימום נובע כי $h|_B <= M$.\
+  מצד שני, $u$ תת־הרמונית ולכן $u|_B <= h|_B$ ובפרט בנקודה $x_0$ מתקיים $M = u(x_0) <= h(x_0)$. \
+  קיבלנו ש־$h<=M$ בכל הכדור, אך $h(x_0) >= M$, ולכן בהכרח $h(x_0) = M$. כלומר הפונקציה ההרמונית $h$ מקבלת מקסימום בנקודה פנימית, ולכן מעיקרון המקסימום החזק לפונקציות הרמוניות נובע ש־$h eq.triple M$ בכל $closure(B)$. \
   מכאן שעל שפת הכדור, $u|_boundary(B) = h|_boundary(B) = M$ וזה נכון לכל $r$ ולכן $B subset.eq A$ ולכן $A$ פתוחה, סגורה ולא ריקה ולכן מקשירות $A=Omega$.
 ]
 
@@ -1561,25 +1558,31 @@ $
 #definition[$bold(u^per)$][
   $ u^per (x) = sup{v(x) bar v|_boundary(Omega)<=g, v in C(closure(Omega)) "sub-harmonic"} $
 ]
+
 #definition[ההרמה ההרמונית][
-  תהיי $v$ תת־הרמונית ב־$Omega$ ו־$closure(B) subset.eq Omega$. נגדיר את ההרמה ההרמונית של $v$ לכדור $B$ ב־$overline(v)^B$ כך ש־$overline(v)^B in C(Omega)$ המוגדרת על־ידי
-  $ overline(v)^B (x) = mycases(v(x), x in.not B, h(x), x in B) $
-  כאשר $h in C(closure(B))$, $h|_boundary(B) = v|_boundary(B)$ ו־$h$ הרמונית ב־$B$.
+  תהיי $v$ תת־הרמונית ב־$Omega$ ו־$closure(B) subset.eq Omega$. נגדיר את ההרמה ההרמונית של $v$ לכדור $B$ ב־$V$ כך ש־$V in C(Omega)$ המוגדרת על־ידי
+  $ V (x) = mycases(v(x), x in.not B, overline(v)(x), x in B) $
+  כאשר $overline(v) in C(closure(B))$, $overline(v)|_boundary(B) = v|_boundary(B)$ ו־$overline(v)$ הרמונית ב־$B$.
+]
+
+#remark[
+  בהרצאה דן (שהחליף את יונתן) סימן את ההרמה הרמונית בתור $overline(v)^B$ ול־$overline(v)$ הוא קרא $h$ אבל מצאתי את זה מבלבל בהוכחה של משפט פרון אז נצמדתי לסימונים מהמודל.
+]
+
+#remark[
+  ההרמה ההרמונית מצדיקה את השם שלה בגלל שמתקיים $v<=V$ ב־$Omega$ שכן אם $overline(v)$ הרמונית ב־$B$ אז מכך ש־$v=overline(v)$ על $boundary(B)$ ובפרט $v<=overline(v)$ על $boundary(B)$ הרי ש־$v<=overline(v)$ ב־$B$ מעצם הגדרת $v$ כפונקציה תת־הרמונית ולכן בסך־הכל $v<=V$ ב־$Omega$.
 ]
 
 #proposition[
-  $overline(v)^B$ היא תת־הרמונית ב־$Omega$.
-]
+  $V$ היא תת־הרמונית ב־$Omega$.
+]<harmonic_lift_is_subharmonic>
 
 #proof[
-  יהי $closure(B^prime) subset.eq Omega$ כדור סגור כלשהו ותהיי $h in C(closure(B^prime))$ הרמונית כך ש־$overline(v)^B|_boundary(B^prime) <= h|_boundary(B^prime)$ ונרצה להראות ש־$overline(v)^B <= h$ ב־$B^prime$.\
-  נראה תחילה ש־$overline(v)^B = v$ ב־$B^prime without B$ ונשים לב ש־$v<=overline(v)^B$ שכן $v|_boundary(B^prime) <= overline(v)^B |_boundary(B^prime)$ ומאחר ש־$v$ תת־הרמונית נקבל ש־$v<=h$ ב־$B^prime$ ובפרט $overline(v)^B = v <=h$ ב־$B^prime without B$.\
-  נראה ש־$overline(v)^B <= h$ ב־$B^prime inter B$, מתקיים
-  $
-    boundary((B^prime inter B)) = underbrace((boundary(B^prime) inter closure(B)), I) union underbrace((closure(B^prime) inter boundary(B)), I I)
-  $
-  ב־$I$ מתקיים $closure(v)^B<=h$ שכן $boundary(B^prime) inter closure(B) subset.eq boundary(B^prime)$ ונתון ש־$closure(v)^B <=h$ על $boundary(B^prime)$.\
-  ב־$I I$ מתקיים ש־$closure(B^prime) inter boundary(B) subset.eq closure(B^prime) without B$ ולכן $closure(v)^B$ מתלכדת עם $v$ ב־$I I$ וראינו ש־$v<=h$ ב־$B^prime$ ולכן גם ב־$B^prime without B$ ועל־כן $closure(v)^B <= h$.\
+  יהי $C subset.eq Omega$ כדור כך ש־$closure(C) subset.eq Omega$, ותהי $h in C(closure(C))$ הרמונית ב־$C$ כך ש־$V|_boundary(C) <= h|_boundary(C)$. נרצה להראות ש־$V <= h$ ב־$C$.\
+  $v$ תת־הרמונית ב־$Omega$ ולכן $v <= V$ בכל $Omega$. מההנחה שלנו, מתקיים $V <= h$ על $boundary(C)$, ומכאן שגם $v <= h$ על $boundary(C)$. $h$ הרמונית ו־$v$ תת־הרמונית ולכן מעקרון המקסימום עבור פונקציות תת־הרמוניות נקבל ש־$v<=h$ בכל $C$. לפי הגדרת ההרמה, ב־$C without B$ מתקיים $V = v$, כלומר קיבלנו ש־$V <= h$ ב־$C without B$. נסמן $U colon.eq B inter C$ ונבחן את
+  $ boundary(U) = underbrace((boundary(B) inter closure(C)), I) union underbrace((closure(B) inter boundary(C)), I I) $
+  על $I I$ מתקיים $V <= h$ מהנתון ועל $I$, לפי הגדרת ההרמה מתקיים $V = v$ והראינו ש־$v <= h$ בכל $C$, נובע כי $V = v <= h$ גם על $I$ ולכן $V<=h$ על כל $boundary(U)$.\
+  ב־$U subset.eq B$ מתקיים $V=overline(v)$ שהיא הרמונית ב־$B$ ולכן $V-h$ הרמוני ב־$U$ המקיים $V-h<=0$ על $boundary(U)$ ומעיקרון המקסימום אי־השיוויון נשמר גם ב־$U$.
 ]
 
 #theorem[
@@ -1596,12 +1599,10 @@ $
     & <= frac(C_n r^(n-1), C_n^prime r^n) dot.op max_closure(Omega) abs(u) \
     &=frac(max_closure(Omega) abs(u), r)
   $
-  כאשר $r$ קטן דיו עבור $r<dist(K, boundary(Omega))$ עבור $K subset.eq Omega$ קומפקטית.\
-  אז לכל $x in K$ מתקיים $abs((partial_i u_n) (x))<=frac(M, r)$ ולכן
-  $ abs(u_n (x) - u_n (y))<= max_K abs(gradient u_n) dot.op abs(x-y) <= frac(M, r) abs(x-y) $
-  אז $u_n$ רציפה במידה שווה ואפילו ליפשיצית והיא לא תלויה ב־$n$ ולכן רציפה במידה אחידה וממשפט ארצלה־אסקולי נקבל שקיימת תת־סדרה של $u_n_k$ שמתכנסת במידה שווה על $K$ והגבול הזה הרמוני כי הוא גבול במידה שווה.\
-  כדי להרחיב זאת לכל $Omega$, נבחר סדרה עולה של קבוצות קומפקטיות $K_1 subset.eq K_2 subset.eq dots.h$ כך ש־$union.big_m K_m = Omega$.\
-  ממשפט ארצלה־אסקולי קיימת תת־סדרה שמתכנסת במידה שווה על $K_1$. מתוכה נוציא תת־סדרה שמתכנסת במידה שווה על $K_2$, וכן הלאה. נפעיל את טיעון האלכסון של קנטור ונקבל שתת־הסדרה $u_n_k$ מתכנסת במידה שווה על כל קבוצה קומפקטית ב־$Omega$.
+  כאשר $r$ קטן דיו עבור $r<dist(K, boundary(Omega))$ עבור $K subset.eq Omega$ קומפקטית ולכן לכל $x in K$ מתקיים
+  $ abs(u_n (x) - u_n (y))<= max_K abs(gradient u_n) dot.op abs(x-y) <= frac(max_closure(Omega) abs(u), r) abs(x-y) $
+  אז $u_n$ רציפה במידה שווה ואפילו ליפשיצית והיא לא תלויה ב־$n$ ולכן רציפה במידה אחידה וממשפט ארצלה־אסקולי נקבל שקיימת תת־סדרה $u_n_k$ שמתכנסת במידה שווה על $K$ והגבול הזה הרמוני כי הוא גבול במידה שווה.\
+  כדי להרחיב זאת לכל $Omega$, נבחר סדרה עולה של קבוצות קומפקטיות $K_1 subset.eq K_2 subset.eq dots.h$ כך ש־$union.big_m K_m = Omega$. ממשפט ארצלה־אסקולי קיימת תת־סדרה שמתכנסת במידה שווה על $K_1$. מתוכה נוציא תת־סדרה שמתכנסת במידה שווה על $K_2$, וכן הלאה. נפעיל את טיעון האלכסון של קנטור ונקבל שתת־הסדרה $u_n_k$ מתכנסת במידה שווה על כל קבוצה קומפקטית ב־$Omega$.
 ]
 
 #end_of_lecture("21  – 23/06")
@@ -1615,63 +1616,44 @@ $
   $
     S_g colon.eq {v in C(closure(Omega) bar v "sub-harmonic", v|_boundary(Omega)<=g)}, quad u^per colon.eq sup {v bar v in S_g}
   $
-  אז $u^per$ הרמונית ב־$Omega$ (כלומר מועמד רציני לפיתרון), כאשר הגדרנו
-  $ u^per (x) = sup{v(x) bar v|_boundary(Omega)<=g, v in C(closure(Omega)) "sub-harmonic"} $
+  אז $u^per$ הרמונית ב־$Omega$ (כלומר מועמד רציני לפיתרון).
 ]
 
 #proof[
-  תהיי $y in Omega$ ולכן קיימת סדרה $v_n in S_g$ כך ש־$v_n (y) stretch(arrow)_(n arrow infinity) u^per (y)$.\
-  נשים לב ש־$v_n <= sup_boundary(Omega) g$ מעיקרון המקסימום.\
-  נגדיר $tilde(v)_n colon.eq max{v_n, inf_boundary(Omega) g}$ ונשים לב ש־$tilde(v)_n in S_g$ ומקיימת
+  תהיי $y in Omega$ ולכן קיימת סדרה $v_n in S_g$ כך ש־$v_n (y) arrow u^per (y)$.\
+  מעיקרון המקסימום מתקיים $v_n <= sup_boundary(Omega) g$ ונגדיר $tilde(v)_n colon.eq max {v_n, inf_boundary(Omega) g}$ ומתקיים
   $
-    inf g <= tilde(v)_n <= sup g \
-    v_n (y) <= tilde(v)_n (y) <=_(tilde(v)_n in S_g) u^per (y)
+    inf g <= tilde(v)_n <= sup g, quad v_n (y) <= tilde(v)_n (y) <=_(tilde(v)_n in S_g) u^per (y)
   $
-  נשים לב ש־$v_n (y) stretch(arrow)_(n arrow infinity) u^per(y)$ ולכן מכלל הכריך מתקיים $tilde(v)_n (y) stretch(arrow)_(n arrow infinity) u^per(y)$.\
-  מצאנו סדרה חסומה של פונקציות ב־$S_g$ כך שבנקודה $y in Omega$ מתקיים $tilde(v)_n (y) stretch(arrow)_(n arrow infinity) u^per(y)$.\
-  יהי $B = B(y,r) subset.eq Omega$ כך ש־$closure(B) subset.eq Omega$, נשים לב שעם ההרמה ההרמונית $tilde(v)_n <= closure(tilde(v))_n^B$ ולכן $closure(tilde(v))_n^B in S_g$ ואז נקבל את שרשרת אי־השיוויונות
-  $ tilde(v)_n <= closure(tilde(v))_n^B <= u^per $
-  ולכן בנקודה $y$ נקבל $closure(tilde(v))_n^B (y) stretch(arrow)_(n arrow infinity) u^per (y)$.\
-  אז $(closure(tilde(v))_n^B)_(n=1)^infinity$ היא סדרה חסומה של פונקציות הרמוניות בכדור $B$ ומ@bounded_harmonic-series_functions_have_sub_converges_harmonic_function קיימת תת־סדרה $closure(tilde(v))_(n_k)^B$ שמתכנסת ב־$B$ לפונקציה הרמונית $h_v$ ואז נקודתית ב־$B$ מתקיים
-  $
-    closure(tilde(v))_(n_k)^B stretch(arrow)_(k arrow infinity) h_v \
-    closure(tilde(v))_n_k^B (y) stretch(arrow)_(k arrow infinity) u^per (y) \
-    closure(tilde(v))_n_k^B (y) stretch(arrow)_(k arrow infinity) h_v (y)
-  $
-  קיבלנו פונקציה הרמונית $h_v$ ב־$B$ כך ש־$h_v (y) = u^per (y)$ ונרצה להראות ש־$h_v eq.triple u^per$ ב־$B$ ונשים לב ש־$h_v <= u^per$ ב־$B$.\
-  נניח בשלילה שקיימת $z in B$ כך ש־$h_v (z) < u^per (z)$. תהיי $w_k in S_g$ כך ש־$w_k >= closure(tilde(v))_n_k^B$ ו־$w_k (z) arrow u^per(z)$.\
-  קיימת סדרה $hat(w)_k in S_g$ כך שהתנאי השני מתקיים (פשוט מהגדרת הסופרמום) ונגדיר את $w_k$ על־ידי $w_k colon.eq max{hat(w)_k, closure(tilde(v))_n_k^B} in S_g$ ולכן
-  $
-    closure(tilde(v))_n_k^B <= w_k <= u^per \
-    w_k (z) stretch(arrow)_(k arrow infinity) u^per (z) \
-    w_k (y) stretch(arrow)_(k arrow infinity) u^per(y)
-  $
-  ושוב עם ההרמה ההרמונית, $closure(w)_k^B in S_g$ ומתקיים
-  $ closure(tilde(v))_n_k^B <= w_k <= closure(w)_k^B <= u^per $
-  נוכל למצוא תת־סדרה מתכנסת $closure(w)_(k_n)^B$ ב־$B$ לפונקציה הרמונית $h_w$.\
-  קיבלנו שתי פונקציות הרמוניות ב־$B$ המקיימות $h_v <= h_w$ ו־$h_v (y) = h_w (y) = u^per(y)$ ויתר על־כן $h_v (z) < h_w (z) = u^per (z)$ (מהנחת השלילה) וזאת כמובן סתירה כי אם נסתכל על $h_v - h_w <= 0$ אבל ב־$y$ היא מתאפסת וב־$z$ היא קטנה ממש מאפס והיא מקבלת מקסימום בנקודה פנימית אבל פונקציה הרמונית מקבלת מקסימום בנקודה פנימית אם ורק אם היא קבועה (מעיקרון המקסימום החזק) ועל־כן, סתירה.\
-  כלומר, $h_v = u^per$ ב־$B$ ולכן $u^per$ הרמונית ב־$B$ ומשרירותיות $y$ ו־$B$ נקבל ש־$u^per$ הרמונית ב־$Omega$.
+  ומכלל הכריך נובע ש־$tilde(v)_n (y) arrow u^per (y)$ וזו סדרה של פונקציות חסומות ב־$S_g$.\
+  יהי $B = B(y,r) subset.eq Omega$ כך ש־$closure(B) subset.eq Omega$, נשים לב שעם ההרמה ההרמונית ו@harmonic_lift_is_subharmonic $tilde(v)_n <= V_n$ ולכן $V_n in S_g$ ונקבל את שרשרת אי־השיוויונות $tilde(v)_n <= V_n <= u^per$
+  ולכן בנקודה $y$ נקבל $V_n (y) arrow u^per (y)$.\
+  אז $(V_n)_(n=1)^infinity$ היא סדרה חסומה של פונקציות הרמוניות בכדור $B$ ומ@bounded_harmonic-series_functions_have_sub_converges_harmonic_function קיימת תת־סדרה $V_n_k$ שמתכנסת ב־$B$ לפונקציה הרמונית $h_v$ כך שמתקיים $V_n_k arrow h_v$ נקודתית ומיחידות הגבול $V_n_k (y) arrow u^per (y)$ וכן $V_n_k (y) arrow h_v (y)$.\
+  נרצה להראות שזה מתקיים לכל נקודה ב־$B$: כבר ידוע $h_v <= u^per$ ב־$B$ ולכן נשאר להראות את האי־שיוויון השני; נניח בשלילה שקיימת $z in B$ עבורה $h_v (z) < u^per (z)$. תהיי $w_k in S_g$ כך ש־$w_k >= V_n_k$ ו־$w_k (z) arrow u^per (z)$.\
+  מהגדרת $sup$ נקבל שקיימת סדרה $hat(w)_k in S_g$ המקיימת את התנאי השני ונחליף
+  $w_k colon.eq max{hat(w)_k, V_n_k} in S_g$ ומתקיים $V_n_k <= w_k <= u^per$ ובפרט $w_k (z) arrow u^per (z)$ וכן $w_k (y) arrow u^per (y)$.\
+  ושוב עם ההרמה ההרמונית, $W_k in S_g$ ומתקיים $V_n_k <= w_k <= W_k <= u^per$
+  ונוכל למצוא תת־סדרה מתכנסת $W_k_n$ ב־$B$ לפונקציה הרמונית $h_w$ ומתקיים
+  $ h_v <= h_w, quad h_v (y) = h_w (y) = u^per (y), quad h_v (z) < h_w (z) = u^per (z) $
+  לכן הפונקציה $h_v - h_w <= 0$ היא פונקציה הרמונית שאינה קבועה ומקבלת מקסימום $0$ בנקודה פנימית $y$ בסתירה לעקרון המקסימום ולכן $h_v eq.triple u^per$ ב־$B$.\
+  משרירותיות $B,y$ נקבל ש־$u^per$ הרמונית ב־$Omega$.
 ]
 
 == תנאי שפה
-
 #theorem[
   אם $Omega$ הוא תחום $C^2$ ו־$g:boundary(Omega) arrow RR$ רציפה אז ניתן לפתור באופן יחיד את בעיית דיריכלה ב־$Omega$ $ cases(Delta u =0, u|_boundary(Omega) =g) $
 ]
 
 נשים לב שהפיתרון הוא יחיד שכן אם יש שני פתרונות ונסתכל על ההפרש שלהם מעיקרון המקסימום והמינימום (זה מתאפס על השפה).\
 כיצד נפתור את הבעיה הכללית (בעיית פואסון)?
-$ cases(Delta u = f quad & text("in ") Omega, u|_boundary(Omega) = g) $
-נוכל לפרק את הבעיה לשתיים בעזרת מה שראינו לעיל. נגדיר $u_1 colon.eq Gamma * f$ (קונבולוציה עם הפוטנציאל הניוטוני), כך שמתקיים $Delta u_1 = f$ בתוך $Omega$.
-כעת, נגדיר את $u_2$ להיות הפתרון לבעיית דיריכלה ההרמונית הבאה:
+$ cases(Delta u = f quad "in " Omega, u|_boundary(Omega) = g) $
+נגדיר $ u_1 colon.eq Gamma * f \
+cases(Delta u_2 = 0, u_2|_boundary(Omega) = g- u_1|_boundary(Omega)) $
+נקבל $u_1 + u_2 = u$ ולכן
 $
-  mycases(Delta u_2 = 0, in Omega, u_2|_boundary(Omega) = g-u_1|_boundary(Omega), in boundary(Omega))
+  Delta u = Delta u_1 + Delta u_2 = f \
+  u|_boundary(Omega) = u_2 |_boundary(Omega) + u_1|_boundary(Omega) = g
 $
-מאחר ש־$u_2$ פותרת את משוואת לפלס עם תנאי שפה רציף (מעצם רציפות $g$ ו־$u_1$), ראינו שקיים לה פתרון יחיד.\
-אז, הפונקציה $u = u_1 + u_2$ היא הפתרון הנדרש, שכן
-$
-  Delta u = Delta u_1 + Delta u_2 = f + 0 = f \
-  u|_boundary(Omega) = u_1|_boundary(Omega) + u_2|_boundary(Omega) = u_1|_boundary(Omega) + g - u_1|_boundary(Omega) = g
-$
+ועכשיו בעזרת פרון אנחנו יודעים לפתור גם את משוואות פואסון.
 
 #end_of_lecture("22  – 24/06")
