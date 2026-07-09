@@ -558,17 +558,18 @@ $ cases(x^prime = A x, x(0) = x_0) $ מתקיים ש־$x(t)=exp(t A) x_0$ הוא
       x(0) = x_0,
     )
   $
+  ו־$x(t)=exp(t A) x_0$.
   אז $y(t) = exp(t A) x_0$ לכל $t in I$.
 ]
 
 #proof[
   נניח שלא ויש $t>0$ כך ש־$y(t)!=x(t)$ ונסמן $tau colon.eq inf {t>0 bar x(t) != y(t)}$.\
   מתקיים $0<tau$ כי אנו יודעים שבאיזשוהי סביבה ימנית שבה הם מסכימים. נראה שיש סביבה של $tau$ שבה $x,y$ מסכימים ונקבל סתירה.\
-  נסמן $z_star = exp(tau A) x_0$ ונתבונן בבעיה $ (star star) space cases(z^prime (t) = A z(t), z(tau) = z_star) $
-  מאיטרציות פיקארד ידוע שיש סביבה $0<delta$ של $tau$ כך ש־$z(t)=exp((t-tau)A) z_star$ הוא הפיתרון היחיד לבעיה $(star star)$.\
+  נסמן $z_* = exp(tau A) x_0$ ונתבונן בבעיה $ (star star) space cases(z^prime (t) = A z(t), z(tau) = z_*) $
+  מאיטרציות פיקארד ידוע שיש סביבה $0<delta$ של $tau$ כך ש־$z(t)=exp((t-tau)A) z_*$ הוא הפיתרון היחיד לבעיה $(star star)$.\
   נשים לב שמתקיים $x(tau)=y(tau)$ שכן זה אינפימום היכן שהם לא שווים וכמובן מרציפות ו־$y(tau)=exp(tau A) x_0$ ולכן $y,z$ מתלכדים על סביבה זו של $tau$.\
   מצד שני, על הסביבה הזו מתקיים
-  $ z(t)=exp((t-tau)A)z_star = exp((t-tau) A) exp(tau A) x_0 =exp(t A - tau A + tau A)x_0 = exp(t A) x_0 = x(t) $
+  $ z(t)=exp((t-tau)A)z_* = exp((t-tau) A) exp(tau A) x_0 =exp(t A - tau A + tau A)x_0 = exp(t A) x_0 = x(t) $
   מהגדרה וזו כמובן סתירה.
 ]
 
@@ -678,7 +679,6 @@ $ pi(t)alpha^prime (t) = g(t) ==> alpha^prime (t) = pi(t)^(-1) g(t) $
 ]
 
 #proof[
-  נגזור
   $
     y^prime (t) & = [pi(t)(alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s)]^prime \
                 & = pi^(prime) (t) (alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s) + pi(t) pi(t)^(-1)g(t) \
@@ -1348,15 +1348,13 @@ $
   ]
 ]
 
-
 #remark[
   במהלך ההוכחה בעצם גם הראינו שעבור פונקציות $C^2$ תכונת ערך הממוצע על כדורים שקולה לתכונת הערך הממוצע על ספירות (אנחנו עשינו רדוקציה מספירות
   לכדורים בעזרת אינטגרל, באותה מידה אפשר לעשות רדוקציה מכדורים לספירות בעזרת
-  נגזרת)
+  נגזרת).
 ]
 
 #end_of_lecture("18  – 09/06")
-
 
 #theorem[עיקרון המקסימום לפונקציות הרמוניות][
   נניח ש־$Omega subset.eq RR^n$ פתוחה וחסומה ונניח ש־$u in C^2 (Omega) inter C(closure(Omega))$ הרמונית.
@@ -1365,12 +1363,12 @@ $
 ]
 
 #proof[
-  + יהי $x_0 in closure(Omega)$ כך ש־$u(x_0) = max u(closure(Omega))$. אם $x_0 in boundary(Omega)$ אז סיימנו. אחרת, יש $r>0$ כך ש־$B(x_0, r) subset.eq Omega$ מתקיים $u(x_0) = integral.slash_(B(x_0, r)) u dif V$.\
+  + יהי $x_0 in closure(Omega)$ כך ש־$u(x_0) = max u(closure(Omega))$. אם $x_0 in boundary(Omega)$ אז סיימנו. אחרת, יש $r>0$ כך ש־$B(x_0, r) subset.eq Omega$ ומתקיים $u(x_0) = integral.slash_(B(x_0, r)) u dif V$.\
     אבל זה אומר שלכל $y in B(x_0, r)$ מתקיים $u(y)=u(x_0)$ שכן אם לא מתקיים $u(y) < u(x_0)$ (כי $u(x_0)$ מקסימום) ולכן מרציפות יש קבוצה פתוחה המוכלת \
     ב־ $B(x_0, r)$ שעליה $u < u(x_0)$ ואז $integral.slash_(B(x_0, r)) u dif V < u(x_0)$.\
     זה נכון לכל $r<=dist(x_0, boundary(Omega))$ ולכן לכל $y in boundary(Omega) inter boundary(B(x_0, dist(x_0, boundary(Omega))))$ מתקיים $u(y)=u(x_0) = max u(closure(Omega))$.
   + נניח ש־$x_0 in Omega$ מקיימת $u(x_0) = max u(Omega)$ ונתבונן בקבוצה $A colon.eq {y in Omega bar u(x_0)=u(y)}$.\
-    $A$ סגורה מרציפות והיא לא ריקה כי $x_0 in A$. אבל הראינו ש־$A$ פתוחה ב־$Omega$ (זה נובע ישירות מתכונת ערך הממוצע של פונקציות הרמוניות) אבל $Omega$ קשירה ולכן $A=Omega$.
+    $A$ סגורה ב־$Omega$ מרציפות והיא לא ריקה כי $x_0 in A$ אבל הראינו ש־$A$ פתוחה ב־$Omega$ (זה נובע ישירות מתכונת ערך הממוצע של פונקציות הרמוניות שכן הדרך היחידה שבה הממוצע של פונקציה (שחסומה על ידי $M$) יכול לצאת שווה בדיוק ל־$M$ היא אם הפונקציה שווה ל־$M$ בכל נקודה בתוך הממוצע הזה) אבל $Omega$ קשירה ולכן $A=Omega$.
 ]
 
 #remark[
@@ -1392,7 +1390,7 @@ $ phi_epsilon = frac(1, epsilon^n) frac(eta(frac(norm(x), epsilon)), integral_(R
 $phi_epsilon$ חלקה, רדיאלית הנתמכת על $B(0,epsilon)$ ומקיימת $integral_(RR^n) phi_epsilon (y) dif y = 1$.
 
 #definition[שיכוך][
-  יהי $Omega subset.eq RR^n$ תחום ולכל $epsilon > 0$ נסמן $Omega_epsilon colon.eq {x in Omega bar dist(x, boundary(Omega)>epsilon)}$.\
+  יהי $Omega subset.eq RR^n$ תחום ולכל $epsilon > 0$ נסמן $Omega_epsilon colon.eq {x in Omega bar dist(x, boundary(Omega))>epsilon}$.\
   עבור $u in C(Omega)$ ו־$epsilon > 0$ נגדיר את השיכוך של $u$ בסקאלה $epsilon$ להיות הפונקציה  $u^epsilon : Omega_epsilon arrow RR$ שנתונה על־ידי
   $ u^epsilon = phi_epsilon * u = integral_(RR^n) phi_epsilon (x-y) u(y) dif y $
   בפרט $u^epsilon$ חלקה (הוכחנו בתרגיל 10).
@@ -1406,14 +1404,15 @@ $phi_epsilon$ חלקה, רדיאלית הנתמכת על $B(0,epsilon)$ ומקי
   מספיק להראות שלכל $epsilon > 0$ מתקיים $u|_Omega_epsilon = u^epsilon$. אז עבור $x in Omega_epsilon$ מתקיים
   $
     u^epsilon (x) & = integral_(B(x, epsilon)) phi_epsilon (x-y)u(y) dif V(y) \
-    & = integral_0^epsilon integral_boundary(B(x,r)) phi_epsilon (x-y)u(y)dif s(y) dif r \
-    & = frac(1, integral_(RR^n) eta(norm(z)) dif z) integral_0^epsilon frac(eta(frac(r, epsilon)), epsilon^n) integral_boundary(B(x,r)) u(y) dif s(y) dif r \
-    &= frac(1, integral_(RR^n) eta(norm(z)) dif z) integral_0^epsilon frac(eta(frac(r, epsilon)), epsilon^n) integral_boundary(B(x,r)) u(x) dif s(y) dif r \
-    &= frac(u(x), integral_(RR^n) eta(norm(z)) dif z) integral_0^epsilon frac(eta(frac(r, epsilon)), epsilon^n) integral_boundary(B(x,r)) dif s(y) dif r \
+    & = integral_0^epsilon integral_boundary(B(x,r)) phi_epsilon (x-y)u(y)dif S(y) dif r \
+    & = frac(1, integral_(RR^n) eta(norm(z)) dif z) integral_0^epsilon frac(eta(frac(r, epsilon)), epsilon^n) integral_boundary(B(x,r)) u(y) dif S(y) dif r \
+    &=_((star)) frac(1, integral_(RR^n) eta(norm(z)) dif z) integral_0^epsilon frac(eta(frac(r, epsilon)), epsilon^n) integral_boundary(B(x,r)) u(x) dif S(y) dif r \
+    &= frac(u(x), integral_(RR^n) eta(norm(z)) dif z) integral_0^epsilon frac(eta(frac(r, epsilon)), epsilon^n) integral_boundary(B(x,r)) dif S(y) dif r \
     &= u(x) integral_(B(x, epsilon)) phi^epsilon (x-y) dif V(y) \
     &= u(x) integral_(RR^n) phi^epsilon (y) dif y \
-    &= u(x)
+    &=_((star star)) u(x)
   $
+  כאשר $(star)$ זה מתכונת ערך הממוצע ו־$(star star)$ זה מכיוון ש־$integral_(RR^n) phi^epsilon (y) dif y = 1$ מהגדרה.
 ]
 
 #corollary[
@@ -1530,7 +1529,8 @@ $
   מאחר ש־$u<=M$ בכל $Omega$, בפרט נקבל ש־$h|_boundary(B) = u|_boundary(B) <= M$ אבל $h$ הרמונית ולכן מעיקרון המקסימום נובע כי $h|_B <= M$.\
   מצד שני, $u$ תת־הרמונית ולכן $u|_B <= h|_B$ ובפרט בנקודה $x_0$ מתקיים $M = u(x_0) <= h(x_0)$. \
   קיבלנו ש־$h<=M$ בכל הכדור, אך $h(x_0) >= M$, ולכן בהכרח $h(x_0) = M$. כלומר הפונקציה ההרמונית $h$ מקבלת מקסימום בנקודה פנימית, ולכן מעיקרון המקסימום החזק לפונקציות הרמוניות נובע ש־$h eq.triple M$ בכל $closure(B)$. \
-  מכאן שעל שפת הכדור, $u|_boundary(B) = h|_boundary(B) = M$ וזה נכון לכל $r$ ולכן $B subset.eq A$ ולכן $A$ פתוחה, סגורה ולא ריקה ולכן מקשירות $A=Omega$.
+  מכאן שעל שפת הכדור, $u|_boundary(B) = h|_boundary(B) = M$ וזה נכון לכל $r$ ולכן $B subset.eq A$ כלומר $A$ פתוחה.\
+  $A$ פתוחה, סגורה ולא ריקה ולכן מקשירות $Omega$ נקבל $A=Omega$.
 ]
 
 #theorem[עקרון המקסימום החלש לפונקציות תת־הרמוניות][
@@ -1575,7 +1575,8 @@ $
 ]
 
 #remark[
-  ההרמה ההרמונית מצדיקה את השם שלה בגלל שמתקיים $v<=V$ ב־$Omega$ שכן אם $overline(v)$ הרמונית ב־$B$ אז מכך ש־$v=overline(v)$ על $boundary(B)$ ובפרט $v<=overline(v)$ על $boundary(B)$ הרי ש־$v<=overline(v)$ ב־$B$ מעצם הגדרת $v$ כפונקציה תת־הרמונית ולכן בסך־הכל $v<=V$ ב־$Omega$.
+  ההרמה ההרמונית מצדיקה את השם שלה בגלל שמתקיים $v<=V$ ב־$Omega$ שכן אם $overline(v)$ הרמונית ב־$B$ אז מכך ש־$v=overline(v)$ על $boundary(B)$ ובפרט $v<=overline(v)$ על $boundary(B)$ הרי ש־$v<=overline(v)$\
+  ב־$B$ מעצם הגדרת $v$ כפונקציה תת־הרמונית ולכן בסך־הכל $v<=V$ ב־$Omega$.
 ]
 
 #proposition[
