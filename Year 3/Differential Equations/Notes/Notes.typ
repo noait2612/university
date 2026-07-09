@@ -363,50 +363,18 @@ $ partial/(partial t) D Phi = D(partial/(partial t) Phi) = D(F compose Phi)=D F(
   אזי לכל $T in J_p^*$, $phi_T$ גזירה ב־$p$ והדיפרנציאל שלה נתון על־ידי $D phi_T (p) = M(t)$.
 ]
 
-#proof[
-  צריך להראות
-  $ phi_T (q) = phi_T (p) + M(t)(q-p)+o(norm(q-p)) $
-  נסמן $x_q (t) = phi_t (q), x_p (t) = phi_t (p)$ ונסמן $u(t)=x_q (t) - x_p (t) - M_t (q-p)$.\
-  יהי $epsilon > 0$, צריך להראות שקיים $delta>0$ כך שלכל $q$ עם $0<norm(q-p)<delta$ מתקיים $norm(u(t))<epsilon norm(q-p)$.\
-  נגדיר $ K colon.eq sup_(t in [0,T]) normop(M(t)) wide L colon.eq sup_(t in [0,T]) normop(D F(x_p (t))) $
-  ונבחר $eta>0$ כך ש־$eta dot.op K dot.op t dot.op e^((L+eta)T)<epsilon$.\
-  $D F$ רציפה ולכן יש $r>0$ כך שלכל $0<=t<=T$ ולכל $z in B_r (x_p (t))$ מתקיים $normop(D F(z)-D F(x_p (t)))<eta$ ולכן עבור $z$ כאלה
-  $ (star) space norm(F(z)-F(x_p (t))-D F(x_p (t))(z-x_p (t)))<eta norm(z-x_p (t)) $
-  מרציפות בתנאי ההתחלה קיים $delta>0$ כך שלכל $q$ עם $norm(p-q)<delta$ ולכל $0<=t<=T$ מתקיים $norm(x_p (t) - x_q (t))<r$ ולכן מצאנו $delta$.\
-  #remark[
-    הסבר ל־$(star)$: עד היום תמיד הסכמנו שאם $normop(D G) < M$ אז $norm(G(z)-G(w))<=M norm(z-w)$ על המסלול בין $z$ ל־$w$ (טריק אינטגרציה).\
-    אז עבור $t, p$ נתונים נגדיר $G(z)=F(z)-D F (x_p (t)) z$ ומכללי גזירה
-    $ D G(z)= D F (z)-D F(x_p (t)) $
-    ולכן
-    $ norm(D G(z)) = norm(D F (z) - D F (x_p (t)))<eta $
-    ולכן
-    $ norm(G(z)-G(x_p (t)))<eta norm(z-x_p (t)) $
-    אז אם נציב
-    $ norm(F(z)-D F (x_p (t)) z - F(x_p (t))+D F(x_p (t))x_p (t))=norm(F(z)-F(x_p (t))-D F(x_p (t))(z-x_p (t))) $
-  ]
-
-]
-
 #end_of_lecture("5 – 27/04")
-
-#theorem[
-  $U subset.eq RR^n$ פתוחה, $p in U$ ו־$F : U arrow RR^n$ גזירה ברציפות.\
-  אז לכל $T in J_p^*$, $phi_T (dot.op) space$ גזירה ב־$p$ והדיפרנציאל שלה מקיים $D phi_T (p) = M(t)$ היכן ש־$M$ מקיימת
-  $ M'(t)=D F(x_p (t))M(t), space M(0)= Id $
-]
 
 #proof[
   נניח ש־$T>0$ (כי אם $T=0$ אז זו הזהות ולכן גזירה ועבור $T<0$ זה תהליך דומה) ולכל $q in U$ נגדיר
   $ u(t) = x_q (t) - x_p (t) - M(t)(q-p) $
-  צריך להוכיח שלכל $epsilon > 0$ קיים $delta>0$ כך שאם $norm(q-p)<delta$ אז $norm(u(T))<=epsilon norm(q-p)$.\
-  יהי $epsilon > 0$ ונסמן
+  צריך להוכיח שלכל $epsilon > 0$ קיים $delta>0$ כך שאם $norm(q-p)<delta$ אז $norm(u(T))<=epsilon norm(q-p)$ אז יהי $epsilon > 0$ ונסמן
   $ L colon.eq sup_(t in [0,T]) norm(D F(x_p (t))), quad K = sup_(t in [0,T]) norm(M(t)) $
-  קיימת $eta>0$ כך שמתקיים $eta K T e^(T(L + eta)) < epsilon$.\
-  קיים $r>0$ כך שלכל $t in [0,T]$ ולכל $z$ כך ש־$norm(z-x_p (t))<r$ מתקיים
-  $ norm(F(z)-F(x_p (t))- D F(x_p (t))(z-x_p (t)))<eta norm(z-x_p (t)) $
+  קיימת $eta>0$ כך שמתקיים $eta K T e^(T(L + eta)) < epsilon$ וקיים $r>0$ כך שלכל $t in [0,T]$ ולכל $z$ כך ש־$norm(z-x_p (t))<r$ מתקיים
+  $ (diamond.small) space norm(F(z)-F(x_p (t))- D F(x_p (t))(z-x_p (t)))<eta norm(z-x_p (t)) $
   מרציפות הזרימה בתנאי ההתחלה קיים $delta>0$ כך שאם $norm(q-p)<delta$ אז $norm(x_q (t) - x_p (t))<r$ לכל $t in [0,T]$.\
   צריך להעריך את $u(T)$: אם $norm(u(T))=0$ סיימנו, אחרת נסמן $tau colon.eq sup {0<=t<=T bar u(t)=0}$ ו־$0<=tau < T$ אז על הקטע $(tau, T]$ מאי־שיוויון קושי־שוורץ
-  $ dif/(dif t) norm(u(t)) = (chevron.l u(t), u'(t) chevron.r)/norm(u(t)) <= norm(u'(t)) $
+  $ (suit.heart.stroked) space dif/(dif t) norm(u(t)) = (chevron.l u(t), u'(t) chevron.r)/norm(u(t)) <= norm(u'(t)) $
   נחשב
   $
     u'(t) & = x'_q (t) - x'_p (t) - M'(t)(q-p) \
@@ -422,21 +390,29 @@ $ partial/(partial t) D Phi = D(partial/(partial t) Phi) = D(F compose Phi)=D F(
                 & <=_(triangle) (eta+L) norm(u(t))+eta norm(M(t)(q-p)) \
                 & <= eta K norm(q-p)+(L + eta)norm(u(t))
   $
-  בפרט
+  בפרט עם $(suit.heart.stroked)$ נקבל
   $ (star) space dif/(dif t) norm(u(t))<=eta K norm(q-p)+(L + eta)norm(u(t)) $
   מאותו טריק של מרוכבות על נגזרת של אקספוננט
   $
     dif/(dif t) (e^(-t(L+eta)) norm(u(t)))= e^(-t(L+eta))(-(L+eta)norm(u(t))+dif/(dif t) norm(u(t))) <=_((star)) eta K underbrace(e^(-t(L+eta)), <= 1)norm(q-p) <= eta K norm(q-p)
   $
-  אבל האחרון זה נגזרת של פונקציה לינארית $dif/(dif t) (eta K norm(q-p)t)$.\
-  ולכן הפונקציה $e^(-t(L+eta))norm(u(t))-eta K t norm(q-p)$ היא מונוטונית יורדת באינטרוול $(tau, T]$ כי הנגזרת קטנה מאפס (מהצבה) ונקבל $ e^(-T (L+eta))norm(u(T))-eta K T norm(q-p)<=e^(-tau(L+eta))underbrace(norm(u(tau)), =0)-eta K tau norm(q-p) = -eta K tau norm(q-p)<=0 $
+  אבל האחרון זה נגזרת של פונקציה לינארית $dif/(dif t) (eta K norm(q-p)t)$ ולכן הפונקציה $e^(-t(L+eta))norm(u(t))-eta K t norm(q-p)$ היא מונוטונית יורדת באינטרוול $(tau, T]$ כי הנגזרת קטנה מאפס (מהצבה) ונקבל $ e^(-T (L+eta))norm(u(T))-eta K T norm(q-p)<=e^(-tau(L+eta))underbrace(norm(u(tau)), =0)-eta K tau norm(q-p) = -eta K tau norm(q-p)<=0 $
   ובסך־הכל
   $ norm(u(T)) <= e^(T(L+eta)) eta K T norm(q-p) < epsilon norm(q-p) $
+  #remark[
+    הסבר ל־$(diamond.small)$: עד היום תמיד הסכמנו שאם $normop(D G) < M$ אז $norm(G(z)-G(w))<=M norm(z-w)$ על המסלול בין $z$ ל־$w$ (טריק אינטגרציה).\
+    אז עבור $t, p$ נתונים נגדיר $G(z)=F(z)-D F (x_p (t)) z$ ומכללי גזירה
+    $ D G(z)= D F (z)-D F(x_p (t)) $
+    ולכן
+    $ norm(D G(z)) = norm(D F (z) - D F (x_p (t)))<eta $
+    ולכן
+    $ norm(G(z)-G(x_p (t)))<eta norm(z-x_p (t)) $
+    והצבת הגדרת $G(z)$ מניבה את הנדרש.
+  ]
 ]
 
 #end_of_lecture("6 – 28/04")
 
-#pagebreak()
 == משוואות לינאריות עם מקדמים קבועים
 את המשפט הבא ראינו בתרגיל הבית וההוכחה כאן היא בהשראת הסיכום במודל טענה 4.1.
 #theorem[
@@ -449,7 +425,7 @@ $ partial/(partial t) D Phi = D(partial/(partial t) Phi) = D(F compose Phi)=D F(
 ]
 
 #proof[
-  מספיק להוכיח את המשפט לכל קטע סגור וחסום $I_0 subset.eq I$. נסמן
+  מספיק להוכיח את המשפט לכל קטע סגור וחסום $I_0 subset.eq I$.
   $
     F(x,t) colon.eq A(t) x + g(t), quad
     L colon.eq sup_(t in I_0) normop(A(t)), quad
@@ -567,7 +543,7 @@ $ cases(x^prime = A x, x(0) = x_0) $ מתקיים ש־$x(t)=exp(t A) x_0$ הוא
   מתקיים $0<tau$ כי אנו יודעים שבאיזשוהי סביבה ימנית שבה הם מסכימים. נראה שיש סביבה של $tau$ שבה $x,y$ מסכימים ונקבל סתירה.\
   נסמן $z_* = exp(tau A) x_0$ ונתבונן בבעיה $ (star star) space cases(z^prime (t) = A z(t), z(tau) = z_*) $
   מאיטרציות פיקארד ידוע שיש סביבה $0<delta$ של $tau$ כך ש־$z(t)=exp((t-tau)A) z_*$ הוא הפיתרון היחיד לבעיה $(star star)$.\
-  נשים לב שמתקיים $x(tau)=y(tau)$ שכן זה אינפימום היכן שהם לא שווים וכמובן מרציפות ו־$y(tau)=exp(tau A) x_0$ ולכן $y,z$ מתלכדים על סביבה זו של $tau$.\
+  נשים לב שמתקיים $x(tau)=y(tau)$ שכן זה אינפימום היכן שהם לא שווים ומרציפות ו־$y(tau)=exp(tau A) x_0$ ולכן $y,z$ מתלכדים על סביבה זו של $tau$.\
   מצד שני, על הסביבה הזו מתקיים
   $ z(t)=exp((t-tau)A)z_* = exp((t-tau) A) exp(tau A) x_0 =exp(t A - tau A + tau A)x_0 = exp(t A) x_0 = x(t) $
   מהגדרה וזו כמובן סתירה.
@@ -670,8 +646,8 @@ $
 $
 לכן קיבלנו שתנאי הכרחי על $alpha$ היינו
 $ pi(t)alpha^prime (t) = g(t) ==> alpha^prime (t) = pi(t)^(-1) g(t) $
-אם כך, מהמשפט היסודי $ alpha(t) = alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s $
-זה תנאי הכרחי, צריך לראות אם זה אכן פיתרון.
+אם כך, מהמשפט היסודי נקבל את התנאי ההכרחי הבא וצריך להראות שהוא אכן פיתרון
+$ alpha(t) = alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s $
 
 #theorem[
   יהיו $A : I arrow RR^(n times n)$ רציפה ו־$g: I arrow RR^n$ רציפה כאשר $I subset.eq RR$ קטע ונסמן ב־$pi(t)$ את מטריצת הפתרונות היסודית למשוואה $x^prime (t) = A(t)x(t)$.\
@@ -740,7 +716,7 @@ $ pi(t)alpha^prime (t) = g(t) ==> alpha^prime (t) = pi(t)^(-1) g(t) $
 ]<lemma_before_linear_criterion_for_asymptotic_stability>
 
 #proof[
-  נניח ש־$J = P A P^(-1)$ צורת ז'ורדן של $A$ ואז $J + alpha I$ היא מטריצה בצורדת ז'ורדן שכל שלכל ערכייה העצמיים חלק ממשי שלילי ולכן עבור $t>=0$ הערכים של $exp(t (J + alpha I))$ הם פולינומים ב־$t$ כפול אקספוננט עם מעריך שלילי ב־$t$ ולכן קיים $C^prime > 0$ כך שמתקיים $ sup_(t >=0) normop(exp(t(J + alpha I))) <= C^prime $
+  נניח ש־$J = P A P^(-1)$ צורת ז'ורדן של $A$ ואז $J + alpha I$ היא מטריצה בצורדת ז'ורדן שלכל ערכייה העצמיים חלק ממשי שלילי ולכן עבור $t>=0$ הערכים של $exp(t (J + alpha I))$ הם פולינומים ב־$t$ כפול אקספוננט עם מעריך שלילי ב־$t$ ולכן קיים $C^prime > 0$ כך שמתקיים $ sup_(t >=0) normop(exp(t(J + alpha I))) <= C^prime $
   לכן
   $
     normop(exp(t A)) & = normop(exp(t P^(-1) J P)) \
@@ -797,7 +773,7 @@ $ pi(t)alpha^prime (t) = g(t) ==> alpha^prime (t) = pi(t)^(-1) g(t) $
   #underline("אם יש ליאפונוב חזקה אז יש יציבות אסימפטוטית:") יהי $0<R<r$ ומהיציבות לעיל יש $eta>0$ כך שלכל $p in B (x_0, eta)$ ולכל $t>=0$ מתקיים ש־$x_p (t) in B (x_0, R)$.\
   נרצה להראות שלכל $p in B (x_0, eta)$ מתקיים ש־$x_p (t) arrow x_0$ שכן אם לא יש $p in B (x_0, eta)$ ויש $epsilon > 0$ וסדרת זמנים $t_k arrow infinity$ כך ש־$d(x_p (t_k), x_0) >= epsilon$ ונסמן
   $
-    M colon.eq max_(x in B (x_0, R)) norm(F(x)), quad C colon.eq max {chevron.l gradient L(x), F(x) chevron.r bar frac(epsilon, 2) <= norm(x-x_0)<=R} > 0
+    M colon.eq max_(x in B (x_0, R)) norm(F(x)), quad C colon.eq max {chevron.l gradient L(x), F(x) chevron.r bar frac(epsilon, 2) <= norm(x-x_0)<=R} < 0
   $
   נשים לב שאם $norm(x_p (t) -x_0)>epsilon$ אז לכל $t<=s<=t+epsilon/(2M)$ מתקיים ש־$norm(x_p (s)-x_0)>=frac(epsilon, 2)$ מאי־שיוויוון המשולש ההפוך שכן
   $
