@@ -197,8 +197,8 @@
     ניקח $r>0$ כך ש־$closure(B_(2r) (overline(x))) subset.eq U$ וניקח $delta>0$ כך שיתקיים $[tau, tau+delta] subset.eq I inter J$ וגם $x(t), y(t) in closure(B_r (overline(x)))$ לכל $t in [tau, tau + delta]$.\
     נסמן ב־$L$ את קבוע ליפשיץ של $F|_closure(B_r (overline(x)))$, עבור $t in [tau, tau+delta]$ מתקיים
     $
-      frac(dif, dif t) norm(x(t) - y(t))^2 & = 2(x(t)-y(t), x^prime (t) - y^prime (t)) \
-                                           & = 2(x(t)-y(t), F(x(t))-F(y(t))) \
+      frac(dif, dif t) norm(x(t) - y(t))^2 & = 2 chevron.l x(t)-y(t), x^prime (t) - y^prime (t) chevron.r \
+                                           & = 2 chevron.l x(t)-y(t), F(x(t))-F(y(t)) chevron.r \
                                            & <=_((star)) 2norm(x(t)-y(t)) dot.op norm(F(x(t))-F(y(t))) \
                                            & <=_((star star)) 2 L dot.op norm(x(t)-y(t))^2
     $
@@ -236,18 +236,17 @@
 
 #proof[
   נניח ש־$sup J_p^* = T < infinity$, $liminf_(t arrow T) dist(x(t), boundary(U))>0$ וש־$limsup_(t arrow T) norm(x(t))<infinity$.\
-  כלומר, הקבוצה (התמונה של המסילה) $x([0,T))$ חסומה ומוכלת בקבוצה הסגורה $ A_(epsilon_0) colon.eq {x bar dist(x, boundary(U) >= epsilon_0/2)} $ לאיזשהו $epsilon_0 > 0$.\
+  כלומר, הקבוצה (התמונה של המסילה) $x([0,T))$ חסומה ומוכלת בקבוצה הסגורה $ A_(epsilon_0) colon.eq {x bar dist(x, boundary(U)) >= epsilon_0/2} $ לאיזשהו $epsilon_0 > 0$.\
   ניקח סדרה $0<t_k < T$ כך ש־$t_k stretch(arrow)_(k arrow infinity) T$ ונבחין ש־$x_(t_k)$ כולם שייכים לקבוצה $A_(epsilon_0)$ וגם לקבוצה החסומה $x([0, T))$.\
-  נפעיל את (ההוכחה של) משפט פקיארד  עם $x_(t_k)$ כנקודת התחלה עם אותו $0<delta$ לכולם שכן $delta$ תלוי ברדיוס בכדור שניתן לקחת סביב $x_(t_k)$ ובחסם על $norm(F bar_B)$ אבל את הרדיוס והחסם על הנורמה ניתן לבחור באופן אחיד (כי $F$ רציפה ולכן חסומה וזה חוסם את כל הנקודות).\
-  יהי $K$ כך ש־$T<t_K + delta$ ונקבל סתירה לכך ש־$T=sup J_p^*$ כי ממשפט פקיארד הפיתרון מוגדר מעבר ל־$T$.\
+  נפעיל את (ההוכחה של) משפט פיקארד עם $x_(t_k)$ כנקודת התחלה עם אותו $0<delta$ לכולם שכן $delta$ תלוי ברדיוס בכדור שניתן לקחת סביב $x_(t_k)$ ובחסם על $norm(F bar_B)$ אבל את הרדיוס והחסם על הנורמה ניתן לבחור באופן אחיד (כי $F$ רציפה ולכן חסומה וזה חוסם את כל הנקודות).\
+  יהי $K$ כך ש־$T<t_K + delta$ ונקבל סתירה לכך ש־$T=sup J_p^*$ כי ממשפט פיקארד הפיתרון מוגדר מעבר ל־$T$.\
   משיקולי סימטריה ההוכחה למקרה השני זהה.
 ]
 
 #proposition[
   תהיי $U in RR^n$ פתוחה, תהיי $p in U$ ו־$F: U arrow RR^n$ ליפשיץ מקומית.\
-  נניח שאנחנו יודעים שקיימת קבוצה קומפקטית $K subset.eq U$ ו־$T>0$ ($T<0$ עובד באופן דומה) כך שלכל $0<t<T$ מתקיים
-  + אם $t in J_p^*$ אז $x_p (t) in K$
-  + $[0, T) subset.eq J_p^*$
+  נניח שאנחנו יודעים שקיימת קבוצה קומפקטית $K subset.eq U$ ו־$T>0$ ($T<0$ עובד באופן דומה) כך שלכל $0<t<T$ מתקיים שאם $t in J_p^*$ אז $x_p (t) in K$ אז מתקיים $[0, T) subset.eq J_p^*$.\
+  כלומר, אם הפיתרון בתנאי התחלה $p$ קיים עד לזמן $t$ שבפיתרון המקסימלי אז $x_p (t) in K$ אז אם כל זה קורה, $[0,T) subset.eq J_p^*$.
 ]
 
 #proof[
@@ -355,13 +354,13 @@ $ partial/(partial t) D Phi = D(partial/(partial t) Phi) = D(F compose Phi)=D F(
   לפי הלמה של גרונוול, נובע כי $f(t) <= 1 dot.op e^(L t) = e^(L t)$ ולכן הנורמה של כל עמודה חסומה על כל קטע סגור ב־$I$ והחסם $e^(L t)$ תקף לכל $t in I$ וממשפט הטריכוטומיה הפיתרון $M(t)$ מוגדר וקיים על כל $I$.
 ]
 
-#theorem[
+#theorem[תלות גזירה בתנאי ההתחלה][
   תהיי $U subset.eq RR^n$ פתוחה ו־$p in U$ עם $F:U arrow RR^n$ גזירה ברציפות ובפרט ליפשיץ מקומית.\
   יהי $x_p$ הפיתרון המקסימלי לבעיית ההתחלה
   $ cases(x'(t)=F(x(t)), x(0)=p) $
   ויהי $M(t)$ הפיתרון המקסימלי לבעיית ההתחלה
   $ cases(M'(t)=D F(x(t))M(t), M(0) = Id) $
-  אזי לכל $T in I_p^*$, $phi_T$ גזירה ב־$p$ והדיפרנציאל שלה נתון על־ידי $D phi_T (p) = M(t)$.
+  אזי לכל $T in J_p^*$, $phi_T$ גזירה ב־$p$ והדיפרנציאל שלה נתון על־ידי $D phi_T (p) = M(t)$.
 ]
 
 #proof[
@@ -373,8 +372,6 @@ $ partial/(partial t) D Phi = D(partial/(partial t) Phi) = D(F compose Phi)=D F(
   ונבחר $eta>0$ כך ש־$eta dot.op K dot.op t dot.op e^((L+eta)T)<epsilon$.\
   $D F$ רציפה ולכן יש $r>0$ כך שלכל $0<=t<=T$ ולכל $z in B_r (x_p (t))$ מתקיים $normop(D F(z)-D F(x_p (t)))<eta$ ולכן עבור $z$ כאלה
   $ (star) space norm(F(z)-F(x_p (t))-D F(x_p (t))(z-x_p (t)))<eta norm(z-x_p (t)) $
-  אז אם נציב
-  $ norm(F(z)-D F (x_p (t)) z - F(x_p (t))+D F(x_p (t))x_p (t))=norm(F(z)-F(x_p (t))-D F(x_p (t))(z-x_p (t))) $
   מרציפות בתנאי ההתחלה קיים $delta>0$ כך שלכל $q$ עם $norm(p-q)<delta$ ולכל $0<=t<=T$ מתקיים $norm(x_p (t) - x_q (t))<r$ ולכן מצאנו $delta$.\
   #remark[
     הסבר ל־$(star)$: עד היום תמיד הסכמנו שאם $normop(D G) < M$ אז $norm(G(z)-G(w))<=M norm(z-w)$ על המסלול בין $z$ ל־$w$ (טריק אינטגרציה).\
@@ -384,6 +381,8 @@ $ partial/(partial t) D Phi = D(partial/(partial t) Phi) = D(F compose Phi)=D F(
     $ norm(D G(z)) = norm(D F (z) - D F (x_p (t)))<eta $
     ולכן
     $ norm(G(z)-G(x_p (t)))<eta norm(z-x_p (t)) $
+    אז אם נציב
+    $ norm(F(z)-D F (x_p (t)) z - F(x_p (t))+D F(x_p (t))x_p (t))=norm(F(z)-F(x_p (t))-D F(x_p (t))(z-x_p (t))) $
   ]
 
 ]
@@ -487,7 +486,7 @@ $ partial/(partial t) D Phi = D(partial/(partial t) Phi) = D(F compose Phi)=D F(
 ]
 
 #proof[
-  נסמן ב־$eBase_k$ את הוקטור הסטנדרטי ונסמן ב־$x_k$ את הפתרון ל־$(star)$ עם תנאי ההתחלה $x(0)=eBase_k$.\
+  נסמן ב־$eBase_k$ את הוקטור הסטנדרטי ונסמן ב־$x_k$ את הפתרון ל־$(star)$ עם תנאי ההתחלה $x_k (0)=eBase_k$.\
   ${x_k}_(k=1)^n$ בלתי־תלויים שכן אם נניח שמתקיים $sum_(j=1)^n alpha_j x_j (t) = 0$ לכל $t$ אז בפרט $sum_(j=1)^n alpha_j x_j (0) = 0$.
   מכיוון ש־$x_j (0) = eBase_j$, קיבלנו $sum_(j=1)^n alpha_j eBase_j = 0$.
   מכך שוקטורי הבסיס הסטנדרטי בלתי־תלויים לינארית נסיק כי $alpha_j = 0$ לכל $j$ וקיבלנו בלתי־תלויות.\
@@ -499,12 +498,12 @@ $
   x_1 (t) = x_0 + integral_0^t A x_0 (s) dif s = x_0 + A integral_0^t x_0 = x_0 + A t x_0 \
   x_2 (t) = x_0 + integral_0^t x_1 (s) dif s = x_0 + A t x_0 + frac(A^2 t^2, 2) x_0 \
   dots.v \
-  x_n (t) = sum_(i=0)^n frac(A^n t^n x_0, n!) = (id + A t + dots.h.c + frac(A^n t^n, n!)) x_0
+  x_n (t) = sum_(i=0)^n frac(A^n t^n x_0, n!) = (Id + A t + dots.h.c + frac(A^n t^n, n!)) x_0
 $
 מפיקארד התהליך הזה מתכנס ונסמן את הגבול ב־$exp(t A) dot.op x_0$ (זה בעצם אקספוננט שמציבים בפנים וקטור).
 
 #definition[
-  לכל מטריצה $A in RR^(n times n)$ נגדיר את $exp(A) = sum_(k=0)^infinity frac(A^k, k!)$ כאשר $A^0 = id$.
+  לכל מטריצה $A in RR^(n times n)$ נגדיר את $exp(A) = sum_(k=0)^infinity frac(A^k, k!)$ כאשר $A^0 = Id$.
 ]
 
 #proposition[
@@ -573,7 +572,7 @@ $ cases(x^prime = A x, x(0) = x_0) $ מתקיים ש־$x(t)=exp(t A) x_0$ הוא
   מהגדרה וזו כמובן סתירה.
 ]
 
-איך מחשבים את $exp(t A)$? נשים לב ש־$P$ מטריצה הפיכה ואז $exp(P A P^(-1)) = P exp(A) P^(-1)$ שכן $P P^(-1) = id$ ואז $(P A P^(-1))^k = A^k$.\
+איך מחשבים את $exp(t A)$? נשים לב ש־$P$ מטריצה הפיכה ואז $exp(P A P^(-1)) = P exp(A) P^(-1)$ שכן $P P^(-1) = Id$ ואז $(P A P^(-1))^k = A^k$.\
 שנית, אם $A$ אלכסונית אז
 $
   A = mat(lambda_1, , 0; , lambda_2, ; , dots.down, ; , , lambda_n), quad exp(t A) = mat(e^(t lambda_1), , 0; , e^(t lambda_2), ; , dots.down, ; , , e^(t lambda_n))
@@ -679,6 +678,7 @@ $ pi(t)alpha^prime (t) = g(t) ==> alpha^prime (t) = pi(t)^(-1) g(t) $
 ]
 
 #proof[
+  נגזור
   $
     y^prime (t) & = [pi(t)(alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s)]^prime \
                 & = pi^(prime) (t) (alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s) + pi(t) pi(t)^(-1)g(t) \
@@ -688,7 +688,7 @@ $ pi(t)alpha^prime (t) = g(t) ==> alpha^prime (t) = pi(t)^(-1) g(t) $
 ]
 
 #corollary[עקרון דוהמל][
-  נניח שמטריצת המקדמים קבועה כלומר $A(t) = A$  ו־$x_i (0) = "e"_i$ (הבסיס הסטנדרטי ב־$0$) אז $pi(t) = e^(t A)$ ונקבל
+  נניח שמטריצת המקדמים קבועה כלומר $A(t) = A$  ו־$x_i (0) = "e"_i$ (הבסיס הסטנדרטי ב־$0$) אז $pi(t) = e^(t A)$ ו־$pi(0)=Id$ ונקבל
   $ y(t)= e^(t A) y_0 + integral_0^t e^((t -s)A) g(s) dif s $
 ]
 
@@ -747,7 +747,7 @@ $ pi(t)alpha^prime (t) = g(t) ==> alpha^prime (t) = pi(t)^(-1) g(t) $
                      & <= normop(P) normop(P^(-1)) normop(exp(t J)) \
                      & = normop(P)normop(P^(-1))normop(exp(t J + t alpha I - t alpha I)) \
                      & = normop(P)normop(P^(-1))normop(exp(t(J + alpha I))) dot.op e^(-t alpha) \
-                     & <= C dot.op e^(-t alpha)
+                     & <= C^prime dot.op e^(-t alpha)
   $
   כאשר המעבר האחרון נובע מתכונת החילופיות של האקספוננט למטריצות מתחלפות.
 ]
@@ -755,9 +755,9 @@ $ pi(t)alpha^prime (t) = g(t) ==> alpha^prime (t) = pi(t)^(-1) g(t) $
 #end_of_lecture("9 – 11/05")
 
 #proof[@linear-criterion-for-asymptotic-stability, הקריטריון הלינארי ליציבות אסימפטוטית][
-  כזכור לכל $t in I_p$, $phi_t (x)$ גזירה ב־$p$ ו־$D phi_t (p)$ מקיימת
+  כזכור לכל $t in J_p^*$, $phi_t (x)$ גזירה ב־$p$ ו־$D phi_t (p)$ מקיימת
   $
-    (star) space dif/(dif t) [D phi_t (p)] = D F (phi_t (p)) D phi_t (p), quad D phi_0 (o) = id
+    (star) space dif/(dif t) [D phi_t (p)] = D F (phi_t (p)) D phi_t (p), quad D phi_0 (p) = Id
   $
   כאשר קראנו ל־$D phi_t (p) = M$ בעבר.\
   אבל $p$ נקודת שיווי משקל כלומר $F(p)=0$ ולכן $phi_t (p) = p$ לכל $t$ ומכאן נובע ש־$(star)$ היא משוואה לינארית במקדמים קבועים ולכן $M^prime = D F (p) M$ ולכן
@@ -766,12 +766,12 @@ $ pi(t)alpha^prime (t) = g(t) ==> alpha^prime (t) = pi(t)^(-1) g(t) $
   $ normop(exp(T D F(p)))< 1/4 $
   יהי $epsilon > 0$ וקיימת $delta > 0$ כך שלכל $q in B_delta (p)$ ולכן $t in [0,T]$ מתקיים $phi_t (q) in B_epsilon (p)$ (מתלות רציפה בתנאי ההתחלה).\
   בנוסף מהקירוב הלינארי
-  $ phi_T (q) = phi_T (p) + D phi_T (p) (q-p) $
+  $ phi_T (q) = phi_T (p) + D phi_T (p) (q-p) + + o(norm(q-p)) $
   ולכן על־ידי הקטנה של $delta$ אם צריך נוכל להניח שהמחובר $o(p-q)$ לא עולה על $1/4 normop(p-q)$, כלומר
   $ normop(phi_T (q) - phi_T (p)) <= normop(q-p)/2 $
   בפרט $phi_T (q) in B_delta (p)$ שכן $phi_T (p) = p$ ושוב לכל $0<= t<=T$ מתקיים $phi_(T+t) (q) in B_epsilon (p)$ (שוב מהרציפות בתנאי ההתחלה) ואם נחזור על התהליך נקבל
   $ normop(phi_(k T) (q) - p)<= 2^(-k) norm(q-p) $
-  ולכן $t in [0,T]$ ולכל $k in NN$ מתקיים $phi_(k T + t) (q) in B_epsilon (p)$ כלומר לכל $t > 0$ מתקיים $phi_t (q) in B_epsilon (p)$ וזו בידיוק ההגדרה של יציבות.\
+  לכל $t in [0,T]$ ולכל $k in NN$ מתקיים $phi_(k T + t) (q) in B_epsilon (p)$ כלומר לכל $t > 0$ מתקיים $phi_t (q) in B_epsilon (p)$ וזו בידיוק ההגדרה של יציבות.\
   נשאר להראות יציבות אסימפטוטית: קיבלנו ש־$phi_(k T) (q) stretch(arrow)_(k arrow infinity) p$ לכל $q in B_delta (p)$ ושוב מתלות רציפה בתנאי התחלה נקבל $lim_(t arrow infinity) phi_t (q) = p$ שכן לכל $epsilon^prime > 0$ יש $delta^prime > 0$ כך שאם $y in B_(delta^prime) (p)$ אז לכל $t in [0,T]$ נקבל $ normop(phi_t (y) - p)<epsilon^prime $
 ]
 
@@ -793,20 +793,25 @@ $ pi(t)alpha^prime (t) = g(t) ==> alpha^prime (t) = pi(t)^(-1) g(t) $
     frac(dif, dif t) (L(x_p (t))) = chevron.l gradient L(x_p (t)), x^prime_p (t) chevron.r = chevron.l gradient L(x_p (t)), F(x_p (t)) chevron.r <= 0
   $
   יהי $r>epsilon>0$. מכך ש־$x_0$ מינימום חזק של $L$ נקבל $L(x_0) < min_(x in boundary(B(x_0,epsilon))) L(x)$ ולכן קיימת $delta > 0$ כך ש־$max_(x in B (x_0, delta)) L(x) < min_(x in boundary(B(x_0, epsilon))) L(x)$.\
-  כעת, אם $p in B (x_0, delta)$ ויש $t>0$ שעבורו $x_p (t) in.not B (x_0,epsilon)$ אז קיים $t_*$ כך ש־$x_p (t_*) in boundary(B (x_0, epsilon))$  $L(x_p (t_*)) > L(x_p (0)) = L(p)$ בסתירה למונוטוניות.\
-  #underline("אם יש ליאפונוב חזקה אז יש יציבות אסימפטוטית:") יהי $0<R<r$ ומהיציבות לעיל יש $eta>0$ כך שלכל $p in B (x_0, eta)$ מתקיים לכל $t>=0$ ש־$x_p (t) in B (x_0, R)$.\
+  כעת, אם $p in B (x_0, delta)$ ויש $t>0$ שעבורו $x_p (t) in.not B (x_0,epsilon)$ אז קיים $t_*$ כך ש־$x_p (t_*) in boundary(B (x_0, epsilon))$ ו־$L(x_p (t_*)) > L(x_p (0)) = L(p)$ בסתירה למונוטוניות.\
+  #underline("אם יש ליאפונוב חזקה אז יש יציבות אסימפטוטית:") יהי $0<R<r$ ומהיציבות לעיל יש $eta>0$ כך שלכל $p in B (x_0, eta)$ ולכל $t>=0$ מתקיים ש־$x_p (t) in B (x_0, R)$.\
   נרצה להראות שלכל $p in B (x_0, eta)$ מתקיים ש־$x_p (t) arrow x_0$ שכן אם לא יש $p in B (x_0, eta)$ ויש $epsilon > 0$ וסדרת זמנים $t_k arrow infinity$ כך ש־$d(x_p (t_k), x_0) >= epsilon$ ונסמן
   $
     M colon.eq max_(x in B (x_0, R)) norm(F(x)), quad C colon.eq max {chevron.l gradient L(x), F(x) chevron.r bar frac(epsilon, 2) <= norm(x-x_0)<=R} > 0
   $
-  נשים לב שאם $norm(x_p (t) -x_0)>epsilon$ אז לכל $t<=s<=t+epsilon/(2M)$ מתקיים ש־$norm(x_p (s)-x_0)>=epsilon/2$ מאי־שיוויוון המשולש ההפוך שכן
-  $ norm(x_p (s) - x_p (t)) = norm(integral_t^s x^prime_p (u) dif u)<= M abs(s-t)<=epsilon/2 $
+  נשים לב שאם $norm(x_p (t) -x_0)>epsilon$ אז לכל $t<=s<=t+epsilon/(2M)$ מתקיים ש־$norm(x_p (s)-x_0)>=frac(epsilon, 2)$ מאי־שיוויוון המשולש ההפוך שכן
+  $
+    norm(x_p (s) - x_p (t)) = norm(integral_t^s x^prime_p (u) dif u)<= M abs(s-t)<=frac(epsilon, 2)
+  $
+  $
+    norm(x_p (s)-x_0) >= norm(norm(x_p (s)-x_p (t))- norm(x_p (t)-x_0))>= frac(epsilon, 2)
+  $
   כעת נניח על־ידי צמצום לתת־סדרה (אם צריך) ש־$epsilon/(2M) < abs(t_(k+1)-t_k)$ ונחשב את $L(x_p (t))$ עבור $t>0$
   $
     L(x_p (t)) & = L(p) + integral_0^t (L (x_p (s)))^prime dif s \
     & = L(p) + integral_0^t chevron.l gradient L(x_p (s)), F(x_p (s)) chevron.r dif s \
     &<= L(p) + sum_(k=1)^(n bar t_(n+1) <=t) integral_(t_k)^(t_(k+1)) chevron.l gradient L(x_p (s)), F(x_p (s)) chevron.r dif s \
-    &<= L(p) + sum_(k=1)^(n bar t_(n+1) <=t) integral_(t_k)^(t_k + epsilon/(2M)) chevron.l gradient L(x_p (s)), F(x_p (s)) chevron.l dif s \
+    &<= L(p) + sum_(k=1)^(n bar t_(n+1) <=t) integral_(t_k)^(t_k + epsilon/(2M)) chevron.l gradient L(x_p (s)), F(x_p (s)) chevron.r dif s \
     &= L(p) + sum_(k=1)^(n bar t_(n+1) <=t) C dot.op epsilon/(2M) stretch(arrow)_(t arrow infinity) - infinity
   $
   אבל זאת סתירה כי $L$ חסומה ב־$closure(B_R (x_0))$ לכן לכל $p in B_eta (x_0)$ מתקיים $x_p (t) stretch(arrow)_(t arrow infinity) x_0$.
@@ -876,7 +881,7 @@ $ pi(t)alpha^prime (t) = g(t) ==> alpha^prime (t) = pi(t)^(-1) g(t) $
     $
       (star star star) space e^(-t A) pi_plus x(t) = pi_plus (x(0)) + integral_0^t e^(-s A) pi_plus g(x(s)) dif s ==> pi_plus (x(0)) = - integral_0^infinity e^(-s A) pi_plus g(x(s)) dif s
     $
-    נרצה להראות את החץ מימין: קיים קבוע $C>0$ המקיים $normop(pi_plus.minus) <= C$ כך שאם $0<mu<min { abs(re(lambda)) bar A "ערך עצמי של" lambda}$  ונקבל
+    נרצה להראות את החץ מימין: קיים קבוע $C>0$ המקיים $normop(pi_plus.minus) <= C$ כך שאם $0<mu<min { abs(re(lambda)) bar A "ערך עצמי של" lambda}$ נקבל
     $
       forall t >0, space norm(e^(t A) pi_minus x) <= C e^(- mu t) norm(x) \
       forall t <0, space norm(e^(t A) pi_plus x) <= C e^(-mu abs(t)) norm(x)
@@ -1300,7 +1305,7 @@ $
 #theorem[תכונת הערך הממוצע של פונקציות הרמוניות][
   תהיי $Omega subset.eq RR^n$ פתוחה ותהיי $u in C^2 (Omega)$ אזי $u$ הרמונית ב־$Omega$ אם ורק אם לכל $closure(B(x_0, r_0)) subset.eq Omega$ (כדור שהסגור שלו ב־$Omega$) מתקיים
   $
-    integral.slash_(B(x_0, r_0)) u dif V = u(x_0) = u(x_0) integral.slash_(boundary(B(x_0, r_0))) u dif S
+    integral.slash_(B(x_0, r_0)) u dif V = u(x_0) = integral.slash_(boundary(B(x_0, r_0))) u dif S
   $
 ]
 
@@ -1365,7 +1370,7 @@ $
     ב־ $B(x_0, r)$ שעליה $u < u(x_0)$ ואז $integral.slash_(B(x_0, r)) u dif V < u(x_0)$.\
     זה נכון לכל $r<=dist(x_0, boundary(Omega))$ ולכן לכל $y in boundary(Omega) inter boundary(B(x_0, dist(x_0, boundary(Omega))))$ מתקיים $u(y)=u(x_0) = max u(closure(Omega))$.
   + נניח ש־$x_0 in Omega$ מקיימת $u(x_0) = max u(Omega)$ ונתבונן בקבוצה $A colon.eq {y in Omega bar u(x_0)=u(y)}$.\
-    $A$ סגורה מרציפות והיא לא ריקה כי $x_0 in A$. אבל הראנו ש־$A$ פתוחה ב־$Omega$ אבל $Omega$ קשירה ולכן $A=Omega$.
+    $A$ סגורה מרציפות והיא לא ריקה כי $x_0 in A$. אבל הראינו ש־$A$ פתוחה ב־$Omega$ (זה נובע ישירות מתכונת ערך הממוצע של פונקציות הרמוניות) אבל $Omega$ קשירה ולכן $A=Omega$.
 ]
 
 #remark[
