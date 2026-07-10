@@ -71,9 +71,16 @@
   $ cases(x(0) = tilde(x_0), x^prime (t) = F(x(t))) $
 ]<picard_existence_theorem>
 
-#proofKey[
+#proofKey[יונתן מההרצאה][
   מספיק לזכור את הטריק של $tau = inf{t in I inter J inter (0,infinity) bar x(t) != y(t)}$ ומרציפות לחסום את $frac(dif, dif t) norm(x(t)-y(t))^2$ כדי להגדיר \
   $f(t)=e^(-2L t) norm(x(t)-y(t))^2$ ולהגיע לסתירה באמצעות גזירה (אין צורך להוכיח את כל תהליך הגזירה, מספיק להגיד $frac(dif, dif t) f(t) <= -2L f(t) +2 L f(t) = 0$).
+]
+
+#proofKey[משפט פיקארד בווריאציה של משפט העתקה מכווצת][
+  + מגדירים מהמשפט היסודי
+    $ x(t) = x_0 + integral_0^t F(x(s)) dif s, quad K x(t) = x_0 + integral_0^t F(x(s)) dif s $
+  + מסתכלים על כדור שחסום על־ידי $C_r$ וזה מרחב מטרי שלם מהקטע $(-delta, delta)$ אז בוחרים $delta<=min(frac(r, 2M_r), frac(1, 2C_r))$ ומראים שחסום $norm(K x(t)-x_0), norm(K x(t) - K y(t))$
+  + משפט העתקה מכווצת מסיים
 ]
 
 #pagebreak()
@@ -592,36 +599,11 @@
   יהי $I subset.eq RR$ קטע שמכיל את $0$, $A:I arrow RR^(n times n), g:I arrow RR^n$ פונקציות רציפות.\
   אזי לכל $x_0 in RR^n$ קיים פתרון יחיד אשר מוגדר על כל $I$ לבעיית ההתחלה
   $ (star) space cases(x^prime (t) = A(t) x(t) + g(t), x(0)=x_0) $
-]<the_solution_defined_as_long_as_the_equation_defined>
+]
 
 #proof[
   ראה @the_solution_defined_as_long_as_the_equation_defined.
 ]
-#proof[
-  מספיק להוכיח את המשפט לכל קטע סגור וחסום $I_0 subset.eq I$.\
-  נסמן $ F(x,t) colon.eq A(t) x + g(t) \
-  L colon.eq sup_(t in I_0) normop(A(t)) \
-  M colon.eq sup_(t in I_0) norm(g(t)) $
-  מתקיים ש־$L<infinity$ שכן $A$ רציפה ו־$I_0$ קומפקטי ולכן $F$ רציפה ב־$RR^n times I_0$ ומקיימת את תנאי ליפשיץ
-  $ norm(F(x,t)-F(y,t)) = norm(A(t) dot.op (x-y)) <= L norm(x-y) $
-  ממשפט פיקארד מספיק להניח רציפות של $F$ במשתנה הזמן וליפשציות מקומית של $F$ במשתנה המיקום עם קבועי ליפשיץ שלא תלויים בזמן ולכן קיים פתרון יחיד לפרק זמן סופי כלשהו.\
-  מאי־שיוויון קושי־שוורץ נקבל
-  $
-    frac(dif, dif t) norm(x(t))^2 & = 2 chevron.l x^prime (t), x(t) chevron.r \
-                                  & = 2 chevron.l A(t)x(t)+g(t), x(t) chevron.r \
-                                  & <= 2 norm(A(t) x(t) + g(t)) dot.op norm(x(t)) \
-                                  & <= 2 norm(A(t) x(t)) dot.op norm(x(t)) + 2 norm(g(t))dot.op norm(x(t)) \
-                                  & <= 2 L norm(x(t))^2 + 2 M norm(x(t))
-  $
-  אז אפשר לקחת $0<C$ שתלוי ב־$L,M$ אבל לא תלוי ב־$t$ (כי א חד ריבועי ב־$norm(x(t))$ והשני לינארי בו) כך שמתקיים
-  $ 2 L norm(x(t))^2 + 2 M norm(x(t)) <= 4 L norm(x(t))^2 + C $
-  בלי הגבלת הכלליות $0<t$ ואז
-  $ frac(dif, dif t) [e^(-4L t) norm(x(t))^2] <= C e^(-4 L t) <= C $
-  מאינטגרציה על התחום $[0,t]$ נקבל
-  $ norm(x(t))^2 e^(-4 L t) - norm(x_0)^2 <= C t ==> norm(x(t))^2 <= C t e^(4 L t) + norm(x_0)^2 e^(4 L t) $
-  החסם הזה מעיד שהפתרון לא יכול להתפוצץ בזמן סופי ($C,M,L$ תלויים בבחירת $I_0$ אבל הם קבועים שלא יכולים להתפוצץ בזמן סופי) ומטריכוטומיה הפתרון מוגדר היטב על כל $I$.
-]
-
 
 = דברים טכניים
 == שימוש בשיטת גורם האינטגרציה
@@ -646,6 +628,38 @@
   $ frac(e^0, 0+1)(-frac(0+2, e^0) + 2 + c) = 1 <==> -2 + 2 + c = 1 <==> c = 1 $
   כלומר
   $ x(t) = frac(e^t, t+1)(-frac(t+2, e^t)-1) $
+]
+
+#pagebreak()
+
+== שיטת הפרדת משתנים
+#theorem[שיטת הפרדת משתנים][
+  תהיי $U subset.eq RR$ פתוחה, $I subset.eq RR$ קטע, $t_0 in I$ זמן התחלה, $f:U arrow RR$ ו־$g:I arrow RR$ רציפות. נניח גם ש־$f$ לא מתאפסת ב־$U$.\
+  אז $x:I arrow U$ היא פיתרון של המשוואה הדיפרנציאלית הרגילה $x^prime (t) = f(x(t))g(t)$ אם ורק אם היא מהצורה
+  $ x(t)=phi^(-1) (integral_(t_0)^t g(s) dif s + C) $
+  כאשר $phi$ פונקציה קדומה ל־$frac(1, f)$ ב־$U$ ו־$C$ קבוע כלשהו.
+]
+
+#proof[
+  המשוואה השקולה היא
+  $ frac(x^prime (t), f(x(t)))=g(t) $
+  ומכלל השרשרת זה שקול למשוואה
+  $ phi(x(t))^prime = g(t) $
+  מהמשפט היסודי זה שקול לכך שיש קבוע $C$ כך שמתקיים
+  $ phi(x(t))=integral_(t_0)^t g(s) dif s + C $
+  כעת $phi^prime = frac(1, f)$ פונקציה רציפה שלא מתאפסת ב־$U$ ולכן ממשפט הפונקציה ההופכית $phi$ הפיכה ב־$U$ וזה שקול למשוואה
+  $ x(t)=phi^(-1)(integral_(t_0)^t g(s) dif s + C) $
+]
+
+#example[מתרגול 2][
+  נמצא את הפיתרון הכללי למשוואה
+  $ x^prime (t) = t(1+x^2 (t)) $
+  זוהי משוואה ניתנת להפרדה ולכן נגדיר
+  $ f(x)=1+x^2, quad g(t) = t $
+  ואז
+  $ phi(x) = arctan(x) $
+  כלומר
+  $ x(t)=phi^(-1)(integral g(t) dif t + C) = tan(frac(t^2, 2) + C) $
 ]
 
 #pagebreak()
@@ -690,3 +704,6 @@
   כלומר קיבלנו שהנוסחה סגורה.
 ]
 
+#pagebreak()
+
+== איטרציות פיקארד

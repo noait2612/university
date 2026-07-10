@@ -55,8 +55,6 @@
   לכן, גם בקורס הזה כשנתבונן במשוואות דיפרנציאליות תמיד נקבע את תנאי ההתחלה $x(0)=x_0$ וננסה לפתור את המשוואה עם הנתון הזה. זה נקרא בעיית התחלה.
 ]
 
-#pagebreak()
-
 == קיום ויחידות
 #theorem[
   נניח שנתונה מערכת $m$ משוואות דיפרנציאליות מסדר $n$ כאשר $x^((n)) (t) = F(x(t), x^prime (t), dots.h, x^((n-1)) (t), t)$ עבור $F:U arrow RR^m$ כאשר $U subset.eq R^(n m + 1)$.\
@@ -109,8 +107,6 @@
 #remark[
   תנאי המשפט לא מבטיחים יחידות.
 ]
-
-#pagebreak()
 
 #proof[
   יהי $r>0$ כך ש־$B colon.eq closure(B(tilde(x_0), r)) subset.eq U$, נסמן $M colon.eq norm(F|_B)_infinity = sup_(x in B) abs(F(x))$, נגדיר $delta = frac(r, M)$ ואת סדרת הפונקציות $x_k : [-delta, delta] arrow U$ על־ידי
@@ -208,8 +204,33 @@
       frac(dif, dif t) f <= -2L f(t) + 2 L f(t) = 0
     $
     הנגזרת לא חיובית ולכן היא מונוטונית יורדת ובנוסף $f(t)$ אי־שלילית ב־$[tau, tau+delta]$ אבל $f(tau)=0$ ולכן $f(t) =0$ לכל $t in [tau, tau + delta]$ ולכן $norm(x(t)-y(t))=0$ וזו סתירה להגדרת $tau$ בתור אינפימום.\
-    עבור $t$־ײם שליליים ההוכחה דומה עם $sup$ ופונקציה קצת אחרת או להסתכל על $tilde(x)(t)=x(-t)$ ומהמשוואה $eta^prime (t) = -F(eta(t))$.
+    עבור $t$־ים שליליים ההוכחה דומה עם $sup$ ופונקציה קצת אחרת או להסתכל על $tilde(x)(t)=x(-t)$ ומהמשוואה $eta^prime (t) = -F(eta(t))$.
   ]
+]
+
+#proof[משפט פיקארד באמצעות משפט העתקה מכווצת][
+  לפי המשפט היסודי בעיית ההתחלה שקולה למשוואה האינטגרלית
+  $ x(t) = x_0 + integral_0^t F(x(s)) dif s $
+  נגדיר את אופרטור פיקארד $K$ הפועל על מרחב פונקציות
+  $ K x(t) = x_0 + integral_0^t F(x(s)) dif s $
+  כעת, הבעיה שקולה למציאת נקודת שבת של האופרטור $K$, כלומר פונקציה $x$ המקיימת $K x = x$.\
+  מכיוון ש־$F$ ליפשיצית מקומית, קיים כדור סגור $closure(B)_r (x_0) subset.eq U$ שבו $F$ חסומה על ידי קבוע $M_r$ וליפשיצית עם קבוע $C_r$. \
+  נגדיר את המרחב המטרי $X$ להיות מרחב הפונקציות הרציפות מהקטע $(-delta, delta)$ אל הכדור $closure(B)_r (x_0)$ עם נורמת הסופרמום וזה מרחב מטרי שלם.\
+  נבחר $delta > 0$ קטן מספיק כך שיתקיים $delta <= min(frac(r, 2 M_r), frac(1, 2 C_r))$ ונשים לב שהאופרטור $K$ מוגדר היטב שכן לכל פונקציה $x in X$ מתקיים
+  $ norm(K x(t) - x_0) <= integral_0^t norm(F(x(s))) dif s <= delta M_r <= r/2 < r $
+  ולכן $K x$ נשארת בתוך הכדור $closure(B)_r (x_0)$, כלומר האופרטור אכן ממפה את $X$ לעצמו.\
+  לכל שתי פונקציות $x, y in X$ מתקיים
+  $
+    norm(K x(t) - K y(t)) <= integral_0^t norm(F(x(s)) - F(y(s))) dif s <= integral_0^t C_r norm(x(s) - y(s)) dif s <= delta C_r norm(x - y)_infinity <= 1/2 norm(x - y)_infinity
+  $
+  ולכן $K$ היא העתקה מכווצת והמרחב שלם אז ממשפט העתקה מכווצת יש ב־$X$ נקודת שבת יחידה והיא הפיתרון היחידי למשוואה בקטע $(-delta, delta)$.
+]
+
+#definition[איטרציות פיקארד][
+  משפט העתקה מכווצת מספק לנו גם אלגוריתם קונסטרוקטיבי למציאת הפתרון.\
+  אם נתחיל מניחוש התחלתי כלשהו, למשל הפונקציה הקבועה $y_0 (t) = x_0$, ונפעיל את האופרטור $K$ באופן איטרטיבי:
+  $ y_n (t) = K y_(n-1) (t) = x_0 + integral_0^t F(y_(n-1) (s)) dif s $
+  מובטח לנו שסדרת הפונקציות $(y_n)_(n=0)^infinity$ (אשר נקראת "איטרציות פיקארד") תתכנס במידה שווה לפתרון היחיד של המשוואה.
 ]
 
 #end_of_lecture("3 – 13/04")
@@ -226,8 +247,7 @@
 ]
 
 #theorem("טריכוטומיה של זרימות של שדה ליפשיץ מקומי")[
-  תהיי $U in RR^n$ פתוחה, תהיי $p in U$ ו־$F: U arrow RR^n$ ליפשיץ מקומית.\
-  נסמן $X:J_p^* arrow U$ הפיתרון המקסימלי לבעיית ההתחלה
+  תהיי $U in RR^n$ פתוחה, תהיי $p in U$ ו־$F: U arrow RR^n$ ליפשיץ מקומית ונסמן $x:J_p^* arrow U$ הפיתרון המקסימלי לבעיית ההתחלה
   $ cases(x'(t) = F(x(t)), x(0)=p) $
   אזי עבור $T in boundary(J_p^*) without {plus.minus infinity}$ מתקיים אחד משני המקרים הבאים
   + $display(liminf_( t arrow T) dist(x(t), boundary(U))=0)$
@@ -236,7 +256,7 @@
 
 #proof[
   נניח ש־$sup J_p^* = T < infinity$, $liminf_(t arrow T) dist(x(t), boundary(U))>0$ וש־$limsup_(t arrow T) norm(x(t))<infinity$.\
-  כלומר, הקבוצה (התמונה של המסילה) $x([0,T))$ חסומה ומוכלת בקבוצה הסגורה $ A_(epsilon_0) colon.eq {x bar dist(x, boundary(U)) >= epsilon_0/2} $ לאיזשהו $epsilon_0 > 0$.\
+  כלומר, הקבוצה (התמונה של המסילה) $x([0,T))$ חסומה ומוכלת בקבוצה הסגורה $ A_(epsilon_0) colon.eq {x bar dist(x, boundary(U)) >= epsilon_0/2}, quad epsilon_0 > 0 $
   ניקח סדרה $0<t_k < T$ כך ש־$t_k stretch(arrow)_(k arrow infinity) T$ ונבחין ש־$x_(t_k)$ כולם שייכים לקבוצה $A_(epsilon_0)$ וגם לקבוצה החסומה $x([0, T))$.\
   נפעיל את (ההוכחה של) משפט פיקארד עם $x_(t_k)$ כנקודת התחלה עם אותו $0<delta$ לכולם שכן $delta$ תלוי ברדיוס בכדור שניתן לקחת סביב $x_(t_k)$ ובחסם על $norm(F bar_B)$ אבל את הרדיוס והחסם על הנורמה ניתן לבחור באופן אחיד (כי $F$ רציפה ולכן חסומה וזה חוסם את כל הנקודות).\
   יהי $K$ כך ש־$T<t_K + delta$ ונקבל סתירה לכך ש־$T=sup J_p^*$ כי ממשפט פיקארד הפיתרון מוגדר מעבר ל־$T$.\
@@ -255,10 +275,9 @@
 ]
 
 #definition[
-  נגדיר
+  עבור $F: U arrow RR^n$ ליפשיצית מקומית עבור $U subset.eq RR^n$ פתוחה נגדיר
   $ Omega colon.eq {(p, t) bar p in U, t in J_p^*} subset.eq RR^(n+1) $
-  לכל $(p,t) in Omega$ נגדיר את $Phi(p, t)=x_p (t) = phi_t (p)$ היכן ש־$x_p (t)$ פיתרון ל־$x'_p (t) = F(x_p (t))$ ו־$x_p (0) = p$.\
-  כאשר כמובן $F: U arrow RR^n$ ליפשיצית מקומית עבור $U subset.eq RR^n$ פתוחה.
+  לכל $(p,t) in Omega$ נגדיר את $Phi(p, t)=x_p (t) = phi_t (p)$ היכן ש־$x_p (t)$ פיתרון ל־$x'_p (t) = F(x_p (t))$ ו־$x_p (0) = p$.
 ]
 
 #theorem[תלות רציפה בתנאי ההתחלה][
@@ -463,17 +482,16 @@ $ partial/(partial t) D Phi = D(partial/(partial t) Phi) = D(F compose Phi)=D F(
 
 #proof[
   נסמן ב־$eBase_k$ את הוקטור הסטנדרטי ונסמן ב־$x_k$ את הפתרון ל־$(star)$ עם תנאי ההתחלה $x_k (0)=eBase_k$.\
-  ${x_k}_(k=1)^n$ בלתי־תלויים שכן אם נניח שמתקיים $sum_(j=1)^n alpha_j x_j (t) = 0$ לכל $t$ אז בפרט $sum_(j=1)^n alpha_j x_j (0) = 0$.
-  מכיוון ש־$x_j (0) = eBase_j$, קיבלנו $sum_(j=1)^n alpha_j eBase_j = 0$.
+  ${x_k}_(k=1)^n$ בלתי־תלויים שכן אם נניח שמתקיים $sum_(j=1)^n alpha_j x_j (t) = 0$ לכל $t$ אז בפרט $sum_(j=1)^n alpha_j x_j (0) = 0$. מכיוון ש־$x_j (0) = eBase_j$, קיבלנו $sum_(j=1)^n alpha_j eBase_j = 0$.\
   מכך שוקטורי הבסיס הסטנדרטי בלתי־תלויים לינארית נסיק כי $alpha_j = 0$ לכל $j$ וקיבלנו בלתי־תלויות.\
   היא גם פורשת שכן אם $y$ פתרון ולכן $y^prime = A y$ וקיימים ${B_j}$ כך ש־$y(0)=sum B_j eBase_j$ ומיחידות $y(t)=sum B_j x_j (t)$ לכל $t in I$ וקיבלנו שהקבוצה פורשת.\
 ]
 נתבונן במשוואה הומוגונית עם מקדמים קבועים, כלומר $x^prime (t) = A dot.op x(t)$ כאשר $A$ מטריצה קבועה שאינה תלויה ב־$t$ ו־$A in RR^(n times n)$ ונניח ש־$x(0)=x_0$.\
 ננסה להפעיל את איטרציות פיקארד
+$ x_1 (t) = x_0 + integral_0^t A x_0 (s) dif s = x_0 + A integral_0^t x_0 = x_0 + A t x_0 $
+$ x_2 (t) = x_0 + integral_0^t x_1 (s) dif s = x_0 + A t x_0 + frac(A^2 t^2, 2) x_0 $
+$ dots.v $
 $
-  x_1 (t) = x_0 + integral_0^t A x_0 (s) dif s = x_0 + A integral_0^t x_0 = x_0 + A t x_0 \
-  x_2 (t) = x_0 + integral_0^t x_1 (s) dif s = x_0 + A t x_0 + frac(A^2 t^2, 2) x_0 \
-  dots.v \
   x_n (t) = sum_(i=0)^n frac(A^n t^n x_0, n!) = (Id + A t + dots.h.c + frac(A^n t^n, n!)) x_0
 $
 מפיקארד התהליך הזה מתכנס ונסמן את הגבול ב־$exp(t A) dot.op x_0$ (זה בעצם אקספוננט שמציבים בפנים וקטור).
@@ -678,9 +696,9 @@ $ alpha(t) = alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s $
 ]
 
 #proof[
-  בלי הגבלת הכלליות נניח ש־$p=0$ ונתבונן בנגזרות החלקיות של $Phi(t, x)$ בנקודה $p=0, t=0$
-  $ (partial Phi)/(partial t) |_((0,0)) = F(0) != 0 wide (partial Phi)/(partial x_i) |_((0,0)) = "e"_i $
-  היות ש־$F(0)!=0$ ניתן לבחור $n-1$ איברים מאיברי $("e"_1, dots.h, "e"_n)$ ונסמנם $"e"_(i_1), dots.h, "e"_(i_(n-1))$ כך שבלי הגבלת הכלליות $(F(0), "e"_(i_1), dots.h, e_(i_(n-1)))$ זה בסיס.\
+  בלי הגבלת הכלליות נניח ש־$p=0$ ונתבונן בנגזרות החלקיות של $Phi(t, x)$ בראשית
+  $(partial Phi)/(partial t) |_((0,0)) = F(0) != 0, space (partial Phi)/(partial x_i) |_((0,0)) = "e"_i$.\
+  היות ש־$F(0)!=0$ ניתן לבחור $n-1$ איברים מאיברי $("e"_1, dots.h, "e"_n)$ ונסמנם $"e"_(i_1), dots.h, "e"_(i_(n-1))$ כך שבלי הגבלת הכלליות ${F(0), "e"_(i_1), dots.h, e_(i_(n-1))}$ זה בסיס.\
   נגדיר העתקה $beta: RR^n"סביבת 0 ב־" arrow RR^n$ על־ידי $beta(t, x_1, dots.h, x_(n-1))=phi_t (x_1, x_2, dots.h, x_(n-1), 0)$.\
   ממשפט הפונקציה ההפוכה יש סביבה $p in U_1$ וסביבה $0 in V$ כך ש־$beta: V arrow U_1$ היא דיפאומורפיזם גזיר ברציפות ונגדיר $alpha=beta^(-1)$.\
   קיימת סביבה פתוחה $p in U_0 subset.eq U_1$ ו־$delta>0$ כך שלכל $x in U_0$ ו־$t in (-delta, delta)$ מתקיים $phi_t (x) in U_1$.\
@@ -731,24 +749,21 @@ $ alpha(t) = alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s $
 #end_of_lecture("9 – 11/05")
 
 #proof[@linear-criterion-for-asymptotic-stability, הקריטריון הלינארי ליציבות אסימפטוטית][
-  כזכור לכל $t in J_p^*$, $phi_t (x)$ גזירה ב־$p$ ו־$D phi_t (p)$ מקיימת
+  כזכור לכל $t in J_p^*$, $phi_t (x)$ גזירה ב־$p$ ו־$M=D phi_t (p)$ מקיימת
   $
     (star) space dif/(dif t) [D phi_t (p)] = D F (phi_t (p)) D phi_t (p), quad D phi_0 (p) = Id
   $
-  כאשר קראנו ל־$D phi_t (p) = M$ בעבר.\
   אבל $p$ נקודת שיווי משקל כלומר $F(p)=0$ ולכן $phi_t (p) = p$ לכל $t$ ומכאן נובע ש־$(star)$ היא משוואה לינארית במקדמים קבועים ולכן $M^prime = D F (p) M$ ולכן
   $ D phi_t (p) = exp(t D F (p)) $
   בפרט מ@lemma_before_linear_criterion_for_asymptotic_stability נובע ש־$normop(exp(t D F(p))) stretch(arrow)_(t arrow infinity) 0$ ולכן יש $T > 0$ שעבורו
   $ normop(exp(T D F(p)))< 1/4 $
-  יהי $epsilon > 0$ וקיימת $delta > 0$ כך שלכל $q in B_delta (p)$ ולכן $t in [0,T]$ מתקיים $phi_t (q) in B_epsilon (p)$ (מתלות רציפה בתנאי ההתחלה).\
-  בנוסף מהקירוב הלינארי
-  $ phi_T (q) = phi_T (p) + D phi_T (p) (q-p) + + o(norm(q-p)) $
-  ולכן על־ידי הקטנה של $delta$ אם צריך נוכל להניח שהמחובר $o(p-q)$ לא עולה על $1/4 normop(p-q)$, כלומר
-  $ normop(phi_T (q) - phi_T (p)) <= normop(q-p)/2 $
+  יהי $epsilon > 0$ וקיימת $delta > 0$ כך שלכל $q in B_delta (p)$ ולכן $t in [0,T]$ מתקיים $phi_t (q) in B_epsilon (p)$ (מתלות רציפה בתנאי ההתחלה). בנוסף מהקירוב הלינארי
+  $ phi_T (q) = phi_T (p) + D phi_T (p) (q-p) + o(norm(q-p)) $
+  ולכן על־ידי הקטנה של $delta$ אם צריך נוכל להניח שהמחובר $o(p-q)$ לא עולה על $1/4 normop(p-q)$, כלומר $normop(phi_T (q) - phi_T (p)) <= normop(q-p)/2$.\
   בפרט $phi_T (q) in B_delta (p)$ שכן $phi_T (p) = p$ ושוב לכל $0<= t<=T$ מתקיים $phi_(T+t) (q) in B_epsilon (p)$ (שוב מהרציפות בתנאי ההתחלה) ואם נחזור על התהליך נקבל
   $ normop(phi_(k T) (q) - p)<= 2^(-k) norm(q-p) $
   לכל $t in [0,T]$ ולכל $k in NN$ מתקיים $phi_(k T + t) (q) in B_epsilon (p)$ כלומר לכל $t > 0$ מתקיים $phi_t (q) in B_epsilon (p)$ וזו בידיוק ההגדרה של יציבות.\
-  נשאר להראות יציבות אסימפטוטית: קיבלנו ש־$phi_(k T) (q) stretch(arrow)_(k arrow infinity) p$ לכל $q in B_delta (p)$ ושוב מתלות רציפה בתנאי התחלה נקבל $lim_(t arrow infinity) phi_t (q) = p$ שכן לכל $epsilon^prime > 0$ יש $delta^prime > 0$ כך שאם $y in B_(delta^prime) (p)$ אז לכל $t in [0,T]$ נקבל $ normop(phi_t (y) - p)<epsilon^prime $
+  נשאר להראות יציבות אסימפטוטית: קיבלנו ש־$phi_(k T) (q) stretch(arrow)_(k arrow infinity) p$ לכל $q in B_delta (p)$ ושוב מתלות רציפה בתנאי התחלה נקבל $lim_(t arrow infinity) phi_t (q) = p$ שכן לכל $epsilon^prime > 0$ יש $delta^prime > 0$ כך שאם $y in B_(delta^prime) (p)$ אז לכל $t in [0,T]$ נקבל $normop(phi_t (y) - p)<epsilon^prime$.
 ]
 
 #definition[פונקציית ליאפונוב][
@@ -778,9 +793,6 @@ $ alpha(t) = alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s $
   נשים לב שאם $norm(x_p (t) -x_0)>epsilon$ אז לכל $t<=s<=t+epsilon/(2M)$ מתקיים ש־$norm(x_p (s)-x_0)>=frac(epsilon, 2)$ מאי־שיוויוון המשולש ההפוך שכן
   $
     norm(x_p (s) - x_p (t)) = norm(integral_t^s x^prime_p (u) dif u)<= M abs(s-t)<=frac(epsilon, 2)
-  $
-  $
-    norm(x_p (s)-x_0) >= norm(norm(x_p (s)-x_p (t))- norm(x_p (t)-x_0))>= frac(epsilon, 2)
   $
   כעת נניח על־ידי צמצום לתת־סדרה (אם צריך) ש־$epsilon/(2M) < abs(t_(k+1)-t_k)$ ונחשב את $L(x_p (t))$ עבור $t>0$
   $
