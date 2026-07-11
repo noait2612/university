@@ -67,7 +67,7 @@
 
 #proof[
   נוכיח עבור $m=1$, המקרה הכללי דומה.
-  נסמן ב־$I$ את $x^((n)) (t) = F(x (t), x^prime (t), dots.h, x^((n-1)) (t), t)$ וב־$I I$ את $y^prime (t) = G(y (t),t)$.\
+  נסמן ב־$I$ את $x^((n)) (t) = F(x (t), x^prime (t), dots.h, x^((n-1)) (t), t)$ וב־$I #h(-0.15em) I$ את $y^prime (t) = G(y (t),t)$.\
   נגדיר את המערכת $y^prime (t) = G(y(t), t)$ על־ידי
   $
     cases(
@@ -80,15 +80,15 @@
   כלומר
   $ G(y_0, dots.h, y_(n-1), t) = (y_1, dots.h, y_(n-1), F(y_0, dots.h, y_(n-1), t)) $
   נראה שכל התנאים מתקיימים.\
-  $I ==> I I$  נניח ש־$x(t)$ הוא פתרון של המערכת המקורית $I$. \
-  נגדיר וקטור $y(t)$ על ידי הרכיבים $y_i (t) = x^((i)) (t)$ לכל $0 <= i <= n-1$. נוכיח ש־$y(t)$ מקיים את מערכת $I I$:\
+  $I ==> I #h(-0.15em) I$  נניח ש־$x(t)$ הוא פתרון של המערכת המקורית $I$. \
+  נגדיר וקטור $y(t)$ על ידי הרכיבים $y_i (t) = x^((i)) (t)$ לכל $0 <= i <= n-1$. נוכיח ש־$y(t)$ מקיים את מערכת $I #h(-0.15em) I$:\
   לכל $0 <= i <= n-2$, מתקיים מההגדרה ש־$y_i^prime (t) = (x^((i)) (t))^prime = x^((i+1)) (t) = y_(i+1) (t)$. אלו הן $n-1$ המשוואות הראשונות במערכת החדשה.\
   עבור הרכיב האחרון, מתקיים $y_(n-1)^prime (t) = (x^((n-1)) (t))^prime = x^((n)) (t)$. מכיוון ש־$x(t)$ הוא פתרון של המערכת המקורית $I$, נציב את הביטוי שלו ונקבל
   $ y_(n-1)^prime (t) = F(x, x^prime, dots.h, x^((n-1)), t) = F(y_0, y_1, dots.h, y_(n-1), t) $
-  לכן, הוקטור $y(t)$ שנבנה פותר את המערכת החדשה $I I$.\
-  $I I ==> I$ נניח ש־$y(t) = (y_0, y_1, dots.h, y_(n-1))$ הוא פתרון של המערכת החדשה $I I$. \
+  לכן, הוקטור $y(t)$ שנבנה פותר את המערכת החדשה $I #h(-0.15em) I$.\
+  $I #h(-0.15em) I ==> I$ נניח ש־$y(t) = (y_0, y_1, dots.h, y_(n-1))$ הוא פתרון של המערכת החדשה $I #h(-0.15em) I$. \
   נגדיר פונקציה $x(t) = y_0 (t)$ ונוכיח שהיא פותרת את המערכת המקורית $I$:
-  מהמשוואה הראשונה של המערכת $I I$ נובע ש־$y_0^prime = y_1$, ולכן $x^prime = y_1$, מהמשוואה השנייה  $y_1^prime = y_2$, ולכן בגזירה חוזרת נקבל $x^((2)) = (y_1)^prime = y_2$.  באופן אינדוקטיבי, לכל $0 <= i <= n-1$ מתקיים ש־$x^((i)) (t) = y_i (t)$.\
+  מהמשוואה הראשונה של המערכת $I #h(-0.15em) I$ נובע ש־$y_0^prime = y_1$, ולכן $x^prime = y_1$, מהמשוואה השנייה  $y_1^prime = y_2$, ולכן בגזירה חוזרת נקבל $x^((2)) = (y_1)^prime = y_2$.  באופן אינדוקטיבי, לכל $0 <= i <= n-1$ מתקיים ש־$x^((i)) (t) = y_i (t)$.\
   במשוואה האחרונה מתקיים  $y_(n-1)^prime (t) = F(y_0, y_1, dots.h, y_(n-1), t)$. \
   מצד שמאל, $y_(n-1)^prime = (x^((n-1)))^prime = x^((n))$. מצד ימין, נציב את הקשרים שמצאנו ($y_i = x^((i))$) ונקבל בדיוק
   $ x^((n)) (t) = F(x, x^prime, dots.h, x^((n-1)), t) $
@@ -118,7 +118,7 @@
       x_k (-frac(j delta, k))+(t+frac(j delta, k))F(x_k (-frac(j delta, k))), t in [-frac((j+1) delta, k), -frac(j delta, k)],
     )
   $
-  נשים לב ש־$x_k (t)$ לינארית למקוטעין ב־$t$ ולכן גזירה פרט למספר סופי של נקודות ותמונתה נמצאת בכדור $B$, כלומר $im (x_k) in B$ שכן לכל $0<delta<t$ מתקיים
+  נשים לב ש־$x_k (t)$ לינארית למקוטעין ב־$t$ ולכן גזירה פרט למספר סופי של נקודות ותמונתה נמצאת בכדור $B$, כלומר $im (x_k) subset.eq B$ שכן לכל $0<delta<t$ מתקיים
   $
     norm(x_k (t) - tilde(x_0)) &= norm(integral_0^t x_k^prime (s) dif s) \
     &<=_triangle integral_0^delta norm(x_k^prime (s)) dif s \
@@ -174,7 +174,7 @@
 
 יחד עם זאת, ניתן למצוא תנאים ליחידות וזהו משפט פיקארד.
 #theorem[משפט פיקארד][
-  תהיי $U subset.eq RR^n$ פתוחה, $tilde(x_0) in RR^n$ ותהיי $F:U arrow RR^n$ שהיא ליפשיצית מקומית כלומר לכל $K subset.eq U$ קומפקטית יש קבוע $L_K$ כך ש־$F|_K$ ליפשיצית עם הקבוע $L_K$.\
+  תהיי $U subset.eq RR^n$ פתוחה, $tilde(x_0) in U$ ותהיי $F:U arrow RR^n$ שהיא ליפשיצית מקומית כלומר לכל $K subset.eq U$ קומפקטית יש קבוע $L_K$ כך ש־$F|_K$ ליפשיצית עם הקבוע $L_K$.\
   אזי יש $delta>0$ כך שקיים פתרון יחיד בקטע $[-delta, delta]$ לבעיה
   $ cases(x(0) = tilde(x_0), x^prime (t) = F(x(t))) $
 ]<picard_existence_theorem>
@@ -190,7 +190,7 @@
 
   #proof[
     נוכיח ש־$x(t)=y(t)$ לכל $t in I inter J inter [0,infinity)$. נניח שלא ככה ונגדיר $tau = inf{t in I inter J inter (0,infinity) bar x(t) != y(t)}$ ומרציפות $overline(x) = x(tau)=y(tau)$.\
-    ניקח $r>0$ כך ש־$closure(B_(2r) (overline(x))) subset.eq U$ וניקח $delta>0$ כך שיתקיים $[tau, tau+delta] subset.eq I inter J$ וגם $x(t), y(t) in closure(B_r (overline(x)))$ לכל $t in [tau, tau + delta]$.\
+    ניקח $r>0$ כך ש־$closure(B_r (overline(x))) subset.eq U$ וניקח $delta>0$ כך שיתקיים $[tau, tau+delta] subset.eq I inter J$ וגם $x(t), y(t) in closure(B_r (overline(x)))$ לכל $t in [tau, tau + delta]$.\
     נסמן ב־$L$ את קבוע ליפשיץ של $F|_closure(B_r (overline(x)))$, עבור $t in [tau, tau+delta]$ מתקיים
     $
       frac(dif, dif t) norm(x(t) - y(t))^2 & = 2 chevron.l x(t)-y(t), x^prime (t) - y^prime (t) chevron.r \
@@ -230,7 +230,7 @@
   משפט העתקה מכווצת מספק לנו גם אלגוריתם קונסטרוקטיבי למציאת הפתרון.\
   אם נתחיל מניחוש התחלתי כלשהו, למשל הפונקציה הקבועה $y_0 (t) = x_0$, ונפעיל את האופרטור $K$ באופן איטרטיבי:
   $ y_n (t) = K y_(n-1) (t) = x_0 + integral_0^t F(y_(n-1) (s)) dif s $
-  מובטח לנו שסדרת הפונקציות $(y_n)_(n=0)^infinity$ (אשר נקראת "איטרציות פיקארד") תתכנס במידה שווה לפתרון היחיד של המשוואה.
+  מובטח לנו שסדרת הפונקציות $(y_n)_(n=0)^infinity$ (אשר נקראת איטרציות פיקארד) תתכנס במידה שווה לפתרון היחיד של המשוואה.
 ]
 
 #end_of_lecture("3 – 13/04")
@@ -627,8 +627,8 @@ $
   $ a e^(mu t)(cos(nu t)v-sin(nu t)w)+b e^(mu t)(sin(nu t)v + cos(nu t)w) $
   באופן שקול, בכתיב מטריציוני
   $ e^(mu t) mat(|, , |; v, , w; |, , |) mat(cos(nu t), sin(nu t); -sin(nu t), cos(nu t)) vec(a, b) $
-  אם $mu=0$ אז תנאי ההתחלה הוא בדיוק $x_0 = a v + b w$ והנורמה נשארת חסומה.\
-  אם $mu > 0$, ככל שהזמן מתקדם קדימה נקבל ספירלה מתרחבת, ואם $mu<0$ ככל שהזמן מתקדם נקבל ספירלה מתכנסת פנימה. קרי, החלק המרוכב עושה סיבוב והחלק הממשי מחליט אם הפתרון גדל או דועך.
+  אם $mu=0$ אז תנאי ההתחלה הוא בדיוק $x_0 = a v + b w$ והנורמה נשארת חסומה.  אם $mu > 0$, ככל שהזמן מתקדם קדימה נקבל ספירלה מתרחבת, ואם $mu<0$ ככל שהזמן מתקדם נקבל ספירלה מתכנסת פנימה. \
+  קרי, החלק המרוכב עושה סיבוב והחלק הממשי מחליט אם הפתרון גדל או דועך.
   נוכיח ש־$v,w$ (החלק הממשי והמדומה של הוקטור העצמי) הם בלתי־תלויים מעל $RR$.\
   נניח בשלילה שהם תלויים. מאחר שהם וקטורים ממשיים, קיים $t in RR$ כך ש־$w = t v$, ולכן הוקטור העצמי הוא:
   $ v + i w = v + i t v = (1+i t)v $
@@ -757,7 +757,7 @@ $ alpha(t) = alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s $
   $ D phi_t (p) = exp(t D F (p)) $
   בפרט מ@lemma_before_linear_criterion_for_asymptotic_stability נובע ש־$normop(exp(t D F(p))) stretch(arrow)_(t arrow infinity) 0$ ולכן יש $T > 0$ שעבורו
   $ normop(exp(T D F(p)))< 1/4 $
-  יהי $epsilon > 0$ וקיימת $delta > 0$ כך שלכל $q in B_delta (p)$ ולכן $t in [0,T]$ מתקיים $phi_t (q) in B_epsilon (p)$ (מתלות רציפה בתנאי ההתחלה). בנוסף מהקירוב הלינארי
+  יהי $epsilon > 0$ וקיימת $delta > 0$ כך שלכל $q in B_delta (p)$ ולצכל $t in [0,T]$ מתקיים $phi_t (q) in B_epsilon (p)$ (מתלות רציפה בתנאי ההתחלה). בנוסף מהקירוב הלינארי
   $ phi_T (q) = phi_T (p) + D phi_T (p) (q-p) + o(norm(q-p)) $
   ולכן על־ידי הקטנה של $delta$ אם צריך נוכל להניח שהמחובר $o(p-q)$ לא עולה על $1/4 normop(p-q)$, כלומר $normop(phi_T (q) - phi_T (p)) <= normop(q-p)/2$.\
   בפרט $phi_T (q) in B_delta (p)$ שכן $phi_T (p) = p$ ושוב לכל $0<= t<=T$ מתקיים $phi_(T+t) (q) in B_epsilon (p)$ (שוב מהרציפות בתנאי ההתחלה) ואם נחזור על התהליך נקבל
@@ -1574,8 +1574,10 @@ $
 #proof[
   יהי $C subset.eq Omega$ כדור כך ש־$closure(C) subset.eq Omega$, ותהי $h in C(closure(C))$ הרמונית ב־$C$ כך ש־$V|_boundary(C) <= h|_boundary(C)$. נרצה להראות ש־$V <= h$ ב־$C$.\
   $v$ תת־הרמונית ב־$Omega$ ולכן $v <= V$ בכל $Omega$. מההנחה שלנו, מתקיים $V <= h$ על $boundary(C)$, ומכאן שגם $v <= h$ על $boundary(C)$. $h$ הרמונית ו־$v$ תת־הרמונית ולכן מעקרון המקסימום עבור פונקציות תת־הרמוניות נקבל ש־$v<=h$ בכל $C$. לפי הגדרת ההרמה, ב־$C without B$ מתקיים $V = v$, כלומר קיבלנו ש־$V <= h$ ב־$C without B$. נסמן $U colon.eq B inter C$ ונבחן את
-  $ boundary(U) = underbrace((boundary(B) inter closure(C)), I) union underbrace((closure(B) inter boundary(C)), I I) $
-  על $I I$ מתקיים $V <= h$ מהנתון ועל $I$, לפי הגדרת ההרמה מתקיים $V = v$ והראינו ש־$v <= h$ בכל $C$, נובע כי $V = v <= h$ גם על $I$ ולכן $V<=h$ על כל $boundary(U)$.\
+  $
+    boundary(U) = underbrace((boundary(B) inter closure(C)), I) union underbrace((closure(B) inter boundary(C)), I #h(-0.15em) I)
+  $
+  על $I #h(-0.15em) I$ מתקיים $V <= h$ מהנתון ועל $I$, לפי הגדרת ההרמה מתקיים $V = v$ והראינו ש־$v <= h$ בכל $C$, נובע כי $V = v <= h$ גם על $I$ ולכן $V<=h$ על כל $boundary(U)$.\
   ב־$U subset.eq B$ מתקיים $V=overline(v)$ שהיא הרמונית ב־$B$ ולכן $V-h$ הרמוני ב־$U$ המקיים $V-h<=0$ על $boundary(U)$ ומעיקרון המקסימום אי־השיוויון נשמר גם ב־$U$.
 ]
 
