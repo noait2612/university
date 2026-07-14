@@ -57,8 +57,8 @@
 
 == קיום ויחידות
 #theorem[
-  נניח שנתונה מערכת $m$ משוואות דיפרנציאליות מסדר $n$ כאשר $x^((n)) (t) = F(x(t), x^prime (t), dots.h, x^((n-1)) (t), t)$ עבור $F:U arrow RR^m$ כאשר $U subset.eq R^(n m + 1)$.\
-  אז יש מערכת מסדר 1, $y^prime (t) = G(y(t),t)$ עבור $G:V subset.eq RR^(n m + 1) arrow RR^(n m)$ כך שהמערכות שקולות במובן הבא
+  נניח שנתונה מערכת $m$ משוואות דיפרנציאליות מסדר $n$ כאשר $x^((n)) (t) = F(x(t), x^prime (t), dots.h, x^((n-1)) (t), t)$ עבור $F:U arrow RR^m$ כאשר $U subset.eq RR^(n m + 1)$.\
+  אז יש מערכת מסדר 1 $y^prime (t) = G(y(t),t)$ עבור $G:V subset.eq RR^(n m + 1) arrow RR^(n m)$ כך שהמערכות שקולות במובן הבא
   + אם $x(t)$ פתרון למערכת המקורית אז $y=(x, x^prime, dots.h, x^((n-1)))$ הוא פתרון למערכת החדשה
   + אם $y$ פתרון למערכת החדשה אזי $x=y_0$ הוא פתרון למערכת המקורית ולכל $0<=i<=n-2$ מתקיים $y_i^prime = y_(i+1)$
 ]<equivalence_theorem_to_system_from_order_one>
@@ -163,7 +163,7 @@
 ]
 
 #proof[
-  מכוון שכל משוואה לא אוטונומית מסדר $n$ ניתן להמיר למערכת משוואות אוטונומית מסדר $1$ ואז עם @equivalence_theorem_to_system_from_order_one נקבל את הנדרש.
+  מכוון שכל משוואה לא אוטונומית מסדר $n$ ניתן להמיר למערכת משוואות אוטונומית מסדר $1$ @equivalence_theorem_to_system_from_order_one יחד עם משפט הקיום של פיאנו מניב את הנדרש.
 ]
 
 לא ראינו בתנאים שניסחנו יחידות של הפתרון ואם הפתרון בתנאים האלו הוא בהכרח יחיד ואכן לא כך הדבר.
@@ -228,7 +228,7 @@
 
 #definition[איטרציות פיקארד][
   משפט העתקה מכווצת מספק לנו גם אלגוריתם קונסטרוקטיבי למציאת הפתרון.\
-  אם נתחיל מניחוש התחלתי כלשהו, למשל הפונקציה הקבועה $y_0 (t) = x_0$, ונפעיל את האופרטור $K$ באופן איטרטיבי:
+  אם נתחיל מניחוש התחלתי כלשהו, למשל הפונקציה הקבועה $y_0 (t) = x_0$, ונפעיל את האופרטור $K$ באופן איטרטיבי
   $ y_n (t) = K y_(n-1) (t) = x_0 + integral_0^t F(y_(n-1) (s)) dif s $
   מובטח לנו שסדרת הפונקציות $(y_n)_(n=0)^infinity$ (אשר נקראת איטרציות פיקארד) תתכנס במידה שווה לפתרון היחיד של המשוואה.
 ]
@@ -319,7 +319,7 @@
   ]<lemma_2_for_continuous_dependence_on_initial_conditions>
 
   #proof[@lemma_2_for_continuous_dependence_on_initial_conditions][
-    בשלילה נניח שיש $0<=t<=t_0 + r/M$ כך ש־$(q,t) in Omega$ אבל $dist(Phi(q, t), C)>4r$ ומהלמה הקודמת עבור $0<=t<=t_0$ מתקיים $dist(Phi(q, t), C)<=2r$ ולכן עבור $t$ כזה מהנחת השלילה בהכרח מתקיים $t_0 < r$ ובפרט $(q, t_0) in Omega$ (הערה: $(q,t) in Omega <==> t in J_q^*$).\
+    בשלילה נניח שיש $0<=t<=t_0 + r/M$ כך ש־$(q,t) in Omega$ אבל $dist(Phi(q, t), C)>4r$ ומהלמה הקודמת עבור $0<=t<=t_0$ מתקיים $dist(Phi(q, t), C)<=2r$ ולכן עבור $t$ כזה מהנחת השלילה בהכרח מתקיים $t_0 < r$ ובפרט $(q, t_0) in Omega$.\
     נסמן $tau = inf{t_0 <= t<= t_0 + r/M bar (q, t) in Omega, space dist(q, C)>4r}$.\
     אבל $t_0 <= tau <= t_0 + r/M$ ו־$dist(Phi(q, tau), C) = 4r$ ויתר על־כן לכל $t_0 <= t<=tau$ מתקיים $dist((q,t), C)<=4r$ ובפרט לכל $0<=t<=tau$ מתקיים \
     $norm(F(Phi((q,t))))<=M$ ונשים לב $ dist(Phi(q, tau), C)<=norm(Phi(q, tau) - Phi(q, t_0))+dist(Phi(q, t_0), C)<=M dot.op (tau - t_0) + 2r <= M dot.op r/M + 2r = 3r $
@@ -328,7 +328,7 @@
 
   #lemma[
     נניח ש־$norm(p-q)<=r e^(-L t_0)$ ו־$0<=t<=t_0+r/M$ אזי $(q,t) in Omega$ ומתקיים
-    $ norm(Phi(q, t_0)-Phi(q, t))<=2e^(L t_0)norm(p-q)+M norm(t_0 - t) $
+    $ norm(Phi(p, t_0)-Phi(q, t))<=2e^(L t_0)norm(p-q)+M norm(t_0 - t) $
   ]<lemma_3_for_continuous_dependence_on_initial_conditions>
 
   #remark[
@@ -361,16 +361,17 @@ $ partial/(partial t) D Phi = D(partial/(partial t) Phi) = D(F compose Phi)=D F(
 ]
 #proof[
   הפונקציה $F(M, t) = A(t)M$ היא ליניארית במשתנה $M$ ורציפה במשתנה $t$. עבור כל $t_0 in I$, $F$ ליפשיצית מקומית במשתנה $M$ (שכן על קטע קומפקטי המכיל את $t_0$, הנורמה של $A(t)$ חסומה). לפי משפט פיקארד, קיים פתרון יחיד $M(t)$ בסביבה של כל נקודה ב־$I$.\
-  נסמן ב־$v_j (t)$ את העמודה ה־$j$ של המטריצה $M(t)$. המשוואה המטריציונית שקולה למערכת של $n$ משוואות וקטוריות מצומדות
-  $ v_j^' (t) = A(t)v_j (t), quad v_j (0) = eBase_j $
-  כאשר $(eBase_j)_(j=1)^n$ הוא הבסיס הסטנדרטי ב־$RR^n$. מספיק להוכיח שכל עמודה $v_j (t)$ מוגדרת על כל הקטע $I$.\
+  נסמן ב־$v_j (t)$ את העמודה ה־$j$ של המטריצה $M(t)$. המשוואה המטריציונית שקולה למערכת של $n$ משוואות וקטוריות בלתי־תלויות
+  $ v_j^prime (t) = A(t)v_j (t), quad v_j (0) = eBase_j $
+  כאשר $(eBase_j)_(j=1)^n$ הוא הבסיס הסטנדרטי. מספיק להוכיח שכל עמודה $v_j (t)$ מוגדרת על כל הקטע $I$.\
   עבור $v_j$, על־ידי אינטגרציה של שני אגפי המשוואה מ־$0$ עד $t$ נקבל
   $
     v_j (t) = eBase_j + integral_0^t A(s)v_j (s) dif s ==>_(triangle) norm(v_j (t)) <= norm(eBase_j) + integral_0^t norm(A(s)) dot.op norm(v_j (s)) dif s
   $
-  יהי $[0, t] subset.eq I$ קטע סגור (עבור $t$־ים שליליים ההוכחה זהה). נסמן $L = sup_(s in [0, t]) norm(A(s)) < infinity$ (מרציפות $A$). נסמן $f(t) = norm(v_j (t))$, ונקבל
+  נניח בשלילה שמשך הקיום המקסימלי של הפתרון חסום בתוך $I$, כלומר הפתרון מוגדר על $[0, T_max)$ כאשר $T_max in I$ (ההוכחה לשליליים זהה). \
+  מרציפות $A$ על $[0, T_max]$ נסמן $L colon.eq max_(s in [0, T_max]) norm(A(s)) < infinity$ ונסמן $f(t) = norm(v_j (t))$. לכל $tau in [0, T_max)$ נקבל
   $ f(tau) <= 1 + L integral_0^tau f(s) dif s $
-  לפי הלמה של גרונוול, נובע כי $f(t) <= 1 dot.op e^(L t) = e^(L t)$ ולכן הנורמה של כל עמודה חסומה על כל קטע סגור ב־$I$ והחסם $e^(L t)$ תקף לכל $t in I$ וממשפט הטריכוטומיה הפיתרון $M(t)$ מוגדר וקיים על כל $I$.
+  לפי הלמה של גרונוול נובע כי $f(tau) <= e^(L tau) <= e^(L T_max)$ ולכן קיבלנו שהנורמה של הפתרון חסומה בתוך הקטע ולכן לא שואפת לאינסוף כאשר $t arrow T_max$. ממשפט הטריכוטומיה נובע שניתן להמשיך את הפתרון מעבר ל־$T_max$ וזו סתירה. לכן הפתרון בהכרח מוגדר על כל הקטע $I$.
 ]
 
 #theorem[תלות גזירה בתנאי ההתחלה][
@@ -519,7 +520,7 @@ $
 #proof[
   ממכפלת קושי לטורים ואך ורק בגלל ש־$A B = B A$ ניתן להשתמש בבינום של ניוטון (אחרת הוא לא נכון)
   $
-    exp(A)exp(B) = sum_(k=0)^infinity frac(A^k, k!) sum_(k=0)^infinity frac(B^k, k!) = sum_(n=0)^infinity sum_(i+j=n) frac(A^i, i!) dot.op frac(B^j, j!) = sum_(n=0)^infinity sum_(i+j=n) binom(n, j) frac(A^i, i!) dot.op frac(B^j, j!) = sum_(n=0)^infinity frac(1, n!) (A+B)^n = exp(A+B)
+    exp(A)exp(B) = sum_(k=0)^infinity frac(A^k, k!) sum_(k=0)^infinity frac(B^k, k!) = sum_(n=0)^infinity sum_(i+j=n) frac(A^i, i!) dot.op frac(B^j, j!) = sum_(n=0)^infinity sum_(i+j=n) frac(1, n!) binom(n, j) frac(A^i, i!) dot.op frac(B^j, j!) = sum_(n=0)^infinity frac(1, n!) (A+B)^n = exp(A+B)
   $
 ]
 
@@ -757,7 +758,7 @@ $ alpha(t) = alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s $
   $ D phi_t (p) = exp(t D F (p)) $
   בפרט מ@lemma_before_linear_criterion_for_asymptotic_stability נובע ש־$normop(exp(t D F(p))) stretch(arrow)_(t arrow infinity) 0$ ולכן יש $T > 0$ שעבורו
   $ normop(exp(T D F(p)))< 1/4 $
-  יהי $epsilon > 0$ וקיימת $delta > 0$ כך שלכל $q in B_delta (p)$ ולצכל $t in [0,T]$ מתקיים $phi_t (q) in B_epsilon (p)$ (מתלות רציפה בתנאי ההתחלה). בנוסף מהקירוב הלינארי
+  יהי $epsilon > 0$ וקיימת $delta > 0$ כך שלכל $q in B_delta (p)$ ולכל $t in [0,T]$ מתקיים $phi_t (q) in B_epsilon (p)$ (מתלות רציפה בתנאי ההתחלה). בנוסף מהקירוב הלינארי
   $ phi_T (q) = phi_T (p) + D phi_T (p) (q-p) + o(norm(q-p)) $
   ולכן על־ידי הקטנה של $delta$ אם צריך נוכל להניח שהמחובר $o(p-q)$ לא עולה על $1/4 normop(p-q)$, כלומר $normop(phi_T (q) - phi_T (p)) <= normop(q-p)/2$.\
   בפרט $phi_T (q) in B_delta (p)$ שכן $phi_T (p) = p$ ושוב לכל $0<= t<=T$ מתקיים $phi_(T+t) (q) in B_epsilon (p)$ (שוב מהרציפות בתנאי ההתחלה) ואם נחזור על התהליך נקבל
@@ -800,7 +801,7 @@ $ alpha(t) = alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s $
     & = L(p) + integral_0^t chevron.l gradient L(x_p (s)), F(x_p (s)) chevron.r dif s \
     &<= L(p) + sum_(k=1)^(n bar t_(n+1) <=t) integral_(t_k)^(t_(k+1)) chevron.l gradient L(x_p (s)), F(x_p (s)) chevron.r dif s \
     &<= L(p) + sum_(k=1)^(n bar t_(n+1) <=t) integral_(t_k)^(t_k + epsilon/(2M)) chevron.l gradient L(x_p (s)), F(x_p (s)) chevron.r dif s \
-    &= L(p) + sum_(k=1)^(n bar t_(n+1) <=t) C dot.op epsilon/(2M) stretch(arrow)_(t arrow infinity) - infinity
+    &<= L(p) + sum_(k=1)^(n bar t_(n+1) <=t) C dot.op epsilon/(2M) stretch(arrow)_(t arrow infinity) - infinity
   $
   אבל זאת סתירה כי $L$ חסומה ב־$closure(B_R (x_0))$ לכן לכל $p in B_eta (x_0)$ מתקיים $x_p (t) stretch(arrow)_(t arrow infinity) x_0$.
 ]
@@ -860,9 +861,7 @@ $ alpha(t) = alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s $
   ]<first-lemma-for-the-linear-criterion-for-instable>
 
   #proof[@first-lemma-for-the-linear-criterion-for-instable][
-    נשים לב
-    $ F(x) = F(0) + A(x+ o(norm(x))) $
-    ולכן מכך ש־$F(0) = 0$
+    מכך ש־$F(0)=0$ מפיתוח טיילור נקבל
     $ g(x) =F(x) - A x = o(norm(x)) $
     בפרט, מהגדרת הגבול יש $R>0$ כך שלכל $x in B_R (0)$ מתקיים $(suit.heart.stroked) space norm(g(x))<=norm(x)$. \
     נכפול את $(star star)$ ב־$e^(-t A)$ ונפעיל את $pi_plus$ ונקבל (כי $pi_plus$ זו העתקה לינארית וגם אינטגרל הוא לינארי ובנוסף מתקיים $pi_plus.minus e^(t A) = e^(t A) pi_plus.minus$)
@@ -906,11 +905,7 @@ $ alpha(t) = alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s $
     נקבע $R_0 = R_0 (epsilon)$ עבור $epsilon=epsilon(C, mu)$ עבור $mu$ מהלמה הקודמת שנגדיר בהמשך.\
     נניח ש־$x,y$ פתרונות עם $pi_minus (y(0))=pi_minus (x(0))$ כך ש־$x!=y$ ל־$t>0$ ו־$x(t), y(t) in B_(R_0) (0)$ ונסמן
     $ d = sup_(t in [0,infinity)) norm(x(t)-y(t)) $
-    היות ש־$R>R_0$ ו־$x(t), y(t) in B_R (0)$ ל־$t>0$ ובפרט המסקנה של הלמה הקודמת נכונה עבורם. כלומר
-    $
-      x(t)=e^(t A) pi_minus (x(0))+integral_0^t e^((t-s)A)pi_minus (g(x(s))) dif s - integral_t^infinity e^((t-s) A) pi_plus (g(x(s))) dif s
-    $
-    וכנל עבור $y$. לכן
+    היות ש־$R>R_0$ ו־$x(t), y(t) in B_R (0)$ ל־$t>0$ המסקנה של הלמה הקודמת נכונה עבורם ולכן
     $
       norm(x(t)-y(t)) &= norm(integral_0^t e^((t-s) A) pi_minus (g(x(s))-g(y(s))) dif s - integral_t^infinity e^((t-s)A) pi_plus (g(x(s))-g(y(s))) dif s) \
       &<= integral_0^t norm(e^((t-s)A) pi_minus (g(x(s))-g(y(s))))+integral_t^infinity norm(e^((t-s)A) pi_plus (g(x(s))-g(y(s))))
@@ -1263,7 +1258,7 @@ $
 #definition[משוואת לפלס][
   עבור $u in C^2 (Omega)$ עבור $Omega subset.eq RR^n$ פתוחה נגדיר את משוואת לפלס להיות המשוואה
   $ Delta u = sum_(j=1)^n (partial^2 u)/(partial x_j^2) = 0 $
-  ול־$Delta u$ אנחנו קוראים הלפלסיאן ול־$u$ אנחנו קוראים פונקציה הרמונית.
+  ל־$Delta u$ אנחנו קוראים הלפלסיאן ול־$u$ אנחנו קוראים פונקציה הרמונית.
 ]
 
 #remark[
@@ -1505,7 +1500,7 @@ $
   כל פונקציה הרמונית היא תת־הרמונית.
 ]
 
-#theorem[עיקרון המקסימום החזק עם פונקציות תת־הרמוניות][
+#theorem[עיקרון המקסימום החזק לפונקציות תת־הרמוניות][
   יהי $Omega subset.eq RR^n$ תחום ותהיי $u in C(Omega)$ תת־הרמונית ב־$Omega$. אם $u$ מקבלת מקסימום ב־$Omega$ אז $u$ קבועה ב־$Omega$.
 ]
 
@@ -1601,7 +1596,7 @@ $
   כדי להרחיב זאת לכל $Omega$, נבחר סדרה עולה של קבוצות קומפקטיות $K_1 subset.eq K_2 subset.eq dots.h$ כך ש־$union.big_m K_m = Omega$. ממשפט ארצלה־אסקולי קיימת תת־סדרה שמתכנסת במידה שווה על $K_1$. מתוכה נוציא תת־סדרה שמתכנסת במידה שווה על $K_2$, וכן הלאה. נפעיל את טיעון האלכסון של קנטור ונקבל שתת־הסדרה $u_n_k$ מתכנסת במידה שווה על כל קבוצה קומפקטית ב־$Omega$.
 ]
 
-#end_of_lecture("21  – 23/06")
+#end_of_lecture("21  – 22/06")
 
 #remark[
   לא דיברנו על זה (אבל כן ראינו ביריעות) ש־$v in C^2(Omega)$ תת־הרמונית אם ורק אם $Delta v >= 0$ ולכן יש הרבה מאוד פונקציות תת־הרמוניות וקל לייצר כאלו.
@@ -1652,4 +1647,4 @@ $
 $
 ועכשיו בעזרת פרון אנחנו יודעים לפתור גם את משוואות פואסון.
 
-#end_of_lecture("22  – 24/06")
+#end_of_lecture("22  – 23/06")
