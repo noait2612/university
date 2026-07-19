@@ -330,9 +330,9 @@
 
 // Algebraic Structures
 #let Aut = math.op("Aut")
-#let eBase = math.op("e")
+#let char = math.op("char")
 
-// Mainfolds
+// Manifolds
 #let Mesh = math.op("Mash")
 #let Vol = math.op("Vol")
 #let divergence = math.op("div")

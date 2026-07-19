@@ -9,6 +9,205 @@
 #set heading(numbering: "1.1")
 #outline(depth: 3)
 
+= יריעות על קצה המזלג
+== עקומות חלקות ואינטגרלים מסילתיים
+עקומה חלקה ב־$RR^n$ מוגדרת כהעתקה חלקה (גזירה ברציפות אינסוף פעמים) $gamma: [a, b] arrow RR^n$.
+
+=== מושגי יסוד בעקומות
+#definition[רה־פרמטריזציה][
+  עקומה $mu$ מתקבלת מ־$gamma$ על ידי רה־פרמטריזציה אם קיימת פונקציה חלקה $phi: [c, d] arrow [a, b]$ שהיא דיפואומורפיזם עולה. תכונות גיאומטריות של עקומות הן תכונות שאינן תלויות בבחירת הפרמטריזציה.
+]
+
+#definition[עקומה רגולרית][
+  עקומה $gamma : [a,b] arrow RR^n$ תקרא רגולרית בנקודה $t_0$ אם $dot(gamma)(t_0) != 0$.\
+  עקומה רגולרית בכל נקודה מבטיחה שהתמונה שלה תיראה "חלקה" ללא שינויי כיוון פתאומיים (כפי שקורה כש־g$dot(gamma)(t) = 0$).
+]
+
+#definition[הקו המשיק][
+  עבור $gamma : [a,b] arrow RR^n$ עקומה רגולרית, הקו המשיק בנקודה $gamma(t_0)$ הוא ה־$Span$ של $gamma'(t_0)$. המשיק ליחידה מוגדר כ־$frac(dot(gamma)(t_0), norm(dot(gamma)(t_0)))$.
+]
+
+#theorem[אורך של מסילה][
+  בהינתן $gamma: [a,b] arrow RR^n$ מסילה חלקה נגדיר את האורך שלה להיות
+  $ L[gamma] = integral_a^b norm(dot(gamma)(t)) dif t $
+]
+
+#theorem[אינטגרל מסילתי (של פונקציה סקלרית)][
+  בהינתן $gamma: [a,b] arrow RR^n$ מסילה חלקה ו־$f:RR^n arrow RR$ פונקציה רציפה אזי האינטגרל המסילתי/קווי של $f$ על $gamma$ מוגדר על־ידי
+  $ integral_gamma f dif s = integral_a^b f(gamma(t)) norm(dot(gamma)(t)) dif t $
+]
+
+#theorem[רה־פרמטריזציה (Arc length parametrization)][
+  אם $gamma : [a, b] arrow RR^n$ היא $C^1$ ורגולרית אז $phi : [a,b] arrow [0, l(gamma)]$ המוגדרת על־ידי $phi(t) = integral_a^b norm(dot(gamma)(s)) dif s$ (חד־חד ערכית, על וגזירה).\
+  אז $overline(gamma) = gamma compose phi^(-1) : [0, l(gamma)] arrow RR^n$ היא רה־פרמטריזציה של $gamma$ (arc-length-parametrization) והיא $C^1$ ו־$norm(dot(overline(gamma))) eq.triple 1$
+]
+
+== שדות וקטוריים ואינטגרלים קוויים
+
+שדה וקטורי $X$ על קבוצה פתוחה $U subset.eq RR^n$ הוא פונקציה חלקה $X: U arrow RR^n$.
+
+=== אינטגרל קווי
+#theorem[אינטגרל מסילתי על שדה וקטורי][
+  תהיי $gamma$ מסילה ו־$arrow(X)$ שדה וקטורי (שם יפה עבור $U subset.eq RR^n$ פתוחה ו־$F:U arrow RR^n$ חלקה) אזי $integral_gamma arrow(X) dif arrow(ell) = integral_a^b arrow(X)(gamma(t)) dot(gamma) (t) dif t$.
+]
+
+=== שדות משמרים (Conservative Fields)
+#definition[שדה משמר][
+  שדה וקטורי $arrow(F): U arrow RR^n$ עבור $U$ פתוחה ייקרא שדה משמר אם עבור כל שתי מסילות $gamma_1, gamma_2 : [a,b] arrow U$ המקיימות $gamma_1 (a) = gamma_2 (a)$ ו־$gamma_1 (b) = gamma_2 (b)$ מתקיים $integral_gamma_1 arrow(F) dif ell = integral_gamma_2 arrow(F) dif ell$.
+]
+
+#theorem[תנאי שקול לשדה וקטורי][
+  אם $arrow(F) : U arrow RR^n$ כאשר $U$ פתוחה וקשירה אז $arrow(F)$ שדה משמר אם ורק אם קיימת פונקציה חלקה $phi : U arrow RR$ כך שמתקיים
+  $ arrow(F) = gradient phi = vec(frac(partial phi, partial x_1), dots.v, frac(partial phi, partial x_n)) $
+  ל־$phi$ כזאת אנחנו קוראים הפוטנציאל של $arrow(F)$.
+]
+
+#corollary[
+  אם $arrow(F) = (F_1, dots.h, F_n)$ שדה משמר אזי לכל $i,j in [n]$ מתקיים
+  $ frac(partial F_i, partial x_j) = frac(partial F_j, partial x_i) $
+]
+
+#definition[שדה משמר מקומית][
+  שדה וקטורי $arrow(F): U arrow RR^n$ עבור $U$ פתוחה אז $arrow(F)$ משמר מקומית אם לכל $x in U$ מתקיים
+  $ frac(partial F_i, partial x_j)(x) = frac(partial F_j, partial x_i)(x) $
+]
+
+#definition[הומוטופיה][
+  תהיינה $gamma_1, gamma_2 : [a,b] arrow U$ מסילות כך ש־$gamma_1 (a) = gamma_2 (a)$ ו־$gamma_1 (b) = gamma_2 (b)$. נאמר שהן הומוטפיות ביחס לנקודות הקצה אם קיימת $H:[a,b] times [0,1] arrow U$ חלקה המקיימת
+  $
+    forall t in [a,b], space H(t,0) = gamma_1 (t), quad H(t,1) = gamma_2 (t) \
+    forall s in [0,1], space H(a,s) = gamma_1 (a), quad H(b,s) = gamma_1 (b)
+  $
+]
+
+#proposition[
+  עבור שדה וקטורי $arrow(F) : U arrow RR^n$ עבור $U$ פתוחה הוא משמר מקומית אז עבור כל שתי מסילות $gamma_0, gamma_1 : [a,b] arrow U$ שהומוטפיות ביחס לנקודות הקצה $p,q in U$ מתקיים $integral_gamma_0 arrow(F) dif ell = integral_gamma_1 arrow(F) dif ell$
+]
+
+#corollary[
+  אם כל שתי מסילות עם אותן נקודות קצה ב־$U$ הומוטופיות זו לזו ו־$arrow(F)$ משמר מקומית אז הוא משמר.
+]
+
+#corollary[
+  אם $arrow(F)$ שדה משמר מקומית אז לכל נקודה קיימת סביבה בה $arrow(F)$ הוא שדה משמר.
+]
+
+#definition[תחום כוכב][
+  נגיד ש־$Omega subset.eq RR^n$ היא תחום כוכב אם קיים $a in Omega$ כך שלכל $x in Omega$ מתקיים $[a,x] = {a + t(x-a) bar t in [0,1]} subset.eq Omega$.
+]
+
+#example[
+  כל כדור הוא תחום כוכב וגם כל קבוצה קמורה היא תחום כוכב.
+]
+
+#theorem[
+  בתחום כוכב $arrow(F)$ שדה וקטורי הוא משמר אם ורק אם הוא משמר מקומית.
+]
+
+== יריעות ב־$RR^n$
+=== הגדרות שקולות ליריעה
+#definition[יריעה לפי פרמטריזציה מקומית][
+  $M subset.eq RR^n$ תקרא יריעה $C^r$ $k$־מימדית אם לכל $p in M$ יש סביבה $p in W subset.eq RR^n$, קבוצה פתוחה $U subset.eq RR^k$ והעתקה $phi : U arrow RR^n$ המקיימת
+  + $phi(U) = M inter W$
+  + $phi:U arrow M inter W$ הוא הומיאומורפיזם
+  + $D phi_(phi^(-1)({p})) : RR^k arrow RR^k$ היא מדרגה מלאה
+]
+
+#definition[יריעה כגרף של פונקציה][
+  $M subset.eq RR^n$ תקרא יריעה $C^r$ $k$־מימדית אם לכל $p in M$ יש סביבה $p in W subset.eq RR^n$, קבוצה פתוחה $U subset.eq RR^k$ ופונקציה $f in C^r (U, RR^(n-k))$ כך שמתקיים $ W inter M = Gamma(f) $
+]
+
+#definition[יריעה כקבוצת האפסים][
+  $M subset.eq RR^n$ תקרא יריעה $C^r$ $k$־מימדית אם לכל $p in M$ יש סביבה $p in W subset.eq RR^n$ ופונקציה חלקה $F:W arrow RR^(n-k)$ כך שמתקיים
+  + $M inter W = {x in W bar F(x) = 0}$
+  + $D F_p : RR^n arrow RR^(n-k)$ היא מדרגה מלאה
+]
+
+=== המרחב המשיק ($T_p M$)
+עבור נקודה $p$ ביריעה, המרחב המשיק הוא תת־מרחב ליניארי מממד $k$ המוגדר כמרחב התמונה של הדיפרנציאל של הפרמטריזציה המקומית: $T_p M = im(D alpha|_x)$.\
+הגדרה זו אינה תלויה בבחירת הפרמטריזציה.
+
+== אינטגרציה על יריעות
+=== היפר־נפח ($bold(Vol_d)$)
+#definition[קבוע הנפח][
+  בהינתן 2 מרחבי מכפלה פנימית $k$־מימדים  $(U, chevron.l, chevron.r_U)$ ו־$(W, chevron.l , chevron.r)_W$, העתקה לינארית $T:U arrow W$ ובסיסים אורתונורמליים $e_1, dots.h, e_k$ ל־$U$ ו־$tau_1, dots.h, tau_k$ ל־$W$ נגדיר את קבוע הנפח להיות
+  $ V(T)=abs(det(a_(j i))) $
+  כאשר $T(e_i) = sum a_(j i) tau_j$
+]
+
+#lemma[הגדרה שקולה לקבוע נפח][
+  עבור $T:RR^k arrow RR^n$ מתקיים
+  $ V(T) = sqrt(det(T^t T)) $
+]
+
+#theorem[היפר־נפח של יריעה פרמטרית][
+  בהינתן $X$ יריעה פרמטרית ו־$phi.alt : U subset.eq RR^k arrow RR^n$ הפרמטריזציה שלה (יריעה $k$־מימדית) שלה אז הנפח שלה מוגדר על־ידי
+  $ Vol_k (X) = integral_U V(D phi.alt|_x) dif x $
+  כאשר $V(T)$ הוא קבוע הנפח.
+]
+
+#theorem[
+  אם $(X, phi.alt : U arrow RR^n)$ יריעה פרמטרית ו־ $f:X arrow RR$ נגדיר את האינטגרל של $f$ ביחס לנפח ה־$k$ מימדי להיות
+  $ integral_X f dif Vol_k colon.eq integral_U f(phi.alt(x))V(D phi.alt |_x) dif x $
+  כמובן בהינתן שהאינטגרל מצד ימין מוגדר.
+]
+
+#lemma[][
+  אם $(X, phi.alt : U arrow RR^n)$ יריעה פרמטרית ו־$psi : W subset.eq RR^k arrow U$ דיפאומורפיזם ו־$f:X arrow RR$ אזי
+  $ integral_U f(phi.alt(x))V(D phi.alt |_x) dif x = integral_W f(phi.alt(psi(y)))V(D (phi.alt compose psi) |_y) dif y $
+]
+
+== המשפטים החשובים
+=== משפט גרין
+#theorem[משפט גרין][
+  יהי $Omega subset.eq RR^2$ תחום חלק ויהי $F=(P,Q)$ שדה וקטורי חלק בסביבה של $Omega$ ו־$boundary(Omega)$ באוריינטציה חיובית. אזי
+  $
+    integral_boundary(Omega) P dif x + Q dif y = integral_boundary(Omega) F dif ell = integral_Omega frac(partial Q, partial x) - frac(partial P, partial y) dif x dif y
+  $
+]
+
+#corollary[
+  בתנאי משפט גרין
+  $
+    Area(Omega)=integral_boundary(Omega) x dif y = - integral_boundary(Omega) y dif x = frac(1, 2) integral_boundary(Omega) x dif y - y dif x
+  $
+]
+
+=== משפט הדיברגנץ'
+#definition[Divergence על יריעות][
+  תהיי $M^k subset.eq RR^n$ יריעה $k$־מימדית (עם או בלי שפה) ויהי $X:M arrow RR^n$ שדה וקטורי חלק. אז הדיברגנץ' של $X$ ביחס ליריעה $M$ בנקודה $p in M$ מוגדר על־ידי
+  $ divergence_M X(p) = sum_(i=1)^k chevron.l D_(e_i) X|_p, e_i chevron,r $
+  כאשר ${e_i}_(i=1)^k$ בסיס אורתונורמלי למרחב המשיק $T_p (M)$ בנקודה ו־$D e_i X = D X(e_i)$ הנגזרת של השדה הוקטורי $X$ בכיוון הוקטור $e_i$
+]
+
+#definition[Divergence על יריעה במימד המרחב][
+  אם $Omega subset.eq RR^n$ יריעה ממימד $n$ אזי
+  $ div_Omega X = sum_(i=1)^n frac(partial X_i, partial x_i) $
+]
+
+#theorem[משפט הדירביגנץ'][
+  תהיי $Omega subset.eq RR^n$ תחום חלק וחסום ויהי $F$ שדה וקטורי חלק המוגדר בסביבה של $Omega$ ויהי $N: boundary(Omega) arrow RR^n$ נורמל היחידה המצביע החוצה על $Omega$ אזי
+  $ integral_Omega divergence F dif x = integral_boundary(Omega) chevron.l F, N chevron.r dif sigma $
+  במילים אחרות, השטף של שדה וקטורי דרך שפה סגורה שווה לאינטגרל של הדיברגנץ על הנפח.
+]
+
+=== משפט סטוקס
+#definition[Curl][
+  תהיי $U subset.eq RR^3$ קבוצה פתוחה ונגדיר $Curl : C^1 (U, RR^3) arrow C^1 (U, RR^3)$ על־ידי
+  $ Curl F = (partial_y F_3 - partial_z F_2, partial_z F_1 - partial_x F_3, partial_x F_2 - partial_y F_1) $
+]
+
+#theorem[משפט סטוקס][
+  יהי $Sigma subset.eq RR^3$ יריעה קומפקטית דו־מימדית עם שפה (אולי ריקה) ותהיי $U subset.eq RR^3$ סביבה של $Sigma$ ויהי $F:U arrow RR^3$ שדה וקטורי. אזי
+  $ integral_boundary(Sigma) F dif ell = integral_Sigma chevron.l Curl F, N chevron.r $
+]
+
+== פונקציות הרמוניות
+תשלימי אם יש לך זמן.
+
+== משטחי סיבוב ומשפט גולדין
+שטח הפנים של משטח סיבוב הנוצר על ידי סיבוב עקומה $gamma$ סביב ציר שווה למכפלת אורך העקומה L($gamma$) בהיקף המעגל שיוצר מרכז המסה שלה: $Area = L(gamma) dot.op 2pi abs(a_1)$.
+
 = צורות חשובות
 == מסילות
 == יריעות פרמטריות
@@ -35,17 +234,15 @@
 == יריעות עם שפה
 == יריעות בלי שפה
 
+= דרכים כלליות למציאת נורמל
++ תהיי $F:RR^3 arrow RR$ פונקציה חלקה ונסמן $Sigma = F^(-1)(0)$ ונניח כי לכל $p in Sigma$ מתקיים $D F_p != 0$ אזי $display(n = frac(gradient F, norm(gradient F)))$ הוא נורמל היחידה ל־$Sigma$.
++
 
-= חישובים
+= דוגמאות לחישובים
 
 == מסילות
 
 === אינטגרל מסילתי/קווי על פונקציה
-#theorem[אינטגרל מסילתי][
-  בהינתן $gamma: [a,b] arrow RR^n$ מסילה חלקה ו־$f:RR^n arrow RR$ פונקציה רציפה אזי האינטגרל המסילתי/קווי של $f$ על $gamma$ מוגדר על־ידי
-  $ integral_gamma f dif s = integral_a^b f(gamma(t)) norm(dot(gamma)(t)) dif t $
-]
-
 #example[
   נחשב את האינטגרל הקווי $integral_gamma sqrt(z) dif s$ עבור הסליל (הליקס) $display(gamma(t)=(cos(t), sin(t), t^2))$ כאשר $t in [0,2pi]$
 ]
@@ -59,10 +256,6 @@
 ]
 
 === אינטגרל מסילתי על שדה וקטורי
-#theorem[אינטגרל מסילתי על שדה וקטורי][
-  תהיי $gamma$ מסילה ו־$arrow(X)$ שדה וקטורי (שם יפה עבור $U subset.eq RR^n$ פתוחה ו־$F:U arrow RR^n$ חלקה) אזי $integral_gamma arrow(X)dif arrow(ell) = integral_a^b arrow(X)(gamma(t)) dot.op dot(gamma) (t) dif t$.
-]
-
 #example[
   נסתכל על השדה הוקטורי $F(x,y,z) = display((frac(x, x^2+y^2m), frac(y, x^2+y^2), z))$ המוגדר על $U=(RR^2 without {0}) times RR$. נחשב את האינטגרל הקווי $integral_gamma arrow(X) dif arrow(ell)$ לאורך המסילה $gamma: [0,2pi] arrow RR^n$ הנתונה על־ידי $gamma(t)=display((cos(t), sin(t), t^2))$.
 ]
@@ -73,25 +266,7 @@
   $
 ]
 
-== יריעות פרמטריות
-=== היפר־נפח ($bold(Vol_d)$)
-#definition[קבוע הנפח][
-  בהינתן 2 מרחבי מכפלה פנימית $k$־מימדים  $(U, chevron.l, chevron.r_U)$ ו־$(W, chevron.l , chevron.r)_W$, העתקה לינארית $T:U arrow W$ ובסיסים אורתונורמליים $e_1, dots.h, e_k$ ל־$U$ ו־$tau_1, dots.h, tau_k$ ל־$W$ נגדיר את קבוע הנפח להיות
-  $ V(T)=abs(det(a_(j i))) $
-  כאשר $T(e_i) = sum a_(j i) tau_j$
-]
-
-#lemma[הגדרה שקולה לקבוע נפח][
-  עבור $T:RR^k arrow RR^n$ מתקיים
-  $ V(T) = sqrt(det(T^t T)) $
-]
-
-#theorem[היפר־נפח של יריעה פרמטרית][
-  בהינתן $X$ יריעה פרמטרית ו־$phi.alt : U subset.eq RR^k arrow RR^n$ הפרמטריזציה שלה (יריעה $k$־מימדית) שלה אז הנפח שלה מוגדר על־ידי
-  $ Vol_k (X) = integral_U V(D phi.alt|_x) dif x $
-  כאשר $V(T)$ הוא קבוע הנפח.
-]
-
+=== יריעות פרמטריות
 #example[
   בהינתן פרמטריזציה $Sigma$ הנתונה על־ידי $display(r(theta, phi.alt) = (cos(phi.alt)sin(theta), sin(phi.alt)sin(theta),cos(theta)))$ עבור $0<=theta<=pi$ ו־$0<=phi.alt <= frac(theta, 2)$ נחשב את השטח של $Sigma$.
 ]
@@ -104,32 +279,9 @@
   $
 ]
 
-== עקמומיות
-#definition[#todo]
-#example[
-  עבור המשטח $z=x y$ נחשב את העקמומיות $K$ בראשית.
-]
-
-#solution[
-  נגדיר $r(x,y) = (x,y,x y)$ ולכן $r_x = (1,0,y)$ ו־$r_y = (0,1,x)$ ובראשית $r_x = (1,0,0), r_y = (0,1,0)$. #todo
-]
 === אינטגרל של פונקציה
 
 === משפט גרין
-#theorem[משפט גרין][
-  יהי $Omega subset.eq RR^2$ תחום חלק ויהי $F=(P,Q)$ שדה וקטורי חלק בסביבה של $Omega$ ו־$boundary(Omega)$ באוריינטציה חיובית. אזי
-  $
-    integral_boundary(Omega) P dif x + Q dif y = integral_boundary(Omega) F dif ell = integral_Omega frac(partial Q, partial x) - frac(partial P, partial y) dif x dif y
-  $
-]
-
-#corollary[
-  בתנאי משפט גרין
-  $
-    Area(Omega)=integral_boundary(Omega) x dif y = - integral_boundary(Omega) y dif x = frac(1, 2) integral_boundary(Omega) x dif y - y dif x
-  $
-]
-
 #example[
   נחשב את השטח הכלוא בתוך המסילה $gamma(t)=display((sin(t), sin(t)cos(t)))$ עבור $t in [0,2pi]$.
 ]
@@ -152,16 +304,6 @@
 ]
 
 === משפט סטוקס
-#definition[Curl][
-  תהיי $U subset.eq RR^3$ קבוצה פתוחה ונגדיר $Curl : C^1 (U, RR^3) arrow C^1 (U, RR^3)$ על־ידי
-  $ Curl F = (partial_y F_3 - partial_z F_2, partial_z F_1 - partial_x F_3, partial_x F_2 - partial_y F_1) $
-]
-
-#theorem[משפט סטוקס][
-  יהי $Sigma subset.eq RR^3$ יריעה קומפקטית דו־מימדית עם שפה (אולי ריקה) ותהיי $U subset.eq RR^3$ סביבה של $Sigma$ ויהי $F:U arrow RR^3$ שדה וקטורי. אזי
-  $ integral_boundary(Sigma) F dif ell = integral_Sigma chevron.l Curl F, N chevron.r $
-]
-
 #example[
   נחשב $integral.cont_gamma F dif ell$ עבור $F=(y,-2z, 4x)$ כאשר $gamma$ זה מעגל ברדיוס $2$ במישור $x+2y+3z=4$ נגד כיוון השעון כשמסתכלים עליו מהציר החיובי של ציר ה־$z$.
 ]
@@ -175,10 +317,7 @@
 ]
 
 === משפט הדיבירגנץ'
-#theorem[משפט הדירביגנץ'][
-  תהיי $Omega subset.eq RR^n$ תחום חלק וחסום ויהי $F$ שדה וקטורי חלק המוגדר בסביבה של $Omega$ ויהי $N: boundary(Omega) arrow RR^n$ נורמל היחידה המצביע החוצה על $Omega$ אזי
-  $ integral_Omega divergence F dif x = integral_boundary(Omega) chevron.l F, N chevron.r dif sigma $
-]
+
 
 #example[
   יהי $F(x,y,z) = (-y, x,z)$ ונחשב את השטף של $F$ דרך המשטח הסגור $Sigma = {(x,y,z) bar x^2+y^2 = cos^2 (z), frac(-pi, 2) <= z<=frac(pi, 2)}$.
