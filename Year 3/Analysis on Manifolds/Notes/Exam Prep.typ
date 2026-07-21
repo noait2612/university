@@ -104,6 +104,11 @@
   בתחום כוכב $arrow(F)$ שדה וקטורי הוא משמר אם ורק אם הוא משמר מקומית.
 ]
 
+#theorem[
+  אם $arrow(F)$ עם $phi$ פוטנציאל הוא משמר מקומית ו־$gamma : [a,b] arrow RR^n$ מסילה
+  $ integral_gamma arrow(F) dif ell = phi(gamma(b))-phi(gamma(a)) $
+]
+
 == יריעות ב־$RR^n$
 === הגדרות שקולות ליריעה
 #definition[יריעה לפי פרמטריזציה מקומית][
@@ -152,7 +157,7 @@
   כמובן בהינתן שהאינטגרל מצד ימין מוגדר.
 ]
 
-#lemma[][
+#lemma[
   אם $(X, phi.alt : U arrow RR^n)$ יריעה פרמטרית ו־$psi : W subset.eq RR^k arrow U$ דיפאומורפיזם ו־$f:X arrow RR$ אזי
   $ integral_U f(phi.alt(x))V(D phi.alt |_x) dif x = integral_W f(phi.alt(psi(y)))V(D (phi.alt compose psi) |_y) dif y $
 ]
@@ -173,22 +178,35 @@
   $
 ]
 
-=== משפט הדיברגנץ'
+=== משפט הדיברגנץ
 #definition[Divergence על יריעות][
   תהיי $M^k subset.eq RR^n$ יריעה $k$־מימדית (עם או בלי שפה) ויהי $X:M arrow RR^n$ שדה וקטורי חלק. אז הדיברגנץ' של $X$ ביחס ליריעה $M$ בנקודה $p in M$ מוגדר על־ידי
-  $ divergence_M X(p) = sum_(i=1)^k chevron.l D_(e_i) X|_p, e_i chevron,r $
+  $ divergence_M X(p) = sum_(i=1)^k chevron.l D_(e_i) X|_p, e_i chevron.r $
   כאשר ${e_i}_(i=1)^k$ בסיס אורתונורמלי למרחב המשיק $T_p (M)$ בנקודה ו־$D e_i X = D X(e_i)$ הנגזרת של השדה הוקטורי $X$ בכיוון הוקטור $e_i$
 ]
 
 #definition[Divergence על יריעה במימד המרחב][
   אם $Omega subset.eq RR^n$ יריעה ממימד $n$ אזי
-  $ div_Omega X = sum_(i=1)^n frac(partial X_i, partial x_i) $
+  $ divergence_Omega X = sum_(i=1)^n frac(partial X_i, partial x_i) $
 ]
 
-#theorem[משפט הדירביגנץ'][
+#theorem[משפט הדירביגנץ][
   תהיי $Omega subset.eq RR^n$ תחום חלק וחסום ויהי $F$ שדה וקטורי חלק המוגדר בסביבה של $Omega$ ויהי $N: boundary(Omega) arrow RR^n$ נורמל היחידה המצביע החוצה על $Omega$ אזי
   $ integral_Omega divergence F dif x = integral_boundary(Omega) chevron.l F, N chevron.r dif sigma $
   במילים אחרות, השטף של שדה וקטורי דרך שפה סגורה שווה לאינטגרל של הדיברגנץ על הנפח.
+]
+
+=== אינטגרציה בחלקים וזהויות גרין
+#lemma[כלל המכפלה לדיברגנץ][
+  עבור פונקציה סקלרית $f$ ושדה וקטורי $X$:
+  $ divergence (f X) = f divergence X + chevron.l gradient f, X chevron.r $
+]
+
+#theorem[אינטגרציה בחלקים על יריעות][
+  בהינתן $f,g$ פונקציות חלקות ו־$X$ שדה וקטורי על תחום $Omega$ עם שפה $boundary(Omega)$ ונורמל חיצוני $hat(n)$:
+  $
+    integral_Omega (X f)g dif x = - integral_Omega f(X g) dif x - integral_Omega f g divergence X dif x + integral_boundary(Omega) f g chevron.l X, hat(n) chevron.r dif Vol_(d-1)
+  $
 ]
 
 === משפט סטוקס
@@ -203,10 +221,11 @@
 ]
 
 == פונקציות הרמוניות
-תשלימי אם יש לך זמן.
+תשלימי אם יש לך זמן (הכל ראינו במד"ר!)
 
 == משטחי סיבוב ומשפט גולדין
-שטח הפנים של משטח סיבוב הנוצר על ידי סיבוב עקומה $gamma$ סביב ציר שווה למכפלת אורך העקומה L($gamma$) בהיקף המעגל שיוצר מרכז המסה שלה: $Area = L(gamma) dot.op 2pi abs(a_1)$.
+שטח הפנים של משטח סיבוב הנוצר על ידי סיבוב עקומה $gamma$ סביב ציר שווה למכפלת אורך העקומה
+($gamma$) בהיקף המעגל שיוצר מרכז המסה שלה: $Area = L(gamma) dot.op 2pi abs(a_1)$.
 
 = צורות חשובות
 == מסילות
@@ -221,6 +240,11 @@
 ]
 
 === טורוס
+#definition[טורוס (Torus)][
+  יריעה הדומה בצורתה לסופגניה, הנוצרת מסיבוב מעגל ברדיוס $r$ סביב ציר במרחק $R$ ממנו. הפרמטריזציה הסטנדרטית:
+  $ r(theta, phi.alt) = ((R + r cos(phi.alt))cos(theta), (R + r cos(phi.alt))sin(theta), r sin(phi.alt)) $
+  עבור $0 <= theta <= 2pi$ (זווית הסיבוב המרכזית) ו־$0 <= phi.alt <= 2pi$ (הזווית על המעגל הקטן).
+]
 
 === הליקס (סליל)
 #definition[הליקס][
@@ -236,7 +260,43 @@
 
 = דרכים כלליות למציאת נורמל
 + תהיי $F:RR^3 arrow RR$ פונקציה חלקה ונסמן $Sigma = F^(-1)(0)$ ונניח כי לכל $p in Sigma$ מתקיים $D F_p != 0$ אזי $display(n = frac(gradient F, norm(gradient F)))$ הוא נורמל היחידה ל־$Sigma$.
-+
++ תהיי $Sigma$ יריעה פרמטרית (משטח ב־$RR^3$) הנתונה על־ידי פרמטריזציה $r(u,v)$. נורמל היחידה למשטח בנקודה מוגדר על־ידי המכפלה הוקטורית של הנגזרות החלקיות:
+  $ n = frac(r_u times r_v, norm(r_u times r_v)) $
+  (כאשר $r_u = partial_u r$ ו־$r_v = partial_v r$). כיוון הנורמל (פנימה/החוצה) נקבע לפי סדר המכפלה (כלל יד ימין).
+
+= דברים חשובים לזכור
+== זהויות חשובות
++ $cos^2(t)-sin^2(t) = cos(2t)$
++ $cos^2(t)+sin^2(t) = 1$
++ $cos(t)sin(t) = frac(1, 2)sin(2t)$
++ $sin^2 (2t) = frac(1-cos(4t), 2)$
+
+== נפחים ושטחים חשובים
++ ספירה
+  + נפח $V = frac(4, 3) pi r^3$
+  + שטח $A = 4pi r^2$
++ אליפסואיד
+  + נפח $V=frac(4, 3) pi a b c$
++ צילינדר
+  + נפח $V=pi r^2 h$
+  + שטח $A=2pi r h + 2pi r^2$
++ קונוס
+  + נפח $V=frac(1, 3) pi r^2 h$
++ טורוס
+  + נפח $V=2pi^2 r^2 R$
+  + שטח $A=4pi^2 r R$
+= מכפלה וקטורית
+#definition[מכפלה וקטורית][
+  בהינתן $v,w in RR^3$ כאשר $v = (a_1, a_2, a_3)$ ו־$w=(b_1, b_2,b_3)$ המכפלה הוקטורית שלהם היא
+  $ v times w = (a_2 b_3 - b_3 - a_3 b_2, a_3 b_1 - a_1 b_3, a_1 b_2 - a_2 b_1) $
+]
+
+#proposition[תכונות המכפלה הוקטורית][
+  + $v times w = -w times v$
+  + $v times w perp v$, $v times w perp w$
+  + אם $v,w$ אורתונורמליים אזי $v,w, v times w$ זה בסיס אורתנורומלי
+  + אם $A$ מטריצה אורתוגונלית עם $det(A)=1$ אזי $A(v times w) = A(v) times A(w)$
+]
 
 = דוגמאות לחישובים
 
@@ -266,7 +326,7 @@
   $
 ]
 
-=== יריעות פרמטריות
+== יריעות פרמטריות
 #example[
   בהינתן פרמטריזציה $Sigma$ הנתונה על־ידי $display(r(theta, phi.alt) = (cos(phi.alt)sin(theta), sin(phi.alt)sin(theta),cos(theta)))$ עבור $0<=theta<=pi$ ו־$0<=phi.alt <= frac(theta, 2)$ נחשב את השטח של $Sigma$.
 ]
@@ -316,9 +376,7 @@
   $
 ]
 
-=== משפט הדיבירגנץ'
-
-
+=== משפט הדיבירגנץ
 #example[
   יהי $F(x,y,z) = (-y, x,z)$ ונחשב את השטף של $F$ דרך המשטח הסגור $Sigma = {(x,y,z) bar x^2+y^2 = cos^2 (z), frac(-pi, 2) <= z<=frac(pi, 2)}$.
 ]
@@ -328,6 +386,9 @@
   $ integral_(-frac(pi, 2))^frac(pi, 2) cos^2 (z) dif z = dots.h.c = frac(pi^2, 2) $
 ]
 
+#example[
+
+]
 == יריעות עם שפה
 ?
 === משפט הדיבירגנץ'
