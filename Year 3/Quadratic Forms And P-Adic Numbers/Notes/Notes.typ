@@ -496,14 +496,91 @@
 ]
 
 #proof[
-  #todo
+  $==>$ נניח כי המרחבים איזומורפיים ויהי $f:(V,q) arrow (V^prime, q^prime)$ איזומורפיזם. נסמן $cal(B) = {v_1, dots.h, v_n}$ ו־$cal(B)^prime.double = {f(v_1), dots.h, f(v_n)}$, אזי גם cal(B)^prime.double בסיס של $V^prime$ ומהטענה הקודמת $[g_(q^prime)]_(cal(B)^prime.double) = [g_q]_cal(B)$ וכעת $[g_(q^prime)]_(cal(B)^prime.double)$ ו־$[g_(q^prime)]_(cal(B)^prime)$ חופפות.\
+  $<==$ נניח ש־$[g_(q^prime)]_(cal(B)^prime.double)$ ו־$[g_(q^prime)]_(cal(B)^prime)$ חופפות, אז קיים בסיס $cal(B)^prime.double$ של $V^prime$ עבורו $[g_(q^prime)]_(cal(B)^prime.double) = [g_q]_cal(B)$ ונסמן $cal(B) = {v_1, dots.h, v_n}$ ו־$cal(B)^prime.double = {w_1, dots.h, w_n}$ ונגדיר $f:V arrow V^prime$ העתקה לינארית על־ידי $f(v_i) = w_i$ לכל $1<=i<=n$ מהטענה הקודמת $f$ איזומורפיזם ולכן המרחבים איזומורפיים.
 ]
 
 #definition[סכום ישר ניצב][
   יהי $(V,q)$ מרחב ריבועי מעל $FF$ ויהיו$U_1, U_2$ תתי־מרחבים של $V$ כך שמתקיים $V= U_1 plus.o U_2$. נאמר כי $V$ הוא סכום ישר ניצב של $U_1, U_2$ ומסמנים $V = U_1 plus.o^perp U_2$ אם לכל $u_1 in U_1$ ו־$u_2 in U_2$ מתקיים $u_1 perp u_2$.
 ]
 
-#example[]
+#example[
+  יהי $(V,q)$ מרחב ריבועי ו־$cal(B)={v_1, dots.h, v_n}$ בסיס אורתוגונלי של $V$ אז נקבל
+  $ V = Span{v_1} plus.o^perp dots.h.c plus.o^perp Span{v_n} $
+]
+
+#claim[
+  יהי $(V,q)$ מרחב ריבועי מעל $FF$, $U_1, U_2$ תתי־מרחבים של $V$ כך שהם סכום ישר ניצב עם $cal(B)_1$ ו־$cal(B)_2$ בסיסים של $U_1$ ו־$U_2$ בהתאמה. נסמן $cal(B) = cal(B)_1 union cal(B)_2$ אז $cal(B)$ בסיס של $V$ וגם
+  $ [g_q]_cal(B) = mat([g_q |U_1]_cal(B)_1, 0; 0, [g_q |U_2]_cal(B)_2) $
+]
+
+#definition[גרעין של מרחב ריבועי][
+  יהי $(V,q)$ מרחב ריבועי מעל $FF$. תת־המרחב $V^perp colon.eq {w in V bar forall v in V, space v perp w}$ נקרא הגרעין של $(V,q)$.
+]
+
+#claim[
+  יהיו $(V,q)$ ו־$(V^prime, q^prime)$ מרחבים ריבועיים מעל $FF$ ו־$f:(V,q) arrow (V^prime, q^prime)$ איזומורפיזם. אזי $f(V^perp)=(V^prime)^perp$.
+]
+
+#corollary[
+  יהיו $(V,q)$ ו־$(V^prime, q^prime)$ מרחבים ריבועיים איזומורפיים. אזי $dim V^perp = dim (V^prime)^perp$.
+]
+
+#definition[מרחב ריבועי מנוון][
+  יהי $(V,q)$ מרחב ריבועי. נאמר שהוא מנוון אם $V^perp != {0_V}$.
+]
+
+#proposition[
+  יהי $(V,q)$ מרחב ריבועי מעל $FF$ ו־$cal(B)$ בסיס של $V$. אז $(V,q)$ מנוון אם ורק אם $[g_q]_cal(B)$ אינה הפיכה.
+]
+
+#proof[
+  $==>$ נניח כי המרחב מנוון ולכן קיים $0!=v in V^perp$ ונסמן $dim V = n$. אזי קיימים $v_2, dots.h, v_n in V$ כך ש־$cal(B)^prime = {v, v_2, dots.h, v_n}$ בסיס של $V$. אז העמודה הראשונה של $[g_q]_(cal(B)^prime)$ היא עמודת אפסים ולכן היא אינה הפיכה ומחפיפה עם $[g_q]_cal(B)$ נקבל את הנדרש.\
+  $<==$ נניח כי $[g_q]_cal(B)$ לא הפיכה ולכן קיים $(0, dots.h, 0) != (c_1, dots.h, c_n) in FF^n$ כך ש־$[g_q]_cal(B) vec(c_1, dots.v, c_n) = vec(0, dots.v 0)$. נסמן $cal(B) = {v_1, dots.h, v_n}$ ונגדיר $w = c_1 v_1 + dots.h.c + c_n v_n$ ואז $[w]_cal(B) = vec(c_1, dots.v, c_n)$ ומכאן לכל $v in V$ מתקיים
+  $
+    g_q (v, w) = ([v]_cal(B))^t [g_q]_cal(B) [w]_cal(B) = ([v]_cal(B))^t [g_q]_cal(B) vec(c_1, dots.v, c_n) = ([v]_cal(B))^t vec(0, dots.v, 0) = vec(0, dots.v, 0)
+  $
+  כלומר $w perp v$ ומכן $w in V^perp$ ולכן המרחב מנוון.
+]
+
+#corollary[
+  יהי $(V,q)$ מרחב ריבועי מעל $FF$, $cal(B) = {v_1, dots.h, v_n}$ בסיס אורותוחגונלי של $V$. אזי $(V,q)$ מנוון אם ורק אם קיים $1<=i<=n$ כך ש־$q(v_i) =0$.
+]
+
+#corollary[
+  יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ ו־$R subset.eq FF$ קבוצת נציגים מודולו ריבועיים. אזי קיים בסיס $cal(B)$ של $V$ כך ש־$[g_q]_cal(B)$ אלכסונית ואיברי אלכסונה שייכים ל־$R$ (ללא אפס).
+]
+
+#proposition[
+  יהי $(V,q)$ מרחב ריבועי מעל $FF$, $W, V$ תתי־מרחבים של $V$ כך ש־$V = U plus.o^perp W$ ו־$(U, q|_U)$ לא מנוון ו־$q|_W (w) =0$ לכל $w in W$. אזי $V^perp = W$.
+]
+
+#proof[
+  לכל $w in W$, נתון שלכל $v in V$ קיים $u^prime in U$ ו־$w^prime in W$ כך ש־$v=u^prime + w^prime$ ולכן
+  $
+    g_q (v,w) = underbrace(g_q (u^prime, w), U plus.o^perp W ==> = 0) + underbrace(g_q (w^prime, w), = 0 "מפלורליזציה") = 0
+  $
+  ולכן $w in V^perp$. כעת יהי $v in V^perp$ וקיימים $u in U$ ו־$w in W$ כך ש־$v=u+w$. נניח בשלילה כי $!=0$ אז מכייון ש־$(U, q|_U)$ לא מנוון קיים $u^prime in U$ עבורו $g_q (u^prime, u) !=0$ ולכן
+  $
+    g_q (u^prime, v) = g_q (u^prime, u + w) = underbrace(g_q (u^prime, u), != 0) + underbrace(g_q (u^prime, w), =0) = g_q (u^prime, u) != 0
+  $
+  בסתירה לכך ש־$v in V^perp$ ולכן $u=0$ ו־$v in W$ ולכן $W=V^perp$.
+]
+
+#proposition[
+  יהי $(V,q)$ מרחב ריבועי מעל $FF$ ו־$U$ תת־מרחב של $V$ כך ש־$V = U plus.o V^prime$ (סכום ישר רגיל) אזי
+  + $V = U plus.o^perp V^perp$
+  + $(U, q|_U)$ לא מנוון
+]
+
+#proof[
+  + לכל $w in V^perp$ ו־$u in U$ מתקיים מהגדרה $g_q (u,w)=0$ ולכן $V = U plus.o^perp V^perp$
+  + יהי $u in U$ שנמצא בגרעין של $(U, q|_U)$ כלומר $g_q (u, tilde(u))=0$ לכל $tilde(u) in U$. יהי $v in V$ אז קיימים $u^prime in U$ ו־$w^prime in V^perp$ כך ש־$v=u^prime + w^prime$ ולכן
+    $
+      g_q (v, u) = g_q (u^prime + w^prime, u) = underbrace(g_q (u^prime, u), =0) + underbrace(g_q (w^prime, u), =0) = 0
+    $
+    ולכן $u in V^perp$ כלומר $u in V^perp inter U = {0_v}$ ולכן המרחב לא מנוון.
+]
 
 מעכשיו נתרכז במרחבים ריבועיים לא מנוונים.
 
