@@ -189,7 +189,7 @@
   + סימטריה – יהיו $A$ ו־$B$ מטריצות כך ש־$B$ חופפת ל־$A$. תהי $P$ מטריצה הפיכה כך ש־ $B = P^t A P$ ונסמן $Q = P^(-1)$, אזי:
     $ Q^t B Q = Q^t P^t A P Q = (P Q)^t A (P Q) = I^t A I = A $
     לכן $A$ חופפת ל־$B$.
-  + טרנזיטיביות (מעבר) – יהיו $A, B$ ו־$C$ מטריצות כך ש־$B$ חופפת ל־$A$ ו־$C$ חופפת ל־$B$. יהיו $P$ ו־$Q$ מטריצות הפיכות כך ש־ $B = P^t A P$ ו־ $C = Q^t B Q$. לכן מתקיים:
+  + טרנזיטיביות – יהיו $A, B$ ו־$C$ מטריצות כך ש־$B$ חופפת ל־$A$ ו־$C$ חופפת ל־$B$. יהיו $P$ ו־$Q$ מטריצות הפיכות כך ש־ $B = P^t A P$ ו־ $C = Q^t B Q$. לכן מתקיים
     $ C = Q^t B Q = Q^t P^t A P Q = (P Q)^t A (P Q) $
     ו־$P Q$ היא הפיכה, לכן $C$ חופפת ל־$A$.
 ]
@@ -204,7 +204,6 @@
   יהי $cal(B)'$ בסיס כך ש־ $P = [Id_V]_cal(B)^cal(B)'$. הבסיס $cal(B)'$ יהיה סדרת הווקטורים כך שווקטור הקואורדינטות ביחס לבסיס $cal(B)$ של הווקטור ה־$i$ הוא העמודה ה־$i$ של $P$.
   סדרה כזו היא אכן בסיס מכיוון ש־$P$ הפיכה. לכן כעת מתקיים:
   $ A = P^t [g]_cal(B) P = ([Id_V]_cal(B)^cal(B)')^t [g]_cal(B) [Id_V]_cal(B)^cal(B)' = [g]_cal(B)' $
-  כנדרש.
 ]
 
 #corollary[
@@ -215,11 +214,13 @@
 נראה כי לא רק ששתי מטריצות המייצגות את אותה תבנית בילנארית סימטרית g בבסיסים שונים הן חופפות, אלא שגם ההפך הוא נכון.
 
 #proposition[
-  יהי $V$ מרחב וקטורי נוצר סופית מעל $FF$ ממימד $n$ ויהי $B$ בסיס של $V$ ותהיי $g$ תבנית בילנארית סימטרית על $V$ ותהיי $C in M_n (FF)$ מטריצה שחופפת$[g]_B$. אזי קיים בסיס $B^prime$ של $V$ עבורו $C=[g]_(B^prime)$.
+  יהי $V$ מרחב וקטורי נוצר סופית מעל $FF$ ממימד $n$ ויהי $B$ בסיס של $V$ ותהיי $g$ תבנית בילנארית סימטרית על $V$ ותהיי $C in M_n (FF)$ מטריצה שחופפת $[g]_B$.\
+  אזי קיים בסיס $B^prime$ של $V$ עבורו $C=[g]_(B^prime)$.
 ]
 
 #proof[
-  #todo
+  קיימת $P in M_n (FF)$ הפיכה כך ש־$C=P[g]_B P$ ומאחר ש־$P$ הפיכה קיים בסיס $B^prime$ כך ש־$P$ היא מטריצת מעבר בסיסים בין $B$ ל־$B^prime$ כלומר $P=[Id_v]_B^(B^prime)$ ולכן
+  $ [g]_(B^prime) = ([Id_v]_(B^prime)^B)^t [g]_B [Id_v]_(B^prime)^B = P^t [g]_B P $
 ]
 
 == תבניות ריבועיות
@@ -462,10 +463,10 @@
 ]
 
 #proof[
-  $==>$ נניח כי איזומורפיזם ולכן לכל $1<=i,j <=n$ מתקיים
+  $<==$ נניח כי איזומורפיזם ולכן לכל $1<=i,j <=n$ מתקיים
   $ g_(q^prime) (f(v_i), f(v_j)) = g_q (v_i, v_j) $
   ולכן $[g_(q^prime)]_(cal(B)^prime) = [g_q]_cal(B)$.\
-  $<==$ נניח כי $[g_(q^prime)]_(cal(B)^prime) = [g_q]_cal(B)$ ויהי $[v]_cal(B) = vec(c_1, dots.v, c_n)$ כלומר
+  $==>$ נניח כי $[g_(q^prime)]_(cal(B)^prime) = [g_q]_cal(B)$ ויהי $[v]_cal(B) = vec(c_1, dots.v, c_n)$ כלומר
   $ v = c_1 v_1 + dots.h.c + c_n v_n $
   מכך ש־$f$ העתקה לינארית
   $ f(v)=c_1 f(v_1) + dots.h.c + c_n f(v_n) $
@@ -489,15 +490,15 @@
   איזומורפיות הוא יחס שקילות על אוסף המרחבים הריבועיים.
 ]
 
-כעת המטרה שלנו היא למיין את המ"ר מעל שדה F עד כדי איזומורפיזם.
+המטרה שלנו היא למיין את המרחבים הריבועיים מעל שדה $FF$ עד כדי איזומורפיזם.
 
 #proposition[
   יהיו $(V,q)$ ו־$(V^prime, q^prime)$ מרחבים ריבועיים מעל $FF$ עם $cal(B)$ ו־$cal(B)^prime$ בסיסים של $(V,q)$ ו־$(V^prime, q^prime)$ בהתאמה. אזי $(V,q) tilde.equiv (V^prime, q^prime)$ אם ורק אם $[g_(q^prime)]_(cal(B)^prime)$ ו־$[g_q]_cal(B)$ חופפות.
 ]
 
 #proof[
-  $==>$ נניח כי המרחבים איזומורפיים ויהי $f:(V,q) arrow (V^prime, q^prime)$ איזומורפיזם. נסמן $cal(B) = {v_1, dots.h, v_n}$ ו־$cal(B)^prime.double = {f(v_1), dots.h, f(v_n)}$, אזי גם cal(B)^prime.double בסיס של $V^prime$ ומהטענה הקודמת $[g_(q^prime)]_(cal(B)^prime.double) = [g_q]_cal(B)$ וכעת $[g_(q^prime)]_(cal(B)^prime.double)$ ו־$[g_(q^prime)]_(cal(B)^prime)$ חופפות.\
-  $<==$ נניח ש־$[g_(q^prime)]_(cal(B)^prime.double)$ ו־$[g_(q^prime)]_(cal(B)^prime)$ חופפות, אז קיים בסיס $cal(B)^prime.double$ של $V^prime$ עבורו $[g_(q^prime)]_(cal(B)^prime.double) = [g_q]_cal(B)$ ונסמן $cal(B) = {v_1, dots.h, v_n}$ ו־$cal(B)^prime.double = {w_1, dots.h, w_n}$ ונגדיר $f:V arrow V^prime$ העתקה לינארית על־ידי $f(v_i) = w_i$ לכל $1<=i<=n$ מהטענה הקודמת $f$ איזומורפיזם ולכן המרחבים איזומורפיים.
+  $<==$ נניח כי המרחבים איזומורפיים ויהי $f:(V,q) arrow (V^prime, q^prime)$ איזומורפיזם. נסמן $cal(B) = {v_1, dots.h, v_n}$ ו־$cal(B)^prime.double = {f(v_1), dots.h, f(v_n)}$, אזי גם $cal(B)^prime.double$ בסיס של $V^prime$ ומהטענה הקודמת $[g_(q^prime)]_(cal(B)^prime.double) = [g_q]_cal(B)$ וכעת $[g_(q^prime)]_(cal(B)^prime.double)$ ו־$[g_(q^prime)]_(cal(B)^prime)$ חופפות.\
+  $==>$ נניח ש־$[g_(q^prime)]_(cal(B)^prime.double)$ ו־$[g_(q^prime)]_(cal(B)^prime)$ חופפות, אז קיים בסיס $cal(B)^prime.double$ של $V^prime$ עבורו $[g_(q^prime)]_(cal(B)^prime.double) = [g_q]_cal(B)$ ונסמן $cal(B) = {v_1, dots.h, v_n}$ ו־$cal(B)^prime.double = {w_1, dots.h, w_n}$ ונגדיר $f:V arrow V^prime$ העתקה לינארית על־ידי $f(v_i) = w_i$ לכל $1<=i<=n$ מהטענה הקודמת $f$ איזומורפיזם ולכן המרחבים איזומורפיים.
 ]
 
 #definition[סכום ישר ניצב][
@@ -535,8 +536,8 @@
 ]
 
 #proof[
-  $==>$ נניח כי המרחב מנוון ולכן קיים $0!=v in V^perp$ ונסמן $dim V = n$. אזי קיימים $v_2, dots.h, v_n in V$ כך ש־$cal(B)^prime = {v, v_2, dots.h, v_n}$ בסיס של $V$. אז העמודה הראשונה של $[g_q]_(cal(B)^prime)$ היא עמודת אפסים ולכן היא אינה הפיכה ומחפיפה עם $[g_q]_cal(B)$ נקבל את הנדרש.\
-  $<==$ נניח כי $[g_q]_cal(B)$ לא הפיכה ולכן קיים $(0, dots.h, 0) != (c_1, dots.h, c_n) in FF^n$ כך ש־$[g_q]_cal(B) vec(c_1, dots.v, c_n) = vec(0, dots.v 0)$. נסמן $cal(B) = {v_1, dots.h, v_n}$ ונגדיר $w = c_1 v_1 + dots.h.c + c_n v_n$ ואז $[w]_cal(B) = vec(c_1, dots.v, c_n)$ ומכאן לכל $v in V$ מתקיים
+  $<==$ נניח כי המרחב מנוון ולכן קיים $0!=v in V^perp$ ונסמן $dim V = n$. אזי קיימים $v_2, dots.h, v_n in V$ כך ש־$cal(B)^prime = {v, v_2, dots.h, v_n}$ בסיס של $V$. אז העמודה הראשונה של $[g_q]_(cal(B)^prime)$ היא עמודת אפסים ולכן היא אינה הפיכה ומחפיפה עם $[g_q]_cal(B)$ נקבל את הנדרש.\
+  $==>$ נניח כי $[g_q]_cal(B)$ לא הפיכה ולכן קיים $(0, dots.h, 0) != (c_1, dots.h, c_n) in FF^n$ כך ש־$[g_q]_cal(B) vec(c_1, dots.v, c_n) = vec(0, dots.v 0)$. נסמן $cal(B) = {v_1, dots.h, v_n}$ ונגדיר $w = c_1 v_1 + dots.h.c + c_n v_n$ ואז $[w]_cal(B) = vec(c_1, dots.v, c_n)$ ומכאן לכל $v in V$ מתקיים
   $
     g_q (v, w) = ([v]_cal(B))^t [g_q]_cal(B) [w]_cal(B) = ([v]_cal(B))^t [g_q]_cal(B) vec(c_1, dots.v, c_n) = ([v]_cal(B))^t vec(0, dots.v, 0) = vec(0, dots.v, 0)
   $
@@ -558,9 +559,10 @@
 #proof[
   לכל $w in W$, נתון שלכל $v in V$ קיים $u^prime in U$ ו־$w^prime in W$ כך ש־$v=u^prime + w^prime$ ולכן
   $
-    g_q (v,w) = underbrace(g_q (u^prime, w), U plus.o^perp W ==> = 0) + underbrace(g_q (w^prime, w), = 0 "מפלורליזציה") = 0
+    g_q (v,w) = underbrace(g_q (u^prime, w), U plus.o^perp W ==> = 0) + underbrace(g_q (w^prime, w), "מפלורליזציה  " 0) = 0
   $
-  ולכן $w in V^perp$. כעת יהי $v in V^perp$ וקיימים $u in U$ ו־$w in W$ כך ש־$v=u+w$. נניח בשלילה כי $!=0$ אז מכייון ש־$(U, q|_U)$ לא מנוון קיים $u^prime in U$ עבורו $g_q (u^prime, u) !=0$ ולכן
+  ולכן $w in V^perp$.\
+  כעת יהי $v in V^perp$ וקיימים $u in U$ ו־$w in W$ כך ש־$v=u+w$. נניח בשלילה כי $!=0$ אז מכייון ש־$(U, q|_U)$ לא מנוון קיים $u^prime in U$ עבורו $g_q (u^prime, u) !=0$ ולכן
   $
     g_q (u^prime, v) = g_q (u^prime, u + w) = underbrace(g_q (u^prime, u), != 0) + underbrace(g_q (u^prime, w), =0) = g_q (u^prime, u) != 0
   $
@@ -845,11 +847,9 @@
   $
     q(w^prime + c v) = g_q (w^prime + c v, w^prime + c v) = g_q (w^prime, w^prime) + 2 g_q (w^prime, c v) = g (w^prime) + 2c underbrace(g_q (w^prime, v), = 1/2) = g(w^prime) + c
   $
-  אז נגדיר $c=-g(w^prime)$ ו־$u=w^prime - q(w^prime) v$ אז $g(u)=0$.\
-  בנוסף מתקיים
+  אז נגדיר $c=-g(w^prime)$ ו־$u=w^prime - q(w^prime) v$ אז $g(u)=0$ ובנוסף מתקיים
   $ g_q (v,u) = g_q (v, w^prime c v) = g_q (v, w^prime) = 1/2 $
-  עכשיו $cal(B) = (v,u)$ היא סדרה בלתי־תלויה לינארית (כי אחרת היינו מקבלים ש־$g_q (v,u)=0$) ונגדיר $U = Span(U)$.\
-  אז $cal(B)$ בסיס של $U$ ומתקיים $ [g_q|_U] = mat(0, frac(1, 2, style: "horizontal"); frac(1, 2, style: "horizontal")) $
+  עכשיו $cal(B) = (v,u)$ היא סדרה בלתי־תלויה לינארית (כי אחרת היינו מקבלים ש־$g_q (v,u)=0$) ונגדיר $U = Span(U)$ אז $cal(B)$ בסיס של $U$ ומתקיים $ [g_q|_U] = mat(0, frac(1, 2, style: "horizontal"); frac(1, 2, style: "horizontal")) $
   ולכן $(U, q|_U) tilde.equiv (FF^2, h)$
 ]
 
