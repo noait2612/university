@@ -12,93 +12,395 @@
 #set block(breakable: true)
 #outline(depth: 2)
 
-= תבניות ביליניאריות סימטריות
+= מרחבים ריבועיים
+== תבניות ביליניאריות סימטריות
+#definition[תבנית בילנארית סימטרית][
+  יהי $FF$ שדה כך ש־ $char(FF) != 2$ (כלומר $1_FF + 1_FF != 0_FF$), ויהי $V$ מרחב וקטורי מעל $FF$.
+  פונקציה $g: V times V -> FF$ נקראת תבנית בילינארית סימטרית (תב"ס) אם היא מקיימת את האקסיומות הבאות
+  + לכל $v, w_1, w_2 in V$ מתקיים $g(v, w_1 + w_2) = g(v, w_1) + g(v, w_2)$
+  + לכל $v,w in V$ ולכל $c in FF$ מתקיים $g(v, c w) = c g(v, w)$
+  + לכל $v,w in V$ מתקיים $g(v, w) = g(w, v)$
+]
+
+#remark[
+  + אלא אם צוין אחרת, מעתה והלאה נעבוד עם שדות כך ש־ $char(FF) != 2$.
+  + בהגדרה לעיל מספיק לדרוש לינאריות במשתנה השני בגלל הסימטריות
+]
+
+#proposition[
+  תהי $g$ תבנית בילינארית סימטרית (תב"ס) מעל מרחב וקטורי $V$, אזי
+  + לכל $v_1, v_2, w in V$ מתקיים $g(v_1 + v_2, w) = g(v_1, w) + g(v_2, w)$
+  + לכל $v,w in V$ ולכל $c in FF$ מתקיים $g(c v, w) = c g(v, w)$
+]
+
+#proof[
+  $
+    g(v_1 + v_2, w) = g(w, v_1 + v_2) =_"סימטריות" g(w, v_1) + g(w, v_2) =_"לינאריות במשתנה השני" g(v_1, w) + g(v_2, w)
+  $
+  ובאופן דומה עבור כפל בסקלר.
+]
+
+#example[
+  $FF = bb(R)$, $(V, chevron.l dot, dot chevron.r)$ מרחב מכפלה פנימית, ו־ $g(v, w) = chevron.l v, w chevron.r$.
+]
+
+#example[
+  $V$ מרחב וקטורי מעל $FF$, ו־ $forall v, w in V: g(v, w) = 0_FF$. זוהי התבנית הבילינארית הסימטרית הטריוויאלית.
+]
+
+#example[
+  עבור $V = FF^2$ לכל $display(vec(x_1, x_2)), display(vec(y_1, y_2)) in FF^2)$ מתקיים $ g(mat(x_1; x_2), mat(y_1; y_2)) = x_1 y_1 - x_2 y_2 $
+]<special_example>
+
+#remark[
+  ההוכחה שהדוגמה לעיל היא תבנית בילינארית סימטרית היא מקרה פרטי של ההוכחה שנראה עבור הדוגמה הבאה.
+]
+
+#example[
+  $FF$ הוא שדה, $A in M_n(FF)$ היא מטריצה סימטרית, $V = FF^n$ ולכל $v,w in FF^n$ מתקיים $g(v, w) = v^t A w$. נראה כי $g$ היא תבנית בילינארית סימטרית.
+]
+
+#proof[
+  יהיו $u, v, w in FF^n$ ו־ $c in FF$. מתקיים כי
+  $ g(u, v+w) = u^t A(v+w) = u^t A v + u^t A w = g(u, v) + g(u, w) $
+  $ g(u, c v) = u^t A(c v) = c(u^t A v) = c g(u, v) $
+  זה נובע מתכונות בסיסיות של כפל מטריצות, ומקיים את אקסיומות (1) ו־(2).
+  כעת מתקיים כי
+  $ g(u, v) = u^t A v eq_((star)) (u^t A v)^t = v^t A^t u eq_((star star)) v^t A u = g(v, u) $
+  כאשר $(star)$ זה  מכיוון ש־ $u^t A v in FF$ ו־$(star star)$ זה מהיות $A$ סימטרית.
+  מה שמקיים את אקסיומה (3).
+]
+
+#proof[@special_example][
+  הדוגמה נובעת מבחירת $A = mat(1, 0; 0, -1)$.
+]
+
+#definition[מטריצת גראם][
+  יהי $V$ מרחב וקטורי ממד סופי מעל $FF$, $g$ תבנית בילינארית סימטרית, ו־ $cal(B) = (v_1, dots.h, v_n)$ בסיס של $V$.
+  מטריצת גראם (Gram matrix) של $g$ ביחס לבסיס $cal(B)$ היא
+  $ [g]_cal(B) = (g_(i j))_(i, j) $
+  כך ש־ $g_(i,j) = g(v_i, v_j)$ לכל $i, j in [n]$.
+  $
+    [g]_cal(B) = mat(
+      g_(1,1), dots.h, g_(1,n);
+      dots.v, dots.down, dots.v;
+      g_(n,1), dots.h, g_(n,n)
+    )
+  $
+]
+
+#proposition[
+  $[g]_cal(B)$ היא סימטרית.
+]
+
+#proof[
+  לכל $i, j in [n]: g_(i,j) = g(v_i, v_j) = g(v_j, v_i) = g_(j,i)$.
+]
+
+#proposition[
+  תהי $A in M_n(FF)$ סימטרית, $g$ תבנית בילינארית סימטרית מעל $FF^n$ המוגדרת על ידי $g(v, w) = v^t A w$, ו־ $E = (e_1, dots.h, e_n)$ הבסיס הסטנדרטי של $FF^n$. אזי
+  $ [g]_E = A $
+]
+
+#proof[
+  נסמן
+  $
+    A = mat(
+      a_(1,1), dots.h, a_(1,n);
+      dots.v, dots.down, dots.v;
+      a_(n,1), dots.h, a_(n,n)
+    )
+  $
+  נשים לב שמתקיים: $g_(i,j) = e_i^t A e_j = a_(i,j)$.
+]
+
+#proposition[
+  יהי $(V, chevron.l dot, dot chevron.r)$ מרחב מכפלה פנימית ממד סופי מעל $bb(R)$, $g(v, w) = chevron.l v, w chevron.r$, ו־ $cal(B) = (v_1, dots.h, v_n)$ בסיס אורתונורמלי של $V$. אזי $[g]_cal(B) = I_n$.
+]
+
+#proof[
+  נזכור שעבור בסיס אורתונורמלי מתקיים
+  $
+    chevron.l v_i, v_j chevron.r = cases(1 & "אם" i=j, 0 & "אם" i!=j) , "לכן" g_(i,j) = cases(1 & "אם" i=j, 0 & "אם" i!=j)
+  $
+]
+
+#proposition[
+  יהי $V$ מרחב וקטורי ממד סופי מעל $FF$, $g$ תבנית בילינארית סימטרית, ו־ $cal(B) = (v_1, dots.h, v_n)$ בסיס של $V$.
+  אזי לכל $v, w in V$: $g(v, w) = [v]_cal(B)^t [g]_cal(B) [w]_cal(B)$.
+]<base_change>
+
+#proof[
+  נסמן
+  $ [v]_cal(B) = mat(c_1; dots.v; c_n) "ו־" [w]_cal(B) = mat(d_1; dots.v; d_n) $
+  כלומר: $v = sum_(i=1)^n c_i v_i$ ו־ $w = sum_(j=1)^n d_j v_j$.
+  נשים לב כי:
+  $
+    g(v, w) = g(sum_(i=1)^n c_i v_i, sum_(j=1)^n d_j v_j) eq.star sum_(i=1)^n sum_(j=1)^n c_i d_j g(v_i, v_j) = sum_(i=1)^n sum_(j=1)^n c_i d_j g_(i,j)
+  $
+  כאשר המעבר האחרון נובע מהבילנאריות של $g$ אך מצד שני
+  $
+    [v]_cal(B)^t [g]_cal(B) [w]_cal(B) = mat(c_1, dots.h, c_n) mat(
+      g_(1,1), dots.h, g_(1,n);
+      dots.v, dots.down, dots.v;
+      g_(n,1), dots.h, g_(n,n)
+    ) mat(d_1; dots.v; d_n) eq.star sum_(i=1)^n sum_(j=1)^n c_i d_j g_(i,j)
+  $
+  כאשר המעבר האחרון זה מהגדרת כפל מטריצות.\
+  לכן $g(v, w) = [v]_cal(B)^t [g]_cal(B) [w]_cal(B)$ כנדרש.
+]
+
+#corollary[
+  תהי $g$ תבנית בילינארית סימטרית מעל $FF^n$, אזי $g(v, w) = v^t [g]_E w$.
+]
+
+#proposition[
+  יהי $V$ מרחב וקטורי ממד סופי מעל $FF$, $g$ תבנית בילינארית סימטרית, ו־ $cal(B), cal(B)'$ בסיסים של $V$.
+  אזי $[g]_cal(B)' = ([Id]_cal(B)^cal(B)')^t [g]_cal(B) [Id]_cal(B)^cal(B)'$.
+]<another_base_change>
+
+#proof[
+  נסמן $cal(B)' = (w_1, dots.h, w_n)$, אז לכל $i in [n]$ העמודה ה־$i$ של $[Id]_cal(B)^cal(B)'$ היא $[w_i]_cal(B)$, כלומר $[Id]_cal(B)^cal(B)' e_i = [w_i]_cal(B)$.\
+  כעת הכניסה ה־$i,j$ של המטריצה $[g]_cal(B)'$ היא
+  $
+    g(w_i, w_j) =_((star)) [w_i]_cal(B)^t [g]_cal(B) [w_j]_cal(B) = ([Id]_cal(B)^cal(B)' e_i)^t [g]_cal(B) [Id]_cal(B)^cal(B)' e_j = e_i^t ([Id]_cal(B)^cal(B)')^t [g]_cal(B) [Id]_cal(B)^cal(B)' e_j
+  $
+  כאשר $(star)$ נובע מ@base_change.
+  אך נשים לב ש־ $e_i^t ([Id]_cal(B)^cal(B)')^t [g]_cal(B) [Id]_cal(B)^cal(B)' e_j$ היא הכניסה ה־$i,j$ של המטריצה $([Id]_cal(B)^cal(B)')^t [g]_cal(B) [Id]_cal(B)^cal(B)'$.
+]
+
+== חפיפת מטריצות
+
+#definition[מטריצה חופפת][
+  יהיו $A, B in M_n(FF)$. אנו אומרים ש־$B$ חופפת ל־$A$
+  כאשר קיימת מטריצה הפיכה $P in M_n(FF)$ כך ש־ $B = P^t A P$.
+]
+
+#remark[
+  תחת ההנחות של @another_base_change,  $[g]_cal(B)'$ חופפת ל־ $[g]_cal(B)$.
+]
+
+#proposition[
+  חפיפת מטריצות היא יחס שקילות.
+]
+
+#proof[
+  + רפלקסיביות – לכל $A$ מתקיים ש־ $A = I^t A I$, לכן $A$ חופפת ל־$A$.
+  + סימטריה – יהיו $A$ ו־$B$ מטריצות כך ש־$B$ חופפת ל־$A$. תהי $P$ מטריצה הפיכה כך ש־ $B = P^t A P$ ונסמן $Q = P^(-1)$, אזי:
+    $ Q^t B Q = Q^t P^t A P Q = (P Q)^t A (P Q) = I^t A I = A $
+    לכן $A$ חופפת ל־$B$.
+  + טרנזיטיביות (מעבר) – יהיו $A, B$ ו־$C$ מטריצות כך ש־$B$ חופפת ל־$A$ ו־$C$ חופפת ל־$B$. יהיו $P$ ו־$Q$ מטריצות הפיכות כך ש־ $B = P^t A P$ ו־ $C = Q^t B Q$. לכן מתקיים:
+    $ C = Q^t B Q = Q^t P^t A P Q = (P Q)^t A (P Q) $
+    ו־$P Q$ היא הפיכה, לכן $C$ חופפת ל־$A$.
+]
+
+#proposition[
+  יהי $V$ מרחב וקטורי ממד סופי מעל $FF$, $g$ תבנית בילינארית סימטרית, ו־$cal(B)$ בסיס של $V$.
+  תהי $A in M_n(FF)$ חופפת ל־ $[g]_cal(B)$. אזי קיים בסיס $cal(B)'$ של $V$ כך ש־ $A = [g]_cal(B)'$.
+]
+
+#proof[
+  תהי $P in M_n(FF)$ מטריצה הפיכה כך ש־ $A = P^t [g]_cal(B) P$.
+  יהי $cal(B)'$ בסיס כך ש־ $P = [Id_V]_cal(B)^cal(B)'$. הבסיס $cal(B)'$ יהיה סדרת הווקטורים כך שווקטור הקואורדינטות ביחס לבסיס $cal(B)$ של הווקטור ה־$i$ הוא העמודה ה־$i$ של $P$.
+  סדרה כזו היא אכן בסיס מכיוון ש־$P$ הפיכה. לכן כעת מתקיים:
+  $ A = P^t [g]_cal(B) P = ([Id_V]_cal(B)^cal(B)')^t [g]_cal(B) [Id_V]_cal(B)^cal(B)' = [g]_cal(B)' $
+  כנדרש.
+]
+
+#corollary[
+  כל מטריצה שחופפת למטריצה סימטרית היא בעצמה סימטרית.
+]
 
 #end_of_lecture("1 – 24/03")
-תשלימי...
+נראה כי לא רק ששתי מטריצות המייצגות את אותה תבנית בילנארית סימטרית g בבסיסים שונים הן חופפות, אלא שגם ההפך הוא נכון.
+
+#proposition[
+  יהי $V$ מרחב וקטורי נוצר סופית מעל $FF$ ממימד $n$ ויהי $B$ בסיס של $V$ ותהיי $g$ תבנית בילנארית סימטרית על $V$ ותהיי $C in M_n (FF)$ מטריצה שחופפת$[g]_B$. אזי קיים בסיס $B^prime$ של $V$ עבורו $C=[g]_(B^prime)$.
+]
+
+#proof[
+  #todo
+]
+
+== תבניות ריבועיות
+
+#definition[תבנית ריבועית][
+  יהי $V$ מרחב וקטורי מעל $FF$ עם מציין שונה מ־$2$ ו־$g$ תבנית בילנארית סימטרית על $V$. תבנית ריבועית שמתאימה ל־$g$ היא $g:V arrow FF$ המוגדרת על־ידי
+  $ q(v) = g(v,v) $
+]
+
+#example[
+  + עבור $F=RR$ ו־$(V, chevron.l dot.op chevron.r)$ מרחב מכפלה פנימית, $g:V times V arrow RR$ המוגדרת על־ידי $g(v,w) = chevron.l v, w chevron.r$ אזי $g(v) = chevron.l v,v chevron.r = norm(v)^2$
+  + עבור $V$ מרחב וקטורי מעל $FF$, $g(v,w) eq.triple 0$ אזי $g(v) eq.triple 0$
+  + עבור $V=FF^2$ ו־$g:FF^2 times FF^2 arrow FF$ המוגדרת על־ידי $ g(vec(x_1, x_2), vec(y_1, y_2)) = x_1 y_1 - x_2 y_2 $
+    אזי
+    $ q(vec(x_1, x_2)) = x_1^2-x_2^2 $
+]
+
+צה לשאול האם אותה תבנית ריבועית יכולה להתקבל משתי תבניות ריבועיות סימטריות שונות? התשובה היא לא.
+
+#proposition[נוסחת הפלורליזציה][
+  יהי $V$ מרחב וקטורי מעל $FF$, $g$ תבנית בילנארית סימטרית על $V$ ו־$q$ תבנית ריבועית המתאימה ל־$g$. אזי לכל $v,w in V$ מתקיים
+  $ g(v,w) = frac(q(v+w)-q(v)-q(w), 2) $
+]
+
+#proof[
+  $
+    g(v+w)-g(v)-g(w) =g(v+w, v+w) - g(v,v) - g(w,w)
+    =_((1)) cancel(g(v,v), stroke: #(paint: teal)) + g(v,w) + g(w,v) + cancel(g(w,w), stroke: #(paint: teal)) - cancel(g(v,v)) - cancel(g(w,w))
+    =_((2)) 2g(v,w)
+  $
+  כאשר $(1)$ נובע מלינאריות ו־$(2)$ מסימטריה. נחלק ב־$2$ ונקבל את המבוקש.
+]
+
+#corollary[
+  אם תבנית בילנארית סימטרית היא לא תבנית ה־$0$ אז גם התבנית הריבועית המתאימה לה היא לא תבנית ה־$0$.\
+  כלומר, אם $V$ מרחב וקטורי מעל $FF$, $g$ תבנית בילנארית סימטרית ששונה מתבנית ה־$0$ אזי קיים $v in V$ כך ש־$q(v)!=0$.
+]
+
+#definition[ניצבות][
+  יהי $V$ מרחב וקטורי מעל $FF$, $g$ תבנית בילנארית סימטרית על $V$ ו־$v,w in V$. אומרים כי $v$ ו־$w$ ניצבים ומסמנים $v perp w$ כאשר $g(v,w)=0$.
+]
+
+#definition[תת־מרחב ניצב][
+  יהי $V$ מרחב וקטורי מעל $FF$, $g$ תבנית בילנארית סימטרית על $V$ ו־$S subset.eq V$. נגדיר
+  $ S^perp colon.eq {w in V bar forall v in S, space v perp w} $
+  ו־$S^perp$ הוא תת־מרחב של $V$.
+]
+
+#proposition[
+  יהי $V$ מרחב וקטורי מעל $FF$, $g$ תבנית בילנארית סימטרית על $V$ ויהי $v in V$ כך ש־$g(v,v)!=0$, אזי
+  + $dim{v}^perp = n-1$
+  + ${v}^perp plus.o Span(v) = V$
+]
+
+#proof[
+  + נגדיר $T:V arrow FF$ על־ידי $T(w) =g(v,w)$. $T$ לינארית כי $g$ לינארית לפי הרכיב השני ומתקיים $ker T = {w in V bar g(v,w) =0} = {v}^perp$ כלומר אנחנו צריכים למצוא את המימד של הגרעין של $T$.\
+    מההנחה, $T(v)=g(v,v)!=0$ ולכן התמונה של $T$ היא לא רק $0$ ולכן בפרמט היא ממימד אחד, כלומר $im T = FF$ ומכאן
+    $ dim{v}^perp = dim ker T = dim V - dim im T = n-dim FF = n-1 $
+  + יהי $w in {v}^perp inter Span(v)$ ולכן קיים $c in FF$ כך ש־$w=c v$ וכמו־כן מתקיים
+    $ c g(v,v) = g(v, c v) = g(v,w) = 0 $
+    מכיוון ש־$g(v,v)!=0$ נובע כי $c=0$ ולכן $w = 0 v = 0_V$ כלומר ${v}^perp inter Span(v) = 0_V$ ולכן
+    $ dim({v}^perp + Span(v)) = dim{v}^perp + dim Span(v) - dim({v}^perp inter Span(v)) = n-1 + 1 - 0 =n = dim V $
+]
+
+#definition[בסיס אורתוגונלי][
+  יהי $V$ מרחב וקטורי מעל $FF$, $g$ תבנית בילנארית סימטרית על $V$ ו־$B={v_1, dots.h, v_n }$ בסיס של $V$. $B$ נקרא אורתוגונלי כאשר $v_i perp v_j$ לכל $1<=i<j<=n$.
+]
+
+#proposition[
+  יהי $V$ מרחב וקטורי מעל $FF$ ו־$g$ תבנית בילנארית סימטרית על $V$. אז ב־$V$ קיים בסיס אורתוגונלי.
+]
+
+#proof[
+  באינדוקציה על המימד של $V$.\
+  נסמן $dim V = n$, בבסיס $n=1$ כל בסיס של $V$ הוא בסיס אורתוגונלי וכעת נניח כי הטענה נכונה עבור כל מרחב וקטורי שמימדו קטן מ־$n$ ויהי $V$ מרחב וקטורי שמימדו $n$.\
+  אם לכל $v in V$ מתקיים ש־$g(v,v)=0$ אזי $g(v,w)=0$ לכל $v,w in V$ מנוסחת הפלורליזציה ובפרט נקבל כי כל בסיס של $V$ הוא אורתוגונלי שכן אחרת קיים $v in V$ כך ש־$g(v,v)!=0$ ולפי הטענה הקודמת היה מתקיים שהמימד של ${v}^perp = n-1$.\
+  מהנחת האינדוקציה ל־${v}^perp$ קיים בסיס אורתוגונלי $B^prime = {v_1, dots.h, v_(n-1)}$ ומהטענה הקודמת $B^prime plus.o {v} = V$ וגם $v perp v_i$ לכל $1<=i<=n-1$ ולכן \
+  $B={v_1, dots.h, v_(n-1), v}$ הוא בסיס אורתוגונלי.
+]
+
+#proposition[
+  יהי $V$ מרחב וקטורי מעל $FF$, $g$ תבנית בילנארית סימטרית על $V$ ו־$B$ בסיס של $V$. אזי $B$ אורתוגונלי אם ורק אם מטריצת גראם $[g]_B$ אלכסונית.
+]
+
+#corollary[
+  יהי $V$ מרחב וקטורי מעל $FF$ ו־$g$ תבנית בילנארית סימטרית על $V$. אז קיים בסיס $B$ של $V$ כך ש־$[g]_B$ אלכסונית.
+]
+
+#corollary[
+  לכל $A in m_n (FF)$ סימטרית קיים $D in M_n (FF)$ אלכסונית אשר חופפת ל־$A$.
+]
+
+#proof[
+  נגדיר $g:FF^n times FF^n arrow FF$ על־ידי $g(x,y) = x^t A y$ ואז $[g]_cal(E) = A$ כאשר $cal(E)$ הוא הבסיס הסטנדרטי של $FF^n$.\
+  לפי המסקנה הקודמת קיים בסיס $B$ של $FF^n$ כך ש־$[g]_B$ אלכסונית ונגדיר $D=[g]_B$. מאחר ש־$[g]_B$ חופפת ל־$[g]_cal(E)$ מתקיים ש־$D$ חופפת ל־$A$.
+]
 
 #end_of_lecture("2 – 14/04")
-תשלימי...
 
-== כותרת כלשהי
-_תזכורת:_
-#proposition[
-  יהי $V$ מרחב וקטורי נוצר סופית מעל $FF$ ו־$g$ תבנית בילנארית סימטרית על $V$.\
-  אז קיים בסיס $cal(B)$ של $V$ כך ש־$[g]_(cal(B))$ מטריצה אלכסונית.
+#definition[הומומורפיזם הקנוני][
+  יהי $FF$ שדה ונסתכל על $(FF^times)^2 = {a^2 bar a in FF^times}$ זו תת־חבורה של $FF^times$ ביחס לכפל.\
+  נסמן ב־$pi: FF^times arrow frac(FF^times, (FF^times)^2, style: "skewed")$ ההומומורפיזם הקאנוני כלומר $pi(a)=a(FF^times)^2$ לכל $a in FF^times$.\
 ]
-#corollary[
-  לכל $A in M_n (FF)$ סימטרית קיימת מטריצה $D in M_n (FF)$ אלכסונית אשר חופפת ל־$A$.
+
+#definition[קבוצת נציגים][
+  תת־קבוצה $R subset.eq FF^times$ תיקרא קבוצת נציגים כאשר $pi|_R : R arrow frac(FF^times, (FF^times)^2, style: "skewed")$ הוא חד־חד ערכי ועל.\
 ]
--- סוף התזכורת -- \
-יהי $FF$ שדה ונסתכל על $(FF^times)^2 = {a^2 bar a in FF^times}$ זו תת־חבורה של $FF^times$ ביחס לכפל.\
-נסמן ב־$pi: FF^times arrow frac(FF^times, (FF^times)^2, style: "skewed")$ ההומומורפיזם הקאנוני כלומר $pi(a)=a(FF^times)^2$ לכל $a in FF^times$.\
-תת־קבוצה $R subset.eq FF^times$ תיקרא קבוצת נציגים כאשר $pi|_R : R arrow frac(FF^times, (FF^times)^2, style: "skewed")$ הוא חד־חד ערכי ועל.\
+
 מעכשיו נקבע קבוצת נציגים $R$ כלשהי ב־$FF$.\
 #claim[
   לכל $a in FF^times$ קיים $r in R$ יחיד ו־$c in FF^times$ כך ש־$a=r c^2$.
 ]
+
 #example[
   + $FF=CC$ אז $(CC^times)^2 = CC^times$ ומתקיים $abs(frac(CC^times, (CC^times)^2, style: "skewed"))=1$ וניתן לבחור $R={1}$
   + $FF=RR$ אז $(CC^times)^2 = {x in RR^times bar x>0}$ ומתקיים $abs(frac(RR^times, (RR^times)^2, style: "skewed"))=2$ וניתן לבחור $R={-1,1}$
 ]
+
 #proposition[
-  יהי $p$ ראשוני ו־$p!=2$ אז $abs(frac(FF_p^times, (FF_p^times)^2, style: "skewed"))=2$.\
-  בנוסף, לכל $r in FF_p^times without (FF_p^times)^2$ ניתן לבחור קבוצת נציגים להיות $R={1,r}$.
+  יהי $p$ ראשוני ו־$p!=2$ אז $abs(frac(FF_p^times, (FF_p^times)^2, style: "skewed"))=2$. יתר על־כן, לכל $r in FF_p^times without (FF_p^times)^2$ ניתן לבחור קבוצת נציגים להיות $R={1,r}$.
 ]
+
 #proof[
   נגדיר $s:FF_p^times arrow FF_p^times$ על־ידי $s(a)=a^2$ לכל $a in FF_p^times$ והוא כמובן הומומורפיזם (של חבורות) וגם $im(s)=(FF_p^times)^2$.\
   מתקיים $im(s) tilde.equiv frac(FF_p^times, ker s, style: "skewed")$ ובנוסף $x in ker s <==> s(x)=1 <==> x^2=1 <==> (x-1)(x+1)=0 <==> x in {-1, 1}$.\
-  לכן $ker s = {1, -1}$ ומכאן $abs(ker s)=2$.\
+  לכן $ker s = {1, -1}$ ומכאן $abs(ker s)=2$.
   לסיכום
   $
     abs(frac(FF_p^times, (FF_p^times)^2, style: "skewed"))=abs(frac(FF_p^times, im(s), style: "skewed")) = abs(FF_p^times) : abs(im(s)) = abs(FF_p^times) : (abs(FF_p^times) : abs(ker s)) = abs(ker s)=2
   $
 ]
+
 #proposition[
-  יהי $V$ מרחב וקטורי נוצר נוספית מעל $FF$, $g$ תבנית בילנארית סימטרית על $V$. אז קיים בסיס $cal(C)$ של $V$ כך ש־$[g]_(cal(C))$ אלכסונית ואיברי אלכסונה שייכים ל־$R union {0}$ (כאשר $R$ הקבוצת נציגים).
+  יהי $V$ מרחב וקטורי נוצר נוספית מעל $FF$, $g$ תבנית בילנארית סימטרית על $V$. אז קיים בסיס $cal(C)$ של $V$ כך ש־$[g]_(cal(C))$ אלכסונית ואיברי אלכסונה שייכים ל־$R union {0}$.
 ]
+
 #proof[
   יהי $cal(B) = (v_1, dots.h, v_n)$ בסיס של $V$ כך ש־$[g]_(cal(B))$ אלכסונית ($cal(B)$ בסיס אורתוגונלי).\
-  נסמן $a_i = g(v_i, v_i) = q(v_i)$ לכל $1<=i<=n$.\
-  אם $a_i != 0$ אז קיימים $r_i in R, c_i in FF^times$ כך ש־$a_i = r_i c_i^2$ ואם $a_i=0$ נגדיר $r_i = 0$ ו־$c_i = 1$.\
-  כעת, נגדיר $cal(C)=(v_1/c_1, dots.h, v_n/c_n)$.\
-  מטריצת המעבר בין הבסיסים נראית מהצורה הבאה
-  $ [Id]^cal(C)_cal(B) = mat(1/c_1, , 0; , dots.down, dots.v; 0, , 1/c_n) $
-  ומכאן
+  נסמן $a_i = g(v_i, v_i) = q(v_i)$ לכל $1<=i<=n$.  אם $a_i != 0$ אז קיימים $r_i in R, c_i in FF^times$ כך ש־$a_i = r_i c_i^2$ ואם $a_i=0$ נגדיר $r_i = 0$ ו־$c_i = 1$.\
+  כעת, נגדיר $cal(C)=(v_1/c_1, dots.h, v_n/c_n)$ ומטריצת המעבר בין הבסיסים נראית מהצורה הבאה
   $
+    [Id]^cal(C)_cal(B) = mat(1/c_1, , 0; , dots.down, dots.v; 0, , 1/c_n) \
+    ==>
     [g]_cal(C) = ([Id]^cal(C)_cal(B))^t [g]_cal(B) [Id]^cal(C)_cal(B) = mat(1/c_1, , 0; , dots.down, dots.v; 0, , 1/c_n) mat(a_1, , 0; , dots.down, dots.v; 0, , a_n) mat(1/c_1, , 0; , dots.down, dots.v; 0, , 1/c_n) = mat(a_1/c_1^2, , 0; , dots.down, dots.v; 0, , a_n/c_n^2) = mat(r_1, , 0; , dots.down, dots.v; 0, , r_n)
   $
 ]
+
 #corollary[
   לכל מטריצה $A in M_n (FF)$ סימטרית קיימת $D in M_n (FF)$ אלכסונית כך שאיברי אלכסונה שייכים ל־$R union {0}$ אשר חופפת ל־$A$.
 ]
 
-== פעולות עמודה אלמנטריות
-#notation[
+#definition[פעולות עמודה אלמנטריות][
   תהיי $epsilon$ פעולת שורה אלמנטרית על מטריצות מ־$M_n (FF)$.\
   נסמן ב־$overline(epsilon)$ את פעולת עמודה אלמנטרית המתאימה, כלומר
   + אם $epsilon = R_i mapsto c R_i$ אז $overline(epsilon) = C_i mapsto c C_i$
   + אם $epsilon = R_i mapsto R_i + c R_j$ אז $overline(epsilon) = C_i mapsto C_i + c R_j$
   + אם $epsilon = R_i arrow.r.l R_j$ אז $overline(epsilon) = C_i arrow.r.l C_j$ (החלפת שורות/עמודות)
 ]
+
 #claim[
   לכל $A in M_n (FF)$ מתקיים $overline(epsilon)(A) = (epsilon(A^t))^t$.
 ]
+
 #proposition[
-  תהיי $epsilon$ פעולת שורה אלמנטרית, $A in M_n (FF)$. אז $overline(epsilon)(A) = A epsilon(I_n)^t$.\
-  למה זה מעניין? כי באלגברה לינארית רואים ש־$epsilon(A)=epsilon(I_n)A$.
+  תהיי $epsilon$ פעולת שורה אלמנטרית, $A in M_n (FF)$. אז $overline(epsilon)(A) = A epsilon(I_n)^t$ (למה זה מעניין? כי באלגברה לינארית רואים ש־$epsilon(A)=epsilon(I_n)A$).
 ]
+
 #proof[
   $ overline(epsilon)(A) = (epsilon(A^t))^t = (epsilon(I_n) A^t)^t = A epsilon(I_n)^t $
 ]
+
 #corollary[
   תהיי $epsilon$ פעולת שורה אלמנטרית, $A in M_n (FF)$. אז $epsilon(overline(epsilon)(A))= overline(epsilon)(epsilon(A))=epsilon(I_n)A epsilon(I_n)^t$.
 ]
+
 #proposition[
   תהיי $g$ תבנית בילנארית סימטרית על $FF^n$ ונסמן את $[t]_cal(E)=A$ (כאשר $cal(E)$ הוא הבסיס הסטנדרטי).\
   יהיו $epsilon_1, dots.h, epsilon_k$ פעולות שורה אלמנטריות ונסמן $D=overline(epsilon_k)(epsilon_k ( dots.h (overline(epsilon_1)(epsilon_1 (A)))))$ ו־$P=overline(epsilon_k)(dots.h(overline(epsilon_1)(I_n)))$.\
   נסמן ב־$b_1, dots.h, b_n$ את העמודות של $P$ ו־$cal(B) = (b_1, dots.h, b_n)$ הוא בסיס של $FF^n$ וגם $[g]_cal(B)=D$.
 ]
+
 #proof[
   לפי הטענה לעיל מתקיים $P=I_n epsilon_1 (I_n)^t dots.h.c I_n epsilon_k (I_n)^t = epsilon_1 (I_n)^t dots.h.c epsilon_k (I_n)^t$ ובנוסף ברור כי $[Id_V]_cal(E)^cal(B) = P$ ולכן
   $
@@ -106,14 +408,15 @@ _תזכורת:_
     = epsilon_k (I_n) dot.op dots.h.c dot.op epsilon_1 (I_n) A epsilon_1 (I_n)^t dot.op dots.h.c dot.op epsilon_k (I_n)^t = overline(epsilon_k)(epsilon_k (dots.h (overline(epsilon_1)(epsilon_1)(A)))) = D
   $
 ]
+
 #notation[
-  בהינתן תבנית ריבועית $q:V arrow FF$ על מרחב וקטורי $V$ נסמן ב־$g_q : V times V arrow FF$ את התבנית הבילנארית הסימטרית המקיימת $ q(v)=g_q (v,v) $
+  בהינתן תבנית ריבועית $q:V arrow FF$ על מרחב וקטורי $V$ נסמן ב־$g_q : V times V arrow FF$ את התבנית הבילנארית הסימטרית המקיימת $q(v)=g_q (v,v)$.
 ]
+
 #example[
   תבנית ריבועית $q:RR^3 arrow RR$ מוגדרת על־ידי
   $ q vec(x_1, x_2, x_3) = 2x_1^2 + 8x_1x_2 + 8x_2^2 + 2x_2x_3 + x_3^2 $
-  נמצא בסיס $cal(B)$ של $RR^3$ כך ש־$[g_q]_cal(B)$ אלכסונית ואיברי אלכסונה שייכים ל־${1,-1,0}$.\
-  מתקיים
+  נמצא בסיס $cal(B)$ של $RR^3$ כך ש־$[g_q]_cal(B)$ אלכסונית ואיברי אלכסונה שייכים ל־${1,-1,0}$.  מתקיים
   $ g_q (vec(x_1, x_2, x_3), vec(y_1, y_2, y_3)) = 2x_1y_1 + 4x_1y_2 + 4x_2y_1 + 8x_2y_2 + x_2y_3 + x_3y_2 + x_3y_3 $
   הצבה פשוטה מראה שמתקיים $g_q (vec(x_1, x_2, x_3), vec(x_1, x_2, x_3)) = q(vec(x_1, x_2, x_3))$ ועם (מטריצת גראם־שמידט) מתקיים גם־כן
   $ [g_q]_cal(E) = mat(2, 4, 0; 4, 8, 1; 0, 1, 1) $
@@ -124,6 +427,7 @@ _תזכורת:_
   $
   נגדיר $cal(B) = (vec(sqrt(2)/2, 0, 0), vec(0, 0, 1), vec(-2, 1, -1))$ ואז $[g_q]_cal(B) = mat(1, 0, 0; 0, 1, 0; 0, 0, -1)$.
 ]
+
 #example[ תבנית ריבועית $q: RR^2 arrow RR$ מוגדרת על־ידי $q vec(x_1, x_2) = x_1x_2$.\
   מתקיים $ g_q (vec(x_1, x_2), vec(y_1, y_2))=1/2 x_1y_2 + 1/2 x_2y_1 $
   וכן
@@ -133,10 +437,75 @@ _תזכורת:_
     mat(0, 1/2; 1/2, 0)/mat(1, 0; 0, 1) stretch(arrow)^(R_1 mapsto R_1 + R_2) mat(1/2, 1/2; 1/2, 0)/mat(1, 0; 0, 1) stretch(arrow)^(C_1 mapsto C_1 + C_2) mat(1, 1/2; 1/2, 0)/mat(1, 0; 1, 1) stretch(arrow)^(R_2 mapsto R_2 - -1/2 R_1) mat(1, 1/2; 0, -1/4)/mat(1, 0; 1, 1) stretch(arrow)^(C_2 mapsto C_2 - 1/2 C_1) mat(1, 0; 0, -1/4)/mat(1, -1/2; 1, 1/2)
   $
 ]
+
 #end_of_lecture("3 – 28/04")
 
 == מיון מרחבים ריבועיים
-תשלימי...
+
+#definition[מרחב ריבועי][
+  יהי $V$ מרחב וקטורי נוצר סופית מעל השדה $FF$, $g:V arrow FF$ תבנית ריבועית. הזוג $(V,q)$ נקרא מרחב ריבועי ונגדיר כי $(V,q)$ מרחב ריבועי מעל $FF$.\
+  בהינתן $(V,q)$ מרחב ריבועי, נסמן ב־$g_q$ את התבנית הבילנארית הסימטרית מעל $FF$ המקיימת $g_q (v,v)=q(v)$.
+]
+
+#definition[איזומטריה][
+  יהיו $(V,q)$ ו־$(V^prime, q^prime)$ מרחבים ריבועיים מעל $FF$. העתקה לינארית $f:V arrow V^prime$ נקראת איזומטריה אם לכל $v in V$ מתקיים $q(v)=q^prime (f(v))$.\
+  בפרט, איזומטריה שהיא חד־חד ערכית ועל נקראת איזומורפיזם.
+]
+
+#claim[
+  יהיו $(V,q)$ ו־$(V^prime, q^prime)$ מרחבים ריבועיים מעל $FF$ ו־$f:(V,q) arrow (V^prime, q^prime)$ איזומורפיזם. אזי $ g_(q^prime) (f(v), f(w)) = g_q (v,w) $
+]
+
+#proposition[
+  יהיו $(V,q)$ ו־$(V^prime, q^prime)$ מרחבים ריבועיים מעל $FF$, $f:(V,q) arrow (V^prime, q^prime)$ העתקה לינארית, חד־חד ערכית ועל, $cal(B) = {v_1, dots.h, v_n}$ בסיס של $V$ ונסמן ב־$cal(B)^prime = {f(v_1), dots.h, f(v_n)}$.\
+  אזי $f$ איזומורפיזם אם ורק אם $[g_(q^prime)]_(cal(B)^prime) = [g_q]_cal(B)$.
+]
+
+#proof[
+  $==>$ נניח כי איזומורפיזם ולכן לכל $1<=i,j <=n$ מתקיים
+  $ g_(q^prime) (f(v_i), f(v_j)) = g_q (v_i, v_j) $
+  ולכן $[g_(q^prime)]_(cal(B)^prime) = [g_q]_cal(B)$.\
+  $<==$ נניח כי $[g_(q^prime)]_(cal(B)^prime) = [g_q]_cal(B)$ ויהי $[v]_cal(B) = vec(c_1, dots.v, c_n)$ כלומר
+  $ v = c_1 v_1 + dots.h.c + c_n v_n $
+  מכך ש־$f$ העתקה לינארית
+  $ f(v)=c_1 f(v_1) + dots.h.c + c_n f(v_n) $
+  כלומר $[f(v)]_(cal(B)^prime) = vec(c_1, dots.v, c_n)$ ומכאן
+  $
+    q^prime (f(v)) = g_(q^prime) (f(v), f(v)) = ([f(v)]_(cal(B)^prime))^t [g_(q^prime)]_(cal(B)^prime)[f(v)]_(cal(B)^prime) = ([v]_cal(B))^t [g_(q^prime)]_(cal(B)^prime) [v]_cal(B) = g_q (v,v) = q(v)
+  $
+  כלומר $f$ איזומורפיזם.
+]
+
+#claim[
+  + לכל איזומורפיזם קיים איזומורפיזם הופכי
+  + הרכבת איזומורפיזמים היא איזומורפיזם
+]
+
+#definition[מרחבים ריבועיים איזומורפיים][
+  נקרא למרחבים ריבועיים $(V,q)$ ו־$(V^prime, q^prime)$ איזומורפיים אם קיים איזומורפיזם $f : (V,q) arrow (V^prime, q^prime)$ ונסמן $(V,q) tilde.equiv (V^prime, q^prime)$.
+]
+
+#claim[
+  איזומורפיות הוא יחס שקילות על אוסף המרחבים הריבועיים.
+]
+
+כעת המטרה שלנו היא למיין את המ"ר מעל שדה F עד כדי איזומורפיזם.
+
+#proposition[
+  יהיו $(V,q)$ ו־$(V^prime, q^prime)$ מרחבים ריבועיים מעל $FF$ עם $cal(B)$ ו־$cal(B)^prime$ בסיסים של $(V,q)$ ו־$(V^prime, q^prime)$ בהתאמה. אזי $(V,q) tilde.equiv (V^prime, q^prime)$ אם ורק אם $[g_(q^prime)]_(cal(B)^prime)$ ו־$[g_q]_cal(B)$ חופפות.
+]
+
+#proof[
+  #todo
+]
+
+#definition[סכום ישר ניצב][
+  יהי $(V,q)$ מרחב ריבועי מעל $FF$ ויהיו$U_1, U_2$ תתי־מרחבים של $V$ כך שמתקיים $V= U_1 plus.o U_2$. נאמר כי $V$ הוא סכום ישר ניצב של $U_1, U_2$ ומסמנים $V = U_1 plus.o^perp U_2$ אם לכל $u_1 in U_1$ ו־$u_2 in U_2$ מתקיים $u_1 perp u_2$.
+]
+
+#example[]
+
+מעכשיו נתרכז במרחבים ריבועיים לא מנוונים.
 
 #end_of_lecture("4 – 05/05")
 
