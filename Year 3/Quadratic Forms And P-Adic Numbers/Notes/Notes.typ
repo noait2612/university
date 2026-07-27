@@ -75,7 +75,7 @@
 ]
 
 #definition[מטריצת גראם][
-  יהי $V$ מרחב וקטורי ממד סופי מעל $FF$, $g$ תבנית בילינארית סימטרית, ו־ $cal(B) = (v_1, dots.h, v_n)$ בסיס של $V$.
+  יהי $V$ מרחב וקטורי ממימד סופי מעל $FF$, $g$ תבנית בילינארית סימטרית, ו־ $cal(B) = (v_1, dots.h, v_n)$ בסיס של $V$.
   מטריצת גראם (Gram matrix) של $g$ ביחס לבסיס $cal(B)$ היא
   $
     [g]_cal(B) = mat(
@@ -113,7 +113,7 @@
 ]
 
 #proposition[
-  יהי $(V, chevron.l dot, dot chevron.r)$ מרחב מכפלה פנימית ממד סופי מעל $bb(R)$, $g(v, w) = chevron.l v, w chevron.r$, ו־ $cal(B) = (v_1, dots.h, v_n)$ בסיס אורתונורמלי של $V$. אזי $[g]_cal(B) = I_n$.
+  יהי $(V, chevron.l dot, dot chevron.r)$ מרחב מכפלה פנימית ממימד סופי מעל $bb(R)$, $g(v, w) = chevron.l v, w chevron.r$, ו־ $cal(B) = (v_1, dots.h, v_n)$ בסיס אורתונורמלי של $V$. אזי $[g]_cal(B) = I_n$.
 ]
 
 #proof[
@@ -124,7 +124,7 @@
 ]
 
 #proposition[
-  יהי $V$ מרחב וקטורי ממד סופי מעל $FF$, $g$ תבנית בילינארית סימטרית, ו־ $cal(B) = (v_1, dots.h, v_n)$ בסיס של $V$.\
+  יהי $V$ מרחב וקטורי ממימד סופי מעל $FF$, $g$ תבנית בילינארית סימטרית, ו־ $cal(B) = (v_1, dots.h, v_n)$ בסיס של $V$.\
   אזי לכל $v, w in V$ מתקיים $g(v, w) = [v]_cal(B)^t [g]_cal(B) [w]_cal(B)$.
 ]<base_change>
 
@@ -152,7 +152,7 @@
 ]
 
 #proposition[
-  יהי $V$ מרחב וקטורי ממד סופי מעל $FF$, $g$ תבנית בילינארית סימטרית, ו־ $cal(B), cal(B)'$ בסיסים של $V$.
+  יהי $V$ מרחב וקטורי ממימד סופי מעל $FF$, $g$ תבנית בילינארית סימטרית, ו־ $cal(B), cal(B)'$ בסיסים של $V$.
   אזי $[g]_cal(B)' = ([Id]_cal(B)^cal(B)')^t [g]_cal(B) [Id]_cal(B)^cal(B)'$.
 ]<another_base_change>
 
@@ -191,7 +191,7 @@
 ]
 
 #proposition[
-  יהי $V$ מרחב וקטורי ממד סופי מעל $FF$, $g$ תבנית בילינארית סימטרית, ו־$cal(B)$ בסיס של $V$ ותהי $A in M_n (FF)$ חופפת ל־ $[g]_cal(B)$.\
+  יהי $V$ מרחב וקטורי ממימד סופי מעל $FF$, $g$ תבנית בילינארית סימטרית, ו־$cal(B)$ בסיס של $V$ ותהי $A in M_n (FF)$ חופפת ל־ $[g]_cal(B)$.\
   אזי קיים בסיס $cal(B)'$ של $V$ כך ש־ $A = [g]_cal(B)'$.
 ]
 
@@ -215,7 +215,7 @@
 ]
 
 #proof[
-  קיימת $P in M_n (FF)$ הפיכה כך ש־$C=P[g]_B P$ ומאחר ש־$P$ הפיכה קיים בסיס $B^prime$ כך ש־$P$ היא מטריצת מעבר בסיסים בין $B$ ל־$B^prime$ כלומר $P=[Id_v]_B^(B^prime)$ ולכן
+  קיימת $P in M_n (FF)$ הפיכה כך ש־$C=P^t [g]_B P$ ומאחר ש־$P$ הפיכה קיים בסיס $B^prime$ כך ש־$P$ היא מטריצת מעבר בסיסים בין $B$ ל־$B^prime$ כלומר $P=[Id_v]_B^(B^prime)$ ולכן
   $ [g]_(B^prime) = ([Id_v]_(B^prime)^B)^t [g]_B [Id_v]_(B^prime)^B = P^t [g]_B P $
 ]
 
@@ -311,7 +311,7 @@
 ]
 
 #corollary[
-  לכל $A in m_n (FF)$ סימטרית קיים $D in M_n (FF)$ אלכסונית אשר חופפת ל־$A$.
+  לכל $A in M_n (FF)$ סימטרית קיים $D in M_n (FF)$ אלכסונית אשר חופפת ל־$A$.
 ]
 
 #proof[
@@ -444,7 +444,7 @@
 == מיון מרחבים ריבועיים
 
 #definition[מרחב ריבועי][
-  יהי $V$ מרחב וקטורי נוצר סופית מעל השדה $FF$, $g:V arrow FF$ תבנית ריבועית. הזוג $(V,q)$ נקרא מרחב ריבועי ונגדיר כי $(V,q)$ מרחב ריבועי מעל $FF$.\
+  יהי $V$ מרחב וקטורי נוצר סופית מעל השדה $FF$, $q:V arrow FF$ תבנית ריבועית. הזוג $(V,q)$ נקרא מרחב ריבועי ונגדיר כי $(V,q)$ מרחב ריבועי מעל $FF$.\
   בהינתן $(V,q)$ מרחב ריבועי, נסמן ב־$g_q$ את התבנית הבילנארית הסימטרית מעל $FF$ המקיימת $g_q (v,v)=q(v)$.
 ]
 
@@ -499,7 +499,7 @@
 
 #proof[
   $<==$ נניח כי המרחבים איזומורפיים ויהי $f:(V,q) arrow (V^prime, q^prime)$ איזומורפיזם. נסמן $cal(B) = {v_1, dots.h, v_n}$ ו־$cal(B)^prime.double = {f(v_1), dots.h, f(v_n)}$, אזי גם $cal(B)^prime.double$ בסיס של $V^prime$ ומהטענה הקודמת $[g_(q^prime)]_(cal(B)^prime.double) = [g_q]_cal(B)$ וכעת $[g_(q^prime)]_(cal(B)^prime.double)$ ו־$[g_(q^prime)]_(cal(B)^prime)$ חופפות.\
-  $==>$ נניח ש־$[g_(q^prime)]_(cal(B)^prime.double)$ ו־$[g_(q^prime)]_(cal(B)^prime)$ חופפות, אז קיים בסיס $cal(B)^prime.double$ של $V^prime$ עבורו $[g_(q^prime)]_(cal(B)^prime.double) = [g_q]_cal(B)$ ונסמן $cal(B) = {v_1, dots.h, v_n}$ ו־$cal(B)^prime.double = {w_1, dots.h, w_n}$ ונגדיר $f:V arrow V^prime$ העתקה לינארית על־ידי $f(v_i) = w_i$ לכל $1<=i<=n$ מהטענה הקודמת $f$ איזומורפיזם ולכן המרחבים איזומורפיים.
+  $==>$ נניח ש־$[g_(q^prime)]_(cal(B))$ ו־$[g_(q^prime)]_(cal(B)^prime)$ חופפות, אז קיים בסיס $cal(B)^prime.double$ של $V^prime$ עבורו $[g_(q^prime)]_(cal(B)^prime.double) = [g_q]_cal(B)$ ונסמן $cal(B) = {v_1, dots.h, v_n}$ ו־$cal(B)^prime.double = {w_1, dots.h, w_n}$ ונגדיר $f:V arrow V^prime$ העתקה לינארית על־ידי $f(v_i) = w_i$ לכל $1<=i<=n$ מהטענה הקודמת $f$ איזומורפיזם ולכן המרחבים איזומורפיים.
 ]
 
 #definition[סכום ישר ניצב][
@@ -727,231 +727,231 @@
 
 #end_of_lecture("5 – 12/05")
 
-== איזוטרפיות – לא בחומר
-מוטיבציה: נסתכל על התבנית הריבועית $q:FF^2 arrow FF$ הנתונה על־ידי $q vec(x_1, x_2) = x_1^2-x_2^2$ והמרחב הריבועי עם התבנית הזאת הוא לא מנוון (המטריצה המייצגת הפיכה) אבל נניח הוקטור $q vec(1, 1)=0$ ותופעה כזאת נקראת איזוטרופיה והיא מעניינת.\
-יהי $(V,q)$ מרחב ריבועי מעל $FF$ ויהי $v in V$ נגדיר $g_q^v : V arrow FF$ על־ידי $g_q^v (w) = g_q (v,w)$ ($g_q^v in Hom(V, FF)$), ו־$hat(g_q) : V arrow Hom(V, FF)$ על־ידי $hat(g_q)=g_q^v$.
+// == איזוטרפיות – לא בחומר
+// מוטיבציה: נסתכל על התבנית הריבועית $q:FF^2 arrow FF$ הנתונה על־ידי $q vec(x_1, x_2) = x_1^2-x_2^2$ והמרחב הריבועי עם התבנית הזאת הוא לא מנוון (המטריצה המייצגת הפיכה) אבל נניח הוקטור $q vec(1, 1)=0$ ותופעה כזאת נקראת איזוטרופיה והיא מעניינת.\
+// יהי $(V,q)$ מרחב ריבועי מעל $FF$ ויהי $v in V$ נגדיר $g_q^v : V arrow FF$ על־ידי $g_q^v (w) = g_q (v,w)$ ($g_q^v in Hom(V, FF)$), ו־$hat(g_q) : V arrow Hom(V, FF)$ על־ידי $hat(g_q)=g_q^v$.
 
-#proposition[
-  יהי $(V,q)$ מרחב ריבועי מעל $FF$. אז $(V,q)$ לא מנוון אם ורק אם $hat(g_q)$ חד־חד ערכית.
-]
+// #proposition[
+//   יהי $(V,q)$ מרחב ריבועי מעל $FF$. אז $(V,q)$ לא מנוון אם ורק אם $hat(g_q)$ חד־חד ערכית.
+// ]
 
-#proof[
-  $(V,q)$ מנוון אם ורק אם קיים $0_V != v in V^perp$ אם ורק אם קיים $0_V != v in V$ כך ש־$g_q^v eq.triple 0$ אם ורק אם קיים $0_V != v in V$ כך ש־$hat(g_q)(v)=0$ אם ורק אם $ker hat(g_q) != {0_V}$ אם ורק אם $hat(g_q)$ אינה חד־חד ערכית.
-]
+// #proof[
+//   $(V,q)$ מנוון אם ורק אם קיים $0_V != v in V^perp$ אם ורק אם קיים $0_V != v in V$ כך ש־$g_q^v eq.triple 0$ אם ורק אם קיים $0_V != v in V$ כך ש־$hat(g_q)(v)=0$ אם ורק אם $ker hat(g_q) != {0_V}$ אם ורק אם $hat(g_q)$ אינה חד־חד ערכית.
+// ]
 
-#lemma[
-  יהי $V$ מרחב וקטורי נוצר סופית מעל $FF$ ו־$U$ תת־מרחב של $V$, נגדיר $rho_U : Hom(V, FF) arrow Hom(U, FF)$ על־ידי $rho_U (ell) = ell|_U$ לכל $ell in Hom(V, FF)$.\
-  אז $rho_U$ העתקה לינארית על.
-]<lemma-to-prove>
+// #lemma[
+//   יהי $V$ מרחב וקטורי נוצר סופית מעל $FF$ ו־$U$ תת־מרחב של $V$, נגדיר $rho_U : Hom(V, FF) arrow Hom(U, FF)$ על־ידי $rho_U (ell) = ell|_U$ לכל $ell in Hom(V, FF)$.\
+//   אז $rho_U$ העתקה לינארית על.
+// ]<lemma-to-prove>
 
-#exercise[
-  הוכיחו את @lemma-to-prove.
-]
+// #exercise[
+//   הוכיחו את @lemma-to-prove.
+// ]
 
-#proposition[
-  יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ ו־$U$ תת־מרחב של $V$. אז
-  $ dim V = dim U + dim U^perp $
-]<dimension_perp_tehorem>
+// #proposition[
+//   יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ ו־$U$ תת־מרחב של $V$. אז
+//   $ dim V = dim U + dim U^perp $
+// ]<dimension_perp_tehorem>
 
-#proof[
-  נתבונן בהעתקה הלינארית $rho_U compose hat(g_q) : V arrow Hom(U, FF)$ ויהי $v in V$.\
-  אז $v in U^perp$ אם ורק אם $g_q^v |_U = 0$ אם ורק אם $phi_U compose hat(g_q) = 0_V$ אם ורק אם $v in ker phi_U compose hat(g_q)$ ולפיכך $U^perp = ker rho_U compose hat(g_q)$.\
-  מאחר ש־$(V,q)$ לא מנוון נובע ש־$hat(g_q)$ חד־חד ערכית ולכן $hat(g_q)$ היא גם על ומכאן (למה?) ש־$rho_U compose hat(g_q)$ על כלומר $im rho_U compose hat(g_q) = Hom(U, FF)$ וממשפט המימדים נקבל
-  $
-    dim V = dim im rho_U compose hat(g_q) + dim ker rho_U compose hat(g_q) + dim Hom(U, FF) + dim U^perp = dim U + dim U^perp
-  $
-]
+// #proof[
+//   נתבונן בהעתקה הלינארית $rho_U compose hat(g_q) : V arrow Hom(U, FF)$ ויהי $v in V$.\
+//   אז $v in U^perp$ אם ורק אם $g_q^v |_U = 0$ אם ורק אם $phi_U compose hat(g_q) = 0_V$ אם ורק אם $v in ker phi_U compose hat(g_q)$ ולפיכך $U^perp = ker rho_U compose hat(g_q)$.\
+//   מאחר ש־$(V,q)$ לא מנוון נובע ש־$hat(g_q)$ חד־חד ערכית ולכן $hat(g_q)$ היא גם על ומכאן (למה?) ש־$rho_U compose hat(g_q)$ על כלומר $im rho_U compose hat(g_q) = Hom(U, FF)$ וממשפט המימדים נקבל
+//   $
+//     dim V = dim im rho_U compose hat(g_q) + dim ker rho_U compose hat(g_q) + dim Hom(U, FF) + dim U^perp = dim U + dim U^perp
+//   $
+// ]
 
-#proposition[
-  יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ ו־$U$ תת־מרחב של $V$. אז $(U^perp)^perp = U$.
-]
+// #proposition[
+//   יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ ו־$U$ תת־מרחב של $V$. אז $(U^perp)^perp = U$.
+// ]
 
-#proof[
-  יהי $u in U$. לכל $w in U^perp$ מתקיים ש־$u perp w$ ולכן $u in (U^perp)^perp$ ולפיכך $U subset.eq (U^perp)^perp$ וזה נכון בכל מרחב ריבועי ולפי @dimension_perp_tehorem מתקיים
-  $ dim (U^perp)^perp = dim V - dim U^perp = dim V - (dim V - dim U) = dim U $
-]
+// #proof[
+//   יהי $u in U$. לכל $w in U^perp$ מתקיים ש־$u perp w$ ולכן $u in (U^perp)^perp$ ולפיכך $U subset.eq (U^perp)^perp$ וזה נכון בכל מרחב ריבועי ולפי @dimension_perp_tehorem מתקיים
+//   $ dim (U^perp)^perp = dim V - dim U^perp = dim V - (dim V - dim U) = dim U $
+// ]
 
-#exercise[
-  מתי ההכלה השנייה שהוכחנו לעיל לא מתקיימת?
-]
+// #exercise[
+//   מתי ההכלה השנייה שהוכחנו לעיל לא מתקיימת?
+// ]
 
-#proposition[
-  יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ ו־$U$ תת־מרחב של $V$. אז $(U, q|_U)$ $cancel("לא")$ מנוון אם ורק אם $(U^perp, q|_(U^perp))$ $cancel("לא")$ מנוון.
-]
+// #proposition[
+//   יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ ו־$U$ תת־מרחב של $V$. אז $(U, q|_U)$ $cancel("לא")$ מנוון אם ורק אם $(U^perp, q|_(U^perp))$ $cancel("לא")$ מנוון.
+// ]
 
-#proof[
-  $<==$ $(U, q|_U)$ מנוון ולכן קיים $0 != v in U$ כך ש־$v perp u$ לכל $u in U$ ולכן $v in U^perp$.\
-  מאחר ש־$v in U$ מתקיים ש־$v perp w$ לכל $w in U^perp$ וזה אומר כי $(U^perp, q|_(U^perp))$ מנוון. \
-  $==>$ מכך ש־$(U^perp, q|_(U^perp))$ מנוון נובע כי $((U^perp)^perp, q|_((U^perp)^perp))$ גם מנוון ולפי הטענה הקודמת אנחנו מקבלים כי $(U, q|_U)$ מנוון.
-]
+// #proof[
+//   $<==$ $(U, q|_U)$ מנוון ולכן קיים $0 != v in U$ כך ש־$v perp u$ לכל $u in U$ ולכן $v in U^perp$.\
+//   מאחר ש־$v in U$ מתקיים ש־$v perp w$ לכל $w in U^perp$ וזה אומר כי $(U^perp, q|_(U^perp))$ מנוון. \
+//   $==>$ מכך ש־$(U^perp, q|_(U^perp))$ מנוון נובע כי $((U^perp)^perp, q|_((U^perp)^perp))$ גם מנוון ולפי הטענה הקודמת אנחנו מקבלים כי $(U, q|_U)$ מנוון.
+// ]
 
-#proposition[
-  יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ ו־$U$ תת־מרחב של $V$ כך ש־$(U, q|_U)$ לא מנוון אז
-  + $(U^perp, q|_(U^perp))$ לא מנוון
-  + $V = U plus.o^perp U$
-]
+// #proposition[
+//   יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ ו־$U$ תת־מרחב של $V$ כך ש־$(U, q|_U)$ לא מנוון אז
+//   + $(U^perp, q|_(U^perp))$ לא מנוון
+//   + $V = U plus.o^perp U$
+// ]
 
-#proof[
-  + נובע מהטענה הקודמת
-  + יהי $v in U inter U^perp$ ונרצה להראות שהוא וקטור האפס: מאחר ש־$v in U^perp$ מתקיים ש־$v perp u$ לכל $u in U$ ובגלל ש־$v in U$ נובע ש־$v$ בגרעין של $(U, q|_U)$ אבל $(U, q|_U)$ הוא לא מנוון ולכן הגרעין שלו הוא וקטור האפס כלומר $v=0_V$ ולכן $U inter U^perp = 0$. לסיום
-  $ dim(U + U^perp) = underbrace(dim U + dim U^perp, dim V) - underbrace(dim(U inter U^perp), 0) = dim V $
-]
+// #proof[
+//   + נובע מהטענה הקודמת
+//   + יהי $v in U inter U^perp$ ונרצה להראות שהוא וקטור האפס: מאחר ש־$v in U^perp$ מתקיים ש־$v perp u$ לכל $u in U$ ובגלל ש־$v in U$ נובע ש־$v$ בגרעין של $(U, q|_U)$ אבל $(U, q|_U)$ הוא לא מנוון ולכן הגרעין שלו הוא וקטור האפס כלומר $v=0_V$ ולכן $U inter U^perp = 0$. לסיום
+//   $ dim(U + U^perp) = underbrace(dim U + dim U^perp, dim V) - underbrace(dim(U inter U^perp), 0) = dim V $
+// ]
 
-#definition[וקטור איזוטרופי][
-  יהי $(V,q)$ מרחב ריבועי מעל $FF$ ו־$0_V != v in V$ אז $v$ נקרא *איזוטרופי* אם $q(v)=0$.
-]
+// #definition[וקטור איזוטרופי][
+//   יהי $(V,q)$ מרחב ריבועי מעל $FF$ ו־$0_V != v in V$ אז $v$ נקרא *איזוטרופי* אם $q(v)=0$.
+// ]
 
-#definition[מרחב ריבועי איזוטרופי][
-  מרחב ריבועי $(V,q)$ נקרא *מרחב איזוטרופי* אם קיים $0_V != v in V$ כך ש־$v$ איזוטרופי. כלומר, $0 in q(V without {0_V})$.
-]
+// #definition[מרחב ריבועי איזוטרופי][
+//   מרחב ריבועי $(V,q)$ נקרא *מרחב איזוטרופי* אם קיים $0_V != v in V$ כך ש־$v$ איזוטרופי. כלומר, $0 in q(V without {0_V})$.
+// ]
 
-#corollary[
-  כל מרחב ריבועי מנוון הוא איזוטרופי.
-]
+// #corollary[
+//   כל מרחב ריבועי מנוון הוא איזוטרופי.
+// ]
 
-#definition[מישור היפרבולי][
-  נגדיר תבנית ריבועית $h:FF^2 arrow FF$ על־ידי $h vec(x_1, x_2) = x_1 x_2$. מרחב ריבועי $(FF^2, h)$ נקרא *מישור היפרבולי*.
-]
+// #definition[מישור היפרבולי][
+//   נגדיר תבנית ריבועית $h:FF^2 arrow FF$ על־ידי $h vec(x_1, x_2) = x_1 x_2$. מרחב ריבועי $(FF^2, h)$ נקרא *מישור היפרבולי*.
+// ]
 
-#proposition[
-  + $[g_h]_cal(E) = mat(0, 1/2; 1/2, 0)$
-  + $det [g_h]_cal(E) = -1/4$ ובפרט $(FF^2, h)$ לא מנוון
-  + $h$ תבנית איזוטרופית ובפרט $(FF^2, h)$ איזוטרופי
-  + $h(FF^2 without {vec(0, 0)})=FF$
-  + נגדיר $q:FF^2 arrow FF$ על־ידי $q vec(x_1, x_2) = x_1^2-x_2^2$ אז $(FF^2, h) tilde.equiv (FF^2, q)$
-]
+// #proposition[
+//   + $[g_h]_cal(E) = mat(0, 1/2; 1/2, 0)$
+//   + $det [g_h]_cal(E) = -1/4$ ובפרט $(FF^2, h)$ לא מנוון
+//   + $h$ תבנית איזוטרופית ובפרט $(FF^2, h)$ איזוטרופי
+//   + $h(FF^2 without {vec(0, 0)})=FF$
+//   + נגדיר $q:FF^2 arrow FF$ על־ידי $q vec(x_1, x_2) = x_1^2-x_2^2$ אז $(FF^2, h) tilde.equiv (FF^2, q)$
+// ]
 
-#proof[
-  + נובע מכך ש־$h vec(x_1, x_2) = x_1 x_2 = 1/2 x_1 x_2 + 1/2 x_2 x_1$
-  + הגדרה
-  + $h vec(1, 0) = 0$
-  + לכל $c in FF$ מתקיים $h vec(1, c) = c$
-  + עם חפיפת מטריצות ישירה $ mat(1, 1; -1, 1) mat(0, frac(1, 2, style: "horizontal"); frac(1, 2, style: "horizontal"), 0) mat(1, -1; 1, 1) = mat(1, 0; 0, -1) $
-]
+// #proof[
+//   + נובע מכך ש־$h vec(x_1, x_2) = x_1 x_2 = 1/2 x_1 x_2 + 1/2 x_2 x_1$
+//   + הגדרה
+//   + $h vec(1, 0) = 0$
+//   + לכל $c in FF$ מתקיים $h vec(1, c) = c$
+//   + עם חפיפת מטריצות ישירה $ mat(1, 1; -1, 1) mat(0, frac(1, 2, style: "horizontal"); frac(1, 2, style: "horizontal"), 0) mat(1, -1; 1, 1) = mat(1, 0; 0, -1) $
+// ]
 
-#proposition[
-  יהי $(V,q)$ מרחב ריבועי לא מנוון ואיזוטרופי מעל $FF$. אז קיים תת־מרחב $U$ של $V$ כך ש־$(U, q|_U) tilde.equiv (FF^2, h)$.
-]
+// #proposition[
+//   יהי $(V,q)$ מרחב ריבועי לא מנוון ואיזוטרופי מעל $FF$. אז קיים תת־מרחב $U$ של $V$ כך ש־$(U, q|_U) tilde.equiv (FF^2, h)$.
+// ]
 
-#proof[
-  מאחר ש־$(V,q)$ איזוטרופי קיים $0_V != v in V$ כך ש־$q(v)=0$ ומאחר ש־$(V,q)$ לא מנוון קיים $w in V$ כך ש־$g_q (v,w) != 0$.\
-  נסמן $b=g_q (v,w)$ ונגדיר $w^prime = 1/(2b)$ ונקבל $g_q (v,w^prime) = 1/(2b) g_q (v,w) = 1/2$.\
-  לכל $c in FF$ מתקיים
-  $
-    q(w^prime + c v) = g_q (w^prime + c v, w^prime + c v) = g_q (w^prime, w^prime) + 2 g_q (w^prime, c v) = g (w^prime) + 2c underbrace(g_q (w^prime, v), = 1/2) = g(w^prime) + c
-  $
-  אז נגדיר $c=-g(w^prime)$ ו־$u=w^prime - q(w^prime) v$ אז $g(u)=0$ ובנוסף מתקיים
-  $ g_q (v,u) = g_q (v, w^prime c v) = g_q (v, w^prime) = 1/2 $
-  עכשיו $cal(B) = (v,u)$ היא סדרה בלתי־תלויה לינארית (כי אחרת היינו מקבלים ש־$g_q (v,u)=0$) ונגדיר $U = Span(U)$ אז $cal(B)$ בסיס של $U$ ומתקיים $ [g_q|_U] = mat(0, frac(1, 2, style: "horizontal"); frac(1, 2, style: "horizontal")) $
-  ולכן $(U, q|_U) tilde.equiv (FF^2, h)$
-]
+// #proof[
+//   מאחר ש־$(V,q)$ איזוטרופי קיים $0_V != v in V$ כך ש־$q(v)=0$ ומאחר ש־$(V,q)$ לא מנוון קיים $w in V$ כך ש־$g_q (v,w) != 0$.\
+//   נסמן $b=g_q (v,w)$ ונגדיר $w^prime = 1/(2b)$ ונקבל $g_q (v,w^prime) = 1/(2b) g_q (v,w) = 1/2$.\
+//   לכל $c in FF$ מתקיים
+//   $
+//     q(w^prime + c v) = g_q (w^prime + c v, w^prime + c v) = g_q (w^prime, w^prime) + 2 g_q (w^prime, c v) = g (w^prime) + 2c underbrace(g_q (w^prime, v), = 1/2) = g(w^prime) + c
+//   $
+//   אז נגדיר $c=-g(w^prime)$ ו־$u=w^prime - q(w^prime) v$ אז $g(u)=0$ ובנוסף מתקיים
+//   $ g_q (v,u) = g_q (v, w^prime c v) = g_q (v, w^prime) = 1/2 $
+//   עכשיו $cal(B) = (v,u)$ היא סדרה בלתי־תלויה לינארית (כי אחרת היינו מקבלים ש־$g_q (v,u)=0$) ונגדיר $U = Span(U)$ אז $cal(B)$ בסיס של $U$ ומתקיים $ [g_q|_U] = mat(0, frac(1, 2, style: "horizontal"); frac(1, 2, style: "horizontal")) $
+//   ולכן $(U, q|_U) tilde.equiv (FF^2, h)$
+// ]
 
-#corollary[
-  יהי $(V,q)$ מרחב ריבועי לא מנוון ואיזוטרופי מעל $FF$ כך ש־$dim V = 2$. אז $(V,q) tilde.equiv (FF^2, h)$.
-]
+// #corollary[
+//   יהי $(V,q)$ מרחב ריבועי לא מנוון ואיזוטרופי מעל $FF$ כך ש־$dim V = 2$. אז $(V,q) tilde.equiv (FF^2, h)$.
+// ]
 
-#corollary[
-  יהי $(V,q)$ מרחב ריבועי לא מנוון ואיזוטרופי מעל $FF$. אז $q(V without {0_V}) = FF$.
-]
+// #corollary[
+//   יהי $(V,q)$ מרחב ריבועי לא מנוון ואיזוטרופי מעל $FF$. אז $q(V without {0_V}) = FF$.
+// ]
 
-#theorem[
-  יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$. אז קיים $m in NN union {0}$ ותתי־מרחבים $U_1, dots.h, U_m, W$ של $V$ כך שמתקיים
-  + $V = U_1 plus.o^perp dots.h plus.o^perp U_m plus.o^perp W$
-  + לכל $i <=m$ מתקיים $(U_i, q|_(U_i)) tilde.equiv (FF^2, h)$ ו־$(W, q|_W)$ אינו איזוטרופי
-]
+// #theorem[
+//   יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$. אז קיים $m in NN union {0}$ ותתי־מרחבים $U_1, dots.h, U_m, W$ של $V$ כך שמתקיים
+//   + $V = U_1 plus.o^perp dots.h plus.o^perp U_m plus.o^perp W$
+//   + לכל $i <=m$ מתקיים $(U_i, q|_(U_i)) tilde.equiv (FF^2, h)$ ו־$(W, q|_W)$ אינו איזוטרופי
+// ]
 
-#proof[
-  מתקבלת באינדוקציה על מימד $V$ בשימוש עם הטענה הקודמת ובטענה $1.25$.
-]
+// #proof[
+//   מתקבלת באינדוקציה על מימד $V$ בשימוש עם הטענה הקודמת ובטענה $1.25$.
+// ]
 
-#end_of_lecture("6 – 19/05")
+// #end_of_lecture("6 – 19/05")
 
-#definition[מרחב אנאיזוטרופי][מרחב ריבועי $(V,q)$ שאינו איזוטרופי נקרא אנאיזוטרופי.]
+// #definition[מרחב אנאיזוטרופי][מרחב ריבועי $(V,q)$ שאינו איזוטרופי נקרא אנאיזוטרופי.]
 
-#remark[
-  מרחב ריבועי $({0_V}, Q)$ היינו אנאיזוטרופי.
-]
+// #remark[
+//   מרחב ריבועי $({0_V}, Q)$ היינו אנאיזוטרופי.
+// ]
 
-#proposition[
-  יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ כך ש־$dim V = 1$ אז $(V,q)$ אנאיזוטרופי.
-]
+// #proposition[
+//   יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ כך ש־$dim V = 1$ אז $(V,q)$ אנאיזוטרופי.
+// ]
 
-#proof[
-  כי אם הוא לא מנוון, יש לו בסיס מוקטור אחד שביחס אליו המטריצה היא מטריצה $1 times 1$ שצריכה להיות הפיכה כלומר יש לה ערך אחד שאינו אפס אז כל וקטור הוא סקלר של וקטור הבסיס ששונה מאפס והטענה נובעת.
-]
+// #proof[
+//   כי אם הוא לא מנוון, יש לו בסיס מוקטור אחד שביחס אליו המטריצה היא מטריצה $1 times 1$ שצריכה להיות הפיכה כלומר יש לה ערך אחד שאינו אפס אז כל וקטור הוא סקלר של וקטור הבסיס ששונה מאפס והטענה נובעת.
+// ]
 
-#proposition[
-  יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ כך ש־$dim V = 2$ ו־$cal(B)$ הוא בסיס של $V$. אז $(V,q)$ איזוטרופי אם ורק אם $minus det [g_q]_cal(B) in (FF^times)^2$.
-]
+// #proposition[
+//   יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ כך ש־$dim V = 2$ ו־$cal(B)$ הוא בסיס של $V$. אז $(V,q)$ איזוטרופי אם ורק אם $minus det [g_q]_cal(B) in (FF^times)^2$.
+// ]
 
-#proof[
-  $<==$ נניח שהמרחב הוא איזוטרופי ולכן קיים $0_V != v in V$ כך ש־$q(v)=0$.\
-  מאחר ש־$(V,q)$ לא מנוון קיים $w in V$ כך ש־$g_q (v,w) !=0$ ולכן $cal(C)=(v,w)$ בלתי־תלויים לינארית כי אחרת היינו מקבלים ש־$g_q (v,w) =0$.\
-  נסמן $g_q (v,w) = b$ ו־$g_q (w,w) = q(w) = c$ אז
-  $ [g_q]_cal(C) = mat(0, b; b, c) $
-  מאחר ש־$[g_q]_cal(C)$ ו־$[g_q]_cal(B)$ חופפות קיימת מטריצה $P$ הפיכה עבורה מתקיים
-  $ [g_q]_cal(B) = P^t [g_q]_cal(C) P $
-  ולכן
-  $
-    -det [g_q]_cal(B) = - det P^t det [g_q]_cal(C) det P = -(det P)^2 det [g_q]_cal(C) = -(det P^2) (-b^2) = (b det P)^2 in (FF^times)^2
-  $
-  $==>$ יהי $cal(C) = (v_1, v_2)$ בסיס אורתוגונלי של $V$ אז קיימים $a_1, a_2 in FF^times$ עבורם
-  $ [g_q]_cal(C) = mat(a_1, 0; 0, a_2) $
-  קיימת $P$ הפיכה עבורה מתקיים
-  $ [g_q]_cal(C) = P^t [g_q]_cal(B) P $
-  מאחר ש־$-det [g_q]_cal(B) in (FF^times)^2$ קיים $k in FF^times$ כך ש־$det [g_q]_cal(B) = -k^2$ ועל־כן
-  $ a_1 a_2 = det mat(a_1, 0; 0, a_2) = det [g_q]_cal(C) = det P^t det[g_q]_cal(B) det P = -(k det P)^2 $
-  נגדיר $v = k det P v_1 + a_1 v_2$ מאחר ש־$a_1 !=0$ מתקיים $v!=0_V$ ולכן
-  $
-    q(v) & =q(k det P v_1 + a_1 v_2) \
-         & = q(k det P v_1) + g(a_1 v_2) \
-         & = (k det P)^2 q(v_1)+a_1^2 q(v_2) \
-         & = (k det P)^2 a_1 + a_1^2 a_2 \
-         & = a_1 (underbrace((k det P)^2, =-a_1 a_2)+a_1a_2) \
-         & = 0
-  $
-]
+// #proof[
+//   $<==$ נניח שהמרחב הוא איזוטרופי ולכן קיים $0_V != v in V$ כך ש־$q(v)=0$.\
+//   מאחר ש־$(V,q)$ לא מנוון קיים $w in V$ כך ש־$g_q (v,w) !=0$ ולכן $cal(C)=(v,w)$ בלתי־תלויים לינארית כי אחרת היינו מקבלים ש־$g_q (v,w) =0$.\
+//   נסמן $g_q (v,w) = b$ ו־$g_q (w,w) = q(w) = c$ אז
+//   $ [g_q]_cal(C) = mat(0, b; b, c) $
+//   מאחר ש־$[g_q]_cal(C)$ ו־$[g_q]_cal(B)$ חופפות קיימת מטריצה $P$ הפיכה עבורה מתקיים
+//   $ [g_q]_cal(B) = P^t [g_q]_cal(C) P $
+//   ולכן
+//   $
+//     -det [g_q]_cal(B) = - det P^t det [g_q]_cal(C) det P = -(det P)^2 det [g_q]_cal(C) = -(det P^2) (-b^2) = (b det P)^2 in (FF^times)^2
+//   $
+//   $==>$ יהי $cal(C) = (v_1, v_2)$ בסיס אורתוגונלי של $V$ אז קיימים $a_1, a_2 in FF^times$ עבורם
+//   $ [g_q]_cal(C) = mat(a_1, 0; 0, a_2) $
+//   קיימת $P$ הפיכה עבורה מתקיים
+//   $ [g_q]_cal(C) = P^t [g_q]_cal(B) P $
+//   מאחר ש־$-det [g_q]_cal(B) in (FF^times)^2$ קיים $k in FF^times$ כך ש־$det [g_q]_cal(B) = -k^2$ ועל־כן
+//   $ a_1 a_2 = det mat(a_1, 0; 0, a_2) = det [g_q]_cal(C) = det P^t det[g_q]_cal(B) det P = -(k det P)^2 $
+//   נגדיר $v = k det P v_1 + a_1 v_2$ מאחר ש־$a_1 !=0$ מתקיים $v!=0_V$ ולכן
+//   $
+//     q(v) & =q(k det P v_1 + a_1 v_2) \
+//          & = q(k det P v_1) + g(a_1 v_2) \
+//          & = (k det P)^2 q(v_1)+a_1^2 q(v_2) \
+//          & = (k det P)^2 a_1 + a_1^2 a_2 \
+//          & = a_1 (underbrace((k det P)^2, =-a_1 a_2)+a_1a_2) \
+//          & = 0
+//   $
+// ]
 
-#example[
-  + $FF=CC$ מעל המרוכבים כל מספר הוא ריבוע כלשהו.\
-    נבחין שאם $(V,q)$ מרחב ריבועי לא מנוון מעל $CC$ עם $dim V >=2$, אז קיים תת־מרחב $U$ של $V$ כך ש־$(U, q|_U)$ לא מנוון וגם $dim U = 2$.\
-    לפיכך, כל מרחב ריבועי אנאיזוטרופי לא טריוויאלי מעל $CC$ איזומורפי ל־$(CC,q)$ כאשר $q:CC arrow CC$ מוגדר על־ידי $g(x)=x^2$
-  + $FF=RR$
-    כל מרחב ריבועי אנאיזוטרופי לא טריוויאלי מעל $RR$ איזומורפי לאחד מהמרחבים הבאים
-    + $(RR^n, q_1)$ כאשר $q_1 vec(x_1, dots.v, x_n) = sum_(i=1)^n x_i^2$
-    + $(RR^n, q_(-1))$ כאשר $q_(-1) vec(x_1, dots.v, x_n) = sum_(i=1)^n -x_i^2$
-  + $FF = FF_p$ כאשר $p!=2$ ראשוני
-    + יהי $p!=2$ ראשוני כך ש־$-1 in.not (FF_p^times)^2$. אז כל מרחב אנאיזוטרופי לא טריוויאלי מעל $FF_p$ איזומורפי לאחד מהמרחבים הבאים
-      + $(FF_p, q_1)$ כאשר $q_1 : FF_p arrow FF_p$ מוגדר על־ידי $q_1 (x) = x^2$
-      + $(FF_p, q_(-1))$ כאשר $q_(-1) : FF_p arrow FF_p$ מוגדר על־ידי $g_(-1) (x) = -x^2$
-      + $(FF_p^2, q_(1,1))$ כאשר $q_(1,1) : FF_p^2 arrow FF_p$ מוגדר על־ידי $q_(1,1) vec(x_1, x_2) = x_1^2 + x_2^2$
-      כאשר השניים הראשונים ממימד 1 והאחרון ממימד 2.
-    + יהי $p!=2$ ראשוני כך ש־$-1 in (FF_p^times)^2$ ויהי $r in FF_p^times without (FF_p^times)^2$.\
-      אז כל מרחב אנאיזוטרופי לא טריוויאלי מעל $FF_p$ איזומורפי לאחד מהמרחבים הבאים
-      + $(FF_p, q_1)$ כמקודם $q_1 (x) = x^2$
-      + $(FF_p, q_r)$ כאשר $q_r : FF_p arrow FF_p$ מוגדרת על־ידי $q_r (x) = r x^2$
-      + $(FF_p, q_(1,r))$ כאשר $q_(1,r) : FF_p^2 arrow FF_p$ מוגדרת על־ידי $q_(1,r) vec(x_1, x_2) = x_1^2 + r x_2^2$
-]
+// #example[
+//   + $FF=CC$ מעל המרוכבים כל מספר הוא ריבוע כלשהו.\
+//     נבחין שאם $(V,q)$ מרחב ריבועי לא מנוון מעל $CC$ עם $dim V >=2$, אז קיים תת־מרחב $U$ של $V$ כך ש־$(U, q|_U)$ לא מנוון וגם $dim U = 2$.\
+//     לפיכך, כל מרחב ריבועי אנאיזוטרופי לא טריוויאלי מעל $CC$ איזומורפי ל־$(CC,q)$ כאשר $q:CC arrow CC$ מוגדר על־ידי $g(x)=x^2$
+//   + $FF=RR$
+//     כל מרחב ריבועי אנאיזוטרופי לא טריוויאלי מעל $RR$ איזומורפי לאחד מהמרחבים הבאים
+//     + $(RR^n, q_1)$ כאשר $q_1 vec(x_1, dots.v, x_n) = sum_(i=1)^n x_i^2$
+//     + $(RR^n, q_(-1))$ כאשר $q_(-1) vec(x_1, dots.v, x_n) = sum_(i=1)^n -x_i^2$
+//   + $FF = FF_p$ כאשר $p!=2$ ראשוני
+//     + יהי $p!=2$ ראשוני כך ש־$-1 in.not (FF_p^times)^2$. אז כל מרחב אנאיזוטרופי לא טריוויאלי מעל $FF_p$ איזומורפי לאחד מהמרחבים הבאים
+//       + $(FF_p, q_1)$ כאשר $q_1 : FF_p arrow FF_p$ מוגדר על־ידי $q_1 (x) = x^2$
+//       + $(FF_p, q_(-1))$ כאשר $q_(-1) : FF_p arrow FF_p$ מוגדר על־ידי $g_(-1) (x) = -x^2$
+//       + $(FF_p^2, q_(1,1))$ כאשר $q_(1,1) : FF_p^2 arrow FF_p$ מוגדר על־ידי $q_(1,1) vec(x_1, x_2) = x_1^2 + x_2^2$
+//       כאשר השניים הראשונים ממימד 1 והאחרון ממימד 2.
+//     + יהי $p!=2$ ראשוני כך ש־$-1 in (FF_p^times)^2$ ויהי $r in FF_p^times without (FF_p^times)^2$.\
+//       אז כל מרחב אנאיזוטרופי לא טריוויאלי מעל $FF_p$ איזומורפי לאחד מהמרחבים הבאים
+//       + $(FF_p, q_1)$ כמקודם $q_1 (x) = x^2$
+//       + $(FF_p, q_r)$ כאשר $q_r : FF_p arrow FF_p$ מוגדרת על־ידי $q_r (x) = r x^2$
+//       + $(FF_p, q_(1,r))$ כאשר $q_(1,r) : FF_p^2 arrow FF_p$ מוגדרת על־ידי $q_(1,r) vec(x_1, x_2) = x_1^2 + r x_2^2$
+// ]
 
-#proposition[
-  יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF_p$ כך ש־$dim V >=3$. אז $(V,q)$ איזוטרופי.
-]
+// #proposition[
+//   יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF_p$ כך ש־$dim V >=3$. אז $(V,q)$ איזוטרופי.
+// ]
 
-#proof[
-  קיים בסיס אורתוגונלי $cal(B)=(v_1, dots.h, v_n)$ של $V$ כלומר קיימים $a_1, dots.h, a_n in FF_p^times$ כך שמתקיים
-  $
-    [g_q]_cal(B) = mat(
-      a_1, , 0;
-      , dots.down, ; 0, , a_n
-    )
-  $
-  נגדיר תבנית ריבועית $g^prime : FF_p^2 arrow FF_p$ על־ידי $g^prime vec(x_1, x_2) = a_1 x_1^2 + a_2 x_2^2$ ולכן $ [g_(q^prime)]_cal(E) = mat(a_1, 0; 0, a_2) $
-  ולכן $(FF_p^2, q^prime)$ לא מנוון ולכן קיים $vec(x)1, x_2) in FF_p^2$ כך ש־$a_1x_1^2+a_2x_2^2 = g^prime vec(x_1, x_2) = - a_3$.\
-  נגדיר $v=x_1 v_1 + x_2 v_2 + v_3$ וברור ש־$v!=0$. בנוסף
-  $
-    q(v)=q(x_1v_1)+q(x_2v_2)+q(v_3) = x_1^2 q(v_1) + x_2^2 q(v_2) + q(v_3) = a_1 x_1^2+a_2x_2^2 + a_3 = -a_3 + a_3 = 0
-  $
-]
+// #proof[
+//   קיים בסיס אורתוגונלי $cal(B)=(v_1, dots.h, v_n)$ של $V$ כלומר קיימים $a_1, dots.h, a_n in FF_p^times$ כך שמתקיים
+//   $
+//     [g_q]_cal(B) = mat(
+//       a_1, , 0;
+//       , dots.down, ; 0, , a_n
+//     )
+//   $
+//   נגדיר תבנית ריבועית $g^prime : FF_p^2 arrow FF_p$ על־ידי $g^prime vec(x_1, x_2) = a_1 x_1^2 + a_2 x_2^2$ ולכן $ [g_(q^prime)]_cal(E) = mat(a_1, 0; 0, a_2) $
+//   ולכן $(FF_p^2, q^prime)$ לא מנוון ולכן קיים $vec(x)1, x_2) in FF_p^2$ כך ש־$a_1x_1^2+a_2x_2^2 = g^prime vec(x_1, x_2) = - a_3$.\
+//   נגדיר $v=x_1 v_1 + x_2 v_2 + v_3$ וברור ש־$v!=0$. בנוסף
+//   $
+//     q(v)=q(x_1v_1)+q(x_2v_2)+q(v_3) = x_1^2 q(v_1) + x_2^2 q(v_2) + q(v_3) = a_1 x_1^2+a_2x_2^2 + a_3 = -a_3 + a_3 = 0
+//   $
+// ]
 
 = מספרים $p$־אדיים
 == שדות נורמיים
@@ -1006,7 +1006,7 @@
 ]
 
 #proof[
-  $<==$ נניח שהוא לא ארכימדי, יהיו $a,b in FF$ ובלי הגבלת הכלליות נניח $norm(a)>=norm(b)$. מתקיים
+  $<==$ נניח שהוא לא ארכימדי אז יהיו $a,b in FF$ ובלי הגבלת הכלליות נניח $norm(a)>=norm(b)$. מתקיים
   $
     norm(a+b)^n = norm((a+b)^n) = norm(sum_(k=0)^n binom(n, k) a^k b^(n-k)) <= sum_(k=0)^n norm(binom(n, k) a^k b^(n-k))
     = sum_(k=0)^n norm(binom(n, k))norm(a)^k norm(b)^(n-k)
@@ -1015,7 +1015,7 @@
     = sum_(k=0)^n norm(a)^n = (n+1) norm(a)^n
   $
   כאשר $(star)$ נובע מהיות השדה לא ארכימדי ועם @archimedean-norm-property ($binom(n, k) in NN$ ולכן $norm(binom(n, k))<=1$).\
-  מכאן ש־$norm(a+b)^n <= root(n, n+1) norm(a)$ ומאחר ש־$lim_(n arrow.r infinity) root(n, n+1)=1$, נסיק כי $norm(a+b)<=norm(a) = max(norm(a), norm(b))$.\
+  מכאן ש־$norm(a+b) <= root(n, n+1) norm(a)$ ומאחר ש־$lim_(n arrow.r infinity) root(n, n+1)=1$, נסיק כי $norm(a+b)<=norm(a) = max(norm(a), norm(b))$.\
   $==>$ לכל $n in NN$ מתקיים $norm(n)=norm(sum_(i=1)^n 1) <= max(norm(1), dots.h, norm(1)) = 1$ ולכן $(FF, norm(dot.op))$ לא ארכימדי.
 ]
 
@@ -1068,7 +1068,7 @@
     יהיו $x in cal(M)_norm(dot.op), y in cal(O)_norm(dot.op)$ אז $norm(y)<=1, norm(x)<1$. מכאן ש־$norm(x y) = norm(x)norm(y) < 1$ ומכאן $x y in cal(M)_norm(dot.op)$ וזה בידיוק אומר ש־$cal(M)_norm(dot.op)$ אידיאל.\
     יהי $I$ אידיאל ב־$cal(O)_norm(dot.op)$ כך ש־$cal(M) subset.eq I$ ו־$I!=cal(M)$. אז קיים $x in I without cal(M)_norm(dot.op) subset.eq cal(O)_norm(dot.op) without cal(M)_norm(dot.op) = cal(U)_norm(dot.op) in cal(O)_norm(dot.op)^times$.\
     אז $1/x in cal(O)_norm(dot.op)$ ולכן $1 = 1/x dot.op x in I$ וזאת סתירה, לכן $cal(M)_norm(dot.op)$ אידיאל מקסימלי.\
-    נוכיח כי כל אידיאל של $cal(O)_norm(dot.op)$ מוכל ב־$cal(M)_norm(dot.op)$: יהי $I$ אידיאל ב־$cal(O)_norm(dot.op)$ ונניח בשלילה ש־$I subset.eq.not cal(M)$ כלומר קיים $x in I without cal(M)_norm(dot.op) subset.eq cal(O)_norm(dot.op)^times$ ולכן $1/x in cal(O)_norm(dot.op)$ ולכן $1 = 1/x dot.op x in I$ וזאת סתירה ולכן $I subset.eq cal(M)_norm(dot.op)$ וקיבלנו ש־$cal(M)_norm(dot.op)$ הוא אידיאל מקסימלי יחיד.
+    נוכיח כי כל אידיאל של $cal(O)_norm(dot.op)$ מוכל ב־$cal(M)_norm(dot.op)$: יהי $I$ אידיאל ב־$cal(O)_norm(dot.op)$ ונניח בשלילה ש־$I subset.eq.not cal(M)$ אז קיים $x in I without cal(M)_norm(dot.op) subset.eq cal(O)_norm(dot.op)^times$ ולכן $1/x in cal(O)_norm(dot.op)$ ולכן $1 = 1/x dot.op x in I$ וזאת סתירה ולכן $I subset.eq cal(M)_norm(dot.op)$ וקיבלנו ש־$cal(M)_norm(dot.op)$ הוא אידיאל מקסימלי יחיד.
 ]
 
 #definition[שדה שאריות][
@@ -1195,7 +1195,18 @@
   לכל $x in ZZ_((p))$ קיים $z in ZZ$ כך ש־$abs(x-z)_(p, alpha) < 1$ כלומר $x-z in cal(M)_abs(dot.op)_(p, alpha)$.\
   נגדיר $pi:ZZ_((p)) arrow ZZ slash p ZZ = FF_p$ על־ידי $pi(x)=z + p ZZ$.\
   אם $z^prime in ZZ$ כך ש־$abs(x-z^prime)_(p, alpha)<1$ אז $x-z^prime in p ZZ_((p))$ ולכן $z^prime - z in p ZZ_((p))$ וגם $z^prime - z in ZZ$ ולכן $z^prime -z = p ZZ$ כלומר $pi(x)$ לא תלוי בבחירה של $z$.\
-  קל לוודא כי $pi$ הוא הומומורפיזם של חוגים שהוא על וגם ש־$ker pi = p^(ZZ_((p)))$ ולפיכך $ZZ_p slash p ZZ_((p)) tilde.equiv ZZ slash p ZZ_p = FF_p$ ממשפטי האיזומורפיזם.
+  נרצה להראות ש־$pi$ הוא הומומורפיזם של חוגים ו־$ker pi = p ZZ_((p))$ ולפיכך $ZZ_p slash p ZZ_((p)) tilde.equiv ZZ slash p ZZ_p = FF_p$ ממשפטי האיזומורפיזם.\
+  + על – נניח ש־$overline(a) in ZZ slash p ZZ$ ולכן קיים $a in ZZ$ שמייצג אותו וכל מספר שלם הוא בפרט איבר ב־$ZZ_((p))$. בבחירת $z=a$ נקבל $a-z=0$ ואז $0 in p ZZ_((p))$ ועל־כן $pi$ על שכן $pi(a) = a + p ZZ = overline(a)$.
+  + הומומורפיזם של חוגים – יהיו $x,y in ZZ_((p))$ אז יש $z_x, z_y$ עבורם $x-z_x, y-z_y in p ZZ_((p))$ ומתקיים
+    $ (x+y)-(z_x + z_y) = (x-z_x) + (y-z_y) $
+    $p ZZ_((p))$ אידיאל ולכן סגור לחיבור ומכאן $z_x + z_y$ הוא הנציג השלם של $x+y$ ומכאן
+    $ pi(x+y)=(z_x + z_y) + p ZZ = (z_x + p ZZ) + (z_y + p ZZ) = pi(x)+pi(y) $
+    בשביל הסגירות לכפל
+    $ x y - z_x z_y =x y - x z_y + x z_y - z_x z_y = x(y-z_y) + z_y (x-z_x) $
+    אבל $x, z_y in ZZ_((p))$ ו־$(x-z_x), (y-z_y)$ נמצאים באידיאל $p ZZ_((p))$ ואידיאל בולע כפל באיברי החוג וסגור לחיבור ולכן כל הביטוי ב־$p ZZ_((p))$ ומכאן $z_x z_y$ הוא הנציג של $x y$ ומתקיים
+    $ pi(x y) = x_z x_y + p ZZ = (z_x + p ZZ)(z_y + p ZZ) = pi(x)pi(y) $
+    וכמובן עבור $x=1 = z$ מתקיים $1-1=0 in p ZZ_((p))$ ולכן $pi(1)=1+p ZZ$ ועל־כן $pi$ הומומורפיזם.
+  + $x in ker(pi)$ אם ורק אם $pi(x)=0$ וזה קורה אם ורק אם $pi(x)=0 + p ZZ$ אבל $z=0$ מתאים ל־$x$ אם ורק אם $x-0 in p ZZ_((p))$ כלומר $x in p ZZ_((p))$.
 ]
 
 #end_of_lecture("8 – 02/06")
@@ -1205,13 +1216,14 @@
 ]
 
 #proof[
-  מאחר ש־$norm(dot.op)$ לא ארכימדית, לכל $n in NN$ מתקיים $norm(n)<=1$. מאחר ש־$norm(dot.op)$ לא טריוויאלית, קיים $n in NN$ כך ש־$norm(n)<1$. \
+  מאחר ש־$norm(dot.op)$ לא ארכימדית, לכל $n in NN$ מתקיים $norm(n)<=1$ ומאחר ש־$norm(dot.op)$ לא טריוויאלית, קיים $n in NN$ כך ש־$norm(n)<1$. \
   נגדיר $p colon.eq min{n in NN bar abs(n)<1}$ ונראה ש־$p$ ראשוני (ברור שהוא לא $1$). נניח בשלילה כי $p$ פריק ולכן קיימים $a,b in NN$ כך ש־$a,b<p$ ו־$p = a b$.\
   מאחר ש־$a,b < p$ מתקיים ש־$norm(a)=norm(b)=1$ ולכן מכפליות הנורמה $norm(p)=norm(a b) = norm(a)norm(b) =1$ וזו סתירה לכך ש־$norm(p)<1$ ולפיכך $p$ ראשוני.\
   יהי $u in NN$ כך ש־$p divides.not u$ אז קיימים $q in NN union {0}, r in NN$ כך ש־$u= q p + r$ ו־$r<p$.\
   מתקיים ש־$norm(r)=1$ וכמו כן $norm(q)<=1$ ולכן $norm(q p) = norm(q) norm(p) < 1$. מאחר ש־$norm(p q) != norm(r)$ מתקיים ש־$norm(u)=norm(q p + r) = max(norm(q p), norm(r)) = norm(r) = 1$.\
   יהי $v in ZZ_minus$ (כלומר $v in ZZ, v<0$) ו־$p divides.not v$ אז $-v in NN$ ו־$p divides.not -v$ ולכן $norm(v)=norm(-v)=1$.\
-  נגדיר $alpha=norm(p)$ ויהי $0 != q in QQ$ אז קיימים $0 != m in ZZ, n in NN$ כך ש־$q=m/n$. קיימים $s in ZZ, t in NN$ כך ש־$p divides.not s, p divides.not t$ ו־$m=p^(v_p (m)) s, n = p^(v_p (n)) t$. אז
+  נגדיר $alpha=norm(p)$ ויהי $0 != q in QQ$ אז קיימים $0 != m in ZZ, n in NN$ כך ש־$q=m/n$.\
+  קיימים $s in ZZ, t in NN$ כך ש־$p divides.not s, p divides.not t$ ו־$m=p^(v_p (m)) s, n = p^(v_p (n)) t$ ואז
   $
     q = (p^(v_p (m)) s)/(p^(v_p (n)) t) = p^(tilde(v)_p (q)) s/t ==> norm(q) = norm(p^(tilde(v)_p (q)) s/t) = norm(p)^(tilde(v)_p (q)) norm(s)/norm(t) = alpha^(tilde(v)_p (q)) 1/1 = alpha^(tilde(v_p) (q)) = abs(q)_(p,alpha)
   $
@@ -1309,14 +1321,15 @@
 
 #proof[
   + מאחר ש־$O_norm(dot.op) subset.eq hat(O)_norm(dot.op)$ וגם $hat(O)_norm(dot.op)$ סגור מתקיים ש־$closure(O)_norm(dot.op) subset.eq hat(O)_norm(dot.op)$. בכיוון השני, יהי $0!=a in hat(O)_norm(dot.op)$. אז קיימת סדרת קושי $(a_n)_(n=1)^infinity subset.eq FF$ כך ש־$lim_(n arrow.r infinity) a_n = a$
-    אז $lim_(n arrow.r infinity) norm(a_n) = norm(a)$. לפי הלמה, קיים $N in NN$ כך שלכל $N<n$ מתקיים ש־$norm(a_n) = norm(a_N) = norm(a)$ אבל $norm(a) < 1$ ומכאן $a_n in O_norm(dot.op)$. ולכן $a in closure(O)_norm(dot.op)$ כגבול של סדרה.\
+    אז $lim_(n arrow.r infinity) norm(a_n) = norm(a)$. לפי הלמה, קיים $N in NN$ כך שלכל $N<n$ מתקיים ש־$norm(a_n) = norm(a_N) = norm(a)<=1$ ומכאן $a_n in O_norm(dot.op)$. ולכן $a in closure(O)_norm(dot.op)$ כגבול של סדרה.\
   + זהה.
-  + נגדיר $phi: closure(FF) arrow closure(hat(FF))$ על־ידי $phi(a+M_norm(dot.op)) = a+hat(M)_norm(dot.op)$ לכל $a in O_norm(dot.op)$.\
-    קל לראות שזה מוגדר היטב וזה הומומורפיזם של חוגים. מאחר ש־$closure(FF)$ שדה אז $ker phi = {0}$ ולכן $phi$ חד־חד ערכית.\
-    לא טריוויאלי שהוא על (מה עם ההרחבה גדולה יותר?). יהי $a in hat(O)_norm(dot.op)$ ולכן קיימת סדרת קושי $(a_n)_(n=1)^infinity subset.eq O_norm(dot.op)$ כך ש־$lim_(n arrow.r infinity) a_n = a$. \
+  + נגדיר $phi: closure(FF) arrow closure(hat(FF))$ על־ידי $phi(a+M_norm(dot.op)) = a+hat(M)_norm(dot.op)$ לכל $a in O_norm(dot.op)$, נראה שזה איזומורפיזם של חוגים.\
+    נבחין ש־$phi$ הומומורפיזם של חוגים שכן כי אם $a,b$ הם שני נציגים של אותה מחלקה בשדה השאריות המקורי מתקיים $a-b in cal(M)$ שהוא תת־קבוצה של האידיאל המקסימלי בהשלמה ולכן $a-b in hat(cal(M))$ ועל־כן $phi$ מוגדרת היטב וההומומורפיזם נובע מכך שהפעולות על מחלקות מוגדרות דרך הפעולות על הנציגים.\
+    מאחר ש־$closure(FF)$ שדה אז $ker phi = {0}$ ולכן $phi$ חד־חד ערכית.\
+    בשביל העל, יהי $a in hat(O)_norm(dot.op)$ ולכן קיימת סדרת קושי $(a_n)_(n=1)^infinity subset.eq O_norm(dot.op)$ כך ש־$lim_(n arrow.r infinity) a_n = a$. \
     אז קיים $N in NN$ כך שלכל $N<n$ מתקיים $norm(a_n - a)<1$ כלומר $a_n - a in hat(M)_norm(dot.op)$. מכאן ש־$phi(a_n) = a_n + hat(M)_norm(dot.op) = a + hat(M)_norm(dot.op)$ ולכן $phi$ על ו־$phi$ איזומורפיזם.
   #end_of_lecture("9 – 09/06")
-  4. ברור כי ${norm(x) bar x in FF} supset.eq {norm(x) bar x in hat(FF)}$. בכיוון השני, יהי $0!=a in hat(FF)$. אז קיימת סדרה $(a_n)$ של איברים מ־$FF$ כך ש־$lim_(n arrow.r infinity) a$. מהלמה קיים $N in NN$ כך שלכל $N<=n$ מתקיים $norm(a_n) = norm(a_N)$ ומאחר ש־$lim_(n arrow.r infinity) norm(a_n) = norm(a)$ לכל $N<=n$ מתקיים $norm(a_n) = norm(a)$ ולכן $norm(a) = norm(a_n) in {norm(x) bar x in FF}$
+  4. ברור כי ${norm(a) bar a in FF} subset.eq {norm(a) bar a in hat(FF)}$. בכיוון השני, יהי $0!=a in hat(FF)$. אז קיימת סדרה $(a_n)$ של איברים מ־$FF$ כך ש־$lim_(n arrow.r infinity) a_n$. מהלמה קיים $N in NN$ כך שלכל $N<=n$ מתקיים $norm(a_n) = norm(a_N)$ ומאחר ש־$lim_(n arrow.r infinity) norm(a_n) = norm(a)$ לכל $N<=n$ מתקיים $norm(a_n) = norm(a)$ ולכן $norm(a) = norm(a_n) in {norm(x) bar x in FF}$.
 ]
 
 == שדה המספרים ה־$p$־אדיים
@@ -1350,8 +1363,7 @@
 ]
 
 #proposition[
-  תהיי $(a_n)_(n=1)^infinity$ סדרה ב־$ZZ$ כך ש־$0<= a_n <= p-1$ עבור $n in NN_0$.\
-  ב־$QQ_p$ קיים הגבול $sum_(n=0)^infinity a_n p^n = a$ וגם $a in ZZ_p$ ויתר על־כן, $a in p ZZ_p <==> a_0 = 0$.
+  תהיי $(a_n)_(n=1)^infinity$ סדרה ב־$ZZ$ כך ש־$0<= a_n <= p-1$ עבור $n in NN_0$ אז גם ב־$QQ_p$ קיים הגבול $sum_(n=0)^infinity a_n p^n = a$ וגם $a in ZZ_p$ ויתר על־כן, $a in p ZZ_p <==> a_0 = 0$.
 ]
 
 #proof[
@@ -1377,16 +1389,17 @@
   אבל $a_m != b_m$ ולכן $abs(a_m - b_m)_p = 1$ וזאת סתירה.
 ]
 
-#proposition[
+#proposition[קיום ויחידות הקירוב ה־$bold(p)$־אדי][
   לכל $x in ZZ_p$ ולכל $k in NN_0$ קיים $r in ZZ$ יחיד כך ש־$0<=r<=p^k-1$ כך ש־$abs(x-r)_p <= 1/p^k$.
-]
+]<p_addic_existence_and_unique_approximation>
 
 #proof[
   מאחר ש־$closure(ZZ)=ZZ_p$ נובע שקיים $z in ZZ$ כך ש־$abs(x-z)_p <= 1/p^k$.\
   נחלק את $z$ ב־$p^k$ עם שארית ונקבל $q,r in ZZ$ כך ש־$z=q p^k + r$ ו־$0<=r<=p^k-1$ ומתקיים
   $ abs(x-r)_p = abs((x-z)+(z-r))_p = abs(x-z+q p^k) <= max(abs(x-z)_p, abs(q p^k)_p) <= 1/p^k $
-  נשאר להראות יחידות – יהיו $0<=r_1, r_2 <= p-1$ כך ש־$abs(x-r_1)_p, abs(x-r_2)_p <= 1/p^k$ מכאן $ abs(r_1 - r_2)_p = abs((x-r_1) - (x-r_2))_p <= max(abs(x-r_1)_p, abs(x-r_2)_p) <= 1/p^k $
-  מאחר ש־$-(p^k-1) <= abs(r_1-r_2) <= p^k - 1$ אנו מסיקים ש־$r_2 - r_1 = 0$.
+  נשאר להראות יחידות – יהיו $0<=r_1, r_2 <= p^k-1$ כך ש־$abs(x-r_1)_p, abs(x-r_2)_p <= 1/p^k$ מכאן
+  $ abs(r_1 - r_2)_p = abs((x-r_1) - (x-r_2))_p <= max{abs(x-r_1)_p, abs(x-r_2)_p} <= 1/p^k $
+  ולכן $p^k divides (r_2 - r_1)$ אבל $r_1, r_2 < p^k$ ולכן $r_2 - r_1 = 0$ כלומר $r_1 = r_2$.
 ]
 
 #corollary[
@@ -1394,31 +1407,35 @@
   + $0<=r_k <= p^k-1$
   + $abs(x-r_k)_p <= 1/p^k$
   + $p^k divides r_(k+1) - r_k$
-]
+]<corollary_for_p_addic_existence_and_unique_approximation>
 
 #proof[
   נשים לב ש־$1$ ו־$2$ נובעים מהטענה הקודמת. עבור $3$,
   $ abs(r_(k+1) - r_k)_p = abs((x-r_k)-(x-r_(k+1))) <= max(abs(x-r_k)_p, abs(x-r_(k+1))_p) <=_((2)) 1/p^k $
 ]
 
-#proposition[
+#proposition[קיום ההצגה ה־$bold(p)$־אדית][
   יהי $x in ZZ_p$ קיימת סדרה $(a_n)_(n=0)^infinity subset.eq ZZ$ כך ש־$0<=a_n <= p-1$ לכל $n in NN_0$ וגם $lim_(n arrow infinity) sum_(i=0)^n a_i p^i =sum_(n=0)^infinity a_n p^n = x$.
-]
+]<existence_of_p_addic_presentention>
 
 #proof[
-  נגדיר $ a_0 = r_1, quad a_1 = frac(r_2 - r_1, p),quad a_2 = frac(r_3 - r_2, p^2), quad a_i = frac((r_(i+1) - r_(i)), p^i) $
-  מהמסקנה $a_i in ZZ$ ומאחר ש־$0<=r_(i+1)<=p^(i+1)-1$ ו־$0<=r_i <= p^i - 1$ מתקיים $-(p^i-1)<= r_(i+1) - r_i <= p^(i+1) - 1$.\
+  נגדיר $ a_0 = r_1, quad forall i in NN, space a_i = frac((r_(i+1) - r_(i)), p^i) $
+  מ@corollary_for_p_addic_existence_and_unique_approximation, $a_i in ZZ$ ומאחר ש־$0<=r_(i+1)<=p^(i+1)-1$ ו־$0<=r_i <= p^i - 1$ מתקיים $-(p^i-1)<= r_(i+1) - r_i <= p^(i+1) - 1$.\
   מאחר ש־$p^i divides r^(i+1) - r^i$ מתקיים $0<=r_(i+1)-r_i <= p^(i+1)-p^i$ ולכן $0<=a_i <= p-1$ ולסיום
   $ r_n = r_(n-1) + a_(n-1) p^(n-1) = r_(n-2) + a_(n-2) p^(n-2) + a_(n-1) p^(n-1) = dots.h.c = sum_(i=0)^(n-1) a_i p^i $
   ולכן $lim_(n arrow.r infinity) sum_(i=0)^n a_i p^i = lim_(n arrow.r infinity) r_(n+1) = x$.
 ]
 
-#proposition[
+#proposition[הצגת לורן ה־$bold(p)$־אדית][
   לכל $x in QQ_p^times$ קיים $s in ZZ$ וסדרה $(a_n)_(n=s)^infinity subset.eq ZZ$ כך ש־$0<=a_n <= p-1$ לכל $n in ZZ$ עם $n>=s$ ובנוסף $a_s !=0$ ו־$sum_(n=s)^infinity a_n p^n = x$.
-]
+]<laurent_p_adic_repersention>
 
 #proof[
-  קיים $s in ZZ$ כך ש־$abs(x)_p = 1/p^s$ ולכן נגדיר $x^prime = frac(x, p^s)$ ואז $abs(x^prime)_p = frac(abs(x)_p, abs(1/p^s)_p) = 1$ ולכן קיימת סדרה $(a^prime_n)_(n=0)^infinity subset.eq ZZ$ כך ש־$0<=a^prime_n <= p-1$ וגם $sum_(n=0)^infinity a^prime_n p^n$ ומאחר ש־$abs(x^prime)=1$ מתקיים $a^prime_0 != 0$ ולכן נגדיר $a_n = a^prime_(n-s)$ לכל $n in NN$ ו־$s<=n$ ונקבל $sum_(n=s)^infinity a_n p^n = sum_(n=0)^infinity a_(n+s) p^(n+s) = sum_(n=0)^infinity a^prime_n p^n p^s = x^prime p^s = x$.
+  קיים $s in ZZ$ כך ש־$abs(x)_p = frac(1, p^s)$ אז נגדיר $x^prime = frac(x, p^s)$ אז $abs(x^prime)_p = frac(abs(x)_p, abs(1/p^s)_p) = 1$ ולכן מ@existence_of_p_addic_presentention קיימת סדרה $(a^prime_n)_(n=0)^infinity subset.eq ZZ$ כך ש־$0<=a^prime_n <= p-1$ וגם \
+  $sum_(n=0)^infinity a^prime_n p^n=x^prime$ ומאחר ש־$abs(x^prime)=1$ מתקיים $a^prime_0 != 0$ ולכן נגדיר $a_n = a^prime_(n-s)$ לכל $n in NN$ ו־$s<=n$ ונקבל
+  $
+    sum_(n=s)^infinity a_n p^n = sum_(n=0)^infinity a_(n+s) p^(n+s) = sum_(n=0)^infinity a^prime_n p^n p^s = x^prime p^s = x
+  $
 ]
 
 #end_of_lecture("10 – 16/06")
@@ -1432,6 +1449,11 @@
   $closure(NN_0) = ZZ_p$.
 ]
 
+#proof[
+  $subset.eq$ ברור כי $NN_0 subset.eq ZZ_p$ (השדה לא ארכימדי) ו־$ZZ_p$ סגורה ולכן $closure(NN_0) subset.eq closure(ZZ_p) = ZZ_p$.\
+  $supset.eq$ מ@laurent_p_adic_repersention נובע שלכל $x in ZZ_p$, כל סכום חלקי של טור ההצגה ה־$p$־אדית שלו מכיל רק טבעיים ולכן הסדרה היא סדרת מספרים טבעיים ומ@existence_of_p_addic_presentention נובע שהגבול של הסכומים החלקיים האלה הוא $x$.
+]
+
 #example[
   $x=-1$ ואז
   $
@@ -1441,7 +1463,7 @@
 ]
 
 #proposition[
-  יהיו $s,t in ZZ$, $d in NN$ ו־$(a_i)_(i=s)^infinity subset.eq ZZ$ כך ש־$0<=a_i <=p-1$ לכל $n in ZZ$, $s<=n$ עם $a_s != 0$, $s<=t$ ולכל $t<=i$ מתקיים $a_(i+d) = a_i$.\
+  יהיו $s<=t in ZZ$, $d in NN$ ו־$(a_i)_(i=s)^infinity subset.eq ZZ$ כך ש־$0<=a_i <=p-1$ לכל $s<=i$ עם $a_s != 0$ ולכל $t<=i$ מתקיים $a_(i+d) = a_i$.
   אזי $sum_(i=s)^infinity a_i p^i in QQ$.
 ]
 
@@ -1459,7 +1481,7 @@
 ]
 
 #proposition[
-  יהיו $s in ZZ$, $(a_i)_(i=s)^infinity subset.eq S$ כך ש־$0<=a_i <= p-1$ לכל $s<=i$, $a_s != 0$ וגם $sum_(i=s)^infinity a_i p^i in QQ$. אז קיימים $t in ZZ$, $s<=t$ ו־$d in NN$ כך ש־$a_(i+d) = a_i$ לכל $t<=i$.
+  יהיו $s in ZZ$, $(a_i)_(i=s)^infinity subset.eq ZZ$ כך ש־$0<=a_i <= p-1$ לכל $s<=i$, $a_s != 0$ וגם $sum_(i=s)^infinity a_i p^i in QQ$. אז קיימים $t in ZZ$, $s<=t$ ו־$d in NN$ כך ש־$a_(i+d) = a_i$ לכל $t<=i$.
 ]
 
 #proof[
@@ -1541,6 +1563,7 @@
   בנוסף $0<=r_(k+1) <= p^k - 1 + (p-1)p^k = p^(k+1)-1$ וגם $overline(r_(k+1)) = overline(r_k) = overline(w_0)$ ו־$p^k divides d p^k = r_(k+1) - r_k$.\
   לפיכך $r_1, dots.h, r_(k+1)$ מקיימים את כל התנאים הנדרשים ולכן הסדרה $(r_k)_(k=1)^infinity$ היא סדרת קושי ולכן קיים $w=lim_(k arrow infinity) r_k$ ומתקיים
   $ f(w)=f(lim_(k arrow infinity) r_k) = lim_(k arrow infinity) f(r_k) = 0 $
+  נבחין שמכאן נובעת גם היחידות: בכל צעד רקורסיבי הגדרנו את הספרה $d$ להיות יחידה $0<=d<=p-1$ שעבורה התנאי מתקיים ומכיוון שבכל שלב בחירה של הקירוב הבא $r_(k+1)$ היא יחידה לחלוטין, הסדרה הזאת מתכנסת לגבול יחיד ב־$ZZ_p$.
 ]
 
 #corollary[
@@ -1574,7 +1597,7 @@
   אז $p r$ הוא הומומורפיזם של חוגים ולכן $p r|_(ZZ_p^times) : ZZ_p^times arrow FF_p^times$ הוא הומומורפיזם של חבורות שהוא על.\
   נסמן $pi : FF_p^times arrow FF_p^times slash (FF_p^times)^2$ על־ידי $pi(x)= x dot.op (FF_p^times)^2$ ולכן גם $pi$ הוא הומומורפיזם של חבורות שהוא על.\
   נרכיב ונקבל $pi compose p r|_(ZZ_p^times) : ZZ_p^times arrow FF_p^times slash (FF_p^times)^2$.\
-  אם $x in (ZZ_p^times)^2$ אזי $p r|_(z_p^times) (x) in (FF_p^times)^2$ ולכן $pi compose p r|_(ZZ_p^times) (x) = 1$ ולכן $(ZZ_p^times)^2 subset.eq ker (pi compose p r|_(ZZ_p^times))$.\
+  אם $x in (ZZ_p^times)^2$ אזי $p r|_(ZZ_p^times) (x) in (FF_p^times)^2$ ולכן $pi compose p r|_(ZZ_p^times) (x) = 1$ ולכן $(ZZ_p^times)^2 subset.eq ker (pi compose p r|_(ZZ_p^times))$.\
   יהי $a in ker(pi compose p r|_(ZZ_p^times))$ אז $p r|_(ZZ_p^times) (a) = ker pi = (FF_p^times)^2$ מכאן קיים $w_0 in ZZ_p$ כך ש־$overline(a)=overline(w_0^2)$ ומהמסקנה שראינו קיים $w in ZZ_p$ כך ש־$a=w^2$ ולכן $a in (ZZ_p^times)^2$ ולפיכך $ker(pi compose p r|_(ZZ_p^times)) subset.eq (ZZ_p^times)^2$.\
   אז לפי משפט ההומומורפיזם מתקיים $ZZ_p^times slash (ZZ_p^times)^2 tilde.equiv FF_p^times slash (FF_p^times)^2$.
 ]
