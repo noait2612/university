@@ -14,9 +14,9 @@
 
 = מרחבים ריבועיים
 == תבניות ביליניאריות סימטריות
-#definition[תבנית בילנארית סימטרית][
+#definition[תבנית ביליניארית סימטרית][
   יהי $FF$ שדה כך ש־ $char(FF) != 2$ (כלומר $1_FF + 1_FF != 0_FF$), ויהי $V$ מרחב וקטורי מעל $FF$.
-  פונקציה $g: V times V -> FF$ נקראת תבנית בילינארית סימטרית (תב"ס) אם היא מקיימת את האקסיומות הבאות
+  פונקציה $g: V times V -> FF$ נקראת תבנית בילינארית סימטרית אם היא מקיימת את האקסיומות הבאות
   + לכל $v, w_1, w_2 in V$ מתקיים $g(v, w_1 + w_2) = g(v, w_1) + g(v, w_2)$
   + לכל $v,w in V$ ולכל $c in FF$ מתקיים $g(v, c w) = c g(v, w)$
   + לכל $v,w in V$ מתקיים $g(v, w) = g(w, v)$
@@ -33,18 +33,17 @@
   + לכל $v,w in V$ ולכל $c in FF$ מתקיים $g(c v, w) = c g(v, w)$
 ]
 
-#proof[
+#proof[ נראה את הראשון והשני נובע באופן דומה
   $
     g(v_1 + v_2, w) = g(w, v_1 + v_2) =_"לינאריות במשתנה השני" g(w, v_1) + g(w, v_2) =_"סימטריות" g(v_1, w) + g(v_2, w)
   $
-  ובאופן דומה עבור כפל בסקלר.
 ]
 
 #example[
-  $FF = bb(R)$, $(V, chevron.l dot, dot chevron.r)$ מרחב מכפלה פנימית, ו־ $g(v, w) = chevron.l v, w chevron.r$.
+  $FF = bb(R)$, $(V, chevron.l dot, dot chevron.r)$ מרחב מכפלה פנימית ו־$g(v, w) = chevron.l v, w chevron.r$.
 ]
 
-#example[התבנית הבילנארית הסימטרית הטריוויאלית][
+#example[התבנית הביליניארית הסימטרית הטריוויאלית][
   $V$ מרחב וקטורי מעל $FF$ ולכל $v,w in V$ נגדיר $g(v, w) = 0_FF$, זוהי התבנית הבילינארית הסימטרית הטריוויאלית.
 ]
 
@@ -96,7 +95,7 @@
 ]
 
 #proposition[
-  תהי $A in M_n (FF)$ סימטרית, $g$ תבנית בילינארית סימטרית מעל $FF^n$ המוגדרת על ידי $g(v, w) = v^t A w$, ו־ $E = (e_1, dots.h, e_n)$ הבסיס הסטנדרטי של $FF^n$.\
+  תהי $A in M_n (FF)$ סימטרית, $g$ תבנית בילינארית סימטרית מעל $FF^n$ המוגדרת על ידי $g(v, w) = v^t A w$ ו־ $E = (e_1, dots.h, e_n)$ הבסיס הסטנדרטי של $FF^n$.\
   אזי $[g]_E = A$.
 ]
 
@@ -133,7 +132,7 @@
   $ [v]_cal(B) = mat(c_1; dots.v; c_n), quad [w]_cal(B) = mat(d_1; dots.v; d_n) $
   כלומר $v = sum_(i=1)^n c_i v_i$ ו־ $w = sum_(j=1)^n d_j v_j$. מתקיים
   $
-    g(v, w) = g(sum_(i=1)^n c_i v_i, sum_(j=1)^n d_j v_j) eq^((star)) sum_(i=1)^n sum_(j=1)^n c_i d_j g(v_i, v_j) = sum_(i=1)^n sum_(j=1)^n c_i d_j g_(i,j)
+    g(v, w) = g(sum_(i=1)^n c_i v_i, sum_(j=1)^n d_j v_j) = sum_(i=1)^n sum_(j=1)^n c_i d_j g(v_i, v_j) = sum_(i=1)^n sum_(j=1)^n c_i d_j g_(i,j)
   $
   כאשר המעבר האחרון נובע מהבילנאריות של $g$ אך מצד שני
   $
@@ -141,7 +140,7 @@
       g_(1,1), dots.h, g_(1,n);
       dots.v, dots.down, dots.v;
       g_(n,1), dots.h, g_(n,n)
-    ) mat(d_1; dots.v; d_n) eq^((star)) sum_(i=1)^n sum_(j=1)^n c_i d_j g_(i,j)
+    ) mat(d_1; dots.v; d_n) = sum_(i=1)^n sum_(j=1)^n c_i d_j g_(i,j)
   $
   כאשר המעבר האחרון זה מהגדרת כפל מטריצות.\
   לכן $g(v, w) = [v]_cal(B)^t [g]_cal(B) [w]_cal(B)$ כנדרש.
@@ -207,10 +206,10 @@
 ]
 
 #end_of_lecture("1 – 24/03")
-נראה כי לא רק ששתי מטריצות המייצגות את אותה תבנית בילנארית סימטרית g בבסיסים שונים הן חופפות, אלא שגם ההפך הוא נכון.
+נראה כי לא רק ששתי מטריצות המייצגות את אותה תבנית ביליניארית סימטרית g בבסיסים שונים הן חופפות, אלא שגם ההפך הוא נכון.
 
 #proposition[
-  יהיו $V$ מרחב וקטורי נוצר סופית מעל $FF$ ממימד $n$, $B$ בסיס של $V$, $g$ תבנית בילנארית סימטרית על $V$ ו־$C in M_n (FF)$ מטריצה שחופפת $[g]_B$.\
+  יהיו $V$ מרחב וקטורי נוצר סופית מעל $FF$ ממימד $n$, $B$ בסיס של $V$, $g$ תבנית ביליניארית סימטרית על $V$ ו־$C in M_n (FF)$ מטריצה שחופפת $[g]_B$.\
   אזי קיים בסיס $B^prime$ של $V$ עבורו $C=[g]_(B^prime)$.
 ]
 
@@ -222,7 +221,7 @@
 == תבניות ריבועיות
 
 #definition[תבנית ריבועית][
-  יהי $V$ מרחב וקטורי מעל $FF$ עם מציין שונה מ־$2$ ו־$g$ תבנית בילנארית סימטרית על $V$. תבנית ריבועית שמתאימה ל־$g$ היא $g:V arrow FF$ המוגדרת על־ידי
+  יהי $V$ מרחב וקטורי מעל $FF$ עם מציין שונה מ־$2$ ו־$g$ תבנית ביליניארית סימטרית על $V$. תבנית ריבועית שמתאימה ל־$g$ היא $g:V arrow FF$ המוגדרת על־ידי
   $ q(v) = g(v,v) $
 ]
 
@@ -236,31 +235,31 @@
 
 נרצה לשאול האם אותה תבנית ריבועית יכולה להתקבל משתי תבניות ריבועיות סימטריות שונות? התשובה היא לא.
 
-#proposition[נוסחת הפלורליזציה][
-  יהי $V$ מרחב וקטורי מעל $FF$, $g$ תבנית בילנארית סימטרית על $V$ ו־$q$ תבנית ריבועית המתאימה ל־$g$. אזי לכל $v,w in V$ מתקיים
+#proposition[נוסחת הפולריזציה][
+  יהי $V$ מרחב וקטורי מעל $FF$, $g$ תבנית ביליניארית סימטרית על $V$ ו־$q$ תבנית ריבועית המתאימה ל־$g$. אזי לכל $v,w in V$ מתקיים
   $ g(v,w) = frac(q(v+w)-q(v)-q(w), 2) $
 ]
 
 #proof[
   $
     q(v+w)-q(v)-q(w) =g(v+w, v+w) - g(v,v) - g(w,w)
-    =_((1)) cancel(g(v,v), stroke: #(paint: teal)) + g(v,w) + g(w,v) + cancel(g(w,w), stroke: #(paint: teal)) - cancel(g(v,v)) - cancel(g(w,w))
+    =_((1)) cancel(g(v,v), stroke: #(paint: teal)) + g(v,w) + g(w,v) + cancel(g(w,w), stroke: #(paint: purple)) - cancel(g(v,v), stroke: #(paint: teal)) - cancel(g(w,w), stroke: #(paint: purple))
     =_((2)) 2g(v,w)
   $
   כאשר $(1)$ נובע מלינאריות ו־$(2)$ מסימטריה. נחלק ב־$2$ ונקבל את המבוקש.
 ]
 
 #corollary[
-  אם תבנית בילנארית סימטרית היא לא תבנית ה־$0$ אז גם התבנית הריבועית המתאימה לה היא לא תבנית ה־$0$.\
-  כלומר, אם $V$ מרחב וקטורי מעל $FF$, $g$ תבנית בילנארית סימטרית ששונה מתבנית ה־$0$ אזי קיים $v in V$ כך ש־$q(v)!=0$.
+  אם תבנית ביליניארית סימטרית היא לא תבנית ה־$0$ אז גם התבנית הריבועית המתאימה לה היא לא תבנית ה־$0$.\
+  כלומר, אם $V$ מרחב וקטורי מעל $FF$, $g$ תבנית ביליניארית סימטרית ששונה מתבנית ה־$0$ אזי קיים $v in V$ כך ש־$q(v)!=0$.
 ]
 
 #definition[ניצבות][
-  יהי $V$ מרחב וקטורי מעל $FF$, $g$ תבנית בילנארית סימטרית על $V$ ו־$v,w in V$. אומרים כי $v$ ו־$w$ ניצבים ומסמנים $v perp w$ כאשר $g(v,w)=0$.
+  יהי $V$ מרחב וקטורי מעל $FF$, $g$ תבנית ביליניארית סימטרית על $V$ ו־$v,w in V$. אומרים כי $v$ ו־$w$ ניצבים ומסמנים $v perp w$ כאשר $g(v,w)=0$.
 ]
 
 #definition[תת־מרחב ניצב][
-  יהי $V$ מרחב וקטורי מעל $FF$, $g$ תבנית בילנארית סימטרית על $V$ ו־$S subset.eq V$. נגדיר את תת־המרחב הניצב $S^perp$
+  יהי $V$ מרחב וקטורי מעל $FF$, $g$ תבנית ביליניארית סימטרית על $V$ ו־$S subset.eq V$. נגדיר את תת־המרחב הניצב $S^perp$
   $ S^perp colon.eq {w in V bar forall v in S, space v perp w} $
 ]
 
@@ -269,7 +268,7 @@
 ]
 
 #proposition[
-  יהי $V$ מרחב וקטורי מעל $FF$, $g$ תבנית בילנארית סימטרית על $V$ ויהי $v in V$ כך ש־$g(v,v)!=0$, אזי
+  יהי $V$ מרחב וקטורי מעל $FF$, $g$ תבנית ביליניארית סימטרית על $V$ ויהי $v in V$ כך ש־$g(v,v)!=0$, אזי
   + $dim{v}^perp = n-1$
   + ${v}^perp plus.o Span(v) = V$
 ]
@@ -286,28 +285,32 @@
 ]
 
 #definition[בסיס אורתוגונלי][
-  יהי $V$ מרחב וקטורי מעל $FF$, $g$ תבנית בילנארית סימטרית על $V$ ו־$B={v_1, dots.h, v_n }$ בסיס של $V$. $B$ נקרא אורתוגונלי כאשר $v_i perp v_j$ לכל $1<=i<j<=n$.
+  יהי $V$ מרחב וקטורי מעל $FF$, $g$ תבנית ביליניארית סימטרית על $V$ ו־$B={v_1, dots.h, v_n }$ בסיס של $V$. $B$ נקרא אורתוגונלי כאשר $v_i perp v_j$ לכל $1<=i<j<=n$.
 ]
 
 #proposition[
-  יהי $V$ מרחב וקטורי מעל $FF$ ו־$g$ תבנית בילנארית סימטרית על $V$. אז ב־$V$ קיים בסיס אורתוגונלי.
+  יהי $V$ מרחב וקטורי מעל $FF$ ו־$g$ תבנית ביליניארית סימטרית על $V$. אז ב־$V$ קיים בסיס אורתוגונלי.
 ]
 
 #proof[
   באינדוקציה על המימד של $V$, נסמן $dim V = n$.\
   בבסיס $n=1$ כל בסיס של $V$ הוא בסיס אורתוגונלי וכעת נניח כי הטענה נכונה עבור כל מרחב וקטורי שמימדו קטן מ־$n$ ויהי $V$ מרחב וקטורי שמימדו $n$.\
-  אם לכל $v in V$ מתקיים ש־$g(v,v)=0$ אזי $g(v,w)=0$ לכל $v,w in V$ מנוסחת הפלורליזציה ובפרט נקבל כי כל בסיס של $V$ הוא אורתוגונלי שכן אחרת קיים \
-  $v in V$ כך ש־$g(v,v)!=0$ ולפי הטענה הקודמת היה מתקיים שהמימד של ${v}^perp$ הוא $n-1$.\
-  מהנחת האינדוקציה ל־${v}^perp$ קיים בסיס אורתוגונלי $B^prime = {v_1, dots.h, v_(n-1)}$ ומהטענה הקודמת $B^prime plus.o {v} = V$ וגם $v perp v_i$ לכל $1<=i<=n-1$ ולכן \
-  $B={v_1, dots.h, v_(n-1), v}$ הוא בסיס אורתוגונלי.
+  אם לכל $v in V$ מתקיים ש־$g(v,v)=0$ אזי $g(v,w)=0$ לכל $v,w in V$ מנוסחת הפולריזציה ובפרט נקבל כי כל בסיס של $V$ הוא אורתוגונלי.\
+  אחרת, קיים $v in V$ כך ש־$g(v,v)!=0$ ולפי הטענה הקודמת מתקיים שהמימד של ${v}^perp$ הוא $n-1$ ומהנחת האינדוקציה ל־${v}^perp$ קיים בסיס אורתוגונלי \
+  $B^prime = {v_1, dots.h, v_(n-1)}$ ומהטענה הקודמת ${v}^perp plus.o {v} = V$ וגם $v perp v_i$ לכל $1<=i<=n-1$ ולכן $B={v_1, dots.h, v_(n-1), v}$ הוא בסיס אורתוגונלי.
 ]
 
 #proposition[
-  יהי $V$ מרחב וקטורי מעל $FF$, $g$ תבנית בילנארית סימטרית על $V$ ו־$B$ בסיס של $V$. אזי $B$ אורתוגונלי אם ורק אם מטריצת גראם $[g]_B$ אלכסונית.
+  יהי $V$ מרחב וקטורי מעל $FF$, $g$ תבנית ביליניארית סימטרית על $V$ ו־$B={v_1, dots.h}$ בסיס של $V$. אזי $B$ אורתוגונלי אם ורק אם מטריצת גראם $[g]_B$ אלכסונית.
+]
+
+#proof[
+  $<==$ נניח ש־$B$ בסיס אורתוגונלי ולכן לכל $i!=j$ מתקיים $v_i perp v_j$ כלומר $g(v_i, v_j) = 0$ ולכן כל הכניסות מחוץ לאלכסון של מטריצת גראם $[g]_B$ הן אפסים ולכן זאת מטריצת גראם אלכסונית.\
+  $==>$ נניח שמטריצת גראם $[g]_B$ אלכסונית ולכל $i!=j$ מתקיים $g(v_i, v_j) = g_(i,j) = 0$ ולכן $v_i perp v_j$, כלומר $B$ בסיס אורתוגונלי.
 ]
 
 #corollary[
-  יהי $V$ מרחב וקטורי מעל $FF$ ו־$g$ תבנית בילנארית סימטרית על $V$. אז קיים בסיס $B$ של $V$ כך ש־$[g]_B$ אלכסונית.
+  יהי $V$ מרחב וקטורי מעל $FF$ ו־$g$ תבנית ביליניארית סימטרית על $V$. אז קיים בסיס $B$ של $V$ כך ש־$[g]_B$ אלכסונית.
 ]
 
 #corollary[
@@ -323,11 +326,11 @@
 
 #definition[הומומורפיזם הקנוני][
   יהי $FF$ שדה ונסתכל על $(FF^times)^2 = {a^2 bar a in FF^times}$ זו תת־חבורה של $FF^times$ ביחס לכפל.\
-  נסמן ב־$pi: FF^times arrow frac(FF^times, (FF^times)^2, style: "skewed")$ ההומומורפיזם הקאנוני כלומר $pi(a)=a(FF^times)^2$ לכל $a in FF^times$.\
+  נסמן ב־$pi: FF^times arrow frac(FF^times, (FF^times)^2, style: "horizontal")$ ההומומורפיזם הקאנוני כלומר $pi(a)=a(FF^times)^2$ לכל $a in FF^times$.\
 ]
 
 #definition[קבוצת נציגים][
-  תת־קבוצה $R subset.eq FF^times$ תיקרא קבוצת נציגים כאשר $pi|_R : R arrow frac(FF^times, (FF^times)^2, style: "skewed")$ הוא חד־חד ערכי ועל.\
+  תת־קבוצה $R subset.eq FF^times$ תיקרא קבוצת נציגים כאשר $pi|_R : R arrow frac(FF^times, (FF^times)^2, style: "horizontal")$ הוא חד־חד ערכי ועל.\
 ]
 
 מעכשיו נקבע קבוצת נציגים $R$ כלשהי ב־$FF$.\
@@ -336,26 +339,26 @@
 ]
 
 #example[
-  + $FF=CC$ אז $(CC^times)^2 = CC^times$ ומתקיים $abs(frac(CC^times, (CC^times)^2, style: "skewed"))=1$ וניתן לבחור $R={1}$
-  + $FF=RR$ אז $(CC^times)^2 = {x in RR^times bar x>0}$ ומתקיים $abs(frac(RR^times, (RR^times)^2, style: "skewed"))=2$ וניתן לבחור $R={-1,1}$
+  + $FF=CC$ אז $(CC^times)^2 = CC^times$ ומתקיים $abs(frac(CC^times, (CC^times)^2, style: "horizontal"))=1$ וניתן לבחור $R={1}$
+  + $FF=RR$ אז $(CC^times)^2 = {x in RR^times bar x>0}$ ומתקיים $abs(frac(RR^times, (RR^times)^2, style: "horizontal"))=2$ וניתן לבחור $R={-1,1}$
 ]
 
 #proposition[
-  יהי $p$ ראשוני ו־$p!=2$ אז $abs(frac(FF_p^times, (FF_p^times)^2, style: "skewed"))=2$. יתר על־כן, לכל $r in FF_p^times without (FF_p^times)^2$ ניתן לבחור קבוצת נציגים להיות $R={1,r}$.
+  יהי $p$ ראשוני ו־$p!=2$ אז $abs(frac(FF_p^times, (FF_p^times)^2, style: "horizontal"))=2$. יתר על־כן, לכל $r in FF_p^times without (FF_p^times)^2$ ניתן לבחור קבוצת נציגים להיות $R={1,r}$.
 ]
 
 #proof[
   נגדיר $s:FF_p^times arrow FF_p^times$ על־ידי $s(a)=a^2$ לכל $a in FF_p^times$ והוא כמובן הומומורפיזם (של חבורות) וגם $im(s)=(FF_p^times)^2$.\
-  מתקיים $im(s) tilde.equiv frac(FF_p^times, ker s, style: "skewed")$ ובנוסף $x in ker s <==> s(x)=1 <==> x^2=1 <==> (x-1)(x+1)=0 <==> x in {-1, 1}$.\
+  מתקיים $im(s) tilde.equiv frac(FF_p^times, ker s, style: "horizontal")$ ובנוסף $x in ker s <==> s(x)=1 <==> x^2=1 <==> (x-1)(x+1)=0 <==> x in {-1, 1}$.\
   לכן $ker s = {1, -1}$ ומכאן $abs(ker s)=2$.
   לסיכום
   $
-    abs(frac(FF_p^times, (FF_p^times)^2, style: "skewed"))=abs(frac(FF_p^times, im(s), style: "skewed")) = abs(FF_p^times) : abs(im(s)) = abs(FF_p^times) : (abs(FF_p^times) : abs(ker s)) = abs(ker s)=2
+    abs(frac(FF_p^times, (FF_p^times)^2, style: "horizontal"))=abs(frac(FF_p^times, im(s), style: "horizontal")) = abs(FF_p^times) : abs(im(s)) = abs(FF_p^times) : (abs(FF_p^times) : abs(ker s)) = abs(ker s)=2
   $
 ]
 
 #proposition[
-  יהי $V$ מרחב וקטורי נוצר נוספית מעל $FF$, $g$ תבנית בילנארית סימטרית על $V$. אז קיים בסיס $cal(C)$ של $V$ כך ש־$[g]_(cal(C))$ אלכסונית ואיברי אלכסונה שייכים ל־$R union {0}$.
+  יהי $V$ מרחב וקטורי נוצר סופית מעל $FF$, $g$ תבנית ביליניארית סימטרית על $V$. אז קיים בסיס $cal(C)$ של $V$ כך ש־$[g]_(cal(C))$ אלכסונית ואיברי אלכסונה שייכים ל־$R union {0}$.
 ]
 
 #proof[
@@ -373,8 +376,7 @@
 ]
 
 #definition[פעולות עמודה אלמנטריות][
-  תהיי $epsilon$ פעולת שורה אלמנטרית על מטריצות מ־$M_n (FF)$.\
-  נסמן ב־$overline(epsilon)$ את פעולת עמודה אלמנטרית המתאימה, כלומר
+  תהיי $epsilon$ פעולת שורה אלמנטרית על מטריצות מ־$M_n (FF)$ ונסמן ב־$overline(epsilon)$ את פעולת עמודה אלמנטרית המתאימה, כלומר
   + אם $epsilon = R_i mapsto c R_i$ אז $overline(epsilon) = C_i mapsto c C_i$
   + אם $epsilon = R_i mapsto R_i + c R_j$ אז $overline(epsilon) = C_i mapsto C_i + c R_j$
   + אם $epsilon = R_i arrow.r.l R_j$ אז $overline(epsilon) = C_i arrow.r.l C_j$ (החלפת שורות/עמודות)
@@ -388,6 +390,8 @@
   תהיי $epsilon$ פעולת שורה אלמנטרית, $A in M_n (FF)$. אז $overline(epsilon)(A) = A epsilon(I_n)^t$ (למה זה מעניין? כי באלגברה לינארית רואים ש־$epsilon(A)=epsilon(I_n)A$).
 ]
 
+#pagebreak()
+
 #proof[
   $ overline(epsilon)(A) = (epsilon(A^t))^t = (epsilon(I_n) A^t)^t = A epsilon(I_n)^t $
 ]
@@ -397,21 +401,21 @@
 ]
 
 #proposition[
-  תהיי $g$ תבנית בילנארית סימטרית על $FF^n$ ונסמן את $[t]_cal(E)=A$ (כאשר $cal(E)$ הוא הבסיס הסטנדרטי).\
+  תהיי $g$ תבנית ביליניארית סימטרית על $FF^n$ ונסמן את $[t]_cal(E)=A$ (כאשר $cal(E)$ הוא הבסיס הסטנדרטי).\
   יהיו $epsilon_1, dots.h, epsilon_k$ פעולות שורה אלמנטריות ונסמן $D=overline(epsilon_k)(epsilon_k ( dots.h (overline(epsilon_1)(epsilon_1 (A)))))$ ו־$P=overline(epsilon_k)(dots.h(overline(epsilon_1)(I_n)))$.\
-  נסמן ב־$b_1, dots.h, b_n$ את העמודות של $P$ ו־$cal(B) = (b_1, dots.h, b_n)$ הוא בסיס של $FF^n$ וגם $[g]_cal(B)=D$.
+  נסמן ב־$b_1, dots.h, b_n$ את העמודות של $P$ אז $cal(B) = (b_1, dots.h, b_n)$ הוא בסיס של $FF^n$ וגם $[g]_cal(B)=D$.
 ]
 
 #proof[
   לפי הטענה לעיל מתקיים $P=I_n epsilon_1 (I_n)^t dots.h.c I_n epsilon_k (I_n)^t = epsilon_1 (I_n)^t dots.h.c epsilon_k (I_n)^t$ ובנוסף ברור כי $[Id_V]_cal(E)^cal(B) = P$ ולכן
   $
-    [g]_cal(B) = ([Id_V]_cal(C)^cal(B))^t [g]_cal(E) [Id_V]_cal(C)^cal(B) = P^t A P = (epsilon_1 (I_n)^t dots.h.c epsilon_k (I_n)^t)^t A epsilon_1 (I_n)^t dots.h.c epsilon_k (I_n)^t \
+    [g]_cal(B) = ([Id_V]_cal(C)^cal(B))^t [g]_cal(E) [Id_V]_cal(C)^cal(B) = P^t A P = (epsilon_1 (I_n)^t dots.h.c epsilon_k (I_n)^t)^t A (epsilon_1 (I_n)^t dots.h.c epsilon_k (I_n)^t) \
     = epsilon_k (I_n) dot.op dots.h.c dot.op epsilon_1 (I_n) A epsilon_1 (I_n)^t dot.op dots.h.c dot.op epsilon_k (I_n)^t = overline(epsilon_k)(epsilon_k (dots.h (overline(epsilon_1)(epsilon_1)(A)))) = D
   $
 ]
 
 #notation[
-  בהינתן תבנית ריבועית $q:V arrow FF$ על מרחב וקטורי $V$ נסמן ב־$g_q : V times V arrow FF$ את התבנית הבילנארית הסימטרית המקיימת $q(v)=g_q (v,v)$.
+  בהינתן תבנית ריבועית $q:V arrow FF$ על מרחב וקטורי $V$ נסמן ב־$g_q : V times V arrow FF$ את התבנית הביליניארית הסימטרית המקיימת $q(v)=g_q (v,v)$.
 ]
 
 #example[
@@ -419,7 +423,7 @@
   $ q vec(x_1, x_2, x_3) = 2x_1^2 + 8x_1x_2 + 8x_2^2 + 2x_2x_3 + x_3^2 $
   נמצא בסיס $cal(B)$ של $RR^3$ כך ש־$[g_q]_cal(B)$ אלכסונית ואיברי אלכסונה שייכים ל־${1,-1,0}$.  מתקיים
   $ g_q (vec(x_1, x_2, x_3), vec(y_1, y_2, y_3)) = 2x_1y_1 + 4x_1y_2 + 4x_2y_1 + 8x_2y_2 + x_2y_3 + x_3y_2 + x_3y_3 $
-  הצבה פשוטה מראה שמתקיים $g_q (vec(x_1, x_2, x_3), vec(x_1, x_2, x_3)) = q(vec(x_1, x_2, x_3))$ ועם (מטריצת גראם־שמידט) מתקיים גם־כן
+  הצבה פשוטה מראה שמתקיים $g_q (vec(x_1, x_2, x_3), vec(x_1, x_2, x_3)) = q(vec(x_1, x_2, x_3))$ ועם (מטריצת גראם) מתקיים גם־כן
   $ [g_q]_cal(E) = mat(2, 4, 0; 4, 8, 1; 0, 1, 1) $
   וזו גם מטריצה סימטרית, אז (פעולות שורה עושים רק על המטריצה למעלה ועל פעולות עמודה עושים על שניהם)
   $
@@ -444,8 +448,8 @@
 == מיון מרחבים ריבועיים
 
 #definition[מרחב ריבועי][
-  יהי $V$ מרחב וקטורי נוצר סופית מעל השדה $FF$, $q:V arrow FF$ תבנית ריבועית. הזוג $(V,q)$ נקרא מרחב ריבועי ונגדיר כי $(V,q)$ מרחב ריבועי מעל $FF$.\
-  בהינתן $(V,q)$ מרחב ריבועי, נסמן ב־$g_q$ את התבנית הבילנארית הסימטרית מעל $FF$ המקיימת $g_q (v,v)=q(v)$.
+  יהי $V$ מרחב וקטורי נוצר סופית מעל השדה $FF$, $q:V arrow FF$ תבנית ריבועית. הזוג $(V,q)$ נקרא מרחב ריבועי ונגיד כי $(V,q)$ מרחב ריבועי מעל $FF$.\
+  בהינתן $(V,q)$ מרחב ריבועי, נסמן ב־$g_q$ את התבנית הביליניארית הסימטרית מעל $FF$ המקיימת $g_q (v,v)=q(v)$.
 ]
 
 #definition[איזומטריה][
@@ -539,7 +543,8 @@
 
 #proof[
   $<==$ נניח כי המרחב מנוון ולכן קיים $0!=v in V^perp$ ונסמן $dim V = n$. אזי קיימים $v_2, dots.h, v_n in V$ כך ש־$cal(B)^prime = {v, v_2, dots.h, v_n}$ בסיס של $V$. אז העמודה הראשונה של $[g_q]_(cal(B)^prime)$ היא עמודת אפסים ולכן היא אינה הפיכה ומחפיפה עם $[g_q]_cal(B)$ נקבל את הנדרש.\
-  $==>$ נניח כי $[g_q]_cal(B)$ לא הפיכה ולכן קיים $(0, dots.h, 0) != (c_1, dots.h, c_n) in FF^n$ כך ש־$[g_q]_cal(B) vec(c_1, dots.v, c_n) = vec(0, dots.v, 0)$. נסמן $cal(B) = {v_1, dots.h, v_n}$ ונגדיר $w = c_1 v_1 + dots.h.c + c_n v_n$ ואז $[w]_cal(B) = vec(c_1, dots.v, c_n)$ ומכאן לכל $v in V$ מתקיים
+  $==>$ נניח כי $[g_q]_cal(B)$ לא הפיכה ולכן קיים $(0, dots.h, 0) != (c_1, dots.h, c_n) in FF^n$ כך ש־$[g_q]_cal(B) vec(c_1, dots.v, c_n) = vec(0, dots.v, 0)$.\
+  נסמן $cal(B) = {v_1, dots.h, v_n}$ ונגדיר $w = c_1 v_1 + dots.h.c + c_n v_n$ ואז $[w]_cal(B) = vec(c_1, dots.v, c_n)$ ומכאן לכל $v in V$ מתקיים
   $
     g_q (v, w) = ([v]_cal(B))^t [g_q]_cal(B) [w]_cal(B) = ([v]_cal(B))^t [g_q]_cal(B) vec(c_1, dots.v, c_n) = ([v]_cal(B))^t vec(0, dots.v, 0) = vec(0, dots.v, 0)
   $
@@ -555,16 +560,16 @@
 ]
 
 #proposition[
-  יהי $(V,q)$ מרחב ריבועי מעל $FF$, $W, V$ תתי־מרחבים של $V$ כך ש־$V = U plus.o^perp W$ ו־$(U, q|_U)$ לא מנוון ו־$q|_W (w) =0$ לכל $w in W$. אזי $V^perp = W$.
+  יהי $(V,q)$ מרחב ריבועי מעל $FF$, $W, V$ תתי־מרחבים של $V$ כך ש־$V = U plus.o^perp W$, $(U, q|_U)$ לא מנוון ו־$q|_W (w) =0$ לכל $w in W$. אזי $V^perp = W$.
 ]
 
 #proof[
   לכל $w in W$, נתון שלכל $v in V$ קיים $u^prime in U$ ו־$w^prime in W$ כך ש־$v=u^prime + w^prime$ ולכן
   $
-    g_q (v,w) = underbrace(g_q (u^prime, w), U plus.o^perp W ==> = 0) + underbrace(g_q (w^prime, w), "מפלורליזציה  " 0) = 0
+    g_q (v,w) = underbrace(g_q (u^prime, w), U plus.o^perp W ==> = 0) + underbrace(g_q (w^prime, w), "מפולריזציה  " 0) = 0
   $
   ולכן $w in V^perp$.\
-  כעת יהי $v in V^perp$ וקיימים $u in U$ ו־$w in W$ כך ש־$v=u+w$. נניח בשלילה כי $!=0$ אז מכיוון ש־$(U, q|_U)$ לא מנוון קיים $u^prime in U$ עבורו $g_q (u^prime, u) !=0$ ולכן
+  כעת יהי $v in V^perp$ וקיימים $u in U$ ו־$w in W$ כך ש־$v=u+w$. נניח בשלילה כי $u!=0$ אז מהיות $(U, q|_U)$ לא מנוון קיים $u^prime in U$ עבורו $g_q (u^prime, u) !=0$ ולכן
   $
     g_q (u^prime, v) = g_q (u^prime, u + w) = underbrace(g_q (u^prime, u), != 0) + underbrace(g_q (u^prime, w), =0) = g_q (u^prime, u) != 0
   $
@@ -583,7 +588,7 @@
     $
       g_q (v, u) = g_q (u^prime + w^prime, u) = underbrace(g_q (u^prime, u), =0) + underbrace(g_q (w^prime, u), =0) = 0
     $
-    ולכן $u in V^perp$ כלומר $u in V^perp inter U = {0_v}$ ולכן המרחב לא מנוון.
+    ולכן $u in V^perp$ כלומר $u in V^perp inter U = {0_V}$ ולכן המרחב לא מנוון.
 ]
 
 מעכשיו נתרכז במרחבים ריבועיים לא מנוונים.
@@ -611,7 +616,7 @@
 
 #proof[
   נניח בשלילה שקיים איזומורפיזם $f:(RR^n, q_1) arrow (RR^n, q_2)$.\
-  נסמן ב־$U = Span("e"_1, dots.h, "e"_ell)$, $V = Span("e"_(k+1), dots.h, "e"_n)$ ואת $W=f(V)$.\
+  נסמן $U = Span(e_1, dots.h, e_ell)$, $V = Span(e_(k+1), dots.h, e_n)$ ו־$W=f(V)$.\
   מתקיים ש־$dim U = ell$ ומכך ש־$f$ איזומורפיזם $dim W = dim V = n-k$.\
   מכאן נובע
   $ dim(U inter W) = dim U + dim W - dim(U + W) >= ell + (n-k) - n = ell - k >=1 $
@@ -679,8 +684,8 @@
 
 #proof[
   יהי $z in W$ בגרעין של $(W, q|_W)$ כלומר לכל $w in W$ מתקיים $g_q (z,w) = 0$.\
-  יהי $v in V$, מאחר ש־$V = Span(u) plus.o W$ נובע שקיימים $w in W, c in FF$ כך ש־$v=c u + w$ ומכאן
-  $ g_q (z,v) = c q_g (z,u) + g_q (z,w) = 0 $
+  יהי $v in V$, מאחר ש־$V = Span{u} plus.o W$ נובע שקיימים $w in W, c in FF$ כך ש־$v=c u + w$ ומכאן
+  $ g_q (z,v) = c g_q (z,u) + g_q (z,w) = 0 $
   כאשר $g_q (z,u)=0$ כי $z in W$ בגרעין ולכן $z in V^perp$ ומאחר ש־$(V,q)$ לא מנוון אנו מקבלים כי $z=0_V$ ולכן $(W, q|_W)$ לא מנוון.
 ]
 
@@ -722,236 +727,236 @@
 
 #example[
   עבור $p=7$ אז $q:FF_7^2 arrow FF_7$ אז $r = -1 in.not (FF_7^times)^2$ והתבנית $q vec(x_1, x_2) = -x_1^2-x_2^2$.\
-  מהמשפט קיים בסיס $cal(B)$ של $FF_7^2$ כך שמתקיים $[g_q]_cal(B) = mat(1, 0; 0, plus.minus 1)$.
+  מהמשפט קיים בסיס $cal(B)$ של $FF_7^2$ כך שמתקיים $[g_q]_cal(B) = mat(1, 0; 0, 1)$.
 ]
 
 #end_of_lecture("5 – 12/05")
 
-// == איזוטרפיות – לא בחומר
-// מוטיבציה: נסתכל על התבנית הריבועית $q:FF^2 arrow FF$ הנתונה על־ידי $q vec(x_1, x_2) = x_1^2-x_2^2$ והמרחב הריבועי עם התבנית הזאת הוא לא מנוון (המטריצה המייצגת הפיכה) אבל נניח הוקטור $q vec(1, 1)=0$ ותופעה כזאת נקראת איזוטרופיה והיא מעניינת.\
-// יהי $(V,q)$ מרחב ריבועי מעל $FF$ ויהי $v in V$ נגדיר $g_q^v : V arrow FF$ על־ידי $g_q^v (w) = g_q (v,w)$ ($g_q^v in Hom(V, FF)$), ו־$hat(g_q) : V arrow Hom(V, FF)$ על־ידי $hat(g_q)=g_q^v$.
+== איזוטרפיות – לא בחומר
+מוטיבציה: נסתכל על התבנית הריבועית $q:FF^2 arrow FF$ הנתונה על־ידי $q vec(x_1, x_2) = x_1^2-x_2^2$ והמרחב הריבועי עם התבנית הזאת הוא לא מנוון (המטריצה המייצגת הפיכה) אבל נניח הוקטור $q vec(1, 1)=0$ ותופעה כזאת נקראת איזוטרופיה והיא מעניינת.\
+יהי $(V,q)$ מרחב ריבועי מעל $FF$ ויהי $v in V$ נגדיר $g_q^v : V arrow FF$ על־ידי $g_q^v (w) = g_q (v,w)$ ($g_q^v in Hom(V, FF)$), ו־$hat(g_q) : V arrow Hom(V, FF)$ על־ידי $hat(g_q)=g_q^v$.
 
-// #proposition[
-//   יהי $(V,q)$ מרחב ריבועי מעל $FF$. אז $(V,q)$ לא מנוון אם ורק אם $hat(g_q)$ חד־חד ערכית.
-// ]
+#proposition[
+  יהי $(V,q)$ מרחב ריבועי מעל $FF$. אז $(V,q)$ לא מנוון אם ורק אם $hat(g_q)$ חד־חד ערכית.
+]
 
-// #proof[
-//   $(V,q)$ מנוון אם ורק אם קיים $0_V != v in V^perp$ אם ורק אם קיים $0_V != v in V$ כך ש־$g_q^v eq.triple 0$ אם ורק אם קיים $0_V != v in V$ כך ש־$hat(g_q)(v)=0$ אם ורק אם $ker hat(g_q) != {0_V}$ אם ורק אם $hat(g_q)$ אינה חד־חד ערכית.
-// ]
+#proof[
+  $(V,q)$ מנוון אם ורק אם קיים $0_V != v in V^perp$ אם ורק אם קיים $0_V != v in V$ כך ש־$g_q^v eq.triple 0$ אם ורק אם קיים $0_V != v in V$ כך ש־$hat(g_q)(v)=0$ אם ורק אם $ker hat(g_q) != {0_V}$ אם ורק אם $hat(g_q)$ אינה חד־חד ערכית.
+]
 
-// #lemma[
-//   יהי $V$ מרחב וקטורי נוצר סופית מעל $FF$ ו־$U$ תת־מרחב של $V$, נגדיר $rho_U : Hom(V, FF) arrow Hom(U, FF)$ על־ידי $rho_U (ell) = ell|_U$ לכל $ell in Hom(V, FF)$.\
-//   אז $rho_U$ העתקה לינארית על.
-// ]<lemma-to-prove>
+#lemma[
+  יהי $V$ מרחב וקטורי נוצר סופית מעל $FF$ ו־$U$ תת־מרחב של $V$, נגדיר $rho_U : Hom(V, FF) arrow Hom(U, FF)$ על־ידי $rho_U (ell) = ell|_U$ לכל $ell in Hom(V, FF)$.\
+  אז $rho_U$ העתקה לינארית על.
+]<lemma-to-prove>
 
-// #exercise[
-//   הוכיחו את @lemma-to-prove.
-// ]
+#exercise[
+  הוכיחו את @lemma-to-prove.
+]
 
-// #proposition[
-//   יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ ו־$U$ תת־מרחב של $V$. אז
-//   $ dim V = dim U + dim U^perp $
-// ]<dimension_perp_tehorem>
+#proposition[
+  יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ ו־$U$ תת־מרחב של $V$. אז
+  $ dim V = dim U + dim U^perp $
+]<dimension_perp_tehorem>
 
-// #proof[
-//   נתבונן בהעתקה הלינארית $rho_U compose hat(g_q) : V arrow Hom(U, FF)$ ויהי $v in V$.\
-//   אז $v in U^perp$ אם ורק אם $g_q^v |_U = 0$ אם ורק אם $phi_U compose hat(g_q) = 0_V$ אם ורק אם $v in ker phi_U compose hat(g_q)$ ולפיכך $U^perp = ker rho_U compose hat(g_q)$.\
-//   מאחר ש־$(V,q)$ לא מנוון נובע ש־$hat(g_q)$ חד־חד ערכית ולכן $hat(g_q)$ היא גם על ומכאן (למה?) ש־$rho_U compose hat(g_q)$ על כלומר $im rho_U compose hat(g_q) = Hom(U, FF)$ וממשפט המימדים נקבל
-//   $
-//     dim V = dim im rho_U compose hat(g_q) + dim ker rho_U compose hat(g_q) + dim Hom(U, FF) + dim U^perp = dim U + dim U^perp
-//   $
-// ]
+#proof[
+  נתבונן בהעתקה הלינארית $rho_U compose hat(g_q) : V arrow Hom(U, FF)$ ויהי $v in V$.\
+  אז $v in U^perp$ אם ורק אם $g_q^v |_U = 0$ אם ורק אם $phi_U compose hat(g_q) = 0_V$ אם ורק אם $v in ker phi_U compose hat(g_q)$ ולפיכך $U^perp = ker rho_U compose hat(g_q)$.\
+  מאחר ש־$(V,q)$ לא מנוון נובע ש־$hat(g_q)$ חד־חד ערכית ולכן $hat(g_q)$ היא גם על ומכאן (למה?) ש־$rho_U compose hat(g_q)$ על כלומר $im rho_U compose hat(g_q) = Hom(U, FF)$ וממשפט המימדים נקבל
+  $
+    dim V = dim im rho_U compose hat(g_q) + dim ker rho_U compose hat(g_q) + dim Hom(U, FF) + dim U^perp = dim U + dim U^perp
+  $
+]
 
-// #proposition[
-//   יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ ו־$U$ תת־מרחב של $V$. אז $(U^perp)^perp = U$.
-// ]
+#proposition[
+  יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ ו־$U$ תת־מרחב של $V$. אז $(U^perp)^perp = U$.
+]
 
-// #proof[
-//   יהי $u in U$. לכל $w in U^perp$ מתקיים ש־$u perp w$ ולכן $u in (U^perp)^perp$ ולפיכך $U subset.eq (U^perp)^perp$ וזה נכון בכל מרחב ריבועי ולפי @dimension_perp_tehorem מתקיים
-//   $ dim (U^perp)^perp = dim V - dim U^perp = dim V - (dim V - dim U) = dim U $
-// ]
+#proof[
+  יהי $u in U$. לכל $w in U^perp$ מתקיים ש־$u perp w$ ולכן $u in (U^perp)^perp$ ולפיכך $U subset.eq (U^perp)^perp$ וזה נכון בכל מרחב ריבועי ולפי @dimension_perp_tehorem מתקיים
+  $ dim (U^perp)^perp = dim V - dim U^perp = dim V - (dim V - dim U) = dim U $
+]
 
-// #exercise[
-//   מתי ההכלה השנייה שהוכחנו לעיל לא מתקיימת?
-// ]
+#exercise[
+  מתי ההכלה השנייה שהוכחנו לעיל לא מתקיימת?
+]
 
-// #proposition[
-//   יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ ו־$U$ תת־מרחב של $V$. אז $(U, q|_U)$ $cancel("לא")$ מנוון אם ורק אם $(U^perp, q|_(U^perp))$ $cancel("לא")$ מנוון.
-// ]
+#proposition[
+  יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ ו־$U$ תת־מרחב של $V$. אז $(U, q|_U)$ $cancel("לא")$ מנוון אם ורק אם $(U^perp, q|_(U^perp))$ $cancel("לא")$ מנוון.
+]
 
-// #proof[
-//   $<==$ $(U, q|_U)$ מנוון ולכן קיים $0 != v in U$ כך ש־$v perp u$ לכל $u in U$ ולכן $v in U^perp$.\
-//   מאחר ש־$v in U$ מתקיים ש־$v perp w$ לכל $w in U^perp$ וזה אומר כי $(U^perp, q|_(U^perp))$ מנוון. \
-//   $==>$ מכך ש־$(U^perp, q|_(U^perp))$ מנוון נובע כי $((U^perp)^perp, q|_((U^perp)^perp))$ גם מנוון ולפי הטענה הקודמת אנחנו מקבלים כי $(U, q|_U)$ מנוון.
-// ]
+#proof[
+  $<==$ $(U, q|_U)$ מנוון ולכן קיים $0 != v in U$ כך ש־$v perp u$ לכל $u in U$ ולכן $v in U^perp$.\
+  מאחר ש־$v in U$ מתקיים ש־$v perp w$ לכל $w in U^perp$ וזה אומר כי $(U^perp, q|_(U^perp))$ מנוון. \
+  $==>$ מכך ש־$(U^perp, q|_(U^perp))$ מנוון נובע כי $((U^perp)^perp, q|_((U^perp)^perp))$ גם מנוון ולפי הטענה הקודמת אנחנו מקבלים כי $(U, q|_U)$ מנוון.
+]
 
-// #proposition[
-//   יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ ו־$U$ תת־מרחב של $V$ כך ש־$(U, q|_U)$ לא מנוון אז
-//   + $(U^perp, q|_(U^perp))$ לא מנוון
-//   + $V = U plus.o^perp U$
-// ]
+#proposition[
+  יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ ו־$U$ תת־מרחב של $V$ כך ש־$(U, q|_U)$ לא מנוון אז
+  + $(U^perp, q|_(U^perp))$ לא מנוון
+  + $V = U plus.o^perp U$
+]
 
-// #proof[
-//   + נובע מהטענה הקודמת
-//   + יהי $v in U inter U^perp$ ונרצה להראות שהוא וקטור האפס: מאחר ש־$v in U^perp$ מתקיים ש־$v perp u$ לכל $u in U$ ובגלל ש־$v in U$ נובע ש־$v$ בגרעין של $(U, q|_U)$ אבל $(U, q|_U)$ הוא לא מנוון ולכן הגרעין שלו הוא וקטור האפס כלומר $v=0_V$ ולכן $U inter U^perp = 0$. לסיום
-//   $ dim(U + U^perp) = underbrace(dim U + dim U^perp, dim V) - underbrace(dim(U inter U^perp), 0) = dim V $
-// ]
+#proof[
+  + נובע מהטענה הקודמת
+  + יהי $v in U inter U^perp$ ונרצה להראות שהוא וקטור האפס: מאחר ש־$v in U^perp$ מתקיים ש־$v perp u$ לכל $u in U$ ובגלל ש־$v in U$ נובע ש־$v$ בגרעין של $(U, q|_U)$ אבל $(U, q|_U)$ הוא לא מנוון ולכן הגרעין שלו הוא וקטור האפס כלומר $v=0_V$ ולכן $U inter U^perp = 0$. לסיום
+  $ dim(U + U^perp) = underbrace(dim U + dim U^perp, dim V) - underbrace(dim(U inter U^perp), 0) = dim V $
+]
 
-// #definition[וקטור איזוטרופי][
-//   יהי $(V,q)$ מרחב ריבועי מעל $FF$ ו־$0_V != v in V$ אז $v$ נקרא *איזוטרופי* אם $q(v)=0$.
-// ]
+#definition[וקטור איזוטרופי][
+  יהי $(V,q)$ מרחב ריבועי מעל $FF$ ו־$0_V != v in V$ אז $v$ נקרא *איזוטרופי* אם $q(v)=0$.
+]
 
-// #definition[מרחב ריבועי איזוטרופי][
-//   מרחב ריבועי $(V,q)$ נקרא *מרחב איזוטרופי* אם קיים $0_V != v in V$ כך ש־$v$ איזוטרופי. כלומר, $0 in q(V without {0_V})$.
-// ]
+#definition[מרחב ריבועי איזוטרופי][
+  מרחב ריבועי $(V,q)$ נקרא *מרחב איזוטרופי* אם קיים $0_V != v in V$ כך ש־$v$ איזוטרופי. כלומר, $0 in q(V without {0_V})$.
+]
 
-// #corollary[
-//   כל מרחב ריבועי מנוון הוא איזוטרופי.
-// ]
+#corollary[
+  כל מרחב ריבועי מנוון הוא איזוטרופי.
+]
 
-// #definition[מישור היפרבולי][
-//   נגדיר תבנית ריבועית $h:FF^2 arrow FF$ על־ידי $h vec(x_1, x_2) = x_1 x_2$. מרחב ריבועי $(FF^2, h)$ נקרא *מישור היפרבולי*.
-// ]
+#definition[מישור היפרבולי][
+  נגדיר תבנית ריבועית $h:FF^2 arrow FF$ על־ידי $h vec(x_1, x_2) = x_1 x_2$. מרחב ריבועי $(FF^2, h)$ נקרא *מישור היפרבולי*.
+]
 
-// #proposition[
-//   + $[g_h]_cal(E) = mat(0, 1/2; 1/2, 0)$
-//   + $det [g_h]_cal(E) = -1/4$ ובפרט $(FF^2, h)$ לא מנוון
-//   + $h$ תבנית איזוטרופית ובפרט $(FF^2, h)$ איזוטרופי
-//   + $h(FF^2 without {vec(0, 0)})=FF$
-//   + נגדיר $q:FF^2 arrow FF$ על־ידי $q vec(x_1, x_2) = x_1^2-x_2^2$ אז $(FF^2, h) tilde.equiv (FF^2, q)$
-// ]
+#proposition[
+  + $[g_h]_cal(E) = mat(0, 1/2; 1/2, 0)$
+  + $det [g_h]_cal(E) = -1/4$ ובפרט $(FF^2, h)$ לא מנוון
+  + $h$ תבנית איזוטרופית ובפרט $(FF^2, h)$ איזוטרופי
+  + $h(FF^2 without {vec(0, 0)})=FF$
+  + נגדיר $q:FF^2 arrow FF$ על־ידי $q vec(x_1, x_2) = x_1^2-x_2^2$ אז $(FF^2, h) tilde.equiv (FF^2, q)$
+]
 
-// #proof[
-//   + נובע מכך ש־$h vec(x_1, x_2) = x_1 x_2 = 1/2 x_1 x_2 + 1/2 x_2 x_1$
-//   + הגדרה
-//   + $h vec(1, 0) = 0$
-//   + לכל $c in FF$ מתקיים $h vec(1, c) = c$
-//   + עם חפיפת מטריצות ישירה $ mat(1, 1; -1, 1) mat(0, frac(1, 2, style: "horizontal"); frac(1, 2, style: "horizontal"), 0) mat(1, -1; 1, 1) = mat(1, 0; 0, -1) $
-// ]
+#proof[
+  + נובע מכך ש־$h vec(x_1, x_2) = x_1 x_2 = 1/2 x_1 x_2 + 1/2 x_2 x_1$
+  + הגדרה
+  + $h vec(1, 0) = 0$
+  + לכל $c in FF$ מתקיים $h vec(1, c) = c$
+  + עם חפיפת מטריצות ישירה $ mat(1, 1; -1, 1) mat(0, frac(1, 2, style: "horizontal"); frac(1, 2, style: "horizontal"), 0) mat(1, -1; 1, 1) = mat(1, 0; 0, -1) $
+]
 
-// #proposition[
-//   יהי $(V,q)$ מרחב ריבועי לא מנוון ואיזוטרופי מעל $FF$. אז קיים תת־מרחב $U$ של $V$ כך ש־$(U, q|_U) tilde.equiv (FF^2, h)$.
-// ]
+#proposition[
+  יהי $(V,q)$ מרחב ריבועי לא מנוון ואיזוטרופי מעל $FF$. אז קיים תת־מרחב $U$ של $V$ כך ש־$(U, q|_U) tilde.equiv (FF^2, h)$.
+]
 
-// #proof[
-//   מאחר ש־$(V,q)$ איזוטרופי קיים $0_V != v in V$ כך ש־$q(v)=0$ ומאחר ש־$(V,q)$ לא מנוון קיים $w in V$ כך ש־$g_q (v,w) != 0$.\
-//   נסמן $b=g_q (v,w)$ ונגדיר $w^prime = 1/(2b)$ ונקבל $g_q (v,w^prime) = 1/(2b) g_q (v,w) = 1/2$.\
-//   לכל $c in FF$ מתקיים
-//   $
-//     q(w^prime + c v) = g_q (w^prime + c v, w^prime + c v) = g_q (w^prime, w^prime) + 2 g_q (w^prime, c v) = g (w^prime) + 2c underbrace(g_q (w^prime, v), = 1/2) = g(w^prime) + c
-//   $
-//   אז נגדיר $c=-g(w^prime)$ ו־$u=w^prime - q(w^prime) v$ אז $g(u)=0$ ובנוסף מתקיים
-//   $ g_q (v,u) = g_q (v, w^prime c v) = g_q (v, w^prime) = 1/2 $
-//   עכשיו $cal(B) = (v,u)$ היא סדרה בלתי־תלויה לינארית (כי אחרת היינו מקבלים ש־$g_q (v,u)=0$) ונגדיר $U = Span(U)$ אז $cal(B)$ בסיס של $U$ ומתקיים $ [g_q|_U] = mat(0, frac(1, 2, style: "horizontal"); frac(1, 2, style: "horizontal")) $
-//   ולכן $(U, q|_U) tilde.equiv (FF^2, h)$
-// ]
+#proof[
+  מאחר ש־$(V,q)$ איזוטרופי קיים $0_V != v in V$ כך ש־$q(v)=0$ ומאחר ש־$(V,q)$ לא מנוון קיים $w in V$ כך ש־$g_q (v,w) != 0$.\
+  נסמן $b=g_q (v,w)$ ונגדיר $w^prime = 1/(2b)$ ונקבל $g_q (v,w^prime) = 1/(2b) g_q (v,w) = 1/2$.\
+  לכל $c in FF$ מתקיים
+  $
+    q(w^prime + c v) = g_q (w^prime + c v, w^prime + c v) = g_q (w^prime, w^prime) + 2 g_q (w^prime, c v) = g (w^prime) + 2c underbrace(g_q (w^prime, v), = 1/2) = g(w^prime) + c
+  $
+  אז נגדיר $c=-g(w^prime)$ ו־$u=w^prime - q(w^prime) v$ אז $g(u)=0$ ובנוסף מתקיים
+  $ g_q (v,u) = g_q (v, w^prime c v) = g_q (v, w^prime) = 1/2 $
+  עכשיו $cal(B) = (v,u)$ היא סדרה בלתי־תלויה לינארית (כי אחרת היינו מקבלים ש־$g_q (v,u)=0$) ונגדיר $U = Span(U)$ אז $cal(B)$ בסיס של $U$ ומתקיים $ [g_q|_U] = mat(0, frac(1, 2, style: "horizontal"); frac(1, 2, style: "horizontal")) $
+  ולכן $(U, q|_U) tilde.equiv (FF^2, h)$
+]
 
-// #corollary[
-//   יהי $(V,q)$ מרחב ריבועי לא מנוון ואיזוטרופי מעל $FF$ כך ש־$dim V = 2$. אז $(V,q) tilde.equiv (FF^2, h)$.
-// ]
+#corollary[
+  יהי $(V,q)$ מרחב ריבועי לא מנוון ואיזוטרופי מעל $FF$ כך ש־$dim V = 2$. אז $(V,q) tilde.equiv (FF^2, h)$.
+]
 
-// #corollary[
-//   יהי $(V,q)$ מרחב ריבועי לא מנוון ואיזוטרופי מעל $FF$. אז $q(V without {0_V}) = FF$.
-// ]
+#corollary[
+  יהי $(V,q)$ מרחב ריבועי לא מנוון ואיזוטרופי מעל $FF$. אז $q(V without {0_V}) = FF$.
+]
 
-// #theorem[
-//   יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$. אז קיים $m in NN union {0}$ ותתי־מרחבים $U_1, dots.h, U_m, W$ של $V$ כך שמתקיים
-//   + $V = U_1 plus.o^perp dots.h plus.o^perp U_m plus.o^perp W$
-//   + לכל $i <=m$ מתקיים $(U_i, q|_(U_i)) tilde.equiv (FF^2, h)$ ו־$(W, q|_W)$ אינו איזוטרופי
-// ]
+#theorem[
+  יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$. אז קיים $m in NN union {0}$ ותתי־מרחבים $U_1, dots.h, U_m, W$ של $V$ כך שמתקיים
+  + $V = U_1 plus.o^perp dots.h plus.o^perp U_m plus.o^perp W$
+  + לכל $i <=m$ מתקיים $(U_i, q|_(U_i)) tilde.equiv (FF^2, h)$ ו־$(W, q|_W)$ אינו איזוטרופי
+]
 
-// #proof[
-//   מתקבלת באינדוקציה על מימד $V$ בשימוש עם הטענה הקודמת ובטענה $1.25$.
-// ]
+#proof[
+  מתקבלת באינדוקציה על מימד $V$ בשימוש עם הטענה הקודמת ובטענה $1.25$.
+]
 
-// #end_of_lecture("6 – 19/05")
+#end_of_lecture("6 – 19/05")
 
-// #definition[מרחב אנאיזוטרופי][מרחב ריבועי $(V,q)$ שאינו איזוטרופי נקרא אנאיזוטרופי.]
+#definition[מרחב אנאיזוטרופי][מרחב ריבועי $(V,q)$ שאינו איזוטרופי נקרא אנאיזוטרופי.]
 
-// #remark[
-//   מרחב ריבועי $({0_V}, Q)$ היינו אנאיזוטרופי.
-// ]
+#remark[
+  מרחב ריבועי $({0_V}, Q)$ היינו אנאיזוטרופי.
+]
 
-// #proposition[
-//   יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ כך ש־$dim V = 1$ אז $(V,q)$ אנאיזוטרופי.
-// ]
+#proposition[
+  יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ כך ש־$dim V = 1$ אז $(V,q)$ אנאיזוטרופי.
+]
 
-// #proof[
-//   כי אם הוא לא מנוון, יש לו בסיס מוקטור אחד שביחס אליו המטריצה היא מטריצה $1 times 1$ שצריכה להיות הפיכה כלומר יש לה ערך אחד שאינו אפס אז כל וקטור הוא סקלר של וקטור הבסיס ששונה מאפס והטענה נובעת.
-// ]
+#proof[
+  כי אם הוא לא מנוון, יש לו בסיס מוקטור אחד שביחס אליו המטריצה היא מטריצה $1 times 1$ שצריכה להיות הפיכה כלומר יש לה ערך אחד שאינו אפס אז כל וקטור הוא סקלר של וקטור הבסיס ששונה מאפס והטענה נובעת.
+]
 
-// #proposition[
-//   יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ כך ש־$dim V = 2$ ו־$cal(B)$ הוא בסיס של $V$. אז $(V,q)$ איזוטרופי אם ורק אם $minus det [g_q]_cal(B) in (FF^times)^2$.
-// ]
+#proposition[
+  יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ כך ש־$dim V = 2$ ו־$cal(B)$ הוא בסיס של $V$. אז $(V,q)$ איזוטרופי אם ורק אם $minus det [g_q]_cal(B) in (FF^times)^2$.
+]
 
-// #proof[
-//   $<==$ נניח שהמרחב הוא איזוטרופי ולכן קיים $0_V != v in V$ כך ש־$q(v)=0$.\
-//   מאחר ש־$(V,q)$ לא מנוון קיים $w in V$ כך ש־$g_q (v,w) !=0$ ולכן $cal(C)=(v,w)$ בלתי־תלויים לינארית כי אחרת היינו מקבלים ש־$g_q (v,w) =0$.\
-//   נסמן $g_q (v,w) = b$ ו־$g_q (w,w) = q(w) = c$ אז
-//   $ [g_q]_cal(C) = mat(0, b; b, c) $
-//   מאחר ש־$[g_q]_cal(C)$ ו־$[g_q]_cal(B)$ חופפות קיימת מטריצה $P$ הפיכה עבורה מתקיים
-//   $ [g_q]_cal(B) = P^t [g_q]_cal(C) P $
-//   ולכן
-//   $
-//     -det [g_q]_cal(B) = - det P^t det [g_q]_cal(C) det P = -(det P)^2 det [g_q]_cal(C) = -(det P^2) (-b^2) = (b det P)^2 in (FF^times)^2
-//   $
-//   $==>$ יהי $cal(C) = (v_1, v_2)$ בסיס אורתוגונלי של $V$ אז קיימים $a_1, a_2 in FF^times$ עבורם
-//   $ [g_q]_cal(C) = mat(a_1, 0; 0, a_2) $
-//   קיימת $P$ הפיכה עבורה מתקיים
-//   $ [g_q]_cal(C) = P^t [g_q]_cal(B) P $
-//   מאחר ש־$-det [g_q]_cal(B) in (FF^times)^2$ קיים $k in FF^times$ כך ש־$det [g_q]_cal(B) = -k^2$ ועל־כן
-//   $ a_1 a_2 = det mat(a_1, 0; 0, a_2) = det [g_q]_cal(C) = det P^t det[g_q]_cal(B) det P = -(k det P)^2 $
-//   נגדיר $v = k det P v_1 + a_1 v_2$ מאחר ש־$a_1 !=0$ מתקיים $v!=0_V$ ולכן
-//   $
-//     q(v) & =q(k det P v_1 + a_1 v_2) \
-//          & = q(k det P v_1) + g(a_1 v_2) \
-//          & = (k det P)^2 q(v_1)+a_1^2 q(v_2) \
-//          & = (k det P)^2 a_1 + a_1^2 a_2 \
-//          & = a_1 (underbrace((k det P)^2, =-a_1 a_2)+a_1a_2) \
-//          & = 0
-//   $
-// ]
+#proof[
+  $<==$ נניח שהמרחב הוא איזוטרופי ולכן קיים $0_V != v in V$ כך ש־$q(v)=0$.\
+  מאחר ש־$(V,q)$ לא מנוון קיים $w in V$ כך ש־$g_q (v,w) !=0$ ולכן $cal(C)=(v,w)$ בלתי־תלויים לינארית כי אחרת היינו מקבלים ש־$g_q (v,w) =0$.\
+  נסמן $g_q (v,w) = b$ ו־$g_q (w,w) = q(w) = c$ אז
+  $ [g_q]_cal(C) = mat(0, b; b, c) $
+  מאחר ש־$[g_q]_cal(C)$ ו־$[g_q]_cal(B)$ חופפות קיימת מטריצה $P$ הפיכה עבורה מתקיים
+  $ [g_q]_cal(B) = P^t [g_q]_cal(C) P $
+  ולכן
+  $
+    -det [g_q]_cal(B) = - det P^t det [g_q]_cal(C) det P = -(det P)^2 det [g_q]_cal(C) = -(det P^2) (-b^2) = (b det P)^2 in (FF^times)^2
+  $
+  $==>$ יהי $cal(C) = (v_1, v_2)$ בסיס אורתוגונלי של $V$ אז קיימים $a_1, a_2 in FF^times$ עבורם
+  $ [g_q]_cal(C) = mat(a_1, 0; 0, a_2) $
+  קיימת $P$ הפיכה עבורה מתקיים
+  $ [g_q]_cal(C) = P^t [g_q]_cal(B) P $
+  מאחר ש־$-det [g_q]_cal(B) in (FF^times)^2$ קיים $k in FF^times$ כך ש־$det [g_q]_cal(B) = -k^2$ ועל־כן
+  $ a_1 a_2 = det mat(a_1, 0; 0, a_2) = det [g_q]_cal(C) = det P^t det[g_q]_cal(B) det P = -(k det P)^2 $
+  נגדיר $v = k det P v_1 + a_1 v_2$ מאחר ש־$a_1 !=0$ מתקיים $v!=0_V$ ולכן
+  $
+    q(v) & =q(k det P v_1 + a_1 v_2) \
+         & = q(k det P v_1) + g(a_1 v_2) \
+         & = (k det P)^2 q(v_1)+a_1^2 q(v_2) \
+         & = (k det P)^2 a_1 + a_1^2 a_2 \
+         & = a_1 (underbrace((k det P)^2, =-a_1 a_2)+a_1a_2) \
+         & = 0
+  $
+]
 
-// #example[
-//   + $FF=CC$ מעל המרוכבים כל מספר הוא ריבוע כלשהו.\
-//     נבחין שאם $(V,q)$ מרחב ריבועי לא מנוון מעל $CC$ עם $dim V >=2$, אז קיים תת־מרחב $U$ של $V$ כך ש־$(U, q|_U)$ לא מנוון וגם $dim U = 2$.\
-//     לפיכך, כל מרחב ריבועי אנאיזוטרופי לא טריוויאלי מעל $CC$ איזומורפי ל־$(CC,q)$ כאשר $q:CC arrow CC$ מוגדר על־ידי $g(x)=x^2$
-//   + $FF=RR$
-//     כל מרחב ריבועי אנאיזוטרופי לא טריוויאלי מעל $RR$ איזומורפי לאחד מהמרחבים הבאים
-//     + $(RR^n, q_1)$ כאשר $q_1 vec(x_1, dots.v, x_n) = sum_(i=1)^n x_i^2$
-//     + $(RR^n, q_(-1))$ כאשר $q_(-1) vec(x_1, dots.v, x_n) = sum_(i=1)^n -x_i^2$
-//   + $FF = FF_p$ כאשר $p!=2$ ראשוני
-//     + יהי $p!=2$ ראשוני כך ש־$-1 in.not (FF_p^times)^2$. אז כל מרחב אנאיזוטרופי לא טריוויאלי מעל $FF_p$ איזומורפי לאחד מהמרחבים הבאים
-//       + $(FF_p, q_1)$ כאשר $q_1 : FF_p arrow FF_p$ מוגדר על־ידי $q_1 (x) = x^2$
-//       + $(FF_p, q_(-1))$ כאשר $q_(-1) : FF_p arrow FF_p$ מוגדר על־ידי $g_(-1) (x) = -x^2$
-//       + $(FF_p^2, q_(1,1))$ כאשר $q_(1,1) : FF_p^2 arrow FF_p$ מוגדר על־ידי $q_(1,1) vec(x_1, x_2) = x_1^2 + x_2^2$
-//       כאשר השניים הראשונים ממימד 1 והאחרון ממימד 2.
-//     + יהי $p!=2$ ראשוני כך ש־$-1 in (FF_p^times)^2$ ויהי $r in FF_p^times without (FF_p^times)^2$.\
-//       אז כל מרחב אנאיזוטרופי לא טריוויאלי מעל $FF_p$ איזומורפי לאחד מהמרחבים הבאים
-//       + $(FF_p, q_1)$ כמקודם $q_1 (x) = x^2$
-//       + $(FF_p, q_r)$ כאשר $q_r : FF_p arrow FF_p$ מוגדרת על־ידי $q_r (x) = r x^2$
-//       + $(FF_p, q_(1,r))$ כאשר $q_(1,r) : FF_p^2 arrow FF_p$ מוגדרת על־ידי $q_(1,r) vec(x_1, x_2) = x_1^2 + r x_2^2$
-// ]
+#example[
+  + $FF=CC$ מעל המרוכבים כל מספר הוא ריבוע כלשהו.\
+    נבחין שאם $(V,q)$ מרחב ריבועי לא מנוון מעל $CC$ עם $dim V >=2$, אז קיים תת־מרחב $U$ של $V$ כך ש־$(U, q|_U)$ לא מנוון וגם $dim U = 2$.\
+    לפיכך, כל מרחב ריבועי אנאיזוטרופי לא טריוויאלי מעל $CC$ איזומורפי ל־$(CC,q)$ כאשר $q:CC arrow CC$ מוגדר על־ידי $g(x)=x^2$
+  + $FF=RR$
+    כל מרחב ריבועי אנאיזוטרופי לא טריוויאלי מעל $RR$ איזומורפי לאחד מהמרחבים הבאים
+    + $(RR^n, q_1)$ כאשר $q_1 vec(x_1, dots.v, x_n) = sum_(i=1)^n x_i^2$
+    + $(RR^n, q_(-1))$ כאשר $q_(-1) vec(x_1, dots.v, x_n) = sum_(i=1)^n -x_i^2$
+  + $FF = FF_p$ כאשר $p!=2$ ראשוני
+    + יהי $p!=2$ ראשוני כך ש־$-1 in.not (FF_p^times)^2$. אז כל מרחב אנאיזוטרופי לא טריוויאלי מעל $FF_p$ איזומורפי לאחד מהמרחבים הבאים
+      + $(FF_p, q_1)$ כאשר $q_1 : FF_p arrow FF_p$ מוגדר על־ידי $q_1 (x) = x^2$
+      + $(FF_p, q_(-1))$ כאשר $q_(-1) : FF_p arrow FF_p$ מוגדר על־ידי $g_(-1) (x) = -x^2$
+      + $(FF_p^2, q_(1,1))$ כאשר $q_(1,1) : FF_p^2 arrow FF_p$ מוגדר על־ידי $q_(1,1) vec(x_1, x_2) = x_1^2 + x_2^2$
+      כאשר השניים הראשונים ממימד 1 והאחרון ממימד 2.
+    + יהי $p!=2$ ראשוני כך ש־$-1 in (FF_p^times)^2$ ויהי $r in FF_p^times without (FF_p^times)^2$.\
+      אז כל מרחב אנאיזוטרופי לא טריוויאלי מעל $FF_p$ איזומורפי לאחד מהמרחבים הבאים
+      + $(FF_p, q_1)$ כמקודם $q_1 (x) = x^2$
+      + $(FF_p, q_r)$ כאשר $q_r : FF_p arrow FF_p$ מוגדרת על־ידי $q_r (x) = r x^2$
+      + $(FF_p, q_(1,r))$ כאשר $q_(1,r) : FF_p^2 arrow FF_p$ מוגדרת על־ידי $q_(1,r) vec(x_1, x_2) = x_1^2 + r x_2^2$
+]
 
-// #proposition[
-//   יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF_p$ כך ש־$dim V >=3$. אז $(V,q)$ איזוטרופי.
-// ]
+#proposition[
+  יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF_p$ כך ש־$dim V >=3$. אז $(V,q)$ איזוטרופי.
+]
 
-// #proof[
-//   קיים בסיס אורתוגונלי $cal(B)=(v_1, dots.h, v_n)$ של $V$ כלומר קיימים $a_1, dots.h, a_n in FF_p^times$ כך שמתקיים
-//   $
-//     [g_q]_cal(B) = mat(
-//       a_1, , 0;
-//       , dots.down, ; 0, , a_n
-//     )
-//   $
-//   נגדיר תבנית ריבועית $g^prime : FF_p^2 arrow FF_p$ על־ידי $g^prime vec(x_1, x_2) = a_1 x_1^2 + a_2 x_2^2$ ולכן $ [g_(q^prime)]_cal(E) = mat(a_1, 0; 0, a_2) $
-//   ולכן $(FF_p^2, q^prime)$ לא מנוון ולכן קיים $vec(x)1, x_2) in FF_p^2$ כך ש־$a_1x_1^2+a_2x_2^2 = g^prime vec(x_1, x_2) = - a_3$.\
-//   נגדיר $v=x_1 v_1 + x_2 v_2 + v_3$ וברור ש־$v!=0$. בנוסף
-//   $
-//     q(v)=q(x_1v_1)+q(x_2v_2)+q(v_3) = x_1^2 q(v_1) + x_2^2 q(v_2) + q(v_3) = a_1 x_1^2+a_2x_2^2 + a_3 = -a_3 + a_3 = 0
-//   $
-// ]
+#proof[
+  קיים בסיס אורתוגונלי $cal(B)=(v_1, dots.h, v_n)$ של $V$ כלומר קיימים $a_1, dots.h, a_n in FF_p^times$ כך שמתקיים
+  $
+    [g_q]_cal(B) = mat(
+      a_1, , 0;
+      , dots.down, ; 0, , a_n
+    )
+  $
+  נגדיר תבנית ריבועית $g^prime : FF_p^2 arrow FF_p$ על־ידי $g^prime vec(x_1, x_2) = a_1 x_1^2 + a_2 x_2^2$ ולכן $ [g_(q^prime)]_cal(E) = mat(a_1, 0; 0, a_2) $
+  ולכן $(FF_p^2, q^prime)$ לא מנוון ולכן קיים $vec(x)1, x_2) in FF_p^2$ כך ש־$a_1x_1^2+a_2x_2^2 = g^prime vec(x_1, x_2) = - a_3$.\
+  נגדיר $v=x_1 v_1 + x_2 v_2 + v_3$ וברור ש־$v!=0$. בנוסף
+  $
+    q(v)=q(x_1v_1)+q(x_2v_2)+q(v_3) = x_1^2 q(v_1) + x_2^2 q(v_2) + q(v_3) = a_1 x_1^2+a_2x_2^2 + a_3 = -a_3 + a_3 = 0
+  $
+]
 
 = מספרים $p$־אדיים
 == שדות נורמיים
@@ -1349,11 +1354,11 @@
 ]
 
 #lemma[
-  יהי $(FF, norm(dot.op))$ שדה נורמי לא ארכימדי שלם ותהיי $(a_n)$ סדרה ב־$FF$ ששואפת ל־$0$. אזי $sum_(n=0)^infinity a_n = lim_(n arrow.r infinity) a_i$ מתכנס.
+  יהי $(FF, norm(dot.op))$ שדה נורמי לא ארכימדי שלם ותהיי $(a_n)$ סדרה ב־$FF$ ששואפת ל־$0$. אזי $b_n = sum_(i=1)^n a_i$ מתכנסת.
 ]
 
 #proof[
-  נסמן $b_n = sum_(i=0)^n a_n$ ונוכיח שזאת סדרת קושי. יהי $epsilon>0$, קיים $N in NN$ כך שלכל $N <= n$ מתקיים $norm(a_n) < epsilon$. מכאן, לכל $N<=m<n$ מתקיים כי
+  יהי $epsilon>0$, קיים $N in NN$ כך שלכל $N <= n$ מתקיים $norm(a_n) < epsilon$. מכאן, לכל $N<=m<n$ מתקיים כי
   $ norm(b_n - b_m) = norm(sum_(i=m+1)^n a_i) <= max_(m+1<=i<=n) norm(a_i) < epsilon $
   לכן $(b_n)$ היא סדרת קושי ומאחר ש־$(FF, norm(dot.op))$ שלם היא מתכנסת.
 ]
@@ -1613,7 +1618,7 @@
 
 #corollary[
   יהי $p!=2$ ראשוני. אז $QQ_p^times slash (QQ_p^times)^2 tilde.equiv ZZ slash 2ZZ times ZZ slash 2ZZ$.\
-  בנוסף, אם $r in ZZ_p^times$ כך ש־$overline(r) in FF_p^times slash (FF_p^times)^2$ אז
+  בנוסף, אם $r in ZZ_p^times$ כך ש־$overline(r) in.not (FF_p^times)^2$ אז
   $ QQ_p^times slash (QQ_p^times)^2 = {(QQ_p^times)^2, r (QQ_p^times)^2, p(QQ_p^times)^2, r p (QQ_p^times)^2} $
 ]
 
