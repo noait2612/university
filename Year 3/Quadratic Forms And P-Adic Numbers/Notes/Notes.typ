@@ -359,7 +359,7 @@
 
 #proposition[
   יהי $V$ מרחב וקטורי נוצר סופית מעל $FF$, $g$ תבנית ביליניארית סימטרית על $V$. אז קיים בסיס $cal(C)$ של $V$ כך ש־$[g]_(cal(C))$ אלכסונית ואיברי אלכסונה שייכים ל־$R union {0}$.
-]
+]<change_matrix_base_to_set_of_representatives>
 
 #proof[
   יהי $cal(B) = (v_1, dots.h, v_n)$ בסיס של $V$ כך ש־$[g]_(cal(B))$ אלכסונית ($cal(B)$ בסיס אורתוגונלי).\
@@ -539,7 +539,7 @@
 
 #proposition[
   יהי $(V,q)$ מרחב ריבועי מעל $FF$ ו־$cal(B)$ בסיס של $V$. אז $(V,q)$ מנוון אם ורק אם $[g_q]_cal(B)$ אינה הפיכה.
-]
+]<degeneracy_iff_form_matrix_is_singular>
 
 #proof[
   $<==$ נניח כי המרחב מנוון ולכן קיים $0!=v in V^perp$ ונסמן $dim V = n$. אזי קיימים $v_2, dots.h, v_n in V$ כך ש־$cal(B)^prime = {v, v_2, dots.h, v_n}$ בסיס של $V$.\
@@ -556,8 +556,16 @@
   יהי $(V,q)$ מרחב ריבועי מעל $FF$, $cal(B) = {v_1, dots.h, v_n}$ בסיס אורתוגונלי של $V$. אזי $(V,q)$ מנוון אם ורק אם קיים $1<=i<=n$ כך ש־$q(v_i) =0$.
 ]
 
+#proof[
+  מ@degeneracy_iff_form_matrix_is_singular, המרחב מנוון $<==>$ המטריצה $[g_q]_cal(B)$ לא הפיכה $<==>$ הדטרמיננטה היא אפס $<==>$ יש לפחות אפס אחד על האלכסון $<==>$ קיים $i$ כך ש־$q(v_i) = 0$.
+]
+
 #corollary[
-  יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ ו־$R subset.eq FF$ קבוצת נציגים מודולו ריבועיים. אזי קיים בסיס $cal(B)$ של $V$ כך ש־$[g_q]_cal(B)$ אלכסונית ואיברי אלכסונה שייכים ל־$R$ (ללא אפס).
+  יהי $(V,q)$ מרחב ריבועי לא מנוון מעל $FF$ ו־$R subset.eq FF$ קבוצת נציגים מודולו ריבועיים. אזי קיים בסיס $cal(B)$ של $V$ כך ש־$[g_q]_cal(B)$ אלכסונית ואיברי אלכסונה שייכים ל־$R$.
+]
+
+#proof[
+  מטענה @degeneracy_iff_form_matrix_is_singular נובע שכל אחד מאיברי האלכסון לא אפס ולכן $a_i != 0$ ולכן $r_i != 0$ לאף $i$ ועם @change_matrix_base_to_set_of_representatives הטענה נובעת.
 ]
 
 #proposition[
@@ -578,7 +586,7 @@
 ]
 
 #proposition[
-  יהי $(V,q)$ מרחב ריבועי מעל $FF$ ו־$U$ תת־מרחב של $V$ כך ש־$V = U plus.o V^prime$ (סכום ישר רגיל) אזי
+  יהי $(V,q)$ מרחב ריבועי מעל $FF$ ו־$U$ תת־מרחב של $V$ כך ש־$V = U plus.o V^perp$ (סכום ישר רגיל) אזי
   + $V = U plus.o^perp V^perp$
   + $(U, q|_U)$ לא מנוון
 ]
@@ -587,9 +595,9 @@
   + לכל $w in V^perp$ ו־$u in U$ מתקיים מהגדרה $g_q (u,w)=0$ ולכן $V = U plus.o^perp V^perp$
   + יהי $u in U$ שנמצא בגרעין של $(U, q|_U)$ כלומר $g_q (u, tilde(u))=0$ לכל $tilde(u) in U$. יהי $v in V$ אז קיימים $u^prime in U$ ו־$w^prime in V^perp$ כך ש־$v=u^prime + w^prime$ ולכן
     $
-      g_q (v, u) = g_q (u^prime + w^prime, u) = underbrace(g_q (u^prime, u), =0) + underbrace(g_q (w^prime, u), =0) = 0
+      g_q (v, u) = g_q (u^prime + w^prime, u) = g_q (u^prime, u) + g_q (w^prime, u), = 0 + 0 = 0
     $
-    ולכן $u in V^perp$ כלומר $u in V^perp inter U = {0_V}$ ולכן המרחב לא מנוון.
+    ולכן $u in V^perp$ כלומר $u in V^perp inter U = {0_V}$ וקיבלנו שהמרחב לא מנוון.
 ]
 
 מעכשיו נתרכז במרחבים ריבועיים לא מנוונים.
@@ -653,7 +661,8 @@
   יהי $cal(B)$ בסיס אורתוגונלי של $V$ אז $[g_q]_cal(B) = mat(a_1, 0; 0, a_2)$ כאשר $a_1, a_2 in FF_p^times$.\
   נגדיר $q^prime : FF_p^2 arrow FF_p$ על־ידי $ q^prime vec(x_1, x_2) = a_1 x_1^2 + a_2 x_2^2 $
   ולכן $(V,q) tilde.equiv (FF_p^2, q^prime)$ כי הם מיוצגים על־ידי אותה המטריצה.\
-  יהי $b in FF_p^times$ ונוכיח כי קיימים $vec(x_1, x_2) in FF_p^2$ כך ש־$q^prime vec(x_1, x_2) = b$ ונסמן
+  יהי $b in FF_p^times$ ונוכיח כי קיימים $vec(x_1, x_2) in FF_p^2$ כך ש־$q^prime vec(x_1, x_2) = b$.\
+  נגדיר
   $
     A_1 colon.eq {a_1 x^2 bar x in FF_p}, quad A_2 colon.eq {a_2 x^2 bar x in FF_p}, quad B colon.eq {b-a_2 x^2 bar x in FF_p}
   $
@@ -725,7 +734,7 @@
   לפי @classification_theorem_for_finite_fields נובע כי $[g_q]_cal(B) = I_n$ או $[g_q]_cal(B) = mat(I_(n-1), 0; 0, r)$ כאשר $r in FF_p^times without (FF_p^times)^2$.\
   נבדוק את הדטרמיננטות של שתי האפשרויות מודולו ריבועים
   + עבור $I_n$, הדטרמיננטה היא $1$, ולכן מחלקת השקילות שלה היא $1 dot.op (FF_p^times)^2$.
-  + עבור מטריצת הבלוקים, הדטרמיננטה היא $r$, ולכן מחלקת השקילות שלה היא $r dot.op (FF_p^times)^2$.\
+  + עבור מטריצת הבלוקים, הדטרמיננטה היא $r$, ולכן מחלקת השקילות שלה היא $r dot.op (FF_p^times)^2$.
   נתון כי הדטרמיננטות של מטריצות הגראם שקולות מודולו ריבועים, כלומר הן שייכות בדיוק לאותה מחלקת שקילות. מכיוון ששתי המחלקות זרות, שתי המטריצות חייבות להיות מאותו הטיפוס בדיוק (שתיהן $I_n$ או שתיהן עם $r$ בבלוק התחתון).\
   על־כן מטריצות הגראם חופפות זו לזו ומ@isomorphic_spaces_iff_gram_matrix_congurte נובע $(V,q) tilde.equiv (V^prime, q^prime)$.
 ]
@@ -1266,7 +1275,7 @@
   מהסימטריות מספיק להוכיח רק כיוון אחד אז נניח כי $(a_n)_(n=1)^infinity$ היא סדרת קושי ב־$(QQ, abs(dot.op)_(p, alpha))$.\
   יהי $0<epsilon$ אז $0<epsilon^(log_beta (alpha))$ ולכן קיים $N in NN$ כך שלכל $k, l in NN$ המקיימים $k, l > N$ מתקיים
   $
-    abs(a_k - a_l)_(p, alpha) < epsilon^(log_beta (alpha)) ==> abs(a_k - a_l)_(p, beta) = abs(a_k-a_l)_(p,alpha)^(log_beta (alpha)) < epsilon^(log_beta (alpha))^(log_alpha (beta)) = epsilon
+    abs(a_k - a_l)_(p, alpha) < epsilon^(log_beta (alpha)) ==> abs(a_k - a_l)_(p, beta) = abs(a_k-a_l)_(p,alpha)^(log_alpha (beta)) < epsilon^(log_beta (alpha))^(log_alpha (beta)) = epsilon
   $
   ולכן $(a_n)_(n=1)^infinity$ היא סדרת קושי ב־$(QQ, abs(dot.op)_(p, beta))$
 ]
@@ -1356,7 +1365,7 @@
 ]
 
 #lemma[
-  יהי $(FF, norm(dot.op))$ שדה נורמי לא ארכימדי שלם ותהיי $(a_n)$ סדרה ב־$FF$ ששואפת ל־$0$. אזי $b_n = sum_(i=1)^n a_i$ מתכנסת.
+  יהי $(FF, norm(dot.op))$ שדה נורמי לא ארכימדי שלם ותהיי $(a_n)_(n=1)^infinity$ סדרה ב־$FF$ ששואפת ל־$0$. אזי הסדרה $b_n = sum_(i=1)^n a_i$ מתכנסת.
 ]<important_lemma>
 
 #proof[
@@ -1376,7 +1385,7 @@
 #proof[
   מאחר ש־$norm(a_n) in {0,1}$ לכל $n in NN_0$ מתקיים $norm(a_n p^n) in {0, 1/p^n}$ ולכן $lim_(n arrow.r infinity) a_n p^n = 0$ ומ@important_lemma הסכום $sum_(n=0)^infinity a_n p^n$ מתכנס ל־$a$.\
   מאחר ש־$abs(sum_(i=1)^n a_i p^i)_p < 1$ (כזכור מהיות הנורמה לא־ארכימדית) ובפרט מתקיים $abs(sum_(i=1)^infinity a_i p^i)_p < 1$ ולכן אם $a_0 = 0$ אז $abs(a)_p = abs(sum_(i=1)^infinity a_i p^i)_p < 1$.\
-  אם $a_0 != 0$ אז $abs(a_0)_p = 1$ ולכן $abs(a)_p = max(abs(a_0)_p, abs(sum_(i=1)^infinity a_i p^i)_p) = 1$.
+  אם $a_0 != 0$ אז $abs(a_0)_p = 1$ ולכן $abs(a)_p =abs(a_0 + sum_(i=1)^infinity a_i p^i) = max(abs(a_0)_p, abs(sum_(i=1)^infinity a_i p^i)_p) = 1$.
 ]
 
 #proposition[
@@ -1385,7 +1394,7 @@
 
 #proof[
   נניח בשלילה שקיים $n in NN_0$ כך ש־$a_n != b_n$ ולכן נגדיר $m = min{n in NN_0 bar a_n != b_n}$. \
-  אזי $sum_(i=0)^(m-1) a_i p^i = sum_(i=0)^(m-1) b_i p^i$ ולכן גם $sum_(i=m)^infinity a_i p^i = sum_(i=m)^infinity b_i p^i$ (זנב) ומכאן
+  אזי $sum_(i=0)^(m-1) a_i p^i = sum_(i=0)^(m-1) b_i p^i$ ולכן גם $sum_(i=m)^infinity a_i p^i = sum_(i=m)^infinity b_i p^i$ (זנב) ומכאן אם נחלק ב־$p^m$ נקבל-
   $
     a_m + sum_(i=m+1)^infinity a_i p^(i-m) = sum_(i=m)^infinity a_i p^(i-m) = sum_(i=m)^infinity b_i p^(i-m) = b_m + sum_(i=m+1)^infinity b_i p^(i-m)
   $
@@ -1492,18 +1501,16 @@
 ]
 
 #proof[
-  קיימים $m, n in ZZ$ כך ש־$p divides.not m, p divides.not n$ וגם $sum_(i=s)^infinity a_i p^i = p^s frac(m, n)$ כאשר כמובן $n!=0$.\
-  לכל $i in NN_0$ נגדיר $c_i = a_(i+s)$ ואז
+  קיימים $m, n in ZZ$ עם $n!=0$ כך ש־$p divides.not m, p divides.not n$ וגם $sum_(i=s)^infinity a_i p^i = p^s frac(m, n)$ ולכל $i in NN_0$ נגדיר $c_i = a_(i+s)$ אז מתקיים
   $ frac(m, n) = sum_(i=s)^infinity a_i p^(i-s) = sum_(j=0)^infinity a_(j+s) p^j = sum_(j=0)^infinity c_j p^j $
-  מכאן $m=n sum_(j=0)^infinity c_j p^j$.\
-  לכל $k in NN$ נסמן $ r_k colon.eq frac(n sum_(j=k)^infinity c_j p^j, p^k) = frac(m - n sum_(j=0)^(k-1) c_j p^j, p^k) $
+  מכאן $m=n sum_(j=0)^infinity c_j p^j$. לכל $k in NN$ נסמן $ r_k colon.eq frac(n sum_(j=k)^infinity c_j p^j, p^k) = frac(m - n sum_(j=0)^(k-1) c_j p^j, p^k) $
   אז $r_k in QQ$, $abs(r_k)_p <=1$ וגם $r_k in ZZ$. יתר על־כן מתקיים
   $
     frac(m+n, p^k)-n = frac(m-n(p^k-1), p^k) <= frac(m-n sum_(j=0)^(k-1) (p-1)p^j, p^k) <= frac(m-n sum_(j=0)^(k-1) c_j p^j, p^k) <= frac(m, p^k)
   $
   קיים $N in NN$ כך שלכל $N<=k$ מתקיים ש־$abs(frac(m, p^k)) < 1$ וגם $abs(frac(m+n, p^k))<1$ ולכן עבור $N <=k$ מתקיים $-n-1 < r_k < 1$ ולכן קיימים $N <= k <l$ כך ש־$r_k = r_l$.\
-  מאחר שמתקיים כי $r_k eq.triple n c_k mod p$ אנו מסיקים כי $n c_k eq.triple n c_l mod p$ ומכאן $c_k eq.triple c_l mod p$ אבל מכך ש־$0<=a_i <= p-1$ נובע כי $c_k = c_l$.\
-  בנוסף, מתקיים ש־$ r_(k+1) = frac(r_k - n c_k, p) = frac(r_l - n c_l, p) = r_(l+1) $
+  מאחר שמתקיים כי $r_k eq.triple n c_k mod p$ אנו מסיקים כי $n c_k eq.triple n c_l mod p$ ומכאן $c_k eq.triple c_l mod p$ אבל מכך ש־$0<=a_i <= p-1$ נובע כי $c_k = c_l$ ובנוסף
+  $ r_(k+1) = frac(r_k - n c_k, p) = frac(r_l - n c_l, p) = r_(l+1) $
   אז לכל $i in NN_0$ מתקיים כי $c_(k+1) = c_(l+1)$, נגדיר $t=k+s$, $d=l-k$ ואז לכל $t<=i$ מתקיים $0<=i-k-s$ ולכן $ a_(i+d)= c_(i+d-s) = c_(l+(i-k-s)) = c_(k+i-k-s) = c_(i-s) = a_i $
 ]
 
@@ -1596,17 +1603,16 @@
 ]
 
 #proposition[
-  יהי $p!=2$ ראשוני. אז $ ZZ_p^times slash (ZZ_p^times)^2 tilde.equiv FF_p^times slash (FF_p^times)^2 tilde.equiv ZZ slash 2ZZ $
+  יהי $p!=2$ ראשוני. אז $ZZ_p^times slash (ZZ_p^times)^2 tilde.equiv FF_p^times slash (FF_p^times)^2 tilde.equiv ZZ slash 2ZZ$.
 ]
 
 #proof[
-  נגדיר $p r : ZZ_p arrow ZZ_p slash p ZZ_p tilde.equiv FF_p$ על־ידי $p r (a) = a + p ZZ_p$.\
-  אז $p r$ הוא הומומורפיזם של חוגים ולכן $p r|_(ZZ_p^times) : ZZ_p^times arrow FF_p^times$ הוא הומומורפיזם של חבורות שהוא על.\
+  נגדיר $p r : ZZ_p arrow ZZ_p slash p ZZ_p tilde.equiv FF_p$ על־ידי $p r (a) = a + p ZZ_p$ וזה הומומורפיזם של חוגים ולכן $p r|_(ZZ_p^times) : ZZ_p^times arrow FF_p^times$ הוא הומומורפיזם של חבורות שהוא על.\
   נסמן $pi : FF_p^times arrow FF_p^times slash (FF_p^times)^2$ על־ידי $pi(x)= x dot.op (FF_p^times)^2$ ולכן גם $pi$ הוא הומומורפיזם של חבורות שהוא על.\
   נרכיב ונקבל $pi compose p r|_(ZZ_p^times) : ZZ_p^times arrow FF_p^times slash (FF_p^times)^2$.\
   אם $x in (ZZ_p^times)^2$ אזי $p r|_(ZZ_p^times) (x) in (FF_p^times)^2$ ולכן $pi compose p r|_(ZZ_p^times) (x) = 1$ ולכן $(ZZ_p^times)^2 subset.eq ker (pi compose p r|_(ZZ_p^times))$.\
-  יהי $a in ker(pi compose p r|_(ZZ_p^times))$ אז $p r|_(ZZ_p^times) (a) = ker pi = (FF_p^times)^2$ מכאן קיים $w_0 in ZZ_p$ כך ש־$overline(a)=overline(w_0^2)$ ומהמסקנה שראינו קיים $w in ZZ_p$ כך ש־$a=w^2$ ולכן $a in (ZZ_p^times)^2$ ולפיכך $ker(pi compose p r|_(ZZ_p^times)) subset.eq (ZZ_p^times)^2$.\
-  אז לפי משפט ההומומורפיזם מתקיים $ZZ_p^times slash (ZZ_p^times)^2 tilde.equiv FF_p^times slash (FF_p^times)^2$.
+  יהי $a in ker(pi compose p r|_(ZZ_p^times))$ אז $p r|_(ZZ_p^times) (a) in ker pi = (FF_p^times)^2$ מכאן קיים $w_0 in ZZ_p$ כך ש־$overline(a)=overline(w_0^2)$ ומהמסקנה שראינו קיים $w in ZZ_p$ כך ש־$a=w^2$ ולכן $a in (ZZ_p^times)^2$ ולפיכך $ker(pi compose p r|_(ZZ_p^times)) subset.eq (ZZ_p^times)^2$.\
+  אז לפי משפט האיזומורפיזם מתקיים $ZZ_p^times slash (ZZ_p^times)^2 tilde.equiv FF_p^times slash (FF_p^times)^2$.
 ]
 
 #proposition[
@@ -1614,14 +1620,12 @@
 ]
 
 #proof[
-  נגדיר $f:ZZ_p^times times ZZ arrow QQ_p^times$ על־ידי $f(u,s) = u p^s$.\
-  קל לראות ש־$f$ הומומורפיזם, חד־חד ערכית ועל כלומר איזומורפיזם.
+  נגדיר $f:ZZ_p^times times ZZ arrow QQ_p^times$ על־ידי $f(u,s) = u p^s$ והיא איזומורפיזם: היא הומומורפיזם לפי חוקי חזקות, והיא חד־חד־ערכית ועל משום שלכל $x in QQ_p^times$ קיים פירוק יחיד מהצורה $x = u p^s$ המתקבל על־ידי בחירת $s = v_p (x)$ והיחידה $u = x p^(-s)$.
 ]
 
 #corollary[
   יהי $p!=2$ ראשוני. אז $QQ_p^times slash (QQ_p^times)^2 tilde.equiv ZZ slash 2ZZ times ZZ slash 2ZZ$.\
-  בנוסף, אם $r in ZZ_p^times$ כך ש־$overline(r) in.not (FF_p^times)^2$ אז
-  $ QQ_p^times slash (QQ_p^times)^2 = {(QQ_p^times)^2, r (QQ_p^times)^2, p(QQ_p^times)^2, r p (QQ_p^times)^2} $
+  בנוסף, אם $r in ZZ_p^times$ כך ש־$overline(r) in.not (FF_p^times)^2$ אז $QQ_p^times slash (QQ_p^times)^2 = {(QQ_p^times)^2, r (QQ_p^times)^2, p(QQ_p^times)^2, r p (QQ_p^times)^2}$.
 ]
 
 #remark[
