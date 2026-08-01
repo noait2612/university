@@ -362,11 +362,11 @@ $ partial/(partial t) D Phi = D(partial/(partial t) Phi) = D(F compose Phi)=D F(
 #proof[
   הפונקציה $F(M, t) = A(t)M$ היא ליניארית במשתנה $M$ ורציפה במשתנה $t$. עבור כל $t_0 in I$, $F$ ליפשיצית מקומית במשתנה $M$ (שכן על קטע קומפקטי המכיל את $t_0$, הנורמה של $A(t)$ חסומה). לפי משפט פיקארד, קיים פתרון יחיד $M(t)$ בסביבה של כל נקודה ב־$I$.\
   נסמן ב־$v_j (t)$ את העמודה ה־$j$ של המטריצה $M(t)$. המשוואה המטריציונית שקולה למערכת של $n$ משוואות וקטוריות בלתי־תלויות
-  $ v_j^prime (t) = A(t)v_j (t), quad v_j (0) = eBase_j $
-  כאשר $(eBase_j)_(j=1)^n$ הוא הבסיס הסטנדרטי. מספיק להוכיח שכל עמודה $v_j (t)$ מוגדרת על כל הקטע $I$.\
+  $ v_j^prime (t) = A(t)v_j (t), quad v_j (0) = e_j $
+  כאשר $(e_j)_(j=1)^n$ הוא הבסיס הסטנדרטי. מספיק להוכיח שכל עמודה $v_j (t)$ מוגדרת על כל הקטע $I$.\
   עבור $v_j$, על־ידי אינטגרציה של שני אגפי המשוואה מ־$0$ עד $t$ נקבל
   $
-    v_j (t) = eBase_j + integral_0^t A(s)v_j (s) dif s ==>_(triangle) norm(v_j (t)) <= norm(eBase_j) + integral_0^t norm(A(s)) dot.op norm(v_j (s)) dif s
+    v_j (t) = e_j + integral_0^t A(s)v_j (s) dif s ==>_(triangle) norm(v_j (t)) <= norm(e_j) + integral_0^t norm(A(s)) dot.op norm(v_j (s)) dif s
   $
   נניח בשלילה שמשך הקיום המקסימלי של הפתרון חסום בתוך $I$, כלומר הפתרון מוגדר על $[0, T_max)$ כאשר $T_max in I$ (ההוכחה לשליליים זהה). \
   מרציפות $A$ על $[0, T_max]$ נסמן $L colon.eq max_(s in [0, T_max]) norm(A(s)) < infinity$ ונסמן $f(t) = norm(v_j (t))$. לכל $tau in [0, T_max)$ נקבל
@@ -377,9 +377,9 @@ $ partial/(partial t) D Phi = D(partial/(partial t) Phi) = D(F compose Phi)=D F(
 #theorem[תלות גזירה בתנאי ההתחלה][
   תהיי $U subset.eq RR^n$ פתוחה ו־$p in U$ עם $F:U arrow RR^n$ גזירה ברציפות ובפרט ליפשיץ מקומית.\
   יהי $x_p$ הפיתרון המקסימלי לבעיית ההתחלה
-  $ cases(x'(t)=F(x(t)), x(0)=p) $
+  $ cases(x^prime (t)=F(x(t)), x(0)=p) $
   ויהי $M(t)$ הפיתרון המקסימלי לבעיית ההתחלה
-  $ cases(M'(t)=D F(x(t))M(t), M(0) = Id) $
+  $ cases(M^prime (t)=D F(x_p (t))M(t), M(0) = Id) $
   אזי לכל $T in J_p^*$, $phi_T$ גזירה ב־$p$ והדיפרנציאל שלה נתון על־ידי $D phi_T (p) = M(t)$.
 ]
 
@@ -482,10 +482,10 @@ $ partial/(partial t) D Phi = D(partial/(partial t) Phi) = D(F compose Phi)=D F(
 ]
 
 #proof[
-  נסמן ב־$eBase_k$ את הוקטור הסטנדרטי ונסמן ב־$x_k$ את הפתרון ל־$(star)$ עם תנאי ההתחלה $x_k (0)=eBase_k$.\
-  ${x_k}_(k=1)^n$ בלתי־תלויים שכן אם נניח שמתקיים $sum_(j=1)^n alpha_j x_j (t) = 0$ לכל $t$ אז בפרט $sum_(j=1)^n alpha_j x_j (0) = 0$. מכיוון ש־$x_j (0) = eBase_j$, קיבלנו $sum_(j=1)^n alpha_j eBase_j = 0$.\
+  נסמן ב־$e_k$ את הוקטור הסטנדרטי ונסמן ב־$x_k$ את הפתרון ל־$(star)$ עם תנאי ההתחלה $x_k (0)=e_k$.\
+  ${x_k}_(k=1)^n$ בלתי־תלויים שכן אם נניח שמתקיים $sum_(j=1)^n alpha_j x_j (t) = 0$ לכל $t$ אז בפרט $sum_(j=1)^n alpha_j x_j (0) = 0$. מכיוון ש־$x_j (0) = e_j$, קיבלנו $sum_(j=1)^n alpha_j e_j = 0$.\
   מכך שוקטורי הבסיס הסטנדרטי בלתי־תלויים לינארית נסיק כי $alpha_j = 0$ לכל $j$ וקיבלנו בלתי־תלויות.\
-  היא גם פורשת שכן אם $y$ פתרון ולכן $y^prime = A y$ וקיימים ${B_j}$ כך ש־$y(0)=sum B_j eBase_j$ ומיחידות $y(t)=sum B_j x_j (t)$ לכל $t in I$ וקיבלנו שהקבוצה פורשת.\
+  היא גם פורשת שכן אם $y$ פתרון ולכן $y^prime = A y$ וקיימים ${B_j}$ כך ש־$y(0)=sum B_j e_j$ ומיחידות $y(t)=sum B_j x_j (t)$ לכל $t in I$ וקיבלנו שהקבוצה פורשת.\
 ]
 נתבונן במשוואה הומוגונית עם מקדמים קבועים, כלומר $x^prime (t) = A dot.op x(t)$ כאשר $A$ מטריצה קבועה שאינה תלויה ב־$t$ ו־$A in RR^(n times n)$ ונניח ש־$x(0)=x_0$.\
 ננסה להפעיל את איטרציות פיקארד
@@ -608,7 +608,7 @@ $
   $A v_i = lambda v_i + v_(i-1)space , A v_1 = lambda v_1$ לכל $2<=i<=m$ אז מהחשבון הקודם נובע לכל $i$
   $
     exp(t A)v_i & = P exp(t J_lambda)P^(-1) v_i \
-    & = P exp(t J_lambda) eBase_i \
+    & = P exp(t J_lambda) e_i \
     & = e^(lambda t) P(frac(t^(i-1), (i-1)!), frac(t^(i-2), (i-2)!), dots.h, frac(t^(i-i), (i-i)!), 0, dots.h, 0 )^T \
     &= e^(lambda t) dot.op (frac(t^(i-1), (i-1)!) v_1 + frac(t^(i-2), (i-2)!) v_2 + dots.h.c + frac(t^(i-i), (i-i)!) v_i)
   $
@@ -1351,7 +1351,19 @@ $
     ב־ $B(x_0, r)$ שעליה $u < u(x_0)$ ואז $integral.slash_(B(x_0, r)) u dif V < u(x_0)$.\
     זה נכון לכל $r<=dist(x_0, boundary(Omega))$ ולכן לכל $y in boundary(Omega) inter boundary(B(x_0, dist(x_0, boundary(Omega))))$ מתקיים $u(y)=u(x_0) = max u(closure(Omega))$.
   + נניח ש־$x_0 in Omega$ מקיימת $u(x_0) = max u(Omega)$ ונתבונן בקבוצה $A colon.eq {y in Omega bar u(x_0)=u(y)}$.\
-    $A$ סגורה ב־$Omega$ מרציפות והיא לא ריקה כי $x_0 in A$ אבל הראינו ש־$A$ פתוחה ב־$Omega$ (זה נובע ישירות מתכונת ערך הממוצע של פונקציות הרמוניות שכן הדרך היחידה שבה הממוצע של פונקציה (שחסומה על ידי $M$) יכול לצאת שווה בדיוק ל־$M$ היא אם הפונקציה שווה ל־$M$ בכל נקודה בתוך הממוצע הזה) אבל $Omega$ קשירה ולכן $A=Omega$.
+    ברור ש־$A$ לא ריקה כי $x_0 in A$, נראה שהיא סגורה ופתוחה ומקשירות $Omega$ נסיים.\
+    $A$ סגורה מרציפות שכן אם $(y_n)_(n=1)^infinity subset.eq A$ כך ש־$y_n arrow y$ עבור $y in Omega$ נובע ש־$u(y_n) = M$ לכל $n in NN$ ולכן
+    $ u(y) = u(lim_(n arrow infinity) y_n) = lim_(n arrow infinity) u(y_n) = lim_(n arrow infinity) M = M $
+    אז $u(y) = M$ ולכן $y in A$ ו־$A$ סגורה כי היא מכילה את נקודות הגבול שלה.\
+    $A$ פתוחה כי אם $y in A$, מהיות $Omega$ פתוחה נובע שיש $r>0$ עבורו $B(y,r) subset.eq Omega$ ומהיות $u$ הרמונית מתכונת ערך הממוצע לפונקציות הרמוניות נקבל בכדור
+    $ M = u(y) = frac(1, Vol(B(y,r))) integral_(B(y,r)) u(z) dif z $
+    $M$ הוא מקסימום גלובלי ולכן לכל $z in B(y,r)$ מתקיים $u(z)<=M$.\
+    אם בשלילה יש $z_0 in B(y,r)$ כך ש־$u(z_0) < M$, מרציפות $u$ קיימת סביבה של $z_0$ שבה $u$ קטנה ממש מ־$M$ אבל אז
+    $ integral_(B(y,r)) u(z) dif z < integral_(y,r) M dif z = M Vol(B(y,r)) $
+    כלומר
+    $ frac(1, Vol(B(y,r))) integral_(B(y,r)) u(z) dif z < M $
+    בסתירה לתכונת ערך הממוצע ולכן לכל $z in B(y,r)$ מתקיים $u(z)=M$ כלומר $B(y,r) subset.eq A$ כלומר $A$ פתוחה.\
+    $A$ פתוחה, סגורה, לא ריקה ו־$Omega$ קשירה ולכן נובע $A=Omega$.
 ]
 
 #remark[
@@ -1389,6 +1401,7 @@ $phi_epsilon$ חלקה, רדיאלית הנתמכת על $B(0,epsilon)$ ומקי
     u^epsilon (x) & = integral_(B(x, epsilon)) phi_epsilon (x-y)u(y) dif V(y) \
     & = integral_0^epsilon integral_boundary(B(x,r)) phi_epsilon (x-y)u(y)dif S(y) dif r \
     & = frac(1, integral_(RR^n) eta(norm(z)) dif z) integral_0^epsilon frac(eta(frac(r, epsilon)), epsilon^n) integral_boundary(B(x,r)) u(y) dif S(y) dif r \
+  $ $
     &=_((star)) frac(1, integral_(RR^n) eta(norm(z)) dif z) integral_0^epsilon frac(eta(frac(r, epsilon)), epsilon^n) integral_boundary(B(x,r)) u(x) dif S(y) dif r \
     &= frac(u(x), integral_(RR^n) eta(norm(z)) dif z) integral_0^epsilon frac(eta(frac(r, epsilon)), epsilon^n) integral_boundary(B(x,r)) dif S(y) dif r \
     &= u(x) integral_(B(x, epsilon)) phi^epsilon (x-y) dif V(y) \
@@ -1480,7 +1493,7 @@ $
   $
   נשים לב שאם נסמן $t^prime = t_0 - t$ נקבל
   $ re(frac(1+ r e^(i t^prime), 1- r e^(i t^prime))) = frac(1-r^2, 1-2 r cos(t^prime)+r^2) $
-  וזה בעצם גרעין פואסון! כאשר $t^prime =0$ זה בעצם $frac(1-r^2, 1-2r+r^2) = frac((1-r)(1+r), (1-r)^2) = frac(1+r, 1-r)$ וכאשר $r arrow 1$ זה מתפוצץ.
+  וזה בעצם גרעין פואסון! כאשר $t^prime =0$ מתקיים $ frac(1-r^2, 1-2r+r^2) = frac((1-r)(1+r), (1-r)^2) = frac(1+r, 1-r) stretch(arrow)_(r arrow 1) infinity $
 ]
 
 #end_of_lecture("20  – 16/06")
