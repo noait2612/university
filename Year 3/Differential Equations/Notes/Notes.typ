@@ -214,9 +214,8 @@
   נגדיר את אופרטור פיקארד $K$ הפועל על מרחב פונקציות
   $ K x(t) = x_0 + integral_0^t F(x(s)) dif s $
   כעת, הבעיה שקולה למציאת נקודת שבת של האופרטור $K$, כלומר פונקציה $x$ המקיימת $K x = x$.\
-  מכיוון ש־$F$ ליפשיצית מקומית, קיים כדור סגור $closure(B)_r (x_0) subset.eq U$ שבו $F$ חסומה על ידי קבוע $M_r$ וליפשיצית עם קבוע $C_r$. \
-  נגדיר את המרחב המטרי $X$ להיות מרחב הפונקציות הרציפות מהקטע $(-delta, delta)$ אל הכדור $closure(B)_r (x_0)$ עם נורמת הסופרמום וזה מרחב מטרי שלם.\
-  נבחר $delta > 0$ קטן מספיק כך שיתקיים $delta <= min(frac(r, 2 M_r), frac(1, 2 C_r))$ ונשים לב שהאופרטור $K$ מוגדר היטב שכן לכל פונקציה $x in X$ מתקיים
+  מכיוון ש־$F$ ליפשיצית מקומית, קיים כדור סגור $closure(B)_r (x_0) subset.eq U$ שבו $F$ חסומה על ידי קבוע $M_r$ וליפשיצית עם קבוע $C_r$ ונבחר $delta<= min(frac(r, 2 M_r), frac(1, 2 C_r))$.\
+  נגדיר את המרחב המטרי $X$ להיות מרחב הפונקציות הרציפות מהקטע $(-delta, delta)$ אל הכדור $closure(B)_r (x_0)$ עם נורמת הסופרמום וזה מרחב מטרי שלם ונשים לב שהאופרטור $K$ מוגדר היטב שכן לכל פונקציה $x in X$ מתקיים
   $ norm(K x(t) - x_0) <= integral_0^t norm(F(x(s))) dif s <= delta M_r <= r/2 < r $
   ולכן $K x$ נשארת בתוך הכדור $closure(B)_r (x_0)$, כלומר האופרטור אכן ממפה את $X$ לעצמו.\
   לכל שתי פונקציות $x, y in X$ מתקיים
@@ -683,7 +682,7 @@ $ alpha(t) = alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s $
 ]
 
 #corollary[עקרון דוהמל][
-  נניח שמטריצת המקדמים קבועה כלומר $A(t) = A$  ו־$x_i (0) = "e"_i$ (הבסיס הסטנדרטי ב־$0$) אז $pi(t) = e^(t A)$ ו־$pi(0)=Id$ ונקבל
+  נניח שמטריצת המקדמים קבועה כלומר $A(t) = A$  ו־$x_i (0) = e_i$ (הבסיס הסטנדרטי ב־$0$) אז $pi(t) = e^(t A)$ ו־$pi(0)=Id$ ונקבל
   $ y(t)= e^(t A) y_0 + integral_0^t e^((t -s)A) g(s) dif s $
 ]
 
@@ -698,8 +697,8 @@ $ alpha(t) = alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s $
 
 #proof[
   בלי הגבלת הכלליות נניח ש־$p=0$ ונתבונן בנגזרות החלקיות של $Phi(t, x)$ בראשית
-  $(partial Phi)/(partial t) |_((0,0)) = F(0) != 0, space (partial Phi)/(partial x_i) |_((0,0)) = "e"_i$.\
-  היות ש־$F(0)!=0$ ניתן לבחור $n-1$ איברים מאיברי $("e"_1, dots.h, "e"_n)$ ונסמנם $"e"_(i_1), dots.h, "e"_(i_(n-1))$ כך שבלי הגבלת הכלליות ${F(0), "e"_(i_1), dots.h, e_(i_(n-1))}$ זה בסיס.\
+  $(partial Phi)/(partial t) |_((0,0)) = F(0) != 0, space (partial Phi)/(partial x_i) |_((0,0)) = e_i$.\
+  היות ש־$F(0)!=0$ ניתן לבחור $n-1$ איברים מאיברי $(e_1, dots.h, e_n)$ ונסמנם $e_(i_1), dots.h, e_(i_(n-1))$ כך שבלי הגבלת הכלליות ${F(0), e_1, dots.h, e_(n-1)}$ זה בסיס.\
   נגדיר העתקה $beta: RR^n"סביבת 0 ב־" arrow RR^n$ על־ידי $beta(t, x_1, dots.h, x_(n-1))=phi_t (x_1, x_2, dots.h, x_(n-1), 0)$.\
   ממשפט הפונקציה ההפוכה יש סביבה $p in U_1$ וסביבה $0 in V$ כך ש־$beta: V arrow U_1$ היא דיפאומורפיזם גזיר ברציפות ונגדיר $alpha=beta^(-1)$.\
   קיימת סביבה פתוחה $p in U_0 subset.eq U_1$ ו־$delta>0$ כך שלכל $x in U_0$ ו־$t in (-delta, delta)$ מתקיים $phi_t (x) in U_1$.\
@@ -1448,7 +1447,7 @@ $phi_epsilon$ חלקה, רדיאלית הנתמכת על $B(0,epsilon)$ ומקי
 ]
 
 #proof[
-  נוכיח קודם מקרה פרטי. נניח ש־$V=B(x,r)$ ונניח גם ש־$closure(B(x_0,4r)) subset.eq Omega$ ונקבע $x_0, x_1 in V$.\
+  נוכיח קודם מקרה פרטי. נניח ש־$V=B(x,r)$ ונניח גם ש־$closure(B(x,4r)) subset.eq Omega$ ונקבע $x_0, x_1 in V$.\
   מאי־שיוויון המשולש $B(x_1, r) subset.eq B(x_0, 3r)$ ו־$closure(B(x_0, 3r)) subset.eq Omega$ ולכן מערך הממוצע ומאי־שליליות של $u$
   $
     u(x_0) & = 1/Vol(B(x_0, 3r)) integral_(B(x_0, 3r)) u(y) dif y \
@@ -1575,12 +1574,12 @@ $
   ב־$B$ מעצם הגדרת $v$ כפונקציה תת־הרמונית ולכן בסך־הכל $v<=V$ ב־$Omega$.
 ]
 
-#proposition[
+#proposition[ההרמה ההרמונית היא תת־הרמונית][
   $V$ היא תת־הרמונית ב־$Omega$.
 ]<harmonic_lift_is_subharmonic>
 
 #proof[
-  יהי $C subset.eq Omega$ כדור כך ש־$closure(C) subset.eq Omega$, ותהי $h in C(closure(C))$ הרמונית ב־$C$ כך ש־$V|_boundary(C) <= h|_boundary(C)$. נרצה להראות ש־$V <= h$ ב־$C$.\
+  יהי $C subset.eq Omega$ כדור כך ש־$closure(C) subset.eq Omega$ ותהי $h in C(closure(C))$ הרמונית ב־$C$ כך ש־$V|_boundary(C) <= h|_boundary(C)$. נרצה להראות ש־$V <= h$ ב־$C$.\
   $v$ תת־הרמונית ב־$Omega$ ולכן $v <= V$ בכל $Omega$. מההנחה שלנו, מתקיים $V <= h$ על $boundary(C)$, ומכאן שגם $v <= h$ על $boundary(C)$. $h$ הרמונית ו־$v$ תת־הרמונית ולכן מעקרון המקסימום עבור פונקציות תת־הרמוניות נקבל ש־$v<=h$ בכל $C$. לפי הגדרת ההרמה, ב־$C without B$ מתקיים $V = v$, כלומר קיבלנו ש־$V <= h$ ב־$C without B$. נסמן $U colon.eq B inter C$ ונבחן את
   $
     boundary(U) = underbrace((boundary(B) inter closure(C)), I) union underbrace((closure(B) inter boundary(C)), I #h(-0.15em) I)
