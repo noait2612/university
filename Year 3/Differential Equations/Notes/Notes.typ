@@ -717,7 +717,7 @@ $ alpha(t) = alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s $
 ]
 
 #definition[נקודת שיווי משקל יציבה][
-  נקודת שיווי משקל $p$ תקרא נקודת שיווי משקל יציבה אם לכל $epsilon > 0$ יש $delta>0$ כך שלכל $q in B_delta (p)$ ולכל $t>0$ מתקיים $phi_t (q) in B_epsilon (p)$.
+  נקודת שיווי משקל $p$ תקרא נקודת שיווי משקל יציבה אם לכל $epsilon > 0$ יש $delta>0$ כך שלכל $q in B(p, delta)$ ולכל $t>0$ מתקיים $phi_t (q) in B(p, epsilon)$.
 ]
 
 #definition[נקודת שיווי משקל יציבה אסימפטוטית][
@@ -757,13 +757,13 @@ $ alpha(t) = alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s $
   $ D phi_t (p) = exp(t D F (p)) $
   בפרט מ@lemma_before_linear_criterion_for_asymptotic_stability נובע ש־$normop(exp(t D F(p))) stretch(arrow)_(t arrow infinity) 0$ ולכן יש $T > 0$ שעבורו
   $ normop(exp(T D F(p)))< 1/4 $
-  יהי $epsilon > 0$ וקיימת $delta > 0$ כך שלכל $q in B_delta (p)$ ולכל $t in [0,T]$ מתקיים $phi_t (q) in B_epsilon (p)$ (מתלות רציפה בתנאי ההתחלה). בנוסף מהקירוב הלינארי
+  יהי $epsilon > 0$ וקיימת $delta > 0$ כך שלכל $q in B(p, delta)$ ולכל $t in [0,T]$ מתקיים $phi_t (q) in B(p, epsilon)$ (מתלות רציפה בתנאי ההתחלה). בנוסף מהקירוב הלינארי
   $ phi_T (q) = phi_T (p) + D phi_T (p) (q-p) + o(norm(q-p)) $
   ולכן על־ידי הקטנה של $delta$ אם צריך נוכל להניח שהמחובר $o(p-q)$ לא עולה על $1/4 normop(p-q)$, כלומר $normop(phi_T (q) - phi_T (p)) <= normop(q-p)/2$.\
-  בפרט $phi_T (q) in B_delta (p)$ שכן $phi_T (p) = p$ ושוב לכל $0<= t<=T$ מתקיים $phi_(T+t) (q) in B_epsilon (p)$ (שוב מהרציפות בתנאי ההתחלה) ואם נחזור על התהליך נקבל
+  בפרט $phi_T (q) in B(p, delta)$ שכן $phi_T (p) = p$ ושוב לכל $0<= t<=T$ מתקיים $phi_(T+t) (q) in B(p, epsilon)$ (שוב מהרציפות בתנאי ההתחלה) ואם נחזור על התהליך נקבל
   $ normop(phi_(k T) (q) - p)<= 2^(-k) norm(q-p) $
-  לכל $t in [0,T]$ ולכל $k in NN$ מתקיים $phi_(k T + t) (q) in B_epsilon (p)$ כלומר לכל $t > 0$ מתקיים $phi_t (q) in B_epsilon (p)$ וזו בידיוק ההגדרה של יציבות.\
-  נשאר להראות יציבות אסימפטוטית: קיבלנו ש־$phi_(k T) (q) stretch(arrow)_(k arrow infinity) p$ לכל $q in B_delta (p)$ ושוב מתלות רציפה בתנאי התחלה נקבל $lim_(t arrow infinity) phi_t (q) = p$ שכן לכל $epsilon^prime > 0$ יש $delta^prime > 0$ כך שאם $y in B_(delta^prime) (p)$ אז לכל $t in [0,T]$ נקבל $normop(phi_t (y) - p)<epsilon^prime$.
+  לכל $t in [0,T]$ ולכל $k in NN$ מתקיים $phi_(k T + t) (q) in B(p, epsilon)$ כלומר לכל $t > 0$ מתקיים $phi_t (q) in B(p, epsilon)$ וזו בידיוק ההגדרה של יציבות.\
+  נשאר להראות יציבות אסימפטוטית: קיבלנו ש־$phi_(k T) (q) stretch(arrow)_(k arrow infinity) p$ לכל $q in B(p, delta)$ ושוב מתלות רציפה בתנאי התחלה נקבל $lim_(t arrow infinity) phi_t (q) = p$ שכן לכל $epsilon^prime > 0$ יש $delta^prime > 0$ כך שאם $y in B_(delta^prime) (p)$ אז לכל $t in [0,T]$ נקבל $normop(phi_t (y) - p)<epsilon^prime$.
 ]
 
 #definition[פונקציית ליאפונוב][
@@ -853,7 +853,7 @@ $ alpha(t) = alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s $
   להמשך ההוכחה אנחנו צריכים שתי למות
 
   #lemma[
-    קיים $R>0$ כך שאם $x:[0,infinity) arrow B_R (0)$ פותרת את המשוואה $x^prime (t) = F(x(t))$ אז
+    קיים $R>0$ כך שאם $x:[0,infinity) arrow B(0, R)$ פותרת את המשוואה $x^prime (t) = F(x(t))$ אז
     $
       x(t)=e^(t A) pi_minus (x(0)) + integral_0^t e^((t-s) A) pi_minus g(x(s)) dif s - integral_t^infinity e^((t-s)A) pi_plus g(x(s)) dif s
     $
@@ -862,7 +862,7 @@ $ alpha(t) = alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s $
   #proof[@first-lemma-for-the-linear-criterion-for-instable][
     מכך ש־$F(0)=0$ מפיתוח טיילור נקבל
     $ g(x) =F(x) - A x = o(norm(x)) $
-    בפרט, מהגדרת הגבול יש $R>0$ כך שלכל $x in B_R (0)$ מתקיים $(suit.heart.stroked) space norm(g(x))<=norm(x)$. \
+    בפרט, מהגדרת הגבול יש $R>0$ כך שלכל $x in B(0, R)$ מתקיים $(suit.heart.stroked) space norm(g(x))<=norm(x)$. \
     נכפול את $(star star)$ ב־$e^(-t A)$ ונפעיל את $pi_plus$ ונקבל (כי $pi_plus$ זו העתקה לינארית וגם אינטגרל הוא לינארי ובנוסף מתקיים $pi_plus.minus e^(t A) = e^(t A) pi_plus.minus$)
     $
       (star star star) space e^(-t A) pi_plus x(t) = pi_plus (x(0)) + integral_0^t e^(-s A) pi_plus g(x(s)) dif s ==> pi_plus (x(0)) = - integral_0^infinity e^(-s A) pi_plus g(x(s)) dif s
@@ -872,7 +872,7 @@ $ alpha(t) = alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s $
       forall t >0, space norm(e^(t A) pi_minus x) <= C e^(- mu t) norm(x) \
       forall t <0, space norm(e^(t A) pi_plus x) <= C e^(-mu abs(t)) norm(x)
     $
-    לכן אם $x(t) in B_r (0)$ לכל $t<0$ נובע
+    לכן אם $x(t) in B(0, R)$ לכל $t>0$ נובע
     $ norm(e^(-t A) pi_plus (x(t)))<= C^2 e^(-mu t) R stretch(arrow)_(t arrow infinity) 0 $
     יחד עם $(suit.heart.stroked)$ לכל $s>0$ נקבל
     $ norm(e^(-s A) pi_plus g(x(s)))<= C^2 e^(-s mu) R $
@@ -885,11 +885,11 @@ $ alpha(t) = alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s $
   ]
 
   #lemma[
-    קיים $R>R_0 > 0$ מהלמה הקודמת כך שאם $x,y : [0,infinity) arrow B_(R_0) (0)$ הם פתרונות ל־$x^prime = F(x)$ כך ש־$pi_minus (x(0)) = pi_minus (y(0))$ אז $x(t)=y(t)$ לכל $t$.
+    קיים $R>R_0 > 0$ מהלמה הקודמת כך שאם $x,y : [0,infinity) arrow B(0, R_0)$ הם פתרונות ל־$x^prime = F(x)$ כך ש־$pi_minus (x(0)) = pi_minus (y(0))$ אז $x(t)=y(t)$ לכל $t$.
   ]<second-lemma-for-the-linear-criterion-for-instable>
 
   #proof[@second-lemma-for-the-linear-criterion-for-instable][
-    לכל $epsilon > 0$ קיים $R>R_0 > 0$ ($R$ מהלמה הקודמת) כך שלכל $z_1, z_2 in B_(R_0) (0)$ מתקיים
+    לכל $epsilon > 0$ קיים $R>R_0 > 0$ ($R$ מהלמה הקודמת) כך שלכל $z_1, z_2 in B(0, R_0)$ מתקיים
     $ norm(g(z_1) - g(z_2)) < epsilon norm(z_1 - z_2) $
     #remark[
       זה נובע מהגזירות ברציפות של $F$ : כי לכל $z_1, z_2$ מתקיים
@@ -902,9 +902,9 @@ $ alpha(t) = alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s $
     #end_of_lecture("12 – 19/05")
 
     נקבע $R_0 = R_0 (epsilon)$ עבור $epsilon=epsilon(C, mu)$ עבור $mu$ מהלמה הקודמת שנגדיר בהמשך.\
-    נניח ש־$x,y$ פתרונות עם $pi_minus (y(0))=pi_minus (x(0))$ כך ש־$x!=y$ ל־$t>0$ ו־$x(t), y(t) in B_(R_0) (0)$ ונסמן
+    נניח ש־$x,y$ פתרונות עם $pi_minus (y(0))=pi_minus (x(0))$ כך ש־$x!=y$ ל־$t>0$ ו־$x(t), y(t) in B(0, R_0)$ ונסמן
     $ d = sup_(t in [0,infinity)) norm(x(t)-y(t)) $
-    היות ש־$R>R_0$ ו־$x(t), y(t) in B_R (0)$ ל־$t>0$ המסקנה של הלמה הקודמת נכונה עבורם ולכן
+    היות ש־$R>R_0$ ו־$x(t), y(t) in B(0, R)$ ל־$t>0$ המסקנה של הלמה הקודמת נכונה עבורם ולכן
     $
       norm(x(t)-y(t)) &= norm(integral_0^t e^((t-s) A) pi_minus (g(x(s))-g(y(s))) dif s - integral_t^infinity e^((t-s)A) pi_plus (g(x(s))-g(y(s))) dif s) \
       &<= integral_0^t norm(e^((t-s)A) pi_minus (g(x(s))-g(y(s))))+integral_t^infinity norm(e^((t-s)A) pi_plus (g(x(s))-g(y(s))))
@@ -915,11 +915,11 @@ $ alpha(t) = alpha(0) + integral_0^t pi(s)^(-1) g(s) dif s $
       &= (2epsilon C d)/mu
     $
     כאשר אי־השיוויון השני נובע מהלמה הקודמת.\
-    אז נבחר $epsilon = frac(mu, 4C)$ ונקבל לעיל $frac(d, 2)$ אבל זו סתירה כי זה אומר ש־$d=0$ (נזכר ש־$norm(x(t)-y(t))=d$).
+    אז נבחר $epsilon = frac(mu, 4C)$ ונקבל לעיל $frac(d, 2)$ אבל זו סתירה כי זה אומר ש־$d=0$.
   ]
 
   נבחין שההוכחה של @second-lemma-for-the-linear-criterion-for-instable מראה שיציבות היא בלתי אפשרית.\
-  שכן, אם $x_0$ נקודה יציבה אז קיימת $eta>0$ כך שלכל $p in B_eta (0)$ מתקיים $x_p (t) in B_(R_0) (0)$ לכל $t>0$.\
+  שכן, אם $x_0$ נקודה יציבה אז קיימת $eta>0$ כך שלכל $p in B_eta (0)$ מתקיים $x_p (t) in B(0, R_0)$ לכל $t>0$.\
   בפרט, קיימים $x!=y$ כמו בלמה עם $pi_minus (x) = pi_minus (y)$ ולכן $x(0)=y(0)$.
 ]
 
